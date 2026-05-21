@@ -1,164 +1,103 @@
-# 🌍 Mundial 2026 — Predicciones y Análisis
+# Mundial 2026 — Predicciones y Análisis
 
 Proyecto web para análisis táctico, ELO de clubes y predicciones del Mundial 2026 (Canadá · México · Estados Unidos).
 
 Fuente de análisis: [AlterFutbol](https://alterfutbol.com) · ELO de clubes: [worldclubratings.com](http://worldclubratings.com/rankings/elo_men/)
 
+**Sitio en vivo:** [https://alcamaster1290.github.io/prediccion-mundial-2026-elo/](https://alcamaster1290.github.io/prediccion-mundial-2026-elo/)
+
 ---
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 mundial-2026/
 │
 ├── index.html              # App principal (dark editorial, navegación por grupo)
+├── .nojekyll               # GitHub Pages — deshabilita Jekyll
 ├── README.md
 │
 ├── assets/
-│   ├── flags/              # Banderas en SVG — código ISO 3166-1 alpha-3
-│   │   ├── bih.svg         # Bosnia y Herzegovina
-│   │   ├── sui.svg         # Suiza
-│   │   ├── swe.svg         # Suecia
-│   │   ├── kor.svg         # Corea del Sur
-│   │   └── ...             # una por selección clasificada (48 total)
-│   │
-│   ├── players/            # Foto de la figura clave — UNA por selección
-│   │   ├── bih-dzeko.jpg          # Bosnia → Edin Džeko
-│   │   ├── sui-xhaka.jpg          # Suiza → Granit Xhaka
-│   │   ├── swe-gyokeres.jpg       # Suecia → Viktor Gyökeres
-│   │   ├── kor-son.jpg            # Corea del Sur → Son Heung-min
-│   │   ├── bra-vinicius.jpg       # Brasil → Vinicius Jr.
-│   │   ├── fra-mbappe.jpg         # Francia → Kylian Mbappé
-│   │   ├── por-ronaldo.jpg        # Portugal → Cristiano Ronaldo
-│   │   └── ...
-│   │
-│   └── xi/                 # XI Ideal por selección — capturas de AlterFutbol
-│       ├── bih-xi.png      # Bosnia XI (4-4-2)
-│       ├── sui-xi.png      # Suiza XI (4-3-3)
-│       ├── swe-xi.png      # Suecia XI (3-4-2-1)
-│       ├── kor-xi.png      # Corea del Sur XI (3-4-2-1)
-│       └── ...
-│
-├── css/
-│   └── styles.css          # Estilos extraídos de index.html
-│
-├── js/
-│   ├── main.js             # Inicialización, nav activo, ELO color coding
-│   └── filters.js          # Filtros por grupo / estado de análisis (futuro)
+│   ├── flags/              # Banderas en SVG — código ISO 3166-1 alpha-3 (48 total)
+│   ├── players/            # Foto de la figura clave — UNA por selección (15 total)
+│   └── xi/                 # XI Ideal por selección — 1024×1024px PNG (15 total)
 │
 └── data/
-    ├── teams.json          # Planteles completos con ELO por club
-    └── groups.json         # Grupos, fixtures y fechas oficiales FIFA
+    ├── teams.json          # Planteles con ELO por club (bih, kor completos)
+    ├── groups.json         # Grupos A-L (sin D), fixtures y fechas oficiales FIFA
+    └── match_context.json  # Matriz narrativa de los 72 partidos de fase de grupos
 ```
 
 ---
 
-## 🗂️ Convenciones de nombres
+## Convenciones de nombres
 
 ### `assets/flags/`
 - Código ISO 3166-1 **alpha-3** en minúsculas: `bih.svg`, `sui.svg`, `swe.svg`, `kor.svg`
-- Fuente recomendada: [flagcdn.com](https://flagcdn.com) → `https://flagcdn.com/{code}.svg`
-- Alternativa npm: `flag-icons` (CSS sprites)
+- Fuente: [flagcdn.com](https://flagcdn.com)
 
 ### `assets/players/`
 - Formato: `{código-equipo}-{apellido}.jpg`
-- Resolución mínima recomendada: **400 × 500 px** (portrait)
-- Máximo **1 jugador por selección** — la figura más reconocida o el mejor ELO de club
-- Fuentes libres de derechos: Wikimedia Commons, transfermarkt (preview), sitios oficiales de federaciones
+- Una imagen por selección — la figura más reconocida o el mayor ELO de club
 
-| Equipo | Archivo | Jugador | Club (ELO) |
-|--------|---------|---------|------------|
+| Equipo | Archivo | Jugador | Club |
+|--------|---------|---------|------|
 | Bosnia | `bih-dzeko.jpg` | Edin Džeko | Schalke 04 |
 | Suiza | `sui-xhaka.jpg` | Granit Xhaka | Sunderland |
-| Suecia | `swe-gyokeres.jpg` | Viktor Gyökeres | Arsenal (2102) |
+| Suecia | `swe-gyokeres.jpg` | Viktor Gyökeres | Arsenal |
 | Corea del Sur | `kor-son.jpg` | Son Heung-min | LAFC |
-| Brasil | `bra-vinicius.jpg` | Vinicius Jr. | Real Madrid (2004) |
+| Brasil | `bra-vinicius.jpg` | Vinicius Jr. | Real Madrid |
 | Haití | `hti-bellegarde.jpg` | J.-R. Bellegarde | Wolverhampton |
 | Escocia | `sco-mcginn.jpg` | John McGinn | Aston Villa |
 | Costa de Marfil | `civ-adingra.jpg` | Simon Adingra | AS Monaco |
 | Bélgica | `bel-debruyne.jpg` | Kevin De Bruyne | Napoli |
 | Nueva Zelanda | `nzl-wood.jpg` | Chris Wood | Nottingham Forest |
 | Cabo Verde | `cpv-rodrigues.jpg` | Garry Rodrigues | Apollon Limassol |
-| Francia | `fra-mbappe.jpg` | Kylian Mbappé | Real Madrid (2004) |
-| Austria | `aut-alaba.jpg` | David Alaba | Real Madrid (2004) |
+| Francia | `fra-mbappe.jpg` | Kylian Mbappé | Real Madrid |
+| Austria | `aut-alaba.jpg` | David Alaba | Real Madrid |
 | Portugal | `por-ronaldo.jpg` | Cristiano Ronaldo | Al-Nassr |
 | RD del Congo | `cod-mbemba.jpg` | Chancel Mbemba | Lille |
 
 ### `assets/xi/`
 - Formato: `{código-equipo}-xi.png`
-- Capturas de pantalla de las imágenes de XI Ideal publicadas por AlterFutbol
-- Recortar al área del XI (excluir bordes del post si es necesario)
-- Resolución sugerida: **800 × 900 px**
+- Capturas de AlterFutbol — 1024×1024 px, mostradas en la sección de cada equipo
 
 ---
 
-## 📊 Estructura de `data/teams.json`
+## Estructura de `data/match_context.json`
+
+Matriz narrativa con los 72 partidos de la fase de grupos (12 grupos × 6 partidos).
 
 ```json
 {
-  "teams": [
-    {
-      "id": "bih",
-      "name": "Bosnia y Herzegovina",
-      "group": "B",
-      "flag": "assets/flags/bih.svg",
-      "xi_image": "assets/xi/bih-xi.png",
-      "star_player": {
-        "name": "Edin Džeko",
-        "image": "assets/players/bih-dzeko.jpg",
-        "club": "Schalke 04",
-        "elo": null
-      },
-      "dt": "Sergej Barbarez",
-      "scheme": "4-4-2",
-      "analyzed": true,
-      "players": [
-        {
-          "number": 22,
-          "pos": "DEL",
-          "name": "Edin Džeko",
-          "age": 40,
-          "club": "Schalke 04",
-          "country": "Alemania",
-          "elo": null,
-          "titular": true
-        }
-      ]
-    }
-  ]
+  "match_id": "grp-c-j1-bra-mar",
+  "grupo": "C",
+  "jornada": 1,
+  "date": "2026-06-13",
+  "venue": "Por confirmar",
+  "team_a": "bra",
+  "team_b": "mar",
+  "team_a_context": {
+    "sistema": "4-2-3-1",
+    "figura": "Vinicius Jr.",
+    "elo_intl": 1836,
+    "incentivo_competitivo": "Brasil favorito absoluto del grupo...",
+    "ausencias_clave": ["Gabigol (no convocado)"],
+    "amenaza_principal": "Vinicius Jr. + Raphinha en extremos"
+  },
+  "team_b_context": { "..." : "..." },
+  "prediccion_narrativa": "...",
+  "resultado_predicho": "2-0",
+  "confianza": "media"
 }
 ```
 
 ---
 
-## 📊 Estructura de `data/groups.json`
+## Paleta de colores por grupo
 
-```json
-{
-  "groups": [
-    {
-      "id": "A",
-      "teams": ["mex", "zaf", "kor", "cze"],
-      "fixtures": [
-        {
-          "jornada": 1,
-          "date": "2026-06-11",
-          "home": "mex",
-          "away": "zaf",
-          "venue": "Estadio Azteca, Ciudad de México"
-        }
-      ]
-    }
-  ]
-}
-```
-
----
-
-## 🎨 Paleta de colores por grupo
-
-| Grupo | Color CSS var | Hex |
-|-------|--------------|-----|
+| Grupo | Variable CSS | Hex |
+|-------|-------------|-----|
 | A | `--grp-a` | `#e55c5c` |
 | B | `--grp-b` | `#3b8beb` |
 | C | `--grp-c` | `#10b981` |
@@ -173,57 +112,60 @@ mundial-2026/
 
 ---
 
-## ✅ Estado del análisis
+## Estado del análisis
 
-| Selección | Grupo | XI cargado | Tabla ELO | Análisis táctico |
+| Selección | Grupo | XI visible | Titulares | Análisis táctico |
 |-----------|-------|-----------|-----------|-----------------|
-| 🇧🇦 Bosnia | B | ✅ | ✅ 26 jugadores | ✅ |
-| 🇨🇭 Suiza | B | ✅ | ✅ 26 jugadores | ✅ |
-| 🇸🇪 Suecia | F | ✅ | ✅ 26 jugadores | ✅ |
-| 🇰🇷 Corea del Sur | A | ✅ | ✅ 26 jugadores | ✅ |
-| 🇧🇷 Brasil | C | ⏳ | ✅ 26 jugadores | ✅ |
-| 🇭🇹 Haití | C | ⏳ | ✅ 26 jugadores | ✅ |
-| 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escocia | C | ⏳ | ✅ 26 jugadores | ✅ |
-| 🇨🇮 Costa de Marfil | E | ⏳ | ✅ 22 jugadores | ✅ |
-| 🇧🇪 Bélgica | G | ⏳ | ✅ 26 jugadores | ✅ |
-| 🇳🇿 Nueva Zelanda | G | ⏳ | ✅ 26 jugadores | ✅ |
-| 🇨🇻 Cabo Verde | H | ⏳ | ✅ 26 jugadores | ✅ |
-| 🇫🇷 Francia | I | ⏳ | ✅ 26 jugadores | ✅ |
-| 🇦🇹 Austria | J | ⏳ | ✅ 22 jugadores | ✅ |
-| 🇵🇹 Portugal | K | ⏳ | ✅ 26 jugadores | ✅ |
-| 🇨🇩 RD del Congo | K | ⏳ | ✅ 22 jugadores | ✅ |
+| Bosnia | B | ✅ | ✅ 11 titulares | ✅ |
+| Suiza | B | ✅ | ✅ 11 titulares | ✅ |
+| Suecia | F | ✅ | ✅ 11 titulares | ✅ |
+| Corea del Sur | A | ✅ | ✅ 11 titulares | ✅ |
+| Brasil | C | ✅ | ✅ 11 titulares | ✅ |
+| Haití | C | ✅ | ✅ 11 titulares | ✅ |
+| Escocia | C | ✅ | ✅ 11 titulares | ✅ |
+| Costa de Marfil | E | ✅ | ✅ 10 titulares* | ✅ |
+| Bélgica | G | ✅ | ✅ 12 titulares** | ✅ |
+| Nueva Zelanda | G | ✅ | ✅ 11 titulares | ✅ |
+| Cabo Verde | H | ✅ | ✅ 11 titulares | ✅ |
+| Francia | I | ✅ | ✅ 11 titulares | ✅ |
+| Austria | J | ✅ | ✅ 10 titulares* | ✅ |
+| Portugal | K | ✅ | ✅ 11 titulares | ✅ |
+| RD del Congo | K | ✅ | ✅ 9 titulares* | ✅ |
+
+\* Jugador del XI publicado no figura en la lista oficial de convocados
+\*\* El XI publicado muestra dos opciones para una posición (Lukaku / De Ketelaere)
 
 ---
 
-## 🚀 Cómo usar
+## Cómo usar
 
 ```bash
-git clone https://github.com/tu-usuario/mundial-2026.git
-cd mundial-2026
+git clone https://github.com/Alcamaster1290/prediccion-mundial-2026-elo.git
+cd prediccion-mundial-2026-elo
 
 # No hay build step — abrir directamente en el navegador
-open index.html
-
-# O servir localmente (recomendado para los fetch() de JSON)
-npx serve .
-# o
+# (Para fetch() de JSON se necesita servidor local)
 python3 -m http.server 8080
+# o
+npx serve .
 ```
 
-> **Nota:** Para cargar los archivos JSON con `fetch()` se necesita un servidor local (CORS). Con `open index.html` directo funciona todo excepto la carga dinámica de datos.
-
 ---
 
-## 📌 Roadmap
+## Roadmap
 
-- [ ] Integrar `teams.json` para carga dinámica de planteles
-- [ ] Agregar imágenes de jugadores estrella (`assets/players/`)
-- [ ] Subir imágenes XI Ideal de los 15 equipos (`assets/xi/`)
-- [ ] Completar análisis de todos los grupos (D, F restante, L)
-- [ ] Sección de predicciones por partido (fase de grupos)
+- [x] Descargar 48 banderas SVG (todos los grupos A-L)
+- [x] Analizar 15 selecciones con táctica, ausencias y ELO de clubes
+- [x] Cargar XI Ideal y jugador estrella para las 15 selecciones
+- [x] Columna Titular marcada en cada plantel (sí/no)
+- [x] Mostrar imagen del XI probable en la sección de cada equipo
+- [x] `match_context.json` — matriz narrativa de los 72 partidos de fase de grupos
+- [x] Publicar en GitHub Pages
+- [ ] Completar análisis de grupos D, F (ned, jpn, tun), L (eng, cro, gha, pan)
+- [ ] Convocatorias pendientes: mex, zaf, cze, can, qat, mar, ger, cuw, ecu, ned, jpn, tun, egy, irn, esp, ksa, ury, sen, irq, nor, arg, alg, jor, uzb, col, eng, cro, gha, pan
+- [ ] Sección interactiva de predicciones por partido
 - [ ] Comparador de ELO entre equipos del mismo grupo
-- [ ] Modo predicción: votar resultado de cada partido
 
 ---
 
-*Datos actualizados al 20 de mayo de 2026. Fuentes: AlterFutbol · worldclubratings.com · FIFA*
+*Datos actualizados al 21 de mayo de 2026. Fuentes: AlterFutbol · worldclubratings.com · FIFA*
