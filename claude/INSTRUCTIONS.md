@@ -8,107 +8,74 @@ Este documento guía a Claude Code en las tareas del proyecto. Léelo completo a
 
 Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 - Stack: HTML + CSS + JS vanilla (sin frameworks ni build step)
-- Datos: `data/teams.json` y `data/groups.json`
-- Estilos: inline en `index.html` (pendiente extracción a `css/styles.css`)
+- Todo el CSS y JS está **inline en `index.html`** — no existen `css/` ni `js/` por separado
 - Fuente de análisis: [AlterFutbol](https://alterfutbol.com)
 - Fuente de ELO de clubes: [worldclubratings.com](http://worldclubratings.com/rankings/elo_men/)
+- Fuente de convocatorias nuevas: [alterfutbol.com/tag/convocatorias-al-mundial-2026/](https://alterfutbol.com/tag/convocatorias-al-mundial-2026/)
+
+### Estado global (al 21 mayo 2026)
+- **15 selecciones analizadas** con plantel, táctica, figura clave y XI probable
+- **2 convocatorias publicadas pendientes de análisis:** Alemania (Grupo E) y Noruega (Grupo I)
+- **Más de 25 selecciones** aún sin convocatoria oficial
 
 ---
 
 ## Tarea 1 — Imagen del jugador estrella (`assets/players/`)
 
-### Qué se necesita
-Una foto por selección. La tarjeta ya está implementada en `index.html` con `onerror` que muestra las iniciales si no hay imagen. Solo hay que colocar el archivo con el nombre correcto.
-
 ### Convención de nombres
 `{código-equipo}-{apellido}.jpg`
 
-### Lista completa de imágenes a buscar
+### Estado actual (15 imágenes disponibles ✅)
 
-| Archivo esperado | Jugador | Selección | Sugerencia de búsqueda |
-|---|---|---|---|
-| `bih-dzeko.jpg` | Edin Džeko | Bosnia | "Edin Dzeko Schalke 2025 wikimedia" |
-| `sui-xhaka.jpg` | Granit Xhaka | Suiza | "Granit Xhaka Switzerland national team" |
-| `swe-gyokeres.jpg` | Viktor Gyökeres | Suecia | "Viktor Gyokeres Arsenal 2025" |
-| `kor-son.jpg` | Son Heung-min | Corea del Sur | "Son Heung-min LAFC 2026" |
-| `bra-vinicius.jpg` | Vinicius Jr. | Brasil | "Vinicius Junior Real Madrid 2025 wikimedia" |
-| `hti-bellegarde.jpg` | J.-R. Bellegarde | Haití | "Jean-Ricner Bellegarde Wolverhampton" |
-| `sco-mcginn.jpg` | John McGinn | Escocia | "John McGinn Aston Villa Scotland" |
-| `civ-adingra.jpg` | Simon Adingra | Costa de Marfil | "Simon Adingra Monaco 2025" |
-| `bel-debruyne.jpg` | Kevin De Bruyne | Bélgica | "Kevin De Bruyne Napoli 2025" |
-| `nzl-wood.jpg` | Chris Wood | Nueva Zelanda | "Chris Wood Nottingham Forest" |
-| `cpv-rodrigues.jpg` | Garry Rodrigues | Cabo Verde | "Garry Rodrigues Apollon footballer" |
-| `fra-mbappe.jpg` | Kylian Mbappé | Francia | "Kylian Mbappe Real Madrid 2025 wikimedia" |
-| `aut-alaba.jpg` | David Alaba | Austria | "David Alaba Real Madrid Austria" |
-| `por-ronaldo.jpg` | Cristiano Ronaldo | Portugal | "Cristiano Ronaldo Al-Nassr Portugal" |
-| `cod-mbemba.jpg` | Chancel Mbemba | RD del Congo | "Chancel Mbemba Lille 2025" |
-
-### Fuentes permitidas (libres de derechos)
-1. **Wikimedia Commons** — buscar `https://commons.wikimedia.org/wiki/File:{nombre}`
-2. **Sitios oficiales de federaciones nacionales** — sección "plantilla" o "squad"
-3. **Transfermarkt** — foto de perfil del jugador (baja resolución, uso editorial)
+| Archivo | Jugador | Selección |
+|---|---|---|
+| `bih-dzeko.jpg` | Edin Džeko | Bosnia |
+| `sui-xhaka.jpg` | Granit Xhaka | Suiza |
+| `swe-gyokeres.jpg` | Viktor Gyökeres | Suecia |
+| `kor-son.jpg` | Son Heung-min | Corea del Sur |
+| `bra-vinicius.jpg` | Vinicius Jr. | Brasil |
+| `hti-bellegarde.jpg` | J.-R. Bellegarde | Haití |
+| `sco-mcginn.jpg` | John McGinn | Escocia |
+| `civ-adingra.jpg` | Simon Adingra | Costa de Marfil |
+| `bel-debruyne.jpg` | Kevin De Bruyne | Bélgica |
+| `nzl-wood.jpg` | Chris Wood | Nueva Zelanda |
+| `cpv-rodrigues.jpg` | Garry Rodrigues | Cabo Verde |
+| `fra-mbappe.jpg` | Kylian Mbappé | Francia |
+| `aut-alaba.jpg` | David Alaba | Austria |
+| `por-ronaldo.jpg` | Cristiano Ronaldo | Portugal |
+| `cod-mbemba.jpg` | Chancel Mbemba | RD del Congo |
 
 ### Especificaciones técnicas
 - Formato: `.jpg` o `.webp` (renombrar si es necesario)
-- Resolución mínima: **400 × 500 px** (portrait)
-- Encuadre ideal: cabeza y hombros centrados (object-fit: cover; object-position: top center ya está en el CSS)
-- Si la imagen descargada es horizontal, recortar al área de la cara/torso
-
-### Comportamiento en el HTML
-La tarjeta ya usa `onerror` para mostrar las iniciales si no encuentra la imagen:
-```html
-<img src="assets/players/swe-gyokeres.jpg" alt="Viktor Gyökeres" loading="lazy"
-     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-<div class="star-placeholder">VG</div>  <!-- se muestra si no hay imagen -->
-```
+- Resolución mínima: **400 × 500 px** (portrait, cabeza y hombros)
+- El CSS ya usa `object-fit: cover; object-position: top center`
+- La tarjeta usa `onerror` para mostrar iniciales si no hay imagen
 
 ---
 
-## Tarea 2 — Imagen del XI Ideal (`assets/xi/`)
-
-### Qué se necesita
-Captura del XI Ideal publicado por AlterFutbol para cada selección. Ya hay 4 imágenes disponibles (Bosnia, Suecia, Suiza, Corea del Sur — subidas durante la construcción del proyecto).
+## Tarea 2 — Imagen del XI Probable (`assets/xi/`)
 
 ### Convención de nombres
 `{código-equipo}-xi.png`
 
-### Estado actual
+### Estado actual (15 imágenes disponibles ✅)
 
-| Archivo | Estado | Fuente |
-|---|---|---|
-| `bih-xi.png` | ✅ Disponible | Subida por el usuario |
-| `swe-xi.png` | ✅ Disponible | Subida por el usuario |
-| `sui-xi.png` | ✅ Disponible | Pendiente de subir |
-| `kor-xi.png` | ✅ Disponible | Subida por el usuario |
-| `bra-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `hti-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `sco-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `civ-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `bel-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `nzl-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `cpv-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `fra-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `aut-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `por-xi.png` | ⏳ Pendiente | Ver enlace abajo |
-| `cod-xi.png` | ⏳ Pendiente | Ver enlace abajo |
+Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se muestra dentro de `.xi-img-wrap` **antes de la tabla de plantel** en cada sección.
 
-### Cómo obtener las imágenes
-1. Ir al enlace de AlterFutbol correspondiente (Tarea 3)
-2. Localizar la imagen del XI Ideal en el artículo (formato: camisetas sobre campo de fútbol, fondo oscuro con logo de AlterFutbol)
-3. Descargar o hacer captura de pantalla
-4. Recortar al área del XI (excluir encabezado del post si hay texto alrededor)
-5. Guardar como PNG con el nombre correcto en `assets/xi/`
+> **Nota:** El bloque de texto de la formación (`.xi-row`) fue eliminado del HTML en mayo 2026. Solo se muestra la **imagen** del XI probable — no el texto con posiciones.
 
-### Especificaciones técnicas
-- Formato: PNG preferido (el fondo oscuro del XI funciona bien con PNG)
-- Resolución mínima: **800 × 900 px**
-- Las imágenes del XI se usan como referencia visual en el análisis (actualmente en la sección `xi-row` del HTML, futuro: galería de XI)
+### Cómo obtener la imagen para un equipo nuevo
+1. Ir al artículo de AlterFutbol correspondiente (ver Tarea 3)
+2. Localizar la imagen del XI Ideal (camisetas sobre campo, fondo oscuro con logo de AlterFutbol)
+3. Descargar o capturar pantalla y recortar al área del XI
+4. Guardar como PNG en `assets/xi/{código}-xi.png`
+5. Resolución mínima recomendada: **800 × 900 px**
 
 ---
 
 ## Tarea 3 — Publicaciones de AlterFutbol por selección
 
-### URLs completas de cada artículo
+### Selecciones ya analizadas (15)
 
 | Selección | URL |
 |---|---|
@@ -128,60 +95,185 @@ Captura del XI Ideal publicado por AlterFutbol para cada selección. Ya hay 4 im
 | 🇵🇹 Portugal | https://www.alterfutbol.com/europa/portugal/portugal-confirmo-sus-convocados-para-el-mundial-2026/ |
 | 🇨🇩 RD del Congo | https://www.alterfutbol.com/africa/republica-democratica-del-congo/rd-congo-confirmo-sus-26-convocados-para-el-mundial-2026-analisis-su-historia-y-mejores-jugadores/ |
 
+### Convocatorias publicadas — pendientes de añadir al sitio
+
+| Selección | Grupo | URL |
+|---|---|---|
+| 🇩🇪 Alemania | E | Buscar en https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
+| 🇳🇴 Noruega | I | Buscar en https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
+
 ### Noticias generales del torneo
 | Tema | URL |
 |---|---|
-| Página de noticias AlterFutbol | https://www.alterfutbol.com/noticias/ |
 | Todas las convocatorias al Mundial 2026 | https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
+| Noticias AlterFutbol | https://www.alterfutbol.com/noticias/ |
 
 ---
 
-## Tarea 4 — Nuevas convocatorias (pendientes de análisis)
+## Tarea 4 — Añadir una nueva convocatoria al sitio
 
-Cuando AlterFutbol publique nuevas listas, seguir este flujo:
-1. Ir a `https://www.alterfutbol.com/noticias/` y buscar artículos con "convocados" y "Mundial"
-2. Leer el artículo completo (plantilla, análisis táctico, figura clave, ausencias)
-3. Actualizar `data/teams.json` con los jugadores y ELO
-4. Buscar la imagen del XI Ideal en el artículo → guardar en `assets/xi/{código}-xi.png`
-5. Buscar imagen del jugador estrella → guardar en `assets/players/{código}-{apellido}.jpg`
-6. Actualizar `index.html`: sección del equipo con táctica ampliada, tabla de jugadores y `"titular": true/false`
-7. Marcar `"analyzed": true` en `data/teams.json`
+Cuando haya una nueva convocatoria lista para analizar, seguir este flujo exacto:
 
-### Selecciones que aún no han publicado lista (al 20 mayo 2026)
-Grupos D (completo), y en otros grupos: Canadá, Qatar, Marruecos, Países Bajos, Japón, Túnez, Egipto, Irán, España, Arabia Saudita, Uruguay, Senegal, Irak, Noruega, Argentina, Argelia, Jordania, Uzbekistán, Colombia, Inglaterra, Croacia, Ghana, Panamá.
+### Paso 1 — Leer el artículo de AlterFutbol
+- Plantilla completa (número, posición, jugador, edad, club)
+- Sistema de juego y descripción táctica
+- Figura clave y sus datos (club, ELO)
+- Ausencias y dudas relevantes
+- Dato histórico o de color si lo hay
+
+### Paso 2 — Obtener assets
+1. Imagen del XI Probable → `assets/xi/{código}-xi.png`
+2. Imagen del jugador estrella → `assets/players/{código}-{apellido}.jpg`
+3. Bandera SVG (si no existe) → `assets/flags/{código}.svg` desde flagcdn.com
+
+### Paso 3 — Añadir sección en `index.html`
+
+Copiar la estructura de un equipo existente (por ejemplo Bosnia o Francia) y adaptarla. La estructura de cada `team-section` es:
+
+```html
+<div class="team-section" id="{id-sin-tildes}">
+  <div class="team-header">
+    <div class="team-flag-big">
+      <img src="assets/flags/{código}.svg" alt="{Nombre}" loading="lazy">
+    </div>
+    <div>
+      <div class="team-name">{Nombre completo}</div>
+      <div class="team-sub">DT: {Técnico} · Grupo {X}</div>
+      <div class="team-pills">
+        <span class="team-pill" style="color:var(--accent);border-color:var(--accent)">{Formación}</span>
+        <span class="team-pill" style="color:var(--grp-{x});border-color:var(--grp-{x})">Grupo {X}</span>
+      </div>
+    </div>
+    <div class="star-card" style="--sc:var(--grp-{x})">
+      <div class="star-img-wrap">
+        <img src="assets/players/{código}-{apellido}.jpg" alt="{Jugador}" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="star-placeholder">{Iniciales}</div>
+      </div>
+      <div class="star-info">
+        <div class="star-label">Figura clave</div>
+        <div class="star-name">{Nombre jugador}</div>
+        <div class="star-meta">{Club}</div>
+        <span class="elo-cell" style="font-size:11px;font-family:'JetBrains Mono',monospace">ELO {valor}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="info-card">
+      <h4>Sistema de juego</h4>
+      <p class="tactic-prose">{Texto de análisis en prosa corrida. Sin bullets, sin guiones, sin flechas.
+      Incluir: sistema base, roles clave, fortalezas, debilidades y dato de contexto.}</p>
+    </div>
+    <div class="info-card">
+      <h4>Dudas y novedades</h4>
+      <ul class="absence-list">
+        <li>
+          <span class="absence-name">{Jugador (estado)}</span><br>
+          <span class="absence-reason">{Razón o contexto}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="xi-img-wrap">
+    <div class="xi-img-label">XI Probable · {Nombre}</div>
+    <img src="assets/xi/{código}-xi.png" alt="XI Ideal {Nombre}" loading="lazy" class="xi-img">
+  </div>
+
+  <div class="squad-wrap">
+    <table class="squad-table">
+      <thead>
+        <tr><th>#</th><th>Pos</th><th>Jugador</th><th>Edad</th><th>Club</th><th>País</th><th>ELO</th><th>Titular</th></tr>
+      </thead>
+      <tbody>
+        <!-- Una fila por jugador: -->
+        <tr>
+          <td style="color:var(--muted);font-size:12px">{#}</td>
+          <td><span class="pos-badge pos-{gk|def|med|del}">{GK|DEF|MED|DEL}</span></td>
+          <td class="player-name">{Nombre} <span class="captain-star">★</span></td>
+          <td style="color:var(--muted)">{Edad}</td>
+          <td style="font-size:13px">{Club}</td>
+          <td style="font-size:12px;color:var(--muted)">{País del club}</td>
+          <td class="elo-cell">{ELO o N/D}</td>
+          <td><span class="titl-yes">Sí</span></td>   <!-- o titl-pending para — -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="nd-note">{Nota sobre ligas sin ELO, si aplica}</div>
+</div>
+```
+
+> **Sistema de juego — formato de prosa:**
+> Escribir un único párrafo `<p class="tactic-prose">` con el análisis táctico completo.
+> **No usar** `<ul>`, bullets, flechas `→`, guiones como marcadores ni dos puntos como separadores visuales.
+> Ejemplo correcto: *"Sistema 4-3-3 con presión alta y verticalidad. Xhaka es el eje organizador..."*
+
+### Paso 4 — Actualizar el tracker (§05)
+
+En la sección `id="tracker"` de `index.html`:
+- Cambiar el contador de análisis completados
+- Actualizar la cronología de anuncios con la nueva selección
+- Mover la selección de "Pendientes" a "Analizadas" en la lista
+
+### Paso 5 — Actualizar la sección de grupos (§02)
+
+En el card del grupo correspondiente, añadir `analyzed-badge` y marcar el estado:
+```html
+<span class="analyzed-badge">✓</span>
+```
+
+### Paso 6 — Commit y push
+```bash
+git add assets/ index.html
+git commit -m "Add {selección}: plantel, táctica y XI probable"
+git push origin main
+```
+
+---
+
+## Selecciones pendientes (al 21 mayo 2026)
+
+### Con convocatoria publicada — pendientes de añadir
+| Selección | Grupo | Código |
+|---|---|---|
+| Alemania | E | `ger` |
+| Noruega | I | `nor` |
+
+### Sin convocatoria oficial publicada aún
+Grupo D completo (USA, Paraguay, Australia, Turquía) · Canadá · Qatar · Marruecos · Países Bajos · Japón · Túnez · Egipto · Irán · España · Arabia Saudita · Uruguay · Senegal · Irak · Argentina · Argelia · Jordania · Uzbekistán · Colombia · Inglaterra · Croacia · Ghana · Panamá · Curazao · Ecuador · México · Sudáfrica · Chequia
 
 ---
 
 ## Reglas generales para Claude Code
 
-- **No modificar** la lógica CSS de colores por grupo (`--grp-a` … `--grp-l`) — están calibradas
-- **No cambiar** los `id` de los team sections (se usan para la nav y para las inyecciones de Python)
-- Al agregar un equipo nuevo, copiar exactamente la estructura de un equipo existente (ej. Bosnia)
-- Siempre mantener la columna `Titular` con `—` hasta recibir la imagen del XI Ideal
-- El ELO debe provenir de `worldclubratings.com` — no inventar valores
-- Los archivos JSON en `data/` son la fuente de verdad; `index.html` es la vista
+- **No modificar** los colores CSS por grupo (`--grp-a` … `--grp-l`) — son identidad de cada grupo
+- **No cambiar** los `id` de los team-sections — se usan para la nav y los scripts
+- **No usar** listas con bullets, flechas `→` ni dos puntos como marcadores en la sección táctica — solo prosa en `<p class="tactic-prose">`
+- El ELO de clubes debe provenir de `worldclubratings.com` — no inventar valores
+- Ligas sin ELO rankeado → usar `N/D` con clase `elo-nd` y añadir nota al pie en `.nd-note`
+- La columna `Titular` se rellena usando la imagen del XI probable como referencia: `titl-yes` para titulares confirmados, `titl-pending` (`—`) para el resto
+- Scripts Python de transformación → eliminar después de ejecutar (no commitear)
+- El toggle light/dark guarda la preferencia en `localStorage` — no tocar esa lógica
 
 ---
 
-## Estructura de carpetas (recordatorio)
+## Estructura de carpetas
 
 ```
 prediccion-mundial-2026-elo/
-├── index.html
+├── index.html              ← toda la app (HTML + CSS inline + JS inline)
 ├── README.md
-├── .gitignore
+├── .nojekyll               ← GitHub Pages: deshabilita Jekyll
 ├── claude/
-│   └── INSTRUCTIONS.md     ← este archivo
+│   └── INSTRUCTIONS.md    ← este archivo
 ├── assets/
-│   ├── flags/              ← {código}.svg  (48 banderas)
-│   ├── players/            ← {código}-{apellido}.jpg  (1 por equipo)
-│   └── xi/                 ← {código}-xi.png  (XI ideal de AlterFutbol)
-├── css/
-│   └── styles.css          ← extraer de index.html cuando sea oportuno
-├── js/
-│   ├── main.js
-│   └── filters.js
+│   ├── flags/             ← {código}.svg  (48 banderas, ISO 3166-1 alpha-3)
+│   ├── players/           ← {código}-{apellido}.jpg  (1 por equipo analizado)
+│   └── xi/                ← {código}-xi.png  (XI probable de AlterFutbol)
 └── data/
-    ├── teams.json
-    └── groups.json
+    ├── teams.json          ← planteles con ELO por club
+    ├── groups.json         ← grupos A-L, fixtures y fechas
+    └── match_context.json  ← narrativa táctica de los 72 partidos de grupos
 ```
