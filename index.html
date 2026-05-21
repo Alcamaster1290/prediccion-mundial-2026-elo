@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mundial 2026 — Predicciones & Análisis</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Oswald:wght@600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:        #080c14;
@@ -14,10 +14,10 @@
     --muted:     #3a4a62;
     --text:      #d6dfe8;
     --white:     #eef2f7;
-    --accent:    #00e5a0;
-    --gold:      #f0b429;
-    --red:       #ff4d6d;
-    --yes:       #00e5a0;
+    --accent:    #e63946;
+    --gold:      #ffaa00;
+    --red:       #e63946;
+    --yes:       #22c55e;
     --no:        #3a4a62;
 
     /* Group accent colors */
@@ -40,17 +40,20 @@
 
   body {
     background: var(--bg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='52'%3E%3Cpath d='M15 2 L28 9.5 L28 24.5 L15 32 L2 24.5 L2 9.5 Z' fill='none' stroke='%23ffffff' stroke-width='0.6' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 30px 52px;
     color: var(--text);
     font-family: 'Barlow', sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.6;
   }
 
   /* ─── NAV ─── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(8,12,20,.92);
+    background: rgba(7,9,15,0.95);
     backdrop-filter: blur(12px);
+    border-top: 3px solid var(--accent);
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; gap: 0;
     padding: 0 2rem;
@@ -64,7 +67,7 @@
     border-bottom: 2px solid transparent;
     white-space: nowrap; transition: .2s;
   }
-  nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  nav a:hover, nav a.active { background: var(--accent); color: #fff; border-bottom-color: transparent; }
   nav .badge {
     display: inline-block; font-size: 10px; padding: 1px 6px;
     border-radius: 20px; margin-left: 5px; vertical-align: middle;
@@ -77,6 +80,7 @@
     position: relative; overflow: hidden;
     padding: 6rem 2rem 5rem;
     background: linear-gradient(135deg, #080c14 0%, #0c1830 50%, #080c14 100%);
+    border-top: 3px solid var(--accent);
     border-bottom: 1px solid var(--border);
     text-align: center;
   }
@@ -89,20 +93,22 @@
     user-select: none;
   }
   .hero-eyebrow {
+    display: inline-block;
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-    font-size: 12px; letter-spacing: .3em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 1rem;
+    font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+    background: var(--accent); color: #fff; padding: .25rem .75rem;
+    border-radius: 3px; margin-bottom: 1.25rem;
   }
   .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-    font-size: clamp(3.5rem, 10vw, 8rem); line-height: .92;
+    font-family: 'Oswald', 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: clamp(4rem, 11vw, 9rem); line-height: .92;
     color: var(--white); text-transform: uppercase; letter-spacing: -.01em;
     margin-bottom: 1.5rem;
   }
   .hero h1 span { color: var(--accent); }
   .hero-meta {
     display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
-    font-family: 'Barlow Condensed', sans-serif; font-size: 14px;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700;
     letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
   }
   .hero-meta strong { color: var(--text); }
@@ -129,13 +135,17 @@
     font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
     padding: .25rem .6rem; border-radius: 4px;
   }
-  .tag-accent { background: var(--accent); color: #000; }
+  .tag-accent { background: var(--accent); color: #fff; }
   .tag-b { background: var(--grp-b); color: #fff; }
   .tag-f { background: var(--grp-f); color: #000; }
   h2 {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
     font-size: clamp(2rem,4vw,3rem); text-transform: uppercase;
     color: var(--white); letter-spacing: -.01em; line-height: 1;
+  }
+  .section-header h2 {
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
   }
   h3 {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
@@ -154,7 +164,7 @@
   }
   .fmt-num {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-    font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: .25rem;
+    font-size: 3.5rem; color: var(--accent); line-height: 1; margin-bottom: .25rem;
   }
   .fmt-label { font-size: 13px; color: var(--muted); text-transform: uppercase;
     font-family: 'Barlow Condensed', sans-serif; letter-spacing: .1em; }
@@ -203,7 +213,7 @@
     margin-left: auto; font-size: 9px; font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
     padding: 1px 5px; border-radius: 3px; background: var(--accent);
-    color: #000;
+    color: #fff;
   }
 
   /* ─── FIXTURES TABLE ─── */
@@ -327,10 +337,10 @@
   .squad-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 1rem; }
   .squad-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   .squad-table thead th {
-    background: var(--surface); padding: .65rem 1rem;
+    background: #0e1320; padding: .65rem 1rem;
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-    font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
-    color: var(--muted); border-bottom: 1px solid var(--border);
+    font-size: 12px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); border-bottom: 2px solid var(--accent);
     text-align: left; white-space: nowrap;
   }
   .squad-table td {
@@ -346,7 +356,7 @@
   }
   .pos-gk { background: rgba(240,180,41,.15); color: var(--gold); }
   .pos-def { background: rgba(59,139,235,.15); color: #7ab5f5; }
-  .pos-med { background: rgba(0,229,160,.15); color: var(--accent); }
+  .pos-med { background: rgba(0,229,160,.15); color: #00e5a0; }
   .pos-del { background: rgba(255,77,109,.15); color: var(--red); }
   .elo-cell { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
   .elo-high { color: #00e5a0; }
@@ -355,7 +365,7 @@
   .elo-nd   { color: var(--muted); }
   .titl-yes {
     display: inline-block; padding: .1rem .5rem; border-radius: 4px;
-    background: rgba(0,229,160,.15); color: var(--accent);
+    background: rgba(34,197,94,.08); color: #22c55e; border: 1px solid rgba(34,197,94,.35);
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px;
   }
   .titl-no {
@@ -462,7 +472,7 @@
     padding: .35rem .9rem; border: 1px solid var(--accent);
     border-radius: 20px; transition: .2s;
   }
-  .sp-link:hover { background: var(--accent); color: #000; }
+  .sp-link:hover { background: var(--accent); color: #fff; }
   .titl-pending {
     display: inline-block; padding: .1rem .5rem; border-radius: 4px;
     background: rgba(240,180,41,.08); color: var(--gold);
@@ -539,7 +549,7 @@
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-eyebrow">Proyecto de Análisis y Predicciones</div>
+  <div class="hero-eyebrow">Proyecto de Análisis y Predicciones · Mundial 2026</div>
   <h1>Copa del Mundo<br><span>2026</span></h1>
   <div class="hero-meta">
     <div><strong>48</strong> Selecciones</div>
