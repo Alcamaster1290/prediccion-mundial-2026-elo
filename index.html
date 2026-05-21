@@ -525,7 +525,49 @@
     .star-card { display: none; }
   }
 
+  /* --- LIGHT MODE --- */
+  [data-theme="light"] {
+    --bg:      #f0f4f8;
+    --surface: #ffffff;
+    --card:    #ffffff;
+    --border:  #cbd5e1;
+    --muted:   #64748b;
+    --text:    #1e293b;
+    --white:   #0f172a;
+    --gold:    #b45309;
+    --yes:     #16a34a;
+    --no:      #94a3b8;
+  }
+  [data-theme="light"] body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='52'%3E%3Cpath d='M15 2 L28 9.5 L28 24.5 L15 32 L2 24.5 L2 9.5 Z' fill='none' stroke='%23000000' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E"); }
+  [data-theme="light"] nav { background: rgba(240,244,248,0.97); }
+  [data-theme="light"] .hero {
+    background: linear-gradient(135deg, #e8edf5 0%, #dde4f0 50%, #e8edf5 100%);
+  }
+  [data-theme="light"] .hero::before { color: rgba(0,0,0,.04); }
+  [data-theme="light"] .elo-high { color: #059669; }
+  [data-theme="light"] .elo-mid  { color: #d97706; }
+  [data-theme="light"] .elo-low  { color: #dc2626; }
+  [data-theme="light"] .elo-nd   { color: var(--muted); }
+  [data-theme="light"] .pos-def  { color: #2563eb; }
+  [data-theme="light"] .pos-med  { color: #059669; }
+  [data-theme="light"] tr:hover td { background: rgba(0,0,0,.03); }
+  [data-theme="light"] .nd-note { background: var(--surface); }
+
+  /* --- THEME TOGGLE BTN --- */
+  .theme-btn {
+    margin-left: auto; flex-shrink: 0;
+    background: none; border: 1px solid var(--border);
+    color: var(--muted); cursor: pointer;
+    padding: .3rem .7rem; border-radius: 6px;
+    font-size: 15px; line-height: 1;
+    transition: border-color .2s, color .2s;
+  }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
 </style>
+<script>
+  (function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
 </head>
 <body>
 
@@ -545,6 +587,7 @@
   <a href="#grupo-k">Grupo K</a>
   <a href="#grupo-l">Grupo L</a>
   <a href="#tracker">Tracker</a>
+  <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">&#x1F319;</button>
 </nav>
 
 <!-- HERO -->
@@ -1871,6 +1914,21 @@
     });
   }, { threshold: 0.3 });
   sections.forEach(s => observer.observe(s));
+
+  // Theme toggle
+  (function() {
+    var btn = document.getElementById('theme-toggle');
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      btn.textContent = t === 'dark' ? '\u{1F319}' : '\u{2600}\uFE0F';
+      localStorage.setItem('theme', t);
+    }
+    btn.addEventListener('click', function() {
+      var cur = document.documentElement.getAttribute('data-theme');
+      applyTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+    applyTheme(document.documentElement.getAttribute('data-theme') || 'dark');
+  })();
 
   // ELO color coding
   document.querySelectorAll('.elo-cell').forEach(cell => {
