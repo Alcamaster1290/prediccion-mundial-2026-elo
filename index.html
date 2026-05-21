@@ -503,6 +503,90 @@
     .star-card { display: none; }
   }
 
+  /* ─── TIMEZONE SELECT ─── */
+  .tz-wrap {
+    display: flex; align-items: center; flex-shrink: 0;
+  }
+  .tz-select {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--muted); font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 12px; letter-spacing: .04em;
+    padding: .3rem .5rem; border-radius: 6px; cursor: pointer;
+    outline: none; transition: border-color .2s;
+    -webkit-appearance: none; appearance: none;
+    max-width: 160px;
+  }
+  .tz-select:hover, .tz-select:focus { border-color: var(--accent); color: var(--text); }
+  [data-theme="light"] .tz-select { background: var(--card); }
+
+  /* ─── CALENDAR SECTION ─── */
+  .cal-filters {
+    display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+  }
+  .cal-filter-btn {
+    padding: .25rem .75rem; border-radius: 20px;
+    border: 1px solid var(--border); background: none;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); cursor: pointer; transition: .15s;
+  }
+  .cal-filter-btn.active, .cal-filter-btn:hover {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+  }
+  .cal-day { margin-bottom: 1.75rem; }
+  .cal-day-header {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: .75rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--white); padding: .45rem .75rem;
+    background: var(--surface); border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0; margin-bottom: .6rem;
+  }
+  .cal-match {
+    display: flex; align-items: center; gap: .75rem;
+    padding: .6rem 1rem; margin-bottom: .35rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-left: 3px solid var(--muted); border-radius: 8px;
+    transition: background .15s;
+  }
+  .cal-match:hover { background: var(--surface); }
+  .cal-grp {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: .65rem; letter-spacing: .12em; flex-shrink: 0;
+    width: 16px; text-align: center;
+  }
+  .cal-time {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--muted); flex-shrink: 0; width: 44px; text-align: center;
+  }
+  .cal-teams {
+    flex: 1; display: flex; align-items: center; gap: .5rem;
+    font-size: 14px; font-weight: 500; min-width: 0; flex-wrap: wrap;
+  }
+  .cal-team { display: flex; align-items: center; gap: .35rem; white-space: nowrap; }
+  .cal-vs { font-size: 11px; color: var(--muted); flex-shrink: 0; }
+  .cal-badges { display: flex; gap: .35rem; align-items: center; margin-left: .25rem; }
+  .cal-badge {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 9px; letter-spacing: .08em; text-transform: uppercase;
+    padding: 1px 5px; border-radius: 3px;
+  }
+  .cal-inaugural { background: var(--gold); color: #000; }
+  .cal-simul { background: rgba(100,116,139,.25); color: var(--muted); }
+  .cal-venue {
+    font-size: 11px; color: var(--muted); text-align: right;
+    flex-shrink: 0; max-width: 180px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .cal-tz-note {
+    font-size: 12px; color: var(--muted); margin-bottom: 1.5rem;
+    padding: .6rem .9rem; background: var(--surface);
+    border-left: 3px solid var(--border); border-radius: 0 6px 6px 0;
+  }
+  @media (max-width: 600px) {
+    .cal-venue { display: none; }
+    .cal-teams { font-size: 13px; }
+  }
+
   /* --- LIGHT MODE --- */
   [data-theme="light"] {
     --bg:      #f0f4f8;
@@ -552,6 +636,7 @@
 <!-- NAV -->
 <nav>
   <a href="#formato">Formato</a>
+  <a href="#calendario">Calendario</a>
   <a href="#grupos">Grupos</a>
   <a href="#grupo-a">Grupo A</a>
   <a href="#grupo-b">Grupo B</a>
@@ -565,6 +650,16 @@
   <a href="#grupo-k">Grupo K</a>
   <a href="#grupo-l">Grupo L</a>
   <a href="#tracker">Tracker</a>
+  <div class="tz-wrap">
+    <select id="tz-select" class="tz-select" aria-label="Zona horaria">
+      <option value="-5">Lima / C.Mex  UTC-5</option>
+      <option value="-7">Los Angeles  UTC-7</option>
+      <option value="-4">Nueva York  UTC-4</option>
+      <option value="-3">Bs.Aires / SP  UTC-3</option>
+      <option value="+1">Londres  UTC+1</option>
+      <option value="+2">Madrid / París  UTC+2</option>
+    </select>
+  </div>
   <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">&#x1F319;</button>
 </nav>
 
@@ -649,11 +744,31 @@
   </div>
 </section>
 
+<!-- CALENDARIO -->
+<section id="calendario">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag tag-accent">§02</span>
+      <h2>Calendario de Partidos</h2>
+    </div>
+    <p class="cal-tz-note" id="cal-tz-note">
+      Horarios por confirmar. Los horarios oficiales se mostrarán en la zona horaria seleccionada cuando FIFA los publique.
+    </p>
+    <div class="cal-filters" id="cal-filters">
+      <button class="cal-filter-btn active" data-filter="all">Todos</button>
+      <button class="cal-filter-btn" data-filter="J1">Jornada 1</button>
+      <button class="cal-filter-btn" data-filter="J2">Jornada 2</button>
+      <button class="cal-filter-btn" data-filter="J3">Jornada 3</button>
+    </div>
+    <div id="cal-container"><p style="color:var(--muted);font-size:14px">Cargando calendario…</p></div>
+  </div>
+</section>
+
 <!-- GRUPOS -->
 <section id="grupos">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag tag-accent">§02</span>
+      <span class="section-tag tag-accent">§03</span>
       <h2>Los 12 Grupos</h2>
     </div>
     <div class="groups-grid">
@@ -1857,6 +1972,151 @@
       else cell.classList.add('elo-low');
     }
   });
+
+  // ── CALENDAR ──────────────────────────────────────────────────────────────
+  (function() {
+    var NAMES = {
+      mex:'México', zaf:'Sudáfrica', kor:'Corea del Sur', cze:'Chequia',
+      can:'Canadá', bih:'Bosnia', qat:'Qatar', sui:'Suiza',
+      bra:'Brasil', mar:'Marruecos', hti:'Haití', sco:'Escocia',
+      ger:'Alemania', cuw:'Curazao', civ:'Costa de Marfil', ecu:'Ecuador',
+      ned:'Países Bajos', jpn:'Japón', swe:'Suecia', tun:'Túnez',
+      bel:'Bélgica', egy:'Egipto', irn:'Irán', nzl:'Nueva Zelanda',
+      esp:'España', cpv:'Cabo Verde', ksa:'Arabia Saudita', ury:'Uruguay',
+      fra:'Francia', sen:'Senegal', irq:'Irak', nor:'Noruega',
+      arg:'Argentina', alg:'Argelia', aut:'Austria', jor:'Jordania',
+      por:'Portugal', cod:'RD Congo', uzb:'Uzbekistán', col:'Colombia',
+      eng:'Inglaterra', cro:'Croacia', gha:'Ghana', pan:'Panamá',
+      usa:'EE.UU.', pry:'Paraguay', aus:'Australia', tur:'Turquía'
+    };
+    var DAYS_ES = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    var MONTHS_ES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    var GROUP_D = {
+      id:'D', color:'#6366f1',
+      fixtures:[
+        {jornada:1,date:'2026-06-12',home:'usa',away:'pry',venue:'SoFi Stadium, Los Ángeles'},
+        {jornada:1,date:'2026-06-13',home:'aus',away:'tur',venue:'Por confirmar'},
+        {jornada:2,date:'2026-06-18',home:'usa',away:'aus',venue:'Por confirmar'},
+        {jornada:2,date:'2026-06-19',home:'tur',away:'pry',venue:'Por confirmar'},
+        {jornada:3,date:'2026-06-24',home:'usa',away:'tur',simultaneous:true,venue:'Por confirmar'},
+        {jornada:3,date:'2026-06-24',home:'pry',away:'aus',simultaneous:true,venue:'Por confirmar'}
+      ]
+    };
+
+    var allMatches = [];
+    var activeFilter = 'all';
+    var tzOffset = parseInt(localStorage.getItem('tz') || '-5');
+
+    function flag(code) {
+      var name = NAMES[code] || code;
+      return '<img class="flag-svg" src="assets/flags/' + code + '.svg" alt="' + name + '" loading="lazy">';
+    }
+
+    function labelDate(dateStr) {
+      // dateStr = YYYY-MM-DD; treat as local date (no time, no tz shift)
+      var parts = dateStr.split('-');
+      var d = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+      return DAYS_ES[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS_ES[d.getMonth()];
+    }
+
+    function renderCalendar() {
+      var container = document.getElementById('cal-container');
+      if (!container) return;
+      var filtered = allMatches.filter(function(m) {
+        return activeFilter === 'all' || activeFilter === 'J' + m.jornada;
+      });
+      if (filtered.length === 0) { container.innerHTML = '<p style="color:var(--muted)">Sin partidos.</p>'; return; }
+
+      var byDate = {};
+      filtered.forEach(function(m) {
+        if (!byDate[m.date]) byDate[m.date] = [];
+        byDate[m.date].push(m);
+      });
+      var dates = Object.keys(byDate).sort();
+      var html = '';
+      dates.forEach(function(date) {
+        html += '<div class="cal-day"><div class="cal-day-header">' + labelDate(date) + '</div>';
+        byDate[date].forEach(function(m) {
+          var badges = '';
+          if (m.inaugural) badges += '<span class="cal-badge cal-inaugural">Inaugural</span>';
+          if (m.simultaneous) badges += '<span class="cal-badge cal-simul">Simultáneo</span>';
+          var timeStr = m.time || '—';
+          // If time exists, convert to selected tz
+          if (m.time) {
+            var parts = m.time.split(':');
+            var utcH = parseInt(parts[0]), utcM = parseInt(parts[1]);
+            var localMins = utcH * 60 + utcM + tzOffset * 60;
+            localMins = ((localMins % 1440) + 1440) % 1440;
+            var lh = Math.floor(localMins / 60), lm = localMins % 60;
+            timeStr = (lh < 10 ? '0' : '') + lh + ':' + (lm < 10 ? '0' : '') + lm;
+          }
+          html += '<div class="cal-match" style="border-left-color:' + m.groupColor + '">'
+            + '<div class="cal-grp" style="color:' + m.groupColor + '">' + m.groupId + '</div>'
+            + '<div class="cal-time">' + timeStr + '</div>'
+            + '<div class="cal-teams">'
+            +   '<div class="cal-team">' + flag(m.home) + '<span>' + (NAMES[m.home]||m.home) + '</span></div>'
+            +   '<span class="cal-vs">vs</span>'
+            +   '<div class="cal-team">' + flag(m.away) + '<span>' + (NAMES[m.away]||m.away) + '</span></div>'
+            +   (badges ? '<div class="cal-badges">' + badges + '</div>' : '')
+            + '</div>'
+            + '<div class="cal-venue">' + m.venue + '</div>'
+            + '</div>';
+        });
+        html += '</div>';
+      });
+      container.innerHTML = html;
+    }
+
+    function updateTzNote() {
+      var note = document.getElementById('cal-tz-note');
+      if (!note) return;
+      var sel = document.getElementById('tz-select');
+      var label = sel ? sel.options[sel.selectedIndex].text : 'Lima UTC-5';
+      note.textContent = 'Referencia horaria: ' + label
+        + ' · Los horarios se mostrarán cuando FIFA publique el calendario oficial.';
+    }
+
+    fetch('data/groups.json')
+      .then(function(r){ return r.json(); })
+      .then(function(data) {
+        var groups = data.groups.concat([GROUP_D]);
+        groups.forEach(function(g) {
+          g.fixtures.forEach(function(f) {
+            allMatches.push(Object.assign({}, f, {groupId: g.id, groupColor: g.color}));
+          });
+        });
+        allMatches.sort(function(a,b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+        renderCalendar();
+      })
+      .catch(function() {
+        var c2 = document.getElementById('cal-container');
+        if (c2) c2.innerHTML = '<p style="color:var(--muted);font-size:13px">Calendario no disponible en modo local (sin servidor). Usa <code>python -m http.server 8080</code>.</p>';
+      });
+
+    // Filter buttons
+    document.getElementById('cal-filters').addEventListener('click', function(e) {
+      var btn = e.target.closest('.cal-filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.cal-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      renderCalendar();
+    });
+
+    // Timezone select
+    var tzSel = document.getElementById('tz-select');
+    if (tzSel) {
+      tzSel.value = String(tzOffset);
+      tzSel.addEventListener('change', function() {
+        tzOffset = parseInt(this.value);
+        localStorage.setItem('tz', String(tzOffset));
+        renderCalendar();
+        updateTzNote();
+      });
+      updateTzNote();
+    }
+  })();
+
 </script>
 </body>
 </html>
