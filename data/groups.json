@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "tournament": "Copa del Mundo FIFA 2026",
+    "hosts": ["Canadá", "México", "Estados Unidos"],
+    "format": "48 equipos · 12 grupos · 72 partidos en fase de grupos",
+    "kickoff": "2026-06-11",
+    "final": "2026-07-19",
+    "final_venue": "MetLife Stadium, Nueva York / Nueva Jersey"
+  },
+  "groups": [
+    {
+      "id": "A",
+      "color": "#e55c5c",
+      "teams": ["mex", "zaf", "kor", "cze"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-11","home":"mex","away":"zaf","venue":"Estadio Azteca/Banorte, Ciudad de México","inaugural":true},
+        {"jornada":1,"date":"2026-06-11","home":"kor","away":"cze","venue":"Estadio Akron, Guadalajara"},
+        {"jornada":2,"date":"2026-06-16","home":"mex","away":"kor","venue":"Estadio Akron, Guadalajara"},
+        {"jornada":2,"date":"2026-06-16","home":"cze","away":"zaf","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-20","home":"cze","away":"mex","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-20","home":"zaf","away":"kor","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "B",
+      "color": "#3b8beb",
+      "teams": ["can", "bih", "qat", "sui"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-12","home":"can","away":"bih","venue":"BMO Field, Toronto"},
+        {"jornada":1,"date":"2026-06-13","home":"qat","away":"sui","venue":"Levi's Stadium, San Francisco"},
+        {"jornada":2,"date":"2026-06-18","home":"sui","away":"bih","venue":"SoFi Stadium, Los Ángeles"},
+        {"jornada":2,"date":"2026-06-18","home":"can","away":"qat","venue":"BC Place, Vancouver"},
+        {"jornada":3,"date":"2026-06-24","home":"sui","away":"can","simultaneous":true,"venue":"BC Place, Vancouver"},
+        {"jornada":3,"date":"2026-06-24","home":"bih","away":"qat","simultaneous":true,"venue":"Lumen Field, Seattle"}
+      ]
+    },
+    {
+      "id": "C",
+      "color": "#10b981",
+      "teams": ["bra", "mar", "hti", "sco"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-13","home":"bra","away":"mar","venue":"Por confirmar"},
+        {"jornada":1,"date":"2026-06-13","home":"hti","away":"sco","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-19","home":"bra","away":"hti","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-19","home":"sco","away":"mar","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-25","home":"bra","away":"sco","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-25","home":"mar","away":"hti","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "E",
+      "color": "#f97316",
+      "teams": ["ger", "cuw", "civ", "ecu"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-14","home":"ger","away":"cuw","venue":"Por confirmar"},
+        {"jornada":1,"date":"2026-06-14","home":"civ","away":"ecu","venue":"Lincoln Financial Field, Filadelfia"},
+        {"jornada":2,"date":"2026-06-20","home":"ger","away":"civ","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-20","home":"ecu","away":"cuw","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-26","home":"ger","away":"ecu","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-26","home":"cuw","away":"civ","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "F",
+      "color": "#f59e0b",
+      "teams": ["ned", "jpn", "swe", "tun"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-14","home":"ned","away":"jpn","venue":"Por confirmar"},
+        {"jornada":1,"date":"2026-06-14","home":"swe","away":"tun","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-20","home":"ned","away":"swe","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-20","home":"jpn","away":"tun","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-26","home":"ned","away":"tun","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-26","home":"jpn","away":"swe","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "G",
+      "color": "#8b5cf6",
+      "teams": ["bel", "egy", "irn", "nzl"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-15","home":"bel","away":"irn","venue":"Por confirmar"},
+        {"jornada":1,"date":"2026-06-15","home":"egy","away":"nzl","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-21","home":"bel","away":"egy","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-21","home":"irn","away":"nzl","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-27","home":"bel","away":"nzl","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-27","home":"egy","away":"irn","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "H",
+      "color": "#ec4899",
+      "teams": ["esp", "cpv", "ksa", "ury"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-15","home":"esp","away":"cpv","venue":"Por confirmar"},
+        {"jornada":1,"date":"2026-06-15","home":"ksa","away":"ury","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-21","home":"esp","away":"ksa","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-21","home":"ury","away":"cpv","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-27","home":"esp","away":"ury","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-27","home":"cpv","away":"ksa","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "I",
+      "color": "#06b6d4",
+      "teams": ["fra", "sen", "irq", "nor"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-16","home":"fra","away":"sen","venue":"Por confirmar"},
+        {"jornada":1,"date":"2026-06-16","home":"irq","away":"nor","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-22","home":"fra","away":"irq","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-22","home":"nor","away":"sen","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-26","home":"fra","away":"nor","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-26","home":"sen","away":"irq","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "J",
+      "color": "#84cc16",
+      "teams": ["arg", "alg", "aut", "jor"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-17","home":"arg","away":"alg","venue":"Por confirmar"},
+        {"jornada":1,"date":"2026-06-17","home":"aut","away":"jor","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-22","home":"arg","away":"aut","venue":"AT&T Stadium, Dallas"},
+        {"jornada":2,"date":"2026-06-22","home":"jor","away":"alg","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-27","home":"arg","away":"jor","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-27","home":"alg","away":"aut","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "K",
+      "color": "#d97706",
+      "teams": ["por", "cod", "uzb", "col"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-17","home":"por","away":"cod","venue":"NRG Stadium, Houston"},
+        {"jornada":1,"date":"2026-06-17","home":"uzb","away":"col","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-23","home":"por","away":"uzb","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-23","home":"col","away":"cod","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-27","home":"por","away":"col","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-27","home":"cod","away":"uzb","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    },
+    {
+      "id": "L",
+      "color": "#94a3b8",
+      "teams": ["eng", "cro", "gha", "pan"],
+      "fixtures": [
+        {"jornada":1,"date":"2026-06-18","home":"eng","away":"cro","venue":"Por confirmar"},
+        {"jornada":1,"date":"2026-06-18","home":"gha","away":"pan","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-24","home":"eng","away":"gha","venue":"Por confirmar"},
+        {"jornada":2,"date":"2026-06-24","home":"pan","away":"cro","venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-28","home":"eng","away":"pan","simultaneous":true,"venue":"Por confirmar"},
+        {"jornada":3,"date":"2026-06-28","home":"cro","away":"gha","simultaneous":true,"venue":"Por confirmar"}
+      ]
+    }
+  ]
+}

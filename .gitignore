@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (si se agrega build step en el futuro)
+node_modules/
+npm-debug.log*
+
+# Assets originales sin procesar (guardar fuera del repo)
+assets/players/_originals/
+assets/xi/_originals/
+
+# Archivos temporales
+*.tmp
+*.bak
