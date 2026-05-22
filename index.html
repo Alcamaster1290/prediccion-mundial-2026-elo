@@ -385,6 +385,11 @@
     font-size: 14px; color: var(--text);
   }
   .group-teams li:last-child { border-bottom: none; }
+  .group-team-link {
+    display: flex; align-items: center; gap: .6rem;
+    color: inherit; text-decoration: none; transition: color .15s;
+  }
+  .group-team-link:hover { color: var(--accent); }
   .flag { font-size: 16px; }
   .flag-svg { width: 24px; height: auto; vertical-align: middle; }
   .host-badge {
@@ -1091,7 +1096,7 @@
         <ul class="group-teams">
           <li><img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México <span class="host-badge">LOCAL</span></li>
           <li><img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy"> Sudáfrica</li>
-          <li><img class="flag-svg" src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy"> Corea del Sur <span class="analyzed-badge">✓</span></li>
+          <li><a href="#corea" class="group-team-link"><img class="flag-svg" src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy"> Corea del Sur</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/cze.svg" alt="Chequia" loading="lazy"> Chequia</li>
         </ul>
       </div>
@@ -1100,19 +1105,19 @@
         <div class="group-label"><span class="group-dot"></span> Grupo B — ANALIZADO</div>
         <ul class="group-teams">
           <li><img class="flag-svg" src="assets/flags/can.svg" alt="Canadá" loading="lazy"> Canadá <span class="host-badge">LOCAL</span></li>
-          <li><img class="flag-svg" src="assets/flags/bih.svg" alt="Bosnia y Herz." loading="lazy"> Bosnia y Herz. <span class="analyzed-badge">✓</span></li>
+          <li><a href="#bosnia" class="group-team-link"><img class="flag-svg" src="assets/flags/bih.svg" alt="Bosnia y Herz." loading="lazy"> Bosnia y Herz.</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/qat.svg" alt="Qatar" loading="lazy"> Qatar</li>
-          <li><img class="flag-svg" src="assets/flags/sui.svg" alt="Suiza" loading="lazy"> Suiza <span class="analyzed-badge">✓</span></li>
+          <li><a href="#suiza" class="group-team-link"><img class="flag-svg" src="assets/flags/sui.svg" alt="Suiza" loading="lazy"> Suiza</a> <span class="analyzed-badge">✓</span></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(16,185,129,.3)">
         <div class="group-label" style="color:var(--grp-c)"><span class="group-dot" style="background:var(--grp-c)"></span> Grupo C — ANALIZADO</div>
         <ul class="group-teams">
-          <li><img class="flag-svg" src="assets/flags/bra.svg" alt="Brasil" loading="lazy"> Brasil <span class="analyzed-badge">✓</span></li>
+          <li><a href="#brasil" class="group-team-link"><img class="flag-svg" src="assets/flags/bra.svg" alt="Brasil" loading="lazy"> Brasil</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/mar.svg" alt="Marruecos" loading="lazy"> Marruecos</li>
-          <li><img class="flag-svg" src="assets/flags/hti.svg" alt="Haití" loading="lazy"> Haití <span class="analyzed-badge">✓</span></li>
-          <li><img class="flag-svg" src="assets/flags/sco.svg" alt="Escocia" loading="lazy"> Escocia <span class="analyzed-badge">✓</span></li>
+          <li><a href="#haiti" class="group-team-link"><img class="flag-svg" src="assets/flags/hti.svg" alt="Haití" loading="lazy"> Haití</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#escocia" class="group-team-link"><img class="flag-svg" src="assets/flags/sco.svg" alt="Escocia" loading="lazy"> Escocia</a> <span class="analyzed-badge">✓</span></li>
         </ul>
       </div>
 
@@ -1129,9 +1134,9 @@
       <div class="group-card" style="border-color:rgba(249,115,22,.3)">
         <div class="group-label" style="color:var(--grp-e)"><span class="group-dot" style="background:var(--grp-e)"></span> Grupo E — ANALIZADO</div>
         <ul class="group-teams">
-          <li><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> Alemania</li>
+          <li><a href="#alemania" class="group-team-link"><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> Alemania</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/cuw.svg" alt="Curazao" loading="lazy"> Curazao</li>
-          <li><img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> Costa de Marfil <span class="analyzed-badge">✓</span></li>
+          <li><a href="#costa-marfil" class="group-team-link"><img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> Costa de Marfil</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/ecu.svg" alt="Ecuador" loading="lazy"> Ecuador</li>
         </ul>
       </div>
@@ -1141,7 +1146,7 @@
         <ul class="group-teams">
           <li><img class="flag-svg" src="assets/flags/ned.svg" alt="Países Bajos" loading="lazy"> Países Bajos</li>
           <li><img class="flag-svg" src="assets/flags/jpn.svg" alt="Japón" loading="lazy"> Japón</li>
-          <li><img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> Suecia <span class="analyzed-badge">✓</span></li>
+          <li><a href="#suecia" class="group-team-link"><img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> Suecia</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/tun.svg" alt="Túnez" loading="lazy"> Túnez</li>
         </ul>
       </div>
@@ -1149,10 +1154,10 @@
       <div class="group-card" style="border-color:rgba(139,92,246,.3)">
         <div class="group-label" style="color:var(--grp-g)"><span class="group-dot" style="background:var(--grp-g)"></span> Grupo G — ANALIZADO</div>
         <ul class="group-teams">
-          <li><img class="flag-svg" src="assets/flags/bel.svg" alt="Bélgica" loading="lazy"> Bélgica <span class="analyzed-badge">✓</span></li>
+          <li><a href="#belgica" class="group-team-link"><img class="flag-svg" src="assets/flags/bel.svg" alt="Bélgica" loading="lazy"> Bélgica</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/egy.svg" alt="Egipto" loading="lazy"> Egipto</li>
           <li><img class="flag-svg" src="assets/flags/irn.svg" alt="Irán" loading="lazy"> Irán</li>
-          <li><img class="flag-svg" src="assets/flags/nzl.svg" alt="Nueva Zelanda" loading="lazy"> Nueva Zelanda <span class="analyzed-badge">✓</span></li>
+          <li><a href="#nueva-zelanda" class="group-team-link"><img class="flag-svg" src="assets/flags/nzl.svg" alt="Nueva Zelanda" loading="lazy"> Nueva Zelanda</a> <span class="analyzed-badge">✓</span></li>
         </ul>
       </div>
 
@@ -1160,7 +1165,7 @@
         <div class="group-label" style="color:var(--grp-h)"><span class="group-dot" style="background:var(--grp-h)"></span> Grupo H — ANALIZADO</div>
         <ul class="group-teams">
           <li><img class="flag-svg" src="assets/flags/esp.svg" alt="España" loading="lazy"> España</li>
-          <li><img class="flag-svg" src="assets/flags/cpv.svg" alt="Cabo Verde" loading="lazy"> Cabo Verde <span class="analyzed-badge">✓</span></li>
+          <li><a href="#cabo-verde" class="group-team-link"><img class="flag-svg" src="assets/flags/cpv.svg" alt="Cabo Verde" loading="lazy"> Cabo Verde</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/ksa.svg" alt="Arabia Saudita" loading="lazy"> Arabia Saudita</li>
           <li><img class="flag-svg" src="assets/flags/ury.svg" alt="Uruguay" loading="lazy"> Uruguay</li>
         </ul>
@@ -1169,10 +1174,10 @@
       <div class="group-card" style="border-color:rgba(6,182,212,.3)">
         <div class="group-label" style="color:var(--grp-i)"><span class="group-dot" style="background:var(--grp-i)"></span> Grupo I — ANALIZADO</div>
         <ul class="group-teams">
-          <li><img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy"> Francia <span class="analyzed-badge">✓</span></li>
+          <li><a href="#francia" class="group-team-link"><img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy"> Francia</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/sen.svg" alt="Senegal" loading="lazy"> Senegal</li>
           <li><img class="flag-svg" src="assets/flags/irq.svg" alt="Irak" loading="lazy"> Irak</li>
-          <li><img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> Noruega</li>
+          <li><a href="#noruega" class="group-team-link"><img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> Noruega</a> <span class="analyzed-badge">✓</span></li>
         </ul>
       </div>
 
@@ -1181,7 +1186,7 @@
         <ul class="group-teams">
           <li><img class="flag-svg" src="assets/flags/arg.svg" alt="Argentina" loading="lazy"> Argentina</li>
           <li><img class="flag-svg" src="assets/flags/alg.svg" alt="Argelia" loading="lazy"> Argelia</li>
-          <li><img class="flag-svg" src="assets/flags/aut.svg" alt="Austria" loading="lazy"> Austria <span class="analyzed-badge">✓</span></li>
+          <li><a href="#austria" class="group-team-link"><img class="flag-svg" src="assets/flags/aut.svg" alt="Austria" loading="lazy"> Austria</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/jor.svg" alt="Jordania" loading="lazy"> Jordania</li>
         </ul>
       </div>
@@ -1189,8 +1194,8 @@
       <div class="group-card" style="border-color:rgba(217,119,6,.3)">
         <div class="group-label" style="color:var(--grp-k)"><span class="group-dot" style="background:var(--grp-k)"></span> Grupo K — ANALIZADO</div>
         <ul class="group-teams">
-          <li><img class="flag-svg" src="assets/flags/por.svg" alt="Portugal" loading="lazy"> Portugal <span class="analyzed-badge">✓</span></li>
-          <li><img class="flag-svg" src="assets/flags/cod.svg" alt="RD Congo" loading="lazy"> RD del Congo <span class="analyzed-badge">✓</span></li>
+          <li><a href="#portugal" class="group-team-link"><img class="flag-svg" src="assets/flags/por.svg" alt="Portugal" loading="lazy"> Portugal</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#rd-congo" class="group-team-link"><img class="flag-svg" src="assets/flags/cod.svg" alt="RD Congo" loading="lazy"> RD del Congo</a> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/uzb.svg" alt="Uzbekistán" loading="lazy"> Uzbekistán</li>
           <li><img class="flag-svg" src="assets/flags/col.svg" alt="Colombia" loading="lazy"> Colombia</li>
         </ul>
