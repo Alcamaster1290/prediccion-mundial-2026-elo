@@ -64,6 +64,28 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 
 > **Nota:** El bloque de texto de la formación (`.xi-row`) fue eliminado del HTML en mayo 2026. Solo se muestra la **imagen** del XI probable — no el texto con posiciones.
 
+### Estado de la columna Titular (al 21 mayo 2026)
+
+| Selección | `titl-yes` | Nota |
+|---|---|---|
+| Corea del Sur | 11 | ✅ completo |
+| Bosnia | 11 | ✅ completo |
+| Suiza | 11 | ✅ completo |
+| Brasil | 11 | ✅ completo |
+| Haití | 11 | ✅ completo |
+| Escocia | 11 | ✅ completo |
+| Costa de Marfil | 9 | ⚠️ Yan Diomandé y Ange-Yoan Bonny (XI) no figuran en la lista oficial |
+| Suecia | 11 | ✅ completo |
+| Bélgica | 12 | ⚠️ AlterFutbol presenta doble opción en el #9: Lukaku / De Ketelaere |
+| Nueva Zelanda | 11 | ✅ completo |
+| Cabo Verde | 11 | ✅ completo |
+| Francia | 11 | ✅ completo |
+| Austria | 10 | ⚠️ Marko Arnautovic (XI) no figura en la lista oficial |
+| Portugal | 11 | ✅ completo |
+| RD del Congo | 9 | ⚠️ Yoanne Wissa y Cédric Bakambu (XI) no figuran en la lista oficial |
+
+> La columna Titular se rellena usando el XI de AlterFutbol como referencia. Si un jugador del XI no aparece en la lista de convocados → no se puede marcar, el conteo queda por debajo de 11.
+
 ### Cómo obtener la imagen para un equipo nuevo
 1. Ir al artículo de AlterFutbol correspondiente (ver Tarea 3)
 2. Localizar la imagen del XI Ideal (camisetas sobre campo, fondo oscuro con logo de AlterFutbol)
