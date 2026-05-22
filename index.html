@@ -14,9 +14,10 @@
 <link rel="alternate" hreflang="es" href="https://alcamaster1290.github.io/prediccion-mundial-2026-elo/">
 <link rel="alternate" hreflang="x-default" href="https://alcamaster1290.github.io/prediccion-mundial-2026-elo/">
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://alcamaster1290.github.io/prediccion-mundial-2026-elo/sitemap.xml">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="256x256" href="assets/icon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico?v=20260522-2">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260522-2">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/icon.png?v=20260522-2">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=20260522-2">
 <meta property="og:locale" content="es_ES">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mundial 2026 Predicciones">
@@ -152,6 +153,19 @@
     color: rgba(255,255,255,.02); top: 50%; left: 50%;
     transform: translate(-50%,-50%); pointer-events: none;
     user-select: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("assets/icon.png?v=20260522-2") center right 10% / min(42vw, 28rem) auto no-repeat;
+    opacity: .3;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero > * {
+    position: relative;
+    z-index: 1;
   }
   .hero-eyebrow {
     display: inline-block;
