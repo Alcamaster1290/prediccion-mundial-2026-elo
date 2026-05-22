@@ -2139,12 +2139,12 @@
     var GROUP_D = {
       id:'D', color:'#6366f1',
       fixtures:[
-        {jornada:1,date:'2026-06-12',home:'usa',away:'pry',venue:'SoFi Stadium, Los Ángeles'},
-        {jornada:1,date:'2026-06-13',home:'aus',away:'tur',venue:'Por confirmar'},
-        {jornada:2,date:'2026-06-18',home:'usa',away:'aus',venue:'Por confirmar'},
-        {jornada:2,date:'2026-06-19',home:'tur',away:'pry',venue:'Por confirmar'},
-        {jornada:3,date:'2026-06-24',home:'usa',away:'tur',simultaneous:true,venue:'Por confirmar'},
-        {jornada:3,date:'2026-06-24',home:'pry',away:'aus',simultaneous:true,venue:'Por confirmar'}
+        {jornada:1,date:'2026-06-12',time:'01:00',home:'usa',away:'pry',venue:'SoFi Stadium, Los Ángeles'},
+        {jornada:1,date:'2026-06-13',time:'04:00',home:'aus',away:'tur',venue:'BC Place, Vancouver'},
+        {jornada:2,date:'2026-06-19',time:'19:00',home:'usa',away:'aus',venue:'Lumen Field, Seattle'},
+        {jornada:2,date:'2026-06-19',time:'04:00',home:'tur',away:'pry',venue:"Levi's Stadium, Santa Clara"},
+        {jornada:3,date:'2026-06-25',time:'02:00',home:'tur',away:'usa',simultaneous:true,venue:'SoFi Stadium, Los Ángeles'},
+        {jornada:3,date:'2026-06-25',time:'02:00',home:'pry',away:'aus',simultaneous:true,venue:"Levi's Stadium, Santa Clara"}
       ]
     };
     var PHASE_LABELS = {R32:'32avos',R16:'Octavos',QF:'Cuartos',SF:'Semifinal',TP:'3er Puesto',F:'Final'};
@@ -2273,7 +2273,7 @@
       var sel = document.getElementById('tz-select');
       var label = sel ? sel.options[sel.selectedIndex].text : 'Lima UTC-5';
       note.textContent = 'Referencia horaria: ' + label
-        + ' · Eliminatorias: horarios en UTC (conversión automática). Grupos: por confirmar.';
+        + ' · Horarios en UTC. Conversión automática a la zona horaria seleccionada.';
     }
 
     KNOCKOUT_MATCHES.forEach(function(m) { allMatches.push(m); });

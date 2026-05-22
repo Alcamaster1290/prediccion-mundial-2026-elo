@@ -1,7 +1,11 @@
 {
   "meta": {
     "tournament": "Copa del Mundo FIFA 2026",
-    "hosts": ["Canadá", "México", "Estados Unidos"],
+    "hosts": [
+      "Canadá",
+      "México",
+      "Estados Unidos"
+    ],
     "format": "48 equipos · 12 grupos · 72 partidos en fase de grupos",
     "kickoff": "2026-06-11",
     "final": "2026-07-19",
@@ -11,144 +15,684 @@
     {
       "id": "A",
       "color": "#e55c5c",
-      "teams": ["mex", "zaf", "kor", "cze"],
+      "teams": [
+        "mex",
+        "zaf",
+        "kor",
+        "cze"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-11","home":"mex","away":"zaf","venue":"Estadio Azteca/Banorte, Ciudad de México","inaugural":true},
-        {"jornada":1,"date":"2026-06-11","home":"kor","away":"cze","venue":"Estadio Akron, Guadalajara"},
-        {"jornada":2,"date":"2026-06-16","home":"mex","away":"kor","venue":"Estadio Akron, Guadalajara"},
-        {"jornada":2,"date":"2026-06-16","home":"cze","away":"zaf","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-20","home":"cze","away":"mex","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-20","home":"zaf","away":"kor","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-11",
+          "time": "19:00",
+          "home": "mex",
+          "away": "zaf",
+          "venue": "Estadio Azteca, Ciudad de México",
+          "inaugural": true
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-11",
+          "time": "02:00",
+          "home": "kor",
+          "away": "cze",
+          "venue": "Estadio Akron, Guadalajara"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-18",
+          "time": "16:00",
+          "home": "cze",
+          "away": "zaf",
+          "venue": "Mercedes-Benz Stadium, Atlanta"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-18",
+          "time": "01:00",
+          "home": "mex",
+          "away": "kor",
+          "venue": "Estadio Akron, Guadalajara"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-24",
+          "time": "01:00",
+          "home": "cze",
+          "away": "mex",
+          "simultaneous": true,
+          "venue": "Estadio Azteca, Ciudad de México"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-24",
+          "time": "01:00",
+          "home": "zaf",
+          "away": "kor",
+          "simultaneous": true,
+          "venue": "Estadio BBVA, Guadalupe"
+        }
       ]
     },
     {
       "id": "B",
       "color": "#3b8beb",
-      "teams": ["can", "bih", "qat", "sui"],
+      "teams": [
+        "can",
+        "bih",
+        "qat",
+        "sui"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-12","home":"can","away":"bih","venue":"BMO Field, Toronto"},
-        {"jornada":1,"date":"2026-06-13","home":"qat","away":"sui","venue":"Levi's Stadium, San Francisco"},
-        {"jornada":2,"date":"2026-06-18","home":"sui","away":"bih","venue":"SoFi Stadium, Los Ángeles"},
-        {"jornada":2,"date":"2026-06-18","home":"can","away":"qat","venue":"BC Place, Vancouver"},
-        {"jornada":3,"date":"2026-06-24","home":"sui","away":"can","simultaneous":true,"venue":"BC Place, Vancouver"},
-        {"jornada":3,"date":"2026-06-24","home":"bih","away":"qat","simultaneous":true,"venue":"Lumen Field, Seattle"}
+        {
+          "jornada": 1,
+          "date": "2026-06-12",
+          "time": "19:00",
+          "home": "can",
+          "away": "bih",
+          "venue": "BMO Field, Toronto"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-13",
+          "time": "19:00",
+          "home": "qat",
+          "away": "sui",
+          "venue": "Levi's Stadium, Santa Clara"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-18",
+          "time": "19:00",
+          "home": "sui",
+          "away": "bih",
+          "venue": "SoFi Stadium, Los Ángeles"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-18",
+          "time": "22:00",
+          "home": "can",
+          "away": "qat",
+          "venue": "BC Place, Vancouver"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-24",
+          "time": "19:00",
+          "home": "sui",
+          "away": "can",
+          "simultaneous": true,
+          "venue": "BC Place, Vancouver"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-24",
+          "time": "19:00",
+          "home": "bih",
+          "away": "qat",
+          "simultaneous": true,
+          "venue": "Lumen Field, Seattle"
+        }
       ]
     },
     {
       "id": "C",
       "color": "#10b981",
-      "teams": ["bra", "mar", "hti", "sco"],
+      "teams": [
+        "bra",
+        "mar",
+        "hti",
+        "sco"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-13","home":"bra","away":"mar","venue":"Por confirmar"},
-        {"jornada":1,"date":"2026-06-13","home":"hti","away":"sco","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-19","home":"bra","away":"hti","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-19","home":"sco","away":"mar","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-25","home":"bra","away":"sco","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-25","home":"mar","away":"hti","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-13",
+          "time": "22:00",
+          "home": "bra",
+          "away": "mar",
+          "venue": "MetLife Stadium, East Rutherford"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-13",
+          "time": "01:00",
+          "home": "hti",
+          "away": "sco",
+          "venue": "Gillette Stadium, Foxborough"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-19",
+          "time": "22:00",
+          "home": "sco",
+          "away": "mar",
+          "venue": "Gillette Stadium, Foxborough"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-19",
+          "time": "01:00",
+          "home": "bra",
+          "away": "hti",
+          "venue": "Lincoln Financial Field, Filadelfia"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-24",
+          "time": "22:00",
+          "home": "sco",
+          "away": "bra",
+          "simultaneous": true,
+          "venue": "Hard Rock Stadium, Miami Gardens"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-24",
+          "time": "22:00",
+          "home": "mar",
+          "away": "hti",
+          "simultaneous": true,
+          "venue": "Mercedes-Benz Stadium, Atlanta"
+        }
       ]
     },
     {
       "id": "E",
       "color": "#f97316",
-      "teams": ["ger", "cuw", "civ", "ecu"],
+      "teams": [
+        "ger",
+        "cuw",
+        "civ",
+        "ecu"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-14","home":"ger","away":"cuw","venue":"Por confirmar"},
-        {"jornada":1,"date":"2026-06-14","home":"civ","away":"ecu","venue":"Lincoln Financial Field, Filadelfia"},
-        {"jornada":2,"date":"2026-06-20","home":"ger","away":"civ","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-20","home":"ecu","away":"cuw","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-26","home":"ger","away":"ecu","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-26","home":"cuw","away":"civ","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-14",
+          "time": "17:00",
+          "home": "ger",
+          "away": "cuw",
+          "venue": "NRG Stadium, Houston"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-14",
+          "time": "23:00",
+          "home": "civ",
+          "away": "ecu",
+          "venue": "Lincoln Financial Field, Filadelfia"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-20",
+          "time": "20:00",
+          "home": "ger",
+          "away": "civ",
+          "venue": "BMO Field, Toronto"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-20",
+          "time": "02:00",
+          "home": "ecu",
+          "away": "cuw",
+          "venue": "Arrowhead Stadium, Kansas City"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-25",
+          "time": "20:00",
+          "home": "ecu",
+          "away": "ger",
+          "simultaneous": true,
+          "venue": "MetLife Stadium, East Rutherford"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-25",
+          "time": "20:00",
+          "home": "cuw",
+          "away": "civ",
+          "simultaneous": true,
+          "venue": "Lincoln Financial Field, Filadelfia"
+        }
       ]
     },
     {
       "id": "F",
       "color": "#f59e0b",
-      "teams": ["ned", "jpn", "swe", "tun"],
+      "teams": [
+        "ned",
+        "jpn",
+        "swe",
+        "tun"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-14","home":"ned","away":"jpn","venue":"Por confirmar"},
-        {"jornada":1,"date":"2026-06-14","home":"swe","away":"tun","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-20","home":"ned","away":"swe","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-20","home":"jpn","away":"tun","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-26","home":"ned","away":"tun","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-26","home":"jpn","away":"swe","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-14",
+          "time": "20:00",
+          "home": "ned",
+          "away": "jpn",
+          "venue": "AT&T Stadium, Arlington"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-14",
+          "time": "02:00",
+          "home": "swe",
+          "away": "tun",
+          "venue": "Estadio BBVA, Guadalupe"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-20",
+          "time": "17:00",
+          "home": "ned",
+          "away": "swe",
+          "venue": "NRG Stadium, Houston"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-20",
+          "time": "04:00",
+          "home": "tun",
+          "away": "jpn",
+          "venue": "Estadio BBVA, Guadalupe"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-25",
+          "time": "23:00",
+          "home": "jpn",
+          "away": "swe",
+          "simultaneous": true,
+          "venue": "AT&T Stadium, Arlington"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-25",
+          "time": "23:00",
+          "home": "tun",
+          "away": "ned",
+          "simultaneous": true,
+          "venue": "Arrowhead Stadium, Kansas City"
+        }
       ]
     },
     {
       "id": "G",
       "color": "#8b5cf6",
-      "teams": ["bel", "egy", "irn", "nzl"],
+      "teams": [
+        "bel",
+        "egy",
+        "irn",
+        "nzl"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-15","home":"bel","away":"irn","venue":"Por confirmar"},
-        {"jornada":1,"date":"2026-06-15","home":"egy","away":"nzl","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-21","home":"bel","away":"egy","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-21","home":"irn","away":"nzl","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-27","home":"bel","away":"nzl","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-27","home":"egy","away":"irn","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-15",
+          "time": "19:00",
+          "home": "bel",
+          "away": "egy",
+          "venue": "Lumen Field, Seattle"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-15",
+          "time": "01:00",
+          "home": "irn",
+          "away": "nzl",
+          "venue": "SoFi Stadium, Los Ángeles"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-21",
+          "time": "19:00",
+          "home": "bel",
+          "away": "irn",
+          "venue": "SoFi Stadium, Los Ángeles"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-21",
+          "time": "01:00",
+          "home": "nzl",
+          "away": "egy",
+          "venue": "BC Place, Vancouver"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-26",
+          "time": "03:00",
+          "home": "egy",
+          "away": "irn",
+          "simultaneous": true,
+          "venue": "Lumen Field, Seattle"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-26",
+          "time": "03:00",
+          "home": "nzl",
+          "away": "bel",
+          "simultaneous": true,
+          "venue": "BC Place, Vancouver"
+        }
       ]
     },
     {
       "id": "H",
       "color": "#ec4899",
-      "teams": ["esp", "cpv", "ksa", "ury"],
+      "teams": [
+        "esp",
+        "cpv",
+        "ksa",
+        "ury"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-15","home":"esp","away":"cpv","venue":"Por confirmar"},
-        {"jornada":1,"date":"2026-06-15","home":"ksa","away":"ury","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-21","home":"esp","away":"ksa","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-21","home":"ury","away":"cpv","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-27","home":"esp","away":"ury","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-27","home":"cpv","away":"ksa","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-15",
+          "time": "16:00",
+          "home": "esp",
+          "away": "cpv",
+          "venue": "Mercedes-Benz Stadium, Atlanta"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-15",
+          "time": "22:00",
+          "home": "ksa",
+          "away": "ury",
+          "venue": "Hard Rock Stadium, Miami Gardens"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-21",
+          "time": "16:00",
+          "home": "esp",
+          "away": "ksa",
+          "venue": "Mercedes-Benz Stadium, Atlanta"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-21",
+          "time": "22:00",
+          "home": "ury",
+          "away": "cpv",
+          "venue": "Hard Rock Stadium, Miami Gardens"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-26",
+          "time": "00:00",
+          "home": "cpv",
+          "away": "ksa",
+          "simultaneous": true,
+          "venue": "NRG Stadium, Houston"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-26",
+          "time": "00:00",
+          "home": "ury",
+          "away": "esp",
+          "simultaneous": true,
+          "venue": "Estadio Akron, Guadalajara"
+        }
       ]
     },
     {
       "id": "I",
       "color": "#06b6d4",
-      "teams": ["fra", "sen", "irq", "nor"],
+      "teams": [
+        "fra",
+        "sen",
+        "irq",
+        "nor"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-16","home":"fra","away":"sen","venue":"Por confirmar"},
-        {"jornada":1,"date":"2026-06-16","home":"irq","away":"nor","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-22","home":"fra","away":"irq","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-22","home":"nor","away":"sen","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-26","home":"fra","away":"nor","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-26","home":"sen","away":"irq","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-16",
+          "time": "19:00",
+          "home": "fra",
+          "away": "sen",
+          "venue": "MetLife Stadium, East Rutherford"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-16",
+          "time": "22:00",
+          "home": "irq",
+          "away": "nor",
+          "venue": "Gillette Stadium, Foxborough"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-22",
+          "time": "21:00",
+          "home": "fra",
+          "away": "irq",
+          "venue": "Lincoln Financial Field, Filadelfia"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-22",
+          "time": "00:00",
+          "home": "nor",
+          "away": "sen",
+          "venue": "MetLife Stadium, East Rutherford"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-26",
+          "time": "19:00",
+          "home": "nor",
+          "away": "fra",
+          "simultaneous": true,
+          "venue": "Gillette Stadium, Foxborough"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-26",
+          "time": "19:00",
+          "home": "sen",
+          "away": "irq",
+          "simultaneous": true,
+          "venue": "BMO Field, Toronto"
+        }
       ]
     },
     {
       "id": "J",
       "color": "#84cc16",
-      "teams": ["arg", "alg", "aut", "jor"],
+      "teams": [
+        "arg",
+        "alg",
+        "aut",
+        "jor"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-17","home":"arg","away":"alg","venue":"Por confirmar"},
-        {"jornada":1,"date":"2026-06-17","home":"aut","away":"jor","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-22","home":"arg","away":"aut","venue":"AT&T Stadium, Dallas"},
-        {"jornada":2,"date":"2026-06-22","home":"jor","away":"alg","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-27","home":"arg","away":"jor","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-27","home":"alg","away":"aut","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-16",
+          "time": "01:00",
+          "home": "arg",
+          "away": "alg",
+          "venue": "Arrowhead Stadium, Kansas City"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-16",
+          "time": "04:00",
+          "home": "aut",
+          "away": "jor",
+          "venue": "Levi's Stadium, Santa Clara"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-22",
+          "time": "17:00",
+          "home": "arg",
+          "away": "aut",
+          "venue": "AT&T Stadium, Arlington"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-22",
+          "time": "03:00",
+          "home": "jor",
+          "away": "alg",
+          "venue": "Levi's Stadium, Santa Clara"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-27",
+          "time": "02:00",
+          "home": "jor",
+          "away": "arg",
+          "simultaneous": true,
+          "venue": "AT&T Stadium, Arlington"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-27",
+          "time": "02:00",
+          "home": "alg",
+          "away": "aut",
+          "simultaneous": true,
+          "venue": "Arrowhead Stadium, Kansas City"
+        }
       ]
     },
     {
       "id": "K",
       "color": "#d97706",
-      "teams": ["por", "cod", "uzb", "col"],
+      "teams": [
+        "por",
+        "cod",
+        "uzb",
+        "col"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-17","home":"por","away":"cod","venue":"NRG Stadium, Houston"},
-        {"jornada":1,"date":"2026-06-17","home":"uzb","away":"col","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-23","home":"por","away":"uzb","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-23","home":"col","away":"cod","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-27","home":"por","away":"col","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-27","home":"cod","away":"uzb","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-17",
+          "time": "17:00",
+          "home": "por",
+          "away": "cod",
+          "venue": "NRG Stadium, Houston"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-17",
+          "time": "02:00",
+          "home": "uzb",
+          "away": "col",
+          "venue": "Estadio Azteca, Ciudad de México"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-23",
+          "time": "17:00",
+          "home": "por",
+          "away": "uzb",
+          "venue": "NRG Stadium, Houston"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-23",
+          "time": "02:00",
+          "home": "col",
+          "away": "cod",
+          "venue": "Estadio Akron, Guadalajara"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-27",
+          "time": "23:30",
+          "home": "col",
+          "away": "por",
+          "simultaneous": true,
+          "venue": "Hard Rock Stadium, Miami Gardens"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-27",
+          "time": "23:30",
+          "home": "cod",
+          "away": "uzb",
+          "simultaneous": true,
+          "venue": "Mercedes-Benz Stadium, Atlanta"
+        }
       ]
     },
     {
       "id": "L",
       "color": "#94a3b8",
-      "teams": ["eng", "cro", "gha", "pan"],
+      "teams": [
+        "eng",
+        "cro",
+        "gha",
+        "pan"
+      ],
       "fixtures": [
-        {"jornada":1,"date":"2026-06-18","home":"eng","away":"cro","venue":"Por confirmar"},
-        {"jornada":1,"date":"2026-06-18","home":"gha","away":"pan","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-24","home":"eng","away":"gha","venue":"Por confirmar"},
-        {"jornada":2,"date":"2026-06-24","home":"pan","away":"cro","venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-28","home":"eng","away":"pan","simultaneous":true,"venue":"Por confirmar"},
-        {"jornada":3,"date":"2026-06-28","home":"cro","away":"gha","simultaneous":true,"venue":"Por confirmar"}
+        {
+          "jornada": 1,
+          "date": "2026-06-17",
+          "time": "20:00",
+          "home": "eng",
+          "away": "cro",
+          "venue": "AT&T Stadium, Arlington"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-17",
+          "time": "23:00",
+          "home": "gha",
+          "away": "pan",
+          "venue": "BMO Field, Toronto"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-23",
+          "time": "20:00",
+          "home": "eng",
+          "away": "gha",
+          "venue": "Gillette Stadium, Foxborough"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-23",
+          "time": "23:00",
+          "home": "pan",
+          "away": "cro",
+          "venue": "BMO Field, Toronto"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-27",
+          "time": "21:00",
+          "home": "pan",
+          "away": "eng",
+          "simultaneous": true,
+          "venue": "MetLife Stadium, East Rutherford"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-27",
+          "time": "21:00",
+          "home": "cro",
+          "away": "gha",
+          "simultaneous": true,
+          "venue": "Lincoln Financial Field, Filadelfia"
+        }
       ]
     }
   ]
