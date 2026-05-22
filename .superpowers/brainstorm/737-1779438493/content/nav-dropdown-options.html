@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opciones de Menú — Grupos</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #07090f;
+    color: #e0e6ef;
+    font-family: 'Barlow Condensed', 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 0;
+  }
+  .page-header h1 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .page-header p {
+    color: #7a8ba0;
+    margin-top: .4rem;
+    font-size: 14px;
+  }
+
+  /* ── OPTION SECTIONS ── */
+  .option-section {
+    padding: 2.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    cursor: pointer;
+    transition: background .2s;
+    position: relative;
+  }
+  .option-section:hover { background: rgba(255,255,255,0.02); }
+  .option-section.selected { background: rgba(230,57,70,0.07); }
+  .option-section.selected::before {
+    content: '✓ SELECCIONADA';
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #e63946;
+    background: rgba(230,57,70,.15);
+    padding: .2rem .6rem;
+    border-radius: 4px;
+    border: 1px solid rgba(230,57,70,.3);
+  }
+
+  .option-label {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #e63946;
+    background: rgba(230,57,70,.1);
+    border: 1px solid rgba(230,57,70,.25);
+    border-radius: 4px;
+    padding: .2rem .6rem;
+    margin-bottom: 1rem;
+  }
+  .option-label .letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; height: 20px;
+    background: #e63946;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+
+  .option-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    margin-bottom: .3rem;
+  }
+  .option-desc {
+    color: #7a8ba0;
+    font-size: 13px;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+  }
+
+  /* ── DEMO WRAPPER ── */
+  .demo-wrap {
+    background: #0c0f18;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 900px;
+  }
+
+  /* ── SHARED NAV STYLES ── */
+  .demo-nav {
+    background: rgba(7,9,15,0.97);
+    border-top: 3px solid #e63946;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 10;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .demo-nav a {
+    color: #6b7e94;
+    text-decoration: none;
+    font-family: 'Barlow Condensed', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .9rem 1rem;
+    white-space: nowrap;
+    transition: .15s;
+    border-bottom: 2px solid transparent;
+  }
+  .demo-nav a:hover { background: rgba(255,255,255,0.05); color: #fff; }
+  .nav-spacer { flex: 1; }
+
+  /* ── GRUPOS TRIGGER BUTTON (shared) ── */
+  .grupos-btn {
+    background: none;
+    border: none;
+    color: #6b7e94;
+    font-family: 'Barlow Condensed', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .9rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: .15s;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    border-bottom: 2px solid transparent;
+    position: relative;
+  }
+  .grupos-btn .arrow { font-size: 9px; transition: transform .2s; display: inline-block; }
+  .grupos-btn.open { background: #e63946; color: #fff; }
+  .grupos-btn.open .arrow { transform: rotate(180deg); }
+
+  /* ── CONTENT PLACEHOLDER ── */
+  .demo-content {
+    padding: 2rem 1.5rem;
+    min-height: 80px;
+    background: #0c0f18;
+  }
+  .demo-content p {
+    color: #3a4a5a;
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  /* ── GROUP COLOR VARS ── */
+  :root {
+    --grp-a:#e55c5c; --grp-b:#3b8beb; --grp-c:#10b981; --grp-d:#6366f1;
+    --grp-e:#f97316; --grp-f:#f59e0b; --grp-g:#8b5cf6; --grp-h:#ec4899;
+    --grp-i:#06b6d4; --grp-j:#84cc16; --grp-k:#d97706; --grp-l:#94a3b8;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     OPTION A — MEGA-MENÚ FULL WIDTH
+  ═══════════════════════════════════════════════════════ */
+  #demo-a { position: relative; }
+
+  .mega-panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: #0d1120;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.25rem 1.5rem;
+    z-index: 20;
+    box-shadow: 0 12px 40px rgba(0,0,0,.6);
+  }
+  .mega-panel.open { display: block; }
+
+  .mega-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: .75rem;
+  }
+  .mega-group {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .mega-group-header {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .4rem .6rem;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .mega-group-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .mega-team {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .3rem .6rem;
+    font-size: 11.5px;
+    color: #9ab;
+    cursor: pointer;
+    transition: .12s;
+    text-decoration: none;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .mega-team:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .mega-team .flag { font-size: 13px; line-height: 1; }
+  .mega-team.has-analysis { color: #c8d8e8; }
+  .mega-team.has-analysis:hover { color: #fff; }
+  .mega-team .dot-analysis {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #e63946;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     OPTION B — DROPDOWN JERÁRQUICO (2 niveles)
+  ═══════════════════════════════════════════════════════ */
+  #demo-b { position: relative; }
+
+  .hier-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    background: #0d1120;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.6);
+    z-index: 20;
+    overflow: visible;
+  }
+  .hier-dropdown.open { display: block; }
+
+  .hier-group-row {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .5rem .75rem;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #9ab;
+    cursor: pointer;
+    transition: .12s;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .hier-group-row:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .hier-group-row:hover .hier-submenu { display: block; }
+  .hier-color-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .hier-arrow { margin-left: auto; font-size: 10px; color: #4a5a6a; }
+
+  .hier-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -1px;
+    min-width: 170px;
+    background: #111827;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0 8px 8px 8px;
+    box-shadow: 8px 8px 30px rgba(0,0,0,.5);
+    z-index: 30;
+    overflow: hidden;
+  }
+  .hier-team-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .75rem;
+    font-size: 12px;
+    color: #9ab;
+    cursor: pointer;
+    transition: .12s;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .hier-team-item:last-child { border-bottom: none; }
+  .hier-team-item:hover { background: rgba(255,255,255,0.07); color: #fff; }
+  .hier-team-item .flag { font-size: 14px; }
+
+  /* ═══════════════════════════════════════════════════════
+     OPTION C — MODAL OVERLAY CON BÚSQUEDA
+  ═══════════════════════════════════════════════════════ */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(4,6,12,.92);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+  .modal-overlay.open { display: flex; flex-direction: column; }
+
+  .modal-box {
+    background: #0d1120;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 840px;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,.8);
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: #0a0d18;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .modal-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #fff;
+    flex: 1;
+  }
+  .modal-search {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: .4rem .75rem;
+    color: #fff;
+    font-size: 13px;
+    font-family: inherit;
+    width: 200px;
+    outline: none;
+    transition: .15s;
+  }
+  .modal-search:focus {
+    border-color: rgba(230,57,70,.5);
+    background: rgba(255,255,255,0.08);
+  }
+  .modal-search::placeholder { color: #4a5a6a; }
+  .modal-close {
+    background: none; border: none;
+    color: #4a5a6a; font-size: 1.2rem;
+    cursor: pointer; padding: .2rem .4rem;
+    border-radius: 4px; transition: .15s;
+    line-height: 1;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+  .modal-body {
+    padding: 1rem 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .6rem;
+  }
+  .modal-group {
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 7px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.02);
+  }
+  .modal-group-header {
+    padding: .4rem .65rem;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .modal-team {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .3rem .65rem;
+    font-size: 11.5px;
+    color: #7a8ba0;
+    cursor: pointer;
+    transition: .1s;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .modal-team:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .modal-team.has-analysis { color: #b8cad8; }
+  .modal-team .flag { font-size: 12px; }
+  .modal-team .ana-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #e63946; margin-left: auto; flex-shrink: 0;
+  }
+
+  .modal-legend {
+    padding: .6rem 1.25rem .5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 11px;
+    color: #4a5a6a;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .modal-legend .dot { width: 6px; height: 6px; border-radius: 50%; background: #e63946; }
+
+  /* ── PROS/CONS TAGS ── */
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+  .tag {
+    font-size: 11px;
+    padding: .2rem .5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .tag.pro { background: rgba(16,185,129,.12); color: #10b981; border: 1px solid rgba(16,185,129,.2); }
+  .tag.con { background: rgba(230,57,70,.1); color: #e63946; border: 1px solid rgba(230,57,70,.2); }
+  .tag.neu { background: rgba(255,255,255,.06); color: #7a8ba0; border: 1px solid rgba(255,255,255,.1); }
+
+  /* ── LEGEND BAR ── */
+  .section-divider {
+    text-align: center;
+    padding: 2rem 1rem 0;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #3a4a5a;
+    font-weight: 700;
+  }
+
+  /* ── MOBILE PREVIEW PILLS ── */
+  .mobile-badge {
+    display: inline-flex; align-items: center; gap: .3rem;
+    background: rgba(99,102,241,.12); color: #818cf8;
+    border: 1px solid rgba(99,102,241,.2);
+    border-radius: 4px; font-size: 10px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: .15rem .4rem; margin-top: .3rem;
+    vertical-align: middle;
+  }
+
+  .select-cta {
+    text-align: center;
+    padding: .6rem;
+    font-size: 12px;
+    color: #3a4a5a;
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  @media (max-width: 640px) {
+    .mega-grid { grid-template-columns: repeat(3, 1fr); }
+    .modal-body { grid-template-columns: repeat(2, 1fr); }
+    .hier-submenu { left: auto; right: 0; border-radius: 8px 0 8px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Menú de Grupos — 3 Opciones</h1>
+  <p>Haz clic en el botón <strong>"Grupos ▾"</strong> en cada demo para ver el comportamiento. Luego haz clic en la opción que prefieras.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     OPCIÓN A — MEGA-MENÚ
+═══════════════════════════════════════════════════ -->
+<div class="option-section" id="opt-a" onclick="selectOption('a', event)">
+  <div class="option-label"><span class="letter">A</span> Recomendada</div>
+  <div class="option-title">Mega-menú de grupos</div>
+  <div class="option-desc">Un panel que se expande bajo la nav mostrando los 12 grupos en cuadrícula. Todos los equipos visibles de un vistazo. Los equipos con análisis tienen un punto rojo.</div>
+
+  <div class="demo-wrap" id="demo-a" onclick="e => e.stopPropagation()">
+    <div class="demo-nav" style="position:relative">
+      <a href="#">Formato</a>
+      <a href="#">Calendario</a>
+      <button class="grupos-btn" id="btn-a" onclick="toggleMega(event)">Grupos <span class="arrow">▾</span></button>
+      <a href="#">Tracker</a>
+      <div class="nav-spacer"></div>
+    </div>
+    <!-- MEGA PANEL -->
+    <div class="mega-panel" id="mega-panel">
+      <div class="mega-grid">
+        <!-- A -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-a)"></div>Grupo A</div>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇲🇽</span>México<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇿🇦</span>Sudáfrica</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇰🇷</span>Corea del Sur<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇨🇿</span>Chequia</a>
+        </div>
+        <!-- B -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-b)"></div>Grupo B</div>
+          <a class="mega-team" href="#"><span class="flag">🇨🇦</span>Canadá</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇧🇦</span>Bosnia<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇶🇦</span>Qatar</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇨🇭</span>Suiza<span class="dot-analysis"></span></a>
+        </div>
+        <!-- C -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-c)"></div>Grupo C</div>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇧🇷</span>Brasil<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇲🇦</span>Marruecos</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇭🇹</span>Haití<span class="dot-analysis"></span></a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>Escocia<span class="dot-analysis"></span></a>
+        </div>
+        <!-- D -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-d)"></div>Grupo D</div>
+          <a class="mega-team" href="#"><span class="flag">🇺🇸</span>EE.UU.</a>
+          <a class="mega-team" href="#"><span class="flag">🇵🇾</span>Paraguay</a>
+          <a class="mega-team" href="#"><span class="flag">🇦🇺</span>Australia</a>
+          <a class="mega-team" href="#"><span class="flag">🇹🇷</span>Turquía</a>
+        </div>
+        <!-- E -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-e)"></div>Grupo E</div>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇩🇪</span>Alemania<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇨🇼</span>Curazao</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇨🇮</span>Costa de Marfil<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇪🇨</span>Ecuador</a>
+        </div>
+        <!-- F -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-f)"></div>Grupo F</div>
+          <a class="mega-team" href="#"><span class="flag">🇳🇱</span>Países Bajos</a>
+          <a class="mega-team" href="#"><span class="flag">🇯🇵</span>Japón</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇸🇪</span>Suecia<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇹🇳</span>Túnez</a>
+        </div>
+        <!-- G -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-g)"></div>Grupo G</div>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇧🇪</span>Bélgica<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇪🇬</span>Egipto</a>
+          <a class="mega-team" href="#"><span class="flag">🇮🇷</span>Irán</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇳🇿</span>Nueva Zelanda<span class="dot-analysis"></span></a>
+        </div>
+        <!-- H -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-h)"></div>Grupo H</div>
+          <a class="mega-team" href="#"><span class="flag">🇪🇸</span>España</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇨🇻</span>Cabo Verde<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇸🇦</span>Arabia Saudita</a>
+          <a class="mega-team" href="#"><span class="flag">🇺🇾</span>Uruguay</a>
+        </div>
+        <!-- I -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-i)"></div>Grupo I</div>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇫🇷</span>Francia<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇸🇳</span>Senegal</a>
+          <a class="mega-team" href="#"><span class="flag">🇮🇶</span>Irak</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇳🇴</span>Noruega<span class="dot-analysis"></span></a>
+        </div>
+        <!-- J -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-j)"></div>Grupo J</div>
+          <a class="mega-team" href="#"><span class="flag">🇦🇷</span>Argentina</a>
+          <a class="mega-team" href="#"><span class="flag">🇩🇿</span>Argelia</a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇦🇹</span>Austria<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇯🇴</span>Jordania</a>
+        </div>
+        <!-- K -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-k)"></div>Grupo K</div>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇵🇹</span>Portugal<span class="dot-analysis"></span></a>
+          <a class="mega-team has-analysis" href="#"><span class="flag">🇨🇩</span>RD Congo<span class="dot-analysis"></span></a>
+          <a class="mega-team" href="#"><span class="flag">🇺🇿</span>Uzbekistán</a>
+          <a class="mega-team" href="#"><span class="flag">🇨🇴</span>Colombia</a>
+        </div>
+        <!-- L -->
+        <div class="mega-group">
+          <div class="mega-group-header"><div class="mega-group-dot" style="background:var(--grp-l)"></div>Grupo L</div>
+          <a class="mega-team" href="#"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>Inglaterra</a>
+          <a class="mega-team" href="#"><span class="flag">🇭🇷</span>Croacia</a>
+          <a class="mega-team" href="#"><span class="flag">🇬🇭</span>Ghana</a>
+          <a class="mega-team" href="#"><span class="flag">🇵🇦</span>Panamá</a>
+        </div>
+      </div>
+      <div style="margin-top:.75rem; font-size:11px; color:#3a4a5a; display:flex; align-items:center; gap:.35rem;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#e63946;display:inline-block"></span>
+        Punto rojo = análisis disponible
+      </div>
+    </div>
+    <div class="demo-content"><p>↑ Contenido de la página aquí — el panel flota sobre el contenido sin desplazarlo</p></div>
+  </div>
+
+  <div class="tag-wrap">
+    <span class="tag pro">Todo visible de un vistazo</span>
+    <span class="tag pro">0 clics para llegar a un equipo</span>
+    <span class="tag pro">Colores de grupo en contexto</span>
+    <span class="tag neu">Ocupa espacio vertical al abrir</span>
+    <span class="mobile-badge">📱 En móvil: cuadrícula 3×4, scroll</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     OPCIÓN B — DROPDOWN JERÁRQUICO
+═══════════════════════════════════════════════════ -->
+<div class="option-section" id="opt-b" onclick="selectOption('b', event)">
+  <div class="option-label"><span class="letter">B</span></div>
+  <div class="option-title">Dropdown jerárquico (2 niveles)</div>
+  <div class="option-desc">Lista de grupos en el primer nivel; pasa el cursor sobre un grupo y aparecen sus 4 equipos al costado. Compacto y tradicional.</div>
+
+  <div class="demo-wrap" id="demo-b" onclick="e => e.stopPropagation()">
+    <div class="demo-nav" style="position:relative; overflow: visible;">
+      <a href="#">Formato</a>
+      <a href="#">Calendario</a>
+      <div style="position:relative">
+        <button class="grupos-btn" id="btn-b" onclick="toggleHier(event)">Grupos <span class="arrow">▾</span></button>
+        <div class="hier-dropdown" id="hier-dropdown">
+          <!-- Group A -->
+          <div class="hier-group-row">
+            <div class="hier-color-dot" style="background:var(--grp-a)"></div>
+            Grupo A
+            <span class="hier-arrow">›</span>
+            <div class="hier-submenu">
+              <div class="hier-team-item"><span class="flag">🇲🇽</span>México</div>
+              <div class="hier-team-item"><span class="flag">🇿🇦</span>Sudáfrica</div>
+              <div class="hier-team-item"><span class="flag">🇰🇷</span>Corea del Sur</div>
+              <div class="hier-team-item"><span class="flag">🇨🇿</span>Chequia</div>
+            </div>
+          </div>
+          <div class="hier-group-row">
+            <div class="hier-color-dot" style="background:var(--grp-b)"></div>Grupo B<span class="hier-arrow">›</span>
+            <div class="hier-submenu">
+              <div class="hier-team-item"><span class="flag">🇨🇦</span>Canadá</div>
+              <div class="hier-team-item"><span class="flag">🇧🇦</span>Bosnia</div>
+              <div class="hier-team-item"><span class="flag">🇶🇦</span>Qatar</div>
+              <div class="hier-team-item"><span class="flag">🇨🇭</span>Suiza</div>
+            </div>
+          </div>
+          <div class="hier-group-row">
+            <div class="hier-color-dot" style="background:var(--grp-c)"></div>Grupo C<span class="hier-arrow">›</span>
+            <div class="hier-submenu">
+              <div class="hier-team-item"><span class="flag">🇧🇷</span>Brasil</div>
+              <div class="hier-team-item"><span class="flag">🇲🇦</span>Marruecos</div>
+              <div class="hier-team-item"><span class="flag">🇭🇹</span>Haití</div>
+              <div class="hier-team-item"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>Escocia</div>
+            </div>
+          </div>
+          <div class="hier-group-row" style="color:#7a8ba0;font-size:10px;padding:.3rem .75rem;font-weight:400;text-transform:none;letter-spacing:0;border-bottom:none;">
+            … y 9 grupos más
+          </div>
+        </div>
+      </div>
+      <a href="#">Tracker</a>
+      <div class="nav-spacer"></div>
+    </div>
+    <div class="demo-content"><p>↑ Pasa el cursor sobre un grupo para ver los equipos (demo muestra A, B, C)</p></div>
+  </div>
+
+  <div class="tag-wrap">
+    <span class="tag pro">Muy compacto, no interrumpe</span>
+    <span class="tag pro">Familiar para usuarios web</span>
+    <span class="tag con">2 pasos para llegar a un equipo</span>
+    <span class="tag con">Hover difícil en móvil</span>
+    <span class="tag neu">12 grupos = lista larga</span>
+    <span class="mobile-badge">📱 En móvil: accordion expandible</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     OPCIÓN C — MODAL CON BÚSQUEDA
+═══════════════════════════════════════════════════ -->
+<div class="option-section" id="opt-c" onclick="selectOption('c', event)">
+  <div class="option-label"><span class="letter">C</span></div>
+  <div class="option-title">Panel flotante con búsqueda</div>
+  <div class="option-desc">Click en "Grupos" abre un overlay centrado con todos los equipos. Incluye buscador para filtrar por nombre. Funciona igual en móvil y escritorio.</div>
+
+  <div class="demo-wrap" onclick="e => e.stopPropagation()">
+    <div class="demo-nav">
+      <a href="#">Formato</a>
+      <a href="#">Calendario</a>
+      <button class="grupos-btn" id="btn-c" onclick="openModal()">Grupos <span class="arrow">▾</span></button>
+      <a href="#">Tracker</a>
+      <div class="nav-spacer"></div>
+    </div>
+    <div class="demo-content"><p>↑ Haz clic en "Grupos" para ver el overlay completo</p></div>
+  </div>
+
+  <!-- MODAL (fuera del demo-wrap para ser fullscreen) -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModalIfBg(event)">
+    <div class="modal-box" onclick="e => e.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title">⚽ Selecciona un equipo</div>
+        <input class="modal-search" type="text" id="modal-search-input" placeholder="Buscar equipo…" oninput="filterModal(this.value)" onclick="e => e.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- A -->
+        <div class="modal-group" data-group="a">
+          <div class="modal-group-header" style="background:rgba(229,92,92,.15);border-bottom:2px solid var(--grp-a)"><div class="mega-group-dot" style="background:var(--grp-a);width:7px;height:7px;border-radius:50%"></div>Grupo A</div>
+          <div class="modal-team has-analysis" data-name="México"><span class="flag">🇲🇽</span>México<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Sudáfrica"><span class="flag">🇿🇦</span>Sudáfrica</div>
+          <div class="modal-team has-analysis" data-name="Corea del Sur"><span class="flag">🇰🇷</span>Corea del Sur<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Chequia"><span class="flag">🇨🇿</span>Chequia</div>
+        </div>
+        <!-- B -->
+        <div class="modal-group" data-group="b">
+          <div class="modal-group-header" style="background:rgba(59,139,235,.15);border-bottom:2px solid var(--grp-b)"><div class="mega-group-dot" style="background:var(--grp-b);width:7px;height:7px;border-radius:50%"></div>Grupo B</div>
+          <div class="modal-team" data-name="Canadá"><span class="flag">🇨🇦</span>Canadá</div>
+          <div class="modal-team has-analysis" data-name="Bosnia"><span class="flag">🇧🇦</span>Bosnia<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Qatar"><span class="flag">🇶🇦</span>Qatar</div>
+          <div class="modal-team has-analysis" data-name="Suiza"><span class="flag">🇨🇭</span>Suiza<span class="ana-dot"></span></div>
+        </div>
+        <!-- C -->
+        <div class="modal-group" data-group="c">
+          <div class="modal-group-header" style="background:rgba(16,185,129,.15);border-bottom:2px solid var(--grp-c)"><div class="mega-group-dot" style="background:var(--grp-c);width:7px;height:7px;border-radius:50%"></div>Grupo C</div>
+          <div class="modal-team has-analysis" data-name="Brasil"><span class="flag">🇧🇷</span>Brasil<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Marruecos"><span class="flag">🇲🇦</span>Marruecos</div>
+          <div class="modal-team has-analysis" data-name="Haití"><span class="flag">🇭🇹</span>Haití<span class="ana-dot"></span></div>
+          <div class="modal-team has-analysis" data-name="Escocia"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>Escocia<span class="ana-dot"></span></div>
+        </div>
+        <!-- D -->
+        <div class="modal-group" data-group="d">
+          <div class="modal-group-header" style="background:rgba(99,102,241,.15);border-bottom:2px solid var(--grp-d)"><div class="mega-group-dot" style="background:var(--grp-d);width:7px;height:7px;border-radius:50%"></div>Grupo D</div>
+          <div class="modal-team" data-name="EE.UU."><span class="flag">🇺🇸</span>EE.UU.</div>
+          <div class="modal-team" data-name="Paraguay"><span class="flag">🇵🇾</span>Paraguay</div>
+          <div class="modal-team" data-name="Australia"><span class="flag">🇦🇺</span>Australia</div>
+          <div class="modal-team" data-name="Turquía"><span class="flag">🇹🇷</span>Turquía</div>
+        </div>
+        <!-- E -->
+        <div class="modal-group" data-group="e">
+          <div class="modal-group-header" style="background:rgba(249,115,22,.15);border-bottom:2px solid var(--grp-e)"><div class="mega-group-dot" style="background:var(--grp-e);width:7px;height:7px;border-radius:50%"></div>Grupo E</div>
+          <div class="modal-team has-analysis" data-name="Alemania"><span class="flag">🇩🇪</span>Alemania<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Curazao"><span class="flag">🇨🇼</span>Curazao</div>
+          <div class="modal-team has-analysis" data-name="Costa de Marfil"><span class="flag">🇨🇮</span>Costa de Marfil<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Ecuador"><span class="flag">🇪🇨</span>Ecuador</div>
+        </div>
+        <!-- F -->
+        <div class="modal-group" data-group="f">
+          <div class="modal-group-header" style="background:rgba(245,158,11,.15);border-bottom:2px solid var(--grp-f)"><div class="mega-group-dot" style="background:var(--grp-f);width:7px;height:7px;border-radius:50%"></div>Grupo F</div>
+          <div class="modal-team" data-name="Países Bajos"><span class="flag">🇳🇱</span>Países Bajos</div>
+          <div class="modal-team" data-name="Japón"><span class="flag">🇯🇵</span>Japón</div>
+          <div class="modal-team has-analysis" data-name="Suecia"><span class="flag">🇸🇪</span>Suecia<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Túnez"><span class="flag">🇹🇳</span>Túnez</div>
+        </div>
+        <!-- G -->
+        <div class="modal-group" data-group="g">
+          <div class="modal-group-header" style="background:rgba(139,92,246,.15);border-bottom:2px solid var(--grp-g)"><div class="mega-group-dot" style="background:var(--grp-g);width:7px;height:7px;border-radius:50%"></div>Grupo G</div>
+          <div class="modal-team has-analysis" data-name="Bélgica"><span class="flag">🇧🇪</span>Bélgica<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Egipto"><span class="flag">🇪🇬</span>Egipto</div>
+          <div class="modal-team" data-name="Irán"><span class="flag">🇮🇷</span>Irán</div>
+          <div class="modal-team has-analysis" data-name="Nueva Zelanda"><span class="flag">🇳🇿</span>Nueva Zelanda<span class="ana-dot"></span></div>
+        </div>
+        <!-- H -->
+        <div class="modal-group" data-group="h">
+          <div class="modal-group-header" style="background:rgba(236,72,153,.15);border-bottom:2px solid var(--grp-h)"><div class="mega-group-dot" style="background:var(--grp-h);width:7px;height:7px;border-radius:50%"></div>Grupo H</div>
+          <div class="modal-team" data-name="España"><span class="flag">🇪🇸</span>España</div>
+          <div class="modal-team has-analysis" data-name="Cabo Verde"><span class="flag">🇨🇻</span>Cabo Verde<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Arabia Saudita"><span class="flag">🇸🇦</span>Arabia Saudita</div>
+          <div class="modal-team" data-name="Uruguay"><span class="flag">🇺🇾</span>Uruguay</div>
+        </div>
+        <!-- I -->
+        <div class="modal-group" data-group="i">
+          <div class="modal-group-header" style="background:rgba(6,182,212,.15);border-bottom:2px solid var(--grp-i)"><div class="mega-group-dot" style="background:var(--grp-i);width:7px;height:7px;border-radius:50%"></div>Grupo I</div>
+          <div class="modal-team has-analysis" data-name="Francia"><span class="flag">🇫🇷</span>Francia<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Senegal"><span class="flag">🇸🇳</span>Senegal</div>
+          <div class="modal-team" data-name="Irak"><span class="flag">🇮🇶</span>Irak</div>
+          <div class="modal-team has-analysis" data-name="Noruega"><span class="flag">🇳🇴</span>Noruega<span class="ana-dot"></span></div>
+        </div>
+        <!-- J -->
+        <div class="modal-group" data-group="j">
+          <div class="modal-group-header" style="background:rgba(132,204,22,.15);border-bottom:2px solid var(--grp-j)"><div class="mega-group-dot" style="background:var(--grp-j);width:7px;height:7px;border-radius:50%"></div>Grupo J</div>
+          <div class="modal-team" data-name="Argentina"><span class="flag">🇦🇷</span>Argentina</div>
+          <div class="modal-team" data-name="Argelia"><span class="flag">🇩🇿</span>Argelia</div>
+          <div class="modal-team has-analysis" data-name="Austria"><span class="flag">🇦🇹</span>Austria<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Jordania"><span class="flag">🇯🇴</span>Jordania</div>
+        </div>
+        <!-- K -->
+        <div class="modal-group" data-group="k">
+          <div class="modal-group-header" style="background:rgba(217,119,6,.15);border-bottom:2px solid var(--grp-k)"><div class="mega-group-dot" style="background:var(--grp-k);width:7px;height:7px;border-radius:50%"></div>Grupo K</div>
+          <div class="modal-team has-analysis" data-name="Portugal"><span class="flag">🇵🇹</span>Portugal<span class="ana-dot"></span></div>
+          <div class="modal-team has-analysis" data-name="RD Congo"><span class="flag">🇨🇩</span>RD Congo<span class="ana-dot"></span></div>
+          <div class="modal-team" data-name="Uzbekistán"><span class="flag">🇺🇿</span>Uzbekistán</div>
+          <div class="modal-team" data-name="Colombia"><span class="flag">🇨🇴</span>Colombia</div>
+        </div>
+        <!-- L -->
+        <div class="modal-group" data-group="l">
+          <div class="modal-group-header" style="background:rgba(148,163,184,.15);border-bottom:2px solid var(--grp-l)"><div class="mega-group-dot" style="background:var(--grp-l);width:7px;height:7px;border-radius:50%"></div>Grupo L</div>
+          <div class="modal-team" data-name="Inglaterra"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>Inglaterra</div>
+          <div class="modal-team" data-name="Croacia"><span class="flag">🇭🇷</span>Croacia</div>
+          <div class="modal-team" data-name="Ghana"><span class="flag">🇬🇭</span>Ghana</div>
+          <div class="modal-team" data-name="Panamá"><span class="flag">🇵🇦</span>Panamá</div>
+        </div>
+      </div>
+      <div class="modal-legend">
+        <span class="dot"></span> Punto rojo = análisis disponible en este documento
+      </div>
+    </div>
+  </div>
+
+  <div class="tag-wrap">
+    <span class="tag pro">Búsqueda instantánea</span>
+    <span class="tag pro">Igual en móvil y escritorio</span>
+    <span class="tag pro">No necesita hover — 100% accesible</span>
+    <span class="tag con">Interrumpe el flujo de navegación</span>
+    <span class="tag neu">Requiere clic extra para cerrar</span>
+    <span class="mobile-badge">📱 En móvil: pantalla completa</span>
+  </div>
+</div>
+
+<div class="select-cta">Haz clic en una opción para seleccionarla · También puedes explorar los demos interactivos sin seleccionar</div>
+
+<script>
+// ── OPTION SELECTION ──
+var selected = null;
+function selectOption(id, event) {
+  // Don't select when clicking inside nav demos
+  if (event && (
+    event.target.closest('.grupos-btn') ||
+    event.target.closest('.mega-panel') ||
+    event.target.closest('.hier-dropdown') ||
+    event.target.closest('.modal-overlay')
+  )) return;
+
+  if (selected) document.getElementById('opt-' + selected).classList.remove('selected');
+  selected = id;
+  document.getElementById('opt-' + id).classList.add('selected');
+
+  // Emit event for visual companion
+  if (window.emitChoice) window.emitChoice(id, 'Opción ' + id.toUpperCase());
+}
+
+// ── OPTION A — MEGA MENU ──
+var megaOpen = false;
+function toggleMega(e) {
+  e.stopPropagation();
+  megaOpen = !megaOpen;
+  document.getElementById('mega-panel').classList.toggle('open', megaOpen);
+  document.getElementById('btn-a').classList.toggle('open', megaOpen);
+  if (megaOpen) {
+    setTimeout(() => document.addEventListener('click', closeMegaOutside), 0);
+  }
+}
+function closeMegaOutside() {
+  megaOpen = false;
+  document.getElementById('mega-panel').classList.remove('open');
+  document.getElementById('btn-a').classList.remove('open');
+  document.removeEventListener('click', closeMegaOutside);
+}
+
+// ── OPTION B — HIERARCHICAL ──
+var hierOpen = false;
+function toggleHier(e) {
+  e.stopPropagation();
+  hierOpen = !hierOpen;
+  document.getElementById('hier-dropdown').classList.toggle('open', hierOpen);
+  document.getElementById('btn-b').classList.toggle('open', hierOpen);
+  if (hierOpen) {
+    setTimeout(() => document.addEventListener('click', closeHierOutside), 0);
+  }
+}
+function closeHierOutside() {
+  hierOpen = false;
+  document.getElementById('hier-dropdown').classList.remove('open');
+  document.getElementById('btn-b').classList.remove('open');
+  document.removeEventListener('click', closeHierOutside);
+}
+
+// ── OPTION C — MODAL ──
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+  document.getElementById('btn-c').classList.add('open');
+  setTimeout(() => document.getElementById('modal-search-input').focus(), 100);
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('btn-c').classList.remove('open');
+  document.getElementById('modal-search-input').value = '';
+  filterModal('');
+}
+function closeModalIfBg(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+function filterModal(q) {
+  var term = q.toLowerCase().trim();
+  var groups = document.querySelectorAll('#modal-body .modal-group');
+  groups.forEach(function(grp) {
+    var teams = grp.querySelectorAll('.modal-team');
+    var anyVisible = false;
+    teams.forEach(function(t) {
+      var name = (t.dataset.name || '').toLowerCase();
+      var show = !term || name.includes(term);
+      t.style.display = show ? '' : 'none';
+      if (show) anyVisible = true;
+    });
+    grp.style.display = (!term || anyVisible) ? '' : 'none';
+  });
+}
+
+// Keyboard: Escape closes modal
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeMegaOutside();
+    closeHierOutside();
+  }
+});
+</script>
+</body>
+</html>
