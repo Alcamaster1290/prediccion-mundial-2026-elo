@@ -690,6 +690,7 @@
   /* ─── TIMEZONE SELECT ─── */
   .tz-wrap {
     display: flex; align-items: center; flex-shrink: 0;
+    margin-left: auto;
   }
   .tz-select {
     background: var(--surface); border: 1px solid var(--border);
@@ -802,7 +803,7 @@
 
   /* --- THEME TOGGLE BTN --- */
   .theme-btn {
-    margin-left: auto; flex-shrink: 0;
+    margin-left: .5rem; flex-shrink: 0;
     background: none; border: 1px solid var(--border);
     color: var(--muted); cursor: pointer;
     padding: .3rem .7rem; border-radius: 6px;
@@ -2143,7 +2144,15 @@
 
           <!-- GRUPO E -->
           <tr>
-            <td rowspan="1"><strong style="color:var(--white)">E</strong><br><span style="font-size:11px;color:var(--muted)">GER · CUW<br>CIV · ECU</span></td>
+            <td rowspan="2"><strong style="color:var(--grp-e)">E</strong><br><span style="font-size:11px;color:var(--muted)">GER · CUW<br>CIV · ECU</span></td>
+            <td><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> <strong class="player-name">Alemania</strong></td>
+            <td style="font-size:13px">Julian Nagelsmann</td>
+            <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">4-2-3-1</span></td>
+            <td style="font-size:13px">Florian Wirtz, Jamal Musiala, Kai Havertz</td>
+            <td style="font-size:12px;color:var(--muted)">Cayó en fase de grupos en 2 mundiales seguidos · generación Wirtz-Musiala</td>
+            <td><span class="analyzed-badge">✓ Detallado</span></td>
+          </tr>
+          <tr>
             <td><img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> <strong class="player-name">Costa de Marfil</strong></td>
             <td style="font-size:13px">Emerse Faé</td>
             <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">4-3-3</span></td>
@@ -2195,12 +2204,20 @@
 
           <!-- GRUPO I -->
           <tr>
-            <td rowspan="1"><strong style="color:var(--white)">I</strong><br><span style="font-size:11px;color:var(--muted)">FRA · SEN<br>IRQ · NOR</span></td>
+            <td rowspan="2"><strong style="color:var(--grp-i)">I</strong><br><span style="font-size:11px;color:var(--muted)">FRA · SEN<br>IRQ · NOR</span></td>
             <td><img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy"> <strong class="player-name">Francia</strong></td>
             <td style="font-size:13px">Didier Deschamps</td>
             <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">4-3-3</span></td>
             <td style="font-size:13px">Mbappé, Griezmann, Camavinga ✗ ausente</td>
             <td style="font-size:12px;color:var(--muted)">Último Mundial de Deschamps · 9 delanteros en lista</td>
+            <td><span class="analyzed-badge">✓ Detallado</span></td>
+          </tr>
+          <tr>
+            <td><img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> <strong class="player-name">Noruega</strong></td>
+            <td style="font-size:13px">Ståle Solbakken</td>
+            <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">4-2-3-1</span></td>
+            <td style="font-size:13px">Erling Haaland (Man City), Ødegaard (C, duda), Nusa</td>
+            <td style="font-size:12px;color:var(--muted)">1er Mundial desde Francia 1998 · 28 años de ausencia · debut mundialista de Haaland</td>
             <td><span class="analyzed-badge">✓ Detallado</span></td>
           </tr>
 
