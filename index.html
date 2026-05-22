@@ -137,6 +137,115 @@
   .badge-b { background: var(--grp-b); color: #fff; }
   .badge-f { background: var(--grp-f); color: #000; }
 
+  /* ─── GRUPOS MODAL ─── */
+  .grupos-nav-btn {
+    background: none; border: none; color: var(--muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 13px; letter-spacing: .08em;
+    text-transform: uppercase; padding: 1rem 1.1rem;
+    cursor: pointer; white-space: nowrap; transition: .2s;
+    border-bottom: 2px solid transparent;
+    display: flex; align-items: center; gap: .3rem;
+  }
+  .grupos-nav-btn:hover, .grupos-nav-btn.open { background: var(--accent); color: #fff; border-bottom-color: transparent; }
+  .grupos-nav-btn .g-arrow { font-size: 9px; transition: transform .2s; display: inline-block; }
+  .grupos-nav-btn.open .g-arrow { transform: rotate(180deg); }
+
+  .grupos-modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(4,6,12,.88); backdrop-filter: blur(8px);
+    z-index: 500; align-items: flex-start; justify-content: center;
+    padding: 4.5rem 1rem 1.5rem; overflow-y: auto;
+  }
+  .grupos-modal-overlay.open { display: flex; }
+  .grupos-modal {
+    background: #0d1120; border: 1px solid var(--border);
+    border-radius: 12px; width: 100%; max-width: 860px;
+    box-shadow: 0 24px 80px rgba(0,0,0,.85); overflow: hidden;
+    animation: gModalIn .18s cubic-bezier(.2,.8,.3,1);
+  }
+  @keyframes gModalIn {
+    from { opacity:0; transform:translateY(-10px) scale(.98); }
+    to   { opacity:1; transform:translateY(0) scale(1); }
+  }
+  .grupos-modal-header {
+    display: flex; align-items: center; gap: .75rem;
+    padding: .85rem 1.25rem; background: rgba(0,0,0,.3);
+    border-bottom: 1px solid var(--border);
+  }
+  .grupos-modal-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--fg); flex: 1;
+  }
+  .grupos-search-wrap { position: relative; display: flex; align-items: center; }
+  .grupos-search-icon { position: absolute; left: .65rem; color: var(--muted); font-size: 12px; pointer-events: none; }
+  .grupos-search {
+    background: rgba(255,255,255,.06); border: 1px solid var(--border);
+    border-radius: 6px; padding: .4rem .75rem .4rem 1.9rem;
+    color: var(--fg); font-size: 13px; font-family: inherit;
+    width: 200px; outline: none; transition: .15s;
+  }
+  .grupos-search:focus { border-color: rgba(230,57,70,.5); box-shadow: 0 0 0 3px rgba(230,57,70,.1); }
+  .grupos-search::placeholder { color: var(--muted); }
+  .grupos-modal-close {
+    background: none; border: none; color: var(--muted);
+    font-size: 1.1rem; cursor: pointer; padding: .25rem .45rem;
+    border-radius: 5px; transition: .15s; line-height: 1;
+  }
+  .grupos-modal-close:hover { background: rgba(255,255,255,.07); color: var(--fg); }
+  .grupos-modal-body {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: .5rem; padding: 1rem;
+  }
+  .gmod-group {
+    border: 1px solid var(--border); border-radius: 7px;
+    overflow: hidden; background: rgba(255,255,255,.02);
+  }
+  .gmod-group-header {
+    padding: .4rem .65rem; font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--fg);
+    display: flex; align-items: center; gap: .4rem; border-bottom: 2px solid;
+  }
+  .gmod-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .gmod-team {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .32rem .65rem;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 12px;
+    color: var(--muted); border-top: 1px solid var(--border);
+    transition: background .1s, color .1s;
+    text-decoration: none; cursor: default;
+  }
+  .gmod-team.has-analysis { color: #afc2d4; cursor: pointer; }
+  .gmod-team.has-analysis:hover { background: rgba(255,255,255,.06); color: var(--fg); }
+  .gmod-team img { width: 20px; height: 13px; object-fit: cover; border-radius: 2px; border: 1px solid rgba(255,255,255,.1); flex-shrink: 0; }
+  .gmod-name { flex: 1; line-height: 1; }
+  .gmod-team:not(.has-analysis) .gmod-name { opacity: .5; }
+  .gmod-ana { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; flex-shrink: 0; box-shadow: 0 0 4px rgba(34,197,94,.5); }
+  .grupos-modal-footer {
+    padding: .6rem 1.25rem; border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .gmod-legend { display: flex; align-items: center; gap: .4rem; font-size: 11px; color: var(--muted); }
+  .gmod-legend-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 4px rgba(34,197,94,.5); }
+  .gmod-no-results { display: none; text-align: center; padding: 2rem; font-size: 13px; color: var(--muted); grid-column: 1/-1; }
+  .gmod-esc-hint { font-size: 11px; color: var(--muted); }
+  .gmod-esc-hint kbd { display: inline-block; padding: .1rem .4rem; background: rgba(255,255,255,.07); border: 1px solid var(--border); border-radius: 3px; font-size: 10px; font-family: monospace; }
+  [data-theme="light"] .grupos-modal { background: #fff; }
+  [data-theme="light"] .grupos-modal-header { background: #f5f7fa; }
+  [data-theme="light"] .gmod-group { background: #f9fafb; }
+  [data-theme="light"] .gmod-team.has-analysis { color: #1a2a3a; }
+  [data-theme="light"] .gmod-team.has-analysis:hover { background: rgba(0,0,0,.04); }
+  [data-theme="light"] .grupos-search { background: #fff; color: #1a2a3a; }
+  [data-theme="light"] .grupos-modal-overlay { background: rgba(0,0,0,.5); }
+  @media (max-width: 700px) {
+    .grupos-modal-body { grid-template-columns: repeat(2,1fr); }
+    .grupos-modal-overlay { padding: 3.5rem .5rem 1rem; }
+    .grupos-search { width: 140px; }
+  }
+  @media (max-width: 380px) { .grupos-modal-body { grid-template-columns: 1fr; } }
+
   /* ─── HERO ─── */
   .hero {
     position: relative; overflow: hidden;
@@ -714,17 +823,7 @@
   <a href="#formato">Formato</a>
   <a href="#calendario">Calendario</a>
   <a href="#grupos">Grupos</a>
-  <a href="#grupo-a">Grupo A</a>
-  <a href="#grupo-b">Grupo B</a>
-  <a href="#grupo-c">Grupo C</a>
-  <a href="#grupo-e">Grupo E</a>
-  <a href="#grupo-f">Grupo F</a>
-  <a href="#grupo-g">Grupo G</a>
-  <a href="#grupo-h">Grupo H</a>
-  <a href="#grupo-i">Grupo I</a>
-  <a href="#grupo-j">Grupo J</a>
-  <a href="#grupo-k">Grupo K</a>
-  <a href="#grupo-l">Grupo L</a>
+  <button class="grupos-nav-btn" id="grupos-nav-btn" onclick="openGruposModal()">Equipos <span class="g-arrow">▾</span></button>
   <a href="#tracker">Tracker</a>
   <div class="tz-wrap">
     <select id="tz-select" class="tz-select" aria-label="Zona horaria">
@@ -739,9 +838,126 @@
   <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">&#x1F319;</button>
 </nav>
 
+<!-- GRUPOS MODAL -->
+<div class="grupos-modal-overlay" id="grupos-modal-overlay" onclick="if(event.target===this)closeGruposModal()">
+  <div class="grupos-modal">
+    <div class="grupos-modal-header">
+      <span class="grupos-modal-title">&#9917; Selecciona un equipo</span>
+      <div class="grupos-search-wrap">
+        <span class="grupos-search-icon">&#128269;</span>
+        <input class="grupos-search" id="grupos-search" type="text" placeholder="Buscar equipo&#8230;" oninput="filterGrupos(this.value)" onclick="event.stopPropagation()">
+      </div>
+      <button class="grupos-modal-close" onclick="closeGruposModal()">&#x2715;</button>
+    </div>
+    <div class="grupos-modal-body" id="grupos-modal-body">
+      <!-- A -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(229,92,92,.1);border-color:var(--grp-a)"><span class="gmod-dot" style="background:var(--grp-a)"></span>Grupo A</div>
+        <div class="gmod-team" data-name="México"><img src="assets/flags/mex.svg" alt=""><span class="gmod-name">México</span></div>
+        <div class="gmod-team" data-name="Sudáfrica"><img src="assets/flags/zaf.svg" alt=""><span class="gmod-name">Sudáfrica</span></div>
+        <a class="gmod-team has-analysis" data-name="Corea del Sur" href="#corea"><img src="assets/flags/kor.svg" alt=""><span class="gmod-name">Corea del Sur</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Chequia"><img src="assets/flags/cze.svg" alt=""><span class="gmod-name">Chequia</span></div>
+      </div>
+      <!-- B -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(59,139,235,.1);border-color:var(--grp-b)"><span class="gmod-dot" style="background:var(--grp-b)"></span>Grupo B</div>
+        <div class="gmod-team" data-name="Canadá"><img src="assets/flags/can.svg" alt=""><span class="gmod-name">Canadá</span></div>
+        <a class="gmod-team has-analysis" data-name="Bosnia" href="#bosnia"><img src="assets/flags/bih.svg" alt=""><span class="gmod-name">Bosnia</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Qatar"><img src="assets/flags/qat.svg" alt=""><span class="gmod-name">Qatar</span></div>
+        <a class="gmod-team has-analysis" data-name="Suiza" href="#suiza"><img src="assets/flags/sui.svg" alt=""><span class="gmod-name">Suiza</span><span class="gmod-ana"></span></a>
+      </div>
+      <!-- C -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(16,185,129,.1);border-color:var(--grp-c)"><span class="gmod-dot" style="background:var(--grp-c)"></span>Grupo C</div>
+        <a class="gmod-team has-analysis" data-name="Brasil" href="#brasil"><img src="assets/flags/bra.svg" alt=""><span class="gmod-name">Brasil</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Marruecos"><img src="assets/flags/mar.svg" alt=""><span class="gmod-name">Marruecos</span></div>
+        <a class="gmod-team has-analysis" data-name="Haití" href="#haiti"><img src="assets/flags/hti.svg" alt=""><span class="gmod-name">Haití</span><span class="gmod-ana"></span></a>
+        <a class="gmod-team has-analysis" data-name="Escocia" href="#escocia"><img src="assets/flags/sco.svg" alt=""><span class="gmod-name">Escocia</span><span class="gmod-ana"></span></a>
+      </div>
+      <!-- D -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(99,102,241,.1);border-color:var(--grp-d)"><span class="gmod-dot" style="background:var(--grp-d)"></span>Grupo D</div>
+        <div class="gmod-team" data-name="EE.UU."><img src="assets/flags/usa.svg" alt=""><span class="gmod-name">EE.UU.</span></div>
+        <div class="gmod-team" data-name="Paraguay"><img src="assets/flags/pry.svg" alt=""><span class="gmod-name">Paraguay</span></div>
+        <div class="gmod-team" data-name="Australia"><img src="assets/flags/aus.svg" alt=""><span class="gmod-name">Australia</span></div>
+        <div class="gmod-team" data-name="Turquía"><img src="assets/flags/tur.svg" alt=""><span class="gmod-name">Turquía</span></div>
+      </div>
+      <!-- E -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(249,115,22,.1);border-color:var(--grp-e)"><span class="gmod-dot" style="background:var(--grp-e)"></span>Grupo E</div>
+        <a class="gmod-team has-analysis" data-name="Alemania" href="#alemania"><img src="assets/flags/ger.svg" alt=""><span class="gmod-name">Alemania</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Curazao"><img src="assets/flags/cuw.svg" alt=""><span class="gmod-name">Curazao</span></div>
+        <a class="gmod-team has-analysis" data-name="Costa de Marfil" href="#costa-marfil"><img src="assets/flags/civ.svg" alt=""><span class="gmod-name">Costa de Marfil</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Ecuador"><img src="assets/flags/ecu.svg" alt=""><span class="gmod-name">Ecuador</span></div>
+      </div>
+      <!-- F -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(245,158,11,.1);border-color:var(--grp-f)"><span class="gmod-dot" style="background:var(--grp-f)"></span>Grupo F</div>
+        <div class="gmod-team" data-name="Países Bajos"><img src="assets/flags/ned.svg" alt=""><span class="gmod-name">Países Bajos</span></div>
+        <div class="gmod-team" data-name="Japón"><img src="assets/flags/jpn.svg" alt=""><span class="gmod-name">Japón</span></div>
+        <a class="gmod-team has-analysis" data-name="Suecia" href="#suecia"><img src="assets/flags/swe.svg" alt=""><span class="gmod-name">Suecia</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Túnez"><img src="assets/flags/tun.svg" alt=""><span class="gmod-name">Túnez</span></div>
+      </div>
+      <!-- G -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(139,92,246,.1);border-color:var(--grp-g)"><span class="gmod-dot" style="background:var(--grp-g)"></span>Grupo G</div>
+        <a class="gmod-team has-analysis" data-name="Bélgica" href="#belgica"><img src="assets/flags/bel.svg" alt=""><span class="gmod-name">Bélgica</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Egipto"><img src="assets/flags/egy.svg" alt=""><span class="gmod-name">Egipto</span></div>
+        <div class="gmod-team" data-name="Irán"><img src="assets/flags/irn.svg" alt=""><span class="gmod-name">Irán</span></div>
+        <a class="gmod-team has-analysis" data-name="Nueva Zelanda" href="#nueva-zelanda"><img src="assets/flags/nzl.svg" alt=""><span class="gmod-name">Nueva Zelanda</span><span class="gmod-ana"></span></a>
+      </div>
+      <!-- H -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(236,72,153,.1);border-color:var(--grp-h)"><span class="gmod-dot" style="background:var(--grp-h)"></span>Grupo H</div>
+        <div class="gmod-team" data-name="España"><img src="assets/flags/esp.svg" alt=""><span class="gmod-name">España</span></div>
+        <a class="gmod-team has-analysis" data-name="Cabo Verde" href="#cabo-verde"><img src="assets/flags/cpv.svg" alt=""><span class="gmod-name">Cabo Verde</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Arabia Saudita"><img src="assets/flags/ksa.svg" alt=""><span class="gmod-name">Arabia Saudita</span></div>
+        <div class="gmod-team" data-name="Uruguay"><img src="assets/flags/ury.svg" alt=""><span class="gmod-name">Uruguay</span></div>
+      </div>
+      <!-- I -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(6,182,212,.1);border-color:var(--grp-i)"><span class="gmod-dot" style="background:var(--grp-i)"></span>Grupo I</div>
+        <a class="gmod-team has-analysis" data-name="Francia" href="#francia"><img src="assets/flags/fra.svg" alt=""><span class="gmod-name">Francia</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Senegal"><img src="assets/flags/sen.svg" alt=""><span class="gmod-name">Senegal</span></div>
+        <div class="gmod-team" data-name="Irak"><img src="assets/flags/irq.svg" alt=""><span class="gmod-name">Irak</span></div>
+        <a class="gmod-team has-analysis" data-name="Noruega" href="#noruega"><img src="assets/flags/nor.svg" alt=""><span class="gmod-name">Noruega</span><span class="gmod-ana"></span></a>
+      </div>
+      <!-- J -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(132,204,22,.1);border-color:var(--grp-j)"><span class="gmod-dot" style="background:var(--grp-j)"></span>Grupo J</div>
+        <div class="gmod-team" data-name="Argentina"><img src="assets/flags/arg.svg" alt=""><span class="gmod-name">Argentina</span></div>
+        <div class="gmod-team" data-name="Argelia"><img src="assets/flags/alg.svg" alt=""><span class="gmod-name">Argelia</span></div>
+        <a class="gmod-team has-analysis" data-name="Austria" href="#austria"><img src="assets/flags/aut.svg" alt=""><span class="gmod-name">Austria</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Jordania"><img src="assets/flags/jor.svg" alt=""><span class="gmod-name">Jordania</span></div>
+      </div>
+      <!-- K -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(217,119,6,.1);border-color:var(--grp-k)"><span class="gmod-dot" style="background:var(--grp-k)"></span>Grupo K</div>
+        <a class="gmod-team has-analysis" data-name="Portugal" href="#portugal"><img src="assets/flags/por.svg" alt=""><span class="gmod-name">Portugal</span><span class="gmod-ana"></span></a>
+        <a class="gmod-team has-analysis" data-name="RD Congo" href="#rd-congo"><img src="assets/flags/cod.svg" alt=""><span class="gmod-name">RD Congo</span><span class="gmod-ana"></span></a>
+        <div class="gmod-team" data-name="Uzbekistán"><img src="assets/flags/uzb.svg" alt=""><span class="gmod-name">Uzbekistán</span></div>
+        <div class="gmod-team" data-name="Colombia"><img src="assets/flags/col.svg" alt=""><span class="gmod-name">Colombia</span></div>
+      </div>
+      <!-- L -->
+      <div class="gmod-group">
+        <div class="gmod-group-header" style="background:rgba(148,163,184,.1);border-color:var(--grp-l)"><span class="gmod-dot" style="background:var(--grp-l)"></span>Grupo L</div>
+        <div class="gmod-team" data-name="Inglaterra"><img src="assets/flags/eng.svg" alt=""><span class="gmod-name">Inglaterra</span></div>
+        <div class="gmod-team" data-name="Croacia"><img src="assets/flags/cro.svg" alt=""><span class="gmod-name">Croacia</span></div>
+        <div class="gmod-team" data-name="Ghana"><img src="assets/flags/gha.svg" alt=""><span class="gmod-name">Ghana</span></div>
+        <div class="gmod-team" data-name="Panamá"><img src="assets/flags/pan.svg" alt=""><span class="gmod-name">Panamá</span></div>
+      </div>
+      <div class="gmod-no-results" id="gmod-no-results">Sin resultados</div>
+    </div>
+    <div class="grupos-modal-footer">
+      <div class="gmod-legend"><span class="gmod-legend-dot"></span> Análisis publicado</div>
+      <div class="gmod-esc-hint">Presiona <kbd>Esc</kbd> para cerrar</div>
+    </div>
+  </div>
+</div>
+
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-eyebrow">Proyectos de Predicciones Mundial FIFA 2026</div>
+  <div class="hero-eyebrow">Proyecto de Predicción del Mundial FIFA 2026</div>
   <h1>Copa del Mundo<br><span>2026</span></h1>
   <div class="hero-meta">
     <div><strong>48</strong> Selecciones</div>
@@ -2334,6 +2550,37 @@
       updateTzNote();
     }
   })();
+
+  // ── GRUPOS MODAL ──────────────────────────────────────────────────────────
+  function openGruposModal() {
+    document.getElementById('grupos-modal-overlay').classList.add('open');
+    document.getElementById('grupos-nav-btn').classList.add('open');
+    setTimeout(function(){ document.getElementById('grupos-search').focus(); }, 150);
+  }
+  function closeGruposModal() {
+    document.getElementById('grupos-modal-overlay').classList.remove('open');
+    document.getElementById('grupos-nav-btn').classList.remove('open');
+    var s = document.getElementById('grupos-search');
+    s.value = ''; filterGrupos('');
+  }
+  function filterGrupos(q) {
+    var term = q.toLowerCase().trim();
+    var groups = document.querySelectorAll('.gmod-group');
+    var total = 0;
+    groups.forEach(function(g) {
+      var teams = g.querySelectorAll('.gmod-team');
+      var vis = 0;
+      teams.forEach(function(t) {
+        var show = !term || (t.dataset.name || '').toLowerCase().includes(term);
+        t.style.display = show ? '' : 'none';
+        if (show) vis++;
+      });
+      g.style.display = (!term || vis > 0) ? '' : 'none';
+      total += vis;
+    });
+    document.getElementById('gmod-no-results').style.display = (term && total === 0) ? 'block' : 'none';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeGruposModal(); });
 
 </script>
 </body>
