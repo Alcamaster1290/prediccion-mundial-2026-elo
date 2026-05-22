@@ -13,9 +13,8 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 - Fuente de ELO de clubes: [worldclubratings.com](http://worldclubratings.com/rankings/elo_men/)
 - Fuente de convocatorias nuevas: [alterfutbol.com/tag/convocatorias-al-mundial-2026/](https://alterfutbol.com/tag/convocatorias-al-mundial-2026/)
 
-### Estado global (al 21 mayo 2026)
-- **15 selecciones analizadas** con plantel, táctica, figura clave y XI probable
-- **2 convocatorias publicadas pendientes de análisis:** Alemania (Grupo E) y Noruega (Grupo I)
+### Estado global (al 22 mayo 2026)
+- **17 selecciones analizadas** con plantel, táctica, figura clave y XI probable
 - **Más de 25 selecciones** aún sin convocatoria oficial
 
 ---
@@ -25,7 +24,7 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 ### Convención de nombres
 `{código-equipo}-{apellido}.jpg`
 
-### Estado actual (15 imágenes disponibles ✅)
+### Estado actual (17 imágenes disponibles ✅)
 
 | Archivo | Jugador | Selección |
 |---|---|---|
@@ -44,6 +43,8 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 | `aut-alaba.jpg` | David Alaba | Austria |
 | `por-ronaldo.jpg` | Cristiano Ronaldo | Portugal |
 | `cod-mbemba.jpg` | Chancel Mbemba | RD del Congo |
+| `ger-wirtz.jpg` | Florian Wirtz | Alemania |
+| `nor-haaland.jpg` | Erling Haaland | Noruega |
 
 ### Especificaciones técnicas
 - Formato: `.jpg` o `.webp` (renombrar si es necesario)
@@ -58,7 +59,7 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 ### Convención de nombres
 `{código-equipo}-xi.png`
 
-### Estado actual (15 imágenes disponibles ✅)
+### Estado actual (17 imágenes disponibles ✅)
 
 Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se muestra dentro de `.xi-img-wrap` **antes de la tabla de plantel** en cada sección.
 
@@ -97,7 +98,7 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 
 ## Tarea 3 — Publicaciones de AlterFutbol por selección
 
-### Selecciones ya analizadas (15)
+### Selecciones ya analizadas (17)
 
 | Selección | URL |
 |---|---|
@@ -116,13 +117,8 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 | 🇦🇹 Austria | https://www.alterfutbol.com/europa/austria/austria-confirmo-sus-convocados-para-el-mundial-2026-analisis-tactico-mejores-jugadores-y-lo-que-hay-que-saber/ |
 | 🇵🇹 Portugal | https://www.alterfutbol.com/europa/portugal/portugal-confirmo-sus-convocados-para-el-mundial-2026/ |
 | 🇨🇩 RD del Congo | https://www.alterfutbol.com/africa/republica-democratica-del-congo/rd-congo-confirmo-sus-26-convocados-para-el-mundial-2026-analisis-su-historia-y-mejores-jugadores/ |
-
-### Convocatorias publicadas — pendientes de añadir al sitio
-
-| Selección | Grupo | URL |
-|---|---|---|
-| 🇩🇪 Alemania | E | Buscar en https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
-| 🇳🇴 Noruega | I | Buscar en https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
+| 🇩🇪 Alemania | Buscar en https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
+| 🇳🇴 Noruega | Buscar en https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
 
 ### Noticias generales del torneo
 | Tema | URL |
@@ -255,13 +251,7 @@ git push origin main
 
 ---
 
-## Selecciones pendientes (al 21 mayo 2026)
-
-### Con convocatoria publicada — pendientes de añadir
-| Selección | Grupo | Código |
-|---|---|---|
-| Alemania | E | `ger` |
-| Noruega | I | `nor` |
+## Selecciones pendientes (al 22 mayo 2026)
 
 ### Sin convocatoria oficial publicada aún
 Grupo D completo (USA, Paraguay, Australia, Turquía) · Canadá · Qatar · Marruecos · Países Bajos · Japón · Túnez · Egipto · Irán · España · Arabia Saudita · Uruguay · Senegal · Irak · Argentina · Argelia · Jordania · Uzbekistán · Colombia · Inglaterra · Croacia · Ghana · Panamá · Curazao · Ecuador · México · Sudáfrica · Chequia
