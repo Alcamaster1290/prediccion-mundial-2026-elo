@@ -834,10 +834,266 @@
   }
   .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
 
+  /* ─── BOTÓN ÚNETE ─── */
+  .join-btn {
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 6px; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    padding: .35rem .9rem; margin-left: .5rem; flex-shrink: 0;
+    transition: background .2s, opacity .2s;
+  }
+  .join-btn:hover { background: #c0303c; }
+
+  /* ─── NAV USER INFO ─── */
+  .nav-user-info {
+    display: none; align-items: center; gap: .5rem;
+    margin-left: .5rem; flex-shrink: 0;
+  }
+  .nav-user-email {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--muted); max-width: 120px; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+  }
+  .nav-premium-tag {
+    display: none; font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; background: var(--gold); color: #000;
+    padding: 1px 5px; border-radius: 3px;
+  }
+  .nav-signout-btn {
+    background: none; border: 1px solid var(--border); color: var(--muted);
+    border-radius: 4px; font-size: 11px; cursor: pointer; padding: .2rem .5rem;
+    transition: border-color .2s;
+  }
+  .nav-signout-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── AUTH MODAL ─── */
+  .auth-modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,.7); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .auth-modal-overlay.open { display: flex; }
+  .auth-modal {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 2rem; width: 100%; max-width: 400px;
+    position: relative;
+  }
+  .auth-modal-title {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1.4rem; letter-spacing: .05em; text-transform: uppercase;
+    color: var(--white); margin-bottom: .25rem;
+  }
+  .auth-modal-sub {
+    font-size: 13px; color: var(--muted); margin-bottom: 1.5rem;
+  }
+  .auth-tabs {
+    display: flex; gap: .5rem; margin-bottom: 1.25rem;
+  }
+  .auth-tab {
+    flex: 1; background: none; border: 1px solid var(--border); color: var(--muted);
+    border-radius: 6px; padding: .4rem; cursor: pointer; font-size: 13px;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; transition: .2s;
+  }
+  .auth-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .auth-form-field {
+    margin-bottom: .9rem;
+  }
+  .auth-form-field label {
+    display: block; font-size: 11px; color: var(--muted);
+    margin-bottom: .3rem; letter-spacing: .06em; text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  }
+  .auth-form-field input {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: .5rem .75rem;
+    font-size: 14px; outline: none; transition: border-color .2s;
+    box-sizing: border-box;
+  }
+  .auth-form-field input:focus { border-color: var(--accent); }
+  .auth-submit-btn {
+    width: 100%; background: var(--accent); color: #fff; border: none;
+    border-radius: 6px; padding: .65rem; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+    font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+    margin-top: .5rem; transition: background .2s;
+  }
+  .auth-submit-btn:hover:not(:disabled) { background: #c0303c; }
+  .auth-submit-btn:disabled { opacity: .6; cursor: not-allowed; }
+  .auth-error {
+    font-size: 12px; color: var(--accent); margin-top: .5rem;
+    min-height: 1.2em;
+  }
+  .auth-modal-close {
+    position: absolute; top: .75rem; right: .75rem;
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-size: 18px; line-height: 1;
+  }
+  .auth-modal-close:hover { color: var(--white); }
+
+  /* ─── SECCIÓN PREMIUM ─── */
+  .prono-locked {
+    text-align: center; padding: 2rem 1rem;
+  }
+  .prono-lock-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .prono-lock-title {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1.6rem; color: var(--white); margin-bottom: .75rem;
+  }
+  .prono-lock-desc {
+    color: var(--muted); font-size: 14px; max-width: 540px;
+    margin: 0 auto 1.25rem;
+  }
+  .prono-lock-benefits {
+    list-style: none; text-align: left; display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+  .prono-lock-benefits li {
+    font-size: 14px; color: var(--text); padding: .3rem 0;
+  }
+  .prono-lock-model {
+    font-size: 12px; color: var(--muted); background: var(--card);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: .75rem 1rem; display: inline-block; margin-bottom: 1.5rem;
+    max-width: 500px;
+  }
+  .prono-model-label {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: .25rem;
+  }
+  .prono-join-btn {
+    background: var(--accent); color: #fff; border: none; border-radius: 8px;
+    padding: .75rem 2rem; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 16px; letter-spacing: .08em; text-transform: uppercase;
+    margin-top: .5rem; transition: background .2s;
+  }
+  .prono-join-btn:hover { background: #c0303c; }
+
+  /* Ghost cards (locked state) */
+  .prono-ghost-cards {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    gap: 1rem; margin: 1.5rem auto; max-width: 900px; filter: blur(4px);
+    pointer-events: none; user-select: none;
+  }
+  .prono-ghost-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem; height: 160px;
+  }
+  .prono-ghost-header { background: var(--border); height: 20px; border-radius: 4px; margin-bottom: .75rem; }
+  .prono-ghost-bars  { background: var(--border); height: 60px; border-radius: 4px; margin-bottom: .75rem; }
+  .prono-ghost-text  { background: var(--border); height: 40px; border-radius: 4px; }
+
+  /* Payment view */
+  .prono-payment { max-width: 520px; margin: 0 auto; padding: 1.5rem 0; }
+  .prono-payment-icon { font-size: 2rem; margin-bottom: .75rem; }
+  .prono-payment h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1.8rem; color: var(--white); margin-bottom: .5rem;
+  }
+  .prono-payment > p { color: var(--muted); font-size: 14px; margin-bottom: 1.25rem; }
+  .prono-payment-options { display: flex; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .prono-pay-opt {
+    flex: 1; min-width: 200px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 10px; padding: 1rem;
+    display: flex; flex-direction: column; gap: .3rem;
+  }
+  .prono-pay-method {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1.1rem; color: var(--white);
+  }
+  .prono-pay-amount { font-size: 1.4rem; color: var(--gold); font-weight: 700; }
+  .prono-pay-phone  { font-size: 12px; color: var(--muted); }
+  .prono-pay-note   { font-size: 13px; color: var(--muted); margin-bottom: 1.25rem; }
+  .prono-code-form  { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+  .prono-code-label { display: block; font-size: 12px; color: var(--muted); margin-bottom: .6rem; letter-spacing: .06em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
+  .prono-code-row   { display: flex; gap: .5rem; }
+  .prono-code-input {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: .55rem .75rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+    letter-spacing: .1em; outline: none; text-transform: uppercase;
+    transition: border-color .2s;
+  }
+  .prono-code-input:focus { border-color: var(--accent); }
+  .prono-code-btn {
+    background: var(--accent); color: #fff; border: none; border-radius: 6px;
+    padding: .55rem 1.2rem; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+    font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+    transition: background .2s;
+  }
+  .prono-code-btn:disabled { opacity: .6; cursor: not-allowed; }
+  .prono-code-btn:hover:not(:disabled) { background: #c0303c; }
+  .prono-code-error { font-size: 12px; color: var(--accent); margin-top: .5rem; min-height: 1.2em; }
+
+  /* Active premium view */
+  .prono-active-header { margin-bottom: 1.5rem; }
+  .prono-premium-badge {
+    display: inline-block; font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; background: rgba(34,197,94,.15);
+    color: var(--yes); border: 1px solid rgba(34,197,94,.3);
+    padding: .3rem .8rem; border-radius: 4px;
+  }
+  .prono-group-block { margin-bottom: 2.5rem; }
+  .prono-group-title {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1rem; padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .prono-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem;
+  }
+  .prono-card-header {
+    display: flex; align-items: center; gap: .75rem;
+    margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  .prono-matchday {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    font-weight: 700; color: var(--accent); background: rgba(230,57,70,.12);
+    padding: 2px 7px; border-radius: 4px; flex-shrink: 0;
+  }
+  .prono-teams { display: flex; align-items: center; gap: .6rem; flex: 1; }
+  .prono-team  { display: flex; align-items: center; gap: .4rem; font-size: 14px; font-weight: 600; }
+  .prono-vs    { font-size: 11px; color: var(--muted); }
+  .prono-global-tag {
+    margin-left: auto; font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--gold); background: rgba(255,170,0,.12);
+    border: 1px solid rgba(255,170,0,.25); padding: 2px 8px; border-radius: 4px;
+  }
+  .prono-probs { margin-bottom: 1rem; }
+  .prono-prob-row {
+    display: flex; align-items: center; gap: .6rem; margin-bottom: .4rem;
+  }
+  .prono-prob-label { font-size: 12px; color: var(--muted); min-width: 110px; }
+  .prono-prob-bar-wrap {
+    flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;
+  }
+  .prono-prob-bar { height: 100%; border-radius: 4px; transition: width .6s ease; }
+  .prono-bar-a    { background: var(--accent); }
+  .prono-bar-draw { background: var(--muted); }
+  .prono-bar-b    { background: var(--grp-b); }
+  .prono-prob-pct { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text); min-width: 34px; text-align: right; }
+  .prono-contexts { display: flex; gap: 1rem; margin-bottom: .75rem; flex-wrap: wrap; }
+  .prono-ctx { flex: 1; min-width: 200px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .prono-explanation { font-size: 13px; color: var(--text); border-top: 1px solid var(--border); padding-top: .75rem; line-height: 1.6; }
+  .prono-empty { text-align: center; padding: 2rem; color: var(--muted); }
+
 </style>
 <script>
   (function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
 </script>
+<!-- Supabase JS SDK v2 -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<!-- Premium config (gitignored — copiar de js/config.example.js) -->
+<script src="js/config.js" onerror="console.warn('[Config] js/config.js no encontrado — modo demo activo')"></script>
 </head>
 <body>
 
@@ -857,6 +1113,12 @@
       <option value="+1">Londres  UTC+1</option>
       <option value="+2">Madrid / París  UTC+2</option>
     </select>
+  </div>
+  <button id="join-btn" class="join-btn" onclick="window.SupaAuth && window.SupaAuth.openAuthModal()">Únete</button>
+  <div id="nav-user-info" class="nav-user-info">
+    <span id="nav-user-email" class="nav-user-email"></span>
+    <span id="nav-premium-badge" class="nav-premium-tag">Premium</span>
+    <button id="nav-signout-btn" class="nav-signout-btn">Salir</button>
   </div>
   <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">&#x1F319;</button>
 </nav>
@@ -975,6 +1237,37 @@
       <div class="gmod-legend"><span class="gmod-legend-dot"></span> Análisis publicado</div>
       <div class="gmod-esc-hint">Presiona <kbd>Esc</kbd> para cerrar</div>
     </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-modal-overlay" id="auth-modal-overlay">
+  <div class="auth-modal">
+    <button class="auth-modal-close" onclick="window.SupaAuth && window.SupaAuth.closeAuthModal()" aria-label="Cerrar">&#x2715;</button>
+    <div class="auth-modal-title">&#x26BD; Únete</div>
+    <div class="auth-modal-sub">Acceso completo a pronósticos por partido con ELO y análisis táctico</div>
+    <div class="auth-tabs">
+      <button id="auth-tab-login"  class="auth-tab active">Iniciar sesión</button>
+      <button id="auth-tab-signup" class="auth-tab">Crear cuenta</button>
+    </div>
+    <form id="auth-form">
+      <div id="auth-name-wrap" class="auth-form-field" style="display:none">
+        <label for="auth-modal-name">Nombre</label>
+        <input id="auth-modal-name" type="text" placeholder="Tu nombre" autocomplete="name">
+      </div>
+      <div class="auth-form-field">
+        <label for="auth-modal-email">Email</label>
+        <input id="auth-modal-email" type="email" placeholder="tu@email.com" autocomplete="email" required>
+      </div>
+      <div class="auth-form-field">
+        <label for="auth-modal-password">Contraseña</label>
+        <input id="auth-modal-password" type="password" placeholder="Mínimo 8 caracteres" autocomplete="current-password" required>
+      </div>
+      <div id="auth-error" class="auth-error"></div>
+      <button id="auth-submit-btn" type="submit" class="auth-submit-btn">
+        <span id="auth-submit-text">Iniciar sesión</span>
+      </button>
+    </form>
   </div>
 </div>
 
@@ -2342,6 +2635,19 @@
   </div>
 </section>
 
+<!-- §06 PRONÓSTICOS PREMIUM -->
+<section id="pronosticos" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag tag-accent">§06</span>
+      <h2>Pronósticos Fase de Grupos</h2>
+    </div>
+    <div id="pronosticos-content">
+      <!-- Renderizado por js/premium.js según estado de autenticación -->
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -2685,5 +2991,7 @@
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeGruposModal(); });
 
 </script>
+<script src="js/auth.js"></script>
+<script src="js/premium.js"></script>
 </body>
 </html>

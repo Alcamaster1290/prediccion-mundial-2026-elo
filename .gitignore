@@ -23,3 +23,6 @@ assets/xi/_originals/
 # Archivos temporales
 *.tmp
 *.bak
+
+# Supabase credentials — NEVER commit config.js
+js/config.js

@@ -8,7 +8,7 @@ Este documento guía a Claude Code en las tareas del proyecto. Léelo completo a
 
 Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 - Stack: HTML + CSS + JS vanilla (sin frameworks ni build step)
-- Todo el CSS y JS está **inline en `index.html`** — no existen `css/` ni `js/` por separado
+- El CSS y la mayoría del JS están **inline en `index.html`**; el sistema premium usa módulos JS separados en `js/`
 - Fuente de análisis: [AlterFutbol](https://alterfutbol.com)
 - Fuente de ELO de clubes: [worldclubratings.com](http://worldclubratings.com/rankings/elo_men/)
 - Fuente de convocatorias nuevas: [alterfutbol.com/tag/convocatorias-al-mundial-2026/](https://alterfutbol.com/tag/convocatorias-al-mundial-2026/)
@@ -16,6 +16,7 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 ### Estado global (al 22 mayo 2026)
 - **17 selecciones analizadas** con plantel, táctica, figura clave y XI probable
 - **Más de 25 selecciones** aún sin convocatoria oficial
+- **Sistema Premium añadido:** sección §06, Supabase Auth, flujo de pago manual
 
 ---
 
@@ -258,6 +259,16 @@ Grupo D completo (USA, Paraguay, Australia, Turquía) · Canadá · Qatar · Mar
 
 ---
 
+## Reglas de seguridad — sistema premium
+
+- **Nunca incluir** credenciales reales en ningún archivo del repositorio
+- **Nunca commitear** `js/config.js` (está gitignoreado)
+- **Nunca colocar** contenido premium real en `data/*.json` públicos
+- `supabase/04_admin_codes.sql` no debe contener códigos en texto plano
+- La `service_role key` de Supabase **nunca** va en el frontend — solo en el dashboard
+
+---
+
 ## Reglas generales para Claude Code
 
 - **No modificar** los colores CSS por grupo (`--grp-a` … `--grp-l`) — son identidad de cada grupo
@@ -280,6 +291,18 @@ prediccion-mundial-2026-elo/
 ├── .nojekyll               ← GitHub Pages: deshabilita Jekyll
 ├── claude/
 │   └── INSTRUCTIONS.md    ← este archivo
+├── js/
+│   ├── config.example.js  ← template de credenciales Supabase (committeable)
+│   ├── config.js          ← credenciales reales (GITIGNOREADO — no committear)
+│   ├── auth.js            ← cliente Supabase, modal auth, estado de sesión
+│   └── premium.js         ← sección premium, cards, canje de código
+├── supabase/
+│   ├── 01_schema.sql      ← tablas: profiles, premium_codes, predictions
+│   ├── 02_rls.sql         ← Row Level Security
+│   ├── 03_functions.sql   ← RPC redeem_premium_code + trigger
+│   └── 04_admin_codes.sql ← snippets para gestionar códigos manualmente
+├── docs/
+│   └── supabase-premium.md ← referencia técnica del sistema premium
 ├── assets/
 │   ├── flags/             ← {código}.svg  (48 banderas, ISO 3166-1 alpha-3)
 │   ├── players/           ← {código}-{apellido}.jpg  (1 por equipo analizado)
@@ -287,5 +310,6 @@ prediccion-mundial-2026-elo/
 └── data/
     ├── teams.json          ← planteles con ELO por club
     ├── groups.json         ← grupos A-L, fixtures y fechas
-    └── match_context.json  ← narrativa táctica de los 72 partidos de grupos
+    ├── match_context.json  ← narrativa táctica de los 72 partidos de grupos
+    └── predictions.mock.json ← mock para desarrollo local (no fuente real)
 ```

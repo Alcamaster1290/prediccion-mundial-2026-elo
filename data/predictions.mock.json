@@ -1,0 +1,53 @@
+{
+  "_warning": "MOCK DATA — Solo para desarrollo local. NO usar como fuente premium real.",
+  "predictions": [
+    {
+      "id": "mock-1",
+      "match_id": "grp-a-j1-kor-cze",
+      "group_code": "A",
+      "matchday": 1,
+      "match_order": 2,
+      "team_a": "kor",
+      "team_b": "cze",
+      "team_a_win_probability": 52.0,
+      "draw_probability": 25.0,
+      "team_b_win_probability": 23.0,
+      "global_tag": "Duelo parejo",
+      "team_a_context": "Corea llega con Son como líder y un 3-4-2-1 de presión alta.",
+      "team_b_context": "Chequia clasifica por repechaje con solidez defensiva europea.",
+      "explanation": "Ventaja táctica para Corea, pero Chequia puede aguantar y contraatacar."
+    },
+    {
+      "id": "mock-2",
+      "match_id": "grp-b-j1-can-bih",
+      "group_code": "B",
+      "matchday": 1,
+      "match_order": 1,
+      "team_a": "can",
+      "team_b": "bih",
+      "team_a_win_probability": 44.0,
+      "draw_probability": 28.0,
+      "team_b_win_probability": 28.0,
+      "global_tag": "Favorito local vs debutante",
+      "team_a_context": "Canadá juega de local en Toronto con apoyo masivo del público.",
+      "team_b_context": "Bosnia debuta en el Mundial 2026 tras eliminar a Italia en playoffs.",
+      "explanation": "Canadá tiene ventaja de local pero Bosnia es impredecible con Džeko."
+    },
+    {
+      "id": "mock-3",
+      "match_id": "grp-c-j1-bra-mar",
+      "group_code": "C",
+      "matchday": 1,
+      "match_order": 1,
+      "team_a": "bra",
+      "team_b": "mar",
+      "team_a_win_probability": 61.0,
+      "draw_probability": 22.0,
+      "team_b_win_probability": 17.0,
+      "global_tag": "Favorito absoluto",
+      "team_a_context": "Brasil con Ancelotti y el regreso de Neymar — máxima expectativa.",
+      "team_b_context": "Marruecos repite el nivel de Qatar 2022 con la misma base defensiva.",
+      "explanation": "Brasil favorito claro pero Marruecos sabe cómo cerrar espacios y sufrir."
+    }
+  ]
+}

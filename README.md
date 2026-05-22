@@ -168,4 +168,80 @@ npx serve .
 
 ---
 
-*Datos actualizados al 21 de mayo de 2026. Fuentes: AlterFutbol · worldclubratings.com · FIFA*
+*Datos actualizados al 22 de mayo de 2026. Fuentes: AlterFutbol · worldclubratings.com · FIFA*
+
+---
+
+## Sistema Premium — Pronósticos Fase de Grupos
+
+### Por qué Supabase + GitHub Pages
+
+El sitio sigue siendo 100% estático en GitHub Pages (no hay servidor propio). La autenticación y los datos premium los gestiona Supabase, que actúa como backend-as-a-service. Esta arquitectura permite:
+
+- **Costo cero** de hosting para el frontend
+- **Seguridad real** via Row Level Security (RLS) en PostgreSQL
+- **Sin mantenimiento** de servidores propios
+- **Escalabilidad** automática si el tráfico crece
+
+### Por qué RLS es suficiente como capa de seguridad
+
+La `anon key` de Supabase puede estar en el frontend porque:
+1. RLS garantiza que cada usuario solo lee lo que le corresponde
+2. La tabla `premium_codes` no tiene política SELECT pública — nadie puede leerla
+3. `redeem_premium_code` es una función RPC `SECURITY DEFINER` — bypass controlado de RLS
+4. Las predicciones premium solo son accesibles si `profiles.is_premium = true`
+
+**NUNCA coloques la `service_role key` en el frontend.** Solo pertenece al dashboard de Supabase.
+
+### Configurar Supabase
+
+1. Crear proyecto en [supabase.com](https://supabase.com)
+2. Ir a **Settings → API** y copiar:
+   - `Project URL` → `SUPABASE_URL`
+   - `anon public` key → `SUPABASE_ANON_KEY`
+3. Copiar `js/config.example.js` como `js/config.js` y rellenar las credenciales
+4. Ejecutar los SQL en **Supabase Dashboard → SQL Editor** en orden:
+   ```
+   supabase/01_schema.sql
+   supabase/02_rls.sql
+   supabase/03_functions.sql
+   ```
+
+### Crear códigos premium manualmente
+
+1. Decidir el código en texto plano (ej: `WWCJUN2026-JUAN`)
+2. En Supabase SQL Editor:
+   ```sql
+   INSERT INTO public.premium_codes (code_hash, notes)
+   VALUES (
+     encode(digest('WWCJUN2026-JUAN', 'sha256'), 'hex'),
+     'Pago Yape S/15 - Juan Pérez - 1 jun 2026'
+   );
+   ```
+3. Enviar el código en texto plano al usuario por email
+4. **Nunca almacenar el código en texto plano** en ningún sistema
+
+### Validar que un usuario es premium
+
+```sql
+SELECT id, email, is_premium, updated_at
+FROM public.profiles
+WHERE is_premium = true;
+```
+
+### Cómo probar localmente
+
+```bash
+python3 -m http.server 8080
+# o
+npx serve .
+```
+Abrir `http://localhost:8080`. Sin `config.js` real, la sección premium mostrará estado de "demo activo" y vista locked.
+
+### Qué falta para producción
+
+- [ ] Configurar Supabase email templates (confirmación, reset de contraseña)
+- [ ] Habilitar confirmación de email en Supabase Auth settings
+- [ ] Insertar predicciones reales en la tabla `predictions` (con `published = true`)
+- [ ] Configurar dominio personalizado (opcional)
+- [ ] Activar protección rate-limit en la RPC (Supabase lo gestiona por plan)
