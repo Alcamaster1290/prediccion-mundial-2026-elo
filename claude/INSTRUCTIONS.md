@@ -13,9 +13,10 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 - Fuente de ELO de clubes: [worldclubratings.com](http://worldclubratings.com/rankings/elo_men/)
 - Fuente de convocatorias nuevas: [alterfutbol.com/tag/convocatorias-al-mundial-2026/](https://alterfutbol.com/tag/convocatorias-al-mundial-2026/)
 
-### Estado global (al 22 mayo 2026)
+### Estado global (al 23 mayo 2026)
 - **18 selecciones analizadas** con plantel, táctica, figura clave y XI probable
-- **30 selecciones** aún sin convocatoria oficial
+- **3 selecciones con convocatoria anunciada — carga manual pendiente:** Japón (15 may), Túnez (15 may), Curazao (18 may)
+- **27 selecciones** aún sin convocatoria oficial
 - **Sistema Premium añadido:** sección §06, Supabase Auth, flujo de pago manual
 
 ---
@@ -137,6 +138,25 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 ## Tarea 4 — Añadir una nueva convocatoria al sitio
 
 Cuando haya una nueva convocatoria lista para analizar, seguir este flujo exacto:
+
+### Paso 0 — Verificar si hay enlace disponible
+
+**Si se recibe URL de AlterFutbol:** continuar con el Paso 1 normalmente.
+
+**Si NO hay URL disponible (carga manual):** NO proceder con el análisis completo. En su lugar:
+1. Confirmar qué archivos faltan para poder cargar:
+   - Resumen de la convocatoria (lista de jugadores, DT, sistema, figura clave, ausencias)
+   - Imagen del XI Probable → `assets/xi/{código}-xi.png`
+   - Imagen del jugador estrella → `assets/players/{código}-{apellido}.jpg`
+2. Actualizar la cronología §05 y la sección de pendientes en `index.html` con la fecha de anuncio conocida y badge `⏳ Carga manual`.
+3. Esperar a que el usuario proporcione los archivos necesarios antes de completar el Paso 1 en adelante.
+
+> **Selecciones con carga manual pendiente (al 23 mayo 2026):**
+> - 🇯🇵 Japón — anunciada el 15 may 2026
+> - 🇹🇳 Túnez — anunciada el 15 may 2026
+> - 🇨🇼 Curazao — anunciada el 18 may 2026
+
+---
 
 ### Paso 1 — Leer el artículo de AlterFutbol
 - Plantilla completa (número, posición, jugador, edad, club)
@@ -356,10 +376,17 @@ git push
 
 ---
 
-## Selecciones pendientes (al 22 mayo 2026)
+## Selecciones pendientes (al 23 mayo 2026)
+
+### Con convocatoria anunciada — carga manual pendiente (sin enlace disponible)
+| Selección | Fecha anuncio | Archivos necesarios |
+|---|---|---|
+| 🇯🇵 Japón | 15 may 2026 | Resumen lista · `jpn-xi.png` · `jpn-{apellido}.jpg` |
+| 🇹🇳 Túnez | 15 may 2026 | Resumen lista · `tun-xi.png` · `tun-{apellido}.jpg` |
+| 🇨🇼 Curazao | 18 may 2026 | Resumen lista · `cuw-xi.png` · `cuw-{apellido}.jpg` |
 
 ### Sin convocatoria oficial publicada aún
-Grupo D completo (USA, Paraguay, Australia, Turquía) · Canadá · Qatar · Marruecos · Países Bajos · Japón · Túnez · Egipto · Irán · España · Arabia Saudita · Uruguay · Senegal · Irak · Argentina · Argelia · Jordania · Uzbekistán · Colombia · Croacia · Ghana · Panamá · Curazao · Ecuador · México · Sudáfrica · Chequia
+Grupo D completo (USA, Paraguay, Australia, Turquía) · Canadá · Qatar · Marruecos · Países Bajos · Egipto · Irán · España · Arabia Saudita · Uruguay · Senegal · Irak · Argentina · Argelia · Jordania · Uzbekistán · Colombia · Croacia · Ghana · Panamá · Ecuador · México · Sudáfrica · Chequia
 
 ---
 
