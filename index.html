@@ -207,7 +207,9 @@
     font-size: 10px; font-weight: 800; letter-spacing: .12em;
     text-transform: uppercase; color: var(--fg);
     display: flex; align-items: center; gap: .4rem; border-bottom: 2px solid;
+    cursor: pointer; transition: opacity .15s;
   }
+  .gmod-group-header:hover { opacity: .75; }
   .gmod-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
   .gmod-team {
     display: flex; align-items: center; gap: .5rem;
@@ -1485,14 +1487,6 @@
         <div class="fmt-num">72</div>
         <div class="fmt-label">Partidos fase<br>de grupos</div>
       </div>
-      <div class="fmt-card">
-        <div class="fmt-num">3</div>
-        <div class="fmt-label">Países anfitriones<br>USA · MEX · CAN</div>
-      </div>
-      <div class="fmt-card">
-        <div class="fmt-num">16</div>
-        <div class="fmt-label">Sedes<br>11 USA · 3 MEX · 2 CAN</div>
-      </div>
     </div>
 
     <div class="info-card" style="margin-bottom:1.5rem">
@@ -1686,7 +1680,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(229,92,92,.18)">A</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-a);margin-bottom:.3rem">§03 · Grupo Analizado</div>
         <h2>Grupo A</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy"> Sudáfrica &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy"> Corea del Sur &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cze.svg" alt="Chequia" loading="lazy"> Chequia</div>
       </div>
@@ -1748,7 +1741,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(59,139,235,.25)">B</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-b);margin-bottom:.3rem">§04 · Grupo Analizado</div>
         <h2>Grupo B</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/can.svg" alt="Canadá" loading="lazy"> Canadá &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/bih.svg" alt="Bosnia y Herz." loading="lazy"> Bosnia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/qat.svg" alt="Qatar" loading="lazy"> Qatar &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/sui.svg" alt="Suiza" loading="lazy"> Suiza</div>
       </div>
@@ -1844,7 +1836,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(16,185,129,.2)">C</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-c);margin-bottom:.3rem">§05 · Grupo Analizado</div>
         <h2>Grupo C</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/bra.svg" alt="Brasil" loading="lazy"> Brasil &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/mar.svg" alt="Marruecos" loading="lazy"> Marruecos &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/hti.svg" alt="Haití" loading="lazy"> Haití &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/sco.svg" alt="Escocia" loading="lazy"> Escocia</div>
       </div>
@@ -1980,7 +1971,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(249,115,22,.2)">E</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-e);margin-bottom:.3rem">§06 · Grupo Analizado</div>
         <h2>Grupo E</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> Alemania &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cuw.svg" alt="Curazao" loading="lazy"> Curazao &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> Costa de Marfil &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/ecu.svg" alt="Ecuador" loading="lazy"> Ecuador</div>
       </div>
@@ -2076,7 +2066,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(245,158,11,.2)">F</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-f);margin-bottom:.3rem">§07 · Grupo Analizado</div>
         <h2>Grupo F</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/ned.svg" alt="Países Bajos" loading="lazy"> Países Bajos &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/jpn.svg" alt="Japón" loading="lazy"> Japón &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> Suecia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/tun.svg" alt="Túnez" loading="lazy"> Túnez</div>
       </div>
@@ -2132,7 +2121,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(139,92,246,.2)">G</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-g);margin-bottom:.3rem">§08 · Grupo Analizado</div>
         <h2>Grupo G</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/bel.svg" alt="Bélgica" loading="lazy"> Bélgica &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/egy.svg" alt="Egipto" loading="lazy"> Egipto &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/irn.svg" alt="Irán" loading="lazy"> Irán &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/nzl.svg" alt="Nueva Zelanda" loading="lazy"> Nueva Zelanda</div>
       </div>
@@ -2228,7 +2216,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(236,72,153,.18)">H</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-h);margin-bottom:.3rem">§09 · Grupo Analizado</div>
         <h2>Grupo H</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/esp.svg" alt="España" loading="lazy"> España &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cpv.svg" alt="Cabo Verde" loading="lazy"> Cabo Verde &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/ksa.svg" alt="Arabia Saudita" loading="lazy"> Arabia Saudita &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/ury.svg" alt="Uruguay" loading="lazy"> Uruguay</div>
       </div>
@@ -2284,7 +2271,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(6,182,212,.18)">I</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-i);margin-bottom:.3rem">§10 · Grupo Analizado</div>
         <h2>Grupo I</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy"> Francia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/sen.svg" alt="Senegal" loading="lazy"> Senegal &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/irq.svg" alt="Irak" loading="lazy"> Irak &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> Noruega</div>
       </div>
@@ -2380,7 +2366,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(132,204,22,.15)">J</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-j);margin-bottom:.3rem">§11 · Grupo Analizado</div>
         <h2>Grupo J</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/arg.svg" alt="Argentina" loading="lazy"> Argentina &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/alg.svg" alt="Argelia" loading="lazy"> Argelia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/aut.svg" alt="Austria" loading="lazy"> Austria &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/jor.svg" alt="Jordania" loading="lazy"> Jordania</div>
       </div>
@@ -2436,7 +2421,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(217,119,6,.18)">K</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-k);margin-bottom:.3rem">§12 · Grupo Analizado</div>
         <h2>Grupo K</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/por.svg" alt="Portugal" loading="lazy"> Portugal &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cod.svg" alt="RD Congo" loading="lazy"> RD del Congo &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/uzb.svg" alt="Uzbekistán" loading="lazy"> Uzbekistán &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/col.svg" alt="Colombia" loading="lazy"> Colombia</div>
       </div>
@@ -2532,7 +2516,6 @@
     <div class="group-section-header">
       <div class="group-big-label" style="color:rgba(148,163,184,.15)">L</div>
       <div class="group-section-info">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grp-l);margin-bottom:.3rem">§13 · Grupo Analizado</div>
         <h2>Grupo L</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/eng.svg" alt="Inglaterra" loading="lazy"> Inglaterra &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cro.svg" alt="Croacia" loading="lazy"> Croacia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/gha.svg" alt="Ghana" loading="lazy"> Ghana &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/pan.svg" alt="Panamá" loading="lazy"> Panamá</div>
       </div>
@@ -3215,6 +3198,17 @@
     var s = document.getElementById('grupos-search');
     s.value = ''; filterGrupos('');
   }
+  function goToGrupo(letter) {
+    closeGruposModal();
+    var target = document.getElementById('grupo-' + letter) || document.getElementById('grupos');
+    if (target) setTimeout(function() { target.scrollIntoView({ behavior: 'smooth' }); }, 120);
+  }
+  document.getElementById('grupos-modal-body').addEventListener('click', function(e) {
+    var hdr = e.target.closest('.gmod-group-header');
+    if (!hdr) return;
+    var letter = hdr.textContent.trim().split(' ')[1].toLowerCase();
+    goToGrupo(letter);
+  });
   function filterGrupos(q) {
     var term = q.toLowerCase().trim();
     var groups = document.querySelectorAll('.gmod-group');
