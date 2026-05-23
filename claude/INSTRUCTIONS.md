@@ -25,7 +25,7 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 ### Convención de nombres
 `{código-equipo}-{apellido}.jpg`
 
-### Estado actual (17 imágenes disponibles ✅ · 1 pendiente ⏳)
+### Estado actual (18 imágenes disponibles ✅)
 
 | Archivo | Jugador | Selección |
 |---|---|---|
@@ -46,7 +46,7 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 | `cod-mbemba.jpg` | Chancel Mbemba | RD del Congo |
 | `ger-wirtz.jpg` | Florian Wirtz | Alemania |
 | `nor-haaland.jpg` | Erling Haaland | Noruega |
-| `eng-kane.jpg` ⏳ | Harry Kane | Inglaterra |
+| `eng-kane.jpg` | Harry Kane | Inglaterra |
 
 ### Especificaciones técnicas
 - Formato: `.jpg` o `.webp` (renombrar si es necesario)
