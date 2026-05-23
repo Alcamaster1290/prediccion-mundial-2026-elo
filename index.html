@@ -915,6 +915,16 @@
     font-family: 'JetBrains Mono', monospace; font-size: 10px;
     font-weight: 700; flex-shrink: 0; width: 20px; text-align: center;
   }
+  .team-fixtures .fixture-cta { cursor: pointer; position: relative; transition: border-left-color .15s; }
+  .team-fixtures .fixture-cta:hover { border-left-color: var(--accent) !important; }
+  .team-fixtures .fixture-cta::after {
+    content: '⚽ Ver pronóstico →';
+    position: absolute; bottom: .4rem; right: .6rem;
+    font-size: 10px; font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+    color: var(--accent); opacity: 0; transition: opacity .15s;
+  }
+  .team-fixtures .fixture-cta:hover::after { opacity: 1; }
 
   /* --- THEME TOGGLE BTN --- */
   .theme-btn {
@@ -999,13 +1009,16 @@
     margin-bottom: .3rem; letter-spacing: .06em; text-transform: uppercase;
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
   }
-  .auth-form-field input {
+  .auth-form-field input,
+  .auth-form-field select {
     width: 100%; background: var(--surface); border: 1px solid var(--border);
     color: var(--text); border-radius: 6px; padding: .5rem .75rem;
     font-size: 14px; outline: none; transition: border-color .2s;
-    box-sizing: border-box;
+    box-sizing: border-box; font-family: inherit;
   }
-  .auth-form-field input:focus { border-color: var(--accent); }
+  .auth-form-field select { appearance: none; cursor: pointer; }
+  .auth-form-field input:focus,
+  .auth-form-field select:focus { border-color: var(--accent); }
   .auth-submit-btn {
     width: 100%; background: var(--accent); color: #fff; border: none;
     border-radius: 6px; padding: .65rem; cursor: pointer;
@@ -1347,6 +1360,71 @@
       <div id="auth-name-wrap" class="auth-form-field" style="display:none">
         <label for="auth-modal-name">Nombre</label>
         <input id="auth-modal-name" type="text" placeholder="Tu nombre" autocomplete="name">
+      </div>
+      <div id="auth-country-wrap" class="auth-form-field" style="display:none">
+        <label for="auth-modal-country">País</label>
+        <select id="auth-modal-country">
+          <option value="">— Selecciona tu país —</option>
+          <option value="Alemania">Alemania</option>
+          <option value="Arabia Saudita">Arabia Saudita</option>
+          <option value="Argelia">Argelia</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Australia">Australia</option>
+          <option value="Austria">Austria</option>
+          <option value="Bélgica">Bélgica</option>
+          <option value="Bolivia">Bolivia</option>
+          <option value="Bosnia y Herzegovina">Bosnia y Herzegovina</option>
+          <option value="Brasil">Brasil</option>
+          <option value="Cabo Verde">Cabo Verde</option>
+          <option value="Canadá">Canadá</option>
+          <option value="Catar">Catar</option>
+          <option value="Chile">Chile</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Corea del Sur">Corea del Sur</option>
+          <option value="Costa de Marfil">Costa de Marfil</option>
+          <option value="Costa Rica">Costa Rica</option>
+          <option value="Croacia">Croacia</option>
+          <option value="Curazao">Curazao</option>
+          <option value="Ecuador">Ecuador</option>
+          <option value="Egipto">Egipto</option>
+          <option value="El Salvador">El Salvador</option>
+          <option value="Escocia">Escocia</option>
+          <option value="España">España</option>
+          <option value="Estados Unidos">Estados Unidos</option>
+          <option value="Francia">Francia</option>
+          <option value="Ghana">Ghana</option>
+          <option value="Guatemala">Guatemala</option>
+          <option value="Haití">Haití</option>
+          <option value="Honduras">Honduras</option>
+          <option value="Inglaterra">Inglaterra</option>
+          <option value="Irak">Irak</option>
+          <option value="Irán">Irán</option>
+          <option value="Jamaica">Jamaica</option>
+          <option value="Japón">Japón</option>
+          <option value="Jordania">Jordania</option>
+          <option value="Marruecos">Marruecos</option>
+          <option value="México">México</option>
+          <option value="Noruega">Noruega</option>
+          <option value="Nueva Zelanda">Nueva Zelanda</option>
+          <option value="Países Bajos">Países Bajos</option>
+          <option value="Panamá">Panamá</option>
+          <option value="Paraguay">Paraguay</option>
+          <option value="Perú">Perú</option>
+          <option value="Portugal">Portugal</option>
+          <option value="RD Congo">RD Congo</option>
+          <option value="República Checa">República Checa</option>
+          <option value="Senegal">Senegal</option>
+          <option value="Sudáfrica">Sudáfrica</option>
+          <option value="Suecia">Suecia</option>
+          <option value="Suiza">Suiza</option>
+          <option value="Trinidad y Tobago">Trinidad y Tobago</option>
+          <option value="Túnez">Túnez</option>
+          <option value="Turquía">Turquía</option>
+          <option value="Uruguay">Uruguay</option>
+          <option value="Uzbekistán">Uzbekistán</option>
+          <option value="Venezuela">Venezuela</option>
+          <option value="Otro">Otro</option>
+        </select>
       </div>
       <div class="auth-form-field">
         <label for="auth-modal-email">Email</label>
@@ -2794,6 +2872,17 @@
     }
   });
 
+  // ── FIXTURE CARD CLICK ────────────────────────────────────────────────────
+  window.handleFixtureClick = function() {
+    var state = window.__authState || {};
+    if (!state.user) {
+      if (window.SupaAuth) window.SupaAuth.openAuthModal('', 'signup');
+    } else {
+      var el = document.getElementById('pronosticos');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // ── CALENDAR ──────────────────────────────────────────────────────────────
   (function() {
     var NAMES = {
@@ -2991,7 +3080,7 @@
             timeStr = (lh < 10 ? '0' : '') + lh + ':' + (lmin < 10 ? '0' : '') + lmin;
           }
           var badges = m.simultaneous ? '<div class="cal-badges"><span class="cal-badge cal-simul">Simultáneo</span></div>' : '';
-          html += '<div class="cal-match" style="border-left-color:' + m.groupColor + '">'
+          html += '<div class="cal-match fixture-cta" style="border-left-color:' + m.groupColor + '" onclick="handleFixtureClick()">'
             + '<div class="tf-jornada" style="color:' + m.groupColor + '">J' + m.jornada + '</div>'
             + '<div class="tf-date-time">' + labelDate(m.date) + '<br>' + timeStr + '</div>'
             + '<div class="cal-teams">'

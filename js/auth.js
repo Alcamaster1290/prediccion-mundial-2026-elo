@@ -39,13 +39,13 @@
     return ref.data || null;
   }
 
-  async function signUp(email, password, fullName) {
+  async function signUp(email, password, fullName, country) {
     var c = getClient();
     if (!c) return { error: { message: 'Supabase no configurado' } };
     return await c.auth.signUp({
       email: email,
       password: password,
-      options: { data: { full_name: fullName } }
+      options: { data: { full_name: fullName, country: country || '' } }
     });
   }
 
@@ -63,11 +63,12 @@
 
   // ── Modal de autenticación ───────────────────────────────────
 
-  function openAuthModal(onSuccess) {
+  function openAuthModal(onSuccess, tab) {
     var overlay = document.getElementById('auth-modal-overlay');
     if (!overlay) return;
     overlay.classList.add('open');
     overlay.dataset.onSuccess = onSuccess || '';
+    if (tab) setAuthTab(tab);
     document.getElementById('auth-modal-email').focus();
     document.getElementById('auth-error').textContent = '';
   }
@@ -78,19 +79,22 @@
   }
 
   function setAuthTab(tab) {
-    var loginTab  = document.getElementById('auth-tab-login');
-    var signupTab = document.getElementById('auth-tab-signup');
-    var nameField = document.getElementById('auth-name-wrap');
-    var btnText   = document.getElementById('auth-submit-text');
+    var loginTab     = document.getElementById('auth-tab-login');
+    var signupTab    = document.getElementById('auth-tab-signup');
+    var nameField    = document.getElementById('auth-name-wrap');
+    var countryField = document.getElementById('auth-country-wrap');
+    var btnText      = document.getElementById('auth-submit-text');
     if (tab === 'login') {
       loginTab.classList.add('active');
       signupTab.classList.remove('active');
       nameField.style.display = 'none';
+      if (countryField) countryField.style.display = 'none';
       btnText.textContent = 'Iniciar sesión';
     } else {
       signupTab.classList.add('active');
       loginTab.classList.remove('active');
       nameField.style.display = 'block';
+      if (countryField) countryField.style.display = 'block';
       btnText.textContent = 'Crear cuenta';
     }
     document.getElementById('auth-error').textContent = '';
@@ -103,6 +107,8 @@
     var email    = document.getElementById('auth-modal-email').value.trim();
     var password = document.getElementById('auth-modal-password').value;
     var fullName = document.getElementById('auth-modal-name').value.trim();
+    var countryEl = document.getElementById('auth-modal-country');
+    var country  = countryEl ? countryEl.value : '';
     var errEl    = document.getElementById('auth-error');
     var btn      = document.getElementById('auth-submit-btn');
 
@@ -120,7 +126,7 @@
     errEl.textContent = '';
 
     var result = tab === 'signup'
-      ? await signUp(email, password, fullName)
+      ? await signUp(email, password, fullName, country)
       : await signIn(email, password);
 
     btn.disabled = false;
@@ -150,6 +156,8 @@
     var user    = await getCurrentUser();
     var profile = user ? await getProfile(user.id) : null;
     var isPrem  = profile && profile.is_premium;
+
+    window.__authState = { user: user, isPremium: !!isPrem };
 
     updateNavAuthUI(user, isPrem);
 
@@ -225,6 +233,7 @@
     signOut: signOut,
     openAuthModal: openAuthModal,
     closeAuthModal: closeAuthModal,
+    setAuthTab: setAuthTab,
     refreshAuthState: refreshAuthState,
     init: init
   };
