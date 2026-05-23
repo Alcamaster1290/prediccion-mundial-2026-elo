@@ -778,6 +778,99 @@
     .cal-teams { font-size: 13px; }
   }
 
+  /* ─── MOBILE ≤ 600px ─────────────────────────────────────────── */
+  @media (max-width: 600px) {
+
+    /* Layout base */
+    .container { padding: 0 1rem; }
+    section { padding: 2.5rem 0; }
+    nav { padding: 0 .5rem; }
+    nav a, .grupos-nav-btn { padding: .85rem .75rem; font-size: 12px; }
+
+    /* Hero */
+    .hero { padding: 3.5rem 1rem 3rem; }
+
+    /* Section headers */
+    .section-header { margin-bottom: 1.5rem; }
+    h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+
+    /* §01 Formato – 2 columnas en móvil */
+    .format-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+    .fmt-num { font-size: 2.5rem; }
+    .fmt-label { font-size: 12px; }
+    .fmt-card { padding: 1.1rem 1rem; }
+
+    /* §02 Grupos */
+    .groups-grid { grid-template-columns: repeat(2, 1fr); }
+    .group-card { padding: 1rem; }
+
+    /* §03 Team section y header */
+    .team-section { margin-bottom: 2.5rem; padding-bottom: 2.5rem; }
+    .team-header {
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+    .team-flag-big img { height: 3.5rem; }
+    .team-name { font-size: clamp(1.6rem, 9vw, 2.4rem); }
+    .team-sub { font-size: 11px; letter-spacing: .12em; margin-top: .25rem; }
+    .team-pills { gap: .4rem; margin-top: .5rem; }
+    .team-pill { font-size: 11px; padding: .15rem .55rem; }
+
+    /* Mini-strip del jugador estrella visible en móvil */
+    .star-card {
+      display: flex;
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
+      padding: .6rem .9rem;
+      gap: .75rem;
+    }
+    .star-img-wrap { width: 40px; height: 40px; }
+    .star-name { font-size: 13px; }
+    .star-meta { font-size: 10px; }
+    .star-label { font-size: 8px; }
+
+    /* Info cards */
+    .info-card { padding: 1rem; }
+    .tactic-prose { font-size: 14px; line-height: 1.65; }
+    .absence-list li { font-size: 13px; }
+    .absence-reason { font-size: 12px; }
+
+    /* Squad table: ocultar columnas no esenciales */
+    .squad-wrap { border-radius: 8px; }
+    .squad-table { font-size: 12.5px; }
+    .squad-table thead th { padding: .5rem .6rem; font-size: 10px; letter-spacing: .1em; }
+    .squad-table td { padding: .4rem .6rem; }
+    /* Ocultar Club, País — mantener #, Pos, Jugador, Edad, ELO, Titular */
+    .squad-table th:nth-child(5),
+    .squad-table td:nth-child(5),
+    .squad-table th:nth-child(6),
+    .squad-table td:nth-child(6) { display: none; }
+    /* ELO y Titular: ocultar en pantallas muy pequeñas */
+    .squad-table th:nth-child(7),
+    .squad-table td:nth-child(7),
+    .squad-table th:nth-child(8),
+    .squad-table td:nth-child(8) { display: none; }
+    .player-name { font-size: 13px; }
+
+    /* Group section header (§03 subsecciones) */
+    .group-section-header { padding: .5rem 0; margin-bottom: 1.5rem; gap: .6rem; }
+    .group-big-label { font-size: 3rem; }
+    .group-section-info h2 { font-size: 1.6rem; }
+
+    /* XI image */
+    .xi-img-wrap { padding: .85rem; border-radius: 8px; }
+
+  }
+
+  /* ─── VERY SMALL ≤ 380px ─────────────────────────────────────── */
+  @media (max-width: 380px) {
+    .team-name { font-size: 1.6rem; }
+    .format-grid { grid-template-columns: 1fr; }
+    nav a, .grupos-nav-btn { padding: .75rem .55rem; font-size: 11px; }
+  }
+
   /* --- LIGHT MODE --- */
   [data-theme="light"] {
     --bg:      #f0f4f8;
