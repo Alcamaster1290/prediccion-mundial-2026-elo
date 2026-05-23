@@ -14,8 +14,8 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 - Fuente de convocatorias nuevas: [alterfutbol.com/tag/convocatorias-al-mundial-2026/](https://alterfutbol.com/tag/convocatorias-al-mundial-2026/)
 
 ### Estado global (al 22 mayo 2026)
-- **17 selecciones analizadas** con plantel, táctica, figura clave y XI probable
-- **Más de 25 selecciones** aún sin convocatoria oficial
+- **18 selecciones analizadas** con plantel, táctica, figura clave y XI probable
+- **30 selecciones** aún sin convocatoria oficial
 - **Sistema Premium añadido:** sección §06, Supabase Auth, flujo de pago manual
 
 ---
@@ -25,7 +25,7 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 ### Convención de nombres
 `{código-equipo}-{apellido}.jpg`
 
-### Estado actual (17 imágenes disponibles ✅)
+### Estado actual (17 imágenes disponibles ✅ · 1 pendiente ⏳)
 
 | Archivo | Jugador | Selección |
 |---|---|---|
@@ -46,6 +46,7 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 | `cod-mbemba.jpg` | Chancel Mbemba | RD del Congo |
 | `ger-wirtz.jpg` | Florian Wirtz | Alemania |
 | `nor-haaland.jpg` | Erling Haaland | Noruega |
+| `eng-kane.jpg` ⏳ | Harry Kane | Inglaterra |
 
 ### Especificaciones técnicas
 - Formato: `.jpg` o `.webp` (renombrar si es necesario)
@@ -60,13 +61,13 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 ### Convención de nombres
 `{código-equipo}-xi.png`
 
-### Estado actual (17 imágenes disponibles ✅)
+### Estado actual (18 imágenes disponibles ✅)
 
 Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se muestra dentro de `.xi-img-wrap` **antes de la tabla de plantel** en cada sección.
 
 > **Nota:** El bloque de texto de la formación (`.xi-row`) fue eliminado del HTML en mayo 2026. Solo se muestra la **imagen** del XI probable — no el texto con posiciones.
 
-### Estado de la columna Titular (al 21 mayo 2026)
+### Estado de la columna Titular (al 22 mayo 2026)
 
 | Selección | `titl-yes` | Nota |
 |---|---|---|
@@ -85,6 +86,9 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 | Austria | 10 | ⚠️ Marko Arnautovic (XI) no figura en la lista oficial |
 | Portugal | 11 | ✅ completo |
 | RD del Congo | 9 | ⚠️ Yoanne Wissa y Cédric Bakambu (XI) no figuran en la lista oficial |
+| Alemania | 11 | ✅ completo |
+| Noruega | 11 | ✅ completo |
+| Inglaterra | 11 | ✅ completo · Pickford, James, Guéhi, Stones, Livramento, Rice, Mainoo, Saka, Bellingham, Rashford, Kane |
 
 > La columna Titular se rellena usando el XI de AlterFutbol como referencia. Si un jugador del XI no aparece en la lista de convocados → no se puede marcar, el conteo queda por debajo de 11.
 
@@ -118,8 +122,9 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 | 🇦🇹 Austria | https://www.alterfutbol.com/europa/austria/austria-confirmo-sus-convocados-para-el-mundial-2026-analisis-tactico-mejores-jugadores-y-lo-que-hay-que-saber/ |
 | 🇵🇹 Portugal | https://www.alterfutbol.com/europa/portugal/portugal-confirmo-sus-convocados-para-el-mundial-2026/ |
 | 🇨🇩 RD del Congo | https://www.alterfutbol.com/africa/republica-democratica-del-congo/rd-congo-confirmo-sus-26-convocados-para-el-mundial-2026-analisis-su-historia-y-mejores-jugadores/ |
-| 🇩🇪 Alemania | Buscar en https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
-| 🇳🇴 Noruega | Buscar en https://www.alterfutbol.com/tag/convocatorias-al-mundial-2026/ |
+| 🇩🇪 Alemania | https://www.alterfutbol.com/europa/alemania/ |
+| 🇳🇴 Noruega | https://www.alterfutbol.com/europa/noruega/ |
+| 🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra | https://www.alterfutbol.com/europa/inglaterra/con-sorpresas-y-ausencias-inglaterra-anuncio-sus-convocados-al-mundial/ |
 
 ### Noticias generales del torneo
 | Tema | URL |
@@ -255,14 +260,14 @@ git push origin main
 ## Selecciones pendientes (al 22 mayo 2026)
 
 ### Sin convocatoria oficial publicada aún
-Grupo D completo (USA, Paraguay, Australia, Turquía) · Canadá · Qatar · Marruecos · Países Bajos · Japón · Túnez · Egipto · Irán · España · Arabia Saudita · Uruguay · Senegal · Irak · Argentina · Argelia · Jordania · Uzbekistán · Colombia · Inglaterra · Croacia · Ghana · Panamá · Curazao · Ecuador · México · Sudáfrica · Chequia
+Grupo D completo (USA, Paraguay, Australia, Turquía) · Canadá · Qatar · Marruecos · Países Bajos · Japón · Túnez · Egipto · Irán · España · Arabia Saudita · Uruguay · Senegal · Irak · Argentina · Argelia · Jordania · Uzbekistán · Colombia · Croacia · Ghana · Panamá · Curazao · Ecuador · México · Sudáfrica · Chequia
 
 ---
 
 ## Reglas de seguridad — sistema premium
 
-- **Nunca incluir** credenciales reales en ningún archivo del repositorio
-- **Nunca commitear** `js/config.js` (está gitignoreado)
+- **Nunca incluir** la `service_role key` de Supabase en ningún archivo del repositorio
+- `js/config.js` contiene solo la **anon key** (pública y segura) — está commiteado intencionalmente
 - **Nunca colocar** contenido premium real en `data/*.json` públicos
 - `supabase/04_admin_codes.sql` no debe contener códigos en texto plano
 - La `service_role key` de Supabase **nunca** va en el frontend — solo en el dashboard
