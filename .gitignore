@@ -24,5 +24,5 @@ assets/xi/_originals/
 *.tmp
 *.bak
 
-# Supabase credentials — NEVER commit config.js
-js/config.js
+# Supabase config: anon key is public-safe — committed intentionally
+# js/config.js
