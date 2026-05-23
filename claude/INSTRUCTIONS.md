@@ -46,10 +46,10 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 | `cod-mbemba.jpg` | Chancel Mbemba | RD del Congo |
 | `ger-wirtz.jpg` | Florian Wirtz | Alemania |
 | `nor-haaland.jpg` | Erling Haaland | Noruega |
-| `eng-kane.jpg` | Harry Kane | Inglaterra |
+| `eng-kane.webp` | Harry Kane | Inglaterra |
 
 ### Especificaciones técnicas
-- Formato: `.jpg` o `.webp` (renombrar si es necesario)
+- Formato: `.jpg` o `.webp` (ambos válidos — usar el que esté disponible)
 - Resolución mínima: **400 × 500 px** (portrait, cabeza y hombros)
 - El CSS ya usa `object-fit: cover; object-position: top center`
 - La tarjeta usa `onerror` para mostrar iniciales si no hay imagen
@@ -103,7 +103,7 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 
 ## Tarea 3 — Publicaciones de AlterFutbol por selección
 
-### Selecciones ya analizadas (17)
+### Selecciones ya analizadas (18)
 
 | Selección | URL |
 |---|---|
@@ -234,25 +234,124 @@ Copiar la estructura de un equipo existente (por ejemplo Bosnia o Francia) y ada
 > **No usar** `<ul>`, bullets, flechas `→`, guiones como marcadores ni dos puntos como separadores visuales.
 > Ejemplo correcto: *"Sistema 4-3-3 con presión alta y verticalidad. Xhaka es el eje organizador..."*
 
-### Paso 4 — Actualizar el tracker (§05)
+### Paso 4 — Actualizar los 9 lugares del HTML
 
-En la sección `id="tracker"` de `index.html`:
-- Cambiar el contador de análisis completados
-- Actualizar la cronología de anuncios con la nueva selección
-- Mover la selección de "Pendientes" a "Analizadas" en la lista
+Todos están en `index.html`. Tocarlos en este orden para no perder ninguno:
 
-### Paso 5 — Actualizar la sección de grupos (§02)
-
-En el card del grupo correspondiente, añadir `analyzed-badge` y marcar el estado:
+#### 4a · Modal de grupos §03 — hacer el equipo clickable
+Buscar el bloque `<!-- {LETRA} -->` dentro de `<div class="grupos-modal-body">`.
+Cambiar el `<div class="gmod-team">` del equipo analizado por un enlace con dot verde:
 ```html
-<span class="analyzed-badge">✓</span>
+<!-- ANTES -->
+<div class="gmod-team" data-name="{Nombre}">
+  <img src="assets/flags/{código}.svg" alt=""><span class="gmod-name">{Nombre}</span>
+</div>
+
+<!-- DESPUÉS -->
+<a class="gmod-team has-analysis" data-name="{Nombre}" href="#{id-seccion}">
+  <img src="assets/flags/{código}.svg" alt=""><span class="gmod-name">{Nombre}</span>
+  <span class="gmod-ana"></span>
+</a>
 ```
+
+#### 4b · Cards de grupos §03 — marcar como analizado
+Buscar el `<div class="group-card">` del Grupo {X} en la sección `<div class="groups-grid">` de §03.
+```html
+<!-- ANTES -->
+<div class="group-card">
+  <div class="group-label"><span class="group-dot"></span> Grupo {X}</div>
+  <ul class="group-teams">
+    <li><img ...> {Equipo}</li>
+
+<!-- DESPUÉS — añadir border-color, color en label, link + badge en el equipo -->
+<div class="group-card" style="border-color:rgba({r},{g},{b},.2)">
+  <div class="group-label" style="color:var(--grp-{x})">
+    <span class="group-dot" style="background:var(--grp-{x})"></span> Grupo {X} — 1/4 analizado
+  </div>
+  <ul class="group-teams">
+    <li>
+      <a href="#{id-seccion}" class="group-team-link"><img ...> {Equipo}</a>
+      <span class="analyzed-badge">✓</span>
+    </li>
+```
+> Si ya había otro equipo analizado en el mismo grupo, incrementar el contador: "2/4 analizado", etc.
+
+#### 4c · Sección del grupo — reemplazar pending-card por team-section
+En `<!-- ═══════ GRUPO {X} ═══════ -->`, localizar el `<div class="pending-card">` del equipo.
+Reemplazarlo con el bloque `<div class="team-section" id="{id-seccion}">` completo (ver Paso 3).
+Dejar los `pending-card` de los equipos del grupo que aún no tienen análisis.
+
+#### 4d · TEAM_CODES en JS — habilitar fixtures automáticos
+Buscar `var TEAM_CODES = {` dentro del bloque `// ── CALENDAR ──`.
+Añadir la entrada del equipo nuevo:
+```js
+var TEAM_CODES = {
+  // ... entradas existentes ...
+  '{id-seccion}': '{código-3-letras}'
+};
+```
+Esto hace que `renderTeamFixtures()` pinte automáticamente los 3 partidos de grupos con click-CTA.
+
+#### 4e · Tabla del tracker §05 — añadir fila
+En `<table class="squad-table">` dentro de `id="tracker"`, añadir fila en el grupo correspondiente:
+```html
+<tr>
+  <td rowspan="1"><strong style="color:var(--grp-{x})">{X}</strong><br>
+    <span style="font-size:11px;color:var(--muted)">{COD1}·{COD2}<br>{COD3}·{COD4}</span></td>
+  <td><img class="flag-svg" src="assets/flags/{código}.svg" loading="lazy">
+    <strong class="player-name">{Nombre}</strong></td>
+  <td style="font-size:13px">{DT}</td>
+  <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">{Sistema}</span></td>
+  <td style="font-size:13px">{Figura clave y club}</td>
+  <td style="font-size:12px;color:var(--muted)">{Dato destacado del equipo}</td>
+  <td><span class="analyzed-badge">✓ Detallado</span></td>
+</tr>
+```
+> Si el grupo ya tiene filas (`rowspan`), omitir la celda `<td rowspan>` y ajustar el rowspan existente.
+
+#### 4f · Cronología §05 — añadir entrada de fecha
+En `<!-- Timeline publicación -->`, añadir un bloque nuevo en orden cronológico:
+```html
+<div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:var(--card);border-radius:8px;border-left:3px solid var(--border)">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);min-width:80px">{DD} {Mes}</span>
+  <img class="flag-svg" src="assets/flags/{código}.svg" loading="lazy">
+  <span style="font-size:13px"><strong style="color:var(--white)">{Nombre}</strong></span>
+  <span class="analyzed-badge" style="margin-left:auto">✓ Detallado</span>
+</div>
+```
+> Si varias selecciones se anunciaron el mismo día, incluirlas en un solo bloque con todas las banderas juntas (ver ejemplo del 15 May con Bélgica · Costa de Marfil · Haití).
+> Cambiar `border-left: 3px solid var(--border)` a `var(--accent)` solo si es la fecha más reciente.
+
+#### 4g · Contadores §05 — actualizar 4 cifras
+En `<div class="format-grid">` dentro de `id="tracker"`:
+- **Listas publicadas en AlterFutbol**: +1
+- **Grupos con al menos una lista**: +1 solo si es el primer equipo de ese grupo
+- **Selecciones sin publicar**: -1
+- **Con análisis completo**: +1 (siempre es igual a "Listas publicadas")
+
+#### 4h · Texto intro §05 — actualizar descripción
+El párrafo debajo del `<h2>Tracker de Convocatorias</h2>`:
+- Actualizar el número total de selecciones
+- Actualizar la fecha más reciente si corresponde (ej: "22 mayo" → "23 mayo")
+- Mantener el formato: `{N} selecciones han publicado... entre el {fecha inicio} y el {fecha más reciente}`
+
+#### 4i · Pendientes §05 — actualizar card del grupo
+En `<!-- Selecciones pendientes por grupo -->` (`.groups-grid` al final del tracker):
+- Si el grupo pasa de 0 a 1 analizado: cambiar label a "X/4 analizado", añadir `border-color` y `color` del grupo, listar solo los equipos que aún faltan con `<em>(listas pendientes)</em>`
+- Si ya tenía analizados: incrementar el contador del label
+
+### Paso 5 — Actualizar INSTRUCTIONS.md
+- **Tarea 1**: añadir fila a la tabla de imágenes de jugadores (o marcar ✅ si estaba pendiente)
+- **Tarea 2**: añadir fila a la tabla de XI titulares con el conteo de `titl-yes`
+- **Tarea 3**: añadir URL del artículo; cambiar "(N)" del encabezado a N+1
+- **Estado global**: actualizar los contadores de selecciones analizadas y pendientes
+- **Selecciones pendientes**: eliminar el equipo de la lista
 
 ### Paso 6 — Commit y push
 ```bash
-git add assets/ index.html
-git commit -m "Add {selección}: plantel, táctica y XI probable"
-git push origin main
+git add assets/ index.html claude/INSTRUCTIONS.md
+git commit -m "feat: add {Selección} ({Grupo}) — convocatoria {DT} WC2026"
+git push
 ```
 
 ---
