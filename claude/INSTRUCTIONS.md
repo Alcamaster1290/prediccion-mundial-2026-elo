@@ -89,7 +89,7 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 | RD del Congo | 11 | ✅ completo (Yoane Wissa y Cédric Bakambu añadidos — #24 y #23, Titulares) |
 | Alemania | 11 | ✅ completo |
 | Noruega | 11 | ✅ completo |
-| Inglaterra | 11 | ✅ completo · Pickford, James, Guéhi, Stones, Livramento, Rice, Mainoo, Saka, Bellingham, Rashford, Kane |
+| Inglaterra | 11 | ✅ completo · Pickford, Konsa, Guéhi, Reece James, O'Reilly, Rice, Elliot Anderson, Bellingham, Saka, Anthony Gordon, Kane |
 
 > La columna Titular se rellena usando el XI de AlterFutbol como referencia. Si un jugador del XI no aparece en la lista de convocados → no se puede marcar, el conteo queda por debajo de 11.
 
