@@ -19,8 +19,8 @@ mundial-2026/
 │
 ├── assets/
 │   ├── flags/              # Banderas en SVG — código ISO 3166-1 alpha-3 (48 total)
-│   ├── players/            # Foto de la figura clave — UNA por selección (15 total)
-│   └── xi/                 # XI Ideal por selección — 1024×1024px PNG (15 total)
+│   ├── players/            # Foto de la figura clave — UNA por selección (18 total)
+│   └── xi/                 # XI Ideal por selección — 1024×1024px PNG (18 total)
 │
 └── data/
     ├── teams.json          # Planteles con ELO por club (bih, kor completos)
@@ -37,26 +37,29 @@ mundial-2026/
 - Fuente: [flagcdn.com](https://flagcdn.com)
 
 ### `assets/players/`
-- Formato: `{código-equipo}-{apellido}.jpg`
+- Formato: `.jpg` o `.webp` (usar el que esté disponible)
 - Una imagen por selección — la figura más reconocida o el mayor ELO de club
 
 | Equipo | Archivo | Jugador | Club |
 |--------|---------|---------|------|
 | Bosnia | `bih-dzeko.jpg` | Edin Džeko | Schalke 04 |
-| Suiza | `sui-xhaka.jpg` | Granit Xhaka | Sunderland |
+| Suiza | `sui-xhaka.webp` | Granit Xhaka | Sunderland |
 | Suecia | `swe-gyokeres.jpg` | Viktor Gyökeres | Arsenal |
 | Corea del Sur | `kor-son.jpg` | Son Heung-min | LAFC |
-| Brasil | `bra-vinicius.jpg` | Vinicius Jr. | Real Madrid |
-| Haití | `hti-bellegarde.jpg` | J.-R. Bellegarde | Wolverhampton |
+| Brasil | `bra-vinicius.webp` | Vinicius Jr. | Real Madrid |
+| Haití | `hti-bellegarde.webp` | J.-R. Bellegarde | Wolverhampton |
 | Escocia | `sco-mcginn.jpg` | John McGinn | Aston Villa |
 | Costa de Marfil | `civ-adingra.jpg` | Simon Adingra | AS Monaco |
-| Bélgica | `bel-debruyne.jpg` | Kevin De Bruyne | Napoli |
+| Bélgica | `bel-debruyne.webp` | Kevin De Bruyne | Napoli |
 | Nueva Zelanda | `nzl-wood.jpg` | Chris Wood | Nottingham Forest |
 | Cabo Verde | `cpv-rodrigues.jpg` | Garry Rodrigues | Apollon Limassol |
-| Francia | `fra-mbappe.jpg` | Kylian Mbappé | Real Madrid |
-| Austria | `aut-alaba.jpg` | David Alaba | Real Madrid |
+| Francia | `fra-mbappe.webp` | Kylian Mbappé | Real Madrid |
+| Austria | `aut-alaba.webp` | David Alaba | Real Madrid |
 | Portugal | `por-ronaldo.jpg` | Cristiano Ronaldo | Al-Nassr |
-| RD del Congo | `cod-mbemba.jpg` | Chancel Mbemba | Lille |
+| RD del Congo | `cod-mbemba.webp` | Chancel Mbemba | Lille |
+| Alemania | `ger-wirtz.webp` | Florian Wirtz | Bayer Leverkusen |
+| Noruega | `nor-haaland.webp` | Erling Haaland | Manchester City |
+| Inglaterra | `eng-kane.webp` | Harry Kane | Bayern Múnich |
 
 ### `assets/xi/`
 - Formato: `{código-equipo}-xi.png`
@@ -123,17 +126,20 @@ Matriz narrativa con los 72 partidos de la fase de grupos (12 grupos × 6 partid
 | Brasil | C | ✅ | ✅ 11 titulares | ✅ |
 | Haití | C | ✅ | ✅ 11 titulares | ✅ |
 | Escocia | C | ✅ | ✅ 11 titulares | ✅ |
-| Costa de Marfil | E | ✅ | ✅ 10 titulares* | ✅ |
-| Bélgica | G | ✅ | ✅ 12 titulares** | ✅ |
+| Costa de Marfil | E | ✅ | ✅ 11 titulares | ✅ |
+| Bélgica | G | ✅ | ✅ 12 titulares* | ✅ |
 | Nueva Zelanda | G | ✅ | ✅ 11 titulares | ✅ |
 | Cabo Verde | H | ✅ | ✅ 11 titulares | ✅ |
 | Francia | I | ✅ | ✅ 11 titulares | ✅ |
-| Austria | J | ✅ | ✅ 10 titulares* | ✅ |
+| Austria | J | ✅ | ✅ 10 titulares** | ✅ |
 | Portugal | K | ✅ | ✅ 11 titulares | ✅ |
-| RD del Congo | K | ✅ | ✅ 9 titulares* | ✅ |
+| RD del Congo | K | ✅ | ✅ 11 titulares | ✅ |
+| Alemania | J | ✅ | ✅ 11 titulares | ✅ |
+| Noruega | F | ✅ | ✅ 11 titulares | ✅ |
+| Inglaterra | L | ✅ | ✅ 11 titulares | ✅ |
 
-\* Jugador del XI publicado no figura en la lista oficial de convocados
-\*\* El XI publicado muestra dos opciones para una posición (Lukaku / De Ketelaere)
+\* El XI publicado muestra dos opciones para una posición (Lukaku / De Ketelaere)
+\*\* Un jugador del XI publicado no figura en la lista oficial de convocados
 
 ---
 
@@ -155,20 +161,22 @@ npx serve .
 ## Roadmap
 
 - [x] Descargar 48 banderas SVG (todos los grupos A-L)
-- [x] Analizar 15 selecciones con táctica, ausencias y ELO de clubes
-- [x] Cargar XI Ideal y jugador estrella para las 15 selecciones
+- [x] Analizar 18 selecciones con táctica, ausencias y ELO de clubes
+- [x] Cargar XI Ideal y jugador estrella para las 18 selecciones
 - [x] Columna Titular marcada en cada plantel (sí/no)
 - [x] Mostrar imagen del XI probable en la sección de cada equipo
 - [x] `match_context.json` — matriz narrativa de los 72 partidos de fase de grupos
 - [x] Publicar en GitHub Pages
-- [ ] Completar análisis de grupos D, F (ned, jpn, tun), L (eng, cro, gha, pan)
-- [ ] Convocatorias pendientes: mex, zaf, cze, can, qat, mar, ger, cuw, ecu, ned, jpn, tun, egy, irn, esp, ksa, ury, sen, irq, nor, arg, alg, jor, uzb, col, eng, cro, gha, pan
+- [x] Tablas de plantel ordenadas: GK→DEF→MED→DEL, titular primero, ELO desc.
+- [x] Mobile: tablas de convocados expandibles (accordion ≤600px, sin scroll horizontal)
+- [ ] Convocatorias pendientes (carga manual): jpn, tun, cuw
+- [ ] Convocatorias pendientes (sin publicar aún): mex, zaf, cze, can, qat, mar, ecu, ned, egy, irn, esp, ksa, ury, sen, irq, arg, alg, jor, uzb, col, cro, gha, pan, usa, pry, aus, tur
 - [ ] Sección interactiva de predicciones por partido
 - [ ] Comparador de ELO entre equipos del mismo grupo
 
 ---
 
-*Datos actualizados al 22 de mayo de 2026. Fuentes: AlterFutbol · worldclubratings.com · FIFA*
+*Datos actualizados al 25 de mayo de 2026. Fuentes: AlterFutbol · worldclubratings.com · FIFA*
 
 ---
 
