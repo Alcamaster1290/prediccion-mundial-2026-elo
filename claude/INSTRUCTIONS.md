@@ -80,7 +80,7 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 | Escocia | 11 | ✅ completo |
 | Costa de Marfil | 11 | ✅ completo (Yan Diomandé y Ange-Yoan Bonny añadidos — #24 y #25) |
 | Suecia | 11 | ✅ completo |
-| Bélgica | 12 | ⚠️ AlterFutbol presenta doble opción en el #9: Lukaku / De Ketelaere |
+| Bélgica | 11 | ✅ completo (Lukaku titular; De Ketelaere queda como alternativa) |
 | Nueva Zelanda | 11 | ✅ completo |
 | Cabo Verde | 11 | ✅ completo |
 | Francia | 11 | ✅ completo |
