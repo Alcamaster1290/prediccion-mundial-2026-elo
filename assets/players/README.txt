@@ -41,8 +41,8 @@ Fuentes de los 26 convocados — artículos de AlterFutbol:
   Austria      → https://www.alterfutbol.com/europa/austria/austria-confirmo-sus-convocados-para-el-mundial-2026-analisis-tactico-mejores-jugadores-y-lo-que-hay-que-saber/
   Portugal     → https://www.alterfutbol.com/europa/portugal/portugal-confirmo-sus-convocados-para-el-mundial-2026/
   RD del Congo → https://www.alterfutbol.com/africa/republica-democratica-del-congo/rd-congo-confirmo-sus-26-convocados-para-el-mundial-2026-analisis-su-historia-y-mejores-jugadores/
-  Alemania     → https://www.alterfutbol.com/europa/alemania/
-  Noruega      → https://www.alterfutbol.com/europa/noruega/
+  Alemania     → https://www.alterfutbol.com/europa/alemania/alemania-anuncio-sus-convocados-para-el-mundial-2026/
+  Noruega      → https://www.alterfutbol.com/europa/noruega/noruega-anuncio-sus-convocados-para-el-mundial-2026/
   Inglaterra   → https://www.alterfutbol.com/europa/inglaterra/con-sorpresas-y-ausencias-inglaterra-anuncio-sus-convocados-al-mundial/
 
 Nota: Japón, Túnez y Curazao no tienen artículo en AlterFutbol — carga manual.
