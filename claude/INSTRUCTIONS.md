@@ -31,22 +31,22 @@ Aplicación web de análisis táctico y predicciones para el Mundial 2026.
 | Archivo | Jugador | Selección |
 |---|---|---|
 | `bih-dzeko.jpg` | Edin Džeko | Bosnia |
-| `sui-xhaka.jpg` | Granit Xhaka | Suiza |
+| `sui-xhaka.webp` | Granit Xhaka | Suiza |
 | `swe-gyokeres.jpg` | Viktor Gyökeres | Suecia |
 | `kor-son.jpg` | Son Heung-min | Corea del Sur |
-| `bra-vinicius.jpg` | Vinicius Jr. | Brasil |
-| `hti-bellegarde.jpg` | J.-R. Bellegarde | Haití |
+| `bra-vinicius.webp` | Vinicius Jr. | Brasil |
+| `hti-bellegarde.webp` | J.-R. Bellegarde | Haití |
 | `sco-mcginn.jpg` | John McGinn | Escocia |
 | `civ-adingra.jpg` | Simon Adingra | Costa de Marfil |
-| `bel-debruyne.jpg` | Kevin De Bruyne | Bélgica |
+| `bel-debruyne.webp` | Kevin De Bruyne | Bélgica |
 | `nzl-wood.jpg` | Chris Wood | Nueva Zelanda |
 | `cpv-rodrigues.jpg` | Garry Rodrigues | Cabo Verde |
-| `fra-mbappe.jpg` | Kylian Mbappé | Francia |
-| `aut-alaba.jpg` | David Alaba | Austria |
+| `fra-mbappe.webp` | Kylian Mbappé | Francia |
+| `aut-alaba.webp` | David Alaba | Austria |
 | `por-ronaldo.jpg` | Cristiano Ronaldo | Portugal |
-| `cod-mbemba.jpg` | Chancel Mbemba | RD del Congo |
-| `ger-wirtz.jpg` | Florian Wirtz | Alemania |
-| `nor-haaland.jpg` | Erling Haaland | Noruega |
+| `cod-mbemba.webp` | Chancel Mbemba | RD del Congo |
+| `ger-wirtz.webp` | Florian Wirtz | Alemania |
+| `nor-haaland.webp` | Erling Haaland | Noruega |
 | `eng-kane.webp` | Harry Kane | Inglaterra |
 
 ### Especificaciones técnicas
@@ -78,15 +78,15 @@ Todas las selecciones analizadas tienen su imagen en `assets/xi/`. La imagen se 
 | Brasil | 11 | ✅ completo |
 | Haití | 11 | ✅ completo |
 | Escocia | 11 | ✅ completo |
-| Costa de Marfil | 9 | ⚠️ Yan Diomandé y Ange-Yoan Bonny (XI) no figuran en la lista oficial |
+| Costa de Marfil | 11 | ✅ completo (Yan Diomandé y Ange-Yoan Bonny añadidos — #24 y #25) |
 | Suecia | 11 | ✅ completo |
 | Bélgica | 12 | ⚠️ AlterFutbol presenta doble opción en el #9: Lukaku / De Ketelaere |
 | Nueva Zelanda | 11 | ✅ completo |
 | Cabo Verde | 11 | ✅ completo |
 | Francia | 11 | ✅ completo |
-| Austria | 10 | ⚠️ Marko Arnautovic (XI) no figura en la lista oficial |
+| Austria | 10 | ✅ completo (Marko Arnautovic añadido — #24, Titular) |
 | Portugal | 11 | ✅ completo |
-| RD del Congo | 9 | ⚠️ Yoanne Wissa y Cédric Bakambu (XI) no figuran en la lista oficial |
+| RD del Congo | 11 | ✅ completo (Yoane Wissa y Cédric Bakambu añadidos — #24 y #23, Titulares) |
 | Alemania | 11 | ✅ completo |
 | Noruega | 11 | ✅ completo |
 | Inglaterra | 11 | ✅ completo · Pickford, James, Guéhi, Stones, Livramento, Rice, Mainoo, Saka, Bellingham, Rashford, Kane |
