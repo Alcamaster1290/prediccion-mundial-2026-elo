@@ -931,6 +931,70 @@
   }
   .team-fixtures .fixture-cta:hover::after { opacity: 1; }
 
+  /* ─── KNOCKOUT PATH ─── */
+  .ko-path { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .ko-path-title {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: .85rem;
+  }
+  .ko-scenarios { display: flex; flex-direction: column; gap: .45rem; }
+  .ko-scenario { display: flex; align-items: stretch; gap: .4rem; }
+  .ko-pos-wrap { display: flex; align-items: center; flex-shrink: 0; width: 28px; }
+  .ko-pos-badge {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: .65rem; letter-spacing: .05em; text-transform: uppercase;
+    padding: .18rem .42rem; border-radius: 20px; border: 1px solid; text-align: center;
+    white-space: nowrap;
+  }
+  .ko-pos-1 { color: var(--gold); border-color: var(--gold); background: rgba(212,175,55,.09); }
+  .ko-pos-2 { color: var(--accent); border-color: var(--accent); background: rgba(0,196,160,.09); }
+  .ko-arrow-wrap { display: flex; align-items: center; flex-shrink: 0; }
+  .ko-arrow { color: var(--border); font-size: 14px; padding: 0 1px; }
+  .ko-card {
+    flex: 1; background: var(--card); border: 1px solid var(--border);
+    border-left: 3px solid; border-radius: 8px;
+    padding: .42rem .65rem; min-width: 0; transition: background .15s;
+  }
+  .ko-card:hover { background: var(--surface); }
+  .ko-card-phase {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .12rem;
+  }
+  .ko-card-date {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--muted); margin-bottom: .12rem;
+  }
+  .ko-card-opp { font-size: 12px; color: var(--fg); font-weight: 600; line-height: 1.3; }
+  .ko-card-venue { font-size: 10px; color: var(--muted); margin-top: .1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* 3rd place styles */
+  .ko-pos-3 { color: #64748b; border-color: #64748b; background: rgba(100,116,139,.09); }
+  .ko-card-3rd {
+    flex: 1; background: var(--card); border: 1px solid var(--border);
+    border-left: 3px solid #64748b; border-radius: 8px;
+    padding: .42rem .65rem; min-width: 0;
+  }
+  .ko-3rd-rows { display: flex; flex-direction: column; gap: .18rem; margin-top: .3rem; }
+  .ko-3rd-row {
+    display: flex; align-items: baseline; gap: .35rem;
+    flex-wrap: wrap; font-size: 11px; line-height: 1.5;
+    padding: .12rem 0; border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+  .ko-3rd-row:last-child { border-bottom: none; }
+  .ko-3rd-pnum { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b; font-weight: 700; flex-shrink: 0; }
+  .ko-3rd-opp { color: var(--fg); font-weight: 600; }
+  .ko-3rd-detail { color: var(--muted); }
+  .ko-3rd-r16 { color: var(--accent); font-size: 10px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; margin-left: auto; white-space: nowrap; }
+  @media (max-width: 600px) {
+    .ko-pos-wrap { width: auto; }
+    .ko-arrow-wrap { display: none; }
+    .ko-scenario { flex-wrap: wrap; gap: .3rem; }
+    .ko-card { flex-basis: calc(50% - 1.4rem); min-width: 130px; }
+    .ko-card-venue { display: none; }
+    .ko-3rd-r16 { margin-left: 0; }
+    .ko-3rd-detail { display: none; }
+  }
+
   /* --- THEME TOGGLE BTN --- */
   .theme-btn {
     margin-left: .5rem; flex-shrink: 0;
@@ -3226,6 +3290,141 @@
       });
     }
 
+    // ── KNOCKOUT PATH PER TEAM ────────────────────────────────────────────────
+    var TEAM_KO_PATH = {
+      'kor': [{pos:'1°',r32:79,r32opp:'3.° Grupo C/E/F/H/I',r16:92,r16opp:'G. de P80 (1.° L ó 3.°)'},
+              {pos:'2°',r32:73,r32opp:'2.° Grupo B',r16:90,r16opp:'G. de P75 (1.° F ó 2.° C)'}],
+      'bih': [{pos:'1°',r32:85,r32opp:'3.° E/F/G/I/J',r16:96,r16opp:'G. de P87 (1.° K ó 3.°)'},
+              {pos:'2°',r32:73,r32opp:'2.° Grupo A',r16:90,r16opp:'G. de P75 (1.° F ó 2.° C)'}],
+      'sui': [{pos:'1°',r32:85,r32opp:'3.° E/F/G/I/J',r16:96,r16opp:'G. de P87 (1.° K ó 3.°)'},
+              {pos:'2°',r32:73,r32opp:'2.° Grupo A',r16:90,r16opp:'G. de P75 (1.° F ó 2.° C)'}],
+      'bra': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'G. de P78 (2.° E ó 2.° I)'},
+              {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'G. de P73 (2.° A ó 2.° B)'}],
+      'hti': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'G. de P78 (2.° E ó 2.° I)'},
+              {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'G. de P73 (2.° A ó 2.° B)'}],
+      'sco': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'G. de P78 (2.° E ó 2.° I)'},
+              {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'G. de P73 (2.° A ó 2.° B)'}],
+      'civ': [{pos:'1°',r32:74,r32opp:'3.° A/B/C/D/F',r16:89,r16opp:'G. de P77 (1.° I ó 3.°)'},
+              {pos:'2°',r32:78,r32opp:'2.° Grupo I',r16:91,r16opp:'G. de P76 (1.° C ó 2.° F)'}],
+      'swe': [{pos:'1°',r32:75,r32opp:'2.° Grupo C',r16:90,r16opp:'G. de P73 (2.° A ó 2.° B)'},
+              {pos:'2°',r32:76,r32opp:'1.° Grupo C',r16:91,r16opp:'G. de P78 (2.° E ó 2.° I)'}],
+      'nor': [{pos:'1°',r32:75,r32opp:'2.° Grupo C',r16:90,r16opp:'G. de P73 (2.° A ó 2.° B)'},
+              {pos:'2°',r32:76,r32opp:'1.° Grupo C',r16:91,r16opp:'G. de P78 (2.° E ó 2.° I)'}],
+      'bel': [{pos:'1°',r32:82,r32opp:'3.° A/E/H/I/J',r16:94,r16opp:'G. de P81 (1.° D ó 3.°)'},
+              {pos:'2°',r32:88,r32opp:'2.° Grupo D',r16:95,r16opp:'G. de P86 (1.° J ó 2.° H)'}],
+      'nzl': [{pos:'1°',r32:82,r32opp:'3.° A/E/H/I/J',r16:94,r16opp:'G. de P81 (1.° D ó 3.°)'},
+              {pos:'2°',r32:88,r32opp:'2.° Grupo D',r16:95,r16opp:'G. de P86 (1.° J ó 2.° H)'}],
+      'cpv': [{pos:'1°',r32:84,r32opp:'2.° Grupo J',r16:93,r16opp:'G. de P83 (2.° K ó 2.° L)'},
+              {pos:'2°',r32:86,r32opp:'1.° Grupo J',r16:95,r16opp:'G. de P88 (2.° D ó 2.° G)'}],
+      'fra': [{pos:'1°',r32:77,r32opp:'3.° C/D/F/G/H',r16:89,r16opp:'G. de P74 (1.° E ó 3.°)'},
+              {pos:'2°',r32:78,r32opp:'2.° Grupo E',r16:91,r16opp:'G. de P76 (1.° C ó 2.° F)'}],
+      'aut': [{pos:'1°',r32:86,r32opp:'2.° Grupo H',r16:95,r16opp:'G. de P88 (2.° D ó 2.° G)'},
+              {pos:'2°',r32:84,r32opp:'1.° Grupo H',r16:93,r16opp:'G. de P83 (2.° K ó 2.° L)'}],
+      'ger': [{pos:'1°',r32:86,r32opp:'2.° Grupo H',r16:95,r16opp:'G. de P88 (2.° D ó 2.° G)'},
+              {pos:'2°',r32:84,r32opp:'1.° Grupo H',r16:93,r16opp:'G. de P83 (2.° K ó 2.° L)'}],
+      'por': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'G. de P85 (1.° B ó 3.°)'},
+              {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'G. de P84 (1.° H ó 2.° J)'}],
+      'cod': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'G. de P85 (1.° B ó 3.°)'},
+              {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'G. de P84 (1.° H ó 2.° J)'}],
+      'eng': [{pos:'1°',r32:80,r32opp:'3.° E/H/I/J/K',r16:92,r16opp:'G. de P79 (1.° A ó 3.°)'},
+              {pos:'2°',r32:83,r32opp:'2.° Grupo K',r16:93,r16opp:'G. de P84 (1.° H ó 2.° J)'}]
+    };
+
+    // R32 matches por grupo si termina 3.° (solo 8 de 12 terceros clasifican)
+    // r16 = partido de octavos al que va el ganador del r32
+    var TEAM_KO_3RD = {
+      'kor': [{r32:74,r16:89},{r32:82,r16:94}],
+      'bih': [{r32:74,r16:89},{r32:81,r16:94}],
+      'sui': [{r32:74,r16:89},{r32:81,r16:94}],
+      'bra': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
+      'hti': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
+      'sco': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
+      'civ': [{r32:79,r16:92},{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
+      'swe': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92},{r32:81,r16:94},{r32:85,r16:96}],
+      'nor': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92},{r32:81,r16:94},{r32:85,r16:96}],
+      'bel': [{r32:77,r16:89},{r32:85,r16:96}],
+      'nzl': [{r32:77,r16:89},{r32:85,r16:96}],
+      'cpv': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:82,r16:94}],
+      'fra': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
+      'aut': [{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
+      'ger': [{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
+      'por': [{r32:80,r16:92},{r32:87,r16:96}],
+      'cod': [{r32:80,r16:92},{r32:87,r16:96}],
+      'eng': [{r32:87,r16:96}]
+    };
+
+    function renderTeamKOPaths() {
+      var koByNum = {};
+      KNOCKOUT_MATCHES.forEach(function(m) { koByNum[m.matchNum] = m; });
+
+      function shortVenue(v) { return v ? v.split(',')[0] : ''; }
+      function koCard(matchNum, opp, color, phaseLabel) {
+        var m = koByNum[matchNum];
+        if (!m) return '';
+        return '<div class="ko-card" style="border-left-color:' + color + '">'
+          + '<div class="ko-card-phase" style="color:' + color + '">' + phaseLabel + ' · P' + matchNum + '</div>'
+          + '<div class="ko-card-date">' + labelDate(m.date) + ' · ' + m.time + ' UTC</div>'
+          + '<div class="ko-card-opp">vs ' + opp + '</div>'
+          + '<div class="ko-card-venue">' + shortVenue(m.venue) + '</div>'
+          + '</div>';
+      }
+
+      Object.keys(TEAM_CODES).forEach(function(sectionId) {
+        var code = TEAM_CODES[sectionId];
+        var path = TEAM_KO_PATH[code];
+        if (!path) return;
+        var section = document.getElementById(sectionId);
+        if (!section) return;
+        var fixtures = section.querySelector('.team-fixtures');
+        if (!fixtures) {
+          fixtures = document.createElement('div');
+          fixtures.className = 'team-fixtures';
+          section.appendChild(fixtures);
+        }
+
+        var html = '<div class="ko-path-title">Ruta Eliminatoria Posible · hasta Octavos</div>'
+          + '<div class="ko-scenarios">';
+
+        path.forEach(function(sc) {
+          var posCls = sc.pos === '1°' ? 'ko-pos-1' : 'ko-pos-2';
+          html += '<div class="ko-scenario">'
+            + '<div class="ko-pos-wrap"><span class="ko-pos-badge ' + posCls + '">' + sc.pos + '</span></div>'
+            + koCard(sc.r32, sc.r32opp, PHASE_COLORS.R32, '32avos')
+            + '<div class="ko-arrow-wrap"><span class="ko-arrow">›</span></div>'
+            + koCard(sc.r16, sc.r16opp, PHASE_COLORS.R16, 'Octavos')
+            + '</div>';
+        });
+
+        // 3rd place scenario
+        var path3 = TEAM_KO_3RD[code];
+        if (path3 && path3.length) {
+          html += '<div class="ko-scenario">'
+            + '<div class="ko-pos-wrap"><span class="ko-pos-badge ko-pos-3">3.°</span></div>'
+            + '<div class="ko-card-3rd">'
+            + '<div class="ko-card-phase" style="color:#64748b">32avos · Solo si clasifica entre los 8 mejores terceros</div>'
+            + '<div class="ko-3rd-rows">';
+          path3.forEach(function(p) {
+            var m32 = koByNum[p.r32];
+            if (!m32) return;
+            html += '<div class="ko-3rd-row">'
+              + '<span class="ko-3rd-pnum">P' + p.r32 + '</span>'
+              + '<span class="ko-3rd-opp">vs ' + m32.homeLabel + '</span>'
+              + '<span class="ko-3rd-detail">' + shortVenue(m32.venue) + ' · ' + labelDate(m32.date) + '</span>'
+              + '<span class="ko-3rd-r16">→ Oct. P' + p.r16 + '</span>'
+              + '</div>';
+          });
+          html += '</div></div></div>';
+        }
+
+        html += '</div>';
+
+        var koDiv = document.createElement('div');
+        koDiv.className = 'ko-path';
+        koDiv.innerHTML = html;
+        fixtures.appendChild(koDiv);
+      });
+    }
+
     fetch('data/groups.json')
       .then(function(r){ return r.json(); })
       .then(function(data) {
@@ -3238,10 +3437,12 @@
         allMatches.sort(function(a,b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
         renderCalendar();
         renderTeamFixtures();
+        renderTeamKOPaths();
       })
       .catch(function() {
         allMatches.sort(function(a,b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
         renderCalendar();
+        renderTeamKOPaths();
         var note = document.getElementById('cal-tz-note');
         if (note) note.textContent += ' · Fase de grupos requiere servidor local.';
       });
