@@ -175,7 +175,7 @@
     {"match_id":"grp-f-j1-ned-jpn","grupo":"F","jornada":1,"date":"2026-06-14","venue":"Por confirmar",
      "team_a":"ned","team_b":"jpn",
      "team_a_context":{"sistema":"4-3-3","figura":"Virgil van Dijk","elo_intl":1792,"incentivo_competitivo":"Países Bajos busca profundizar en el torneo — ganar el primer partido es el camino más directo al liderato.","ausencias_clave":[],"amenaza_principal":"Van Dijk organizando la defensa, Gakpo y Memphis en ataque"},
-     "team_b_context":{"sistema":"4-2-3-1 / 4-3-3","figura":"Takumi Minamino","elo_intl":1698,"incentivo_competitivo":"Japón llega como tercero mejor de Asia — ambicioso para sorprender en el grupo.","ausencias_clave":[],"amenaza_principal":"Pressing intenso, transición veloz en bloque"},
+     "team_b_context":{"sistema":"3-4-2-1","figura":"Takefusa Kubo","elo_intl":1698,"incentivo_competitivo":"Japón llega como tercero mejor de Asia — ambicioso para sorprender en el grupo. Qatar 2022: victoria vs Alemania y España.","ausencias_clave":["Mitoma (lesionado)","Minamino (lesionado)"],"amenaza_principal":"Kubo y Junya Ito como mediapuntas, Ueda de referencia; pressing y transición rápida en 3-4-2-1"},
      "prediccion_narrativa":"Países Bajos es favorita, pero Japón demostró en Qatar 2022 que puede vencer a cualquier europeo. El pressing japonés puede incomodar al mediocampo holandés. Partido difícil que pueden ir por detrás.",
      "resultado_predicho":"2-1","confianza":"media"},
 
@@ -195,7 +195,7 @@
 
     {"match_id":"grp-f-j2-jpn-tun","grupo":"F","jornada":2,"date":"2026-06-20","venue":"Por confirmar",
      "team_a":"jpn","team_b":"tun",
-     "team_a_context":{"sistema":"4-2-3-1","figura":"Takumi Minamino","elo_intl":1698,"incentivo_competitivo":"Japón necesita puntos para mantenerse en la pelea del grupo. Túnez es el rival más asequible.","ausencias_clave":[],"amenaza_principal":"Pressing alto, transiciones verticales, colectivo disciplinado"},
+     "team_a_context":{"sistema":"3-4-2-1","figura":"Takefusa Kubo","elo_intl":1698,"incentivo_competitivo":"Japón necesita puntos para mantenerse en la pelea del grupo. Túnez es el rival más asequible.","ausencias_clave":["Mitoma (lesionado)","Minamino (lesionado)"],"amenaza_principal":"Kubo y Junya Ito como mediapuntas, Ueda de referencia; pressing y transición rápida"},
      "team_b_context":{"sistema":"4-3-3","figura":"Wahbi Khazri","elo_intl":1558,"incentivo_competitivo":"Túnez necesita puntos para mantenerse viva. Partido vital ante un rival alcanzable.","ausencias_clave":[],"amenaza_principal":"Khazri en creación, físico en el duelo"},
      "prediccion_narrativa":"Partido entre dos equipos de nivel similar que necesitan puntos. Japón tiene mejor organización táctica y más movilidad. Túnez es físicamente fuerte. El pressing japonés puede ser determinante.",
      "resultado_predicho":"2-1","confianza":"media"},
@@ -209,7 +209,7 @@
 
     {"match_id":"grp-f-j3-jpn-swe","grupo":"F","jornada":3,"date":"2026-06-26","venue":"Por confirmar","simultaneous":true,
      "team_a":"jpn","team_b":"swe",
-     "team_a_context":{"sistema":"4-2-3-1","figura":"Takumi Minamino","elo_intl":1698,"incentivo_competitivo":"Japón puede necesitar ganar para clasificar. Suecia es el obstáculo directo.","ausencias_clave":[],"amenaza_principal":"Pressing colectivo, verticales rápidas"},
+     "team_a_context":{"sistema":"3-4-2-1","figura":"Takefusa Kubo","elo_intl":1698,"incentivo_competitivo":"Japón puede necesitar ganar para clasificar. Suecia es el obstáculo directo.","ausencias_clave":["Mitoma (lesionado)","Minamino (lesionado)"],"amenaza_principal":"Pressing colectivo, Kubo y Junya Ito como mediapuntas, transición rápida"},
      "team_b_context":{"sistema":"4-2-3-1","figura":"Alexander Isak","elo_intl":1672,"elo_club_avg":1580,"incentivo_competitivo":"Suecia puede necesitar este partido para asegurar el pase. Japón es rival de máximo respeto.","ausencias_clave":[],"amenaza_principal":"Isak como goleador, Kulusevski en banda"},
      "prediccion_narrativa":"Partido de altísimo voltaje entre dos selecciones que pueden necesitar la victoria. El pressing japonés contra la verticalidad sueca. Partido que puede ir cualquier camino — pero Isak puede ser el factor diferencial.",
      "resultado_predicho":"2-2","confianza":"baja"},

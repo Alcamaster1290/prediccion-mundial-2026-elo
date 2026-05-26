@@ -108,6 +108,58 @@
         {"number":20,"pos":"DEL","name":"Yang Hyun-jun","age":23,"club":"Celtic FC","country":"Escocia","elo":1583,"titular":false},
         {"number":27,"pos":"DEL","name":"Eom Ji-sung","age":24,"club":"Swansea City","country":"Gales","elo":null,"titular":false}
       ]
+    },
+    {
+      "id": "jpn",
+      "name": "Japón",
+      "flag": "assets/flags/jpn.svg",
+      "group": "F",
+      "dt": "Hajime Moriyasu",
+      "scheme": "3-4-2-1",
+      "analyzed": true,
+      "xi_image": "assets/xi/jap-xi.png",
+      "star_player": {
+        "name": "Takefusa Kubo",
+        "image": "assets/players/jap-kubo.webp",
+        "club": "Real Sociedad",
+        "elo": null,
+        "note": "Figura ofensiva principal tras las bajas de Mitoma y Minamino"
+      },
+      "tactics": [
+        "3-4-2-1 con bloque compacto y transiciones rápidas al espacio",
+        "Itakura como líbero, H. Ito (Bayern) y Watanabe (Feyenoord) como centrales",
+        "Doble pivote: Endo (regresa de lesión) o Sano + Tanaka/Kamada",
+        "Doan por derecha, Nakamura o Maeda por izquierda como carrileros ofensivos",
+        "Kubo y Junya Ito como mediapuntas; Ueda referencia de área (25 goles Eredivisie)"
+      ],
+      "players": [
+        {"pos":"GK","name":"Zion Suzuki","age":23,"club":"Parma Calcio 1913","country":"Italia","elo":null,"titular":true},
+        {"pos":"GK","name":"Keisuke Osako","age":26,"club":"Sanfrecce Hiroshima","country":"Japón","elo":null,"titular":false},
+        {"pos":"GK","name":"Tomoki Hayakawa","age":27,"club":"Kashima Antlers","country":"Japón","elo":null,"titular":false},
+        {"pos":"DEF","name":"Hiroki Ito","age":27,"club":"Bayern Munich","country":"Alemania","elo":2130,"titular":true},
+        {"pos":"DEF","name":"Ko Itakura","age":29,"club":"AFC Ajax","country":"Países Bajos","elo":null,"titular":true},
+        {"pos":"DEF","name":"Takehiro Tomiyasu","age":27,"club":"AFC Ajax","country":"Países Bajos","elo":null,"titular":false},
+        {"pos":"DEF","name":"Tsuyoshi Watanabe","age":29,"club":"Feyenoord","country":"Países Bajos","elo":1538,"titular":true},
+        {"pos":"DEF","name":"Yukinari Sugawara","age":25,"club":"Werder Bremen","country":"Alemania","elo":null,"titular":false},
+        {"pos":"DEF","name":"Shogo Taniguchi","age":34,"club":"Sint-Truidense VV","country":"Bélgica","elo":null,"titular":false},
+        {"pos":"DEF","name":"Ayumu Seko","age":25,"club":"Le Havre AC","country":"Francia","elo":null,"titular":false},
+        {"pos":"DEF","name":"Junnosuke Suzuki","age":22,"club":"FC Copenhague","country":"Dinamarca","elo":null,"titular":false},
+        {"pos":"DEF","name":"Yuto Nagatomo","age":39,"club":"FC Tokyo","country":"Japón","elo":null,"titular":false},
+        {"pos":"MED","name":"Wataru Endo","age":33,"club":"Liverpool FC","country":"Inglaterra","elo":1875,"titular":true,"captain":true},
+        {"pos":"MED","name":"Kaishu Sano","age":25,"club":"FSV Mainz 05","country":"Alemania","elo":1561,"titular":true},
+        {"pos":"MED","name":"Daichi Kamada","age":29,"club":"Crystal Palace","country":"Inglaterra","elo":null,"titular":false},
+        {"pos":"MED","name":"Ao Tanaka","age":27,"club":"Leeds United","country":"Inglaterra","elo":1546,"titular":false},
+        {"pos":"MED","name":"Junya Ito","age":27,"club":"KRC Genk","country":"Bélgica","elo":null,"titular":true},
+        {"pos":"DEL","name":"Takefusa Kubo","age":24,"club":"Real Sociedad","country":"España","elo":null,"titular":true},
+        {"pos":"DEL","name":"Ritsu Doan","age":27,"club":"Eintracht Frankfurt","country":"Alemania","elo":1543,"titular":true},
+        {"pos":"DEL","name":"Keito Nakamura","age":25,"club":"Stade de Reims","country":"Francia","elo":null,"titular":true},
+        {"pos":"DEL","name":"Daizen Maeda","age":28,"club":"Celtic FC","country":"Escocia","elo":1583,"titular":false},
+        {"pos":"DEL","name":"Ayase Ueda","age":27,"club":"Feyenoord","country":"Países Bajos","elo":1538,"titular":true},
+        {"pos":"DEL","name":"Koki Ogawa","age":28,"club":"NEC Nijmegen","country":"Países Bajos","elo":null,"titular":false},
+        {"pos":"DEL","name":"Keisuke Goto","age":20,"club":"Sint-Truidense VV","country":"Bélgica","elo":null,"titular":false},
+        {"pos":"DEL","name":"Kento Shiogai","age":21,"club":"VfL Wolfsburg","country":"Alemania","elo":1448,"titular":false},
+        {"pos":"DEL","name":"Yuito Suzuki","age":24,"club":"SC Freiburg","country":"Alemania","elo":null,"titular":false}
+      ]
     }
   ]
 }
