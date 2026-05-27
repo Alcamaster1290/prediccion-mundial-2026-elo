@@ -133,7 +133,7 @@
     {"match_id":"grp-e-j1-ger-cuw","grupo":"E","jornada":1,"date":"2026-06-14","venue":"Por confirmar",
      "team_a":"ger","team_b":"cuw",
      "team_a_context":{"sistema":"4-2-3-1 / 3-4-3","figura":"Jamal Musiala","elo_intl":1815,"incentivo_competitivo":"Alemania necesita recuperar el prestigio mundial tras Qatar 2022. Partido que debe ganar con autoridad.","ausencias_clave":[],"amenaza_principal":"Musiala / Wirtz en mediapuntas, Havertz de falso 9"},
-     "team_b_context":{"sistema":"4-4-2 / 5-3-2","figura":"Cuco Martina (generación)","elo_intl":1362,"incentivo_competitivo":"Curaçao debuta mundialista — un punto sería un milagro histórico. El objetivo es competir con dignidad.","ausencias_clave":[],"amenaza_principal":"Unidad colectiva, fisico y sorpresa táctica"},
+     "team_b_context":{"sistema":"4-3-3","figura":"Jürgen Locadia","elo_intl":1362,"incentivo_competitivo":"Curaçao debuta mundialista — un punto sería un milagro histórico. El objetivo es competir con dignidad.","ausencias_clave":[],"amenaza_principal":"Unidad colectiva, fisico y sorpresa táctica"},
      "prediccion_narrativa":"Alemania debe aplastar a Curaçao para enviar un mensaje al grupo. Musiala y Wirtz con libertad creativa deberían desmontar cualquier bloque. El único riesgo es la falta de concentración.",
      "resultado_predicho":"4-0","confianza":"alta"},
 
@@ -154,7 +154,7 @@
     {"match_id":"grp-e-j2-ecu-cuw","grupo":"E","jornada":2,"date":"2026-06-20","venue":"Por confirmar",
      "team_a":"ecu","team_b":"cuw",
      "team_a_context":{"sistema":"4-3-3","figura":"Moisés Caicedo","elo_intl":1618,"incentivo_competitivo":"Ecuador debe ganar a Curaçao para no depender de la J3. Rival alcanzable.","ausencias_clave":[],"amenaza_principal":"Caicedo controlando el ritmo, extremos con velocidad"},
-     "team_b_context":{"sistema":"4-4-2","figura":"Cuco Martina (generación)","elo_intl":1362,"incentivo_competitivo":"Curaçao puede estar eliminada — jugará con libertad para dejar huella histórica.","ausencias_clave":[],"amenaza_principal":"Físico, transiciones directas"},
+     "team_b_context":{"sistema":"4-3-3","figura":"Jürgen Locadia","elo_intl":1362,"incentivo_competitivo":"Curaçao puede estar eliminada — jugará con libertad para dejar huella histórica.","ausencias_clave":[],"amenaza_principal":"Físico, transiciones directas"},
      "prediccion_narrativa":"Ecuador debe y puede ganar este partido. Caicedo tiene el nivel para dominar el mediocampo y los extremos ecuatorianos tienen la velocidad para superar a la defensa de Curaçao.",
      "resultado_predicho":"3-0","confianza":"alta"},
 
@@ -167,7 +167,7 @@
 
     {"match_id":"grp-e-j3-cuw-civ","grupo":"E","jornada":3,"date":"2026-06-26","venue":"Por confirmar","simultaneous":true,
      "team_a":"cuw","team_b":"civ",
-     "team_a_context":{"sistema":"4-4-2","figura":"Cuco Martina (generación)","elo_intl":1362,"incentivo_competitivo":"Curaçao sin nada que perder — jugará para el recuerdo histórico.","ausencias_clave":[],"amenaza_principal":"Motivación histórica, físico sorpresivo"},
+     "team_a_context":{"sistema":"4-3-3","figura":"Jürgen Locadia","elo_intl":1362,"incentivo_competitivo":"Curaçao sin nada que perder — jugará para el recuerdo histórico.","ausencias_clave":[],"amenaza_principal":"Motivación histórica, físico sorpresivo"},
      "team_b_context":{"sistema":"4-3-3","figura":"Ousmane Diomandé","elo_intl":1651,"elo_club_avg":1524,"incentivo_competitivo":"CIV puede necesitar ganar para clasificar. No puede fallar ante el rival más débil.","ausencias_clave":[],"amenaza_principal":"Amad Diallo en bandas, Kessié en control"},
      "prediccion_narrativa":"CIV gana con comodidad. Curaçao habrá dado todo en los dos primeros partidos. Los marfileños cierran con victoria para certificar su avance.",
      "resultado_predicho":"3-0","confianza":"alta"},
@@ -182,7 +182,7 @@
     {"match_id":"grp-f-j1-swe-tun","grupo":"F","jornada":1,"date":"2026-06-14","venue":"Por confirmar",
      "team_a":"swe","team_b":"tun",
      "team_a_context":{"sistema":"4-4-2 / 4-2-3-1","figura":"Alexander Isak","elo_intl":1672,"elo_club_avg":1580,"incentivo_competitivo":"Suecia debuta en el mundial — resultado positivo para encaminarse a los octavos.","ausencias_clave":[],"amenaza_principal":"Isak como referencia, Kulusevski en banda, Forsberg creando"},
-     "team_b_context":{"sistema":"4-3-3","figura":"Wahbi Khazri","elo_intl":1558,"incentivo_competitivo":"Túnez busca mejorar su historial mundialista — punto contra Suecia sería un buen inicio.","ausencias_clave":[],"amenaza_principal":"Khazri / Msakni en creación, físico defensivo"},
+     "team_b_context":{"sistema":"4-2-3-1","figura":"Hannibal Mejbri","elo_intl":1558,"incentivo_competitivo":"Túnez busca mejorar su historial mundialista — punto contra Suecia sería un buen inicio.","ausencias_clave":[],"amenaza_principal":"Skhiri en el pivot, Mejbri entre líneas, Saad y Gharbi en las bandas"},
      "prediccion_narrativa":"Suecia tiene más calidad con Isak y Kulusevski. Túnez es organizado y físico. El partido puede ser trabado en el primer tiempo, pero Suecia tiene el armamento goleador para resolverlo.",
      "resultado_predicho":"2-0","confianza":"media"},
 
@@ -196,14 +196,14 @@
     {"match_id":"grp-f-j2-jpn-tun","grupo":"F","jornada":2,"date":"2026-06-20","venue":"Por confirmar",
      "team_a":"jpn","team_b":"tun",
      "team_a_context":{"sistema":"3-4-2-1","figura":"Takefusa Kubo","elo_intl":1698,"incentivo_competitivo":"Japón necesita puntos para mantenerse en la pelea del grupo. Túnez es el rival más asequible.","ausencias_clave":["Mitoma (lesionado)","Minamino (lesionado)"],"amenaza_principal":"Kubo y Junya Ito como mediapuntas, Ueda de referencia; pressing y transición rápida"},
-     "team_b_context":{"sistema":"4-3-3","figura":"Wahbi Khazri","elo_intl":1558,"incentivo_competitivo":"Túnez necesita puntos para mantenerse viva. Partido vital ante un rival alcanzable.","ausencias_clave":[],"amenaza_principal":"Khazri en creación, físico en el duelo"},
+     "team_b_context":{"sistema":"4-2-3-1","figura":"Hannibal Mejbri","elo_intl":1558,"incentivo_competitivo":"Túnez necesita puntos para mantenerse viva. Partido vital ante un rival alcanzable.","ausencias_clave":[],"amenaza_principal":"Skhiri recuperando, Mejbri creando, bloque bajo difícil de penetrar"},
      "prediccion_narrativa":"Partido entre dos equipos de nivel similar que necesitan puntos. Japón tiene mejor organización táctica y más movilidad. Túnez es físicamente fuerte. El pressing japonés puede ser determinante.",
      "resultado_predicho":"2-1","confianza":"media"},
 
     {"match_id":"grp-f-j3-ned-tun","grupo":"F","jornada":3,"date":"2026-06-26","venue":"Por confirmar","simultaneous":true,
      "team_a":"ned","team_b":"tun",
      "team_a_context":{"sistema":"4-3-3","figura":"Virgil van Dijk","elo_intl":1792,"incentivo_competitivo":"Países Bajos puede llegar ya clasificada — cerrará con victoria para ir como líderes.","ausencias_clave":[],"amenaza_principal":"Memphis / Gakpo como dupla desequilibrante"},
-     "team_b_context":{"sistema":"4-3-3","figura":"Wahbi Khazri","elo_intl":1558,"incentivo_competitivo":"Túnez prácticamente eliminada — jugará con orgullo africano.","ausencias_clave":[],"amenaza_principal":"Khazri / Msakni en ataque"},
+     "team_b_context":{"sistema":"4-2-3-1","figura":"Hannibal Mejbri","elo_intl":1558,"incentivo_competitivo":"Túnez prácticamente eliminada — jugará con orgullo africano.","ausencias_clave":[],"amenaza_principal":"Mejbri y Saad buscando el contragolpe"},
      "prediccion_narrativa":"Países Bajos gana con comodidad ante una Túnez eliminada. El técnico rotará para cuidar piernas de cara a octavos.",
      "resultado_predicho":"2-0","confianza":"alta"},
 
