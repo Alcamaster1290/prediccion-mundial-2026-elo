@@ -248,6 +248,108 @@
   }
   @media (max-width: 380px) { .grupos-modal-body { grid-template-columns: 1fr; } }
 
+  /* ─── STANDINGS TABLE ─── */
+  .standings-wrap {
+    margin: 1.75rem 0 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .standings-table thead th {
+    background: #0b0f1c;
+    padding: .5rem .75rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    white-space: nowrap;
+  }
+  .standings-table thead th.st-team-hdr { text-align: left; min-width: 140px; }
+  .standings-table thead th.st-pos-hdr  { width: 30px; }
+  .standings-table thead th.st-pts-hdr  { color: var(--fg); }
+  .standings-table td {
+    padding: .52rem .75rem;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .standings-table tr:last-child td { border-bottom: none; }
+  .standings-table tr:hover td { background: rgba(255,255,255,.025); }
+  .st-pos-cell {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .st-team-cell { text-align: left !important; }
+  .st-team-link { color: inherit; text-decoration: none; }
+  .st-team-link:hover { color: var(--accent); }
+  .st-pts { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 15px; color: var(--white); }
+  /* Zone indicators */
+  .st-qualify > td:first-child { border-left: 3px solid var(--grp-col, var(--accent)); }
+  .st-third   > td:first-child { border-left: 3px solid rgba(245,158,11,.7); }
+  /* Tiebreak accordion */
+  .st-tiebreak {
+    padding: .55rem 1rem;
+    border-top: 1px solid var(--border);
+    background: rgba(0,0,0,.18);
+  }
+  .st-tiebreak summary {
+    cursor: pointer;
+    font-size: 10.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    user-select: none;
+    list-style: none;
+  }
+  .st-tiebreak summary::-webkit-details-marker { display: none; }
+  .st-tiebreak[open] summary { color: var(--fg); }
+  .st-tiebreak-list {
+    margin: .6rem 0 .3rem 1.3rem;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .st-tiebreak-note {
+    font-size: 11px;
+    color: var(--muted);
+    opacity: .7;
+    margin: .35rem 0 .1rem;
+    font-style: italic;
+  }
+  /* Legend */
+  .standings-legend {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: .5rem;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 0 .25rem;
+  }
+  .st-legend-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 2px;
+    margin-right: .35rem;
+    vertical-align: middle;
+  }
+  @media (max-width: 600px) {
+    .standings-table { font-size: 12px; }
+    .standings-table thead th, .standings-table td { padding: .45rem .4rem; }
+    .st-team-hdr, .st-team-cell { min-width: 110px; }
+  }
+
   /* ─── HERO ─── */
   .hero {
     position: relative; overflow: hidden;
@@ -1749,11 +1851,73 @@
         <h2>Grupo A</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy"> Sudáfrica &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy"> Corea del Sur &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cze.svg" alt="Chequia" loading="lazy"> Chequia</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-a)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy"> Sudáfrica</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><a href="#corea" class="st-team-link"><img class="flag-svg" src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy"> Corea del Sur</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/cze.svg" alt="Chequia" loading="lazy"> Chequia</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── COREA DEL SUR ─── -->
     
-    <!-- ─── COREA DEL SUR ─── -->
+    
     <div class="team-section" id="corea">
       <div class="team-header">
         <div class="team-flag-big"><img src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy"></div>
@@ -1811,8 +1975,70 @@
         <h2>Grupo B</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/can.svg" alt="Canadá" loading="lazy"> Canadá &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/bih.svg" alt="Bosnia y Herz." loading="lazy"> Bosnia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/qat.svg" alt="Qatar" loading="lazy"> Qatar &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/sui.svg" alt="Suiza" loading="lazy"> Suiza</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-b)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/can.svg" alt="Canadá" loading="lazy"> Canadá</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><a href="#bosnia" class="st-team-link"><img class="flag-svg" src="assets/flags/bih.svg" alt="Bosnia y Herz." loading="lazy"> Bosnia y Herz.</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/qat.svg" alt="Qatar" loading="lazy"> Qatar</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><a href="#suiza" class="st-team-link"><img class="flag-svg" src="assets/flags/sui.svg" alt="Suiza" loading="lazy"> Suiza</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── BOSNIA Y HERZEGOVINA ─── -->
     <div class="team-section" id="bosnia">
       <div class="team-header">
@@ -1908,8 +2134,70 @@
         <h2>Grupo C</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/bra.svg" alt="Brasil" loading="lazy"> Brasil &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/mar.svg" alt="Marruecos" loading="lazy"> Marruecos &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/hti.svg" alt="Haití" loading="lazy"> Haití &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/sco.svg" alt="Escocia" loading="lazy"> Escocia</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-c)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><a href="#brasil" class="st-team-link"><img class="flag-svg" src="assets/flags/bra.svg" alt="Brasil" loading="lazy"> Brasil</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/mar.svg" alt="Marruecos" loading="lazy"> Marruecos</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><a href="#haiti" class="st-team-link"><img class="flag-svg" src="assets/flags/hti.svg" alt="Haití" loading="lazy"> Haití</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><a href="#escocia" class="st-team-link"><img class="flag-svg" src="assets/flags/sco.svg" alt="Escocia" loading="lazy"> Escocia</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── BRASIL ─── -->
     <div class="team-section" id="brasil">
       <div class="team-header">
@@ -2046,8 +2334,70 @@
         <h2>Grupo E</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> Alemania &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cuw.svg" alt="Curazao" loading="lazy"> Curazao &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> Costa de Marfil &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/ecu.svg" alt="Ecuador" loading="lazy"> Ecuador</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-e)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><a href="#alemania" class="st-team-link"><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> Alemania</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><a href="#costa-marfil" class="st-team-link"><img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> Costa de Marfil</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/ecu.svg" alt="Ecuador" loading="lazy"> Ecuador</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><a href="#curazao" class="st-team-link"><img class="flag-svg" src="assets/flags/cuw.svg" alt="Curazao" loading="lazy"> Curazao</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── COSTA DE MARFIL ─── -->
     <div class="team-section" id="costa-marfil">
       <div class="team-header">
@@ -2183,8 +2533,70 @@
         <h2>Grupo F</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/ned.svg" alt="Países Bajos" loading="lazy"> Países Bajos &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/jpn.svg" alt="Japón" loading="lazy"> Japón &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> Suecia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/tun.svg" alt="Túnez" loading="lazy"> Túnez</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-f)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/ned.svg" alt="Países Bajos" loading="lazy"> Países Bajos</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><a href="#japon" class="st-team-link"><img class="flag-svg" src="assets/flags/jpn.svg" alt="Japón" loading="lazy"> Japón</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><a href="#suecia" class="st-team-link"><img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> Suecia</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><a href="#tunez" class="st-team-link"><img class="flag-svg" src="assets/flags/tun.svg" alt="Túnez" loading="lazy"> Túnez</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── SUECIA ─── -->
     <div class="team-section" id="suecia">
       <div class="team-header">
@@ -2319,8 +2731,70 @@
         <h2>Grupo G</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/bel.svg" alt="Bélgica" loading="lazy"> Bélgica &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/egy.svg" alt="Egipto" loading="lazy"> Egipto &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/irn.svg" alt="Irán" loading="lazy"> Irán &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/nzl.svg" alt="Nueva Zelanda" loading="lazy"> Nueva Zelanda</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-g)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><a href="#belgica" class="st-team-link"><img class="flag-svg" src="assets/flags/bel.svg" alt="Bélgica" loading="lazy"> Bélgica</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/egy.svg" alt="Egipto" loading="lazy"> Egipto</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/irn.svg" alt="Irán" loading="lazy"> Irán</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><a href="#nueva-zelanda" class="st-team-link"><img class="flag-svg" src="assets/flags/nzl.svg" alt="Nueva Zelanda" loading="lazy"> Nueva Zelanda</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── BÉLGICA ─── -->
     <div class="team-section" id="belgica">
       <div class="team-header">
@@ -2416,8 +2890,70 @@
         <h2>Grupo H</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/esp.svg" alt="España" loading="lazy"> España &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cpv.svg" alt="Cabo Verde" loading="lazy"> Cabo Verde &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/ksa.svg" alt="Arabia Saudita" loading="lazy"> Arabia Saudita &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/ury.svg" alt="Uruguay" loading="lazy"> Uruguay</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-h)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/esp.svg" alt="España" loading="lazy"> España</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/ury.svg" alt="Uruguay" loading="lazy"> Uruguay</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/ksa.svg" alt="Arabia Saudita" loading="lazy"> Arabia Saudita</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><a href="#cabo-verde" class="st-team-link"><img class="flag-svg" src="assets/flags/cpv.svg" alt="Cabo Verde" loading="lazy"> Cabo Verde</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── CABO VERDE ─── -->
     <div class="team-section" id="cabo-verde">
       <div class="team-header">
@@ -2472,8 +3008,70 @@
         <h2>Grupo I</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy"> Francia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/sen.svg" alt="Senegal" loading="lazy"> Senegal &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/irq.svg" alt="Irak" loading="lazy"> Irak &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> Noruega</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-i)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><a href="#francia" class="st-team-link"><img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy"> Francia</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><a href="#noruega" class="st-team-link"><img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> Noruega</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/sen.svg" alt="Senegal" loading="lazy"> Senegal</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/irq.svg" alt="Irak" loading="lazy"> Irak</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── FRANCIA ─── -->
     <div class="team-section" id="francia">
       <div class="team-header">
@@ -2569,8 +3167,70 @@
         <h2>Grupo J</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/arg.svg" alt="Argentina" loading="lazy"> Argentina &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/alg.svg" alt="Argelia" loading="lazy"> Argelia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/aut.svg" alt="Austria" loading="lazy"> Austria &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/jor.svg" alt="Jordania" loading="lazy"> Jordania</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-j)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/arg.svg" alt="Argentina" loading="lazy"> Argentina</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><a href="#austria" class="st-team-link"><img class="flag-svg" src="assets/flags/aut.svg" alt="Austria" loading="lazy"> Austria</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/alg.svg" alt="Argelia" loading="lazy"> Argelia</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/jor.svg" alt="Jordania" loading="lazy"> Jordania</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── AUSTRIA ─── -->
     <div class="team-section" id="austria">
       <div class="team-header">
@@ -2625,8 +3285,70 @@
         <h2>Grupo K</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/por.svg" alt="Portugal" loading="lazy"> Portugal &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cod.svg" alt="RD Congo" loading="lazy"> RD del Congo &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/uzb.svg" alt="Uzbekistán" loading="lazy"> Uzbekistán &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/col.svg" alt="Colombia" loading="lazy"> Colombia</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-k)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><a href="#portugal" class="st-team-link"><img class="flag-svg" src="assets/flags/por.svg" alt="Portugal" loading="lazy"> Portugal</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/col.svg" alt="Colombia" loading="lazy"> Colombia</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><a href="#rd-congo" class="st-team-link"><img class="flag-svg" src="assets/flags/cod.svg" alt="RD del Congo" loading="lazy"> RD del Congo</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/uzb.svg" alt="Uzbekistán" loading="lazy"> Uzbekistán</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── PORTUGAL ─── -->
     <div class="team-section" id="portugal">
       <div class="team-header">
@@ -2722,8 +3444,70 @@
         <h2>Grupo L</h2>
         <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/eng.svg" alt="Inglaterra" loading="lazy"> Inglaterra &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/cro.svg" alt="Croacia" loading="lazy"> Croacia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/gha.svg" alt="Ghana" loading="lazy"> Ghana &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/pan.svg" alt="Panamá" loading="lazy"> Panamá</div>
       </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-l)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><a href="#inglaterra" class="st-team-link"><img class="flag-svg" src="assets/flags/eng.svg" alt="Inglaterra" loading="lazy"> Inglaterra</a></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/cro.svg" alt="Croacia" loading="lazy"> Croacia</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/gha.svg" alt="Ghana" loading="lazy"> Ghana</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/pan.svg" alt="Panamá" loading="lazy"> Panamá</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
     </div>
-    
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 32avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
     <!-- ─── INGLATERRA ─── -->
     <div class="team-section" id="inglaterra">
       <div class="team-header">
