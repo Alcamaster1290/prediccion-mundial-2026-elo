@@ -133,7 +133,7 @@
     {"match_id":"grp-e-j1-ger-cuw","grupo":"E","jornada":1,"date":"2026-06-14","venue":"Por confirmar",
      "team_a":"ger","team_b":"cuw",
      "team_a_context":{"sistema":"4-2-3-1 / 3-4-3","figura":"Jamal Musiala","elo_intl":1815,"incentivo_competitivo":"Alemania necesita recuperar el prestigio mundial tras Qatar 2022. Partido que debe ganar con autoridad.","ausencias_clave":[],"amenaza_principal":"Musiala / Wirtz en mediapuntas, Havertz de falso 9"},
-     "team_b_context":{"sistema":"4-3-3","figura":"Jürgen Locadia","elo_intl":1362,"incentivo_competitivo":"Curaçao debuta mundialista — un punto sería un milagro histórico. El objetivo es competir con dignidad.","ausencias_clave":[],"amenaza_principal":"Unidad colectiva, fisico y sorpresa táctica"},
+     "team_b_context":{"sistema":"4-3-3","figura":"Leandro Bacuna","elo_intl":1362,"incentivo_competitivo":"Curaçao debuta mundialista — un punto sería un milagro histórico. El objetivo es competir con dignidad.","ausencias_clave":[],"amenaza_principal":"Unidad colectiva, fisico y sorpresa táctica"},
      "prediccion_narrativa":"Alemania debe aplastar a Curaçao para enviar un mensaje al grupo. Musiala y Wirtz con libertad creativa deberían desmontar cualquier bloque. El único riesgo es la falta de concentración.",
      "resultado_predicho":"4-0","confianza":"alta"},
 
@@ -154,7 +154,7 @@
     {"match_id":"grp-e-j2-ecu-cuw","grupo":"E","jornada":2,"date":"2026-06-20","venue":"Por confirmar",
      "team_a":"ecu","team_b":"cuw",
      "team_a_context":{"sistema":"4-3-3","figura":"Moisés Caicedo","elo_intl":1618,"incentivo_competitivo":"Ecuador debe ganar a Curaçao para no depender de la J3. Rival alcanzable.","ausencias_clave":[],"amenaza_principal":"Caicedo controlando el ritmo, extremos con velocidad"},
-     "team_b_context":{"sistema":"4-3-3","figura":"Jürgen Locadia","elo_intl":1362,"incentivo_competitivo":"Curaçao puede estar eliminada — jugará con libertad para dejar huella histórica.","ausencias_clave":[],"amenaza_principal":"Físico, transiciones directas"},
+     "team_b_context":{"sistema":"4-3-3","figura":"Leandro Bacuna","elo_intl":1362,"incentivo_competitivo":"Curaçao puede estar eliminada — jugará con libertad para dejar huella histórica.","ausencias_clave":[],"amenaza_principal":"Físico, transiciones directas"},
      "prediccion_narrativa":"Ecuador debe y puede ganar este partido. Caicedo tiene el nivel para dominar el mediocampo y los extremos ecuatorianos tienen la velocidad para superar a la defensa de Curaçao.",
      "resultado_predicho":"3-0","confianza":"alta"},
 
@@ -167,7 +167,7 @@
 
     {"match_id":"grp-e-j3-cuw-civ","grupo":"E","jornada":3,"date":"2026-06-26","venue":"Por confirmar","simultaneous":true,
      "team_a":"cuw","team_b":"civ",
-     "team_a_context":{"sistema":"4-3-3","figura":"Jürgen Locadia","elo_intl":1362,"incentivo_competitivo":"Curaçao sin nada que perder — jugará para el recuerdo histórico.","ausencias_clave":[],"amenaza_principal":"Motivación histórica, físico sorpresivo"},
+     "team_a_context":{"sistema":"4-3-3","figura":"Leandro Bacuna","elo_intl":1362,"incentivo_competitivo":"Curaçao sin nada que perder — jugará para el recuerdo histórico.","ausencias_clave":[],"amenaza_principal":"Motivación histórica, físico sorpresivo"},
      "team_b_context":{"sistema":"4-3-3","figura":"Ousmane Diomandé","elo_intl":1651,"elo_club_avg":1524,"incentivo_competitivo":"CIV puede necesitar ganar para clasificar. No puede fallar ante el rival más débil.","ausencias_clave":[],"amenaza_principal":"Amad Diallo en bandas, Kessié en control"},
      "prediccion_narrativa":"CIV gana con comodidad. Curaçao habrá dado todo en los dos primeros partidos. Los marfileños cierran con victoria para certificar su avance.",
      "resultado_predicho":"3-0","confianza":"alta"},
