@@ -44,6 +44,9 @@ Fuentes de los 26 convocados — artículos de AlterFutbol:
   Alemania     → https://www.alterfutbol.com/europa/alemania/alemania-anuncio-sus-convocados-para-el-mundial-2026/
   Noruega      → https://www.alterfutbol.com/europa/noruega/noruega-anuncio-sus-convocados-para-el-mundial-2026/
   Inglaterra   → https://www.alterfutbol.com/europa/inglaterra/con-sorpresas-y-ausencias-inglaterra-anuncio-sus-convocados-al-mundial/
+  Japón        → https://x.com/nahuelzn/status/2055291664172757179 
+  Túnez        → https://x.com/nahuelzn/status/2055349229216825789 
+  Curazao      → https://x.com/nahuelzn/status/2056425814615306295
 
 Nota: Japón, Túnez y Curazao no tienen artículo en AlterFutbol — carga manual.
 
