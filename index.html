@@ -3627,9 +3627,9 @@
   }
   document.getElementById('grupos-modal-body').addEventListener('click', function(e) {
     var hdr = e.target.closest('.gmod-group-header');
-    if (!hdr) return;
-    var letter = hdr.textContent.trim().split(' ')[1].toLowerCase();
-    goToGrupo(letter);
+    if (hdr) { goToGrupo(hdr.textContent.trim().split(' ')[1].toLowerCase()); return; }
+    var team = e.target.closest('.gmod-team.has-analysis');
+    if (team) { closeGruposModal(); }
   });
   function filterGrupos(q) {
     var term = q.toLowerCase().trim();
