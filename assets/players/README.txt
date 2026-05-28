@@ -47,10 +47,8 @@ Fuentes de los 26 convocados — artículos de AlterFutbol:
   Japón        → https://x.com/nahuelzn/status/2055291664172757179 
   Túnez        → https://x.com/nahuelzn/status/2055349229216825789 
   Curazao      → https://x.com/nahuelzn/status/2056425814615306295
-
-Nota: Japón, Túnez y Curazao no tienen artículo en AlterFutbol — carga manual.
-
-Fuentes de imágenes libres de derechos:
-  - Wikimedia Commons (búsqueda por nombre del jugador)
-  - Sitios oficiales de federaciones nacionales
-  - Transfermarkt (fotos de perfil en tamaño pequeño)
+  España       → https://www.alterfutbol.com/europa/espana/espana-anuncio-sus-convocados-al-mundial-2026-la-lista-y-analisis-tactico/
+  Colombia     → https://www.alterfutbol.com/sudamerica/colombia/colombia-anuncio-sus-convocados-al-mundial-2026-analisis-tactico-de-la-lista/
+  USA          → https://www.alterfutbol.com/concacaf/estados-unidos/estados-unidos-anuncio-sus-convocados-al-mundial-2026-analisis-de-la-lista/
+  Marruecos    → https://x.com/nahuelzn/status/2059340704837452059
+  Panamá       → https://x.com/nahuelzn/status/2059321077625504136
