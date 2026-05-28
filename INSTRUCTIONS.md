@@ -45,7 +45,7 @@ Cada país analizado ocupa un bloque `<div class="team-section" id="[id-seccion]
     <div class="info-card">
       <h4>Sistema de juego</h4>
       <p class="tactic-prose">...</p>
-      <a href="[url-nota]" target="_blank" rel="noopener" style="...">↗ Nota en AlterFutbol</a>
+      <a href="https://www.alterfutbol.com/[region]/[slug-pais]/[slug-nota]/" target="_blank" rel="noopener" style="display:inline-block;margin-top:.5rem;font-size:.72rem;color:var(--accent);text-decoration:none;opacity:.8">↗ Nota en AlterFutbol</a>
     </div>
     <div class="info-card">
       <h4>Ausencias notables</h4>
@@ -55,6 +55,23 @@ Cada país analizado ocupa un bloque `<div class="team-section" id="[id-seccion]
       </ul>
     </div>
   </div>
+
+### URL de AlterFutbol (`[region]/[slug-pais]/[slug-nota]/`)
+
+Base: `https://www.alterfutbol.com/` · Fuente: [alterfutbol.com](https://alterfutbol.com)
+
+| Región (`[region]`) | Ejemplos de países |
+|---------------------|--------------------|
+| `europa`            | `bosnia`, `suiza`, `espana`, `alemania`, `noruega`, `austria`, `suecia` |
+| `sudamerica`        | `brasil`, `colombia`, `argentina`, `ecuador` |
+| `asia`              | `corea-del-sur`, `japon`, `iran` |
+| `africa`            | `costa-de-marfil`, `marruecos`, `senegal` |
+| `concacaf`          | `haiti`, `panama`, `eeuu`, `canada` |
+| `oceania`           | `nueva-zelanda` |
+
+El `[slug-nota]` coincide con el título del artículo en AlterFutbol (buscar en el sitio el artículo de convocados del equipo).
+
+---
 
   <!-- 4. XI probable (imagen) -->
   <div class="xi-img-wrap">
