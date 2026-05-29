@@ -73,6 +73,19 @@ El `[slug-nota]` coincide con el título del artículo en AlterFutbol (buscar en
 
 ---
 
+### Símbolos en columna Jugador
+
+| Símbolo | Significado |
+|---------|-------------|
+| `★(C)`  | Figura clave (star-card) **y** capitán — coinciden en la misma persona |
+| `★`     | Figura clave (star-card) — NO es el capitán del equipo |
+| `(C)`   | Capitán — NO es la figura clave destacada |
+| *(nada)*| Jugador sin rol especial |
+
+La figura clave debe coincidir siempre con el jugador cuya foto aparece en la tarjeta de estrella (`star-card`) de la cabecera del equipo.
+
+---
+
   <!-- 4. XI probable (imagen) -->
   <div class="xi-img-wrap">
     <div class="xi-img-label">XI Probable · País</div>
@@ -87,7 +100,7 @@ El `[slug-nota]` coincide con el título del artículo en AlterFutbol (buscar en
         <!-- una fila por jugador, todo en una sola línea HTML -->
         <tr>
           <td><span class="pos-badge pos-gk">GK</span></td>
-          <td class="player-name">Nombre [★(C) si es capitán]</td>
+          <td class="player-name">Nombre [★(C) / ★ / (C) según tabla abajo]</td>
           <td style="color:var(--muted)">23</td>
           <td style="font-size:13px">Club FC</td>
           <td style="font-size:12px;color:var(--muted)">País Club</td>
