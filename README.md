@@ -19,8 +19,8 @@ mundial-2026/
 │
 ├── assets/
 │   ├── flags/              # Banderas en SVG — código ISO 3166-1 alpha-3 (48 total)
-│   ├── players/            # Foto de la figura clave — UNA por selección (18 total)
-│   └── xi/                 # XI Ideal por selección — 1024×1024px PNG (18 total)
+│   ├── players/            # Foto de la figura clave — UNA por selección (23 total)
+│   └── xi/                 # XI Ideal por selección — 1024×1024px PNG (26 total)
 │
 └── data/
     ├── teams.json          # Planteles con ELO por club (bih, kor completos)
@@ -37,8 +37,9 @@ mundial-2026/
 - Fuente: [flagcdn.com](https://flagcdn.com)
 
 ### `assets/players/`
-- Formato: `.jpg` o `.webp` (usar el que esté disponible)
+- Formato: `.jpg`, `.png` o `.webp`
 - Una imagen por selección — la figura más reconocida o el mayor ELO de club
+- Convención: `{cod}-{apellido}.{ext}` — excepciones ya en uso: `jap-` (Japón), `cur-` (Curazao)
 
 | Equipo | Archivo | Jugador | Club |
 |--------|---------|---------|------|
@@ -57,9 +58,14 @@ mundial-2026/
 | Austria | `aut-alaba.webp` | David Alaba | Real Madrid |
 | Portugal | `por-ronaldo.jpg` | Cristiano Ronaldo | Al-Nassr |
 | RD del Congo | `cod-mbemba.webp` | Chancel Mbemba | Lille |
-| Alemania | `ger-wirtz.webp` | Florian Wirtz | Bayer Leverkusen |
+| Alemania | `ger-wirtz.webp` | Florian Wirtz | Liverpool |
 | Noruega | `nor-haaland.webp` | Erling Haaland | Manchester City |
-| Inglaterra | `eng-kane.webp` | Harry Kane | Bayern Múnich |
+| Inglaterra | `eng-kane.webp` | Harry Kane | Bayern München |
+| España | `esp-yamal.png` | Lamine Yamal | FC Barcelona |
+| Colombia | `col-diaz.webp` | Luis Díaz | Bayern Múnich |
+| Japón | `jap-kubo.webp` | Takefusa Kubo | Real Sociedad |
+| Túnez | `tun-mejbri.jpg` | Hannibal Mejbri | Burnley FC |
+| Curazao | `cur-bacuna.jpg` | Leandro Bacuna | Idgir FK |
 
 ### `assets/xi/`
 - Formato: `{código-equipo}-xi.png`
@@ -134,9 +140,14 @@ Matriz narrativa con los 72 partidos de la fase de grupos (12 grupos × 6 partid
 | Austria | J | ✅ | ✅ 10 titulares** | ✅ |
 | Portugal | K | ✅ | ✅ 11 titulares | ✅ |
 | RD del Congo | K | ✅ | ✅ 11 titulares | ✅ |
-| Alemania | J | ✅ | ✅ 11 titulares | ✅ |
-| Noruega | F | ✅ | ✅ 11 titulares | ✅ |
+| Alemania | E | ✅ | ✅ 11 titulares | ✅ |
+| Noruega | I | ✅ | ✅ 11 titulares | ✅ |
 | Inglaterra | L | ✅ | ✅ 11 titulares | ✅ |
+| España | H | ✅ | ✅ 11 titulares | ✅ |
+| Colombia | K | ✅ | ✅ 11 titulares | ✅ |
+| Japón | F | ✅ | ✅ 11 titulares | ✅ |
+| Túnez | F | ✅ | ✅ 11 titulares | ✅ |
+| Curazao | E | ✅ | ✅ 11 titulares | ✅ |
 
 \* El XI publicado muestra dos opciones para una posición (Lukaku / De Ketelaere)
 \*\* Un jugador del XI publicado no figura en la lista oficial de convocados
@@ -169,14 +180,15 @@ npx serve .
 - [x] Publicar en GitHub Pages
 - [x] Tablas de plantel ordenadas: GK→DEF→MED→DEL, titular primero, ELO desc.
 - [x] Mobile: tablas de convocados expandibles (accordion ≤600px, sin scroll horizontal)
-- [ ] Convocatorias pendientes (carga manual): jpn, tun, cuw
-- [ ] Convocatorias pendientes (sin publicar aún): mex, zaf, cze, can, qat, mar, ecu, ned, egy, irn, esp, ksa, ury, sen, irq, arg, alg, jor, uzb, col, cro, gha, pan, usa, pry, aus, tur
+- [x] Convocatorias pendientes (carga manual): jpn, tun, cuw
+- [ ] Análisis pendientes (XI preparado, falta sección): usa, mar, pan
+- [ ] Convocatorias pendientes (sin publicar aún): mex, zaf, cze, can, qat, ecu, ned, egy, irn, ksa, ury, sen, irq, arg, alg, jor, uzb, cro, gha, pry, aus, tur
 - [ ] Sección interactiva de predicciones por partido
 - [ ] Comparador de ELO entre equipos del mismo grupo
 
 ---
 
-*Datos actualizados al 25 de mayo de 2026. Fuentes: AlterFutbol · worldclubratings.com · FIFA*
+*Datos actualizados al 1 de junio de 2026. Fuentes: AlterFutbol · worldclubratings.com · FIFA*
 
 ---
 

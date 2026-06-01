@@ -5,7 +5,7 @@ Convención: {código-equipo}-{apellido}.jpg  (o .webp)
 Resolución mínima recomendada: 400 × 500 px (retrato, portrait)
 Formato: JPG o WebP
 
-Lista de figuras clave confirmadas (18 selecciones analizadas):
+Lista de figuras clave confirmadas (23 selecciones analizadas):
   kor-son.jpg          → Son Heung-min (Corea del Sur)
   bih-dzeko.jpg        → Edin Džeko (Bosnia)
   sui-xhaka.webp       → Granit Xhaka (Suiza)
@@ -24,6 +24,11 @@ Lista de figuras clave confirmadas (18 selecciones analizadas):
   por-ronaldo.jpg      → Cristiano Ronaldo (Portugal)
   cod-mbemba.webp      → Chancel Mbemba (RD del Congo)
   eng-kane.webp        → Harry Kane (Inglaterra)
+  esp-yamal.png        → Lamine Yamal (España)
+  col-diaz.webp        → Luis Díaz (Colombia)
+  jap-kubo.webp        → Takefusa Kubo (Japón)       [nota: usa "jap", no "jpn"]
+  tun-mejbri.jpg       → Hannibal Mejbri (Túnez)
+  cur-bacuna.jpg       → Leandro Bacuna (Curazao)    [nota: usa "cur", no "cuw"]
 
 Fuentes de los 26 convocados — artículos de AlterFutbol:
   Bosnia       → https://www.alterfutbol.com/europa/bosnia/bosnia-dio-la-primera-lista-del-mundial-2026-los-convocados-y-el-analisis-tactico/

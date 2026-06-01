@@ -284,6 +284,15 @@ Cuando se agrega un equipo con sección completa (`has-analysis`), actualizar:
 | Jugador estrella | `assets/players/[cod]-[apellido].ext` | jpg / png / webp |
 | XI probable | `assets/xi/[cod]-xi.png` | Imagen del once formación |
 
+### Imagen del jugador estrella
+
+1. **Subir** la imagen a `assets/players/` con el nombre `{cod}-{apellido}.{ext}`.
+2. **Formato:** `.jpg`, `.png` o `.webp`.
+3. **Resolución mínima:** 400 × 500 px (retrato, portrait).
+4. **Excepciones de código ya en uso:** `jap-` (Japón, no `jpn-`), `cur-` (Curazao, no `cuw-`). Mantener estas convenciones para no romper el HTML existente.
+5. **Actualizar `assets/players/README.txt`** con la nueva entrada: `{cod}-{apellido}.{ext}  → Nombre Jugador (País)`.
+6. En el HTML, el `src` del `<img>` dentro de `.star-img-wrap` debe coincidir exactamente con el nombre del archivo subido.
+
 ---
 
 ## Orden de equipos dentro de cada grupo
