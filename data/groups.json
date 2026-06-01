@@ -200,6 +200,68 @@
       ]
     },
     {
+      "id": "D",
+      "color": "#6366f1",
+      "teams": [
+        "usa",
+        "pry",
+        "aus",
+        "tur"
+      ],
+      "fixtures": [
+        {
+          "jornada": 1,
+          "date": "2026-06-13",
+          "time": "01:00",
+          "home": "usa",
+          "away": "pry",
+          "venue": "SoFi Stadium, Inglewood"
+        },
+        {
+          "jornada": 1,
+          "date": "2026-06-14",
+          "time": "04:00",
+          "home": "aus",
+          "away": "tur",
+          "venue": "BC Place, Vancouver"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-19",
+          "time": "19:00",
+          "home": "usa",
+          "away": "aus",
+          "venue": "Lumen Field, Seattle"
+        },
+        {
+          "jornada": 2,
+          "date": "2026-06-20",
+          "time": "03:00",
+          "home": "tur",
+          "away": "pry",
+          "venue": "Levi's Stadium, Santa Clara"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-26",
+          "time": "02:00",
+          "home": "tur",
+          "away": "usa",
+          "simultaneous": true,
+          "venue": "SoFi Stadium, Inglewood"
+        },
+        {
+          "jornada": 3,
+          "date": "2026-06-26",
+          "time": "02:00",
+          "home": "pry",
+          "away": "aus",
+          "simultaneous": true,
+          "venue": "Levi's Stadium, Santa Clara"
+        }
+      ]
+    },
+    {
       "id": "E",
       "color": "#f97316",
       "teams": [
