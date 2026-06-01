@@ -94,6 +94,19 @@
     --grp-j: #84cc16;
     --grp-k: #d97706;
     --grp-l: #94a3b8;
+
+    /* ─── SPACING ─── */
+    --space-xs:  .25rem;  --space-sm:  .5rem;
+    --space-md:  1rem;    --space-lg:  1.5rem;
+    --space-xl:  2rem;    --space-2xl: 3rem;
+    /* ─── RADIUS ─── */
+    --radius-sm: 6px;  --radius-md: 10px;  --radius-lg: 12px;
+    /* ─── SHADOWS ─── */
+    --shadow-soft:  0 2px 8px rgba(0,0,0,.35);
+    --shadow-card:  0 8px 24px rgba(0,0,0,.55);
+    --shadow-hover: 0 12px 32px rgba(0,0,0,.65);
+    /* ─── TRANSITION ─── */
+    --trans: .18s ease;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -600,12 +613,13 @@
     color: var(--muted); margin-bottom: .75rem;
   }
   .xi-img {
-    max-width: 100%; width: 560px; height: auto;
+    width: min(560px, 100%); height: auto;
     border-radius: 8px; display: block; margin: 0 auto;
   }
 
   /* ─── SQUAD TABLE ─── */
   .squad-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 1rem; }
+  .tracker-accordion { display: none; }
   .squad-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   .squad-table thead th {
     background: #0e1320; padding: .65rem 1rem;
@@ -793,7 +807,7 @@
     font-size: 11px; color: var(--muted); margin-bottom: .25rem;
   }
   @media (max-width: 600px) {
-    .star-card { display: none; }
+    .star-card { display: flex; }
   }
 
   /* ─── TIMEZONE SELECT ─── */
@@ -882,14 +896,29 @@
     .cal-teams { font-size: 13px; }
   }
 
+  /* ─── TABLET 601–768px ──────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .container { padding: 0 1.5rem; }
+    nav a, .grupos-nav-btn { padding: .85rem .85rem; font-size: 12px; }
+    .group-section-header { gap: .75rem; margin-bottom: 2rem; }
+    .group-big-label { font-size: 3.5rem; }
+    .star-card { padding: .75rem 1rem; max-width: 200px; }
+    .star-img-wrap { width: 44px; height: 44px; }
+    .xi-img { width: 100%; }
+    .grupos-modal { max-width: calc(100vw - 2rem); }
+    .grupos-modal-body { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .team-header { gap: 1.25rem; }
+  }
+
   /* ─── MOBILE ≤ 600px ─────────────────────────────────────────── */
   @media (max-width: 600px) {
 
     /* Layout base */
     .container { padding: 0 1rem; }
     section { padding: 2.5rem 0; }
-    nav { padding: 0 .5rem; }
-    nav a, .grupos-nav-btn { padding: .85rem .75rem; font-size: 12px; }
+    nav { padding: .25rem .5rem; overflow-x: visible; flex-wrap: wrap; gap: .1rem; }
+    nav a, .grupos-nav-btn { padding: .6rem .65rem; font-size: 12px; white-space: nowrap; }
 
     /* Hero */
     .hero { padding: 3.5rem 1rem 3rem; }
@@ -929,6 +958,8 @@
       margin-left: 0;
       padding: .6rem .9rem;
       gap: .75rem;
+      border-left: 3px solid var(--sc, var(--accent));
+      border-radius: var(--radius-sm);
     }
     .star-img-wrap { width: 40px; height: 40px; }
     .star-name { font-size: 13px; }
@@ -944,12 +975,12 @@
     /* Squad table mobile: modo expandible */
     .squad-wrap { border-radius: 8px; }
     .squad-table { font-size: 13px; }
-    /* Ocultar Edad, Club, País, ELO, Titular — mostrar Pos + Jugador */
+    /* Ocultar Edad, Club, País, Titular — mostrar Pos + Jugador + ELO */
     .squad-table th:nth-child(3), .squad-table td:nth-child(3),
     .squad-table th:nth-child(4), .squad-table td:nth-child(4),
     .squad-table th:nth-child(5), .squad-table td:nth-child(5),
-    .squad-table th:nth-child(6), .squad-table td:nth-child(6),
     .squad-table th:nth-child(7), .squad-table td:nth-child(7) { display: none; }
+    .squad-table th:nth-child(6), .squad-table td:nth-child(6) { display: table-cell; }
     /* Chevron inyectado por JS */
     .sq-chev { width: 28px; text-align: center; color: var(--muted); font-size: 1.1rem; cursor: pointer; transition: transform .18s, color .18s; user-select: none; vertical-align: middle; padding: 0 .4rem; }
     .sq-open .sq-chev { transform: rotate(90deg); color: var(--accent); }
@@ -968,13 +999,38 @@
     /* XI image */
     .xi-img-wrap { padding: .85rem; border-radius: 8px; }
 
+    /* ─── TRACKER ACCORDION ─── */
+    .tracker-squad { display: none; }
+    .tracker-accordion { display: block; }
+    .tacc-group { margin-bottom: .75rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .tacc-group-header { display: flex; align-items: center; gap: .5rem; padding: .4rem .75rem; background: rgba(255,255,255,.04); border-bottom: 1px solid var(--border); border-left: 3px solid var(--gc, var(--accent)); }
+    .tacc-group-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--gc, var(--white)); line-height: 1; }
+    .tacc-group-teams { font-size: 11px; color: var(--muted); }
+    .tacc-item { border-bottom: 1px solid var(--border); }
+    .tacc-item:last-child { border-bottom: none; }
+    .tacc-summary { display: flex; align-items: center; justify-content: space-between; padding: .55rem .6rem; cursor: pointer; list-style: none; }
+    .tacc-summary::-webkit-details-marker { display: none; }
+    .tacc-left { display: flex; align-items: center; gap: .45rem; flex: 1; min-width: 0; }
+    .tacc-left strong { font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tacc-left .analyzed-badge { font-size: 11px; padding: .1rem .35rem; flex-shrink: 0; }
+    .tacc-chevron { font-size: 1.1rem; color: var(--muted); transition: transform .2s; display: inline-block; }
+    details[open] > .tacc-summary .tacc-chevron { transform: rotate(90deg); }
+    .tacc-body { padding: .5rem .7rem .7rem; display: grid; grid-template-columns: 1fr 1fr; gap: .35rem .6rem; background: rgba(255,255,255,.02); }
+    .tacc-field { display: flex; flex-direction: column; gap: .1rem; }
+    .tacc-full { grid-column: 1 / -1; }
+    .tacc-label { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+    .tacc-field > span:last-child { font-size: 12.5px; }
+    .tacc-field > .team-pill { font-size: 11px; padding: .1rem .4rem; align-self: flex-start; }
+
   }
 
   /* ─── VERY SMALL ≤ 380px ─────────────────────────────────────── */
   @media (max-width: 380px) {
     .team-name { font-size: 1.6rem; }
     .format-grid { grid-template-columns: 1fr; }
-    nav a, .grupos-nav-btn { padding: .75rem .55rem; font-size: 11px; }
+    nav a, .grupos-nav-btn { padding: .55rem .5rem; font-size: 11px; }
+    .tz-wrap { margin-left: 0; }
+    .join-btn, .theme-btn { flex-shrink: 0; }
   }
 
   /* --- LIGHT MODE --- */
@@ -1361,6 +1417,30 @@
   .prono-ctx { flex: 1; min-width: 200px; font-size: 12px; color: var(--muted); line-height: 1.5; }
   .prono-explanation { font-size: 13px; color: var(--text); border-top: 1px solid var(--border); padding-top: .75rem; line-height: 1.6; }
   .prono-empty { text-align: center; padding: 2rem; color: var(--muted); }
+
+  /* ─── CARD HOVER POLISH ─────────────────────────────────────── */
+  .fmt-card, .group-card, .ko-card {
+    box-shadow: var(--shadow-soft);
+  }
+  .group-card {
+    transition: background var(--trans), box-shadow var(--trans), transform var(--trans);
+  }
+  .ko-card {
+    transition: background var(--trans), box-shadow var(--trans), transform var(--trans);
+  }
+  @media (hover: hover) {
+    .fmt-card:hover, .group-card:hover, .ko-card:hover {
+      box-shadow: var(--shadow-card);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* ─── SECTION ENTRY ANIMATIONS ──────────────────────────────── */
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in, .fade-in.visible { opacity: 1; transform: none; transition: none; }
+  }
 
 </style>
 <script>
@@ -3668,7 +3748,7 @@
     </div>
 
     <!-- Tabla tracker por grupo -->
-    <div class="squad-wrap">
+    <div class="squad-wrap tracker-squad">
       <table class="squad-table">
         <thead>
           <tr>
@@ -3896,6 +3976,444 @@
 
         </tbody>
       </table>
+    </div>
+
+    <!-- Tracker accordion (mobile) -->
+    <div class="tracker-accordion">
+
+      <!-- GRUPO A -->
+      <div class="tacc-group" style="--gc:var(--grp-a)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">A</span>
+          <span class="tacc-group-teams">MEX · ZAF · KOR · CZE</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy">
+              <strong>Corea del Sur</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Hong Myung-bo</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">3-4-2-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Son Heung-min ★(C), Lee Kang-In (PSG), Castrop</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO B -->
+      <div class="tacc-group" style="--gc:var(--grp-b)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">B</span>
+          <span class="tacc-group-teams">CAN · BIH · QAT · SUI</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/bih.svg" alt="Bosnia y Herz." loading="lazy">
+              <strong>Bosnia y Herz.</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Sergej Barbarez</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-4-2</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Edin Džeko (C, 40 años), Demirović</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/sui.svg" alt="Suiza" loading="lazy">
+              <strong>Suiza</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Murat Yakin</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Granit Xhaka (C), Akanji, Embolo</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO C -->
+      <div class="tacc-group" style="--gc:var(--grp-c)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">C</span>
+          <span class="tacc-group-teams">BRA · MAR · HTI · SCO</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/bra.svg" alt="Brasil" loading="lazy">
+              <strong>Brasil</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Carlo Ancelotti</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-2-3-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Neymar Jr. (sorpresa), Vinicius Jr., Rodrygo</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/hti.svg" alt="Haití" loading="lazy">
+              <strong>Haití</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Sébastien Migné</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Duckens Nazon, Frantzdy Pierrot</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/sco.svg" alt="Escocia" loading="lazy">
+              <strong>Escocia</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Steve Clarke</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">3-4-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>John McGinn (C), Andy Robertson</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO E -->
+      <div class="tacc-group" style="--gc:var(--grp-e)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">E</span>
+          <span class="tacc-group-teams">GER · CUW · CIV · ECU</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy">
+              <strong>Alemania</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Julian Nagelsmann</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-2-3-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Florian Wirtz, Jamal Musiala, Kai Havertz</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy">
+              <strong>Costa de Marfil</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Emerse Faé</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Sébastien Haller, Simon Adingra, Franck Kessié</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/cuw.svg" alt="Curazao" loading="lazy">
+              <strong>Curazao</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Dick Advocaat</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Jürgen Locadia, Leandro Bacuna (C), Armando Obispo</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO F -->
+      <div class="tacc-group" style="--gc:var(--grp-f)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">F</span>
+          <span class="tacc-group-teams">NED · JPN · SWE · TUN</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy">
+              <strong>Suecia</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Graham Potter</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">3-4-2-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Viktor Gyökeres (Arsenal), Elanga</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/jpn.svg" alt="Japón" loading="lazy">
+              <strong>Japón</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Hajime Moriyasu</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">3-4-2-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Takefusa Kubo (Real Sociedad), Hiroki Ito (Bayern), Ueda</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/tun.svg" alt="Túnez" loading="lazy">
+              <strong>Túnez</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Sabri Lamouchi</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-2-3-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Hannibal Mejbri, Ellyes Skhiri (C), Rami Khedira</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO G -->
+      <div class="tacc-group" style="--gc:var(--grp-g)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">G</span>
+          <span class="tacc-group-teams">BEL · EGY · IRN · NZL</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/bel.svg" alt="Bélgica" loading="lazy">
+              <strong>Bélgica</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Rudi García</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Tielemans (C), De Bruyne, Lukaku (Napoli)</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/nzl.svg" alt="Nueva Zelanda" loading="lazy">
+              <strong>Nueva Zelanda</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Darren Bazeley</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-4-2</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Chris Wood (C), Joe Bell, Clayton Lewis</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO H -->
+      <div class="tacc-group" style="--gc:var(--grp-h)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">H</span>
+          <span class="tacc-group-teams">ESP · CPV · KSA · URU</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/esp.svg" alt="España" loading="lazy">
+              <strong>España</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Luis de la Fuente</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Lamine Yamal ★, Pedri, Nico Williams, Rodri (C)</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/cpv.svg" alt="Cabo Verde" loading="lazy">
+              <strong>Cabo Verde</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Pedro "Bubista" Brito</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Garry Rodrigues, Stopira, Jovane Cabral</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO I -->
+      <div class="tacc-group" style="--gc:var(--grp-i)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">I</span>
+          <span class="tacc-group-teams">FRA · SEN · IRQ · NOR</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy">
+              <strong>Francia</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Didier Deschamps</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Mbappé, Griezmann, Camavinga ✗ ausente</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy">
+              <strong>Noruega</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Ståle Solbakken</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-2-3-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Erling Haaland (Man City), Ødegaard (C, duda), Nusa</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO J -->
+      <div class="tacc-group" style="--gc:var(--grp-j)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">J</span>
+          <span class="tacc-group-teams">ARG · ALG · AUT · JOR</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/aut.svg" alt="Austria" loading="lazy">
+              <strong>Austria</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Ralf Rangnick</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-2-3-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>David Alaba (C), Sabitzer, Baumgartner</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO K -->
+      <div class="tacc-group" style="--gc:var(--grp-k)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">K</span>
+          <span class="tacc-group-teams">POR · COD · UZB · COL</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/por.svg" alt="Portugal" loading="lazy">
+              <strong>Portugal</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Roberto Martínez</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Cristiano Ronaldo (41 años, 6° Mundial), B. Silva, Leão</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/cod.svg" alt="RD Congo" loading="lazy">
+              <strong>RD del Congo</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Sébastien Desabre</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-3-3</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Cédric Bakambu, Arthur Masuaku, Théo Bongonda</span></div>
+          </div>
+        </details>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/col.svg" alt="Colombia" loading="lazy">
+              <strong>Colombia</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Néstor Lorenzo</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-2-3-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Luis Díaz ★ (Bayern), James Rodríguez (C), Richard Ríos</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO L -->
+      <div class="tacc-group" style="--gc:var(--grp-l)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">L</span>
+          <span class="tacc-group-teams">ENG · CRO · GHA · PAN</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/eng.svg" alt="Inglaterra" loading="lazy">
+              <strong>Inglaterra</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Thomas Tuchel</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-2-3-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Harry Kane ★(C), Bellingham, Saka, Declan Rice</span></div>
+          </div>
+        </details>
+      </div>
+
     </div>
 
     <!-- Timeline publicación -->
@@ -4575,6 +5093,21 @@
     dest.scrollIntoView({ behavior: 'instant' });
     history.pushState(null, '', hash);
   });
+
+  // ── SECTION ENTRY ANIMATIONS ──────────────────────────────────────────
+  (function initFadeIn() {
+    if (!('IntersectionObserver' in window)) return;
+    var targets = document.querySelectorAll('.team-section, .group-card, .format-grid .fmt-card');
+    var fadeObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(function(el) { el.classList.add('fade-in'); fadeObserver.observe(el); });
+  })();
 
 </script>
 <script src="js/auth.js"></script>
