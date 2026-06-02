@@ -1519,7 +1519,7 @@
       <!-- D -->
       <div class="gmod-group">
         <div class="gmod-group-header" style="background:rgba(99,102,241,.1);border-color:var(--grp-d)"><span class="gmod-dot" style="background:var(--grp-d)"></span>Grupo D</div>
-        <div class="gmod-team" data-name="EE.UU."><img src="assets/flags/usa.svg" alt=""><span class="gmod-name">EE.UU.</span></div>
+        <a class="gmod-team has-analysis" data-name="EE.UU." href="#estados-unidos"><img src="assets/flags/usa.svg" alt=""><span class="gmod-name">EE.UU.</span><span class="gmod-ana"></span></a>
         <div class="gmod-team" data-name="Paraguay"><img src="assets/flags/pry.svg" alt=""><span class="gmod-name">Paraguay</span></div>
         <div class="gmod-team" data-name="Australia"><img src="assets/flags/aus.svg" alt=""><span class="gmod-name">Australia</span></div>
         <div class="gmod-team" data-name="Turquía"><img src="assets/flags/tur.svg" alt=""><span class="gmod-name">Turquía</span></div>
@@ -1828,10 +1828,10 @@
         </ul>
       </div>
 
-      <div class="group-card">
-        <div class="group-label"><span class="group-dot"></span> Grupo D</div>
+      <div class="group-card" style="border-color:rgba(99,102,241,.3)">
+        <div class="group-label" style="color:var(--grp-d)"><span class="group-dot" style="background:var(--grp-d)"></span> Grupo D</div>
         <ul class="group-teams">
-          <li><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"> Estados Unidos <span class="host-badge">LOCAL</span></li>
+          <li><a href="#estados-unidos" class="group-team-link"><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"> Estados Unidos</a> <span class="host-badge">LOCAL</span> <span class="analyzed-badge">✓</span></li>
           <li><img class="flag-svg" src="assets/flags/pry.svg" alt="Paraguay" loading="lazy"> Paraguay</li>
           <li><img class="flag-svg" src="assets/flags/aus.svg" alt="Australia" loading="lazy"> Australia</li>
           <li><img class="flag-svg" src="assets/flags/tur.svg" alt="Turquía" loading="lazy"> Turquía</li>
@@ -2406,6 +2406,125 @@
       <div class="squad-wrap"><table class="squad-table"><thead><tr><th>Pos</th><th>Jugador</th><th>Edad</th><th>Club</th><th>País</th><th>ELO</th><th>Titular</th></tr></thead><tbody><tr><td><span class="pos-badge pos-gk">GK</span></td><td class="player-name">Craig Gordon</td><td style="color:var(--muted)">43</td><td style="font-size:13px">Heart of Midlothian</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-mid">1405</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-gk">GK</span></td><td class="player-name">Angus Gunn</td><td style="color:var(--muted)">30</td><td style="font-size:13px">Nottingham Forest</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-mid">1658</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-gk">GK</span></td><td class="player-name">Liam Kelly</td><td style="color:var(--muted)">29</td><td style="font-size:13px">Rangers</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-low">1050</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Andy Robertson</td><td style="color:var(--muted)">32</td><td style="font-size:13px">Liverpool</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-high">1860</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Kieran Tierney</td><td style="color:var(--muted)">28</td><td style="font-size:13px">Celtic</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-mid">1595</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Aaron Hickey</td><td style="color:var(--muted)">23</td><td style="font-size:13px">Brentford</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-mid">1647</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Nathan Patterson</td><td style="color:var(--muted)">24</td><td style="font-size:13px">Everton</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-mid">1611</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Anthony Ralston</td><td style="color:var(--muted)">27</td><td style="font-size:13px">Celtic</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-mid">1595</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Grant Hanley</td><td style="color:var(--muted)">34</td><td style="font-size:13px">Hibernian</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-low">1310</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">John Souttar</td><td style="color:var(--muted)">29</td><td style="font-size:13px">Rangers</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-low">1050</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Scott McKenna</td><td style="color:var(--muted)">29</td><td style="font-size:13px">Dinamo Zagreb</td><td style="font-size:12px;color:var(--muted)">Croacia</td><td class="elo-cell elo-mid">1584</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Jack Hendry</td><td style="color:var(--muted)">31</td><td style="font-size:13px">Al-Ettifaq</td><td style="font-size:12px;color:var(--muted)">Arabia S.</td><td class="elo-cell elo-low">1156</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Dominic Hyam</td><td style="color:var(--muted)">30</td><td style="font-size:13px">Wrexham</td><td style="font-size:12px;color:var(--muted)">Gales</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Scott McTominay</td><td style="color:var(--muted)">29</td><td style="font-size:13px">Napoli</td><td style="font-size:12px;color:var(--muted)">Italia</td><td class="elo-cell elo-high">1711</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">John McGinn ★(C)</td><td style="color:var(--muted)">31</td><td style="font-size:13px">Aston Villa</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-high">1861</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Billy Gilmour</td><td style="color:var(--muted)">24</td><td style="font-size:13px">Napoli</td><td style="font-size:12px;color:var(--muted)">Italia</td><td class="elo-cell elo-high">1711</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Kenny McLean</td><td style="color:var(--muted)">34</td><td style="font-size:13px">Norwich City</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Lewis Ferguson</td><td style="color:var(--muted)">26</td><td style="font-size:13px">Bologna</td><td style="font-size:12px;color:var(--muted)">Italia</td><td class="elo-cell elo-mid">1631</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Ryan Christie</td><td style="color:var(--muted)">31</td><td style="font-size:13px">Bournemouth</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-high">1684</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Ben Gannon-Doak</td><td style="color:var(--muted)">20</td><td style="font-size:13px">Bournemouth</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-high">1684</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Findlay Curtis</td><td style="color:var(--muted)">19</td><td style="font-size:13px">Kilmarnock FC</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Ché Adams</td><td style="color:var(--muted)">29</td><td style="font-size:13px">Torino</td><td style="font-size:12px;color:var(--muted)">Italia</td><td class="elo-cell elo-mid">1484</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Lyndon Dykes</td><td style="color:var(--muted)">30</td><td style="font-size:13px">Charlton Athletic</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Lawrence Shankland</td><td style="color:var(--muted)">30</td><td style="font-size:13px">Heart of Midlothian</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-mid">1405</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">George Hirst</td><td style="color:var(--muted)">27</td><td style="font-size:13px">Ipswich Town</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Ross Stewart</td><td style="color:var(--muted)">29</td><td style="font-size:13px">Southampton</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr></tbody></table></div><div class="nd-note">ELO de clubes: <a href="http://worldclubratings.com/rankings/elo_men/" target="_blank" rel="noopener">worldclubratings.com/rankings/elo_men</a></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem"><div class="pending-card"><img class="flag-svg" src="assets/flags/mar.svg" alt="Marruecos" loading="lazy"> Marruecos<br><small style="font-size:11px;opacity:.6">Lista pendiente</small></div></div>
+  </div>
+</section>
+
+<!-- ═══════ GRUPO D ═══════ -->
+<section id="grupo-d" style="background:linear-gradient(180deg,rgba(99,102,241,.04) 0%,transparent 100%)">
+  <div class="container">
+    <div class="group-section-header">
+      <div class="group-big-label" style="color:rgba(99,102,241,.2)">D</div>
+      <div class="group-section-info">
+        <h2>Grupo D</h2>
+        <div style="color:var(--muted);font-size:14px;margin-top:.4rem"><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"> EE.UU. &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/pry.svg" alt="Paraguay" loading="lazy"> Paraguay &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/aus.svg" alt="Australia" loading="lazy"> Australia &nbsp;·&nbsp; <img class="flag-svg" src="assets/flags/tur.svg" alt="Turquía" loading="lazy"> Turquía</div>
+      </div>
+    </div>
+
+    <!-- ─── TABLA DE POSICIONES ─── -->
+    <div class="standings-wrap" style="--grp-col:var(--grp-d)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">1</td>
+            <td class="st-team-cell"><a href="#estados-unidos" class="st-team-link"><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"> Estados Unidos</a> <span class="host-badge">LOCAL</span></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-qualify">
+            <td class="st-pos-cell">2</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/pry.svg" alt="Paraguay" loading="lazy"> Paraguay</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="st-third">
+            <td class="st-pos-cell">3</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/aus.svg" alt="Australia" loading="lazy"> Australia</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+          <tr class="">
+            <td class="st-pos-cell">4</td>
+            <td class="st-team-cell"><img class="flag-svg" src="assets/flags/tur.svg" alt="Turquía" loading="lazy"> Turquía</td>
+            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="st-pts">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="st-tiebreak">
+        <summary>Criterios de desempate ▸</summary>
+        <ol class="st-tiebreak-list">
+          <li>Puntos en enfrentamiento directo entre equipos igualados</li>
+          <li>Diferencia de goles en enfrentamiento directo</li>
+          <li>Goles marcados en enfrentamiento directo</li>
+          <li>Diferencia de goles en todos los partidos del grupo</li>
+          <li>Goles marcados en todos los partidos del grupo</li>
+          <li>Fair play: amarilla &minus;1&thinsp;pt &middot; roja directa &minus;4&thinsp;pts &middot; amarilla+roja &minus;5&thinsp;pts</li>
+          <li>Ranking FIFA/Coca-Cola masculino (ediciones sucesivas hasta desempatar)</li>
+        </ol>
+        <p class="st-tiebreak-note">Sin sorteo — novedad respecto a Qatar 2022.</p>
+      </details>
+    </div>
+    <div class="standings-legend">
+      <span><span class="st-legend-dot" style="background:var(--grp-col,var(--accent))"></span>Clasificados a 16avos</span>
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Posible clasificado (mejor 3.º)</span>
+    </div>
+
+    <!-- ─── ESTADOS UNIDOS ─── -->
+    <div class="team-section" id="estados-unidos">
+      <div class="team-header">
+        <div class="team-flag-big"><img src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"></div>
+        <div>
+          <div class="team-name">Estados Unidos</div>
+          <div class="team-sub">DT: Mauricio Pochettino · Grupo D</div>
+          <div class="team-pills"><span class="team-pill" style="color:var(--accent);border-color:var(--accent)">4-2-3-1</span><span class="team-pill" style="color:var(--grp-d);border-color:var(--grp-d)">Grupo D</span><span class="team-pill" style="color:var(--gold);border-color:var(--gold)">Co-sede · 1er Mundial en casa</span></div>
+        </div>
+
+      <div class="star-card">
+          <div class="star-img-wrap" style="--sc:#6366f1">
+            <img src="assets/players/usa-pulisic.webp" alt="Christian Pulisic" loading="lazy"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="star-placeholder">CP</div>
+          </div>
+          <div class="star-info">
+            <div class="star-label">Figura clave</div>
+            <div class="star-name">Christian Pulisic</div>
+            <div class="star-meta">AC Milan</div>
+            <span class="elo-cell elo-high" style="font-size:11px;font-family:'JetBrains Mono',monospace">ELO 1688</span>
+          </div>
+        </div>
+    </div>
+      <div class="two-col">
+        <div class="info-card">
+          <h4>Sistema de juego</h4>
+          <p class="tactic-prose">Pochettino estructura un <strong>4-2-3-1</strong> de presión alta que puede variar al 4-3-3 con el balón. Tyler Adams (Bournemouth) y Weston McKennie (Juventus) conforman el doble pivote; Christian Pulisic —capitán y referencia ofensiva— opera como mediapunta detrás de Folarin Balogun (Mónaco). Gio Tillman (Leverkusen) aporta dinamismo entre líneas y Tim Weah (Marsella) genera por la banda derecha. Sergiño Dest regresa como lateral derecho titular. EE.UU. afronta el torneo como anfitrión por primera vez desde 1994 y busca superar los octavos de final que alcanzó en Qatar 2022, ahora con una generación más madura.</p>
+          <a href="https://www.alterfutbol.com/concacaf/estados-unidos/estados-unidos-anuncio-sus-convocados-al-mundial-2026-analisis-de-la-lista/" target="_blank" rel="noopener" style="display:inline-block;margin-top:.5rem;font-size:.72rem;color:var(--accent);text-decoration:none;opacity:.8">↗ Nota en AlterFutbol</a>
+        </div>
+        <div class="info-card">
+          <h4>Ausencias notables</h4>
+          <ul class="absence-list"><li><span class="absence-name">Yunus Musah (lesionado)</span><br><span class="absence-reason">Centrocampista del AC Milan —habitual de los primeros convocados— se perdió parte de la temporada por lesión y quedó fuera de la lista definitiva</span></li><li><span class="absence-name">Josh Sargent (no convocado)</span><br><span class="absence-reason">Delantero del Norwich City que era habitual en anteriores convocatorias pero no encontró regularidad suficiente para entrar en los planes de Pochettino</span></li></ul>
+        </div>
+      </div>
+      <div class="xi-img-wrap">
+        <div class="xi-img-label">XI Probable · Estados Unidos</div>
+        <img src="assets/xi/usa-xi.png" alt="XI Ideal Estados Unidos" loading="lazy" class="xi-img">
+      </div>
+      <div class="squad-wrap"><table class="squad-table"><thead><tr><th>Pos</th><th>Jugador</th><th>Edad</th><th>Club</th><th>País</th><th>ELO</th><th>Titular</th></tr></thead><tbody><tr><td><span class="pos-badge pos-gk">GK</span></td><td class="player-name">Matt Freese</td><td style="color:var(--muted)">27</td><td style="font-size:13px">New York City FC</td><td style="font-size:12px;color:var(--muted)">EE.UU.</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-gk">GK</span></td><td class="player-name">Matt Turner</td><td style="color:var(--muted)">31</td><td style="font-size:13px">New England Revolution</td><td style="font-size:12px;color:var(--muted)">EE.UU.</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-gk">GK</span></td><td class="player-name">Patrick Brady</td><td style="color:var(--muted)">22</td><td style="font-size:13px">Chicago Fire</td><td style="font-size:12px;color:var(--muted)">EE.UU.</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Sergiño Dest</td><td style="color:var(--muted)">25</td><td style="font-size:13px">PSV Eindhoven</td><td style="font-size:12px;color:var(--muted)">Países Bajos</td><td class="elo-cell elo-high">1726</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Chris Richards</td><td style="color:var(--muted)">26</td><td style="font-size:13px">Crystal Palace</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-mid">1630</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Tim Ream</td><td style="color:var(--muted)">35</td><td style="font-size:13px">Charlotte FC</td><td style="font-size:12px;color:var(--muted)">EE.UU.</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Antonee Robinson</td><td style="color:var(--muted)">28</td><td style="font-size:13px">Fulham</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Joe Freeman</td><td style="color:var(--muted)">21</td><td style="font-size:13px">Villarreal</td><td style="font-size:12px;color:var(--muted)">España</td><td class="elo-cell elo-mid">1620</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Auston Trusty</td><td style="color:var(--muted)">27</td><td style="font-size:13px">Celtic</td><td style="font-size:12px;color:var(--muted)">Escocia</td><td class="elo-cell elo-mid">1595</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Joe Scally</td><td style="color:var(--muted)">23</td><td style="font-size:13px">B. Mönchengladbach</td><td style="font-size:12px;color:var(--muted)">Alemania</td><td class="elo-cell elo-mid">1509</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Mark McKenzie</td><td style="color:var(--muted)">27</td><td style="font-size:13px">Toulouse FC</td><td style="font-size:12px;color:var(--muted)">Francia</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Miles Robinson</td><td style="color:var(--muted)">29</td><td style="font-size:13px">FC Cincinnati</td><td style="font-size:12px;color:var(--muted)">EE.UU.</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-def">DEF</span></td><td class="player-name">Patrick Arfsten</td><td style="color:var(--muted)">25</td><td style="font-size:13px">Columbus Crew</td><td style="font-size:12px;color:var(--muted)">EE.UU.</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Gio Tillman</td><td style="color:var(--muted)">23</td><td style="font-size:13px">Bayer Leverkusen</td><td style="font-size:12px;color:var(--muted)">Alemania</td><td class="elo-cell elo-high">1784</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Weston McKennie</td><td style="color:var(--muted)">27</td><td style="font-size:13px">Juventus</td><td style="font-size:12px;color:var(--muted)">Italia</td><td class="elo-cell elo-high">1740</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Tyler Adams</td><td style="color:var(--muted)">27</td><td style="font-size:13px">Bournemouth</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-high">1684</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Tim Weah</td><td style="color:var(--muted)">26</td><td style="font-size:13px">Olympique de Marseille</td><td style="font-size:12px;color:var(--muted)">Francia</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Paxten Berhalter</td><td style="color:var(--muted)">25</td><td style="font-size:13px">Vancouver Whitecaps</td><td style="font-size:12px;color:var(--muted)">Canadá</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-med">MED</span></td><td class="player-name">Cristian Roldán</td><td style="color:var(--muted)">30</td><td style="font-size:13px">Seattle Sounders</td><td style="font-size:12px;color:var(--muted)">EE.UU.</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Christian Pulisic ★(C)</td><td style="color:var(--muted)">27</td><td style="font-size:13px">AC Milan</td><td style="font-size:12px;color:var(--muted)">Italia</td><td class="elo-cell elo-high">1688</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Folarin Balogun</td><td style="color:var(--muted)">24</td><td style="font-size:13px">AS Monaco</td><td style="font-size:12px;color:var(--muted)">Francia</td><td class="elo-cell elo-mid">1626</td><td><span class="titl-yes">Sí</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Ricardo Pepi</td><td style="color:var(--muted)">23</td><td style="font-size:13px">PSV Eindhoven</td><td style="font-size:12px;color:var(--muted)">Países Bajos</td><td class="elo-cell elo-high">1726</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Brenden Aaronson</td><td style="color:var(--muted)">25</td><td style="font-size:13px">Leeds United</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-mid">1549</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Gio Reyna</td><td style="color:var(--muted)">23</td><td style="font-size:13px">B. Mönchengladbach</td><td style="font-size:12px;color:var(--muted)">Alemania</td><td class="elo-cell elo-mid">1509</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Alejandro Zendejas</td><td style="color:var(--muted)">28</td><td style="font-size:13px">Club América</td><td style="font-size:12px;color:var(--muted)">México</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr><tr><td><span class="pos-badge pos-del">DEL</span></td><td class="player-name">Wright</td><td style="color:var(--muted)">28</td><td style="font-size:13px">Coventry City</td><td style="font-size:12px;color:var(--muted)">Inglaterra</td><td class="elo-cell elo-nd">N/D</td><td><span class="titl-no">No</span></td></tr></tbody></table></div><div class="nd-note">ELO de clubes: <a href="http://worldclubratings.com/rankings/elo_men/" target="_blank" rel="noopener">worldclubratings.com/rankings/elo_men</a></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem"><div class="pending-card"><img class="flag-svg" src="assets/flags/pry.svg" alt="Paraguay" loading="lazy"> Paraguay<br><small style="font-size:11px;opacity:.6">Lista pendiente</small></div><div class="pending-card"><img class="flag-svg" src="assets/flags/aus.svg" alt="Australia" loading="lazy"> Australia<br><small style="font-size:11px;opacity:.6">Lista pendiente</small></div><div class="pending-card"><img class="flag-svg" src="assets/flags/tur.svg" alt="Turquía" loading="lazy"> Turquía<br><small style="font-size:11px;opacity:.6">Lista pendiente</small></div></div>
   </div>
 </section>
 
@@ -3736,16 +3855,16 @@
       <h2>Tracker de Convocatorias</h2>
     </div>
     <p style="color:var(--muted);margin-bottom:2rem;font-size:14px">
-      20 selecciones han publicado sus listas en AlterFutbol entre el <strong style="color:var(--text)">11 mayo</strong> (Bosnia, primera) y el <strong style="color:var(--text)">25 mayo 2026</strong> (España · Colombia). Más Japón, Túnez y Curazao por carga manual. 23 con análisis completo.
+      21 selecciones han publicado sus listas en AlterFutbol entre el <strong style="color:var(--text)">11 mayo</strong> (Bosnia, primera) y el <strong style="color:var(--text)">1 junio 2026</strong> (Estados Unidos). Más Japón, Túnez y Curazao por carga manual. 24 con análisis completo.
       Las marcadas con <span class="analyzed-badge">✓ Detallado</span> tienen análisis completo en este documento.
     </p>
 
     <!-- Resumen global -->
     <div class="format-grid" style="margin-bottom:3rem">
-      <div class="fmt-card"><div class="fmt-num" style="color:var(--accent)">20</div><div class="fmt-label">Listas publicadas<br>en AlterFutbol</div></div>
-      <div class="fmt-card"><div class="fmt-num" style="color:var(--gold)">11</div><div class="fmt-label">Grupos con al menos<br>una lista disponible</div></div>
-      <div class="fmt-card"><div class="fmt-num" style="color:var(--red)">28</div><div class="fmt-label">Selecciones aún<br>sin publicar lista</div></div>
-      <div class="fmt-card"><div class="fmt-num" style="color:var(--accent)">23</div><div class="fmt-label">Con análisis completo<br>en este documento</div></div>
+      <div class="fmt-card"><div class="fmt-num" style="color:var(--accent)">21</div><div class="fmt-label">Listas publicadas<br>en AlterFutbol</div></div>
+      <div class="fmt-card"><div class="fmt-num" style="color:var(--gold)">12</div><div class="fmt-label">Grupos con al menos<br>una lista disponible</div></div>
+      <div class="fmt-card"><div class="fmt-num" style="color:var(--red)">27</div><div class="fmt-label">Selecciones aún<br>sin publicar lista</div></div>
+      <div class="fmt-card"><div class="fmt-num" style="color:var(--accent)">24</div><div class="fmt-label">Con análisis completo<br>en este documento</div></div>
     </div>
 
     <!-- Tabla tracker por grupo -->
@@ -3812,6 +3931,17 @@
             <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">3-4-3</span></td>
             <td style="font-size:13px">John McGinn (C), Andy Robertson</td>
             <td style="font-size:12px;color:var(--muted)">Regresa al Mundial tras 28 años · clasificó vs Dinamarca 4-2</td>
+            <td><span class="analyzed-badge">✓ Detallado</span></td>
+          </tr>
+
+          <!-- GRUPO D -->
+          <tr>
+            <td rowspan="1"><strong style="color:var(--grp-d)">D</strong><br><span style="font-size:11px;color:var(--muted)">USA · PRY<br>AUS · TUR</span></td>
+            <td><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"> <strong class="player-name">Estados Unidos</strong></td>
+            <td style="font-size:13px">Mauricio Pochettino</td>
+            <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">4-2-3-1</span></td>
+            <td style="font-size:13px">Christian Pulisic (C), Weston McKennie</td>
+            <td style="font-size:12px;color:var(--muted)">Primera Copa del Mundo como co-sede en 32 años (desde 1994)</td>
             <td><span class="analyzed-badge">✓ Detallado</span></td>
           </tr>
 
@@ -4092,6 +4222,29 @@
             <div class="tacc-field"><span class="tacc-label">DT</span><span>Steve Clarke</span></div>
             <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">3-4-3</span></div>
             <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>John McGinn (C), Andy Robertson</span></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- GRUPO D -->
+      <div class="tacc-group" style="--gc:var(--grp-d)">
+        <div class="tacc-group-header">
+          <span class="tacc-group-letter">D</span>
+          <span class="tacc-group-teams">USA · PRY · AUS · TUR</span>
+        </div>
+        <details class="tacc-item">
+          <summary class="tacc-summary">
+            <div class="tacc-left">
+              <img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy">
+              <strong>Estados Unidos</strong>
+              <span class="analyzed-badge">✓</span>
+            </div>
+            <span class="tacc-chevron">›</span>
+          </summary>
+          <div class="tacc-body">
+            <div class="tacc-field"><span class="tacc-label">DT</span><span>Mauricio Pochettino</span></div>
+            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">4-2-3-1</span></div>
+            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>Christian Pulisic (C), Weston McKennie</span></div>
           </div>
         </details>
       </div>
@@ -4460,9 +4613,14 @@
         <span><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> <img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> <img class="flag-svg" src="assets/flags/eng.svg" alt="Inglaterra" loading="lazy"></span><span style="font-size:13px"><strong style="color:var(--white)">Alemania · Noruega · Inglaterra</strong></span>
         <span class="analyzed-badge" style="margin-left:auto">✓ Detallado</span>
       </div>
-      <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:var(--card);border-radius:8px;border-left:3px solid var(--accent)">
+      <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:var(--card);border-radius:8px;border-left:3px solid var(--border)">
         <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);min-width:80px">25 May</span>
         <span><img class="flag-svg" src="assets/flags/esp.svg" alt="España" loading="lazy"> <img class="flag-svg" src="assets/flags/col.svg" alt="Colombia" loading="lazy"></span><span style="font-size:13px"><strong style="color:var(--white)">España · Colombia</strong></span>
+        <span class="analyzed-badge" style="margin-left:auto">✓ Detallado</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:var(--card);border-radius:8px;border-left:3px solid var(--accent)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);min-width:80px">1 Jun</span>
+        <span><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"></span><span style="font-size:13px"><strong style="color:var(--white)">Estados Unidos</strong></span>
         <span class="analyzed-badge" style="margin-left:auto">✓ Detallado</span>
       </div>
     </div>
@@ -4473,7 +4631,7 @@
       <div class="group-card" style="border-color:rgba(229,92,92,.2)"><div class="group-label" style="color:var(--grp-a)"><span class="group-dot" style="background:var(--grp-a)"></span>Grupo A — 1/4 analizado</div><div style="font-size:13px;color:var(--muted)"><img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México · <img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy"> Sudáfrica · <img class="flag-svg" src="assets/flags/cze.svg" alt="Chequia" loading="lazy"> Chequia <em style="font-size:11px">(listas pendientes)</em></div></div>
       <div class="group-card" style="border-color:rgba(59,139,235,.2)"><div class="group-label" style="color:var(--grp-b)"><span class="group-dot" style="background:var(--grp-b)"></span>Grupo B — 2/4 analizado</div><div style="font-size:13px;color:var(--muted)"><img class="flag-svg" src="assets/flags/can.svg" alt="Canadá" loading="lazy"> Canadá · <img class="flag-svg" src="assets/flags/qat.svg" alt="Qatar" loading="lazy"> Qatar <em style="font-size:11px">(listas pendientes)</em></div></div>
       <div class="group-card" style="border-color:rgba(16,185,129,.2)"><div class="group-label" style="color:var(--grp-c)"><span class="group-dot" style="background:var(--grp-c)"></span>Grupo C — 3/4 analizados</div><div style="font-size:13px;color:var(--muted)"><img class="flag-svg" src="assets/flags/mar.svg" alt="Marruecos" loading="lazy"> Marruecos <em style="font-size:11px">(lista pendiente)</em></div></div>
-      <div class="group-card"><div class="group-label"><span class="group-dot"></span>Grupo D — 0/4 analizado</div><div style="font-size:13px;color:var(--muted)"><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"> EE.UU. · <img class="flag-svg" src="assets/flags/pry.svg" alt="Paraguay" loading="lazy"> Paraguay · <img class="flag-svg" src="assets/flags/aus.svg" alt="Australia" loading="lazy"> Australia · <img class="flag-svg" src="assets/flags/tur.svg" alt="Turquía" loading="lazy"> Turquía <em style="font-size:11px">(listas pendientes)</em></div></div>
+      <div class="group-card" style="border-color:rgba(99,102,241,.2)"><div class="group-label" style="color:var(--grp-d)"><span class="group-dot" style="background:var(--grp-d)"></span>Grupo D — 1/4 analizado</div><div style="font-size:13px;color:var(--muted)"><img class="flag-svg" src="assets/flags/pry.svg" alt="Paraguay" loading="lazy"> Paraguay · <img class="flag-svg" src="assets/flags/aus.svg" alt="Australia" loading="lazy"> Australia · <img class="flag-svg" src="assets/flags/tur.svg" alt="Turquía" loading="lazy"> Turquía <em style="font-size:11px">(listas pendientes)</em></div></div>
       <div class="group-card" style="border-color:rgba(249,115,22,.2)"><div class="group-label" style="color:var(--grp-e)"><span class="group-dot" style="background:var(--grp-e)"></span>Grupo E — 3/4 analizados</div><div style="font-size:13px;color:var(--muted)"><img class="flag-svg" src="assets/flags/ecu.svg" alt="Ecuador" loading="lazy"> Ecuador <em style="font-size:11px">(lista pendiente)</em></div></div>
       <div class="group-card" style="border-color:rgba(245,158,11,.2)"><div class="group-label" style="color:var(--grp-f)"><span class="group-dot" style="background:var(--grp-f)"></span>Grupo F — 3/4 analizados</div><div style="font-size:13px;color:var(--muted)"><img class="flag-svg" src="assets/flags/ned.svg" alt="Países Bajos" loading="lazy"> Países Bajos <em style="font-size:11px">(lista pendiente)</em></div></div>
       <div class="group-card" style="border-color:rgba(139,92,246,.2)"><div class="group-label" style="color:var(--grp-g)"><span class="group-dot" style="background:var(--grp-g)"></span>Grupo G — 2/4 analizados</div><div style="font-size:13px;color:var(--muted)"><img class="flag-svg" src="assets/flags/egy.svg" alt="Egipto" loading="lazy"> Egipto · <img class="flag-svg" src="assets/flags/irn.svg" alt="Irán" loading="lazy"> Irán <em style="font-size:11px">(listas pendientes)</em></div></div>
@@ -4509,7 +4667,7 @@
     <p>Fuente de plantillas y análisis tácticos: <a href="https://alterfutbol.com">AlterFutbol</a> &nbsp;·&nbsp;
     Ratings ELO de clubes: <a href="http://worldclubratings.com/rankings/elo_men/">worldclubratings.com</a> &nbsp;·&nbsp;
     Fixture oficial: <a href="https://fifa.com">FIFA</a></p>
-    <p style="margin-top:.5rem">Actualizado: 1 de junio de 2026 &nbsp;·&nbsp; Análisis completos: 23 selecciones · Tracker: 20 listas publicadas en AlterFutbol &nbsp;·&nbsp; Último anuncio: 25 May · España · Colombia</p>
+    <p style="margin-top:.5rem">Actualizado: 1 de junio de 2026 &nbsp;·&nbsp; Análisis completos: 24 selecciones · Tracker: 21 listas publicadas en AlterFutbol &nbsp;·&nbsp; Último anuncio: 1 Jun · Estados Unidos</p>
   </div>
 </footer>
 
@@ -4799,7 +4957,8 @@
       'austria':       'aut', 'portugal':      'por', 'rd-congo':     'cod',
       'alemania':      'ger', 'noruega':       'nor',
       'inglaterra':    'eng',
-      'espana':        'esp', 'colombia':      'col'
+      'espana':        'esp', 'colombia':      'col',
+      'estados-unidos':'usa'
     };
 
     function renderTeamFixtures() {
@@ -4887,7 +5046,9 @@
       'esp': [{pos:'1°',r32:84,r32opp:'2.° Grupo J',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'},
               {pos:'2°',r32:86,r32opp:'1.° Grupo J',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'}],
       'col': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
-              {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}]
+              {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
+      'usa': [{pos:'1°',r32:81,r32opp:'3.° Grupo B/E/F/I/J',r16:94,r16opp:'Ganador P82 (1.° G ó 3.° A/E/H/I/J)'},
+              {pos:'2°',r32:88,r32opp:'2.° Grupo G',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}]
     };
 
     // R32 matches por grupo si termina 3.° (solo 8 de 12 terceros clasifican)
@@ -4912,7 +5073,8 @@
       'cod': [{r32:80,r16:92},{r32:87,r16:96}],
       'eng': [{r32:87,r16:96}],
       'esp': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:82,r16:94}],
-      'col': [{r32:80,r16:92},{r32:87,r16:96}]
+      'col': [{r32:80,r16:92},{r32:87,r16:96}],
+      'usa': [{r32:74,r16:89},{r32:77,r16:89},{r32:87,r16:96}]
     };
 
     function renderTeamKOPaths() {
