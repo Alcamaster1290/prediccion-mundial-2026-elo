@@ -310,6 +310,11 @@
   /* Zone indicators */
   .st-qualify > td:first-child { border-left: 3px solid var(--grp-col, var(--accent)); }
   .st-third   > td:first-child { border-left: 3px solid rgba(245,158,11,.7); }
+  /* Mejores terceros table rows */
+  .st-third-qualify > td:first-child { border-left: 3px solid rgba(245,158,11,.7); }
+  .st-third-out > td:first-child     { border-left: 3px solid rgba(100,116,139,.3); }
+  .st-third-out td                   { color: var(--muted); }
+  .st-thirds-cutline > td            { border-top: 1px dashed rgba(245,158,11,.4); }
   /* Tiebreak accordion */
   .st-tiebreak {
     padding: .55rem 1rem;
@@ -3847,6 +3852,59 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem"><div class="pending-card"><img class="flag-svg" src="assets/flags/cro.svg" alt="Croacia" loading="lazy"> Croacia<br><small style="font-size:11px;opacity:.6">Lista pendiente</small></div><div class="pending-card"><img class="flag-svg" src="assets/flags/gha.svg" alt="Ghana" loading="lazy"> Ghana<br><small style="font-size:11px;opacity:.6">Lista pendiente</small></div><div class="pending-card"><img class="flag-svg" src="assets/flags/pan.svg" alt="Panamá" loading="lazy"> Panamá<br><small style="font-size:11px;opacity:.6">Lista pendiente</small></div></div>
   </div>
 </section>
+<!-- ═══════ MEJORES TERCEROS ═══════ -->
+<section id="mejores-terceros">
+  <div class="container">
+    <div class="group-section-header" style="margin-bottom:1.5rem">
+      <div class="group-big-label" style="color:rgba(245,158,11,.08);font-size:6rem;line-height:1">3°</div>
+      <div class="group-section-info">
+        <h2>Mejores Terceros</h2>
+        <div style="color:var(--muted);font-size:14px;margin-top:.4rem">
+          8 de los 12 terceros clasifican a 16avos de final · ordenados por criterios FIFA
+        </div>
+      </div>
+    </div>
+
+    <div class="standings-wrap" style="--grp-col:rgba(245,158,11,.7)">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="st-pos-hdr">#</th>
+            <th style="font-size:12px;padding:.4rem .5rem;text-align:center">Grp</th>
+            <th class="st-team-hdr">Equipo</th>
+            <th title="Partidos jugados">PJ</th>
+            <th title="Ganados">PG</th>
+            <th title="Empates">PE</th>
+            <th title="Derrotas">PP</th>
+            <th title="Goles a favor">GF</th>
+            <th title="Goles en contra">GC</th>
+            <th title="Diferencia de goles">DG</th>
+            <th class="st-pts-hdr" title="Puntos">PTS</th>
+          </tr>
+        </thead>
+        <tbody id="best-thirds-tbody">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="standings-legend" style="margin-top:.75rem">
+      <span><span class="st-legend-dot" style="background:rgba(245,158,11,.7)"></span>Clasifican (8 mejores)</span>
+      <span><span class="st-legend-dot" style="background:rgba(100,116,139,.3)"></span>Eliminados</span>
+    </div>
+
+    <details class="st-tiebreak" style="margin-top:1rem">
+      <summary>Criterios de ordenamiento para mejores terceros ▸</summary>
+      <ol class="st-tiebreak-list">
+        <li>Puntos totales en fase de grupos</li>
+        <li>Diferencia de goles en todos los partidos del grupo</li>
+        <li>Goles marcados en todos los partidos del grupo</li>
+        <li>Fair play (−1 amarilla · −4 roja directa · −5 amarilla+roja)</li>
+        <li>Ranking FIFA/Coca-Cola</li>
+      </ol>
+    </details>
+  </div>
+</section>
+
 <!-- ═══════ TRACKER DE CONVOCATORIAS ═══════ -->
 <section id="tracker" style="background:var(--surface)">
   <div class="container">
@@ -3855,7 +3913,7 @@
       <h2>Tracker de Convocatorias</h2>
     </div>
     <p style="color:var(--muted);margin-bottom:2rem;font-size:14px">
-      21 selecciones han publicado sus listas en AlterFutbol entre el <strong style="color:var(--text)">11 mayo</strong> (Bosnia, primera) y el <strong style="color:var(--text)">1 junio 2026</strong> (Estados Unidos). Más Japón, Túnez y Curazao por carga manual. 24 con análisis completo.
+      21 selecciones han publicado sus listas en AlterFutbol entre el <strong style="color:var(--text)">11 mayo</strong> (Bosnia, primera) y el <strong style="color:var(--text)">26 mayo 2026</strong> (Estados Unidos). Más Japón, Túnez y Curazao por carga manual. 24 con análisis completo.
       Las marcadas con <span class="analyzed-badge">✓ Detallado</span> tienen análisis completo en este documento.
     </p>
 
@@ -4619,7 +4677,7 @@
         <span class="analyzed-badge" style="margin-left:auto">✓ Detallado</span>
       </div>
       <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:var(--card);border-radius:8px;border-left:3px solid var(--accent)">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);min-width:80px">1 Jun</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);min-width:80px">26 May</span>
         <span><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"></span><span style="font-size:13px"><strong style="color:var(--white)">Estados Unidos</strong></span>
         <span class="analyzed-badge" style="margin-left:auto">✓ Detallado</span>
       </div>
@@ -4667,7 +4725,7 @@
     <p>Fuente de plantillas y análisis tácticos: <a href="https://alterfutbol.com">AlterFutbol</a> &nbsp;·&nbsp;
     Ratings ELO de clubes: <a href="http://worldclubratings.com/rankings/elo_men/">worldclubratings.com</a> &nbsp;·&nbsp;
     Fixture oficial: <a href="https://fifa.com">FIFA</a></p>
-    <p style="margin-top:.5rem">Actualizado: 1 de junio de 2026 &nbsp;·&nbsp; Análisis completos: 24 selecciones · Tracker: 21 listas publicadas en AlterFutbol &nbsp;·&nbsp; Último anuncio: 1 Jun · Estados Unidos</p>
+    <p style="margin-top:.5rem">Actualizado: 1 de junio de 2026 &nbsp;·&nbsp; Análisis completos: 24 selecciones · Tracker: 21 listas publicadas en AlterFutbol &nbsp;·&nbsp; Último anuncio: 26 May · Estados Unidos</p>
   </div>
 </footer>
 
@@ -4789,6 +4847,213 @@
     }
   };
 
+  // ── GLOBALS (used by IIFE and standings.js) ──────────────────────────────
+  var DAYS_ES = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  var MONTHS_ES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  var PHASE_LABELS = {R32:'16avos',R16:'Octavos',QF:'Cuartos',SF:'Semifinal',TP:'3er Puesto',F:'Final'};
+  var PHASE_COLORS = {R32:'#f97316',R16:'#f59e0b',QF:'#a855f7',SF:'#3b82f6',TP:'#64748b',F:'#ffd700'};
+  var KNOCKOUT_MATCHES = [
+    // 16avos de Final (28 jun – 3 jul)
+    {phase:'R32',matchNum:73,date:'2026-06-28',time:'19:00',homeLabel:'2.° Grupo A',awayLabel:'2.° Grupo B',venue:'SoFi Stadium, Los Ángeles'},
+    {phase:'R32',matchNum:74,date:'2026-06-29',time:'20:30',homeLabel:'1.° Grupo E',awayLabel:'3.° A/B/C/D/F',venue:'Gillette Stadium, Foxborough'},
+    {phase:'R32',matchNum:75,date:'2026-06-29',time:'01:00',homeLabel:'1.° Grupo F',awayLabel:'2.° Grupo C',venue:'Estadio BBVA, Guadalupe'},
+    {phase:'R32',matchNum:76,date:'2026-06-29',time:'17:00',homeLabel:'1.° Grupo C',awayLabel:'2.° Grupo F',venue:'NRG Stadium, Houston'},
+    {phase:'R32',matchNum:77,date:'2026-06-30',time:'21:00',homeLabel:'1.° Grupo I',awayLabel:'3.° C/D/F/G/H',venue:'MetLife Stadium, East Rutherford'},
+    {phase:'R32',matchNum:78,date:'2026-06-30',time:'17:00',homeLabel:'2.° Grupo E',awayLabel:'2.° Grupo I',venue:'AT&T Stadium, Arlington'},
+    {phase:'R32',matchNum:79,date:'2026-06-30',time:'01:00',homeLabel:'1.° Grupo A',awayLabel:'3.° C/E/F/H/I',venue:'Estadio Azteca, Ciudad de México'},
+    {phase:'R32',matchNum:80,date:'2026-07-01',time:'16:00',homeLabel:'1.° Grupo L',awayLabel:'3.° E/H/I/J/K',venue:'Mercedes-Benz Stadium, Atlanta'},
+    {phase:'R32',matchNum:81,date:'2026-07-01',time:'00:00',homeLabel:'1.° Grupo D',awayLabel:'3.° B/E/F/I/J',venue:"Levi's Stadium, Santa Clara"},
+    {phase:'R32',matchNum:82,date:'2026-07-01',time:'20:00',homeLabel:'1.° Grupo G',awayLabel:'3.° A/E/H/I/J',venue:'Lumen Field, Seattle'},
+    {phase:'R32',matchNum:83,date:'2026-07-02',time:'23:00',homeLabel:'2.° Grupo K',awayLabel:'2.° Grupo L',venue:'BMO Field, Toronto'},
+    {phase:'R32',matchNum:84,date:'2026-07-02',time:'19:00',homeLabel:'1.° Grupo H',awayLabel:'2.° Grupo J',venue:'SoFi Stadium, Los Ángeles'},
+    {phase:'R32',matchNum:85,date:'2026-07-02',time:'03:00',homeLabel:'1.° Grupo B',awayLabel:'3.° E/F/G/I/J',venue:'BC Place, Vancouver'},
+    {phase:'R32',matchNum:86,date:'2026-07-03',time:'22:00',homeLabel:'1.° Grupo J',awayLabel:'2.° Grupo H',venue:'Hard Rock Stadium, Miami Gardens'},
+    {phase:'R32',matchNum:87,date:'2026-07-03',time:'01:30',homeLabel:'1.° Grupo K',awayLabel:'3.° D/E/I/J/L',venue:'Arrowhead Stadium, Kansas City'},
+    {phase:'R32',matchNum:88,date:'2026-07-03',time:'18:00',homeLabel:'2.° Grupo D',awayLabel:'2.° Grupo G',venue:'AT&T Stadium, Arlington'},
+    // Octavos de Final (4-7 jul)
+    {phase:'R16',matchNum:89,date:'2026-07-04',time:'21:00',homeLabel:'Ganador Partido 74',awayLabel:'Ganador Partido 77',venue:'Lincoln Financial Field, Filadelfia'},
+    {phase:'R16',matchNum:90,date:'2026-07-04',time:'17:00',homeLabel:'Ganador Partido 73',awayLabel:'Ganador Partido 75',venue:'NRG Stadium, Houston'},
+    {phase:'R16',matchNum:91,date:'2026-07-05',time:'20:00',homeLabel:'Ganador Partido 76',awayLabel:'Ganador Partido 78',venue:'MetLife Stadium, East Rutherford'},
+    {phase:'R16',matchNum:92,date:'2026-07-05',time:'00:00',homeLabel:'Ganador Partido 79',awayLabel:'Ganador Partido 80',venue:'Estadio Azteca, Ciudad de México'},
+    {phase:'R16',matchNum:93,date:'2026-07-06',time:'19:00',homeLabel:'Ganador Partido 83',awayLabel:'Ganador Partido 84',venue:'AT&T Stadium, Arlington'},
+    {phase:'R16',matchNum:94,date:'2026-07-06',time:'00:00',homeLabel:'Ganador Partido 81',awayLabel:'Ganador Partido 82',venue:'Lumen Field, Seattle'},
+    {phase:'R16',matchNum:95,date:'2026-07-07',time:'16:00',homeLabel:'Ganador Partido 86',awayLabel:'Ganador Partido 88',venue:'Mercedes-Benz Stadium, Atlanta'},
+    {phase:'R16',matchNum:96,date:'2026-07-07',time:'20:00',homeLabel:'Ganador Partido 85',awayLabel:'Ganador Partido 87',venue:'BC Place, Vancouver'},
+    // Cuartos de Final (9-11 jul)
+    {phase:'QF',matchNum:97,date:'2026-07-09',time:'20:00',homeLabel:'Ganador Partido 89',awayLabel:'Ganador Partido 90',venue:'Gillette Stadium, Foxborough'},
+    {phase:'QF',matchNum:98,date:'2026-07-10',time:'19:00',homeLabel:'Ganador Partido 93',awayLabel:'Ganador Partido 94',venue:'SoFi Stadium, Los Ángeles'},
+    {phase:'QF',matchNum:99,date:'2026-07-11',time:'21:00',homeLabel:'Ganador Partido 91',awayLabel:'Ganador Partido 92',venue:'Hard Rock Stadium, Miami Gardens'},
+    {phase:'QF',matchNum:100,date:'2026-07-11',time:'01:00',homeLabel:'Ganador Partido 95',awayLabel:'Ganador Partido 96',venue:'Arrowhead Stadium, Kansas City'},
+    // Semifinales (14-15 jul)
+    {phase:'SF',matchNum:101,date:'2026-07-14',time:'19:00',homeLabel:'Ganador Partido 97',awayLabel:'Ganador Partido 98',venue:'AT&T Stadium, Arlington'},
+    {phase:'SF',matchNum:102,date:'2026-07-15',time:'19:00',homeLabel:'Ganador Partido 99',awayLabel:'Ganador Partido 100',venue:'Mercedes-Benz Stadium, Atlanta'},
+    // Tercer Puesto (18 jul)
+    {phase:'TP',matchNum:103,date:'2026-07-18',time:'21:00',homeLabel:'Per. Partido 101',awayLabel:'Per. Partido 102',venue:'Hard Rock Stadium, Miami Gardens'},
+    // Final (19 jul)
+    {phase:'F',matchNum:104,date:'2026-07-19',time:'19:00',homeLabel:'Ganador Partido 101',awayLabel:'Ganador Partido 102',venue:'MetLife Stadium, East Rutherford'}
+  ];
+  function labelDate(dateStr) {
+    var parts = dateStr.split('-');
+    var d = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+    return DAYS_ES[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS_ES[d.getMonth()];
+  }
+  var TEAM_CODES = {
+    'corea':         'kor', 'bosnia':        'bih', 'suiza':        'sui',
+    'brasil':        'bra', 'haiti':         'hti', 'escocia':      'sco',
+    'costa-marfil':  'civ', 'suecia':        'swe', 'belgica':      'bel',
+    'nueva-zelanda': 'nzl', 'cabo-verde':    'cpv', 'francia':      'fra',
+    'austria':       'aut', 'portugal':      'por', 'rd-congo':     'cod',
+    'alemania':      'ger', 'noruega':       'nor',
+    'inglaterra':    'eng',
+    'espana':        'esp', 'colombia':      'col',
+    'estados-unidos':'usa'
+  };
+  var TEAM_KO_PATH = {
+    'kor': [{pos:'1°',r32:79,r32opp:'3.° Grupo C/E/F/H/I',r16:92,r16opp:'Ganador P80 (1.° L ó 3.° E/H/I/J/K)'},
+            {pos:'2°',r32:73,r32opp:'2.° Grupo B',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
+    'bih': [{pos:'1°',r32:85,r32opp:'3.° E/F/G/I/J',r16:96,r16opp:'Ganador P87 (1.° K ó 3.° D/E/I/J/L)'},
+            {pos:'2°',r32:73,r32opp:'2.° Grupo A',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
+    'sui': [{pos:'1°',r32:85,r32opp:'3.° E/F/G/I/J',r16:96,r16opp:'Ganador P87 (1.° K ó 3.° D/E/I/J/L)'},
+            {pos:'2°',r32:73,r32opp:'2.° Grupo A',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
+    'bra': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
+            {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
+    'hti': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
+            {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
+    'sco': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
+            {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
+    'civ': [{pos:'1°',r32:74,r32opp:'3.° A/B/C/D/F',r16:89,r16opp:'Ganador P77 (1.° I ó 3.° C/D/F/G/H)'},
+            {pos:'2°',r32:78,r32opp:'2.° Grupo I',r16:91,r16opp:'Ganador P76 (1.° C ó 2.° F)'}],
+    'swe': [{pos:'1°',r32:75,r32opp:'2.° Grupo C',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'},
+            {pos:'2°',r32:76,r32opp:'1.° Grupo C',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'}],
+    'nor': [{pos:'1°',r32:75,r32opp:'2.° Grupo C',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'},
+            {pos:'2°',r32:76,r32opp:'1.° Grupo C',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'}],
+    'bel': [{pos:'1°',r32:82,r32opp:'3.° A/E/H/I/J',r16:94,r16opp:'Ganador P81 (1.° D ó 3.° B/E/F/I/J)'},
+            {pos:'2°',r32:88,r32opp:'2.° Grupo D',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}],
+    'nzl': [{pos:'1°',r32:82,r32opp:'3.° A/E/H/I/J',r16:94,r16opp:'Ganador P81 (1.° D ó 3.° B/E/F/I/J)'},
+            {pos:'2°',r32:88,r32opp:'2.° Grupo D',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}],
+    'cpv': [{pos:'1°',r32:84,r32opp:'2.° Grupo J',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'},
+            {pos:'2°',r32:86,r32opp:'1.° Grupo J',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'}],
+    'fra': [{pos:'1°',r32:77,r32opp:'3.° C/D/F/G/H',r16:89,r16opp:'Ganador P74 (1.° E ó 3.° A/B/C/D/F)'},
+            {pos:'2°',r32:78,r32opp:'2.° Grupo E',r16:91,r16opp:'Ganador P76 (1.° C ó 2.° F)'}],
+    'aut': [{pos:'1°',r32:86,r32opp:'2.° Grupo H',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'},
+            {pos:'2°',r32:84,r32opp:'1.° Grupo H',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'}],
+    'ger': [{pos:'1°',r32:86,r32opp:'2.° Grupo H',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'},
+            {pos:'2°',r32:84,r32opp:'1.° Grupo H',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'}],
+    'por': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
+            {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
+    'cod': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
+            {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
+    'eng': [{pos:'1°',r32:80,r32opp:'3.° E/H/I/J/K',r16:92,r16opp:'Ganador P79 (1.° A ó 3.° C/E/F/H/I)'},
+            {pos:'2°',r32:83,r32opp:'2.° Grupo K',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
+    'esp': [{pos:'1°',r32:84,r32opp:'2.° Grupo J',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'},
+            {pos:'2°',r32:86,r32opp:'1.° Grupo J',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'}],
+    'col': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
+            {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
+    'usa': [{pos:'1°',r32:81,r32opp:'3.° Grupo B/E/F/I/J',r16:94,r16opp:'Ganador P82 (1.° G ó 3.° A/E/H/I/J)'},
+            {pos:'2°',r32:88,r32opp:'2.° Grupo G',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}]
+  };
+  var TEAM_KO_3RD = {
+    'kor': [{r32:74,r16:89},{r32:82,r16:94}],
+    'bih': [{r32:74,r16:89},{r32:81,r16:94}],
+    'sui': [{r32:74,r16:89},{r32:81,r16:94}],
+    'bra': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
+    'hti': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
+    'sco': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
+    'civ': [{r32:79,r16:92},{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
+    'swe': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92},{r32:81,r16:94},{r32:85,r16:96}],
+    'nor': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92},{r32:81,r16:94},{r32:85,r16:96}],
+    'bel': [{r32:77,r16:89},{r32:85,r16:96}],
+    'nzl': [{r32:77,r16:89},{r32:85,r16:96}],
+    'cpv': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:82,r16:94}],
+    'fra': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
+    'aut': [{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
+    'ger': [{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
+    'por': [{r32:80,r16:92},{r32:87,r16:96}],
+    'cod': [{r32:80,r16:92},{r32:87,r16:96}],
+    'eng': [{r32:87,r16:96}],
+    'esp': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:82,r16:94}],
+    'col': [{r32:80,r16:92},{r32:87,r16:96}],
+    'usa': [{r32:74,r16:89},{r32:77,r16:89},{r32:87,r16:96}]
+  };
+  function renderTeamKOPaths() {
+    document.querySelectorAll('.ko-path').forEach(function(el) { el.remove(); });
+    var koByNum = {};
+    KNOCKOUT_MATCHES.forEach(function(m) { koByNum[m.matchNum] = m; });
+
+    function shortVenue(v) { return v ? v.split(',')[0] : ''; }
+    function koCard(matchNum, opp, color, phaseLabel) {
+      var m = koByNum[matchNum];
+      if (!m) return '';
+      var oppHtml = (function() {
+        var r = (typeof resolveOpponent === 'function') ? resolveOpponent(opp) : null;
+        if (!r) return opp;
+        return '<img class="flag-svg" src="' + r.flagSrc + '" style="height:14px;vertical-align:middle;margin-right:.3rem">'
+          + '<strong>' + r.name + '</strong>'
+          + '<span style="opacity:.6;font-size:11px;margin-left:.3rem">(' + opp + ')</span>';
+      })();
+      return '<div class="ko-card" style="border-left-color:' + color + '">'
+        + '<div class="ko-card-phase" style="color:' + color + '">' + phaseLabel + ' · P' + matchNum + '</div>'
+        + '<div class="ko-card-date">' + labelDate(m.date) + ' · ' + m.time + ' UTC</div>'
+        + '<div class="ko-card-opp">vs ' + oppHtml + '</div>'
+        + '<div class="ko-card-venue">' + shortVenue(m.venue) + '</div>'
+        + '</div>';
+    }
+
+    Object.keys(TEAM_CODES).forEach(function(sectionId) {
+      var code = TEAM_CODES[sectionId];
+      var path = TEAM_KO_PATH[code];
+      if (!path) return;
+      var section = document.getElementById(sectionId);
+      if (!section) return;
+      var fixtures = section.querySelector('.team-fixtures');
+      if (!fixtures) {
+        fixtures = document.createElement('div');
+        fixtures.className = 'team-fixtures';
+        section.appendChild(fixtures);
+      }
+
+      var html = '<div class="ko-path-title">Ruta Eliminatoria Posible · hasta Octavos</div>'
+        + '<div class="ko-scenarios">';
+
+      path.forEach(function(sc) {
+        var posCls = sc.pos === '1°' ? 'ko-pos-1' : 'ko-pos-2';
+        html += '<div class="ko-scenario">'
+          + '<div class="ko-pos-wrap"><span class="ko-pos-badge ' + posCls + '">' + sc.pos + '</span></div>'
+          + koCard(sc.r32, sc.r32opp, PHASE_COLORS.R32, '16avos')
+          + '<div class="ko-arrow-wrap"><span class="ko-arrow">›</span></div>'
+          + koCard(sc.r16, sc.r16opp, PHASE_COLORS.R16, 'Octavos')
+          + '</div>';
+      });
+
+      var path3 = TEAM_KO_3RD[code];
+      if (path3 && path3.length) {
+        html += '<div class="ko-scenario">'
+          + '<div class="ko-pos-wrap"><span class="ko-pos-badge ko-pos-3">3.°</span></div>'
+          + '<div class="ko-card-3rd">'
+          + '<div class="ko-card-phase" style="color:#64748b">16avos · Solo si clasifica entre los 8 mejores terceros</div>'
+          + '<div class="ko-3rd-rows">';
+        path3.forEach(function(p) {
+          var m32 = koByNum[p.r32];
+          if (!m32) return;
+          html += '<div class="ko-3rd-row">'
+            + '<span class="ko-3rd-pnum">P' + p.r32 + '</span>'
+            + '<span class="ko-3rd-opp">vs ' + m32.homeLabel + '</span>'
+            + '<span class="ko-3rd-detail">' + shortVenue(m32.venue) + ' · ' + labelDate(m32.date) + '</span>'
+            + '<span class="ko-3rd-r16">→ Octavos P' + p.r16 + '</span>'
+            + '</div>';
+        });
+        html += '</div></div></div>';
+      }
+
+      html += '</div>';
+
+      var koDiv = document.createElement('div');
+      koDiv.className = 'ko-path';
+      koDiv.innerHTML = html;
+      fixtures.appendChild(koDiv);
+    });
+  }
+
   // ── CALENDAR ──────────────────────────────────────────────────────────────
   (function() {
     var NAMES = {
@@ -4805,50 +5070,6 @@
       eng:'Inglaterra', cro:'Croacia', gha:'Ghana', pan:'Panamá',
       usa:'EE.UU.', pry:'Paraguay', aus:'Australia', tur:'Turquía'
     };
-    var DAYS_ES = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-    var MONTHS_ES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-    var PHASE_LABELS = {R32:'16avos',R16:'Octavos',QF:'Cuartos',SF:'Semifinal',TP:'3er Puesto',F:'Final'};
-    var PHASE_COLORS = {R32:'#f97316',R16:'#f59e0b',QF:'#a855f7',SF:'#3b82f6',TP:'#64748b',F:'#ffd700'};
-    var KNOCKOUT_MATCHES = [
-      // 16avos de Final (28 jun – 3 jul)
-      {phase:'R32',matchNum:73,date:'2026-06-28',time:'19:00',homeLabel:'2.° Grupo A',awayLabel:'2.° Grupo B',venue:'SoFi Stadium, Los Ángeles'},
-      {phase:'R32',matchNum:74,date:'2026-06-29',time:'20:30',homeLabel:'1.° Grupo E',awayLabel:'3.° A/B/C/D/F',venue:'Gillette Stadium, Foxborough'},
-      {phase:'R32',matchNum:75,date:'2026-06-29',time:'01:00',homeLabel:'1.° Grupo F',awayLabel:'2.° Grupo C',venue:'Estadio BBVA, Guadalupe'},
-      {phase:'R32',matchNum:76,date:'2026-06-29',time:'17:00',homeLabel:'1.° Grupo C',awayLabel:'2.° Grupo F',venue:'NRG Stadium, Houston'},
-      {phase:'R32',matchNum:77,date:'2026-06-30',time:'21:00',homeLabel:'1.° Grupo I',awayLabel:'3.° C/D/F/G/H',venue:'MetLife Stadium, East Rutherford'},
-      {phase:'R32',matchNum:78,date:'2026-06-30',time:'17:00',homeLabel:'2.° Grupo E',awayLabel:'2.° Grupo I',venue:'AT&T Stadium, Arlington'},
-      {phase:'R32',matchNum:79,date:'2026-06-30',time:'01:00',homeLabel:'1.° Grupo A',awayLabel:'3.° C/E/F/H/I',venue:'Estadio Azteca, Ciudad de México'},
-      {phase:'R32',matchNum:80,date:'2026-07-01',time:'16:00',homeLabel:'1.° Grupo L',awayLabel:'3.° E/H/I/J/K',venue:'Mercedes-Benz Stadium, Atlanta'},
-      {phase:'R32',matchNum:81,date:'2026-07-01',time:'00:00',homeLabel:'1.° Grupo D',awayLabel:'3.° B/E/F/I/J',venue:"Levi's Stadium, Santa Clara"},
-      {phase:'R32',matchNum:82,date:'2026-07-01',time:'20:00',homeLabel:'1.° Grupo G',awayLabel:'3.° A/E/H/I/J',venue:'Lumen Field, Seattle'},
-      {phase:'R32',matchNum:83,date:'2026-07-02',time:'23:00',homeLabel:'2.° Grupo K',awayLabel:'2.° Grupo L',venue:'BMO Field, Toronto'},
-      {phase:'R32',matchNum:84,date:'2026-07-02',time:'19:00',homeLabel:'1.° Grupo H',awayLabel:'2.° Grupo J',venue:'SoFi Stadium, Los Ángeles'},
-      {phase:'R32',matchNum:85,date:'2026-07-02',time:'03:00',homeLabel:'1.° Grupo B',awayLabel:'3.° E/F/G/I/J',venue:'BC Place, Vancouver'},
-      {phase:'R32',matchNum:86,date:'2026-07-03',time:'22:00',homeLabel:'1.° Grupo J',awayLabel:'2.° Grupo H',venue:'Hard Rock Stadium, Miami Gardens'},
-      {phase:'R32',matchNum:87,date:'2026-07-03',time:'01:30',homeLabel:'1.° Grupo K',awayLabel:'3.° D/E/I/J/L',venue:'Arrowhead Stadium, Kansas City'},
-      {phase:'R32',matchNum:88,date:'2026-07-03',time:'18:00',homeLabel:'2.° Grupo D',awayLabel:'2.° Grupo G',venue:'AT&T Stadium, Arlington'},
-      // Octavos de Final (4-7 jul)
-      {phase:'R16',matchNum:89,date:'2026-07-04',time:'21:00',homeLabel:'Ganador Partido 74',awayLabel:'Ganador Partido 77',venue:'Lincoln Financial Field, Filadelfia'},
-      {phase:'R16',matchNum:90,date:'2026-07-04',time:'17:00',homeLabel:'Ganador Partido 73',awayLabel:'Ganador Partido 75',venue:'NRG Stadium, Houston'},
-      {phase:'R16',matchNum:91,date:'2026-07-05',time:'20:00',homeLabel:'Ganador Partido 76',awayLabel:'Ganador Partido 78',venue:'MetLife Stadium, East Rutherford'},
-      {phase:'R16',matchNum:92,date:'2026-07-05',time:'00:00',homeLabel:'Ganador Partido 79',awayLabel:'Ganador Partido 80',venue:'Estadio Azteca, Ciudad de México'},
-      {phase:'R16',matchNum:93,date:'2026-07-06',time:'19:00',homeLabel:'Ganador Partido 83',awayLabel:'Ganador Partido 84',venue:'AT&T Stadium, Arlington'},
-      {phase:'R16',matchNum:94,date:'2026-07-06',time:'00:00',homeLabel:'Ganador Partido 81',awayLabel:'Ganador Partido 82',venue:'Lumen Field, Seattle'},
-      {phase:'R16',matchNum:95,date:'2026-07-07',time:'16:00',homeLabel:'Ganador Partido 86',awayLabel:'Ganador Partido 88',venue:'Mercedes-Benz Stadium, Atlanta'},
-      {phase:'R16',matchNum:96,date:'2026-07-07',time:'20:00',homeLabel:'Ganador Partido 85',awayLabel:'Ganador Partido 87',venue:'BC Place, Vancouver'},
-      // Cuartos de Final (9-11 jul)
-      {phase:'QF',matchNum:97,date:'2026-07-09',time:'20:00',homeLabel:'Ganador Partido 89',awayLabel:'Ganador Partido 90',venue:'Gillette Stadium, Foxborough'},
-      {phase:'QF',matchNum:98,date:'2026-07-10',time:'19:00',homeLabel:'Ganador Partido 93',awayLabel:'Ganador Partido 94',venue:'SoFi Stadium, Los Ángeles'},
-      {phase:'QF',matchNum:99,date:'2026-07-11',time:'21:00',homeLabel:'Ganador Partido 91',awayLabel:'Ganador Partido 92',venue:'Hard Rock Stadium, Miami Gardens'},
-      {phase:'QF',matchNum:100,date:'2026-07-11',time:'01:00',homeLabel:'Ganador Partido 95',awayLabel:'Ganador Partido 96',venue:'Arrowhead Stadium, Kansas City'},
-      // Semifinales (14-15 jul)
-      {phase:'SF',matchNum:101,date:'2026-07-14',time:'19:00',homeLabel:'Ganador Partido 97',awayLabel:'Ganador Partido 98',venue:'AT&T Stadium, Arlington'},
-      {phase:'SF',matchNum:102,date:'2026-07-15',time:'19:00',homeLabel:'Ganador Partido 99',awayLabel:'Ganador Partido 100',venue:'Mercedes-Benz Stadium, Atlanta'},
-      // Tercer Puesto (18 jul)
-      {phase:'TP',matchNum:103,date:'2026-07-18',time:'21:00',homeLabel:'Per. Partido 101',awayLabel:'Per. Partido 102',venue:'Hard Rock Stadium, Miami Gardens'},
-      // Final (19 jul)
-      {phase:'F',matchNum:104,date:'2026-07-19',time:'19:00',homeLabel:'Ganador Partido 101',awayLabel:'Ganador Partido 102',venue:'MetLife Stadium, East Rutherford'}
-    ];
 
     var allMatches = [];
     var activeFilter = 'all';
@@ -4857,13 +5078,6 @@
     function flag(code) {
       var name = NAMES[code] || code;
       return '<img class="flag-svg" src="assets/flags/' + code + '.svg" alt="' + name + '" loading="lazy">';
-    }
-
-    function labelDate(dateStr) {
-      // dateStr = YYYY-MM-DD; treat as local date (no time, no tz shift)
-      var parts = dateStr.split('-');
-      var d = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
-      return DAYS_ES[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS_ES[d.getMonth()];
     }
 
     function renderCalendar() {
@@ -4938,18 +5152,6 @@
 
     KNOCKOUT_MATCHES.forEach(function(m) { allMatches.push(m); });
 
-    var TEAM_CODES = {
-      'corea':         'kor', 'bosnia':        'bih', 'suiza':        'sui',
-      'brasil':        'bra', 'haiti':         'hti', 'escocia':      'sco',
-      'costa-marfil':  'civ', 'suecia':        'swe', 'belgica':      'bel',
-      'nueva-zelanda': 'nzl', 'cabo-verde':    'cpv', 'francia':      'fra',
-      'austria':       'aut', 'portugal':      'por', 'rd-congo':     'cod',
-      'alemania':      'ger', 'noruega':       'nor',
-      'inglaterra':    'eng',
-      'espana':        'esp', 'colombia':      'col',
-      'estados-unidos':'usa'
-    };
-
     function renderTeamFixtures() {
       var groupMatches = allMatches.filter(function(m) { return m.phase === 'grupos'; });
       if (!groupMatches.length) return;
@@ -4991,150 +5193,6 @@
             + '</div>';
         });
         container.innerHTML = html;
-      });
-    }
-
-    // ── KNOCKOUT PATH PER TEAM ────────────────────────────────────────────────
-    var TEAM_KO_PATH = {
-      'kor': [{pos:'1°',r32:79,r32opp:'3.° Grupo C/E/F/H/I',r16:92,r16opp:'Ganador P80 (1.° L ó 3.° E/H/I/J/K)'},
-              {pos:'2°',r32:73,r32opp:'2.° Grupo B',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
-      'bih': [{pos:'1°',r32:85,r32opp:'3.° E/F/G/I/J',r16:96,r16opp:'Ganador P87 (1.° K ó 3.° D/E/I/J/L)'},
-              {pos:'2°',r32:73,r32opp:'2.° Grupo A',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
-      'sui': [{pos:'1°',r32:85,r32opp:'3.° E/F/G/I/J',r16:96,r16opp:'Ganador P87 (1.° K ó 3.° D/E/I/J/L)'},
-              {pos:'2°',r32:73,r32opp:'2.° Grupo A',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
-      'bra': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
-              {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
-      'hti': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
-              {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
-      'sco': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
-              {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
-      'civ': [{pos:'1°',r32:74,r32opp:'3.° A/B/C/D/F',r16:89,r16opp:'Ganador P77 (1.° I ó 3.° C/D/F/G/H)'},
-              {pos:'2°',r32:78,r32opp:'2.° Grupo I',r16:91,r16opp:'Ganador P76 (1.° C ó 2.° F)'}],
-      'swe': [{pos:'1°',r32:75,r32opp:'2.° Grupo C',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'},
-              {pos:'2°',r32:76,r32opp:'1.° Grupo C',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'}],
-      'nor': [{pos:'1°',r32:75,r32opp:'2.° Grupo C',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'},
-              {pos:'2°',r32:76,r32opp:'1.° Grupo C',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'}],
-      'bel': [{pos:'1°',r32:82,r32opp:'3.° A/E/H/I/J',r16:94,r16opp:'Ganador P81 (1.° D ó 3.° B/E/F/I/J)'},
-              {pos:'2°',r32:88,r32opp:'2.° Grupo D',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}],
-      'nzl': [{pos:'1°',r32:82,r32opp:'3.° A/E/H/I/J',r16:94,r16opp:'Ganador P81 (1.° D ó 3.° B/E/F/I/J)'},
-              {pos:'2°',r32:88,r32opp:'2.° Grupo D',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}],
-      'cpv': [{pos:'1°',r32:84,r32opp:'2.° Grupo J',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'},
-              {pos:'2°',r32:86,r32opp:'1.° Grupo J',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'}],
-      'fra': [{pos:'1°',r32:77,r32opp:'3.° C/D/F/G/H',r16:89,r16opp:'Ganador P74 (1.° E ó 3.° A/B/C/D/F)'},
-              {pos:'2°',r32:78,r32opp:'2.° Grupo E',r16:91,r16opp:'Ganador P76 (1.° C ó 2.° F)'}],
-      'aut': [{pos:'1°',r32:86,r32opp:'2.° Grupo H',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'},
-              {pos:'2°',r32:84,r32opp:'1.° Grupo H',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'}],
-      'ger': [{pos:'1°',r32:86,r32opp:'2.° Grupo H',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'},
-              {pos:'2°',r32:84,r32opp:'1.° Grupo H',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'}],
-      'por': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
-              {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
-      'cod': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
-              {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
-      'eng': [{pos:'1°',r32:80,r32opp:'3.° E/H/I/J/K',r16:92,r16opp:'Ganador P79 (1.° A ó 3.° C/E/F/H/I)'},
-              {pos:'2°',r32:83,r32opp:'2.° Grupo K',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
-      'esp': [{pos:'1°',r32:84,r32opp:'2.° Grupo J',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'},
-              {pos:'2°',r32:86,r32opp:'1.° Grupo J',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'}],
-      'col': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
-              {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
-      'usa': [{pos:'1°',r32:81,r32opp:'3.° Grupo B/E/F/I/J',r16:94,r16opp:'Ganador P82 (1.° G ó 3.° A/E/H/I/J)'},
-              {pos:'2°',r32:88,r32opp:'2.° Grupo G',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}]
-    };
-
-    // R32 matches por grupo si termina 3.° (solo 8 de 12 terceros clasifican)
-    // r16 = partido de octavos al que va el ganador del r32
-    var TEAM_KO_3RD = {
-      'kor': [{r32:74,r16:89},{r32:82,r16:94}],
-      'bih': [{r32:74,r16:89},{r32:81,r16:94}],
-      'sui': [{r32:74,r16:89},{r32:81,r16:94}],
-      'bra': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
-      'hti': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
-      'sco': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
-      'civ': [{r32:79,r16:92},{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
-      'swe': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92},{r32:81,r16:94},{r32:85,r16:96}],
-      'nor': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92},{r32:81,r16:94},{r32:85,r16:96}],
-      'bel': [{r32:77,r16:89},{r32:85,r16:96}],
-      'nzl': [{r32:77,r16:89},{r32:85,r16:96}],
-      'cpv': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:82,r16:94}],
-      'fra': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
-      'aut': [{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
-      'ger': [{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
-      'por': [{r32:80,r16:92},{r32:87,r16:96}],
-      'cod': [{r32:80,r16:92},{r32:87,r16:96}],
-      'eng': [{r32:87,r16:96}],
-      'esp': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:82,r16:94}],
-      'col': [{r32:80,r16:92},{r32:87,r16:96}],
-      'usa': [{r32:74,r16:89},{r32:77,r16:89},{r32:87,r16:96}]
-    };
-
-    function renderTeamKOPaths() {
-      var koByNum = {};
-      KNOCKOUT_MATCHES.forEach(function(m) { koByNum[m.matchNum] = m; });
-
-      function shortVenue(v) { return v ? v.split(',')[0] : ''; }
-      function koCard(matchNum, opp, color, phaseLabel) {
-        var m = koByNum[matchNum];
-        if (!m) return '';
-        return '<div class="ko-card" style="border-left-color:' + color + '">'
-          + '<div class="ko-card-phase" style="color:' + color + '">' + phaseLabel + ' · P' + matchNum + '</div>'
-          + '<div class="ko-card-date">' + labelDate(m.date) + ' · ' + m.time + ' UTC</div>'
-          + '<div class="ko-card-opp">vs ' + opp + '</div>'
-          + '<div class="ko-card-venue">' + shortVenue(m.venue) + '</div>'
-          + '</div>';
-      }
-
-      Object.keys(TEAM_CODES).forEach(function(sectionId) {
-        var code = TEAM_CODES[sectionId];
-        var path = TEAM_KO_PATH[code];
-        if (!path) return;
-        var section = document.getElementById(sectionId);
-        if (!section) return;
-        var fixtures = section.querySelector('.team-fixtures');
-        if (!fixtures) {
-          fixtures = document.createElement('div');
-          fixtures.className = 'team-fixtures';
-          section.appendChild(fixtures);
-        }
-
-        var html = '<div class="ko-path-title">Ruta Eliminatoria Posible · hasta Octavos</div>'
-          + '<div class="ko-scenarios">';
-
-        path.forEach(function(sc) {
-          var posCls = sc.pos === '1°' ? 'ko-pos-1' : 'ko-pos-2';
-          html += '<div class="ko-scenario">'
-            + '<div class="ko-pos-wrap"><span class="ko-pos-badge ' + posCls + '">' + sc.pos + '</span></div>'
-            + koCard(sc.r32, sc.r32opp, PHASE_COLORS.R32, '16avos')
-            + '<div class="ko-arrow-wrap"><span class="ko-arrow">›</span></div>'
-            + koCard(sc.r16, sc.r16opp, PHASE_COLORS.R16, 'Octavos')
-            + '</div>';
-        });
-
-        // 3rd place scenario
-        var path3 = TEAM_KO_3RD[code];
-        if (path3 && path3.length) {
-          html += '<div class="ko-scenario">'
-            + '<div class="ko-pos-wrap"><span class="ko-pos-badge ko-pos-3">3.°</span></div>'
-            + '<div class="ko-card-3rd">'
-            + '<div class="ko-card-phase" style="color:#64748b">16avos · Solo si clasifica entre los 8 mejores terceros</div>'
-            + '<div class="ko-3rd-rows">';
-          path3.forEach(function(p) {
-            var m32 = koByNum[p.r32];
-            if (!m32) return;
-            html += '<div class="ko-3rd-row">'
-              + '<span class="ko-3rd-pnum">P' + p.r32 + '</span>'
-              + '<span class="ko-3rd-opp">vs ' + m32.homeLabel + '</span>'
-              + '<span class="ko-3rd-detail">' + shortVenue(m32.venue) + ' · ' + labelDate(m32.date) + '</span>'
-              + '<span class="ko-3rd-r16">→ Octavos P' + p.r16 + '</span>'
-              + '</div>';
-          });
-          html += '</div></div></div>';
-        }
-
-        html += '</div>';
-
-        var koDiv = document.createElement('div');
-        koDiv.className = 'ko-path';
-        koDiv.innerHTML = html;
-        fixtures.appendChild(koDiv);
       });
     }
 
@@ -5264,5 +5322,6 @@
 </script>
 <script src="js/auth.js"></script>
 <script src="js/premium.js"></script>
+<script src="js/standings.js"></script>
 </body>
 </html>
