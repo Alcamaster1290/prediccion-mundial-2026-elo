@@ -156,14 +156,28 @@
   }
 
   // ── RESOLVE OPPONENT FLAG FROM TEXT ───────────────────────────────────────
+  // "1.° Grupo A" → {type:'single', flagSrc, name, code}
+  // "3.° A/B/C/D/F" or "3.° Grupo C/E/F/H/I" → {type:'multi', teams:[{flagSrc,name,code},...]}
   window.resolveOpponent = function (oppText) {
-    var m = oppText.match(/^(\d)\.°\s+Grupo\s+([A-L])$/i);
-    if (!m) return null;
-    var pos = parseInt(m[1], 10) - 1;
-    var gid = m[2].toLowerCase();
-    var standings = window.CURRENT_STANDINGS[gid];
-    if (!standings || !standings[pos]) return null;
-    return { flagSrc: standings[pos].flagSrc, name: standings[pos].name, code: standings[pos].code };
+    var single = oppText.match(/^(\d)\.°\s+Grupo\s+([A-L])$/i);
+    if (single) {
+      var pos = parseInt(single[1], 10) - 1;
+      var gid = single[2].toLowerCase();
+      var standings = window.CURRENT_STANDINGS[gid];
+      if (!standings || !standings[pos]) return null;
+      return { type: 'single', flagSrc: standings[pos].flagSrc, name: standings[pos].name, code: standings[pos].code };
+    }
+
+    var multi = oppText.match(/^3\.°\s+(?:Grupo\s+)?([A-L](?:\/[A-L])+)$/i);
+    if (multi) {
+      var teams = multi[1].split('/').map(function (g) {
+        var s = window.CURRENT_STANDINGS[g.toLowerCase()];
+        return (s && s.length >= 3) ? s[2] : null;
+      }).filter(Boolean);
+      return teams.length ? { type: 'multi', teams: teams } : null;
+    }
+
+    return null;
   };
 
   // ── COLLECT BEST THIRDS ───────────────────────────────────────────────────

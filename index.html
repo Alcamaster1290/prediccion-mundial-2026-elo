@@ -4987,9 +4987,17 @@
       var oppHtml = (function() {
         var r = (typeof resolveOpponent === 'function') ? resolveOpponent(opp) : null;
         if (!r) return opp;
-        return '<img class="flag-svg" src="' + r.flagSrc + '" style="height:14px;vertical-align:middle;margin-right:.3rem">'
-          + '<strong>' + r.name + '</strong>'
-          + '<span style="opacity:.6;font-size:11px;margin-left:.3rem">(' + opp + ')</span>';
+        if (r.type === 'single') {
+          return '<img class="flag-svg" src="' + r.flagSrc + '" style="height:14px;vertical-align:middle;margin-right:.3rem">'
+            + '<strong>' + r.name + '</strong>'
+            + '<span style="opacity:.6;font-size:11px;margin-left:.3rem">(' + opp + ')</span>';
+        }
+        if (r.type === 'multi') {
+          return r.teams.map(function(t) {
+            return '<img class="flag-svg" src="' + t.flagSrc + '" title="' + t.name + '" style="height:13px;vertical-align:middle;margin-right:2px">';
+          }).join('') + '<span style="opacity:.6;font-size:11px;margin-left:.3rem">' + opp + '</span>';
+        }
+        return opp;
       })();
       return '<div class="ko-card" style="border-left-color:' + color + '">'
         + '<div class="ko-card-phase" style="color:' + color + '">' + phaseLabel + ' · P' + matchNum + '</div>'
