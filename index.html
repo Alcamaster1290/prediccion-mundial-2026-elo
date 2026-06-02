@@ -5240,7 +5240,7 @@
     if (!a) return;
     var hash = a.getAttribute('href');
     var dest = document.getElementById(hash.slice(1));
-    if (!dest || !dest.classList.contains('team-section')) return;
+    if (!dest) return;
     e.preventDefault();
     dest.scrollIntoView({ behavior: 'instant' });
     history.pushState(null, '', hash);
