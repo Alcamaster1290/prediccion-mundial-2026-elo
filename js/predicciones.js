@@ -15,6 +15,12 @@
     K: ['por','cod','uzb','col'], L: ['eng','cro','gha','pan'],
   };
 
+  /* reverse map: team_code → group letter */
+  var TEAM_GROUP = {};
+  Object.keys(GROUP_TEAMS).forEach(function (g) {
+    GROUP_TEAMS[g].forEach(function (code) { TEAM_GROUP[code] = g; });
+  });
+
   var R32 = [
     {num:73, home:{t:'2',g:'A'}, away:{t:'2',g:'B'}},
     {num:74, home:{t:'1',g:'E'}, away:{t:'3',gs:['A','B','C','D','F']}},
@@ -271,9 +277,10 @@
 
     // — Tabla 1: Probabilidades de clasificación —
     html += '<h3 class="pred-subsection-title">Probabilidad de Clasificación</h3>';
-    html += '<div class="pred-table-wrap"><table class="pred-table">'
+    html += '<p class="pred-terceros-note">Haz clic en un equipo para ver el desglose de posiciones.</p>';
+    html += '<div class="pred-table-wrap"><table class="pred-table" id="pred-standings-table">'
       + '<thead><tr>'
-      + '<th>Equipo</th><th>Clasif.</th><th>1°</th><th>2°</th><th>Mejor 3°</th><th>Eliminado</th>'
+      + '<th>Equipo</th><th>Gr.</th><th>Clasif.</th><th>1°</th><th>2°</th><th>Mejor 3°</th><th>Eliminado</th>'
       + '</tr></thead><tbody>';
 
     var sorted = data.standings.slice().sort(function (a, b) {
@@ -281,16 +288,45 @@
     });
 
     sorted.forEach(function (t) {
-      var q = parseFloat(t.qualified_pct);
+      var q    = parseFloat(t.qualified_pct);
+      var f    = parseFloat(t.first_pct);
+      var s    = parseFloat(t.second_pct);
+      var b3   = parseFloat(t.best_third_pct);
+      var out  = parseFloat(t.fourth_pct);
+      var grp  = TEAM_GROUP[t.team_code] || '?';
       var qClass = q >= 99 ? 'pred-q-100' : q >= 70 ? 'pred-q-high' : q >= 40 ? 'pred-q-mid' : 'pred-q-low';
-      html += '<tr>'
-        + '<td class="pred-team-cell">' + flag(t.team_code) + '<span>' + (NAMES[t.team_code] || t.team_code.toUpperCase()) + '</span></td>'
+      /* bar widths — clamp tiny values so segments remain visible */
+      var bF = Math.max(f > 0 ? Math.max(f, 1) : 0, 0);
+      var bS = Math.max(s > 0 ? Math.max(s, 1) : 0, 0);
+      var bB = Math.max(b3 > 0 ? Math.max(b3, 1) : 0, 0);
+      var bO = Math.max(out > 0 ? Math.max(out, 1) : 0, 0);
+      var detail = '<tr class="pred-detail-row" id="pred-detail-' + t.team_code + '" style="display:none">'
+        + '<td colspan="7" class="pred-detail-cell">'
+        + '<div class="pred-detail">'
+        + '<div class="pred-bar">'
+        + (bF ? '<div class="pred-bar-seg pred-bar-1" style="width:' + bF + '%"><span>' + f + '%</span></div>' : '')
+        + (bS ? '<div class="pred-bar-seg pred-bar-2" style="width:' + bS + '%"><span>' + s + '%</span></div>' : '')
+        + (bB ? '<div class="pred-bar-seg pred-bar-3" style="width:' + bB + '%"><span>' + b3 + '%</span></div>' : '')
+        + (bO ? '<div class="pred-bar-seg pred-bar-out" style="width:' + bO + '%"><span>' + out + '%</span></div>' : '')
+        + '</div>'
+        + '<div class="pred-detail-legend">'
+        + '<span class="pred-dl pred-dl-1">1° Grupo</span>'
+        + '<span class="pred-dl pred-dl-2">2° Grupo</span>'
+        + '<span class="pred-dl pred-dl-3">Mejor 3°</span>'
+        + '<span class="pred-dl pred-dl-out">Eliminado</span>'
+        + '</div>'
+        + '</div></td></tr>';
+      html += '<tr class="pred-row-clickable" data-code="' + t.team_code + '">'
+        + '<td class="pred-team-cell">' + flag(t.team_code) + '<span>' + (NAMES[t.team_code] || t.team_code.toUpperCase()) + '</span>'
+        + '<span class="pred-row-caret">▾</span></td>'
+        + '<td><span class="pred-group-badge">' + grp + '</span></td>'
         + '<td><span class="pred-q-badge ' + qClass + '">' + t.qualified_pct + '%</span></td>'
         + '<td>' + t.first_pct + '%</td>'
         + '<td>' + t.second_pct + '%</td>'
         + '<td>' + t.best_third_pct + '%</td>'
         + '<td>' + t.fourth_pct + '%</td>'
-        + '</tr>';
+        + '</tr>'
+        + detail;
     });
     html += '</tbody></table></div>';
 
@@ -323,6 +359,30 @@
     }
 
     el.innerHTML = html;
+
+    /* ── Row expand / collapse ── */
+    var table = document.getElementById('pred-standings-table');
+    if (table) {
+      var openCode = null;
+      table.addEventListener('click', function (e) {
+        var row = e.target.closest('tr.pred-row-clickable');
+        if (!row) return;
+        var code = row.getAttribute('data-code');
+        var detail = document.getElementById('pred-detail-' + code);
+        if (!detail) return;
+        var isOpen = detail.style.display !== 'none';
+        /* close any open row first */
+        if (openCode && openCode !== code) {
+          var prev = document.getElementById('pred-detail-' + openCode);
+          var prevRow = table.querySelector('tr[data-code="' + openCode + '"]');
+          if (prev) prev.style.display = 'none';
+          if (prevRow) prevRow.classList.remove('pred-row-open');
+        }
+        detail.style.display = isOpen ? 'none' : '';
+        row.classList.toggle('pred-row-open', !isOpen);
+        openCode = isOpen ? null : code;
+      });
+    }
   }
 
   // ── Canje de código ──────────────────────────────────────────

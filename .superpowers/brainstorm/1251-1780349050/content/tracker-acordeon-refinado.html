@@ -1,0 +1,316 @@
+<style>
+  :root {
+    --bg: #080c14; --surface: #0d1117; --card: #0f1923;
+    --border: rgba(255,255,255,.08); --accent: #e63946;
+    --text: #c9d1d9; --muted: #6e7d8b; --white: #f0f6fc;
+    --gold: #e6a817; --green: #00c4a0;
+    --grp-a:#e55c5c;--grp-b:#3b8beb;--grp-c:#10b981;--grp-e:#f97316;
+    --grp-f:#f59e0b;--grp-g:#8b5cf6;--grp-h:#ec4899;--grp-i:#06b6d4;
+    --grp-j:#84cc16;--grp-k:#d97706;--grp-l:#94a3b8;
+  }
+  .phone-wrap { display:flex; justify-content:center; margin-top:1.5rem; }
+  .phone {
+    width:340px; background:#111; border-radius:36px;
+    border:6px solid #2a2a2a; overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+  }
+  .phone-notch { height:28px; background:#111; display:flex; align-items:center; justify-content:center; }
+  .notch-pill { width:80px; height:12px; background:#000; border-radius:10px; }
+  .phone-screen { background:var(--bg); font-family:'Inter',sans-serif; max-height:560px; overflow-y:auto; overflow-x:hidden; }
+  .phone-screen::-webkit-scrollbar { width:3px; }
+  .phone-screen::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
+
+  /* Grupo separator */
+  .grp-sep {
+    display:flex; align-items:center; gap:.5rem;
+    padding:.35rem .75rem .2rem;
+    font-size:9px; font-weight:800; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--gc, var(--muted));
+    border-top:1px solid var(--border);
+    margin-top:.1rem;
+  }
+  .grp-sep:first-child { border-top:none; }
+  .grp-dot { width:6px; height:6px; border-radius:50%; background:var(--gc, var(--muted)); flex-shrink:0; }
+
+  /* Accordion */
+  .acc-list { padding:.3rem .45rem .5rem; display:flex; flex-direction:column; gap:.25rem; }
+  .acc-row { background:var(--card); border:1px solid var(--border); border-radius:9px; overflow:hidden; }
+  .acc-header { display:flex; align-items:center; gap:.45rem; padding:.5rem .6rem; cursor:pointer; user-select:none; }
+  .acc-flag { font-size:15px; line-height:1; flex-shrink:0; }
+  .acc-name { font-weight:700; color:var(--white); font-size:12.5px; flex:1; }
+  .acc-right { display:flex; align-items:center; gap:.35rem; flex-shrink:0; }
+  .grp-pill {
+    font-size:9px; font-weight:800; letter-spacing:.06em;
+    padding:.1rem .38rem; border-radius:4px;
+    background:rgba(255,255,255,.06); color:var(--gc,var(--muted));
+    border:1px solid color-mix(in srgb, var(--gc,var(--muted)) 30%, transparent);
+  }
+  .analyzed-b {
+    background:rgba(0,196,160,.12); color:var(--green);
+    border:1px solid rgba(0,196,160,.28); padding:.1rem .42rem;
+    border-radius:4px; font-size:9px; white-space:nowrap;
+  }
+  .acc-chev { color:var(--muted); font-size:13px; transition:transform .18s; }
+  .acc-row.open .acc-chev { transform:rotate(90deg); color:var(--accent); }
+
+  .acc-body {
+    padding:.4rem .65rem .55rem;
+    border-top:1px solid var(--border);
+    background:rgba(255,255,255,.015);
+    display:none;
+  }
+  .acc-row.open .acc-body { display:block; }
+  .acc-grid { display:grid; grid-template-columns:1fr 1fr; gap:.22rem .6rem; }
+  .acc-item .al { font-size:8.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); margin-bottom:.06rem; }
+  .acc-item .av { font-size:11.5px; color:var(--text); }
+  .acc-item.full { grid-column:1/-1; }
+</style>
+
+<h2>Opción C refinada</h2>
+<p class="subtitle">Acordeón · ordenado por grupo · sin columna "Dato destacado"</p>
+
+<div class="phone-wrap">
+  <div class="phone">
+    <div class="phone-notch"><div class="notch-pill"></div></div>
+    <div class="phone-screen">
+      <div class="acc-list">
+
+        <!-- GRUPO A -->
+        <div class="grp-sep" style="--gc:var(--grp-a)"><span class="grp-dot"></span>Grupo A</div>
+        <div class="acc-row open">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇰🇷</span>
+            <span class="acc-name">Corea del Sur</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-a)">A</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="acc-item"><div class="al">DT</div><div class="av">Hong Myung-bo</div></div>
+              <div class="acc-item"><div class="al">Sistema</div><div class="av">3-4-2-1</div></div>
+              <div class="acc-item full"><div class="al">Figura clave</div><div class="av">Son Heung-min ★(C) · LAFC</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO B -->
+        <div class="grp-sep" style="--gc:var(--grp-b)"><span class="grp-dot"></span>Grupo B</div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇧🇦</span>
+            <span class="acc-name">Bosnia y Herz.</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-b)">B</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="acc-item"><div class="al">DT</div><div class="av">Sergej Barbarez</div></div>
+              <div class="acc-item"><div class="al">Sistema</div><div class="av">4-4-2</div></div>
+              <div class="acc-item full"><div class="al">Figura clave</div><div class="av">Edin Džeko (C, 40 años)</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇨🇭</span>
+            <span class="acc-name">Suiza</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-b)">B</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="acc-item"><div class="al">DT</div><div class="av">Murat Yakin</div></div>
+              <div class="acc-item"><div class="al">Sistema</div><div class="av">4-3-3</div></div>
+              <div class="acc-item full"><div class="al">Figura clave</div><div class="av">Granit Xhaka (C), Akanji, Embolo</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO C -->
+        <div class="grp-sep" style="--gc:var(--grp-c)"><span class="grp-dot"></span>Grupo C</div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇧🇷</span>
+            <span class="acc-name">Brasil</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-c)">C</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇭🇹</span>
+            <span class="acc-name">Haití</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-c)">C</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+            <span class="acc-name">Escocia</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-c)">C</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+
+        <!-- GRUPO E -->
+        <div class="grp-sep" style="--gc:var(--grp-e)"><span class="grp-dot"></span>Grupo E</div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇩🇪</span>
+            <span class="acc-name">Alemania</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-e)">E</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇨🇮</span>
+            <span class="acc-name">Costa de Marfil</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-e)">E</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇨🇼</span>
+            <span class="acc-name">Curazao</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-e)">E</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+
+        <!-- GRUPO H -->
+        <div class="grp-sep" style="--gc:var(--grp-h)"><span class="grp-dot"></span>Grupo H</div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇪🇸</span>
+            <span class="acc-name">España</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-h)">H</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="acc-item"><div class="al">DT</div><div class="av">Luis de la Fuente</div></div>
+              <div class="acc-item"><div class="al">Sistema</div><div class="av">4-3-3</div></div>
+              <div class="acc-item full"><div class="al">Figura clave</div><div class="av">Lamine Yamal ★ · FC Barcelona</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇨🇻</span>
+            <span class="acc-name">Cabo Verde</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-h)">H</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+
+        <!-- GRUPO K -->
+        <div class="grp-sep" style="--gc:var(--grp-k)"><span class="grp-dot"></span>Grupo K</div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇵🇹</span>
+            <span class="acc-name">Portugal</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-k)">K</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇨🇩</span>
+            <span class="acc-name">RD del Congo</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-k)">K</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🇨🇴</span>
+            <span class="acc-name">Colombia</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-k)">K</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="acc-item"><div class="al">DT</div><div class="av">Néstor Lorenzo</div></div>
+              <div class="acc-item"><div class="al">Sistema</div><div class="av">4-2-3-1</div></div>
+              <div class="acc-item full"><div class="al">Figura clave</div><div class="av">Luis Díaz ★ · Bayern Múnich</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO L -->
+        <div class="grp-sep" style="--gc:var(--grp-l)"><span class="grp-dot"></span>Grupo L</div>
+        <div class="acc-row">
+          <div class="acc-header" onclick="this.closest('.acc-row').classList.toggle('open')">
+            <span class="acc-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+            <span class="acc-name">Inglaterra</span>
+            <div class="acc-right">
+              <span class="grp-pill" style="--gc:var(--grp-l)">L</span>
+              <span class="analyzed-b">✓</span>
+              <span class="acc-chev">›</span>
+            </div>
+          </div>
+          <div class="acc-body"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="text-align:center;margin-top:1.5rem">
+  Toca cualquier fila para expandir/colapsar · separadores de grupo con su color
+</p>

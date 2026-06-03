@@ -1,0 +1,224 @@
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #21262d;
+    --accent: #00c4a0; --muted: #8b949e; --white: #e6edf3;
+    --surface: #1c2128;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .phone-frame {
+    width: 100%; max-width: 375px; margin: 0 auto;
+    background: #000; border-radius: 28px; padding: 10px;
+    box-shadow: 0 12px 48px rgba(0,0,0,.7);
+  }
+  .phone-screen { background: var(--bg); border-radius: 20px; overflow: hidden; }
+  .phone-topbar {
+    background: var(--card); padding: .5rem .85rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .phone-topbar strong { font-size: .78rem; color: var(--white); font-family: system-ui; }
+  .phone-topbar span { font-size: .65rem; color: var(--muted); font-family: system-ui; }
+
+  /* Squad table en modo expandible */
+  .squad-m { width: 100%; border-collapse: collapse; font-family: system-ui, sans-serif; }
+  .squad-m thead tr { background: var(--surface); border-bottom: 1px solid var(--border); }
+  .squad-m thead th {
+    padding: .4rem .65rem; text-align: left;
+    font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+  .squad-m thead th:last-child { width: 24px; }
+
+  /* Fila de jugador */
+  .squad-m .prow td {
+    padding: .42rem .65rem; border-bottom: 1px solid var(--border);
+    vertical-align: middle; cursor: pointer;
+  }
+  .squad-m .prow:hover td { background: rgba(255,255,255,.025); }
+  .squad-m .prow.open td { border-bottom: none; background: rgba(0,196,160,.04); }
+
+  .pos-b {
+    display: inline-block; font-size: .6rem; font-weight: 700;
+    padding: .14rem .32rem; border-radius: 3px; text-transform: uppercase;
+    letter-spacing: .04em; white-space: nowrap;
+  }
+  .pos-b.gk { background: rgba(245,158,11,.15); color: #f59e0b; }
+  .pos-b.def { background: rgba(59,130,246,.15); color: #60a5fa; }
+  .pos-b.med { background: rgba(34,197,94,.15); color: #4ade80; }
+  .pos-b.del { background: rgba(239,68,68,.15); color: #f87171; }
+
+  .pname { font-size: .8rem; color: var(--white); font-weight: 500; }
+  .pname.cap::after { content: ' ★'; color: #f59e0b; font-size: .7rem; }
+
+  .chev {
+    color: var(--muted); font-size: .9rem; line-height: 1;
+    transition: transform .2s, color .2s; display: inline-block;
+  }
+  .prow.open .chev { transform: rotate(90deg); color: var(--accent); }
+
+  /* Fila de detalle */
+  .drow td {
+    padding: .3rem .65rem .55rem .65rem;
+    background: rgba(0,196,160,.04);
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .35rem .5rem;
+    font-size: .68rem;
+  }
+  .ditem .dlabel { color: var(--muted); font-size: .58rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .1rem; }
+  .ditem .dval { color: var(--white); }
+  .elo-h { color: #22c55e; font-family: monospace; }
+  .elo-m { color: #f59e0b; font-family: monospace; }
+  .elo-l { color: #ef4444; font-family: monospace; }
+  .elo-n { color: #6b7280; font-family: monospace; }
+  .titl-s { color: var(--accent); }
+  .titl-p { color: var(--muted); }
+
+  /* Nota al pie */
+  .nd-note {
+    font-size: .68rem; color: var(--muted); padding: .5rem .65rem;
+    border-top: 1px solid var(--border); background: var(--card);
+    font-style: italic;
+  }
+
+  /* Anotación lateral */
+  .annot {
+    position: absolute; right: -165px; top: 50%;
+    transform: translateY(-50%);
+    width: 145px; font-size: .72rem; color: var(--muted);
+    line-height: 1.4;
+  }
+  .annot::before {
+    content: ''; position: absolute; left: -14px; top: 50%;
+    width: 12px; height: 1px; background: var(--border);
+  }
+  .wrap { position: relative; max-width: 375px; margin: 0 auto; }
+
+  /* Estado desktop (solo ref) */
+  .desktop-note {
+    margin-top: 1rem; padding: .75rem 1rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; font-size: .78rem; color: var(--muted);
+    font-family: system-ui; max-width: 375px; margin-left: auto; margin-right: auto;
+  }
+  .desktop-note strong { color: var(--white); display: block; margin-bottom: .25rem; }
+</style>
+
+<h2>Vista mobile definitiva — Opción C</h2>
+<p class="subtitle">Filas expandibles. Desktop no cambia. Toca una fila para ver el detalle.</p>
+
+<div class="wrap">
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="phone-topbar">
+        <strong>Francia · Plantel</strong>
+        <span>26 convocados</span>
+      </div>
+
+      <table class="squad-m">
+        <thead>
+          <tr>
+            <th>Pos</th>
+            <th style="width:100%">Jugador</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- GK cerrado -->
+          <tr class="prow" onclick="toggle(this)">
+            <td><span class="pos-b gk">GK</span></td>
+            <td class="pname">Mike Maignan</td>
+            <td><span class="chev">›</span></td>
+          </tr>
+
+          <!-- DEF abierto (ejemplo expandido) -->
+          <tr class="prow open" onclick="toggle(this)">
+            <td><span class="pos-b def">DEF</span></td>
+            <td class="pname">William Saliba</td>
+            <td><span class="chev">›</span></td>
+          </tr>
+          <tr class="drow" id="detail-saliba">
+            <td colspan="3">
+              <div class="detail-grid">
+                <div class="ditem"><div class="dlabel">Edad</div><div class="dval">24</div></div>
+                <div class="ditem"><div class="dlabel">Club</div><div class="dval">Arsenal</div></div>
+                <div class="ditem"><div class="dlabel">País club</div><div class="dval">Inglaterra</div></div>
+                <div class="ditem"><div class="dlabel">ELO</div><div class="dval elo-h">2204</div></div>
+                <div class="ditem"><div class="dlabel">Titular</div><div class="dval titl-s">Sí</div></div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- MED cerrado -->
+          <tr class="prow" onclick="toggle(this)">
+            <td><span class="pos-b med">MED</span></td>
+            <td class="pname">Aurélien Tchouaméni</td>
+            <td><span class="chev">›</span></td>
+          </tr>
+
+          <!-- DEL con capitán -->
+          <tr class="prow" onclick="toggle(this)">
+            <td><span class="pos-b del">DEL</span></td>
+            <td class="pname cap">Kylian Mbappé</td>
+            <td><span class="chev">›</span></td>
+          </tr>
+
+          <!-- MED cerrado -->
+          <tr class="prow" onclick="toggle(this)">
+            <td><span class="pos-b med">MED</span></td>
+            <td class="pname">N'Golo Kanté</td>
+            <td><span class="chev">›</span></td>
+          </tr>
+
+          <!-- DEF cerrado -->
+          <tr class="prow" onclick="toggle(this)">
+            <td><span class="pos-b def">DEF</span></td>
+            <td class="pname">Theo Hernández</td>
+            <td><span class="chev">›</span></td>
+          </tr>
+
+          <!-- DEL cerrado -->
+          <tr class="prow" onclick="toggle(this)">
+            <td><span class="pos-b del">DEL</span></td>
+            <td class="pname">Antoine Griezmann</td>
+            <td><span class="chev">›</span></td>
+          </tr>
+
+          <tr><td colspan="3" style="padding:.35rem .65rem;font-size:.68rem;color:var(--muted);text-align:center;border-bottom:1px solid var(--border)">+ 18 más…</td></tr>
+        </tbody>
+      </table>
+      <div class="nd-note">* Clubs de liga egipcia, armenio-Armenia, etc. sin ELO rankeado → N/D</div>
+    </div>
+  </div>
+</div>
+
+<div class="desktop-note">
+  <strong>Desktop (sin cambios)</strong>
+  La tabla de 8 columnas se mantiene idéntica en pantallas &gt; 600px. Solo se activa el modo expandible por debajo de ese breakpoint.
+</div>
+
+<script>
+function toggle(row) {
+  const isOpen = row.classList.contains('open');
+  // Cerrar todos los abiertos
+  document.querySelectorAll('.prow.open').forEach(r => {
+    r.classList.remove('open');
+    const next = r.nextElementSibling;
+    if (next && next.classList.contains('drow')) next.style.display = 'none';
+  });
+  // Si no estaba abierto, abrir este
+  if (!isOpen) {
+    row.classList.add('open');
+    const next = row.nextElementSibling;
+    if (next && next.classList.contains('drow')) next.style.display = '';
+  }
+}
+// Mostrar solo el que ya está abierto al inicio
+document.querySelectorAll('.drow').forEach(d => {
+  const prev = d.previousElementSibling;
+  if (!prev || !prev.classList.contains('open')) d.style.display = 'none';
+});
+</script>

@@ -1,0 +1,298 @@
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #21262d;
+    --accent: #00c4a0; --muted: #8b949e; --white: #e6edf3;
+    --grp-f: #f97316;
+    --gold: #f59e0b;
+    --elo-high: #22c55e; --elo-mid: #f59e0b; --elo-low: #ef4444; --elo-nd: #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--white); }
+
+  h2 { font-size: 1.1rem; color: var(--white); margin-bottom: .35rem; }
+  .subtitle { font-size: .85rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+  /* ── shared player data ── */
+  .players-data { display: none; }
+
+  /* ── OPTION CARDS ── */
+  .options { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+  .option { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color .2s; }
+  .option:hover, .option.selected { border-color: var(--accent); }
+  .option-header { display: flex; align-items: center; gap: .75rem; padding: .85rem 1rem; background: var(--card); border-bottom: 1px solid var(--border); }
+  .letter { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #000; font-weight: 700; font-size: .85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .option-header h3 { font-size: .95rem; color: var(--white); }
+  .option-header p { font-size: .78rem; color: var(--muted); margin-top: .15rem; }
+  .option-body { padding: .85rem 1rem 1rem; }
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .85rem; font-size: .78rem; }
+  .pros ul, .cons ul { list-style: none; padding: 0; }
+  .pros li::before { content: "✓ "; color: var(--accent); }
+  .cons li::before { content: "✗ "; color: #ef4444; }
+  .pros h4 { color: var(--accent); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .35rem; }
+  .cons h4 { color: #ef4444; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .35rem; }
+
+  /* === MOCKUP CONTAINERS === */
+  .phone-frame {
+    width: 100%; max-width: 360px; margin: 0 auto;
+    background: #000; border-radius: 24px; padding: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.6);
+  }
+  .phone-screen {
+    background: var(--bg); border-radius: 18px; overflow: hidden;
+    min-height: 340px; position: relative;
+  }
+  .phone-topbar {
+    background: var(--card); padding: .4rem .75rem;
+    font-size: .7rem; color: var(--muted); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .phone-topbar strong { color: var(--white); font-size: .72rem; }
+
+  /* ── OPCIÓN A: Cards ── */
+  .player-cards { padding: .5rem; display: flex; flex-direction: column; gap: .35rem; }
+  .pc { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: .5rem .65rem; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .5rem; }
+  .pc-pos { font-size: .6rem; font-weight: 700; padding: .15rem .35rem; border-radius: 4px; text-transform: uppercase; }
+  .pc-pos.gk { background: rgba(245,158,11,.15); color: #f59e0b; }
+  .pc-pos.def { background: rgba(59,130,246,.15); color: #60a5fa; }
+  .pc-pos.med { background: rgba(34,197,94,.15); color: #4ade80; }
+  .pc-pos.del { background: rgba(239,68,68,.15); color: #f87171; }
+  .pc-name { font-size: .8rem; font-weight: 600; color: var(--white); }
+  .pc-sub { font-size: .68rem; color: var(--muted); margin-top: .08rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pc-right { text-align: right; }
+  .pc-elo { font-size: .7rem; font-family: monospace; }
+  .elo-high { color: #22c55e; }
+  .elo-mid { color: #f59e0b; }
+  .elo-low { color: #ef4444; }
+  .elo-nd { color: #6b7280; }
+  .pc-titl { font-size: .62rem; margin-top: .1rem; }
+  .titl-yes { color: var(--accent); }
+  .titl-no { color: var(--muted); }
+
+  /* ── OPCIÓN B: Tabla con scroll horizontal ── */
+  .scroll-hint { display: flex; align-items: center; gap: .35rem; padding: .3rem .6rem; font-size: .65rem; color: var(--muted); background: rgba(0,196,160,.06); border-bottom: 1px solid var(--border); }
+  .tbl-wrap { overflow-x: auto; }
+  .tbl-wrap table { width: 600px; border-collapse: collapse; font-size: .72rem; }
+  .tbl-wrap th { background: var(--card); color: var(--muted); font-size: .6rem; text-transform: uppercase; letter-spacing: .06em; padding: .45rem .5rem; text-align: left; border-bottom: 1px solid var(--border); }
+  .tbl-wrap th:first-child, .tbl-wrap td:first-child { position: sticky; left: 0; background: #13181f; z-index: 1; border-right: 1px solid var(--border); min-width: 130px; }
+  .tbl-wrap td { padding: .4rem .5rem; border-bottom: 1px solid var(--border); color: var(--white); white-space: nowrap; }
+  .tbl-wrap tr:last-child td { border-bottom: none; }
+
+  /* ── OPCIÓN C: Tabla compacta + expandible ── */
+  .exp-table { width: 100%; border-collapse: collapse; font-size: .75rem; }
+  .exp-row td { padding: .45rem .6rem; border-bottom: 1px solid var(--border); }
+  .exp-row:last-of-type td { border-bottom: none; }
+  .exp-row.expanded td { border-bottom: none; padding-bottom: .2rem; }
+  .exp-detail { background: rgba(0,196,160,.04); border-bottom: 1px solid var(--border); }
+  .exp-detail td { padding: .3rem .6rem .45rem 2.5rem; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .25rem; font-size: .68rem; }
+  .detail-item span:first-child { color: var(--muted); display: block; font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; }
+  .chevron { color: var(--muted); font-size: .7rem; transition: transform .2s; }
+  .expanded .chevron { transform: rotate(90deg); color: var(--accent); }
+  .exp-name { font-size: .78rem; }
+
+  .badge-selected { display: none; position: absolute; top: 8px; right: 8px; background: var(--accent); color: #000; font-size: .65rem; font-weight: 700; padding: .2rem .5rem; border-radius: 20px; }
+  .option.selected .badge-selected { display: block; }
+</style>
+
+<h2>¿Cómo mostrar la tabla de 26 convocados en móvil?</h2>
+<p class="subtitle">Elige el layout que prefieras. Cada mockup simula una pantalla de ~375px de ancho.</p>
+
+<div class="options">
+
+  <!-- OPCIÓN A -->
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="badge-selected">✓ Seleccionado</div>
+    <div class="option-header">
+      <div class="letter">A</div>
+      <div>
+        <h3>Cards por jugador</h3>
+        <p>Cada convocado = una tarjeta. Sin scroll horizontal.</p>
+      </div>
+    </div>
+    <div class="option-body">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-topbar"><strong>Plantel · Francia</strong></div>
+          <div class="player-cards">
+            <div class="pc">
+              <span class="pc-pos gk">GK</span>
+              <div>
+                <div class="pc-name">Mike Maignan</div>
+                <div class="pc-sub">AC Milan · Italia · 28</div>
+              </div>
+              <div class="pc-right">
+                <div class="pc-elo elo-high">2204</div>
+                <div class="pc-titl titl-yes">Titular</div>
+              </div>
+            </div>
+            <div class="pc">
+              <span class="pc-pos def">DEF</span>
+              <div>
+                <div class="pc-name">William Saliba</div>
+                <div class="pc-sub">Arsenal · Inglaterra · 24</div>
+              </div>
+              <div class="pc-right">
+                <div class="pc-elo elo-high">2204</div>
+                <div class="pc-titl titl-yes">Titular</div>
+              </div>
+            </div>
+            <div class="pc">
+              <span class="pc-pos med">MED</span>
+              <div>
+                <div class="pc-name">N'Golo Kanté</div>
+                <div class="pc-sub">Al-Ittihad · Arabia S. · 34</div>
+              </div>
+              <div class="pc-right">
+                <div class="pc-elo elo-low">1584</div>
+                <div class="pc-titl titl-no">—</div>
+              </div>
+            </div>
+            <div class="pc">
+              <span class="pc-pos del">DEL</span>
+              <div>
+                <div class="pc-name">Kylian Mbappé</div>
+                <div class="pc-sub">Real Madrid · España · 26</div>
+              </div>
+              <div class="pc-right">
+                <div class="pc-elo elo-high">2236</div>
+                <div class="pc-titl titl-yes">Titular</div>
+              </div>
+            </div>
+            <div class="pc">
+              <span class="pc-pos gk">GK</span>
+              <div>
+                <div class="pc-name">Alphonse Aréola</div>
+                <div class="pc-sub">West Ham · Inglaterra · 31</div>
+              </div>
+              <div class="pc-right">
+                <div class="pc-elo elo-mid">1827</div>
+                <div class="pc-titl titl-no">—</div>
+              </div>
+            </div>
+            <div style="text-align:center;padding:.5rem;font-size:.68rem;color:var(--muted)">+ 21 jugadores más ↓</div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:.85rem">
+        <div class="pros"><h4>Ventajas</h4><ul><li>Sin scroll horizontal</li><li>Toda la info visible</li><li>Fácil de leer</li></ul></div>
+        <div class="cons"><h4>Desventajas</h4><ul><li>Más espacio vertical</li><li>Difícil comparar</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPCIÓN B -->
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="badge-selected">✓ Seleccionado</div>
+    <div class="option-header">
+      <div class="letter">B</div>
+      <div>
+        <h3>Tabla con columna fija</h3>
+        <p>Nombre pegado a la izquierda, resto con scroll horizontal.</p>
+      </div>
+    </div>
+    <div class="option-body">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-topbar"><strong>Plantel · Francia</strong></div>
+          <div class="scroll-hint">← desliza para ver más →</div>
+          <div class="tbl-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Jugador</th>
+                  <th>Pos</th>
+                  <th>Edad</th>
+                  <th>Club</th>
+                  <th>ELO</th>
+                  <th>Titular</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Mike Maignan</td><td><span class="pc-pos gk" style="display:inline-block">GK</span></td><td>28</td><td>AC Milan</td><td style="color:#22c55e">2204</td><td style="color:var(--accent)">Sí</td></tr>
+                <tr><td>W. Saliba</td><td><span class="pc-pos def" style="display:inline-block">DEF</span></td><td>24</td><td>Arsenal</td><td style="color:#22c55e">2204</td><td style="color:var(--accent)">Sí</td></tr>
+                <tr><td>N'Golo Kanté</td><td><span class="pc-pos med" style="display:inline-block">MED</span></td><td>34</td><td>Al-Ittihad</td><td style="color:#ef4444">1584</td><td style="color:var(--muted)">—</td></tr>
+                <tr><td>Kylian Mbappé</td><td><span class="pc-pos del" style="display:inline-block">DEL</span></td><td>26</td><td>Real Madrid</td><td style="color:#22c55e">2236</td><td style="color:var(--accent)">Sí</td></tr>
+                <tr><td>A. Aréola</td><td><span class="pc-pos gk" style="display:inline-block">GK</span></td><td>31</td><td>West Ham</td><td style="color:#f59e0b">1827</td><td style="color:var(--muted)">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:.85rem">
+        <div class="pros"><h4>Ventajas</h4><ul><li>Toda la info accesible</li><li>Compacto verticalmente</li><li>Fácil comparar</li></ul></div>
+        <div class="cons"><h4>Desventajas</h4><ul><li>Scroll horizontal aún</li><li>Menos intuitivo</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPCIÓN C -->
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="badge-selected">✓ Seleccionado</div>
+    <div class="option-header">
+      <div class="letter">C</div>
+      <div>
+        <h3>Filas expandibles</h3>
+        <p>Vista compacta, toca un jugador para ver su detalle.</p>
+      </div>
+    </div>
+    <div class="option-body">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-topbar"><strong>Plantel · Francia</strong></div>
+          <table class="exp-table" style="width:100%">
+            <thead>
+              <tr style="background:var(--card)">
+                <th style="padding:.4rem .6rem;text-align:left;font-size:.6rem;text-transform:uppercase;color:var(--muted);letter-spacing:.06em;border-bottom:1px solid var(--border)">Pos</th>
+                <th style="padding:.4rem .6rem;text-align:left;font-size:.6rem;text-transform:uppercase;color:var(--muted);letter-spacing:.06em;border-bottom:1px solid var(--border);width:100%">Jugador</th>
+                <th style="padding:.4rem .6rem;text-align:left;font-size:.6rem;text-transform:uppercase;color:var(--muted);letter-spacing:.06em;border-bottom:1px solid var(--border)"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="exp-row">
+                <td><span class="pc-pos gk">GK</span></td>
+                <td class="exp-name">Mike Maignan</td>
+                <td class="chevron">›</td>
+              </tr>
+              <tr class="exp-row expanded">
+                <td><span class="pc-pos def">DEF</span></td>
+                <td class="exp-name" style="color:var(--accent)">William Saliba</td>
+                <td class="chevron" style="color:var(--accent);transform:rotate(90deg)">›</td>
+              </tr>
+              <tr class="exp-detail">
+                <td colspan="3">
+                  <div class="detail-grid">
+                    <div class="detail-item"><span>Edad</span>24</div>
+                    <div class="detail-item"><span>Club</span>Arsenal</div>
+                    <div class="detail-item"><span>ELO</span><span style="color:#22c55e">2204</span></div>
+                    <div class="detail-item"><span>País club</span>Inglaterra</div>
+                    <div class="detail-item"><span>Titular</span><span style="color:var(--accent)">Sí</span></div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="exp-row">
+                <td><span class="pc-pos med">MED</span></td>
+                <td class="exp-name">N'Golo Kanté</td>
+                <td class="chevron">›</td>
+              </tr>
+              <tr class="exp-row">
+                <td><span class="pc-pos del">DEL</span></td>
+                <td class="exp-name">Kylian Mbappé</td>
+                <td class="chevron">›</td>
+              </tr>
+              <tr class="exp-row">
+                <td><span class="pc-pos gk">GK</span></td>
+                <td class="exp-name">A. Aréola</td>
+                <td class="chevron">›</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:.85rem">
+        <div class="pros"><h4>Ventajas</h4><ul><li>Sin scroll horizontal</li><li>Compacto (26 filas)</li><li>Detalle on-demand</li></ul></div>
+        <div class="cons"><h4>Desventajas</h4><ul><li>Requiere interacción</li><li>Más código JS</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>

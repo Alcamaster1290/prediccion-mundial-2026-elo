@@ -20,7 +20,8 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).parent.parent
 
 
-def supabase_request(url, key, method, path, body=None):
+def supabase_request(url, key, method, path, body=None,
+                     prefer='resolution=merge-duplicates,return=minimal'):
     """Minimal Supabase REST client using stdlib (no external deps)."""
     full_url = url.rstrip('/') + '/rest/v1/' + path.lstrip('/')
     data = json.dumps(body).encode('utf-8') if body is not None else None
@@ -32,7 +33,7 @@ def supabase_request(url, key, method, path, body=None):
             'apikey': key,
             'Authorization': f'Bearer {key}',
             'Content-Type': 'application/json',
-            'Prefer': 'resolution=merge-duplicates,return=minimal',
+            'Prefer': prefer,
         },
     )
     try:
@@ -74,15 +75,16 @@ def export_strengths(supabase_url, service_key, strengths_data):
     return True
 
 
-def export_mc_results(supabase_url, service_key, mc_data):
+def export_mc_results(supabase_url, service_key, mc_data, version='1.0'):
     runs = mc_data['runs']
     seed = mc_data.get('seed')
 
-    # Insert simulation run
+    # Insert simulation run — must use return=representation to get the id back
     err, run_resp = supabase_request(
         supabase_url, service_key, 'POST',
-        'simulation_runs?select=id',
-        {'runs': runs, 'seed': seed},
+        'simulation_runs',
+        {'runs': runs, 'seed': seed, 'version': version},
+        prefer='return=representation',
     )
     if err:
         print(f"ERROR inserting simulation_run: {err}")
@@ -90,7 +92,9 @@ def export_mc_results(supabase_url, service_key, mc_data):
 
     run_id = (run_resp or [{}])[0].get('id') if run_resp else None
     if not run_id:
-        print("Could not retrieve simulation run id — check Supabase 'Prefer: return=representation' header.")
+        print("ERROR: simulation_runs insert did not return id.")
+        print("  Ensure the table exists and Prefer: return=representation is accepted.")
+        print("  Check supabase/05_prediction_engine_schema.sql has been applied.")
         return False
 
     # Insert per-team results
@@ -154,7 +158,8 @@ def main():
         sys.exit(1)
 
     mc_data = load_json(mc_path)
-    if not export_mc_results(supabase_url, service_key, mc_data):
+    version = strengths_data.get('_version', '1.0')
+    if not export_mc_results(supabase_url, service_key, mc_data, version=version):
         sys.exit(1)
 
 

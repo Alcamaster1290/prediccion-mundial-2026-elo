@@ -142,17 +142,43 @@ def main():
             else:
                 print(f"PASS data/match_context.json -- {len(entries)} entries, elo_intl present")
 
-    # model_weights.json
+    # model_weights.json — validate real schema (v1.1)
     weights = load_json(REPO_ROOT / 'data' / 'model_weights.json')
     if weights is None:
         print("SKIP data/model_weights.json -- not found")
     else:
-        w_sum = weights.get('elo_intl_weight', 0) + weights.get('xi_club_blend_weight', 0)
-        if abs(w_sum - 1.0) > 0.001:
-            print(f"FAIL [model_weights.json] weights sum to {w_sum:.3f} (expected 1.0)")
+        w_errors = []
+        if 'elo_intl_weight' in weights or 'xi_club_blend_weight' in weights:
+            print("  WARN model_weights.json has obsolete fields elo_intl_weight/"
+                  "xi_club_blend_weight (not used by build_team_strength.py)")
+
+        caw = weights.get('club_adj_weight')
+        if caw is None:
+            w_errors.append("missing 'club_adj_weight'")
+        elif not (isinstance(caw, (int, float)) and 0 < caw <= 1):
+            w_errors.append(f"club_adj_weight={caw!r} must be numeric in (0, 1]")
+
+        bgpt = weights.get('base_goals_per_team')
+        if bgpt is None:
+            w_errors.append("missing 'base_goals_per_team'")
+        elif not (isinstance(bgpt, (int, float)) and 0.5 <= bgpt <= 3.0):
+            w_errors.append(f"base_goals_per_team={bgpt!r} must be numeric in [0.5, 3.0]")
+
+        es = weights.get('elo_scale')
+        if es is None:
+            w_errors.append("missing 'elo_scale'")
+        elif not (isinstance(es, (int, float)) and es > 0):
+            w_errors.append(f"elo_scale={es!r} must be a positive number")
+        elif abs(es - 400) > 0.01:
+            print(f"  WARN elo_scale={es} (expected 400 — document if intentional)")
+
+        if w_errors:
+            for e in w_errors:
+                print(f"FAIL [model_weights.json] {e}")
             ok = False
         else:
-            print(f"PASS data/model_weights.json -- weights sum to {w_sum:.2f}")
+            print(f"PASS data/model_weights.json -- club_adj_weight={caw}, "
+                  f"base_goals={bgpt}, elo_scale={es}")
 
     sys.exit(0 if ok else 1)
 

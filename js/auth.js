@@ -167,6 +167,9 @@
     if (window.PredicionesSection) {
       window.PredicionesSection.onAuthChange(user, isPrem, profile);
     }
+    if (window.BracketSection) {
+      window.BracketSection.setPremiumState(!!isPrem);
+    }
   }
 
   function updateNavAuthUI(user, isPremium) {

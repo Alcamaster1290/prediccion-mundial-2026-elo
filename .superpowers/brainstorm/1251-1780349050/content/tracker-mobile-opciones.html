@@ -1,0 +1,294 @@
+<style>
+  :root {
+    --bg: #080c14; --surface: #0d1117; --card: #0f1923;
+    --border: rgba(255,255,255,.08); --accent: #e63946;
+    --text: #c9d1d9; --muted: #6e7d8b; --white: #f0f6fc;
+    --gold: #e6a817; --grp-h: #ec4899; --green: #00c4a0;
+  }
+  .phones { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+  .phone {
+    width: 320px; background: #111; border-radius: 36px;
+    border: 6px solid #2a2a2a; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  }
+  .phone-notch {
+    height: 28px; background: #111;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .notch-pill { width: 80px; height: 12px; background: #000; border-radius: 10px; }
+  .phone-screen { background: var(--bg); padding: 0; font-family: 'Inter', sans-serif; min-height: 480px; overflow: hidden; }
+  .phone-label { text-align: center; font-size: 12px; color: var(--muted); margin-top: .75rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+
+  /* ── OPTION A: Horizontal Scroll ── */
+  .scroll-hint { display: flex; align-items: center; gap: .3rem; padding: .3rem .75rem; background: rgba(230,57,70,.08); font-size: 10px; color: var(--accent); }
+  .mini-table { overflow-x: auto; border: 1px solid var(--border); font-size: 11px; }
+  .mini-table::-webkit-scrollbar { height: 3px; }
+  .mini-table::-webkit-scrollbar-thumb { background: var(--accent); }
+  .mini-table table { border-collapse: collapse; white-space: nowrap; width: 680px; }
+  .mini-table th { background: #0e1320; padding: .4rem .6rem; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .1em; border-bottom: 2px solid var(--accent); text-align: left; }
+  .mini-table td { padding: .4rem .6rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+  .mini-badge { background: rgba(0,196,160,.12); color: #00c4a0; border: 1px solid rgba(0,196,160,.3); padding: .1rem .4rem; border-radius: 4px; font-size: 9px; }
+  .mini-flag { font-size: 14px; }
+
+  /* ── OPTION B: Card Layout ── */
+  .tracker-cards { padding: .5rem; display: flex; flex-direction: column; gap: .5rem; }
+  .t-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: .65rem .75rem; }
+  .t-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .4rem; }
+  .t-card-name { display: flex; align-items: center; gap: .4rem; font-weight: 700; color: var(--white); font-size: 13px; }
+  .t-group-pill { font-size: 9px; font-weight: 700; letter-spacing: .08em; padding: .1rem .4rem; border-radius: 4px; background: rgba(236,72,153,.15); color: var(--grp-h); border: 1px solid rgba(236,72,153,.25); }
+  .t-group-pill.grp-a { background: rgba(229,92,92,.15); color: #e55c5c; border-color: rgba(229,92,92,.25); }
+  .t-scheme { background: rgba(255,255,255,.06); color: var(--muted); border: 1px solid var(--border); padding: .1rem .35rem; border-radius: 4px; font-size: 9px; font-family: monospace; }
+  .t-card-meta { display: grid; grid-template-columns: auto 1fr; gap: .15rem .5rem; font-size: 11px; margin-bottom: .35rem; }
+  .t-label { color: var(--muted); font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; }
+  .t-val { color: var(--text); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .t-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: .35rem; margin-top: .35rem; }
+  .t-dato { color: var(--muted); font-size: 10px; flex: 1; padding-right: .5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .analyzed-b { background: rgba(0,196,160,.12); color: #00c4a0; border: 1px solid rgba(0,196,160,.3); padding: .15rem .5rem; border-radius: 4px; font-size: 9px; white-space: nowrap; }
+
+  /* ── OPTION C: Accordion ── */
+  .acc-list { padding: .4rem .5rem; display: flex; flex-direction: column; gap: .3rem; }
+  .acc-row { background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .acc-header { display: flex; align-items: center; gap: .5rem; padding: .55rem .65rem; cursor: pointer; }
+  .acc-flag { font-size: 16px; }
+  .acc-name { font-weight: 700; color: var(--white); font-size: 12.5px; flex: 1; }
+  .acc-right { display: flex; align-items: center; gap: .4rem; }
+  .acc-chev { color: var(--muted); font-size: 12px; transition: transform .18s; }
+  .acc-row.open .acc-chev { transform: rotate(90deg); color: var(--accent); }
+  .acc-body { padding: .4rem .65rem .6rem; border-top: 1px solid var(--border); background: rgba(255,255,255,.015); display: none; }
+  .acc-row.open .acc-body { display: block; }
+  .acc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem .75rem; }
+  .acc-item .acc-l { font-size: 8.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+  .acc-item .acc-v { font-size: 11.5px; color: var(--text); }
+  .acc-nota { margin-top: .4rem; padding-top: .35rem; border-top: 1px solid var(--border); font-size: 10.5px; color: var(--muted); font-style: italic; }
+</style>
+
+<h2>¿Cómo mostrar el tracker en mobile?</h2>
+<p class="subtitle">3 enfoques para las 7 columnas del tracker en pantallas de 320–400px</p>
+
+<div class="phones">
+
+  <!-- OPCIÓN A -->
+  <div>
+    <div class="phone">
+      <div class="phone-notch"><div class="notch-pill"></div></div>
+      <div class="phone-screen">
+        <div class="scroll-hint">← desliza la tabla →</div>
+        <div class="mini-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Grp</th><th>Selección</th><th>DT</th><th>Sistema</th><th>Figura clave</th><th>Dato destacado</th><th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color:#e55c5c">A</strong></td>
+                <td><span class="mini-flag">🇰🇷</span> Corea del Sur</td>
+                <td style="color:var(--muted)">Hong Myung-bo</td>
+                <td><code style="font-size:10px">3-4-2-1</code></td>
+                <td style="color:var(--white)">Son Heung-min ★(C)</td>
+                <td style="color:var(--muted);font-size:10px">12° Mundial · 0-4 vs CIV</td>
+                <td><span class="mini-badge">✓ Detallado</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color:#3b8beb">B</strong></td>
+                <td><span class="mini-flag">🇧🇦</span> Bosnia</td>
+                <td style="color:var(--muted)">Barbarez</td>
+                <td><code style="font-size:10px">4-4-2</code></td>
+                <td style="color:var(--white)">Edin Džeko (C, 40)</td>
+                <td style="color:var(--muted);font-size:10px">1ª lista del mundial</td>
+                <td><span class="mini-badge">✓ Detallado</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color:#3b8beb">B</strong></td>
+                <td><span class="mini-flag">🇨🇭</span> Suiza</td>
+                <td style="color:var(--muted)">Murat Yakin</td>
+                <td><code style="font-size:10px">4-3-3</code></td>
+                <td style="color:var(--white)">Granit Xhaka (C)</td>
+                <td style="color:var(--muted);font-size:10px">Sin ganar en KO desde 1938</td>
+                <td><span class="mini-badge">✓ Detallado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:.5rem .75rem;font-size:10px;color:var(--muted);text-align:center">
+          ···  20 filas más  ···
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">A — Scroll horizontal</div>
+  </div>
+
+  <!-- OPCIÓN B -->
+  <div>
+    <div class="phone">
+      <div class="phone-notch"><div class="notch-pill"></div></div>
+      <div class="phone-screen">
+        <div class="tracker-cards">
+          <div class="t-card">
+            <div class="t-card-top">
+              <div class="t-card-name"><span>🇰🇷</span> Corea del Sur</div>
+              <div style="display:flex;gap:.3rem;align-items:center">
+                <span class="t-group-pill grp-a">GRP A</span>
+                <span class="t-scheme">3-4-2-1</span>
+              </div>
+            </div>
+            <div class="t-card-meta">
+              <span class="t-label">DT</span>
+              <span class="t-val">Hong Myung-bo</span>
+              <span class="t-label">Figura ★</span>
+              <span class="t-val">Son Heung-min (C) · LAFC</span>
+            </div>
+            <div class="t-card-footer">
+              <span class="t-dato">12° Mundial · 0-4 vs Costa de Marfil en marzo</span>
+              <span class="analyzed-b">✓ Detallado</span>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-card-top">
+              <div class="t-card-name"><span>🇧🇦</span> Bosnia</div>
+              <div style="display:flex;gap:.3rem;align-items:center">
+                <span class="t-group-pill" style="background:rgba(59,139,235,.15);color:#3b8beb;border-color:rgba(59,139,235,.25)">GRP B</span>
+                <span class="t-scheme">4-4-2</span>
+              </div>
+            </div>
+            <div class="t-card-meta">
+              <span class="t-label">DT</span>
+              <span class="t-val">Sergej Barbarez</span>
+              <span class="t-label">Figura ★</span>
+              <span class="t-val">Edin Džeko (C, 40 años)</span>
+            </div>
+            <div class="t-card-footer">
+              <span class="t-dato">1ª lista del mundial · eliminó a Italia en penales</span>
+              <span class="analyzed-b">✓ Detallado</span>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-card-top">
+              <div class="t-card-name"><span>🇪🇸</span> España</div>
+              <div style="display:flex;gap:.3rem;align-items:center">
+                <span class="t-group-pill">GRP H</span>
+                <span class="t-scheme">4-3-3</span>
+              </div>
+            </div>
+            <div class="t-card-meta">
+              <span class="t-label">DT</span>
+              <span class="t-val">Luis de la Fuente</span>
+              <span class="t-label">Figura ★</span>
+              <span class="t-val">Lamine Yamal · FC Barcelona</span>
+            </div>
+            <div class="t-card-footer">
+              <span class="t-dato">1ª conv. sin Real Madrid · Barça aporta 8</span>
+              <span class="analyzed-b">✓ Detallado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">B — Tarjetas apiladas</div>
+  </div>
+
+  <!-- OPCIÓN C -->
+  <div>
+    <div class="phone">
+      <div class="phone-notch"><div class="notch-pill"></div></div>
+      <div class="phone-screen">
+        <div class="acc-list">
+          <div class="acc-row open">
+            <div class="acc-header">
+              <span class="acc-flag">🇰🇷</span>
+              <span class="acc-name">Corea del Sur</span>
+              <div class="acc-right">
+                <span class="t-group-pill grp-a">A</span>
+                <span class="analyzed-b">✓</span>
+                <span class="acc-chev">›</span>
+              </div>
+            </div>
+            <div class="acc-body">
+              <div class="acc-grid">
+                <div class="acc-item"><div class="acc-l">DT</div><div class="acc-v">Hong Myung-bo</div></div>
+                <div class="acc-item"><div class="acc-l">Sistema</div><div class="acc-v">3-4-2-1</div></div>
+                <div class="acc-item" style="grid-column:1/-1"><div class="acc-l">Figura clave</div><div class="acc-v">Son Heung-min ★(C) · LAFC</div></div>
+              </div>
+              <div class="acc-nota">12° Mundial · 0-4 vs Costa de Marfil en marzo (alarma)</div>
+            </div>
+          </div>
+          <div class="acc-row">
+            <div class="acc-header">
+              <span class="acc-flag">🇧🇦</span>
+              <span class="acc-name">Bosnia y Herz.</span>
+              <div class="acc-right">
+                <span class="t-group-pill" style="background:rgba(59,139,235,.15);color:#3b8beb;border-color:rgba(59,139,235,.25)">B</span>
+                <span class="analyzed-b">✓</span>
+                <span class="acc-chev">›</span>
+              </div>
+            </div>
+            <div class="acc-body"></div>
+          </div>
+          <div class="acc-row">
+            <div class="acc-header">
+              <span class="acc-flag">🇨🇭</span>
+              <span class="acc-name">Suiza</span>
+              <div class="acc-right">
+                <span class="t-group-pill" style="background:rgba(59,139,235,.15);color:#3b8beb;border-color:rgba(59,139,235,.25)">B</span>
+                <span class="analyzed-b">✓</span>
+                <span class="acc-chev">›</span>
+              </div>
+            </div>
+            <div class="acc-body"></div>
+          </div>
+          <div class="acc-row">
+            <div class="acc-header">
+              <span class="acc-flag">🇪🇸</span>
+              <span class="acc-name">España</span>
+              <div class="acc-right">
+                <span class="t-group-pill">H</span>
+                <span class="analyzed-b">✓</span>
+                <span class="acc-chev">›</span>
+              </div>
+            </div>
+            <div class="acc-body"></div>
+          </div>
+          <div class="acc-row">
+            <div class="acc-header">
+              <span class="acc-flag">🇨🇴</span>
+              <span class="acc-name">Colombia</span>
+              <div class="acc-right">
+                <span class="t-group-pill" style="background:rgba(217,119,6,.15);color:#d97706;border-color:rgba(217,119,6,.25)">K</span>
+                <span class="analyzed-b">✓</span>
+                <span class="acc-chev">›</span>
+              </div>
+            </div>
+            <div class="acc-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">C — Filas acordeón</div>
+  </div>
+
+</div>
+
+<div class="options" style="margin-top:2rem">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Scroll horizontal</h3>
+      <p>La tabla se desplaza lateralmente. Sin cambios estructurales. Familiar pero requiere gesto de swipe.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Tarjetas apiladas</h3>
+      <p>Cada equipo = una card con todos los datos visibles. Mejor legibilidad, más scroll vertical.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Acordeón</h3>
+      <p>Lista compacta con nombre + grupo + estado. Toca para expandir DT, esquema, figura y dato.</p>
+    </div>
+  </div>
+</div>
