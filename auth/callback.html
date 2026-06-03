@@ -77,32 +77,23 @@
       margin-bottom: 1rem;
     }
 
-    /* ── payment options ── */
-    .pay-options { display: flex; gap: .75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-    .pay-opt {
-      flex: 1; min-width: 170px;
-      background: #111; border: 1px solid #2a2a2a; border-radius: 10px;
-      padding: 1rem; display: flex; flex-direction: column; gap: .4rem;
+    /* ── payment tabs ── */
+    .pay-tabs { display: flex; gap: .5rem; margin-bottom: 1rem; }
+    .pay-tab {
+      flex: 1; background: #111; border: 1px solid #2a2a2a; border-radius: 8px;
+      padding: .65rem .75rem; cursor: pointer; color: #666;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 14px; text-transform: uppercase; letter-spacing: .05em;
+      display: flex; flex-direction: column; align-items: center; gap: .2rem;
+      transition: border-color .15s, color .15s;
     }
-    .pay-opt.featured { border-color: #3a3a3a; }
-    .pay-method {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .1em; color: #666;
-    }
-    .pay-amount { font-size: 1.4rem; color: #f0c040; font-weight: 700; }
-    .pay-detail { font-size: 12px; color: #888; }
-    .pay-detail a { color: #aaa; }
-
-    /* ── yape QR ── */
-    .yape-qr-wrap { text-align: center; margin-top: .5rem; }
-    .yape-qr-wrap img {
-      width: 120px; height: 120px; border-radius: 8px;
-      border: 1px solid #2a2a2a; object-fit: contain;
-      background: #fff;
-    }
-    .yape-qr-wrap .qr-label {
-      display: block; font-size: 11px; color: #555; margin-top: .4rem;
+    .pay-tab:hover { border-color: #d42b38; color: #e8e8e8; }
+    .pay-tab.active { border-color: #d42b38; color: #fff; background: #1a1a1a; }
+    .pay-tab-amount { font-size: 1.1rem; color: #f0c040; }
+    .qr-panel { text-align: center; margin-bottom: 1.25rem; }
+    .qr-img {
+      width: 200px; height: 200px; border-radius: 10px; object-fit: contain;
+      background: #fff; padding: 6px; border: 1px solid #2a2a2a;
     }
 
     /* ── divider ── */
@@ -276,6 +267,19 @@
 
     // ── Renders ─────────────────────────────────────────────────
 
+    function showQR(method) {
+      var yapePanel   = document.getElementById('cb-qr-yape');
+      var paypalPanel = document.getElementById('cb-qr-paypal');
+      var yapeTab     = document.getElementById('cb-tab-yape');
+      var paypalTab   = document.getElementById('cb-tab-paypal');
+      if (!yapePanel) return;
+      var isYape = (method === 'yape');
+      yapePanel.style.display   = isYape ? '' : 'none';
+      paypalPanel.style.display = isYape ? 'none' : '';
+      yapeTab.classList.toggle('active', isYape);
+      paypalTab.classList.toggle('active', !isYape);
+    }
+
     function showPayment() {
       document.getElementById('card').innerHTML = ''
         + '<div class="steps">'
@@ -283,32 +287,23 @@
         + '  <div class="step active"><div class="step-num">2</div>Pago</div>'
         + '  <div class="step"><div class="step-num">3</div>Acceso</div>'
         + '</div>'
-
         + '<div class="verified-row">&#x2705; Cuenta verificada correctamente</div>'
-
         + '<p class="section-title">Activa tu acceso Premium</p>'
-
-        + '<div class="pay-options">'
-
-        + '  <div class="pay-opt featured">'
-        + '    <span class="pay-method">&#x1F1F5;&#x1F1EA; Yape</span>'
-        + '    <span class="pay-amount">S/. 15</span>'
-        + '    <div class="yape-qr-wrap">'
-        + '      <img src="../assets/yape-qr.jpeg" alt="QR Yape" onerror="this.style.display=\'none\'">'
-        + '      <span class="qr-label">Escanea con Yape</span>'
-        + '    </div>'
-        + '  </div>'
-
-        + '  <div class="pay-opt">'
-        + '    <span class="pay-method">&#x1F310; PayPal</span>'
-        + '    <span class="pay-amount">$5 USD</span>'
-        + '    <span class="pay-detail">Envía a:<br><a href="https://paypal.me/AlvaroCaceresChavez" target="_blank" rel="noopener">alvarojohn1290@gmail.com</a></span>'
-        + '  </div>'
-
+        + '<div class="pay-tabs">'
+        + '  <button class="pay-tab active" id="cb-tab-yape" onclick="showQR(\'yape\')">'
+        + '    &#x1F1F5;&#x1F1EA; Yape<span class="pay-tab-amount">S/. 15</span>'
+        + '  </button>'
+        + '  <button class="pay-tab" id="cb-tab-paypal" onclick="showQR(\'paypal\')">'
+        + '    &#x1F310; PayPal<span class="pay-tab-amount">$5 USD</span>'
+        + '  </button>'
         + '</div>'
-
+        + '<div class="qr-panel" id="cb-qr-yape">'
+        + '  <img src="../assets/yape-qr.jpeg" alt="QR Yape" class="qr-img">'
+        + '</div>'
+        + '<div class="qr-panel" id="cb-qr-paypal" style="display:none">'
+        + '  <img src="../assets/paypal-qr.jpeg" alt="QR PayPal" class="qr-img">'
+        + '</div>'
         + '<hr class="divider">'
-
         + '<label class="code-label" for="code-input">Ya pagaste — ingresa tu código de activación</label>'
         + '<p class="code-hint">Después de confirmar tu pago te enviamos un código al email registrado. Si aún no pagaste, hazlo primero y luego vuelve aquí.</p>'
         + '<div class="code-row">'

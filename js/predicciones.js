@@ -105,20 +105,22 @@
     el.innerHTML = '<div class="pred-payment">'
       + '<div class="pred-payment-icon">&#x1F4B3;</div>'
       + '<h3>Un paso más…</h3>'
-      + '<p>Confirma tu pago para activar el acceso premium a las predicciones.</p>'
-      + '<div class="pred-payment-options">'
-      + '  <div class="pred-pay-opt">'
-      + '    <span class="pred-pay-method">Yape</span>'
-      + '    <span class="pred-pay-amount">S/. 15 soles</span>'
-      + '    <span class="pred-pay-phone">&#x1F4F1; Número en el email de bienvenida</span>'
-      + '  </div>'
-      + '  <div class="pred-pay-opt">'
-      + '    <span class="pred-pay-method">PayPal</span>'
-      + '    <span class="pred-pay-amount">$5 USD</span>'
-      + '    <span class="pred-pay-phone">&#x1F4E7; alvarojohn1290@gmail.com</span>'
-      + '  </div>'
+      + '<p>Selecciona tu método de pago y escanea el QR.</p>'
+      + '<div class="pred-pay-tabs">'
+      + '  <button class="pred-pay-tab active" id="pred-tab-yape" onclick="window.PredicionesSection.showQR(\'yape\')">'
+      + '    &#x1F1F5;&#x1F1EA; Yape<span class="pred-pay-tab-amount">S/. 15</span>'
+      + '  </button>'
+      + '  <button class="pred-pay-tab" id="pred-tab-paypal" onclick="window.PredicionesSection.showQR(\'paypal\')">'
+      + '    &#x1F310; PayPal<span class="pred-pay-tab-amount">$5 USD</span>'
+      + '  </button>'
       + '</div>'
-      + '<p class="pred-pay-note">Una vez confirmado el pago, te enviaremos un código de activación a <strong>'
+      + '<div class="pred-qr-panel" id="pred-qr-yape">'
+      + '  <img src="assets/yape-qr.jpeg" alt="QR Yape" class="pred-qr-img">'
+      + '</div>'
+      + '<div class="pred-qr-panel" id="pred-qr-paypal" style="display:none">'
+      + '  <img src="assets/paypal-qr.jpeg" alt="QR PayPal" class="pred-qr-img">'
+      + '</div>'
+      + '<p class="pred-pay-note">Una vez realizado el pago, te enviamos un código de activación a <strong>'
       +   (profile && profile.email ? profile.email : 'tu email') + '</strong>.</p>'
       + '<div class="pred-code-form">'
       + '  <label class="pred-code-label" for="pred-code-input">Ingresa tu código de activación</label>'
@@ -129,6 +131,19 @@
       + '  <div id="pred-code-error" class="pred-code-error"></div>'
       + '</div>'
       + '</div>';
+  }
+
+  function showQR(method) {
+    var yapePanel   = document.getElementById('pred-qr-yape');
+    var paypalPanel = document.getElementById('pred-qr-paypal');
+    var yapeTab     = document.getElementById('pred-tab-yape');
+    var paypalTab   = document.getElementById('pred-tab-paypal');
+    if (!yapePanel || !paypalPanel) return;
+    var isYape = (method === 'yape');
+    yapePanel.style.display   = isYape ? '' : 'none';
+    paypalPanel.style.display = isYape ? 'none' : '';
+    yapeTab.classList.toggle('active', isYape);
+    paypalTab.classList.toggle('active', !isYape);
   }
 
   async function renderActive() {
@@ -267,6 +282,7 @@
     init:         init,
     onAuthChange: onAuthChange,
     submitCode:   submitCode,
+    showQR:       showQR,
   };
 
   if (document.readyState === 'loading') {

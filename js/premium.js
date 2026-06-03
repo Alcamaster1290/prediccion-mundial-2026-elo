@@ -102,20 +102,22 @@
     el.innerHTML = '<div class="prono-payment">'
       + '<div class="prono-payment-icon">&#x1F4B3;</div>'
       + '<h3>Un paso más…</h3>'
-      + '<p>Confirma tu pago para activar el acceso premium a todos los pronósticos.</p>'
-      + '<div class="prono-payment-options">'
-      + '  <div class="prono-pay-opt">'
-      + '    <span class="prono-pay-method">Yape</span>'
-      + '    <span class="prono-pay-amount">S/. 15 soles</span>'
-      + '    <span class="prono-pay-phone">&#x1F4F1; Número en el email de bienvenida</span>'
-      + '  </div>'
-      + '  <div class="prono-pay-opt">'
-      + '    <span class="prono-pay-method">PayPal</span>'
-      + '    <span class="prono-pay-amount">$5 USD</span>'
-      + '    <span class="prono-pay-phone">&#x1F4E7; alvarojohn1290@gmail.com</span>'
-      + '  </div>'
+      + '<p>Selecciona tu método de pago y escanea el QR.</p>'
+      + '<div class="prono-pay-tabs">'
+      + '  <button class="prono-pay-tab active" id="prono-tab-yape" onclick="window.PremiumSection.showQR(\'yape\')">'
+      + '    &#x1F1F5;&#x1F1EA; Yape<span class="prono-pay-tab-amount">S/. 15</span>'
+      + '  </button>'
+      + '  <button class="prono-pay-tab" id="prono-tab-paypal" onclick="window.PremiumSection.showQR(\'paypal\')">'
+      + '    &#x1F310; PayPal<span class="prono-pay-tab-amount">$5 USD</span>'
+      + '  </button>'
       + '</div>'
-      + '<p class="prono-pay-note">Una vez confirmado el pago, te enviaremos un código de activación a <strong>'
+      + '<div class="prono-qr-panel" id="prono-qr-yape">'
+      + '  <img src="assets/yape-qr.jpeg" alt="QR Yape" class="prono-qr-img">'
+      + '</div>'
+      + '<div class="prono-qr-panel" id="prono-qr-paypal" style="display:none">'
+      + '  <img src="assets/paypal-qr.jpeg" alt="QR PayPal" class="prono-qr-img">'
+      + '</div>'
+      + '<p class="prono-pay-note">Una vez realizado el pago, te enviamos un código de activación a <strong>'
       +   (profile && profile.email ? profile.email : 'tu email') + '</strong>.</p>'
       + '<div class="prono-code-form">'
       + '  <label class="prono-code-label" for="prono-code-input">Ingresa tu código de activación</label>'
@@ -126,6 +128,19 @@
       + '  <div id="prono-code-error" class="prono-code-error"></div>'
       + '</div>'
       + '</div>';
+  }
+
+  function showQR(method) {
+    var yapePanel  = document.getElementById('prono-qr-yape');
+    var paypalPanel = document.getElementById('prono-qr-paypal');
+    var yapeTab    = document.getElementById('prono-tab-yape');
+    var paypalTab  = document.getElementById('prono-tab-paypal');
+    if (!yapePanel || !paypalPanel) return;
+    var isYape = (method === 'yape');
+    yapePanel.style.display   = isYape ? '' : 'none';
+    paypalPanel.style.display = isYape ? 'none' : '';
+    yapeTab.classList.toggle('active', isYape);
+    paypalTab.classList.toggle('active', !isYape);
   }
 
   async function renderActive(predictions) {
@@ -275,7 +290,8 @@
     init: init,
     onAuthChange: onAuthChange,
     submitCode: submitCode,
-    loadPredictions: loadPredictions
+    loadPredictions: loadPredictions,
+    showQR: showQR,
   };
 
   if (document.readyState === 'loading') {
