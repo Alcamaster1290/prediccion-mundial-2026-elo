@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación — Mundial 2026 Predicciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      color: #e8e8e8;
+      font-family: 'Barlow', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .icon { font-size: 3rem; margin-bottom: 1.25rem; line-height: 1; }
+
+    .title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: #fff;
+      margin-bottom: .75rem;
+    }
+
+    .msg {
+      font-size: 15px;
+      color: #aaa;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .msg strong { color: #e8e8e8; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: #1a4a2e;
+      color: #5ee09a;
+      border-radius: 6px;
+      padding: .35rem .85rem;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: .5rem;
+      font-size: 13px;
+      color: #666;
+      text-decoration: none;
+    }
+    .back-link:hover { color: #aaa; }
+
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #2a2a2a;
+      border-top-color: #d42b38;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      margin: 0 auto 1.25rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-icon { color: #d42b38; }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <div class="spinner"></div>
+    <p class="msg">Verificando tu cuenta…</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="../js/config.js" onerror="showError('No se pudo cargar la configuración.')"></script>
+  <script>
+    (async function () {
+      if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
+        return showError('Configuración de Supabase no encontrada.');
+      }
+
+      var client = window.supabase.createClient(
+        window.SUPABASE_URL,
+        window.SUPABASE_ANON_KEY,
+        { auth: { detectSessionInUrl: true } }
+      );
+
+      var params  = new URLSearchParams(window.location.search);
+      var code    = params.get('code');
+      var type    = params.get('type') || '';
+      var errParam = params.get('error_description') || params.get('error');
+
+      if (errParam) {
+        return showError(decodeURIComponent(errParam));
+      }
+
+      try {
+        if (code) {
+          // PKCE flow — exchange code for session
+          var ref = await client.auth.exchangeCodeForSession(code);
+          if (ref.error) return showError(ref.error.message);
+        } else {
+          // Implicit flow — client auto-detects from hash
+          var ref2 = await client.auth.getSession();
+          if (ref2.error) return showError(ref2.error.message);
+          if (!ref2.data || !ref2.data.session) {
+            return showError('No se encontró una sesión válida. El enlace puede haber expirado.');
+          }
+        }
+
+        showSuccess(type === 'recovery');
+
+      } catch (e) {
+        showError('Error inesperado: ' + (e.message || e));
+      }
+    })();
+
+    function showSuccess(isRecovery) {
+      document.getElementById('card').innerHTML = ''
+        + '<div class="icon">&#x2705;</div>'
+        + '<div class="badge">Cuenta verificada</div>'
+        + '<h1 class="title">' + (isRecovery ? 'Contraseña lista' : '¡Listo!') + '</h1>'
+        + '<p class="msg">'
+        + (isRecovery
+            ? 'Tu contraseña ha sido actualizada. <strong>Puedes cerrar este recuadro</strong> y volver al sitio.'
+            : 'Tu cuenta fue confirmada correctamente.<br><strong>Puedes cerrar este recuadro y ver todas las predicciones.</strong>')
+        + '</p>'
+        + '<a class="back-link" href="../index.html">&#x2190; Ir al sitio</a>';
+    }
+
+    function showError(msg) {
+      document.getElementById('card').innerHTML = ''
+        + '<div class="icon error-icon">&#x26A0;</div>'
+        + '<h1 class="title">Algo salió mal</h1>'
+        + '<p class="msg">' + msg + '</p>'
+        + '<a class="back-link" href="../index.html">&#x2190; Volver al sitio</a>';
+    }
+  </script>
+</body>
+</html>
