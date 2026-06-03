@@ -315,6 +315,9 @@
   .st-third-out > td:first-child     { border-left: 3px solid rgba(100,116,139,.3); }
   .st-third-out td                   { color: var(--muted); }
   .st-thirds-cutline > td            { border-top: 1px dashed rgba(245,158,11,.4); }
+  /* Tracker figura clave */
+  .tracker-fig-img  { width:26px; height:26px; object-fit:cover; border-radius:50%; vertical-align:middle; margin-right:.4rem; border:1px solid rgba(255,255,255,.15); }
+  .tracker-fig-name { font-size:13px; }
   /* Tiebreak accordion */
   .st-tiebreak {
     padding: .55rem 1rem;
@@ -5331,5 +5334,49 @@
 <script src="js/auth.js"></script>
 <script src="js/premium.js"></script>
 <script src="js/standings.js"></script>
+<script>
+(function () {
+  function initTrackerFiguras() {
+    var codeToPlayer = {};
+    document.querySelectorAll('.star-img-wrap').forEach(function (wrap) {
+      var img = wrap.querySelector('img');
+      if (!img) return;
+      var section = wrap.closest('section[id], .team-section[id]');
+      if (!section) return;
+      var code = (typeof TEAM_CODES !== 'undefined') ? TEAM_CODES[section.id] : null;
+      if (!code) {
+        var flag = section.querySelector('img.flag-svg');
+        if (flag) code = (flag.getAttribute('src') || '').replace('assets/flags/', '').replace('.svg', '');
+      }
+      if (code && !codeToPlayer[code]) {
+        codeToPlayer[code] = { src: img.getAttribute('src') || '', name: img.getAttribute('alt') || '' };
+      }
+    });
+
+    document.querySelectorAll('.tracker-squad tbody tr').forEach(function (row) {
+      var cells = Array.from(row.querySelectorAll('td'));
+      var teamIdx = -1;
+      for (var i = 0; i < cells.length; i++) {
+        if (cells[i].querySelector('img.flag-svg')) { teamIdx = i; break; }
+      }
+      if (teamIdx < 0) return;
+      var flagSrc = (cells[teamIdx].querySelector('img.flag-svg').getAttribute('src') || '');
+      var code = flagSrc.replace('assets/flags/', '').replace('.svg', '');
+      var player = codeToPlayer[code];
+      if (!player || !player.src) return;
+      var figCell = cells[teamIdx + 3];
+      if (!figCell) return;
+      figCell.innerHTML = '<img src="' + player.src + '" alt="' + player.name + '" class="tracker-fig-img">'
+        + '<span class="tracker-fig-name">' + player.name + '</span>';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTrackerFiguras);
+  } else {
+    initTrackerFiguras();
+  }
+})();
+</script>
 </body>
 </html>
