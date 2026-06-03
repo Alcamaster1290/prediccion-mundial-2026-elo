@@ -164,6 +164,9 @@
     if (window.PremiumSection) {
       window.PremiumSection.onAuthChange(user, isPrem, profile);
     }
+    if (window.PredicionesSection) {
+      window.PredicionesSection.onAuthChange(user, isPrem, profile);
+    }
   }
 
   function updateNavAuthUI(user, isPremium) {

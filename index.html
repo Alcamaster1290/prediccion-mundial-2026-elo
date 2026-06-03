@@ -1427,6 +1427,112 @@
   .prono-explanation { font-size: 13px; color: var(--text); border-top: 1px solid var(--border); padding-top: .75rem; line-height: 1.6; }
   .prono-empty { text-align: center; padding: 2rem; color: var(--muted); }
 
+  /* ─── PREDICCIONES (PREMIUM) ────────────────────────────────── */
+  .tag-gold { background: var(--gold); color: #111; }
+  .pred-header-lock { font-size: 1.4rem; opacity: .75; margin-left: .25rem; vertical-align: middle; }
+
+  /* locked */
+  .pred-locked { max-width: 620px; text-align: center; padding: 1rem 0; }
+  .pred-lock-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .pred-lock-title { font-size: 1.25rem; margin-bottom: .5rem; }
+  .pred-lock-desc { color: var(--muted); font-size: 14px; margin-bottom: 1.25rem; line-height: 1.6; }
+  .pred-lock-benefits { list-style: none; margin: 0 0 1.5rem; padding: 0; text-align: left; display: inline-block; }
+  .pred-lock-benefits li { font-size: 13px; color: var(--muted); padding: .25rem 0; }
+  .pred-lock-benefits li::before { content: ''; }
+
+  /* ghost rows */
+  .pred-ghost-rows { display: flex; flex-direction: column; gap: .4rem; margin: 1.25rem 0; filter: blur(4px); pointer-events: none; user-select: none; }
+  .pred-ghost-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: .5rem; }
+  .pred-ghost-row > div { background: var(--border); border-radius: 4px; height: 18px; }
+
+  /* join button */
+  .pred-join-btn {
+    display: inline-block; margin-top: .75rem;
+    background: var(--accent); color: #fff; border: none; border-radius: 8px;
+    padding: .75rem 2rem; font-size: 15px; font-weight: 700; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif; letter-spacing: .05em; text-transform: uppercase;
+  }
+  .pred-join-btn:hover { background: #c0303c; }
+
+  /* payment */
+  .pred-payment { max-width: 520px; margin: 0 auto; padding: 1.5rem 0; }
+  .pred-payment-icon { font-size: 2rem; margin-bottom: .75rem; }
+  .pred-payment > h3 { margin-bottom: .5rem; }
+  .pred-payment > p { color: var(--muted); font-size: 14px; margin-bottom: 1.25rem; }
+  .pred-payment-options { display: flex; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .pred-pay-opt { flex: 1; min-width: 180px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; gap: .35rem; }
+  .pred-pay-method { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-family: 'Barlow Condensed', sans-serif; }
+  .pred-pay-amount { font-size: 1.4rem; color: var(--gold); font-weight: 700; }
+  .pred-pay-phone  { font-size: 12px; color: var(--muted); }
+  .pred-pay-note   { font-size: 13px; color: var(--muted); margin-bottom: 1.25rem; }
+  .pred-code-form  { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+  .pred-code-label { display: block; font-size: 12px; color: var(--muted); margin-bottom: .6rem; letter-spacing: .06em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
+  .pred-code-row   { display: flex; gap: .5rem; }
+  .pred-code-input {
+    flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+    padding: .55rem .85rem; color: var(--text); font-size: 14px; font-family: 'JetBrains Mono', monospace;
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .pred-code-input:focus { border-color: var(--accent); outline: none; }
+  .pred-code-btn {
+    background: var(--accent); color: #fff; border: none; border-radius: 6px;
+    padding: .55rem 1.1rem; font-size: 13px; font-weight: 700; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; white-space: nowrap;
+  }
+  .pred-code-btn:disabled { opacity: .6; cursor: not-allowed; }
+  .pred-code-btn:hover:not(:disabled) { background: #c0303c; }
+  .pred-code-error { font-size: 12px; color: var(--accent); margin-top: .5rem; min-height: 1.2em; }
+
+  /* active state */
+  .pred-active-header { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+  .pred-premium-badge {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: var(--yes, #2a7a4b); color: #fff; border-radius: 6px;
+    padding: .3rem .75rem; font-size: 12px; font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .pred-model-note { font-size: 12px; color: var(--muted); }
+  .pred-subsection-title { font-size: 1.1rem; margin: 2rem 0 .75rem; color: var(--white); }
+  .pred-terceros-note { font-size: 13px; color: var(--muted); margin-bottom: .75rem; }
+  .pred-loading { color: var(--muted); font-size: 14px; padding: 1.5rem 0; }
+  .pred-empty { text-align: center; padding: 2rem; }
+
+  /* tables */
+  .pred-table-wrap { overflow-x: auto; }
+  .pred-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+  }
+  .pred-table th {
+    text-align: left; font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); padding: .5rem .75rem; border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .pred-table td { padding: .5rem .75rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+  .pred-table tbody tr:last-child td { border-bottom: none; }
+  .pred-team-cell { display: flex; align-items: center; gap: .45rem; white-space: nowrap; }
+  .pred-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .pred-rank-cell { font-family: 'JetBrains Mono', monospace; font-size: 12px; white-space: nowrap; }
+  .pred-group-badge {
+    display: inline-block; background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; padding: .1rem .45rem; font-size: 11px; font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif; color: var(--muted); letter-spacing: .06em;
+  }
+  .pred-q-badge {
+    display: inline-block; border-radius: 4px; padding: .15rem .55rem;
+    font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+  }
+  .pred-q-100  { background: #1a4a2e; color: #5ee09a; }
+  .pred-q-high { background: #1e3d20; color: #76c87a; }
+  .pred-q-mid  { background: #3d3000; color: #f0c040; }
+  .pred-q-low  { background: #3d1010; color: #e07070; }
+  .pred-row-qualifies td { background: rgba(94,224,154,.04); }
+  .pred-q-dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: #5ee09a; vertical-align: middle; margin-left: 4px;
+  }
+  .pred-clasif-pct { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text); }
+
   /* ─── CARD HOVER POLISH ─────────────────────────────────────── */
   .fmt-card, .group-card, .ko-card {
     box-shadow: var(--shadow-soft);
@@ -1467,6 +1573,7 @@
   <a href="#formato">Formato</a>
   <a href="#calendario">Calendario</a>
   <a href="#grupos">Grupos</a>
+  <a href="#predicciones">Predicciones &#x1F512;</a>
   <button class="grupos-nav-btn" id="grupos-nav-btn" onclick="openGruposModal()">Equipos <span class="g-arrow">▾</span></button>
   <a href="#tracker">Tracker</a>
   <div class="tz-wrap">
@@ -3908,6 +4015,17 @@
   </div>
 </section>
 
+<!-- ═══════ PREDICCIONES (PREMIUM) ═══════ -->
+<section id="predicciones">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag tag-gold">★ Premium</span>
+      <h2>Predicciones <span class="pred-header-lock" id="pred-header-lock">&#x1F512;</span></h2>
+    </div>
+    <div id="predicciones-content"></div>
+  </div>
+</section>
+
 <!-- ═══════ TRACKER DE CONVOCATORIAS ═══════ -->
 <section id="tracker" style="background:var(--surface)">
   <div class="container">
@@ -5313,6 +5431,7 @@
 </script>
 <script src="js/auth.js"></script>
 <script src="js/premium.js"></script>
+<script src="js/predicciones.js"></script>
 <script src="js/standings.js"></script>
 <script>
 (function () {
