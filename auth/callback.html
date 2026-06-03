@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificación — Mundial 2026 Predicciones</title>
+  <title>Activar acceso — Mundial 2026 Predicciones</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -15,149 +15,332 @@
       font-family: 'Barlow', sans-serif;
       min-height: 100vh;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 2rem;
+      padding: 2.5rem 1rem;
     }
 
     .card {
       background: #1a1a1a;
       border: 1px solid #2a2a2a;
       border-radius: 16px;
-      padding: 2.5rem 2rem;
-      max-width: 420px;
+      padding: 2.25rem 2rem;
+      max-width: 460px;
       width: 100%;
-      text-align: center;
     }
 
-    .icon { font-size: 3rem; margin-bottom: 1.25rem; line-height: 1; }
-
-    .title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 1.6rem;
-      text-transform: uppercase;
-      letter-spacing: .02em;
-      color: #fff;
-      margin-bottom: .75rem;
-    }
-
-    .msg {
-      font-size: 15px;
-      color: #aaa;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .msg strong { color: #e8e8e8; }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      background: #1a4a2e;
-      color: #5ee09a;
-      border-radius: 6px;
-      padding: .35rem .85rem;
-      font-size: 12px;
-      font-weight: 700;
-      font-family: 'Barlow Condensed', sans-serif;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: .5rem;
-      font-size: 13px;
-      color: #666;
-      text-decoration: none;
-    }
-    .back-link:hover { color: #aaa; }
-
+    /* ── spinner ── */
+    .spinner-wrap { text-align: center; padding: 2rem 0; }
     .spinner {
       width: 36px; height: 36px;
       border: 3px solid #2a2a2a;
       border-top-color: #d42b38;
       border-radius: 50%;
       animation: spin .8s linear infinite;
-      margin: 0 auto 1.25rem;
+      margin: 0 auto 1rem;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .error-icon { color: #d42b38; }
+    /* ── steps header ── */
+    .steps { display: flex; gap: 0; margin-bottom: 2rem; }
+    .step {
+      flex: 1; text-align: center; position: relative;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: #444; padding-bottom: .6rem;
+      border-bottom: 2px solid #2a2a2a;
+    }
+    .step.done  { color: #5ee09a; border-bottom-color: #5ee09a; }
+    .step.active{ color: #fff;    border-bottom-color: #d42b38; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: #2a2a2a; font-size: 11px; font-weight: 700;
+      margin-bottom: .35rem;
+    }
+    .step.done  .step-num { background: #1a4a2e; color: #5ee09a; }
+    .step.active .step-num { background: #d42b38; color: #fff; }
+
+    /* ── verified badge ── */
+    .verified-row {
+      display: flex; align-items: center; gap: .6rem;
+      background: #0e2b1c; border: 1px solid #1e5c35;
+      border-radius: 8px; padding: .6rem .9rem; margin-bottom: 1.5rem;
+      font-size: 13px; color: #5ee09a;
+    }
+
+    /* ── section title ── */
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 1.25rem;
+      text-transform: uppercase; color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    /* ── payment options ── */
+    .pay-options { display: flex; gap: .75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .pay-opt {
+      flex: 1; min-width: 170px;
+      background: #111; border: 1px solid #2a2a2a; border-radius: 10px;
+      padding: 1rem; display: flex; flex-direction: column; gap: .4rem;
+    }
+    .pay-opt.featured { border-color: #3a3a3a; }
+    .pay-method {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: #666;
+    }
+    .pay-amount { font-size: 1.4rem; color: #f0c040; font-weight: 700; }
+    .pay-detail { font-size: 12px; color: #888; }
+    .pay-detail a { color: #aaa; }
+
+    /* ── yape QR ── */
+    .yape-qr-wrap { text-align: center; margin-top: .5rem; }
+    .yape-qr-wrap img {
+      width: 120px; height: 120px; border-radius: 8px;
+      border: 1px solid #2a2a2a; object-fit: contain;
+      background: #fff;
+    }
+    .yape-qr-wrap .qr-label {
+      display: block; font-size: 11px; color: #555; margin-top: .4rem;
+    }
+
+    /* ── divider ── */
+    .divider {
+      border: none; border-top: 1px solid #2a2a2a; margin: 1.25rem 0;
+    }
+
+    /* ── code form ── */
+    .code-label {
+      display: block; font-size: 12px; color: #666; margin-bottom: .5rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    }
+    .code-hint { font-size: 12px; color: #555; margin-bottom: .85rem; line-height: 1.5; }
+    .code-row  { display: flex; gap: .5rem; }
+    .code-input {
+      flex: 1; background: #111; border: 1px solid #2a2a2a; border-radius: 6px;
+      padding: .6rem .85rem; color: #e8e8e8; font-size: 14px;
+      font-family: 'Barlow Condensed', sans-serif; letter-spacing: .12em;
+      text-transform: uppercase; outline: none;
+    }
+    .code-input:focus { border-color: #d42b38; }
+    .code-btn {
+      background: #d42b38; color: #fff; border: none; border-radius: 6px;
+      padding: .6rem 1.1rem; font-size: 13px; font-weight: 700; cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase;
+      white-space: nowrap; transition: background .15s;
+    }
+    .code-btn:hover:not(:disabled) { background: #b02030; }
+    .code-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .code-error { font-size: 12px; margin-top: .5rem; min-height: 1.2em; color: #d42b38; }
+    .code-error.ok { color: #5ee09a; }
+
+    /* ── activated state ── */
+    .activated {
+      text-align: center; padding: 1rem 0;
+    }
+    .activated .big-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .activated .title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: 1.6rem; text-transform: uppercase; color: #fff; margin-bottom: .5rem;
+    }
+    .activated .subtitle { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 1.5rem; }
+    .go-btn {
+      display: inline-block; background: #d42b38; color: #fff;
+      text-decoration: none; border-radius: 8px; padding: .75rem 2rem;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 15px; text-transform: uppercase; letter-spacing: .05em;
+      transition: background .15s;
+    }
+    .go-btn:hover { background: #b02030; }
+
+    /* ── error state ── */
+    .error-card { text-align: center; padding: 1rem 0; }
+    .error-card .icon { font-size: 2.5rem; margin-bottom: 1rem; color: #d42b38; }
+    .error-card .title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: 1.4rem; text-transform: uppercase; color: #fff; margin-bottom: .5rem;
+    }
+    .error-card .msg { font-size: 14px; color: #888; line-height: 1.6; margin-bottom: 1.25rem; }
+    .back-link { font-size: 13px; color: #555; text-decoration: none; }
+    .back-link:hover { color: #aaa; }
   </style>
 </head>
 <body>
   <div class="card" id="card">
-    <div class="spinner"></div>
-    <p class="msg">Verificando tu cuenta…</p>
+    <div class="spinner-wrap">
+      <div class="spinner"></div>
+      <p style="color:#666;font-size:13px">Verificando tu cuenta…</p>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="../js/config.js" onerror="showError('No se pudo cargar la configuración.')"></script>
   <script>
+    var _client = null;
+
+    function getClient() {
+      if (!_client) {
+        _client = window.supabase.createClient(
+          window.SUPABASE_URL,
+          window.SUPABASE_ANON_KEY,
+          { auth: { detectSessionInUrl: true } }
+        );
+      }
+      return _client;
+    }
+
+    // ── Inicialización ──────────────────────────────────────────
+
     (async function () {
       if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
         return showError('Configuración de Supabase no encontrada.');
       }
 
-      var client = window.supabase.createClient(
-        window.SUPABASE_URL,
-        window.SUPABASE_ANON_KEY,
-        { auth: { detectSessionInUrl: true } }
-      );
-
-      var params  = new URLSearchParams(window.location.search);
-      var code    = params.get('code');
-      var type    = params.get('type') || '';
+      var params   = new URLSearchParams(window.location.search);
+      var code     = params.get('code');
       var errParam = params.get('error_description') || params.get('error');
 
-      if (errParam) {
-        return showError(decodeURIComponent(errParam));
-      }
+      if (errParam) return showError(decodeURIComponent(errParam));
 
       try {
+        var client = getClient();
+
         if (code) {
-          // PKCE flow — exchange code for session
           var ref = await client.auth.exchangeCodeForSession(code);
           if (ref.error) return showError(ref.error.message);
         } else {
-          // Implicit flow — client auto-detects from hash
           var ref2 = await client.auth.getSession();
           if (ref2.error) return showError(ref2.error.message);
           if (!ref2.data || !ref2.data.session) {
-            return showError('No se encontró una sesión válida. El enlace puede haber expirado.');
+            return showError('El enlace expiró o ya fue utilizado. Intenta iniciar sesión directamente en el sitio.');
           }
         }
 
-        showSuccess(type === 'recovery');
+        // Check si ya es premium
+        var userRef = await client.auth.getUser();
+        if (userRef.data && userRef.data.user) {
+          var profRef = await client
+            .from('profiles')
+            .select('is_premium')
+            .eq('id', userRef.data.user.id)
+            .single();
+          if (profRef.data && profRef.data.is_premium) {
+            return showActivated();
+          }
+        }
+
+        showPayment();
 
       } catch (e) {
         showError('Error inesperado: ' + (e.message || e));
       }
     })();
 
-    function showSuccess(isRecovery) {
+    // ── Canje de código ─────────────────────────────────────────
+
+    async function submitCode() {
+      var input = document.getElementById('code-input');
+      var errEl = document.getElementById('code-error');
+      var btn   = document.getElementById('code-btn');
+      var code  = input.value.trim();
+
+      if (!code) { errEl.textContent = 'Ingresa el código que recibiste.'; return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Verificando…';
+      errEl.textContent = '';
+      errEl.className = 'code-error';
+
+      var client = getClient();
+      var ref = await client.rpc('redeem_premium_code', { input_code: code });
+
+      btn.disabled = false;
+      btn.textContent = 'Activar';
+
+      if (ref.error) {
+        errEl.textContent = ref.error.message || 'Error al canjear el código.';
+        return;
+      }
+
+      var result = ref.data || {};
+      if (result.success) {
+        errEl.className = 'code-error ok';
+        errEl.textContent = result.message || '¡Código válido!';
+        setTimeout(showActivated, 1000);
+      } else {
+        errEl.textContent = result.message || 'Código inválido o ya utilizado.';
+      }
+    }
+
+    // ── Renders ─────────────────────────────────────────────────
+
+    function showPayment() {
       document.getElementById('card').innerHTML = ''
-        + '<div class="icon">&#x2705;</div>'
-        + '<div class="badge">Cuenta verificada</div>'
-        + '<h1 class="title">' + (isRecovery ? 'Contraseña lista' : '¡Listo!') + '</h1>'
-        + '<p class="msg">'
-        + (isRecovery
-            ? 'Tu contraseña ha sido actualizada. <strong>Puedes cerrar este recuadro</strong> y volver al sitio.'
-            : 'Tu cuenta fue confirmada correctamente.<br><strong>Puedes cerrar este recuadro y ver todas las predicciones.</strong>')
-        + '</p>'
-        + '<a class="back-link" href="../index.html">&#x2190; Ir al sitio</a>';
+        + '<div class="steps">'
+        + '  <div class="step done"><div class="step-num">&#x2713;</div>Cuenta</div>'
+        + '  <div class="step active"><div class="step-num">2</div>Pago</div>'
+        + '  <div class="step"><div class="step-num">3</div>Acceso</div>'
+        + '</div>'
+
+        + '<div class="verified-row">&#x2705; Cuenta verificada correctamente</div>'
+
+        + '<p class="section-title">Activa tu acceso Premium</p>'
+
+        + '<div class="pay-options">'
+
+        + '  <div class="pay-opt featured">'
+        + '    <span class="pay-method">&#x1F1F5;&#x1F1EA; Yape</span>'
+        + '    <span class="pay-amount">S/. 15</span>'
+        + '    <div class="yape-qr-wrap">'
+        + '      <img src="../assets/yape-qr.png" alt="QR Yape" onerror="this.style.display=\'none\'">'
+        + '      <span class="qr-label">Escanea con Yape</span>'
+        + '    </div>'
+        + '  </div>'
+
+        + '  <div class="pay-opt">'
+        + '    <span class="pay-method">&#x1F310; PayPal</span>'
+        + '    <span class="pay-amount">$5 USD</span>'
+        + '    <span class="pay-detail">Envía a:<br><a href="https://paypal.me/AlvaroCaceresChavez" target="_blank" rel="noopener">alvarojohn1290@gmail.com</a></span>'
+        + '  </div>'
+
+        + '</div>'
+
+        + '<hr class="divider">'
+
+        + '<label class="code-label" for="code-input">Ya pagaste — ingresa tu código de activación</label>'
+        + '<p class="code-hint">Después de confirmar tu pago te enviamos un código al email registrado. Si aún no pagaste, hazlo primero y luego vuelve aquí.</p>'
+        + '<div class="code-row">'
+        + '  <input id="code-input" class="code-input" type="text" placeholder="XXXX-XXXX-XXXX" autocomplete="off" autocapitalize="characters">'
+        + '  <button id="code-btn" class="code-btn" onclick="submitCode()">Activar</button>'
+        + '</div>'
+        + '<div id="code-error" class="code-error"></div>';
+    }
+
+    function showActivated() {
+      document.getElementById('card').innerHTML = ''
+        + '<div class="steps">'
+        + '  <div class="step done"><div class="step-num">&#x2713;</div>Cuenta</div>'
+        + '  <div class="step done"><div class="step-num">&#x2713;</div>Pago</div>'
+        + '  <div class="step done active"><div class="step-num">&#x2713;</div>Acceso</div>'
+        + '</div>'
+        + '<div class="activated">'
+        + '  <div class="big-icon">&#x1F3C6;</div>'
+        + '  <p class="title">¡Acceso Premium Activado!</p>'
+        + '  <p class="subtitle">Puedes cerrar este recuadro y ver todas las predicciones.<br>Tu acceso está activo en el sitio.</p>'
+        + '  <a class="go-btn" href="../index.html#predicciones">Ver Predicciones &#x2192;</a>'
+        + '</div>';
     }
 
     function showError(msg) {
       document.getElementById('card').innerHTML = ''
-        + '<div class="icon error-icon">&#x26A0;</div>'
-        + '<h1 class="title">Algo salió mal</h1>'
-        + '<p class="msg">' + msg + '</p>'
-        + '<a class="back-link" href="../index.html">&#x2190; Volver al sitio</a>';
+        + '<div class="error-card">'
+        + '  <div class="icon">&#x26A0;</div>'
+        + '  <p class="title">Algo salió mal</p>'
+        + '  <p class="msg">' + msg + '</p>'
+        + '  <a class="back-link" href="../index.html">&#x2190; Volver al sitio</a>'
+        + '</div>';
     }
   </script>
 </body>
