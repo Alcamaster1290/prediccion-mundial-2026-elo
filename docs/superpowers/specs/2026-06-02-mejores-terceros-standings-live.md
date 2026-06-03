@@ -36,6 +36,8 @@ CREATE TABLE match_results (
   away_team     TEXT,
   home_goals    INTEGER,                              -- NULL = no jugado
   away_goals    INTEGER,
+  home_label    TEXT,       -- texto descriptivo: "1.° Grupo A", "Ganador Partido 73"
+  away_label    TEXT,       -- ídem para partidos KO (solo lectura, no se actualiza)
   kickoff_utc   TIMESTAMPTZ,
   stadium       TEXT,
   city          TEXT,
@@ -68,7 +70,15 @@ CREATE POLICY "public read" ON match_results
 
 ### Seed script
 
-Un script `scripts/seed_matches.js` pre-inserta los 72 partidos de fase de grupos con `home_goals = NULL` / `away_goals = NULL` usando los datos ya presentes en `data/groups.json`. Los 32 partidos de KO se insertan con `home_team = NULL` / `away_team = NULL` hasta que el bracket se resuelva.
+Un script Node.js `scripts/seed_matches.js` pre-inserta los 104 partidos con `home_goals = NULL` / `away_goals = NULL`:
+
+**Fase de grupos (P1–P72):** Lee `data/groups.json`, extrae cada fixture con sus códigos de equipo (`home_team`, `away_team`), kickoff, estadio y ciudad. `home_label` y `away_label` se completan con el nombre del equipo (ej: `"México"`).
+
+**16avos (P73–P88):** `home_team = NULL`, `away_team = NULL`. `home_label` y `away_label` se toman de `KNOCKOUT_MATCHES.homeLabel` / `.awayLabel` ya definidos en el HTML (ej: `"1.° Grupo A"`, `"3.° A/B/C/D/F"`). Estos labels **no cambian nunca** — son la descripción del bracket.
+
+**Octavos–Final (P89–P104):** `home_team = NULL`, `away_team = NULL`, `home_label = NULL`, `away_label = NULL`. Solo se guarda fixture data (fecha, hora, estadio, ciudad, número de partido). El display en la UI usa directamente el número de partido: `"Partido 89"`, `"Partido 104 — Final"`.
+
+Los datos de `KNOCKOUT_MATCHES` ya están hardcodeados en el HTML y el seed script los extrae desde un JSON equivalente en `data/knockout_matches.json` (a crear junto con el seed).
 
 ---
 
@@ -76,9 +86,26 @@ Un script `scripts/seed_matches.js` pre-inserta los 72 partidos de fase de grupo
 
 Toda la lógica se agrega en un bloque `<script>` nuevo justo antes del `</body>`, después del bloque JS existente.
 
-**Cambio necesario en el IIFE existente:** `koCard()` y `renderTeamKOPaths()` actualmente están definidas *dentro* del IIFE (no son globales). Para que el nuevo código pueda llamarlas, hay que sacarlas del IIFE y declararlas como funciones globales antes de él. `KNOCKOUT_MATCHES` y `TEAM_KO_PATH` ya son globales, así que las funciones funcionarán igual una vez extraídas.
+**Extracción del IIFE — hallazgos exactos (líneas verificadas):**
 
-**Cliente Supabase:** La página ya inicializa un cliente Supabase para auth/premium. El nuevo código lo reutiliza mediante la variable global `window._supabase` (o el nombre que ya use el código existente) en lugar de crear un segundo cliente.
+Las siguientes declaraciones están DENTRO del IIFE (líneas 4793–5186) y deben moverse al scope global ANTES del IIFE para que el nuevo código pueda usarlas:
+
+| Variable/Función | Línea actual | Tipo | Notas |
+|---|---|---|---|
+| `PHASE_LABELS` | 4810 | objeto | Etiquetas de fase |
+| `PHASE_COLORS` | 4811 | objeto | Colores por fase |
+| `KNOCKOUT_MATCHES` | 4812 | array | P73–P104, ya tiene homeLabel/awayLabel |
+| `TEAM_CODES` | 4941 | objeto | sectionId → código equipo |
+| `TEAM_KO_PATH` | 4998 | objeto | rutas 1.° y 2.° por equipo |
+| `TEAM_KO_3RD` | 5045 | objeto | rutas como 3.° |
+| `labelDate()` | 4862 | función | formatea fecha YYYY-MM-DD |
+| `renderTeamKOPaths()` | 5069–5139 | función | genera rutas KO en DOM |
+
+Estas son todas declaraciones de datos o funciones puras — **no hay closures ni estado privado que impida extraerlas**. `allMatches`, `activeFilter`, `tzOffset` y `renderCalendar()` permanecen dentro del IIFE.
+
+`koCard()` y `shortVenue()` son funciones locales dentro de `renderTeamKOPaths()` — se quedan ahí, no necesitan ser globales.
+
+**Cliente Supabase:** Supabase ya está inicializado para auth/premium. Durante implementación se identifica la variable global existente (probablemente en `js/auth.js`) y se reutiliza en lugar de crear un segundo cliente.
 
 ### 2.1 Inicialización de standings predeterminados
 

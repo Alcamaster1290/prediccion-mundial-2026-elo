@@ -5,7 +5,7 @@ Convención: {código-equipo}-xi.png
 Resolución sugerida: 800 × 900 px
 Formato: PNG (con o sin fondo)
 
-Imágenes disponibles (18 selecciones analizadas — al 25 mayo 2026):
+Imágenes disponibles (26 selecciones — al 3 junio 2026):
   bih-xi.png   ✅  Bosnia
   sui-xi.png   ✅  Suiza
   swe-xi.png   ✅  Suecia
@@ -24,3 +24,11 @@ Imágenes disponibles (18 selecciones analizadas — al 25 mayo 2026):
   ger-xi.png   ✅  Alemania
   nor-xi.png   ✅  Noruega
   eng-xi.png   ✅  Inglaterra
+  esp-xi.png   ✅  España
+  col-xi.png   ✅  Colombia
+  jpn-xi.png   ✅  Japón
+  tun-xi.png   ✅  Túnez
+  cuw-xi.png   ✅  Curazao
+  usa-xi.png   ✅  Estados Unidos
+  mar-xi.png   ❌  Marruecos (pendiente)
+  pan-xi.png   ❌  Panamá (pendiente)
