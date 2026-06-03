@@ -33,6 +33,12 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals):
 
     counts = defaultdict(lambda: {'first': 0, 'second': 0, 'third': 0, 'fourth': 0, 'best_third': 0})
 
+    # Per-group tracking for the terceros table
+    group_thirds = defaultdict(lambda: {
+        'sum_pts': 0, 'sum_gd': 0, 'sum_gf': 0, 'qualifies': 0,
+        'team_counts': defaultdict(int),
+    })
+
     for _ in range(runs):
         standings = simulate_all_groups(matches, strengths, base_goals)
 
@@ -45,12 +51,18 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals):
                     counts[code]['second'] += 1
                 elif pos == 2:
                     counts[code]['third'] += 1
+                    g = group_thirds[gid]
+                    g['sum_pts'] += t['PTS']
+                    g['sum_gd']  += t['DG']
+                    g['sum_gf']  += t['GF']
+                    g['team_counts'][code] += 1
                 else:
                     counts[code]['fourth'] += 1
 
         for i, t in enumerate(best_thirds(standings)):
             if i < 8:
                 counts[t['code']]['best_third'] += 1
+                group_thirds[t['group']]['qualifies'] += 1
 
     results = {}
     for code, c in counts.items():
@@ -64,7 +76,28 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals):
             'fourth_pct':       round(100 * c['fourth']  / runs, 1),
         }
 
-    return results
+    # Build projected terceros table (one row per group)
+    terceros_rows = []
+    for gid, g in group_thirds.items():
+        n = runs  # every run has exactly one third per group
+        most_likely = max(g['team_counts'].items(), key=lambda x: x[1])
+        terceros_rows.append({
+            'group':          gid,
+            'team_code':      most_likely[0],
+            'third_pct':      round(100 * most_likely[1] / runs, 1),
+            'qualifies_pct':  round(100 * g['qualifies'] / runs, 1),
+            'avg_pts':        round(g['sum_pts'] / n, 2),
+            'avg_gd':         round(g['sum_gd']  / n, 2),
+            'avg_gf':         round(g['sum_gf']  / n, 2),
+        })
+
+    # Rank by FIFA criteria: pts > GD > GF
+    terceros_rows.sort(key=lambda x: (-x['avg_pts'], -x['avg_gd'], -x['avg_gf']))
+    for i, row in enumerate(terceros_rows):
+        row['rank'] = i + 1
+        row['qualifies'] = i < 8
+
+    return results, terceros_rows
 
 
 def main():
@@ -81,12 +114,13 @@ def main():
     strengths = load_strengths()
 
     print(f"Running {args.runs} simulations (seed={args.seed})...")
-    results_by_team = run_monte_carlo(args.runs, args.seed, matches, strengths, base_goals)
+    results_by_team, terceros_table = run_monte_carlo(args.runs, args.seed, matches, strengths, base_goals)
 
     output = {
-        'runs': args.runs,
-        'seed': args.seed,
-        'teams': results_by_team,
+        'runs':           args.runs,
+        'seed':           args.seed,
+        'teams':          results_by_team,
+        'terceros_table': terceros_table,
     }
 
     out_path = Path(args.output)
@@ -101,6 +135,14 @@ def main():
     print("\nTop 10 qualification probabilities:")
     for code, r in sorted_teams[:10]:
         print(f"  {code:4s}  {r['qualified_pct']:5.1f}%  (1st:{r['first_pct']}%  2nd:{r['second_pct']}%  best3rd:{r['best_third_pct']}%)")
+
+    print("\nTabla de mejores terceros proyectada:")
+    print(f"  {'Rk':>2}  {'Grp':3}  {'Equipo':6}  {'3ro%':>5}  {'PTS':>5}  {'DG':>5}  {'GF':>5}  {'Clasif%':>7}  Q")
+    for row in terceros_table:
+        q = 'SI' if row['qualifies'] else '  '
+        print(f"  {row['rank']:>2}  {row['group']:3}  {row['team_code']:6}  "
+              f"{row['third_pct']:>5.1f}  {row['avg_pts']:>5.2f}  {row['avg_gd']:>+5.2f}  "
+              f"{row['avg_gf']:>5.2f}  {row['qualifies_pct']:>7.1f}%  {q}")
 
 
 if __name__ == '__main__':
