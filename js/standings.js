@@ -112,7 +112,8 @@
       if (b.PTS !== a.PTS) return b.PTS - a.PTS;
       if (b.DG  !== a.DG)  return b.DG  - a.DG;
       if (b.GF  !== a.GF)  return b.GF  - a.GF;
-      return (FIFA_RANK[a.code] || 200) - (FIFA_RANK[b.code] || 200);
+      // preserve draw/pot order when all match stats are tied
+      return teamCodes.indexOf(a.code) - teamCodes.indexOf(b.code);
     });
 
     return ranked;
