@@ -1,0 +1,8 @@
+{
+  "_version": "1.0",
+  "_note": "Weights for team strength formula and goal simulation.",
+  "elo_intl_weight": 0.65,
+  "xi_club_blend_weight": 0.35,
+  "base_goals_per_team": 1.3,
+  "elo_scale": 400
+}

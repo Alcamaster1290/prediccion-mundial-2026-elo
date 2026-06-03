@@ -1,0 +1,13 @@
+{
+  "_note": "SAMPLE FILE — manual player ability ratings on the same 0-2500 ELO scale as club_elo.json. Replace with real assessments. Do NOT commit actual ratings if they are premium content.",
+  "version": "2026-06-01",
+  "ratings": [
+    {"team": "kor", "player": "Son Heung-min",   "pos": "FW", "elo": 1820, "titular": true},
+    {"team": "kor", "player": "Kim Min-jae",      "pos": "CB", "elo": 1790, "titular": true},
+    {"team": "kor", "player": "Lee Kang-in",      "pos": "AM", "elo": 1750, "titular": true},
+    {"team": "bih", "player": "Edin Džeko",       "pos": "FW", "elo": 1680, "titular": true},
+    {"team": "bih", "player": "Miralem Pjanić",   "pos": "CM", "elo": 1720, "titular": false},
+    {"team": "jpn", "player": "Takefusa Kubo",    "pos": "AM", "elo": 1770, "titular": true},
+    {"team": "jpn", "player": "Wataru Endo",      "pos": "CM", "elo": 1710, "titular": true}
+  ]
+}
