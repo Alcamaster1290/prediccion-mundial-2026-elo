@@ -4017,14 +4017,6 @@
             <td><span class="analyzed-badge">✓ Detallado</span></td>
           </tr>
           <tr>
-            <td><img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> <strong class="player-name">Costa de Marfil</strong></td>
-            <td style="font-size:13px">Emerse Faé</td>
-            <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">4-3-3</span></td>
-            <td style="font-size:13px">Sébastien Haller, Simon Adingra, Franck Kessié</td>
-            <td style="font-size:12px;color:var(--muted)">4° Mundial · regresa tras 12 años de ausencia (Brasil 2014)</td>
-            <td><span class="analyzed-badge">✓ Detallado</span></td>
-          </tr>
-          <tr>
             <td><img class="flag-svg" src="assets/flags/cuw.svg" alt="Curazao" loading="lazy"> <strong class="player-name">Curazao</strong></td>
             <td style="font-size:13px">Dick Advocaat</td>
             <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">4-3-3</span></td>
@@ -4032,23 +4024,31 @@
             <td style="font-size:12px;color:var(--muted)">1er Mundial · país más pequeño en jugar una Copa del Mundo (150K hab.)</td>
             <td><span class="analyzed-badge">✓ Detallado</span></td>
           </tr>
+          <tr>
+            <td><img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> <strong class="player-name">Costa de Marfil</strong></td>
+            <td style="font-size:13px">Emerse Faé</td>
+            <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">4-3-3</span></td>
+            <td style="font-size:13px">Sébastien Haller, Simon Adingra, Franck Kessié</td>
+            <td style="font-size:12px;color:var(--muted)">4° Mundial · regresa tras 12 años de ausencia (Brasil 2014)</td>
+            <td><span class="analyzed-badge">✓ Detallado</span></td>
+          </tr>
 
           <!-- GRUPO F -->
           <tr style="background:rgba(255,255,255,.02)">
             <td rowspan="3"><strong style="color:var(--grp-f)">F</strong><br><span style="font-size:11px;color:var(--muted)">NED · JPN<br>SWE · TUN</span></td>
-            <td><img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> <strong class="player-name">Suecia</strong></td>
-            <td style="font-size:13px">Graham Potter</td>
-            <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">3-4-2-1</span></td>
-            <td style="font-size:13px">Viktor Gyökeres (Arsenal, ELO 2106), Elanga</td>
-            <td style="font-size:12px;color:var(--muted)">Sin Kulusevski (rodilla) · Bardghji la gran sorpresa afuera</td>
-            <td><span class="analyzed-badge">✓ Detallado</span></td>
-          </tr>
-          <tr style="background:rgba(255,255,255,.02)">
             <td><img class="flag-svg" src="assets/flags/jpn.svg" alt="Japón" loading="lazy"> <strong class="player-name">Japón</strong></td>
             <td style="font-size:13px">Hajime Moriyasu</td>
             <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">3-4-2-1</span></td>
             <td style="font-size:13px">Takefusa Kubo (Real Sociedad), Hiroki Ito (Bayern), Ueda (25 goles)</td>
             <td style="font-size:12px;color:var(--muted)">8° Mundial · Mitoma y Minamino lesionados · carga manual</td>
+            <td><span class="analyzed-badge">✓ Detallado</span></td>
+          </tr>
+          <tr style="background:rgba(255,255,255,.02)">
+            <td><img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> <strong class="player-name">Suecia</strong></td>
+            <td style="font-size:13px">Graham Potter</td>
+            <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">3-4-2-1</span></td>
+            <td style="font-size:13px">Viktor Gyökeres (Arsenal, ELO 2106), Elanga</td>
+            <td style="font-size:12px;color:var(--muted)">Sin Kulusevski (rodilla) · Bardghji la gran sorpresa afuera</td>
             <td><span class="analyzed-badge">✓ Detallado</span></td>
           </tr>
           <tr style="background:rgba(255,255,255,.02)">
@@ -5046,9 +5046,13 @@
         path3.forEach(function(p) {
           var m32 = koByNum[p.r32];
           if (!m32) return;
+          var homeR = (typeof resolveOpponent === 'function') ? resolveOpponent(m32.homeLabel) : null;
+          var homeFlagHtml = homeR && homeR.type === 'single'
+            ? '<img class="flag-svg" src="' + homeR.flagSrc + '" title="' + homeR.name + '" style="height:13px;vertical-align:middle;margin-right:3px">'
+            : '';
           html += '<div class="ko-3rd-row">'
             + '<span class="ko-3rd-pnum">P' + p.r32 + '</span>'
-            + '<span class="ko-3rd-opp">vs ' + m32.homeLabel + '</span>'
+            + '<span class="ko-3rd-opp">vs ' + homeFlagHtml + m32.homeLabel + '</span>'
             + '<span class="ko-3rd-detail">' + shortVenue(m32.venue) + ' · ' + labelDate(m32.date) + '</span>'
             + '<span class="ko-3rd-r16">→ Octavos P' + p.r16 + '</span>'
             + '</div>';

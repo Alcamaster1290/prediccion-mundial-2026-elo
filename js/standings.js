@@ -159,6 +159,7 @@
   // "1.° Grupo A" → {type:'single', flagSrc, name, code}
   // "3.° A/B/C/D/F" or "3.° Grupo C/E/F/H/I" → {type:'multi', teams:[{flagSrc,name,code},...]}
   window.resolveOpponent = function (oppText) {
+    // "N.° Grupo X"
     var single = oppText.match(/^(\d)\.°\s+Grupo\s+([A-L])$/i);
     if (single) {
       var pos = parseInt(single[1], 10) - 1;
@@ -168,6 +169,7 @@
       return { type: 'single', flagSrc: standings[pos].flagSrc, name: standings[pos].name, code: standings[pos].code };
     }
 
+    // "3.° A/B/C/D/F" or "3.° Grupo C/E/F/H/I"
     var multi = oppText.match(/^3\.°\s+(?:Grupo\s+)?([A-L](?:\/[A-L])+)$/i);
     if (multi) {
       var teams = multi[1].split('/').map(function (g) {
@@ -175,6 +177,33 @@
         return (s && s.length >= 3) ? s[2] : null;
       }).filter(Boolean);
       return teams.length ? { type: 'multi', teams: teams } : null;
+    }
+
+    // "N.° X" shorthand (no "Grupo") — e.g. "1.° L", "2.° C"
+    var shortSingle = oppText.match(/^(\d)\.°\s+([A-L])$/i);
+    if (shortSingle) {
+      var pos2 = parseInt(shortSingle[1], 10) - 1;
+      var gid2 = shortSingle[2].toLowerCase();
+      var standings2 = window.CURRENT_STANDINGS[gid2];
+      if (!standings2 || !standings2[pos2]) return null;
+      return { type: 'single', flagSrc: standings2[pos2].flagSrc, name: standings2[pos2].name, code: standings2[pos2].code };
+    }
+
+    // "Ganador P{n} (X ó Y)" — r16opp compound format
+    var compound = oppText.match(/^Ganador\s+P\d+\s*\(([^)]+)\)$/i);
+    if (compound) {
+      var parts = compound[1].split(/\s+ó\s+/);
+      var allTeams = [];
+      parts.forEach(function (part) {
+        var r = window.resolveOpponent(part.trim());
+        if (!r) return;
+        if (r.type === 'single') {
+          allTeams.push({ flagSrc: r.flagSrc, name: r.name, code: r.code });
+        } else if (r.type === 'multi') {
+          r.teams.forEach(function (t) { allTeams.push(t); });
+        }
+      });
+      return allTeams.length ? { type: 'multi', teams: allTeams } : null;
     }
 
     return null;
