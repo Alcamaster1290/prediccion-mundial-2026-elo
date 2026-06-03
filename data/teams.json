@@ -1,297 +1,11 @@
 {
   "meta": {
-    "updated": "2026-05-20",
+    "updated": "2026-06-02",
     "source_analysis": "alterfutbol.com",
     "source_elo": "worldclubratings.com",
-    "total_teams_analyzed": 15
+    "total_teams_analyzed": 24
   },
   "teams": [
-    {
-      "id": "bih",
-      "name": "Bosnia y Herzegovina",
-      "flag": "assets/flags/bih.svg",
-      "group": "B",
-      "dt": "Sergej Barbarez",
-      "scheme": "4-4-2",
-      "analyzed": true,
-      "xi_image": "assets/xi/bih-xi.png",
-      "star_player": {
-        "name": "Edin Džeko",
-        "image": "assets/players/bih-dzeko.jpg",
-        "club": "Schalke 04",
-        "elo": null,
-        "note": "Capitán, 40 años, bandera histórica del fútbol bosnio"
-      },
-      "tactics": [
-        "4-4-2 con bloque bajo y defensa compacta",
-        "Salida rápida por costados o pelotazo a Džeko",
-        "Juego aéreo y pelota parada como armas ofensivas",
-        "Apuesta al contragolpe si no llega Hadžiahmetović"
-      ],
-      "players": [
-        {
-          "number": 1,
-          "pos": "GK",
-          "name": "Nikola Vasilj",
-          "age": 30,
-          "club": "FC St. Pauli",
-          "country": "Alemania",
-          "elo": 1321,
-          "titular": true
-        },
-        {
-          "number": 2,
-          "pos": "GK",
-          "name": "Martin Zlomislić",
-          "age": 27,
-          "club": "Rijeka",
-          "country": "Croacia",
-          "elo": 1398,
-          "titular": false
-        },
-        {
-          "number": 3,
-          "pos": "GK",
-          "name": "Osman Hadžikić",
-          "age": 30,
-          "club": "Slaven Belupo",
-          "country": "Croacia",
-          "elo": 1221,
-          "titular": false
-        },
-        {
-          "number": 4,
-          "pos": "DEF",
-          "name": "Sead Kolašinac",
-          "age": 32,
-          "club": "Atalanta",
-          "country": "Italia",
-          "elo": 1676,
-          "titular": true
-        },
-        {
-          "number": 5,
-          "pos": "DEF",
-          "name": "Dennis Hadžikadunić",
-          "age": 27,
-          "club": "Sampdoria",
-          "country": "Italia",
-          "elo": null,
-          "titular": false
-        },
-        {
-          "number": 6,
-          "pos": "DEF",
-          "name": "Amar Dedić",
-          "age": 23,
-          "club": "Benfica",
-          "country": "Portugal",
-          "elo": 1729,
-          "titular": true
-        },
-        {
-          "number": 7,
-          "pos": "DEF",
-          "name": "Nikola Katić",
-          "age": 29,
-          "club": "Schalke 04",
-          "country": "Alemania",
-          "elo": null,
-          "titular": true
-        },
-        {
-          "number": 8,
-          "pos": "DEF",
-          "name": "Tarik Muharemović",
-          "age": 23,
-          "club": "Sassuolo",
-          "country": "Italia",
-          "elo": 1458,
-          "titular": true
-        },
-        {
-          "number": 9,
-          "pos": "DEF",
-          "name": "Nihad Mujakić",
-          "age": 28,
-          "club": "Gaziantep",
-          "country": "Turquía",
-          "elo": 1187,
-          "titular": false
-        },
-        {
-          "number": 10,
-          "pos": "DEF",
-          "name": "Stjepan Radeljić",
-          "age": 28,
-          "club": "Rijeka",
-          "country": "Croacia",
-          "elo": 1398,
-          "titular": false
-        },
-        {
-          "number": 11,
-          "pos": "DEF",
-          "name": "Nidal Čelik",
-          "age": 19,
-          "club": "Lens",
-          "country": "Francia",
-          "elo": 1610,
-          "titular": false
-        },
-        {
-          "number": 12,
-          "pos": "MED",
-          "name": "Amir Hadžiahmetović",
-          "age": 29,
-          "club": "Hull City",
-          "country": "Inglaterra",
-          "elo": null,
-          "titular": true
-        },
-        {
-          "number": 13,
-          "pos": "MED",
-          "name": "Benjamin Tahirović",
-          "age": 23,
-          "club": "Brøndby",
-          "country": "Dinamarca",
-          "elo": 1377,
-          "titular": false
-        },
-        {
-          "number": 14,
-          "pos": "MED",
-          "name": "Armin Gigović",
-          "age": 24,
-          "club": "Young Boys",
-          "country": "Suiza",
-          "elo": 1381,
-          "titular": false
-        },
-        {
-          "number": 15,
-          "pos": "MED",
-          "name": "Dženis Burnić",
-          "age": 28,
-          "club": "Karlsruher SC",
-          "country": "Alemania",
-          "elo": null,
-          "titular": false
-        },
-        {
-          "number": 16,
-          "pos": "MED",
-          "name": "Ivan Bašić",
-          "age": 24,
-          "club": "Astana",
-          "country": "Kazajistán",
-          "elo": 1339,
-          "titular": false
-        },
-        {
-          "number": 17,
-          "pos": "MED",
-          "name": "Esmir Bajraktarević",
-          "age": 21,
-          "club": "PSV Eindhoven",
-          "country": "Países Bajos",
-          "elo": 1726,
-          "titular": true
-        },
-        {
-          "number": 18,
-          "pos": "MED",
-          "name": "Amar Memić",
-          "age": 25,
-          "club": "Viktoria Plzeň",
-          "country": "Chequia",
-          "elo": 1556,
-          "titular": true
-        },
-        {
-          "number": 19,
-          "pos": "MED",
-          "name": "Ivan Šunjić",
-          "age": 29,
-          "club": "Pafos",
-          "country": "Chipre",
-          "elo": 1471,
-          "titular": true
-        },
-        {
-          "number": 20,
-          "pos": "MED",
-          "name": "Kerim Alajbegović",
-          "age": 18,
-          "club": "RB Salzburg",
-          "country": "Austria",
-          "elo": 1423,
-          "titular": false
-        },
-        {
-          "number": 21,
-          "pos": "MED",
-          "name": "Ermin Mahmić",
-          "age": 21,
-          "club": "Slovan Liberec",
-          "country": "Chequia",
-          "elo": 1318,
-          "titular": false
-        },
-        {
-          "number": 22,
-          "pos": "DEL",
-          "name": "Edin Džeko",
-          "age": 40,
-          "club": "Schalke 04",
-          "country": "Alemania",
-          "elo": null,
-          "titular": true,
-          "captain": true
-        },
-        {
-          "number": 23,
-          "pos": "DEL",
-          "name": "Ermedin Demirović",
-          "age": 28,
-          "club": "VfB Stuttgart",
-          "country": "Alemania",
-          "elo": 1647,
-          "titular": true
-        },
-        {
-          "number": 24,
-          "pos": "DEL",
-          "name": "Samed Baždar",
-          "age": 22,
-          "club": "Jagiellonia",
-          "country": "Polonia",
-          "elo": 1389,
-          "titular": false
-        },
-        {
-          "number": 25,
-          "pos": "DEL",
-          "name": "Haris Tabaković",
-          "age": 31,
-          "club": "B. Mönchengladbach",
-          "country": "Alemania",
-          "elo": 1509,
-          "titular": false
-        },
-        {
-          "number": 26,
-          "pos": "DEL",
-          "name": "Jovo Lukić",
-          "age": 27,
-          "club": "Univ. Cluj",
-          "country": "Rumania",
-          "elo": 1227,
-          "titular": false
-        }
-      ]
-    },
     {
       "id": "kor",
       "name": "Corea del Sur",
@@ -581,6 +295,2444 @@
       ]
     },
     {
+      "id": "bih",
+      "name": "Bosnia y Herzegovina",
+      "flag": "assets/flags/bih.svg",
+      "group": "B",
+      "dt": "Sergej Barbarez",
+      "scheme": "4-4-2",
+      "analyzed": true,
+      "xi_image": "assets/xi/bih-xi.png",
+      "star_player": {
+        "name": "Edin Džeko",
+        "image": "assets/players/bih-dzeko.jpg",
+        "club": "Schalke 04",
+        "elo": null,
+        "note": "Capitán, 40 años, bandera histórica del fútbol bosnio"
+      },
+      "tactics": [
+        "4-4-2 con bloque bajo y defensa compacta",
+        "Salida rápida por costados o pelotazo a Džeko",
+        "Juego aéreo y pelota parada como armas ofensivas",
+        "Apuesta al contragolpe si no llega Hadžiahmetović"
+      ],
+      "players": [
+        {
+          "number": 1,
+          "pos": "GK",
+          "name": "Nikola Vasilj",
+          "age": 30,
+          "club": "FC St. Pauli",
+          "country": "Alemania",
+          "elo": 1321,
+          "titular": true
+        },
+        {
+          "number": 2,
+          "pos": "GK",
+          "name": "Martin Zlomislić",
+          "age": 27,
+          "club": "Rijeka",
+          "country": "Croacia",
+          "elo": 1398,
+          "titular": false
+        },
+        {
+          "number": 3,
+          "pos": "GK",
+          "name": "Osman Hadžikić",
+          "age": 30,
+          "club": "Slaven Belupo",
+          "country": "Croacia",
+          "elo": 1221,
+          "titular": false
+        },
+        {
+          "number": 4,
+          "pos": "DEF",
+          "name": "Sead Kolašinac",
+          "age": 32,
+          "club": "Atalanta",
+          "country": "Italia",
+          "elo": 1676,
+          "titular": true
+        },
+        {
+          "number": 5,
+          "pos": "DEF",
+          "name": "Dennis Hadžikadunić",
+          "age": 27,
+          "club": "Sampdoria",
+          "country": "Italia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": 6,
+          "pos": "DEF",
+          "name": "Amar Dedić",
+          "age": 23,
+          "club": "Benfica",
+          "country": "Portugal",
+          "elo": 1729,
+          "titular": true
+        },
+        {
+          "number": 7,
+          "pos": "DEF",
+          "name": "Nikola Katić",
+          "age": 29,
+          "club": "Schalke 04",
+          "country": "Alemania",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": 8,
+          "pos": "DEF",
+          "name": "Tarik Muharemović",
+          "age": 23,
+          "club": "Sassuolo",
+          "country": "Italia",
+          "elo": 1458,
+          "titular": true
+        },
+        {
+          "number": 9,
+          "pos": "DEF",
+          "name": "Nihad Mujakić",
+          "age": 28,
+          "club": "Gaziantep",
+          "country": "Turquía",
+          "elo": 1187,
+          "titular": false
+        },
+        {
+          "number": 10,
+          "pos": "DEF",
+          "name": "Stjepan Radeljić",
+          "age": 28,
+          "club": "Rijeka",
+          "country": "Croacia",
+          "elo": 1398,
+          "titular": false
+        },
+        {
+          "number": 11,
+          "pos": "DEF",
+          "name": "Nidal Čelik",
+          "age": 19,
+          "club": "Lens",
+          "country": "Francia",
+          "elo": 1610,
+          "titular": false
+        },
+        {
+          "number": 12,
+          "pos": "MED",
+          "name": "Amir Hadžiahmetović",
+          "age": 29,
+          "club": "Hull City",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": 13,
+          "pos": "MED",
+          "name": "Benjamin Tahirović",
+          "age": 23,
+          "club": "Brøndby",
+          "country": "Dinamarca",
+          "elo": 1377,
+          "titular": false
+        },
+        {
+          "number": 14,
+          "pos": "MED",
+          "name": "Armin Gigović",
+          "age": 24,
+          "club": "Young Boys",
+          "country": "Suiza",
+          "elo": 1381,
+          "titular": false
+        },
+        {
+          "number": 15,
+          "pos": "MED",
+          "name": "Dženis Burnić",
+          "age": 28,
+          "club": "Karlsruher SC",
+          "country": "Alemania",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": 16,
+          "pos": "MED",
+          "name": "Ivan Bašić",
+          "age": 24,
+          "club": "Astana",
+          "country": "Kazajistán",
+          "elo": 1339,
+          "titular": false
+        },
+        {
+          "number": 17,
+          "pos": "MED",
+          "name": "Esmir Bajraktarević",
+          "age": 21,
+          "club": "PSV Eindhoven",
+          "country": "Países Bajos",
+          "elo": 1726,
+          "titular": true
+        },
+        {
+          "number": 18,
+          "pos": "MED",
+          "name": "Amar Memić",
+          "age": 25,
+          "club": "Viktoria Plzeň",
+          "country": "Chequia",
+          "elo": 1556,
+          "titular": true
+        },
+        {
+          "number": 19,
+          "pos": "MED",
+          "name": "Ivan Šunjić",
+          "age": 29,
+          "club": "Pafos",
+          "country": "Chipre",
+          "elo": 1471,
+          "titular": true
+        },
+        {
+          "number": 20,
+          "pos": "MED",
+          "name": "Kerim Alajbegović",
+          "age": 18,
+          "club": "RB Salzburg",
+          "country": "Austria",
+          "elo": 1423,
+          "titular": false
+        },
+        {
+          "number": 21,
+          "pos": "MED",
+          "name": "Ermin Mahmić",
+          "age": 21,
+          "club": "Slovan Liberec",
+          "country": "Chequia",
+          "elo": 1318,
+          "titular": false
+        },
+        {
+          "number": 22,
+          "pos": "DEL",
+          "name": "Edin Džeko",
+          "age": 40,
+          "club": "Schalke 04",
+          "country": "Alemania",
+          "elo": null,
+          "titular": true,
+          "captain": true
+        },
+        {
+          "number": 23,
+          "pos": "DEL",
+          "name": "Ermedin Demirović",
+          "age": 28,
+          "club": "VfB Stuttgart",
+          "country": "Alemania",
+          "elo": 1647,
+          "titular": true
+        },
+        {
+          "number": 24,
+          "pos": "DEL",
+          "name": "Samed Baždar",
+          "age": 22,
+          "club": "Jagiellonia",
+          "country": "Polonia",
+          "elo": 1389,
+          "titular": false
+        },
+        {
+          "number": 25,
+          "pos": "DEL",
+          "name": "Haris Tabaković",
+          "age": 31,
+          "club": "B. Mönchengladbach",
+          "country": "Alemania",
+          "elo": 1509,
+          "titular": false
+        },
+        {
+          "number": 26,
+          "pos": "DEL",
+          "name": "Jovo Lukić",
+          "age": 27,
+          "club": "Univ. Cluj",
+          "country": "Rumania",
+          "elo": 1227,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "sui",
+      "name": "Suiza",
+      "group": "B",
+      "dt": "Murat Yakin",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Gregor Kobel",
+          "age": 28,
+          "club": "Borussia Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Yvon Mvogo",
+          "age": 32,
+          "club": "Lorient",
+          "country": "Francia",
+          "elo": 1407,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Marvin Keller",
+          "age": 23,
+          "club": "Young Boys",
+          "country": "Suiza",
+          "elo": 1381,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Manuel Akanji",
+          "age": 30,
+          "club": "Inter de Milán",
+          "country": "Italia",
+          "elo": 1864,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Nico Elvedi",
+          "age": 29,
+          "club": "B. Mönchengladbach",
+          "country": "Alemania",
+          "elo": 1509,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Ricardo Rodriguez",
+          "age": 33,
+          "club": "Real Betis",
+          "country": "España",
+          "elo": 1664,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Silvan Widmer",
+          "age": 33,
+          "club": "Mainz 05",
+          "country": "Alemania",
+          "elo": 1568,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Miro Muheim",
+          "age": 28,
+          "club": "HSV (Hamburgo)",
+          "country": "Alemania",
+          "elo": 1434,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Aurèle Amenda",
+          "age": 22,
+          "club": "Eintracht Frankfurt",
+          "country": "Alemania",
+          "elo": 1545,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Luca Jaquez",
+          "age": 22,
+          "club": "VfB Stuttgart",
+          "country": "Alemania",
+          "elo": 1647,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Eray Cömert",
+          "age": 28,
+          "club": "Valencia",
+          "country": "España",
+          "elo": 1562,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Granit Xhaka",
+          "age": 33,
+          "club": "Sunderland",
+          "country": "Inglaterra",
+          "elo": 1516,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Remo Freuler",
+          "age": 34,
+          "club": "Bologna",
+          "country": "Italia",
+          "elo": 1631,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Denis Zakaria",
+          "age": 29,
+          "club": "Mónaco",
+          "country": "Francia",
+          "elo": 1626,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ardon Jashari",
+          "age": 23,
+          "club": "AC Milan",
+          "country": "Italia",
+          "elo": 1688,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Djibril Sow",
+          "age": 29,
+          "club": "Sevilla",
+          "country": "España",
+          "elo": 1490,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Michel Aebischer",
+          "age": 29,
+          "club": "Pisa",
+          "country": "Italia",
+          "elo": 1159,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Fabian Rieder",
+          "age": 24,
+          "club": "Augsburg",
+          "country": "Alemania",
+          "elo": 1515,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Johan Manzambi",
+          "age": 20,
+          "club": "SC Friburgo",
+          "country": "Alemania",
+          "elo": 1636,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Breel Embolo",
+          "age": 29,
+          "club": "Rennes",
+          "country": "Francia",
+          "elo": 1534,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Dan Ndoye",
+          "age": 25,
+          "club": "Nottingham Forest",
+          "country": "Inglaterra",
+          "elo": 1658,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ruben Vargas",
+          "age": 27,
+          "club": "Sevilla",
+          "country": "España",
+          "elo": 1490,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Noah Okafor",
+          "age": 26,
+          "club": "Leeds United",
+          "country": "Inglaterra",
+          "elo": 1549,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Christian Fassnacht",
+          "age": 32,
+          "club": "Young Boys",
+          "country": "Suiza",
+          "elo": 1381,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Cedric Itten",
+          "age": 29,
+          "club": "Fortuna Düsseldorf",
+          "country": "Alemania",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Zeki Amdouni",
+          "age": 25,
+          "club": "Burnley",
+          "country": "Inglaterra",
+          "elo": 1381,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "bra",
+      "name": "Brasil",
+      "group": "C",
+      "dt": "Carlo Ancelotti",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Alisson",
+          "age": 33,
+          "club": "Liverpool",
+          "country": "Inglaterra",
+          "elo": 1860,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Ederson",
+          "age": 32,
+          "club": "Fenerbahçe",
+          "country": "Turquía",
+          "elo": 1616,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Weverton",
+          "age": 38,
+          "club": "Grêmio",
+          "country": "Brasil",
+          "elo": 1298,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Marquinhos",
+          "age": 32,
+          "club": "PSG",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Gabriel Magalhães",
+          "age": 28,
+          "club": "Arsenal",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Bremer",
+          "age": 29,
+          "club": "Juventus",
+          "country": "Italia",
+          "elo": 1740,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Ibañez",
+          "age": 27,
+          "club": "Al-Ahli",
+          "country": "Arabia S.",
+          "elo": 1561,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Léo Pereira",
+          "age": 30,
+          "club": "Flamengo",
+          "country": "Brasil",
+          "elo": 1530,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Danilo",
+          "age": 34,
+          "club": "Flamengo",
+          "country": "Brasil",
+          "elo": 1530,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Wesley",
+          "age": 22,
+          "club": "Roma",
+          "country": "Italia",
+          "elo": 1717,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Alex Sandro",
+          "age": 35,
+          "club": "Flamengo",
+          "country": "Brasil",
+          "elo": 1530,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Douglas Santos",
+          "age": 32,
+          "club": "Zenit",
+          "country": "Rusia",
+          "elo": 1636,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Casemiro",
+          "age": 34,
+          "club": "Manchester United",
+          "country": "Inglaterra",
+          "elo": 1784,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Bruno Guimarães",
+          "age": 28,
+          "club": "Newcastle",
+          "country": "Inglaterra",
+          "elo": 1731,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Danilo",
+          "age": 25,
+          "club": "Botafogo",
+          "country": "Brasil",
+          "elo": 1426,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Fabinho",
+          "age": 34,
+          "club": "Al-Ittihad",
+          "country": "Arabia S.",
+          "elo": 1057,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Lucas Paquetá",
+          "age": 28,
+          "club": "Flamengo",
+          "country": "Brasil",
+          "elo": 1530,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Neymar",
+          "age": 34,
+          "club": "Santos",
+          "country": "Brasil",
+          "elo": 1255,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Vinicius Júnior",
+          "age": 25,
+          "club": "Real Madrid",
+          "country": "España",
+          "elo": 2012,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Raphinha",
+          "age": 29,
+          "club": "Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Matheus Cunha",
+          "age": 26,
+          "club": "Manchester United",
+          "country": "Inglaterra",
+          "elo": 1784,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Gabriel Martinelli",
+          "age": 24,
+          "club": "Arsenal",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Luiz Henrique",
+          "age": 25,
+          "club": "Zenit",
+          "country": "Rusia",
+          "elo": 1636,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Igor Thiago",
+          "age": 24,
+          "club": "Brentford",
+          "country": "Inglaterra",
+          "elo": 1647,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Endrick",
+          "age": 19,
+          "club": "Lyon",
+          "country": "Francia",
+          "elo": 1636,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Rayan",
+          "age": 19,
+          "club": "Bournemouth",
+          "country": "Inglaterra",
+          "elo": 1684,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "hti",
+      "name": "Haití",
+      "group": "C",
+      "dt": "Sébastien Migné",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Alexandre Pierre",
+          "age": 25,
+          "club": "FC Sochaux",
+          "country": "Francia",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Johny Placide",
+          "age": 38,
+          "club": "SC Bastia",
+          "country": "Francia",
+          "elo": 1065,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Josué Duverger",
+          "age": 26,
+          "club": "Cosmos Koblenz",
+          "country": "Alemania",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Ricardo Adé",
+          "age": 35,
+          "club": "LDU Quito",
+          "country": "Ecuador",
+          "elo": 1363,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Carlens Arcus",
+          "age": 29,
+          "club": "Angers SCO",
+          "country": "Francia",
+          "elo": 1300,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Wilguens Paugain",
+          "age": 24,
+          "club": "SV Zulte Waregem",
+          "country": "Bélgica",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Martin Expérience",
+          "age": 27,
+          "club": "AS Nancy Lorraine",
+          "country": "Francia",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Duke Lacroix",
+          "age": 32,
+          "club": "Colorado Springs",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Hannes Delcroix",
+          "age": 27,
+          "club": "FC Lugano",
+          "country": "Suiza",
+          "elo": 1408,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jean-Kevin Duverne",
+          "age": 28,
+          "club": "KAA Gent",
+          "country": "Bélgica",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Keeto Thermoncy",
+          "age": 20,
+          "club": "Young Boys",
+          "country": "Suiza",
+          "elo": 1381,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jean-Ricner Bellegarde",
+          "age": 27,
+          "club": "Wolverhampton",
+          "country": "Inglaterra",
+          "elo": 1456,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jean-Jacques Danley",
+          "age": 25,
+          "club": "Philadelphia Union",
+          "country": "EE.UU.",
+          "elo": 1247,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Dominique Simon",
+          "age": 23,
+          "club": "FC Tatran Presov",
+          "country": "Eslovaquia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Leverton Pierre",
+          "age": 28,
+          "club": "FC Vizela",
+          "country": "Portugal",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Woodensky Pierre",
+          "age": 21,
+          "club": "Violette AC",
+          "country": "Haití",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Carl Sainté",
+          "age": 23,
+          "club": "El Paso Locomotive",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Wilson Isidor",
+          "age": 25,
+          "club": "Sunderland",
+          "country": "Inglaterra",
+          "elo": 1516,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Derrick Etienne",
+          "age": 29,
+          "club": "Toronto FC",
+          "country": "EE.UU.",
+          "elo": 1103,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Don Deedson Louicius",
+          "age": 25,
+          "club": "FC Dallas",
+          "country": "EE.UU.",
+          "elo": 1181,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ruben Providence",
+          "age": 24,
+          "club": "Almere City FC",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Josué Casimir",
+          "age": 24,
+          "club": "AJ Auxerre",
+          "country": "Francia",
+          "elo": 1363,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Duckens Nazon",
+          "age": 32,
+          "club": "Esteghlal FC",
+          "country": "Irán",
+          "elo": 1303,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Frantzdy Pierrot",
+          "age": 31,
+          "club": "Çaykur Rizespor",
+          "country": "Turquía",
+          "elo": 1213,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Yassin Fortuné",
+          "age": 27,
+          "club": "FC Vizela",
+          "country": "Portugal",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Lenny Joseph",
+          "age": 25,
+          "club": "Ferencváros TC",
+          "country": "Hungría",
+          "elo": 1581,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "sco",
+      "name": "Escocia",
+      "group": "C",
+      "dt": "Steve Clarke",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Craig Gordon",
+          "age": 43,
+          "club": "Heart of Midlothian",
+          "country": "Escocia",
+          "elo": 1405,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Angus Gunn",
+          "age": 30,
+          "club": "Nottingham Forest",
+          "country": "Inglaterra",
+          "elo": 1658,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Liam Kelly",
+          "age": 29,
+          "club": "Rangers",
+          "country": "Escocia",
+          "elo": 1050,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Andy Robertson",
+          "age": 32,
+          "club": "Liverpool",
+          "country": "Inglaterra",
+          "elo": 1860,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Kieran Tierney",
+          "age": 28,
+          "club": "Celtic",
+          "country": "Escocia",
+          "elo": 1595,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Aaron Hickey",
+          "age": 23,
+          "club": "Brentford",
+          "country": "Inglaterra",
+          "elo": 1647,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Nathan Patterson",
+          "age": 24,
+          "club": "Everton",
+          "country": "Inglaterra",
+          "elo": 1611,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Anthony Ralston",
+          "age": 27,
+          "club": "Celtic",
+          "country": "Escocia",
+          "elo": 1595,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Grant Hanley",
+          "age": 34,
+          "club": "Hibernian",
+          "country": "Escocia",
+          "elo": 1310,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "John Souttar",
+          "age": 29,
+          "club": "Rangers",
+          "country": "Escocia",
+          "elo": 1050,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Scott McKenna",
+          "age": 29,
+          "club": "Dinamo Zagreb",
+          "country": "Croacia",
+          "elo": 1584,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jack Hendry",
+          "age": 31,
+          "club": "Al-Ettifaq",
+          "country": "Arabia S.",
+          "elo": 1156,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Dominic Hyam",
+          "age": 30,
+          "club": "Wrexham",
+          "country": "Gales",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Scott McTominay",
+          "age": 29,
+          "club": "Napoli",
+          "country": "Italia",
+          "elo": 1711,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "John McGinn",
+          "age": 31,
+          "club": "Aston Villa",
+          "country": "Inglaterra",
+          "elo": 1861,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Billy Gilmour",
+          "age": 24,
+          "club": "Napoli",
+          "country": "Italia",
+          "elo": 1711,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Kenny McLean",
+          "age": 34,
+          "club": "Norwich City",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Lewis Ferguson",
+          "age": 26,
+          "club": "Bologna",
+          "country": "Italia",
+          "elo": 1631,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ryan Christie",
+          "age": 31,
+          "club": "Bournemouth",
+          "country": "Inglaterra",
+          "elo": 1684,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ben Gannon-Doak",
+          "age": 20,
+          "club": "Bournemouth",
+          "country": "Inglaterra",
+          "elo": 1684,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Findlay Curtis",
+          "age": 19,
+          "club": "Kilmarnock FC",
+          "country": "Escocia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ché Adams",
+          "age": 29,
+          "club": "Torino",
+          "country": "Italia",
+          "elo": 1484,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Lyndon Dykes",
+          "age": 30,
+          "club": "Charlton Athletic",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Lawrence Shankland",
+          "age": 30,
+          "club": "Heart of Midlothian",
+          "country": "Escocia",
+          "elo": 1405,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "George Hirst",
+          "age": 27,
+          "club": "Ipswich Town",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ross Stewart",
+          "age": 29,
+          "club": "Southampton",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "usa",
+      "name": "EE.UU.",
+      "group": "D",
+      "dt": "Mauricio Pochettino",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Matt Freese",
+          "age": 27,
+          "club": "New York City FC",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Matt Turner",
+          "age": 31,
+          "club": "New England Revolution",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Chris Brady",
+          "age": 22,
+          "club": "Chicago Fire",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Sergiño Dest",
+          "age": 25,
+          "club": "PSV Eindhoven",
+          "country": "Países Bajos",
+          "elo": 1726,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Chris Richards",
+          "age": 26,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Tim Ream",
+          "age": 35,
+          "club": "Charlotte FC",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Antonee Robinson",
+          "age": 28,
+          "club": "Fulham",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Alex Freeman",
+          "age": 21,
+          "club": "Villarreal",
+          "country": "España",
+          "elo": 1620,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Auston Trusty",
+          "age": 27,
+          "club": "Celtic",
+          "country": "Escocia",
+          "elo": 1595,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Joe Scally",
+          "age": 23,
+          "club": "B. Mönchengladbach",
+          "country": "Alemania",
+          "elo": 1509,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Mark McKenzie",
+          "age": 27,
+          "club": "Toulouse FC",
+          "country": "Francia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Miles Robinson",
+          "age": 29,
+          "club": "FC Cincinnati",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Max Arfsten",
+          "age": 25,
+          "club": "Columbus Crew",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Malik Tillman",
+          "age": 23,
+          "club": "Bayer Leverkusen",
+          "country": "Alemania",
+          "elo": 1784,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Weston McKennie",
+          "age": 27,
+          "club": "Juventus",
+          "country": "Italia",
+          "elo": 1740,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Tyler Adams",
+          "age": 27,
+          "club": "Bournemouth",
+          "country": "Inglaterra",
+          "elo": 1684,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Tim Weah",
+          "age": 26,
+          "club": "Olympique de Marseille",
+          "country": "Francia",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Sebastian Berhalter",
+          "age": 25,
+          "club": "Vancouver Whitecaps",
+          "country": "Canadá",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Cristian Roldán",
+          "age": 30,
+          "club": "Seattle Sounders",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Christian Pulisic",
+          "age": 27,
+          "club": "AC Milan",
+          "country": "Italia",
+          "elo": 1688,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Folarin Balogun",
+          "age": 24,
+          "club": "AS Monaco",
+          "country": "Francia",
+          "elo": 1626,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ricardo Pepi",
+          "age": 23,
+          "club": "PSV Eindhoven",
+          "country": "Países Bajos",
+          "elo": 1726,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Brenden Aaronson",
+          "age": 25,
+          "club": "Leeds United",
+          "country": "Inglaterra",
+          "elo": 1549,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Giovanny Reyna",
+          "age": 23,
+          "club": "B. Mönchengladbach",
+          "country": "Alemania",
+          "elo": 1509,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Alejandro Zendejas",
+          "age": 28,
+          "club": "Club América",
+          "country": "México",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Haji Wright",
+          "age": 28,
+          "club": "Coventry City",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "civ",
+      "name": "Costa de Marfil",
+      "group": "E",
+      "dt": "Emerse Faé",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Yahia Fofana",
+          "age": 25,
+          "club": "Çaykur Rizespor",
+          "country": "Turquía",
+          "elo": 1213,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Alban Lafont",
+          "age": 27,
+          "club": "Panathinaikos FC",
+          "country": "Grecia",
+          "elo": 1509,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Mohamed Koné",
+          "age": 24,
+          "club": "RSC Charleroi",
+          "country": "Bélgica",
+          "elo": 1336,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Odilon Kossounou",
+          "age": 25,
+          "club": "Atalanta BC",
+          "country": "Italia",
+          "elo": 1676,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Evan Ndicka",
+          "age": 26,
+          "club": "AS Roma",
+          "country": "Italia",
+          "elo": 1717,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Ghislain Konan",
+          "age": 30,
+          "club": "Gil Vicente",
+          "country": "Portugal",
+          "elo": 1282,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Wilfried Singo",
+          "age": 25,
+          "club": "Galatasaray SK",
+          "country": "Turquía",
+          "elo": 1641,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Emmanuel Agbadou",
+          "age": 28,
+          "club": "Beşiktaş JK",
+          "country": "Turquía",
+          "elo": 1407,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Guéla Doué",
+          "age": 23,
+          "club": "RC Strasbourg",
+          "country": "Francia",
+          "elo": 1532,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Ousmane Diomandé",
+          "age": 22,
+          "club": "Sporting CP",
+          "country": "Portugal",
+          "elo": 1804,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Clément Akpa",
+          "age": 24,
+          "club": "AJ Auxerre",
+          "country": "Francia",
+          "elo": 1363,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Franck Kessié",
+          "age": 29,
+          "club": "Al-Ahli Saudi FC",
+          "country": "Arabia S.",
+          "elo": 1400,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jean-Michaël Seri",
+          "age": 34,
+          "club": "NK Maribor",
+          "country": "Eslovenia",
+          "elo": 1357,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ibrahim Sangaré",
+          "age": 28,
+          "club": "Nottingham Forest",
+          "country": "Inglaterra",
+          "elo": 1658,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Seko Fofana",
+          "age": 31,
+          "club": "FC Porto",
+          "country": "Portugal",
+          "elo": 1712,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Christ Inao Oulaï",
+          "age": 20,
+          "club": "Trabzonspor",
+          "country": "Turquía",
+          "elo": 1416,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Parfait Guiagon",
+          "age": 25,
+          "club": "RSC Charleroi",
+          "country": "Bélgica",
+          "elo": 1336,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Nicolas Pépé",
+          "age": 30,
+          "club": "Villarreal CF",
+          "country": "España",
+          "elo": 1620,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Simon Adingra",
+          "age": 24,
+          "club": "AS Monaco",
+          "country": "Francia",
+          "elo": 1626,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Evann Guessand",
+          "age": 24,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Amad Diallo",
+          "age": 23,
+          "club": "Manchester United",
+          "country": "Inglaterra",
+          "elo": 1784,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Bazoumana Touré",
+          "age": 20,
+          "club": "TSG Hoffenheim",
+          "country": "Alemania",
+          "elo": 1587,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Elye Wahi",
+          "age": 23,
+          "club": "OGC Nice",
+          "country": "Francia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Yan Diomandé",
+          "age": 19,
+          "club": "RB Leipzig",
+          "country": "Alemania",
+          "elo": 1686,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ange-Yoan Bonny",
+          "age": 22,
+          "club": "Inter de Milán",
+          "country": "Italia",
+          "elo": 1864,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Oumar Diakité",
+          "age": 22,
+          "club": "Cercle Brugge",
+          "country": "Bélgica",
+          "elo": null,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "cuw",
+      "name": "Curazao",
+      "group": "E",
+      "dt": "Dick Advocaat",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Eloy Room",
+          "age": 37,
+          "club": "Miami FC",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Tyrick Bodak",
+          "age": 23,
+          "club": "SC Telstar",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Trevor Doornbusch",
+          "age": 27,
+          "club": "VVV-Venlo",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Armando Obispo",
+          "age": 27,
+          "club": "PSV Eindhoven",
+          "country": "Países Bajos",
+          "elo": 1726,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Joshua Brenet",
+          "age": 32,
+          "club": "Kayserispor",
+          "country": "Turquía",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Riechedly Bazoer",
+          "age": 29,
+          "club": "Konyaspor",
+          "country": "Turquía",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Sherel Floranus",
+          "age": 27,
+          "club": "PEC Zwolle",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Shurandy Sambo",
+          "age": 23,
+          "club": "Sparta Rotterdam",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Deveron Fonville",
+          "age": 25,
+          "club": "NEC Nijmegen",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Roshon van Eijma",
+          "age": 26,
+          "club": "RKC Waalwijk",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jurien Gaari",
+          "age": 32,
+          "club": "Abha Club",
+          "country": "Arabia Saudita",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Leandro Bacuna",
+          "age": 34,
+          "club": "Idgir FK",
+          "country": "Azerbaiyán",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Juninho Bacuna",
+          "age": 28,
+          "club": "FC Volendam",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Livano Comenencia",
+          "age": 22,
+          "club": "FC Zürich",
+          "country": "Suiza",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Tahith Chong",
+          "age": 26,
+          "club": "Sheffield United",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ar'jany Martha",
+          "age": 22,
+          "club": "Rotherham United",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Tyrese Noslin",
+          "age": 23,
+          "club": "SC Telstar",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Kevin Felida",
+          "age": 26,
+          "club": "FC Den Bosch",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Godfried Roemeratore",
+          "age": 26,
+          "club": "RKC Waalwijk",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Sontje Hansen",
+          "age": 23,
+          "club": "Middlesbrough FC",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Gervane Kastaneer",
+          "age": 29,
+          "club": "Terengganu FC",
+          "country": "Malasia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Kenji Gorré",
+          "age": 31,
+          "club": "Maccabi Haifa",
+          "country": "Israel",
+          "elo": 1428,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jürgen Locadia",
+          "age": 32,
+          "club": "Miami FC",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jeremy Antonisse",
+          "age": 24,
+          "club": "AE Kifisia",
+          "country": "Grecia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jearl Margaritha",
+          "age": 27,
+          "club": "SK Beveren",
+          "country": "Bélgica",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Bradley Kuwas",
+          "age": 33,
+          "club": "FC Volendam",
+          "country": "Países Bajos",
+          "elo": null,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "ger",
+      "name": "Alemania",
+      "group": "E",
+      "dt": "Julian Nagelsmann",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Manuel Neuer",
+          "age": 40,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Oliver Baumann",
+          "age": 35,
+          "club": "Hoffenheim",
+          "country": "Alemania",
+          "elo": 1587,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Alexander Nübel",
+          "age": 29,
+          "club": "Stuttgart",
+          "country": "Alemania",
+          "elo": 1647,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Antonio Rüdiger",
+          "age": 32,
+          "club": "Real Madrid",
+          "country": "España",
+          "elo": 2012,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jonathan Tah",
+          "age": 30,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Nico Schlotterbeck",
+          "age": 26,
+          "club": "Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Waldemar Anton",
+          "age": 29,
+          "club": "Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "David Raum",
+          "age": 28,
+          "club": "Leipzig",
+          "country": "Alemania",
+          "elo": 1686,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Joshua Kimmich",
+          "age": 31,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Malick Thiaw",
+          "age": 24,
+          "club": "Newcastle United",
+          "country": "Inglaterra",
+          "elo": 1731,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Brown",
+          "age": 24,
+          "club": "Eintracht Frankfurt",
+          "country": "Alemania",
+          "elo": 1545,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Leon Goretzka",
+          "age": 31,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Aleksandar Pavlović",
+          "age": 21,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Angelo Stiller",
+          "age": 25,
+          "club": "Stuttgart",
+          "country": "Alemania",
+          "elo": 1647,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Pascal Groß",
+          "age": 34,
+          "club": "Brighton & Hove Albion",
+          "country": "Inglaterra",
+          "elo": 1680,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Felix Nmecha",
+          "age": 25,
+          "club": "Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Florian Wirtz",
+          "age": 23,
+          "club": "Liverpool",
+          "country": "Inglaterra",
+          "elo": 1860,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jamal Musiala",
+          "age": 23,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Leroy Sané",
+          "age": 30,
+          "club": "Galatasaray SK",
+          "country": "Turquía",
+          "elo": 1641,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Tom Leweling",
+          "age": 26,
+          "club": "Stuttgart",
+          "country": "Alemania",
+          "elo": 1647,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Karl",
+          "age": 23,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Nadiem Amiri",
+          "age": 29,
+          "club": "Mainz 05",
+          "country": "Alemania",
+          "elo": 1568,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Kai Havertz",
+          "age": 27,
+          "club": "Arsenal",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Niclas Woltemade",
+          "age": 23,
+          "club": "Newcastle United",
+          "country": "Inglaterra",
+          "elo": 1731,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Deniz Undav",
+          "age": 29,
+          "club": "Stuttgart",
+          "country": "Alemania",
+          "elo": 1647,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Maximilian Beier",
+          "age": 24,
+          "club": "Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": false
+        }
+      ]
+    },
+    {
       "id": "jpn",
       "name": "Japón",
       "flag": "assets/flags/jpn.svg",
@@ -837,6 +2989,3503 @@
           "club": "SC Freiburg",
           "country": "Alemania",
           "elo": 1636,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "swe",
+      "name": "Suecia",
+      "group": "F",
+      "dt": "Graham Potter",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Viktor Johansson",
+          "age": 27,
+          "club": "Stoke City",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Kristoffer Nordfeldt",
+          "age": 36,
+          "club": "AIK",
+          "country": "Suecia",
+          "elo": 1337,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Jacob Widell Zetterström",
+          "age": 27,
+          "club": "Derby County",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Victor Lindelöf",
+          "age": 31,
+          "club": "Aston Villa",
+          "country": "Inglaterra",
+          "elo": 1861,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Isak Hien",
+          "age": 27,
+          "club": "Atalanta",
+          "country": "Italia",
+          "elo": 1676,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Carl Starfelt",
+          "age": 30,
+          "club": "Celta de Vigo",
+          "country": "España",
+          "elo": 1602,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Gustaf Lagerbielke",
+          "age": 26,
+          "club": "SC Braga",
+          "country": "Portugal",
+          "elo": 1606,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Hjalmar Ekdal",
+          "age": 27,
+          "club": "Burnley",
+          "country": "Inglaterra",
+          "elo": 1381,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Gabriel Gudmundsson",
+          "age": 27,
+          "club": "Leeds United",
+          "country": "Inglaterra",
+          "elo": 1549,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Daniel Svensson",
+          "age": 24,
+          "club": "Borussia Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Emil Holm",
+          "age": 25,
+          "club": "Bologna",
+          "country": "Italia",
+          "elo": 1631,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Eric Smith",
+          "age": 29,
+          "club": "FC St. Pauli",
+          "country": "Alemania",
+          "elo": 1321,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Elliot Stroud",
+          "age": 23,
+          "club": "Mjällby AIF",
+          "country": "Suecia",
+          "elo": 1413,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jesper Karlström",
+          "age": 30,
+          "club": "Udinese",
+          "country": "Italia",
+          "elo": 1483,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Yasin Ayari",
+          "age": 22,
+          "club": "Brighton",
+          "country": "Inglaterra",
+          "elo": 1680,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Lucas Bergvall",
+          "age": 20,
+          "club": "Tottenham",
+          "country": "Inglaterra",
+          "elo": 1686,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Mattias Svanberg",
+          "age": 27,
+          "club": "Wolfsburg",
+          "country": "Alemania",
+          "elo": 1448,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ken Sema",
+          "age": 32,
+          "club": "Pafos FC",
+          "country": "Chipre",
+          "elo": 1471,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Besfort Zeneli",
+          "age": 23,
+          "club": "Union Saint-Gilloise",
+          "country": "Bélgica",
+          "elo": 1666,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Taha Ali",
+          "age": 27,
+          "club": "Malmö FF",
+          "country": "Suecia",
+          "elo": 1355,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Alexander Bernhardsson",
+          "age": 27,
+          "club": "Holstein Kiel",
+          "country": "Alemania",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Viktor Gyökeres",
+          "age": 27,
+          "club": "Arsenal",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Alexander Isak",
+          "age": 26,
+          "club": "Liverpool",
+          "country": "Inglaterra",
+          "elo": 1860,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Anthony Elanga",
+          "age": 24,
+          "club": "Newcastle United",
+          "country": "Inglaterra",
+          "elo": 1731,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Benjamin Nygren",
+          "age": 24,
+          "club": "Celtic",
+          "country": "Escocia",
+          "elo": 1595,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Gustaf Nilsson",
+          "age": 28,
+          "club": "Club Brujas",
+          "country": "Bélgica",
+          "elo": 1697,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "tun",
+      "name": "Túnez",
+      "group": "F",
+      "dt": "Sabri Lamouchi",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Aymen Dahmen",
+          "age": 29,
+          "club": "CS Sfaxien",
+          "country": "Túnez",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Sabri Ben Hessen",
+          "age": 29,
+          "club": "Étoile du Sahel",
+          "country": "Túnez",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Mouhib Chamakh",
+          "age": 24,
+          "club": "Club Africain",
+          "country": "Túnez",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Ali Abdi",
+          "age": 32,
+          "club": "OGC Nice",
+          "country": "Francia",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Montassar Talbi",
+          "age": 27,
+          "club": "FC Lorient",
+          "country": "Francia",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Dylan Bronn",
+          "age": 30,
+          "club": "Servette FC",
+          "country": "Suiza",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Mohamed A. Ben Hamida",
+          "age": 30,
+          "club": "Espérance Tunis",
+          "country": "Túnez",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Omar Rekik",
+          "age": 24,
+          "club": "NK Maribor",
+          "country": "Eslovenia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Adem Arous",
+          "age": 21,
+          "club": "Kasımpaşa SK",
+          "country": "Turquía",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Moutaz Neffati",
+          "age": 21,
+          "club": "IFK Norrköping",
+          "country": "Suecia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Raed Chikhaoui",
+          "age": 21,
+          "club": "US Monastir",
+          "country": "Túnez",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Yan Valery",
+          "age": 27,
+          "club": "BSC Young Boys",
+          "country": "Suiza",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ellyes Skhiri",
+          "age": 31,
+          "club": "Eintracht Frankfurt",
+          "country": "Alemania",
+          "elo": 1545,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Rani Khedira",
+          "age": 32,
+          "club": "1. FC Union Berlin",
+          "country": "Alemania",
+          "elo": 1499,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Hannibal Mejbri",
+          "age": 23,
+          "club": "Burnley FC",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Anis Ben Slimane",
+          "age": 25,
+          "club": "Norwich City",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Mohamed Mahmoud",
+          "age": 26,
+          "club": "FC Lugano",
+          "country": "Suiza",
+          "elo": 1408,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Elias Saad",
+          "age": 26,
+          "club": "Hannover 96",
+          "country": "Alemania",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ismaël Gharbi",
+          "age": 22,
+          "club": "FC Augsburg",
+          "country": "Alemania",
+          "elo": 1515,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Khalil Ayari",
+          "age": 21,
+          "club": "Paris Saint-Germain",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Mortadha Ben Ouanes",
+          "age": 31,
+          "club": "Kasımpaşa SK",
+          "country": "Turquía",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Firas Chaouat",
+          "age": 30,
+          "club": "Club Africain",
+          "country": "Túnez",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Hazem Mastouri",
+          "age": 28,
+          "club": "Dynamo Makhachkala",
+          "country": "Rusia",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Sebastian Tounekti",
+          "age": 23,
+          "club": "Celtic FC",
+          "country": "Escocia",
+          "elo": 1595,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ellias Achouri",
+          "age": 27,
+          "club": "FC Copenhague",
+          "country": "Dinamarca",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Rayan Elloumi",
+          "age": 18,
+          "club": "Vancouver Whitecaps",
+          "country": "Canadá",
+          "elo": null,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "bel",
+      "name": "Bélgica",
+      "group": "G",
+      "dt": "Rudi García",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Thibaut Courtois",
+          "age": 34,
+          "club": "Real Madrid",
+          "country": "España",
+          "elo": 2012,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Senne Lammens",
+          "age": 23,
+          "club": "Manchester United",
+          "country": "Inglaterra",
+          "elo": 1784,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Mike Penders",
+          "age": 20,
+          "club": "Strasbourg",
+          "country": "Francia",
+          "elo": 1532,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Timothy Castagne",
+          "age": 30,
+          "club": "Fulham",
+          "country": "Inglaterra",
+          "elo": 1618,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Zeno Debast",
+          "age": 22,
+          "club": "Sporting de Lisboa",
+          "country": "Portugal",
+          "elo": 1804,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Maxim De Cuyper",
+          "age": 25,
+          "club": "Brighton",
+          "country": "Inglaterra",
+          "elo": 1680,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Koni De Winter",
+          "age": 23,
+          "club": "AC Milan",
+          "country": "Italia",
+          "elo": 1688,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Brandon Mechele",
+          "age": 32,
+          "club": "Club Brujas",
+          "country": "Bélgica",
+          "elo": 1697,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Thomas Meunier",
+          "age": 34,
+          "club": "Lille",
+          "country": "Francia",
+          "elo": 1624,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Diego Moreira",
+          "age": 21,
+          "club": "Strasbourg",
+          "country": "Francia",
+          "elo": 1532,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Nathan Ngoy",
+          "age": 22,
+          "club": "Lille",
+          "country": "Francia",
+          "elo": 1624,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Joaquin Seys",
+          "age": 21,
+          "club": "Club Brujas",
+          "country": "Bélgica",
+          "elo": 1697,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Arthur Theate",
+          "age": 25,
+          "club": "Eintracht Frankfurt",
+          "country": "Alemania",
+          "elo": 1545,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Kevin De Bruyne",
+          "age": 34,
+          "club": "Napoli",
+          "country": "Italia",
+          "elo": 1711,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Amadou Onana",
+          "age": 24,
+          "club": "Aston Villa",
+          "country": "Inglaterra",
+          "elo": 1861,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Nicolas Raskin",
+          "age": 25,
+          "club": "Rangers",
+          "country": "Escocia",
+          "elo": 1050,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Youri Tielemans",
+          "age": 28,
+          "club": "Aston Villa",
+          "country": "Inglaterra",
+          "elo": 1861,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Hans Vanaken",
+          "age": 33,
+          "club": "Club Brujas",
+          "country": "Bélgica",
+          "elo": 1697,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Axel Witsel",
+          "age": 37,
+          "club": "Girona",
+          "country": "España",
+          "elo": 1441,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Charles De Ketelaere",
+          "age": 25,
+          "club": "Atalanta",
+          "country": "Italia",
+          "elo": 1676,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jérémy Doku",
+          "age": 24,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Matias Fernández-Pardo",
+          "age": 21,
+          "club": "Lille",
+          "country": "Francia",
+          "elo": 1624,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Romelu Lukaku",
+          "age": 33,
+          "club": "Napoli",
+          "country": "Italia",
+          "elo": 1711,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Dodi Lukebakio",
+          "age": 28,
+          "club": "Benfica",
+          "country": "Portugal",
+          "elo": 1729,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Alexis Saelemaekers",
+          "age": 26,
+          "club": "AC Milan",
+          "country": "Italia",
+          "elo": 1688,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Leandro Trossard",
+          "age": 31,
+          "club": "Arsenal",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": true
+        }
+      ]
+    },
+    {
+      "id": "nzl",
+      "name": "Nueva Zelanda",
+      "group": "G",
+      "dt": "Darren Bazeley",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Max Crocombe",
+          "age": 32,
+          "club": "Millwall FC",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Alex Paulsen",
+          "age": 23,
+          "club": "Lechia Gdansk",
+          "country": "Polonia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Michael Woud",
+          "age": 27,
+          "club": "Auckland FC",
+          "country": "N. Zelanda",
+          "elo": 1110,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Tyler Bindon",
+          "age": 21,
+          "club": "Sheffield United",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Michael Boxall",
+          "age": 37,
+          "club": "Minnesota United",
+          "country": "EE.UU.",
+          "elo": 1211,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Liberato Cacace",
+          "age": 25,
+          "club": "Wrexham",
+          "country": "Gales",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Francis de Vries",
+          "age": 31,
+          "club": "Auckland FC",
+          "country": "N. Zelanda",
+          "elo": 1110,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Callan Elliot",
+          "age": 26,
+          "club": "Auckland FC",
+          "country": "N. Zelanda",
+          "elo": 1110,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Tim Payne",
+          "age": 32,
+          "club": "Wellington Phoenix",
+          "country": "N. Zelanda",
+          "elo": 1063,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Nando Pijnaker",
+          "age": 27,
+          "club": "Portland Timbers",
+          "country": "EE.UU.",
+          "elo": 1201,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Tommy Smith",
+          "age": 36,
+          "club": "Exeter City",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Finn Surman",
+          "age": 22,
+          "club": "Portland Timbers",
+          "country": "EE.UU.",
+          "elo": 1201,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Lachlan Bayliss",
+          "age": 23,
+          "club": "Newcastle Jets",
+          "country": "N. Zelanda",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Joe Bell",
+          "age": 27,
+          "club": "Viking FK",
+          "country": "Noruega",
+          "elo": 1518,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Matt Garbett",
+          "age": 24,
+          "club": "Peterborough United",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ben Old",
+          "age": 23,
+          "club": "Saint-Etienne",
+          "country": "Francia",
+          "elo": 1217,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Alex Rufer",
+          "age": 29,
+          "club": "Wellington Phoenix",
+          "country": "N. Zelanda",
+          "elo": 1063,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Sarpreet Singh",
+          "age": 27,
+          "club": "Wellington Phoenix",
+          "country": "N. Zelanda",
+          "elo": 1063,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Marko Stamenic",
+          "age": 24,
+          "club": "Swansea City",
+          "country": "Gales",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ryan Thomas",
+          "age": 31,
+          "club": "PEC Zwolle",
+          "country": "Países Bajos",
+          "elo": 1225,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Kosta Barbarouses",
+          "age": 36,
+          "club": "W. Sydney Wanderers",
+          "country": "Australia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Elijah Just",
+          "age": 26,
+          "club": "Motherwell AFC",
+          "country": "Escocia",
+          "elo": 1275,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Callum McCowatt",
+          "age": 27,
+          "club": "Silkeborg IF",
+          "country": "Dinamarca",
+          "elo": 1267,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jesse Randall",
+          "age": 23,
+          "club": "Auckland FC",
+          "country": "N. Zelanda",
+          "elo": 1110,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ben Waine",
+          "age": 24,
+          "club": "Port Vale FC",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Chris Wood",
+          "age": 34,
+          "club": "Nottingham Forest",
+          "country": "Inglaterra",
+          "elo": 1658,
+          "titular": true
+        }
+      ]
+    },
+    {
+      "id": "cpv",
+      "name": "Cabo Verde",
+      "group": "H",
+      "dt": "Pedro \"Bubista\" Brito",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Vozinha",
+          "age": 38,
+          "club": "GD Chaves",
+          "country": "Portugal",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "C.J. dos Santos",
+          "age": 25,
+          "club": "San Diego FC",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Márcio Rosa",
+          "age": 29,
+          "club": "PFC Montana",
+          "country": "Bulgaria",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Roberto Lopes",
+          "age": 33,
+          "club": "Shamrock Rovers",
+          "country": "Irlanda",
+          "elo": 1408,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Logan Costa",
+          "age": 25,
+          "club": "Villarreal",
+          "country": "España",
+          "elo": 1620,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Joao Paulo",
+          "age": 28,
+          "club": "FCSB",
+          "country": "Rumania",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Diney Borges",
+          "age": 31,
+          "club": "Al-Bataeh SCC",
+          "country": "EAU",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Stopira",
+          "age": 38,
+          "club": "SCU Torreense",
+          "country": "Portugal",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Steven Moreira",
+          "age": 31,
+          "club": "Columbus Crew",
+          "country": "EE.UU.",
+          "elo": 1323,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Wagner Pina",
+          "age": 23,
+          "club": "Trabzonspor",
+          "country": "Turquía",
+          "elo": 1416,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Sidny Lopes Cabral",
+          "age": 22,
+          "club": "SL Benfica",
+          "country": "Portugal",
+          "elo": 1729,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Kelvin Pires",
+          "age": 26,
+          "club": "SJK",
+          "country": "Finlandia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Kevin Pina Lenini",
+          "age": 29,
+          "club": "FK Krasnodar",
+          "country": "Rusia",
+          "elo": 1580,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jamiro Monteiro",
+          "age": 32,
+          "club": "PEC Zwolle",
+          "country": "Países Bajos",
+          "elo": 1225,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Deroy Duarte",
+          "age": 26,
+          "club": "PFC Ludogorets",
+          "country": "Bulgaria",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Laros Duarte",
+          "age": 29,
+          "club": "Puskás Akadémia",
+          "country": "Hungría",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Telmo Arcanjo",
+          "age": 24,
+          "club": "Vitória Guimarães",
+          "country": "Portugal",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Yannick Semedo",
+          "age": 30,
+          "club": "Farense SC",
+          "country": "Portugal",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ryan Mendes",
+          "age": 36,
+          "club": "Igdir FK",
+          "country": "Turquía",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Garry Rodrigues",
+          "age": 35,
+          "club": "Apollon Limassol",
+          "country": "Chipre",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Willy Semedo",
+          "age": 32,
+          "club": "Omonoia Nicosia",
+          "country": "Chipre",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jovane Cabral",
+          "age": 27,
+          "club": "Estrela Amadora",
+          "country": "Portugal",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Benchimol",
+          "age": 24,
+          "club": "Akron Tolyatti",
+          "country": "Rusia",
+          "elo": 1202,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Hélio Varela",
+          "age": 24,
+          "club": "Maccabi Tel Aviv",
+          "country": "Israel",
+          "elo": 1418,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Nuno da Costa",
+          "age": 35,
+          "club": "İstanbul Başakşehir",
+          "country": "Turquía",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Dailon Livramento",
+          "age": 25,
+          "club": "Casa Pia AC",
+          "country": "Portugal",
+          "elo": null,
+          "titular": true
+        }
+      ]
+    },
+    {
+      "id": "esp",
+      "name": "España",
+      "group": "H",
+      "dt": "Luis de la Fuente",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Unai Simón",
+          "age": 28,
+          "club": "Athletic Club",
+          "country": "España",
+          "elo": 1599,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "David Raya",
+          "age": 30,
+          "club": "Arsenal FC",
+          "country": "Inglaterra",
+          "elo": 1947,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Joan García",
+          "age": 25,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Aymeric Laporte",
+          "age": 31,
+          "club": "Athletic Club",
+          "country": "España",
+          "elo": 1599,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Pau Cubarsí",
+          "age": 19,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Marc Pubill",
+          "age": 22,
+          "club": "Atlético Madrid",
+          "country": "España",
+          "elo": 1832,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Eric García",
+          "age": 25,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Pedro Porro",
+          "age": 26,
+          "club": "Tottenham Hotspur",
+          "country": "Inglaterra",
+          "elo": 1686,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Marcos Llorente",
+          "age": 31,
+          "club": "Atlético Madrid",
+          "country": "España",
+          "elo": 1832,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Marc Cucurella",
+          "age": 27,
+          "club": "Chelsea FC",
+          "country": "Inglaterra",
+          "elo": 1740,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Alejandro Grimaldo",
+          "age": 30,
+          "club": "Bayer 04 Leverkusen",
+          "country": "Alemania",
+          "elo": 1784,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Rodri",
+          "age": 29,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Martín Zubimendi",
+          "age": 27,
+          "club": "Arsenal FC",
+          "country": "Inglaterra",
+          "elo": 1947,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Gavi",
+          "age": 21,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Pedri",
+          "age": 23,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Fabián Ruiz",
+          "age": 30,
+          "club": "Paris Saint-Germain",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Mikel Merino",
+          "age": 29,
+          "club": "Arsenal FC",
+          "country": "Inglaterra",
+          "elo": 1947,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Dani Olmo",
+          "age": 28,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Lamine Yamal",
+          "age": 18,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Álex Baena",
+          "age": 24,
+          "club": "Atlético Madrid",
+          "country": "España",
+          "elo": 1832,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Nico Williams",
+          "age": 23,
+          "club": "Athletic Club",
+          "country": "España",
+          "elo": 1599,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Víctor Muñoz",
+          "age": 22,
+          "club": "CA Osasuna",
+          "country": "España",
+          "elo": 1516,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ferrán Torres",
+          "age": 26,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Mikel Oyarzabal",
+          "age": 29,
+          "club": "Real Sociedad",
+          "country": "España",
+          "elo": 1568,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Yéremy Pino",
+          "age": 23,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Borja Iglesias",
+          "age": 33,
+          "club": "RC Celta",
+          "country": "España",
+          "elo": 1602,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "fra",
+      "name": "Francia",
+      "group": "I",
+      "dt": "Didier Deschamps",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Mike Maignan",
+          "age": 30,
+          "club": "AC Milan",
+          "country": "Italia",
+          "elo": 1688,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Robin Risser",
+          "age": 21,
+          "club": "Lens",
+          "country": "Francia",
+          "elo": 1610,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Brice Samba",
+          "age": 32,
+          "club": "Rennes",
+          "country": "Francia",
+          "elo": 1534,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jules Koundé",
+          "age": 27,
+          "club": "Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "William Saliba",
+          "age": 25,
+          "club": "Arsenal",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Ibrahima Konaté",
+          "age": 26,
+          "club": "Liverpool",
+          "country": "Inglaterra",
+          "elo": 1860,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Dayot Upamecano",
+          "age": 27,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Maxence Lacroix",
+          "age": 26,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Lucas Hernández",
+          "age": 30,
+          "club": "PSG",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Théo Hernández",
+          "age": 28,
+          "club": "Al-Hilal",
+          "country": "Arabia S.",
+          "elo": 1629,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Malo Gusto",
+          "age": 23,
+          "club": "Chelsea",
+          "country": "Inglaterra",
+          "elo": 1740,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Lucas Digne",
+          "age": 32,
+          "club": "Aston Villa",
+          "country": "Inglaterra",
+          "elo": 1861,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Aurélien Tchouaméni",
+          "age": 26,
+          "club": "Real Madrid",
+          "country": "España",
+          "elo": 2012,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "N'Golo Kanté",
+          "age": 35,
+          "club": "Fenerbahçe",
+          "country": "Turquía",
+          "elo": 1616,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Adrien Rabiot",
+          "age": 31,
+          "club": "AC Milan",
+          "country": "Italia",
+          "elo": 1688,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Manu Koné",
+          "age": 25,
+          "club": "AS Roma",
+          "country": "Italia",
+          "elo": 1717,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Warren Zaïre-Emery",
+          "age": 20,
+          "club": "PSG",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Kylian Mbappé",
+          "age": 27,
+          "club": "Real Madrid",
+          "country": "España",
+          "elo": 2012,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ousmane Dembélé",
+          "age": 28,
+          "club": "PSG",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Marcus Thuram",
+          "age": 28,
+          "club": "Inter Milan",
+          "country": "Italia",
+          "elo": 1864,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Michael Olise",
+          "age": 24,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Bradley Barcola",
+          "age": 23,
+          "club": "PSG",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Rayan Cherki",
+          "age": 22,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Désiré Doué",
+          "age": 20,
+          "club": "PSG",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Maghnes Akliouche",
+          "age": 24,
+          "club": "Monaco",
+          "country": "Francia",
+          "elo": 1626,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jean-Philippe Mateta",
+          "age": 28,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "nor",
+      "name": "Noruega",
+      "group": "I",
+      "dt": "Ståle Solbakken",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Ørjan Nyland",
+          "age": 35,
+          "club": "Sevilla FC",
+          "country": "España",
+          "elo": 1490,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Mathias Selvik",
+          "age": 26,
+          "club": "Watford FC",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Sondre Tangvik",
+          "age": 24,
+          "club": "Hamburger SV",
+          "country": "Alemania",
+          "elo": 1434,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Kristoffer Ajer",
+          "age": 27,
+          "club": "Brentford FC",
+          "country": "Inglaterra",
+          "elo": 1647,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Leo Østigård",
+          "age": 26,
+          "club": "Genoa CFC",
+          "country": "Italia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Isak Heggem",
+          "age": 24,
+          "club": "Bologna FC",
+          "country": "Italia",
+          "elo": 1631,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jonas Langås",
+          "age": 23,
+          "club": "Derby County",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Stian Falchener",
+          "age": 24,
+          "club": "Viking FK",
+          "country": "Noruega",
+          "elo": 1518,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Julian Ryerson",
+          "age": 28,
+          "club": "Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jonas Holmgren Pedersen",
+          "age": 25,
+          "club": "Torino FC",
+          "country": "Italia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Håkon Møller Wolfe",
+          "age": 26,
+          "club": "Wolverhampton",
+          "country": "Inglaterra",
+          "elo": 1456,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Fredrik Bjørkan",
+          "age": 27,
+          "club": "Bodø/Glimt",
+          "country": "Noruega",
+          "elo": 1692,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Sander Berge",
+          "age": 28,
+          "club": "Fulham FC",
+          "country": "Inglaterra",
+          "elo": 1618,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Berg",
+          "age": 25,
+          "club": "Bodø/Glimt",
+          "country": "Noruega",
+          "elo": 1692,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Fredrik Aursnes",
+          "age": 30,
+          "club": "SL Benfica",
+          "country": "Portugal",
+          "elo": 1729,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Martin Ødegaard",
+          "age": 27,
+          "club": "Arsenal",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Kristian Thorstvedt",
+          "age": 26,
+          "club": "Sassuolo",
+          "country": "Italia",
+          "elo": 1458,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Morten Thorsby",
+          "age": 29,
+          "club": "Cremonese",
+          "country": "Italia",
+          "elo": 1286,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Tobias Aasgaard",
+          "age": 23,
+          "club": "Rangers FC",
+          "country": "Escocia",
+          "elo": 1476,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Alexander Sørloth",
+          "age": 30,
+          "club": "Atlético Madrid",
+          "country": "España",
+          "elo": 1832,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Erling Haaland",
+          "age": 25,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Andreas Schjelderup",
+          "age": 22,
+          "club": "SL Benfica",
+          "country": "Portugal",
+          "elo": 1729,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Antonio Nusa",
+          "age": 23,
+          "club": "RB Leipzig",
+          "country": "Alemania",
+          "elo": 1686,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Oscar Bobb",
+          "age": 23,
+          "club": "Fulham FC",
+          "country": "Inglaterra",
+          "elo": 1618,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jens Petter Hauge",
+          "age": 26,
+          "club": "Bodø/Glimt",
+          "country": "Noruega",
+          "elo": 1692,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jørgen Strand Larsen",
+          "age": 26,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "aut",
+      "name": "Austria",
+      "group": "J",
+      "dt": "Ralf Rangnick",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Alexander Schlager",
+          "age": 30,
+          "club": "RB Salzburg",
+          "country": "Austria",
+          "elo": 1410,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Patrick Pentz",
+          "age": 29,
+          "club": "Brøndby IF",
+          "country": "Dinamarca",
+          "elo": 1377,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Florian Wiegele",
+          "age": 25,
+          "club": "Viktoria Plzen",
+          "country": "Chequia",
+          "elo": 1556,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "David Alaba",
+          "age": 33,
+          "club": "Real Madrid CF",
+          "country": "España",
+          "elo": 2012,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Kevin Danso",
+          "age": 27,
+          "club": "Tottenham Hotspur",
+          "country": "Inglaterra",
+          "elo": 1686,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Stefan Posch",
+          "age": 29,
+          "club": "Mainz 05",
+          "country": "Alemania",
+          "elo": 1568,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Philipp Lienhart",
+          "age": 29,
+          "club": "SC Freiburg",
+          "country": "Alemania",
+          "elo": 1636,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Philipp Mwene",
+          "age": 32,
+          "club": "Mainz 05",
+          "country": "Alemania",
+          "elo": 1568,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Alexander Prass",
+          "age": 24,
+          "club": "Hoffenheim",
+          "country": "Alemania",
+          "elo": 1587,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Marco Friedl",
+          "age": 28,
+          "club": "Werder Bremen",
+          "country": "Alemania",
+          "elo": 1477,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Michael Svoboda",
+          "age": 27,
+          "club": "Venezia FC",
+          "country": "Italia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "David Affengruber",
+          "age": 25,
+          "club": "Elche CF",
+          "country": "España",
+          "elo": 1429,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Xaver Schlager",
+          "age": 28,
+          "club": "RB Leipzig",
+          "country": "Alemania",
+          "elo": 1686,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Nicolas Seiwald",
+          "age": 25,
+          "club": "RB Leipzig",
+          "country": "Alemania",
+          "elo": 1686,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Marcel Sabitzer",
+          "age": 32,
+          "club": "Borussia Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Florian Grillitsch",
+          "age": 30,
+          "club": "SC Braga",
+          "country": "Portugal",
+          "elo": 1606,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Carney Chukwuemeka",
+          "age": 22,
+          "club": "Borussia Dortmund",
+          "country": "Alemania",
+          "elo": 1808,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Romano Schmid",
+          "age": 26,
+          "club": "Werder Bremen",
+          "country": "Alemania",
+          "elo": 1477,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Christoph Baumgartner",
+          "age": 26,
+          "club": "RB Leipzig",
+          "country": "Alemania",
+          "elo": 1686,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Konrad Laimer",
+          "age": 28,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Patrick Wimmer",
+          "age": 24,
+          "club": "Wolfsburg",
+          "country": "Alemania",
+          "elo": 1448,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Paul Wanner",
+          "age": 20,
+          "club": "PSV Eindhoven",
+          "country": "Países Bajos",
+          "elo": 1726,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Alessandro Schöpf",
+          "age": 32,
+          "club": "Wolfsberger AC",
+          "country": "Austria",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Marko Arnautovic",
+          "age": 37,
+          "club": "Crvena Zvezda",
+          "country": "Serbia",
+          "elo": 1604,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Michael Gregoritsch",
+          "age": 32,
+          "club": "FC Augsburg",
+          "country": "Alemania",
+          "elo": 1515,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Sasa Kalajdzic",
+          "age": 28,
+          "club": "LASK Linz",
+          "country": "Austria",
+          "elo": null,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "cod",
+      "name": "RD Congo",
+      "group": "K",
+      "dt": "Sébastien Desabre",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Lionel Mpasi",
+          "age": 31,
+          "club": "AC Le Havre",
+          "country": "Francia",
+          "elo": 1314,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Timothy Fayulu",
+          "age": 26,
+          "club": "FC Noah",
+          "country": "Armenia",
+          "elo": 1343,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Mattieu Epolo",
+          "age": 21,
+          "club": "Standard Lieja",
+          "country": "Bélgica",
+          "elo": 1318,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Chancel Mbemba",
+          "age": 31,
+          "club": "LOSC Lille",
+          "country": "Francia",
+          "elo": 1624,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Axel Tuanzebe",
+          "age": 28,
+          "club": "Burnley FC",
+          "country": "Inglaterra",
+          "elo": 1381,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Rocky Bushiri",
+          "age": 26,
+          "club": "Hibernian FC",
+          "country": "Escocia",
+          "elo": 1310,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Steve Kapuadi",
+          "age": 28,
+          "club": "Widzew Lodz",
+          "country": "Polonia",
+          "elo": 1203,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Dylan Batubinsika",
+          "age": 30,
+          "club": "AEL Larissa",
+          "country": "Grecia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Aaron Wan-Bissaka",
+          "age": 28,
+          "club": "West Ham United",
+          "country": "Inglaterra",
+          "elo": 1573,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Gédéon Kalulu",
+          "age": 28,
+          "club": "Aris Limassol",
+          "country": "Chipre",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Arthur Masuaku",
+          "age": 32,
+          "club": "RC Lens",
+          "country": "Francia",
+          "elo": 1610,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Joris Kayembe",
+          "age": 31,
+          "club": "RKC Genk",
+          "country": "Bélgica",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Noah Sadiki",
+          "age": 21,
+          "club": "Sunderland AFC",
+          "country": "Inglaterra",
+          "elo": 1516,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Charles Pickel",
+          "age": 29,
+          "club": "RCD Espanyol",
+          "country": "España",
+          "elo": 1459,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Samuel Moutussamy",
+          "age": 29,
+          "club": "Atromitos FC",
+          "country": "Grecia",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Ngal'ayel Mukau",
+          "age": 21,
+          "club": "LOSC Lille",
+          "country": "Francia",
+          "elo": 1624,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Edo Kayembe",
+          "age": 27,
+          "club": "Watford FC",
+          "country": "Inglaterra",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Nathanael Mbuku",
+          "age": 24,
+          "club": "Montpellier HSC",
+          "country": "Francia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Brian Cipenga",
+          "age": 27,
+          "club": "CD Castellón",
+          "country": "España",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Gaël Kakuta",
+          "age": 34,
+          "club": "AEL Limassol",
+          "country": "Chipre",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Meschack Elía",
+          "age": 28,
+          "club": "Alanyaspor",
+          "country": "Turquía",
+          "elo": 1255,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Théo Bongonda",
+          "age": 30,
+          "club": "Spartak Moscow",
+          "country": "Rusia",
+          "elo": 990,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Cédric Bakambu",
+          "age": 35,
+          "club": "Real Betis",
+          "country": "España",
+          "elo": 1664,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Yoane Wissa",
+          "age": 29,
+          "club": "Newcastle United",
+          "country": "Inglaterra",
+          "elo": 1731,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Fiston Kalala Mayele",
+          "age": 31,
+          "club": "Pyramids FC",
+          "country": "Egipto",
+          "elo": 1502,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Simon Banza",
+          "age": 29,
+          "club": "Al-Jazira Club",
+          "country": "EAU",
+          "elo": null,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "col",
+      "name": "Colombia",
+      "group": "K",
+      "dt": "Néstor Lorenzo",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "David Ospina",
+          "age": 37,
+          "club": "Atlético Nacional",
+          "country": "Colombia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Camilo Vargas",
+          "age": 37,
+          "club": "Atlas FC",
+          "country": "México",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Álvaro Montero",
+          "age": 31,
+          "club": "Vélez Sarsfield",
+          "country": "Argentina",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jhon Lucumí",
+          "age": 27,
+          "club": "Bologna FC 1909",
+          "country": "Italia",
+          "elo": 1631,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Davinson Sánchez",
+          "age": 29,
+          "club": "Galatasaray SK",
+          "country": "Turquía",
+          "elo": 1641,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Yerry Mina",
+          "age": 31,
+          "club": "Cagliari Calcio",
+          "country": "Italia",
+          "elo": 1409,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Willer Ditta",
+          "age": 28,
+          "club": "Cruz Azul",
+          "country": "México",
+          "elo": 1448,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Daniel Muñoz",
+          "age": 29,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Santiago Arias",
+          "age": 34,
+          "club": "Independiente",
+          "country": "Argentina",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Johan Mojica",
+          "age": 33,
+          "club": "RCD Mallorca",
+          "country": "España",
+          "elo": 1494,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Déiver Machado",
+          "age": 32,
+          "club": "FC Nantes",
+          "country": "Francia",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Richard Ríos",
+          "age": 25,
+          "club": "SL Benfica",
+          "country": "Portugal",
+          "elo": 1729,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jefferson Lerma",
+          "age": 31,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Kevin Castaño",
+          "age": 25,
+          "club": "River Plate",
+          "country": "Argentina",
+          "elo": 1421,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Gustavo Puerta",
+          "age": 22,
+          "club": "Racing Santander",
+          "country": "España",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Juan Portilla",
+          "age": 27,
+          "club": "Athletico Paranaense",
+          "country": "Brasil",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Juan Fernando Quintero",
+          "age": 33,
+          "club": "River Plate",
+          "country": "Argentina",
+          "elo": 1421,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jhon Arias",
+          "age": 28,
+          "club": "SE Palmeiras",
+          "country": "Brasil",
+          "elo": 1529,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jorge Carrascal",
+          "age": 28,
+          "club": "CR Flamengo",
+          "country": "Brasil",
+          "elo": 1530,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "James Rodríguez",
+          "age": 34,
+          "club": "Minnesota United FC",
+          "country": "EE.UU.",
+          "elo": null,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Luis Díaz",
+          "age": 29,
+          "club": "Bayern Múnich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Luis Suárez",
+          "age": 28,
+          "club": "Sporting CP",
+          "country": "Portugal",
+          "elo": 1804,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jhon Córdoba",
+          "age": 33,
+          "club": "FK Krasnodar",
+          "country": "Rusia",
+          "elo": 1580,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Andrés Gómez",
+          "age": 23,
+          "club": "CR Vasco da Gama",
+          "country": "Brasil",
+          "elo": null,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Cucho Hernández",
+          "age": 27,
+          "club": "Real Betis",
+          "country": "España",
+          "elo": 1664,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Jaminton Campaz",
+          "age": 26,
+          "club": "Rosario Central",
+          "country": "Argentina",
+          "elo": null,
+          "titular": false
+        }
+      ]
+    },
+    {
+      "id": "por",
+      "name": "Portugal",
+      "group": "K",
+      "dt": "Roberto Martínez",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Diogo Costa",
+          "age": 26,
+          "club": "FC Porto",
+          "country": "Portugal",
+          "elo": 1712,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "José Sá",
+          "age": 33,
+          "club": "Wolverhampton",
+          "country": "Inglaterra",
+          "elo": 1456,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Rui Silva",
+          "age": 32,
+          "club": "Sporting CP",
+          "country": "Portugal",
+          "elo": 1804,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Diogo Dalot",
+          "age": 27,
+          "club": "Manchester United",
+          "country": "Inglaterra",
+          "elo": 1784,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "João Cancelo",
+          "age": 31,
+          "club": "Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Nélson Semedo",
+          "age": 32,
+          "club": "Fenerbahçe",
+          "country": "Turquía",
+          "elo": 1616,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Nuno Mendes",
+          "age": 23,
+          "club": "Paris Saint-Germain",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Matheus Nunes",
+          "age": 27,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Rúben Dias",
+          "age": 28,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Gonçalo Inácio",
+          "age": 24,
+          "club": "Sporting CP",
+          "country": "Portugal",
+          "elo": 1804,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Renato Veiga",
+          "age": 22,
+          "club": "Villarreal",
+          "country": "España",
+          "elo": 1620,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Tomás Araújo",
+          "age": 24,
+          "club": "Benfica",
+          "country": "Portugal",
+          "elo": 1729,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Rúben Neves",
+          "age": 29,
+          "club": "Al-Hilal",
+          "country": "Arabia S.",
+          "elo": 1629,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Samuel Costa",
+          "age": 25,
+          "club": "Mallorca",
+          "country": "España",
+          "elo": 1507,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "João Neves",
+          "age": 21,
+          "club": "Paris Saint-Germain",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Vitinha",
+          "age": 26,
+          "club": "Paris Saint-Germain",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Bruno Fernandes",
+          "age": 31,
+          "club": "Manchester United",
+          "country": "Inglaterra",
+          "elo": 1784,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Bernardo Silva",
+          "age": 31,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "João Félix",
+          "age": 26,
+          "club": "Al-Nassr",
+          "country": "Arabia S.",
+          "elo": 1548,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Francisco Trincão",
+          "age": 26,
+          "club": "Sporting CP",
+          "country": "Portugal",
+          "elo": 1804,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Francisco Conceição",
+          "age": 23,
+          "club": "Juventus",
+          "country": "Italia",
+          "elo": 1740,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Pedro Neto",
+          "age": 26,
+          "club": "Chelsea",
+          "country": "Inglaterra",
+          "elo": 1740,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Rafael Leão",
+          "age": 26,
+          "club": "AC Milan",
+          "country": "Italia",
+          "elo": 1688,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Gonçalo Guedes",
+          "age": 29,
+          "club": "Real Sociedad",
+          "country": "España",
+          "elo": 1568,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Gonçalo Ramos",
+          "age": 24,
+          "club": "Paris Saint-Germain",
+          "country": "Francia",
+          "elo": 2038,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Cristiano Ronaldo",
+          "age": 41,
+          "club": "Al-Nassr",
+          "country": "Arabia S.",
+          "elo": 1548,
+          "titular": true
+        }
+      ]
+    },
+    {
+      "id": "eng",
+      "name": "Inglaterra",
+      "group": "L",
+      "dt": "Thomas Tuchel",
+      "analyzed": true,
+      "players": [
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Jordan Pickford",
+          "age": 32,
+          "club": "Everton FC",
+          "country": "Inglaterra",
+          "elo": 1611,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "Dean Henderson",
+          "age": 29,
+          "club": "Crystal Palace",
+          "country": "Inglaterra",
+          "elo": 1630,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "GK",
+          "name": "James Trafford",
+          "age": 23,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Reece James",
+          "age": 26,
+          "club": "Chelsea FC",
+          "country": "Inglaterra",
+          "elo": 1740,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Marc Guéhi",
+          "age": 25,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "John Stones",
+          "age": 31,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Tino Livramento",
+          "age": 23,
+          "club": "Newcastle United",
+          "country": "Inglaterra",
+          "elo": 1731,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Ezri Konsa",
+          "age": 28,
+          "club": "Aston Villa",
+          "country": "Inglaterra",
+          "elo": 1861,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Dan Burn",
+          "age": 33,
+          "club": "Newcastle United",
+          "country": "Inglaterra",
+          "elo": 1731,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Jarrel Quansah",
+          "age": 23,
+          "club": "Bayer 04 Leverkusen",
+          "country": "Alemania",
+          "elo": 1784,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Nico O'Reilly",
+          "age": 21,
+          "club": "Manchester City",
+          "country": "Inglaterra",
+          "elo": 1889,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEF",
+          "name": "Djed Spence",
+          "age": 25,
+          "club": "Tottenham Hotspur",
+          "country": "Inglaterra",
+          "elo": 1686,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Declan Rice",
+          "age": 27,
+          "club": "Arsenal FC",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jude Bellingham",
+          "age": 22,
+          "club": "Real Madrid CF",
+          "country": "España",
+          "elo": 2012,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Kobbie Mainoo",
+          "age": 21,
+          "club": "Manchester United",
+          "country": "Inglaterra",
+          "elo": 1784,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Elliot Anderson",
+          "age": 23,
+          "club": "Nottingham Forest",
+          "country": "Inglaterra",
+          "elo": 1658,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Morgan Rogers",
+          "age": 23,
+          "club": "Aston Villa",
+          "country": "Inglaterra",
+          "elo": 1861,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "MED",
+          "name": "Jordan Henderson",
+          "age": 35,
+          "club": "Brentford FC",
+          "country": "Inglaterra",
+          "elo": 1647,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Harry Kane",
+          "age": 32,
+          "club": "Bayern Munich",
+          "country": "Alemania",
+          "elo": 2131,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Bukayo Saka",
+          "age": 24,
+          "club": "Arsenal FC",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Marcus Rashford",
+          "age": 28,
+          "club": "FC Barcelona",
+          "country": "España",
+          "elo": 2019,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Anthony Gordon",
+          "age": 25,
+          "club": "Newcastle United",
+          "country": "Inglaterra",
+          "elo": 1731,
+          "titular": true
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Eberechi Eze",
+          "age": 27,
+          "club": "Arsenal FC",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Noni Madueke",
+          "age": 24,
+          "club": "Arsenal FC",
+          "country": "Inglaterra",
+          "elo": 2106,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ollie Watkins",
+          "age": 30,
+          "club": "Aston Villa",
+          "country": "Inglaterra",
+          "elo": 1861,
+          "titular": false
+        },
+        {
+          "number": null,
+          "pos": "DEL",
+          "name": "Ivan Toney",
+          "age": 30,
+          "club": "Al-Ahli Saudi FC",
+          "country": "Arabia Saudita",
+          "elo": 1200,
           "titular": false
         }
       ]

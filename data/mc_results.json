@@ -3,388 +3,388 @@
   "seed": 42,
   "teams": {
     "kor": {
-      "qualified_pct": 88.8,
-      "first_pct": 19.6,
-      "second_pct": 41.8,
-      "third_pct": 33.2,
-      "best_third_pct": 27.3,
-      "fourth_pct": 5.3
+      "qualified_pct": 87.2,
+      "first_pct": 15.6,
+      "second_pct": 37.1,
+      "third_pct": 40.5,
+      "best_third_pct": 34.5,
+      "fourth_pct": 6.8
     },
     "mex": {
-      "qualified_pct": 98.7,
-      "first_pct": 65.3,
-      "second_pct": 25.8,
-      "third_pct": 8.0,
-      "best_third_pct": 7.6,
-      "fourth_pct": 0.9
+      "qualified_pct": 99.0,
+      "first_pct": 69.2,
+      "second_pct": 21.9,
+      "third_pct": 8.3,
+      "best_third_pct": 7.9,
+      "fourth_pct": 0.7
     },
     "cze": {
-      "qualified_pct": 83.7,
-      "first_pct": 14.7,
-      "second_pct": 30.1,
-      "third_pct": 47.1,
-      "best_third_pct": 38.9,
-      "fourth_pct": 8.2
+      "qualified_pct": 86.3,
+      "first_pct": 14.8,
+      "second_pct": 37.8,
+      "third_pct": 38.5,
+      "best_third_pct": 33.6,
+      "fourth_pct": 8.8
     },
     "zaf": {
-      "qualified_pct": 9.2,
+      "qualified_pct": 11.7,
       "first_pct": 0.4,
-      "second_pct": 2.4,
-      "third_pct": 11.7,
-      "best_third_pct": 6.5,
-      "fourth_pct": 85.5
+      "second_pct": 3.2,
+      "third_pct": 12.7,
+      "best_third_pct": 8.1,
+      "fourth_pct": 83.8
     },
     "sui": {
-      "qualified_pct": 99.9,
-      "first_pct": 73.5,
-      "second_pct": 24.9,
-      "third_pct": 1.6,
+      "qualified_pct": 99.7,
+      "first_pct": 70.9,
+      "second_pct": 27.4,
+      "third_pct": 1.5,
       "best_third_pct": 1.4,
-      "fourth_pct": 0.0
-    },
-    "can": {
-      "qualified_pct": 98.1,
-      "first_pct": 25.5,
-      "second_pct": 64.7,
-      "third_pct": 9.2,
-      "best_third_pct": 7.9,
-      "fourth_pct": 0.6
-    },
-    "bih": {
-      "qualified_pct": 54.0,
-      "first_pct": 0.9,
-      "second_pct": 9.7,
-      "third_pct": 70.7,
-      "best_third_pct": 43.5,
-      "fourth_pct": 18.8
-    },
-    "qat": {
-      "qualified_pct": 7.2,
-      "first_pct": 0.1,
-      "second_pct": 0.8,
-      "third_pct": 18.5,
-      "best_third_pct": 6.5,
-      "fourth_pct": 80.7
-    },
-    "bra": {
-      "qualified_pct": 99.9,
-      "first_pct": 79.7,
-      "second_pct": 16.8,
-      "third_pct": 3.5,
-      "best_third_pct": 3.5,
       "fourth_pct": 0.1
     },
-    "mar": {
-      "qualified_pct": 90.7,
-      "first_pct": 13.8,
-      "second_pct": 48.9,
-      "third_pct": 34.0,
-      "best_third_pct": 28.1,
-      "fourth_pct": 3.4
+    "can": {
+      "qualified_pct": 98.6,
+      "first_pct": 28.4,
+      "second_pct": 63.4,
+      "third_pct": 7.7,
+      "best_third_pct": 6.8,
+      "fourth_pct": 0.5
     },
-    "sco": {
-      "qualified_pct": 83.0,
-      "first_pct": 6.6,
-      "second_pct": 33.1,
-      "third_pct": 53.0,
-      "best_third_pct": 43.2,
-      "fourth_pct": 7.3
+    "bih": {
+      "qualified_pct": 53.8,
+      "first_pct": 0.7,
+      "second_pct": 8.0,
+      "third_pct": 71.2,
+      "best_third_pct": 45.1,
+      "fourth_pct": 20.2
     },
-    "hti": {
-      "qualified_pct": 5.2,
+    "qat": {
+      "qualified_pct": 9.6,
       "first_pct": 0.0,
       "second_pct": 1.2,
-      "third_pct": 9.6,
-      "best_third_pct": 4.0,
-      "fourth_pct": 89.2
+      "third_pct": 19.6,
+      "best_third_pct": 8.3,
+      "fourth_pct": 79.2
     },
-    "pry": {
-      "qualified_pct": 81.3,
-      "first_pct": 25.1,
-      "second_pct": 34.3,
-      "third_pct": 25.9,
-      "best_third_pct": 21.9,
-      "fourth_pct": 14.8
+    "bra": {
+      "qualified_pct": 100.0,
+      "first_pct": 88.0,
+      "second_pct": 10.3,
+      "third_pct": 1.7,
+      "best_third_pct": 1.7,
+      "fourth_pct": 0.0
+    },
+    "sco": {
+      "qualified_pct": 89.0,
+      "first_pct": 3.1,
+      "second_pct": 32.0,
+      "third_pct": 62.4,
+      "best_third_pct": 54.0,
+      "fourth_pct": 2.5
+    },
+    "mar": {
+      "qualified_pct": 97.1,
+      "first_pct": 8.9,
+      "second_pct": 57.6,
+      "third_pct": 32.8,
+      "best_third_pct": 30.6,
+      "fourth_pct": 0.7
+    },
+    "hti": {
+      "qualified_pct": 0.8,
+      "first_pct": 0.0,
+      "second_pct": 0.1,
+      "third_pct": 3.1,
+      "best_third_pct": 0.7,
+      "fourth_pct": 96.8
     },
     "tur": {
-      "qualified_pct": 92.4,
-      "first_pct": 54.7,
-      "second_pct": 26.6,
-      "third_pct": 12.8,
-      "best_third_pct": 11.1,
-      "fourth_pct": 5.8
-    },
-    "usa": {
-      "qualified_pct": 44.2,
-      "first_pct": 6.9,
-      "second_pct": 15.7,
-      "third_pct": 29.2,
-      "best_third_pct": 21.6,
-      "fourth_pct": 48.2
+      "qualified_pct": 90.7,
+      "first_pct": 51.4,
+      "second_pct": 27.1,
+      "third_pct": 14.2,
+      "best_third_pct": 12.2,
+      "fourth_pct": 7.3
     },
     "aus": {
-      "qualified_pct": 61.2,
-      "first_pct": 13.3,
-      "second_pct": 23.4,
-      "third_pct": 32.1,
-      "best_third_pct": 24.5,
-      "fourth_pct": 31.2
+      "qualified_pct": 61.5,
+      "first_pct": 12.6,
+      "second_pct": 22.8,
+      "third_pct": 33.2,
+      "best_third_pct": 26.1,
+      "fourth_pct": 31.4
+    },
+    "pry": {
+      "qualified_pct": 79.0,
+      "first_pct": 27.5,
+      "second_pct": 32.8,
+      "third_pct": 23.2,
+      "best_third_pct": 18.8,
+      "fourth_pct": 16.5
+    },
+    "usa": {
+      "qualified_pct": 48.1,
+      "first_pct": 8.5,
+      "second_pct": 17.3,
+      "third_pct": 29.4,
+      "best_third_pct": 22.3,
+      "fourth_pct": 44.9
     },
     "jpn": {
-      "qualified_pct": 96.8,
-      "first_pct": 37.8,
-      "second_pct": 48.4,
-      "third_pct": 11.8,
-      "best_third_pct": 10.7,
-      "fourth_pct": 2.1
-    },
-    "swe": {
-      "qualified_pct": 52.5,
-      "first_pct": 2.6,
-      "second_pct": 12.7,
-      "third_pct": 57.5,
-      "best_third_pct": 37.2,
-      "fourth_pct": 27.1
+      "qualified_pct": 97.2,
+      "first_pct": 31.0,
+      "second_pct": 53.6,
+      "third_pct": 14.1,
+      "best_third_pct": 12.6,
+      "fourth_pct": 1.2
     },
     "ned": {
-      "qualified_pct": 98.9,
-      "first_pct": 59.2,
-      "second_pct": 35.5,
-      "third_pct": 4.8,
-      "best_third_pct": 4.2,
-      "fourth_pct": 0.6
+      "qualified_pct": 99.5,
+      "first_pct": 65.8,
+      "second_pct": 29.4,
+      "third_pct": 4.7,
+      "best_third_pct": 4.5,
+      "fourth_pct": 0.2
     },
     "tun": {
-      "qualified_pct": 17.5,
-      "first_pct": 0.3,
-      "second_pct": 3.5,
-      "third_pct": 25.9,
-      "best_third_pct": 13.6,
-      "fourth_pct": 70.2
+      "qualified_pct": 10.9,
+      "first_pct": 0.1,
+      "second_pct": 1.5,
+      "third_pct": 18.9,
+      "best_third_pct": 9.3,
+      "fourth_pct": 79.6
+    },
+    "swe": {
+      "qualified_pct": 64.2,
+      "first_pct": 3.2,
+      "second_pct": 15.5,
+      "third_pct": 62.4,
+      "best_third_pct": 45.5,
+      "fourth_pct": 18.9
+    },
+    "ger": {
+      "qualified_pct": 100.0,
+      "first_pct": 74.5,
+      "second_pct": 24.8,
+      "third_pct": 0.8,
+      "best_third_pct": 0.8,
+      "fourth_pct": 0.0
     },
     "ecu": {
       "qualified_pct": 100.0,
-      "first_pct": 50.1,
-      "second_pct": 45.4,
-      "third_pct": 4.4,
-      "best_third_pct": 4.4,
-      "fourth_pct": 0.1
-    },
-    "civ": {
-      "qualified_pct": 69.7,
-      "first_pct": 1.2,
-      "second_pct": 8.3,
-      "third_pct": 83.7,
-      "best_third_pct": 60.1,
-      "fourth_pct": 6.8
-    },
-    "ger": {
-      "qualified_pct": 99.9,
-      "first_pct": 48.6,
-      "second_pct": 46.1,
-      "third_pct": 5.2,
-      "best_third_pct": 5.2,
+      "first_pct": 25.1,
+      "second_pct": 71.3,
+      "third_pct": 3.5,
+      "best_third_pct": 3.5,
       "fourth_pct": 0.0
     },
+    "civ": {
+      "qualified_pct": 48.6,
+      "first_pct": 0.3,
+      "second_pct": 3.8,
+      "third_pct": 82.3,
+      "best_third_pct": 44.5,
+      "fourth_pct": 13.5
+    },
     "cuw": {
-      "qualified_pct": 1.9,
-      "first_pct": 0.1,
+      "qualified_pct": 2.5,
+      "first_pct": 0.0,
       "second_pct": 0.1,
-      "third_pct": 6.7,
-      "best_third_pct": 1.8,
-      "fourth_pct": 93.2
+      "third_pct": 13.4,
+      "best_third_pct": 2.5,
+      "fourth_pct": 86.5
     },
     "bel": {
-      "qualified_pct": 97.2,
-      "first_pct": 65.0,
-      "second_pct": 25.4,
-      "third_pct": 7.7,
-      "best_third_pct": 6.8,
-      "fourth_pct": 1.9
-    },
-    "irn": {
-      "qualified_pct": 87.0,
-      "first_pct": 23.1,
-      "second_pct": 42.8,
-      "third_pct": 26.1,
-      "best_third_pct": 21.1,
-      "fourth_pct": 8.0
-    },
-    "nzl": {
-      "qualified_pct": 23.6,
-      "first_pct": 1.8,
-      "second_pct": 6.3,
-      "third_pct": 23.0,
-      "best_third_pct": 15.6,
-      "fourth_pct": 69.0
+      "qualified_pct": 99.8,
+      "first_pct": 79.5,
+      "second_pct": 16.1,
+      "third_pct": 4.3,
+      "best_third_pct": 4.2,
+      "fourth_pct": 0.1
     },
     "egy": {
-      "qualified_pct": 67.6,
-      "first_pct": 10.2,
-      "second_pct": 25.6,
-      "third_pct": 43.1,
-      "best_third_pct": 31.9,
-      "fourth_pct": 21.1
+      "qualified_pct": 82.8,
+      "first_pct": 5.9,
+      "second_pct": 32.0,
+      "third_pct": 55.6,
+      "best_third_pct": 44.9,
+      "fourth_pct": 6.5
+    },
+    "irn": {
+      "qualified_pct": 93.5,
+      "first_pct": 14.7,
+      "second_pct": 51.0,
+      "third_pct": 31.9,
+      "best_third_pct": 27.9,
+      "fourth_pct": 2.4
+    },
+    "nzl": {
+      "qualified_pct": 4.4,
+      "first_pct": 0.0,
+      "second_pct": 0.8,
+      "third_pct": 8.2,
+      "best_third_pct": 3.5,
+      "fourth_pct": 91.0
     },
     "esp": {
       "qualified_pct": 100.0,
-      "first_pct": 94.5,
-      "second_pct": 5.5,
+      "first_pct": 96.4,
+      "second_pct": 3.6,
       "third_pct": 0.0,
       "best_third_pct": 0.0,
       "fourth_pct": 0.0
     },
     "ury": {
-      "qualified_pct": 98.6,
-      "first_pct": 5.5,
-      "second_pct": 90.5,
+      "qualified_pct": 98.8,
+      "first_pct": 3.6,
+      "second_pct": 92.5,
       "third_pct": 3.5,
-      "best_third_pct": 2.5,
-      "fourth_pct": 0.5
-    },
-    "cpv": {
-      "qualified_pct": 13.3,
-      "first_pct": 0.0,
-      "second_pct": 2.3,
-      "third_pct": 50.2,
-      "best_third_pct": 11.1,
-      "fourth_pct": 47.5
+      "best_third_pct": 2.6,
+      "fourth_pct": 0.3
     },
     "ksa": {
-      "qualified_pct": 10.0,
+      "qualified_pct": 15.2,
       "first_pct": 0.0,
-      "second_pct": 1.6,
-      "third_pct": 46.4,
-      "best_third_pct": 8.4,
-      "fourth_pct": 52.0
+      "second_pct": 3.0,
+      "third_pct": 61.4,
+      "best_third_pct": 12.2,
+      "fourth_pct": 35.5
+    },
+    "cpv": {
+      "qualified_pct": 5.3,
+      "first_pct": 0.0,
+      "second_pct": 0.8,
+      "third_pct": 35.0,
+      "best_third_pct": 4.5,
+      "fourth_pct": 64.1
     },
     "arg": {
-      "qualified_pct": 100.0,
-      "first_pct": 95.5,
-      "second_pct": 4.0,
-      "third_pct": 0.3,
-      "best_third_pct": 0.3,
+      "qualified_pct": 99.9,
+      "first_pct": 95.0,
+      "second_pct": 4.8,
+      "third_pct": 0.2,
+      "best_third_pct": 0.2,
       "fourth_pct": 0.1
-    },
-    "aut": {
-      "qualified_pct": 79.2,
-      "first_pct": 3.2,
-      "second_pct": 59.2,
-      "third_pct": 25.8,
-      "best_third_pct": 16.7,
-      "fourth_pct": 11.8
     },
     "alg": {
-      "qualified_pct": 48.8,
+      "qualified_pct": 52.8,
       "first_pct": 0.8,
-      "second_pct": 25.2,
-      "third_pct": 42.0,
-      "best_third_pct": 22.6,
-      "fourth_pct": 31.9
+      "second_pct": 23.9,
+      "third_pct": 45.0,
+      "best_third_pct": 28.2,
+      "fourth_pct": 30.4
+    },
+    "aut": {
+      "qualified_pct": 83.0,
+      "first_pct": 4.0,
+      "second_pct": 60.6,
+      "third_pct": 26.2,
+      "best_third_pct": 18.2,
+      "fourth_pct": 9.1
     },
     "jor": {
-      "qualified_pct": 26.8,
-      "first_pct": 0.3,
-      "second_pct": 11.4,
-      "third_pct": 31.9,
-      "best_third_pct": 14.9,
-      "fourth_pct": 56.2
+      "qualified_pct": 25.2,
+      "first_pct": 0.2,
+      "second_pct": 10.8,
+      "third_pct": 28.6,
+      "best_third_pct": 14.2,
+      "fourth_pct": 60.4
     },
     "fra": {
-      "qualified_pct": 99.9,
-      "first_pct": 79.8,
-      "second_pct": 16.1,
-      "third_pct": 4.0,
-      "best_third_pct": 4.0,
-      "fourth_pct": 0.1
+      "qualified_pct": 100.0,
+      "first_pct": 91.1,
+      "second_pct": 8.0,
+      "third_pct": 0.9,
+      "best_third_pct": 0.9,
+      "fourth_pct": 0.0
     },
     "sen": {
-      "qualified_pct": 85.0,
-      "first_pct": 7.3,
-      "second_pct": 33.0,
-      "third_pct": 54.9,
-      "best_third_pct": 44.7,
-      "fourth_pct": 4.8
-    },
-    "nor": {
-      "qualified_pct": 92.5,
-      "first_pct": 12.8,
-      "second_pct": 50.2,
-      "third_pct": 34.7,
-      "best_third_pct": 29.5,
-      "fourth_pct": 2.2
+      "qualified_pct": 81.7,
+      "first_pct": 2.6,
+      "second_pct": 33.6,
+      "third_pct": 58.4,
+      "best_third_pct": 45.4,
+      "fourth_pct": 5.3
     },
     "irq": {
-      "qualified_pct": 3.4,
-      "first_pct": 0.1,
-      "second_pct": 0.7,
-      "third_pct": 6.4,
-      "best_third_pct": 2.6,
+      "qualified_pct": 3.0,
+      "first_pct": 0.0,
+      "second_pct": 0.9,
+      "third_pct": 6.2,
+      "best_third_pct": 2.0,
       "fourth_pct": 92.8
     },
-    "por": {
-      "qualified_pct": 99.0,
-      "first_pct": 53.2,
-      "second_pct": 40.8,
-      "third_pct": 5.5,
-      "best_third_pct": 5.0,
-      "fourth_pct": 0.5
+    "nor": {
+      "qualified_pct": 93.7,
+      "first_pct": 6.2,
+      "second_pct": 57.5,
+      "third_pct": 34.5,
+      "best_third_pct": 30.0,
+      "fourth_pct": 1.9
     },
     "col": {
-      "qualified_pct": 98.8,
-      "first_pct": 44.8,
-      "second_pct": 48.0,
-      "third_pct": 6.5,
-      "best_third_pct": 6.0,
-      "fourth_pct": 0.7
+      "qualified_pct": 99.2,
+      "first_pct": 35.2,
+      "second_pct": 59.1,
+      "third_pct": 5.2,
+      "best_third_pct": 4.9,
+      "fourth_pct": 0.5
     },
-    "uzb": {
-      "qualified_pct": 44.7,
-      "first_pct": 1.6,
-      "second_pct": 8.7,
-      "third_pct": 56.9,
-      "best_third_pct": 34.4,
-      "fourth_pct": 32.8
-    },
-    "cod": {
-      "qualified_pct": 18.5,
-      "first_pct": 0.3,
-      "second_pct": 2.5,
-      "third_pct": 31.1,
-      "best_third_pct": 15.7,
-      "fourth_pct": 66.0
-    },
-    "cro": {
-      "qualified_pct": 99.3,
-      "first_pct": 28.4,
-      "second_pct": 60.8,
-      "third_pct": 10.8,
-      "best_third_pct": 10.2,
+    "por": {
+      "qualified_pct": 100.0,
+      "first_pct": 64.2,
+      "second_pct": 34.0,
+      "third_pct": 1.8,
+      "best_third_pct": 1.8,
       "fourth_pct": 0.1
     },
-    "pan": {
-      "qualified_pct": 69.8,
-      "first_pct": 1.5,
-      "second_pct": 11.8,
-      "third_pct": 77.3,
-      "best_third_pct": 56.6,
-      "fourth_pct": 9.4
+    "uzb": {
+      "qualified_pct": 50.9,
+      "first_pct": 0.7,
+      "second_pct": 6.2,
+      "third_pct": 71.1,
+      "best_third_pct": 44.0,
+      "fourth_pct": 22.0
+    },
+    "cod": {
+      "qualified_pct": 8.8,
+      "first_pct": 0.0,
+      "second_pct": 0.6,
+      "third_pct": 21.9,
+      "best_third_pct": 8.2,
+      "fourth_pct": 77.5
     },
     "eng": {
       "qualified_pct": 100.0,
-      "first_pct": 70.2,
-      "second_pct": 27.2,
-      "third_pct": 2.6,
-      "best_third_pct": 2.5,
+      "first_pct": 82.8,
+      "second_pct": 16.2,
+      "third_pct": 1.1,
+      "best_third_pct": 1.1,
       "fourth_pct": 0.0
     },
+    "cro": {
+      "qualified_pct": 98.8,
+      "first_pct": 16.4,
+      "second_pct": 71.8,
+      "third_pct": 11.6,
+      "best_third_pct": 10.7,
+      "fourth_pct": 0.3
+    },
+    "pan": {
+      "qualified_pct": 65.8,
+      "first_pct": 0.9,
+      "second_pct": 11.8,
+      "third_pct": 79.0,
+      "best_third_pct": 53.1,
+      "fourth_pct": 8.3
+    },
     "gha": {
-      "qualified_pct": 2.4,
+      "qualified_pct": 2.3,
       "first_pct": 0.0,
       "second_pct": 0.2,
-      "third_pct": 9.2,
-      "best_third_pct": 2.1,
-      "fourth_pct": 90.5
+      "third_pct": 8.3,
+      "best_third_pct": 2.0,
+      "fourth_pct": 91.4
     }
   }
 }

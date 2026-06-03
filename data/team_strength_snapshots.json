@@ -8,17 +8,17 @@
     "base_goals_per_team": 1.3,
     "elo_scale": 400
   },
-  "_avg_xi_blend": 1613.0,
+  "_avg_xi_blend": 1675.3,
   "teams": {
     "esp": {
       "team_code": "esp",
       "country_name": "Spain",
       "intl_rank": 1,
       "elo_intl": 2165,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 2165.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1797.7,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 2207.8,
+      "method": "xi_blend_adj"
     },
     "arg": {
       "team_code": "arg",
@@ -35,50 +35,50 @@
       "country_name": "France",
       "intl_rank": 3,
       "elo_intl": 2081,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 2081.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1940.3,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 2173.8,
+      "method": "xi_blend_adj"
     },
     "eng": {
       "team_code": "eng",
       "country_name": "England",
       "intl_rank": 4,
       "elo_intl": 2020,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 2020.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1884.9,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 2093.4,
+      "method": "xi_blend_adj"
     },
     "bra": {
       "team_code": "bra",
       "country_name": "Brazil",
       "intl_rank": 5,
       "elo_intl": 1988,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1988.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1812.9,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 2036.2,
+      "method": "xi_blend_adj"
     },
     "por": {
       "team_code": "por",
       "country_name": "Portugal",
       "intl_rank": 6,
       "elo_intl": 1984,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1984.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1842.2,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 2042.4,
+      "method": "xi_blend_adj"
     },
     "col": {
       "team_code": "col",
       "country_name": "Colombia",
       "intl_rank": 7,
       "elo_intl": 1975,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1975.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1691.0,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1980.5,
+      "method": "xi_blend_adj"
     },
     "ned": {
       "team_code": "ned",
@@ -115,20 +115,20 @@
       "country_name": "Germany",
       "intl_rank": 11,
       "elo_intl": 1925,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1925.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1997.9,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 2037.9,
+      "method": "xi_blend_adj"
     },
     "nor": {
       "team_code": "nor",
       "country_name": "Norway",
       "intl_rank": 12,
       "elo_intl": 1912,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1912.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1717.5,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1926.8,
+      "method": "xi_blend_adj"
     },
     "jpn": {
       "team_code": "jpn",
@@ -136,8 +136,8 @@
       "intl_rank": 13,
       "elo_intl": 1906,
       "xi_blend": 1642.9,
-      "avg_xi_blend": 1613.0,
-      "strength_score": 1916.5,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1894.7,
       "method": "xi_blend_adj"
     },
     "tur": {
@@ -155,10 +155,10 @@
       "country_name": "Switzerland",
       "intl_rank": 15,
       "elo_intl": 1894,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1894.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1614.3,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1872.7,
+      "method": "xi_blend_adj"
     },
     "ury": {
       "team_code": "ury",
@@ -185,10 +185,10 @@
       "country_name": "Belgium",
       "intl_rank": 19,
       "elo_intl": 1867,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1867.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1812.8,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1915.1,
+      "method": "xi_blend_adj"
     },
     "sen": {
       "team_code": "sen",
@@ -215,10 +215,10 @@
       "country_name": "Austria",
       "intl_rank": 23,
       "elo_intl": 1827,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1827.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1697.7,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1834.8,
+      "method": "xi_blend_adj"
     },
     "mar": {
       "team_code": "mar",
@@ -255,10 +255,10 @@
       "country_name": "Scotland",
       "intl_rank": 28,
       "elo_intl": 1770,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1770.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1649.2,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1760.9,
+      "method": "xi_blend_adj"
     },
     "irn": {
       "team_code": "irn",
@@ -276,8 +276,8 @@
       "intl_rank": 32,
       "elo_intl": 1756,
       "xi_blend": 1623.0,
-      "avg_xi_blend": 1613.0,
-      "strength_score": 1759.5,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1737.7,
       "method": "xi_blend_adj"
     },
     "alg": {
@@ -305,10 +305,10 @@
       "country_name": "United States",
       "intl_rank": 36,
       "elo_intl": 1733,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1733.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1696.9,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1740.6,
+      "method": "xi_blend_adj"
     },
     "pan": {
       "team_code": "pan",
@@ -335,10 +335,10 @@
       "country_name": "Sweden",
       "intl_rank": 41,
       "elo_intl": 1719,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1719.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1691.4,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1724.6,
+      "method": "xi_blend_adj"
     },
     "egy": {
       "team_code": "egy",
@@ -365,30 +365,30 @@
       "country_name": "Ivory Coast",
       "intl_rank": 52,
       "elo_intl": 1676,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1676.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1566.2,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1637.8,
+      "method": "xi_blend_adj"
     },
     "cod": {
       "team_code": "cod",
       "country_name": "DR Congo",
       "intl_rank": 54,
       "elo_intl": 1655,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1655.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1529.2,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1603.9,
+      "method": "xi_blend_adj"
     },
     "tun": {
       "team_code": "tun",
       "country_name": "Tunisia",
       "intl_rank": 58,
       "elo_intl": 1636,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1636.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1519.7,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1581.5,
+      "method": "xi_blend_adj"
     },
     "irq": {
       "team_code": "irq",
@@ -406,8 +406,8 @@
       "intl_rank": 67,
       "elo_intl": 1591,
       "xi_blend": 1573.0,
-      "avg_xi_blend": 1613.0,
-      "strength_score": 1577.0,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1555.2,
       "method": "xi_blend_adj"
     },
     "nzl": {
@@ -415,20 +415,20 @@
       "country_name": "New Zealand",
       "intl_rank": 68,
       "elo_intl": 1585,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1585.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1314.1,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1458.6,
+      "method": "xi_blend_adj"
     },
     "cpv": {
       "team_code": "cpv",
       "country_name": "Cape Verde",
       "intl_rank": 69,
       "elo_intl": 1576,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1576.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1496.3,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1513.4,
+      "method": "xi_blend_adj"
     },
     "ksa": {
       "team_code": "ksa",
@@ -445,10 +445,10 @@
       "country_name": "Haiti",
       "intl_rank": 76,
       "elo_intl": 1532,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1532.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1369.5,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1425.0,
+      "method": "xi_blend_adj"
     },
     "zaf": {
       "team_code": "zaf",
@@ -475,10 +475,10 @@
       "country_name": "Curacao",
       "intl_rank": 91,
       "elo_intl": 1433,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1433.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1726.0,
+      "avg_xi_blend": 1675.3,
+      "strength_score": 1450.8,
+      "method": "xi_blend_adj"
     },
     "qat": {
       "team_code": "qat",
