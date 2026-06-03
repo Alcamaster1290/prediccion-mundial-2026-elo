@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
-"""build_team_strength.py -- Calculates team strength scores from ELO data.
+"""build_team_strength.py -- Calculates team strength scores for all 48 WC2026 teams.
 
-Sources (in priority order):
-  1. elo_intl from data/match_context.json (all 48 teams)
-  2. elo_club_avg from match_context.json (teams with annotated squads)
-  3. xi_club_blend from data/teams.json player list (teams with full squad data)
+ELO international source (primary):
+  data/international_elo.json  (international-football.net, 2026-06-02)
 
-Strength formula when club data is available:
-  score = elo_intl_weight * elo_intl + xi_club_blend_weight * elo_club_avg
+Club ELO adjustment (only for teams analyzed in data/teams.json):
+  xi_blend = average club ELO of titular players (from teams.json player list)
 
-Fallback (no club data):
-  score = elo_intl
+Strength formula:
+  Analyzed teams:  score = elo_intl + (xi_blend - avg_xi_blend) * club_adj_weight
+  All others:      score = elo_intl
+
+Using a relative adjustment (delta from mean xi_blend) keeps the international ELO
+scale intact and avoids the mismatch between the two rating systems.
 
 Run: python scripts/build_team_strength.py [--output path]
 """
@@ -26,24 +28,14 @@ def load_json(path):
         return json.load(f)
 
 
-def extract_intl_elos(ctx_raw):
-    """Returns ({code: elo_intl}, {code: elo_club_avg}) from match_context."""
-    entries = ctx_raw.get('matches', ctx_raw) if isinstance(ctx_raw, dict) else ctx_raw
-    intl = {}
-    club_avg = {}
-    for entry in entries:
-        for team_key, ctx_key in (('team_a', 'team_a_context'), ('team_b', 'team_b_context')):
-            code = entry.get(team_key)
-            ctx = entry.get(ctx_key, {})
-            if code and code not in intl and 'elo_intl' in ctx:
-                intl[code] = ctx['elo_intl']
-            if code and code not in club_avg and 'elo_club_avg' in ctx:
-                club_avg[code] = ctx['elo_club_avg']
-    return intl, club_avg
+def load_intl_elos():
+    data = load_json(REPO_ROOT / 'data' / 'international_elo.json')
+    return {t['code']: {'elo': t['elo'], 'rank': t['rank'], 'name': t['name']}
+            for t in data['teams']}
 
 
 def calc_xi_blend_from_players(teams_data):
-    """Returns {code: avg_titular_elo} from teams.json squad lists."""
+    """Average club ELO of titular players per team (from data/teams.json)."""
     xi_blend = {}
     for team in teams_data.get('teams', []):
         code = team['id']
@@ -56,24 +48,29 @@ def calc_xi_blend_from_players(teams_data):
     return xi_blend
 
 
-def build_strengths(intl_elos, club_avgs, xi_blends, weights):
-    w_intl = weights.get('elo_intl_weight', 0.65)
-    w_club = weights.get('xi_club_blend_weight', 0.35)
+def build_strengths(intl_elos, xi_blends, club_adj_weight):
+    # Average xi_blend across all teams that have player data
+    avg_xi = (sum(xi_blends.values()) / len(xi_blends)) if xi_blends else 0.0
 
     results = {}
-    for code, elo_intl in intl_elos.items():
-        elo_club = club_avgs.get(code) or xi_blends.get(code)
-        if elo_club is not None:
-            score  = w_intl * elo_intl + w_club * elo_club
-            method = 'weighted_blend'
+    for code, intl in intl_elos.items():
+        elo_intl = intl['elo']
+        if code in xi_blends:
+            # Relative adjustment: positive if above-average club quality, negative if below
+            adj    = (xi_blends[code] - avg_xi) * club_adj_weight
+            score  = round(elo_intl + adj, 1)
+            method = 'xi_blend_adj'
         else:
             score  = float(elo_intl)
             method = 'elo_intl_only'
         results[code] = {
             'team_code':      code,
+            'country_name':   intl['name'],
+            'intl_rank':      intl['rank'],
             'elo_intl':       elo_intl,
-            'elo_club_avg':   elo_club,
-            'strength_score': round(score, 1),
+            'xi_blend':       xi_blends.get(code),
+            'avg_xi_blend':   round(avg_xi, 1) if xi_blends.get(code) is not None else None,
+            'strength_score': score,
             'method':         method,
         }
     return results
@@ -88,28 +85,38 @@ def main():
     args = parser.parse_args()
 
     weights    = load_json(REPO_ROOT / 'data' / 'model_weights.json')
-    ctx_raw    = load_json(REPO_ROOT / 'data' / 'match_context.json')
     teams_data = load_json(REPO_ROOT / 'data' / 'teams.json')
+    intl_elos  = load_intl_elos()
+    xi_blends  = calc_xi_blend_from_players(teams_data)
 
-    intl_elos, club_avgs = extract_intl_elos(ctx_raw)
-    xi_blends = calc_xi_blend_from_players(teams_data)
-
-    strengths = build_strengths(intl_elos, club_avgs, xi_blends, weights)
+    club_adj_weight = weights.get('club_adj_weight', 0.35)
+    strengths = build_strengths(intl_elos, xi_blends, club_adj_weight)
 
     output = {
-        '_version': weights.get('_version', '1.0'),
-        '_weights': {k: v for k, v in weights.items() if not k.startswith('_')},
-        'teams':    strengths,
+        '_version':     weights.get('_version', '1.1'),
+        '_rating_date': '2026-06-02',
+        '_elo_source':  'international-football.net',
+        '_formula':     'elo_intl + (xi_blend - avg_xi_blend) * club_adj_weight  [analyzed teams only]',
+        '_weights':     {k: v for k, v in weights.items() if not k.startswith('_')},
+        '_avg_xi_blend': round(sum(xi_blends.values()) / len(xi_blends), 1) if xi_blends else None,
+        'teams':        strengths,
     }
 
     out_path = Path(args.output)
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    blend_count = sum(1 for v in strengths.values() if v['method'] == 'weighted_blend')
+    xi_count  = sum(1 for v in strengths.values() if v['method'] == 'xi_blend_adj')
+    intl_only = len(strengths) - xi_count
+    avg_xi    = output['_avg_xi_blend']
     print(f"Built {len(strengths)} team strengths -> {out_path}")
-    print(f"  {blend_count} teams: weighted blend (elo_intl + club_avg)")
-    print(f"  {len(strengths) - blend_count} teams: elo_intl only")
+    print(f"  {xi_count}  teams: xi_blend adjustment (avg_xi={avg_xi}, weight={club_adj_weight})")
+    print(f"  {intl_only} teams: elo_intl only")
+    print(f"\nTop 10 by strength score:")
+    top10 = sorted(strengths.values(), key=lambda x: -x['strength_score'])[:10]
+    for t in top10:
+        adj_str = f"  adj:{t['strength_score'] - t['elo_intl']:+.1f}" if t['xi_blend'] else ''
+        print(f"  {t['team_code']:4s}  intl:{t['elo_intl']:4d}  score:{t['strength_score']:7.1f}  [{t['method']}]{adj_str}")
 
 
 if __name__ == '__main__':

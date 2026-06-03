@@ -1,0 +1,494 @@
+{
+  "_version": "1.1",
+  "_rating_date": "2026-06-02",
+  "_elo_source": "international-football.net",
+  "_formula": "elo_intl + (xi_blend - avg_xi_blend) * club_adj_weight  [analyzed teams only]",
+  "_weights": {
+    "club_adj_weight": 0.35,
+    "base_goals_per_team": 1.3,
+    "elo_scale": 400
+  },
+  "_avg_xi_blend": 1613.0,
+  "teams": {
+    "esp": {
+      "team_code": "esp",
+      "country_name": "Spain",
+      "intl_rank": 1,
+      "elo_intl": 2165,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 2165.0,
+      "method": "elo_intl_only"
+    },
+    "arg": {
+      "team_code": "arg",
+      "country_name": "Argentina",
+      "intl_rank": 2,
+      "elo_intl": 2113,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 2113.0,
+      "method": "elo_intl_only"
+    },
+    "fra": {
+      "team_code": "fra",
+      "country_name": "France",
+      "intl_rank": 3,
+      "elo_intl": 2081,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 2081.0,
+      "method": "elo_intl_only"
+    },
+    "eng": {
+      "team_code": "eng",
+      "country_name": "England",
+      "intl_rank": 4,
+      "elo_intl": 2020,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 2020.0,
+      "method": "elo_intl_only"
+    },
+    "bra": {
+      "team_code": "bra",
+      "country_name": "Brazil",
+      "intl_rank": 5,
+      "elo_intl": 1988,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1988.0,
+      "method": "elo_intl_only"
+    },
+    "por": {
+      "team_code": "por",
+      "country_name": "Portugal",
+      "intl_rank": 6,
+      "elo_intl": 1984,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1984.0,
+      "method": "elo_intl_only"
+    },
+    "col": {
+      "team_code": "col",
+      "country_name": "Colombia",
+      "intl_rank": 7,
+      "elo_intl": 1975,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1975.0,
+      "method": "elo_intl_only"
+    },
+    "ned": {
+      "team_code": "ned",
+      "country_name": "Netherlands",
+      "intl_rank": 8,
+      "elo_intl": 1961,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1961.0,
+      "method": "elo_intl_only"
+    },
+    "ecu": {
+      "team_code": "ecu",
+      "country_name": "Ecuador",
+      "intl_rank": 9,
+      "elo_intl": 1935,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1935.0,
+      "method": "elo_intl_only"
+    },
+    "cro": {
+      "team_code": "cro",
+      "country_name": "Croatia",
+      "intl_rank": 10,
+      "elo_intl": 1930,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1930.0,
+      "method": "elo_intl_only"
+    },
+    "ger": {
+      "team_code": "ger",
+      "country_name": "Germany",
+      "intl_rank": 11,
+      "elo_intl": 1925,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1925.0,
+      "method": "elo_intl_only"
+    },
+    "nor": {
+      "team_code": "nor",
+      "country_name": "Norway",
+      "intl_rank": 12,
+      "elo_intl": 1912,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1912.0,
+      "method": "elo_intl_only"
+    },
+    "jpn": {
+      "team_code": "jpn",
+      "country_name": "Japan",
+      "intl_rank": 13,
+      "elo_intl": 1906,
+      "xi_blend": 1642.9,
+      "avg_xi_blend": 1613.0,
+      "strength_score": 1916.5,
+      "method": "xi_blend_adj"
+    },
+    "tur": {
+      "team_code": "tur",
+      "country_name": "Turkey",
+      "intl_rank": 14,
+      "elo_intl": 1902,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1902.0,
+      "method": "elo_intl_only"
+    },
+    "sui": {
+      "team_code": "sui",
+      "country_name": "Switzerland",
+      "intl_rank": 15,
+      "elo_intl": 1894,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1894.0,
+      "method": "elo_intl_only"
+    },
+    "ury": {
+      "team_code": "ury",
+      "country_name": "Uruguay",
+      "intl_rank": 16,
+      "elo_intl": 1892,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1892.0,
+      "method": "elo_intl_only"
+    },
+    "mex": {
+      "team_code": "mex",
+      "country_name": "Mexico",
+      "intl_rank": 18,
+      "elo_intl": 1868,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1868.0,
+      "method": "elo_intl_only"
+    },
+    "bel": {
+      "team_code": "bel",
+      "country_name": "Belgium",
+      "intl_rank": 19,
+      "elo_intl": 1867,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1867.0,
+      "method": "elo_intl_only"
+    },
+    "sen": {
+      "team_code": "sen",
+      "country_name": "Senegal",
+      "intl_rank": 20,
+      "elo_intl": 1866,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1866.0,
+      "method": "elo_intl_only"
+    },
+    "pry": {
+      "team_code": "pry",
+      "country_name": "Paraguay",
+      "intl_rank": 22,
+      "elo_intl": 1833,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1833.0,
+      "method": "elo_intl_only"
+    },
+    "aut": {
+      "team_code": "aut",
+      "country_name": "Austria",
+      "intl_rank": 23,
+      "elo_intl": 1827,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1827.0,
+      "method": "elo_intl_only"
+    },
+    "mar": {
+      "team_code": "mar",
+      "country_name": "Morocco",
+      "intl_rank": 24,
+      "elo_intl": 1822,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1822.0,
+      "method": "elo_intl_only"
+    },
+    "can": {
+      "team_code": "can",
+      "country_name": "Canada",
+      "intl_rank": 26,
+      "elo_intl": 1784,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1784.0,
+      "method": "elo_intl_only"
+    },
+    "aus": {
+      "team_code": "aus",
+      "country_name": "Australia",
+      "intl_rank": 27,
+      "elo_intl": 1775,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1775.0,
+      "method": "elo_intl_only"
+    },
+    "sco": {
+      "team_code": "sco",
+      "country_name": "Scotland",
+      "intl_rank": 28,
+      "elo_intl": 1770,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1770.0,
+      "method": "elo_intl_only"
+    },
+    "irn": {
+      "team_code": "irn",
+      "country_name": "Iran",
+      "intl_rank": 31,
+      "elo_intl": 1764,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1764.0,
+      "method": "elo_intl_only"
+    },
+    "kor": {
+      "team_code": "kor",
+      "country_name": "South Korea",
+      "intl_rank": 32,
+      "elo_intl": 1756,
+      "xi_blend": 1623.0,
+      "avg_xi_blend": 1613.0,
+      "strength_score": 1759.5,
+      "method": "xi_blend_adj"
+    },
+    "alg": {
+      "team_code": "alg",
+      "country_name": "Algeria",
+      "intl_rank": 34,
+      "elo_intl": 1743,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1743.0,
+      "method": "elo_intl_only"
+    },
+    "cze": {
+      "team_code": "cze",
+      "country_name": "Czech Republic",
+      "intl_rank": 36,
+      "elo_intl": 1733,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1733.0,
+      "method": "elo_intl_only"
+    },
+    "usa": {
+      "team_code": "usa",
+      "country_name": "United States",
+      "intl_rank": 36,
+      "elo_intl": 1733,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1733.0,
+      "method": "elo_intl_only"
+    },
+    "pan": {
+      "team_code": "pan",
+      "country_name": "Panama",
+      "intl_rank": 36,
+      "elo_intl": 1733,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1733.0,
+      "method": "elo_intl_only"
+    },
+    "uzb": {
+      "team_code": "uzb",
+      "country_name": "Uzbekistan",
+      "intl_rank": 39,
+      "elo_intl": 1727,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1727.0,
+      "method": "elo_intl_only"
+    },
+    "swe": {
+      "team_code": "swe",
+      "country_name": "Sweden",
+      "intl_rank": 41,
+      "elo_intl": 1719,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1719.0,
+      "method": "elo_intl_only"
+    },
+    "egy": {
+      "team_code": "egy",
+      "country_name": "Egypt",
+      "intl_rank": 46,
+      "elo_intl": 1699,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1699.0,
+      "method": "elo_intl_only"
+    },
+    "jor": {
+      "team_code": "jor",
+      "country_name": "Jordan",
+      "intl_rank": 51,
+      "elo_intl": 1685,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1685.0,
+      "method": "elo_intl_only"
+    },
+    "civ": {
+      "team_code": "civ",
+      "country_name": "Ivory Coast",
+      "intl_rank": 52,
+      "elo_intl": 1676,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1676.0,
+      "method": "elo_intl_only"
+    },
+    "cod": {
+      "team_code": "cod",
+      "country_name": "DR Congo",
+      "intl_rank": 54,
+      "elo_intl": 1655,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1655.0,
+      "method": "elo_intl_only"
+    },
+    "tun": {
+      "team_code": "tun",
+      "country_name": "Tunisia",
+      "intl_rank": 58,
+      "elo_intl": 1636,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1636.0,
+      "method": "elo_intl_only"
+    },
+    "irq": {
+      "team_code": "irq",
+      "country_name": "Iraq",
+      "intl_rank": 63,
+      "elo_intl": 1608,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1608.0,
+      "method": "elo_intl_only"
+    },
+    "bih": {
+      "team_code": "bih",
+      "country_name": "Bosnia Herzegovina",
+      "intl_rank": 67,
+      "elo_intl": 1591,
+      "xi_blend": 1573.0,
+      "avg_xi_blend": 1613.0,
+      "strength_score": 1577.0,
+      "method": "xi_blend_adj"
+    },
+    "nzl": {
+      "team_code": "nzl",
+      "country_name": "New Zealand",
+      "intl_rank": 68,
+      "elo_intl": 1585,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1585.0,
+      "method": "elo_intl_only"
+    },
+    "cpv": {
+      "team_code": "cpv",
+      "country_name": "Cape Verde",
+      "intl_rank": 69,
+      "elo_intl": 1576,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1576.0,
+      "method": "elo_intl_only"
+    },
+    "ksa": {
+      "team_code": "ksa",
+      "country_name": "Saudi Arabia",
+      "intl_rank": 72,
+      "elo_intl": 1566,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1566.0,
+      "method": "elo_intl_only"
+    },
+    "hti": {
+      "team_code": "hti",
+      "country_name": "Haiti",
+      "intl_rank": 76,
+      "elo_intl": 1532,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1532.0,
+      "method": "elo_intl_only"
+    },
+    "zaf": {
+      "team_code": "zaf",
+      "country_name": "South Africa",
+      "intl_rank": 79,
+      "elo_intl": 1517,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1517.0,
+      "method": "elo_intl_only"
+    },
+    "gha": {
+      "team_code": "gha",
+      "country_name": "Ghana",
+      "intl_rank": 82,
+      "elo_intl": 1503,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1503.0,
+      "method": "elo_intl_only"
+    },
+    "cuw": {
+      "team_code": "cuw",
+      "country_name": "Curacao",
+      "intl_rank": 91,
+      "elo_intl": 1433,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1433.0,
+      "method": "elo_intl_only"
+    },
+    "qat": {
+      "team_code": "qat",
+      "country_name": "Qatar",
+      "intl_rank": 96,
+      "elo_intl": 1423,
+      "xi_blend": null,
+      "avg_xi_blend": null,
+      "strength_score": 1423.0,
+      "method": "elo_intl_only"
+    }
+  }
+}

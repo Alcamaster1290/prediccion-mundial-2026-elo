@@ -56,7 +56,7 @@ def export_strengths(supabase_url, service_key, strengths_data):
             'team_code':      code,
             'version':        version,
             'elo_intl':       t['elo_intl'],
-            'elo_club_avg':   t.get('elo_club_avg'),
+            'elo_club_avg':   t.get('xi_blend'),
             'strength_score': t['strength_score'],
             'method':         t['method'],
         })
