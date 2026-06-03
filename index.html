@@ -1596,6 +1596,34 @@
   }
   .pred-clasif-pct { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text); }
 
+  /* R32 Ruta Posible */
+  .pred-r32-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: .6rem; margin-top: .75rem;
+  }
+  .pred-r32-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: .75rem .9rem; display: flex; align-items: center; gap: .5rem;
+  }
+  .pred-r32-num {
+    font-size: 10px; color: var(--muted); font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; min-width: 26px; flex-shrink: 0;
+  }
+  .pred-r32-slot { flex: 1; display: flex; flex-direction: column; gap: .15rem; min-width: 0; }
+  .pred-r32-pos {
+    font-size: 10px; color: var(--muted); font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: .05em; text-transform: uppercase; white-space: nowrap;
+  }
+  .pred-r32-team {
+    display: flex; align-items: center; gap: .35rem;
+    font-size: 13px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden;
+  }
+  .pred-r32-team .flag-svg { width: 18px; height: 13px; flex-shrink: 0; }
+  .pred-r32-pct { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+  .pred-r32-vs { font-size: 10px; color: var(--muted); padding: 0 .15rem; flex-shrink: 0; }
+  .pred-slot-tbd { color: var(--muted); font-style: italic; font-size: 12px; }
+
   /* ─── CARD HOVER POLISH ─────────────────────────────────────── */
   .fmt-card, .group-card, .ko-card {
     box-shadow: var(--shadow-soft);

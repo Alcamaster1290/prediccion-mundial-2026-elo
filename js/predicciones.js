@@ -6,6 +6,34 @@
 (function () {
   'use strict';
 
+  var GROUP_TEAMS = {
+    A: ['mex','zaf','kor','cze'], B: ['can','bih','qat','sui'],
+    C: ['bra','mar','hti','sco'], D: ['usa','pry','aus','tur'],
+    E: ['ger','cuw','civ','ecu'], F: ['ned','jpn','swe','tun'],
+    G: ['bel','egy','irn','nzl'], H: ['esp','cpv','ksa','ury'],
+    I: ['fra','sen','irq','nor'], J: ['arg','alg','aut','jor'],
+    K: ['por','cod','uzb','col'], L: ['eng','cro','gha','pan'],
+  };
+
+  var R32 = [
+    {num:73, home:{t:'2',g:'A'}, away:{t:'2',g:'B'}},
+    {num:74, home:{t:'1',g:'E'}, away:{t:'3',gs:['A','B','C','D','F']}},
+    {num:75, home:{t:'1',g:'F'}, away:{t:'2',g:'C'}},
+    {num:76, home:{t:'1',g:'C'}, away:{t:'2',g:'F'}},
+    {num:77, home:{t:'1',g:'I'}, away:{t:'3',gs:['C','D','F','G','H']}},
+    {num:78, home:{t:'2',g:'E'}, away:{t:'2',g:'I'}},
+    {num:79, home:{t:'1',g:'A'}, away:{t:'3',gs:['C','E','F','H','I']}},
+    {num:80, home:{t:'1',g:'L'}, away:{t:'3',gs:['E','H','I','J','K']}},
+    {num:81, home:{t:'1',g:'D'}, away:{t:'3',gs:['B','E','F','I','J']}},
+    {num:82, home:{t:'1',g:'G'}, away:{t:'3',gs:['A','E','H','I','J']}},
+    {num:83, home:{t:'2',g:'K'}, away:{t:'2',g:'L'}},
+    {num:84, home:{t:'1',g:'H'}, away:{t:'2',g:'J'}},
+    {num:85, home:{t:'1',g:'B'}, away:{t:'3',gs:['E','F','G','I','J']}},
+    {num:86, home:{t:'1',g:'J'}, away:{t:'2',g:'H'}},
+    {num:87, home:{t:'1',g:'K'}, away:{t:'3',gs:['D','E','I','J','L']}},
+    {num:88, home:{t:'2',g:'D'}, away:{t:'2',g:'G'}},
+  ];
+
   var NAMES = {
     mex:'México', zaf:'Sudáfrica', kor:'Corea del Sur', cze:'Chequia',
     can:'Canadá', bih:'Bosnia', qat:'Qatar', sui:'Suiza',
@@ -146,6 +174,75 @@
     paypalTab.classList.toggle('active', !isYape);
   }
 
+  function renderRutaPosible(data) {
+    // Build code->row index
+    var byCode = {};
+    data.standings.forEach(function(t) { byCode[t.team_code] = t; });
+
+    // Build group->terceros index
+    var tercByGroup = {};
+    data.terceros.forEach(function(r) { tercByGroup[r.group_id] = r; });
+
+    function getTeamForSlot(slot) {
+      if (slot.t === '3') {
+        // Pick the best-ranked tercero from the candidate groups
+        var best = null;
+        slot.gs.forEach(function(g) {
+          var r = tercByGroup[g];
+          if (!r) return;
+          if (!best || r.rank < best.rank) best = r;
+        });
+        return best ? { code: best.team_code, pct: parseFloat(best.qualifies_pct) } : null;
+      }
+      // For 1st or 2nd: pick team in that group with highest first_pct or second_pct
+      var field = slot.t === '1' ? 'first_pct' : 'second_pct';
+      var codes = GROUP_TEAMS[slot.g] || [];
+      var best = null;
+      codes.forEach(function(code) {
+        var t = byCode[code];
+        if (!t) return;
+        if (!best || parseFloat(t[field]) > parseFloat(best[field])) best = t;
+      });
+      return best ? { code: best.team_code, pct: parseFloat(best[field]) } : null;
+    }
+
+    function slotLabel(slot) {
+      if (slot.t === '3') return '3.° ' + slot.gs.join('/');
+      return slot.t + '.° Grupo ' + slot.g;
+    }
+
+    function renderSlot(slot, team) {
+      var label = slotLabel(slot);
+      var teamHtml = team
+        ? (flag(team.code) + '<span>' + (NAMES[team.code] || team.code.toUpperCase()) + '</span>')
+        : '<span class="pred-slot-tbd">Por definir</span>';
+      var pctHtml = team ? '<span class="pred-r32-pct">' + team.pct.toFixed(1) + '%</span>' : '';
+      return '<div class="pred-r32-slot">'
+        + '<span class="pred-r32-pos">' + label + '</span>'
+        + '<div class="pred-r32-team">' + teamHtml + '</div>'
+        + pctHtml
+        + '</div>';
+    }
+
+    var html = '<h3 class="pred-subsection-title">Ruta Posible — Octavos de Final</h3>'
+      + '<p class="pred-terceros-note">Equipos proyectados en cada cruce según las 10,000 simulaciones. El % indica la probabilidad de ocupar esa posición.</p>'
+      + '<div class="pred-r32-grid">';
+
+    R32.forEach(function(m) {
+      var homeTeam = getTeamForSlot(m.home);
+      var awayTeam = getTeamForSlot(m.away);
+      html += '<div class="pred-r32-card">'
+        + '<span class="pred-r32-num">P' + m.num + '</span>'
+        + renderSlot(m.home, homeTeam)
+        + '<span class="pred-r32-vs">vs</span>'
+        + renderSlot(m.away, awayTeam)
+        + '</div>';
+    });
+
+    html += '</div>';
+    return html;
+  }
+
   async function renderActive() {
     var el = document.getElementById('predicciones-content');
     if (!el) return;
@@ -222,6 +319,7 @@
           + '</tr>';
       });
       html += '</tbody></table></div>';
+      html += renderRutaPosible(data);
     }
 
     el.innerHTML = html;
