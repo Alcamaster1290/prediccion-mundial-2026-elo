@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /auth/
 
 Sitemap: https://alcamaster1290.github.io/prediccion-mundial-2026-elo/sitemap.xml
