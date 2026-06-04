@@ -1588,6 +1588,84 @@
   .pred-loading { color: var(--muted); font-size: 14px; padding: 1.5rem 0; }
   .pred-empty { text-align: center; padding: 2rem; }
 
+  .pred-group-prob-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+    gap: 1rem;
+    margin: .75rem 0 2rem;
+  }
+  .pred-group-prob { min-width: 0; }
+  .pred-group-prob-title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .45rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .pred-group-prob-title::before {
+    content: '';
+    width: 4px;
+    height: 18px;
+    border-radius: 2px;
+    background: var(--grp-col, var(--accent));
+  }
+  .pred-points-wrap {
+    margin: 0;
+    border-radius: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .pred-points-table {
+    min-width: 760px;
+    font-size: 12px;
+  }
+  .pred-points-table thead th,
+  .pred-points-table td {
+    padding: .48rem .52rem;
+  }
+  .pred-points-table thead th:not(.st-team-hdr),
+  .pred-points-table td:not(.st-team-cell) {
+    text-align: center;
+  }
+  .pred-points-table .st-team-cell { min-width: 132px; }
+  .pred-points-best {
+    min-width: 86px;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.15;
+  }
+  .pred-points-main {
+    display: block;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .pred-points-pct {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: .1rem;
+  }
+  .pred-points-empty { color: var(--muted); }
+  .pred-point-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .pred-point-top {
+    background: color-mix(in srgb, var(--grp-col, var(--accent)) 18%, transparent);
+    color: var(--white);
+    font-weight: 800;
+  }
+  [data-theme="light"] .pred-group-prob-title,
+  [data-theme="light"] .pred-points-main,
+  [data-theme="light"] .pred-point-top { color: #18202c; }
+
   /* tables */
   .pred-table-wrap { overflow-x: auto; }
   .pred-table {

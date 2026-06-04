@@ -17,8 +17,14 @@ CREATE TABLE IF NOT EXISTS national_elo_ratings (
 
 ALTER TABLE national_elo_ratings ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "public read elo ratings" ON national_elo_ratings;
 CREATE POLICY "public read elo ratings"
-  ON national_elo_ratings FOR SELECT USING (true);
+  ON national_elo_ratings FOR SELECT
+  TO anon, authenticated
+  USING (true);
+
+GRANT SELECT ON TABLE national_elo_ratings TO anon, authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE national_elo_ratings TO service_role;
 
 -- Verify:
 -- SELECT team_code, country_name, rank, elo

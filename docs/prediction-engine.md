@@ -157,13 +157,25 @@ python scripts/run_monte_carlo.py --runs 1000 --seed 42 --output data/mc_results
       "second_pct": 25.0,
       "third_pct": 3.6,
       "best_third_pct": 3.6,
-      "fourth_pct": 0.0
+      "fourth_pct": 0.0,
+      "points_pct": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 1.2,
+        "4": 4.8,
+        "5": 0.0,
+        "6": 18.6,
+        "7": 24.0,
+        "9": 51.4
+      }
     }
   }
 }
 ```
 
 `qualified_pct = first_pct + second_pct + best_third_pct`
+`points_pct` is the simulated distribution for total group-stage points.
 
 ---
 
@@ -188,7 +200,10 @@ key to the repository.
 ## Supabase Schema
 
 Defined in `supabase/05_prediction_engine_schema.sql`. Apply via Supabase MCP or
-the Supabase CLI.
+the Supabase CLI, then apply `supabase/07_prediction_engine_rls_hardening.sql`
+if the prediction engine should remain premium-only. Apply
+`supabase/08_security_advisors_hardening.sql` after function-related SQL to keep
+advisor findings limited to intentional/auth-dashboard settings.
 
 Tables added (do not modify existing tables):
 
@@ -199,8 +214,11 @@ Tables added (do not modify existing tables):
 | `simulation_group_standings` | Aggregated qualification percentages per run |
 | `players` | Optional supplement to `data/teams.json` |
 
-All tables are public-readable (RLS `FOR SELECT USING (true)`). Writes require
-service_role key — anon and authenticated roles cannot insert.
+`05_prediction_engine_schema.sql` creates a public-readable baseline with
+explicit Data API grants. `07_prediction_engine_rls_hardening.sql` replaces that
+with premium-only reads for `authenticated` users whose profile has
+`is_premium = true`, revokes `anon` table access, and keeps `service_role`
+write permissions for export scripts.
 
 ---
 

@@ -26,3 +26,6 @@ assets/xi/_originals/
 
 # Supabase config: anon key is public-safe — committed intentionally
 # js/config.js
+
+# Supabase CLI local link/cache
+supabase/.temp/

@@ -14,6 +14,8 @@
     I: ['fra','sen','irq','nor'], J: ['arg','alg','aut','jor'],
     K: ['por','cod','uzb','col'], L: ['eng','cro','gha','pan'],
   };
+  var GROUP_ORDER = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+  var POINT_TOTALS = ['0','1','2','3','4','5','6','7','9'];
 
   /* reverse map: team_code → group letter */
   var TEAM_GROUP = {};
@@ -86,12 +88,17 @@
       .select('*')
       .eq('simulation_run', runId)
       .order('rank');
-    if (terRef.error) return null;
+
+    var terceros = terRef.error ? [] : (terRef.data || []);
+    terceros = terceros.map(function(row) {
+      if (!row.group_id && row.group) row.group_id = row.group;
+      return row;
+    });
 
     return {
       run:      runRef.data,
       standings: standRef.data || [],
-      terceros:  terRef.data || [],
+      terceros:  terceros,
     };
   }
 
@@ -102,6 +109,129 @@
     for (var i = 0; i < 6; i++) {
       html += '<div class="pred-ghost-row"><div></div><div></div><div></div><div></div></div>';
     }
+    html += '</div>';
+    return html;
+  }
+
+  function pctNumber(value) {
+    var n = parseFloat(value);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function formatPct(value) {
+    var n = pctNumber(value);
+    var rounded = Math.round(n * 10) / 10;
+    if (Math.abs(rounded - Math.round(rounded)) < 0.05) return String(Math.round(rounded));
+    return rounded.toFixed(1);
+  }
+
+  function pctText(value) {
+    return formatPct(value) + '%';
+  }
+
+  function qualifyClass(value) {
+    var q = pctNumber(value);
+    return q >= 99 ? 'pred-q-100' : q >= 70 ? 'pred-q-high' : q >= 40 ? 'pred-q-mid' : 'pred-q-low';
+  }
+
+  function groupColor(group) {
+    return 'var(--grp-' + String(group).toLowerCase() + ')';
+  }
+
+  function getPointsData(row) {
+    var raw = row && row.points_pct ? row.points_pct : {};
+    if (typeof raw === 'string') {
+      try { raw = JSON.parse(raw); } catch (e) { raw = {}; }
+    }
+
+    var values = {};
+    var hasData = false;
+    POINT_TOTALS.forEach(function(points) {
+      var n = pctNumber(raw[points]);
+      values[points] = n;
+      if (n > 0) hasData = true;
+    });
+
+    return { values: values, hasData: hasData };
+  }
+
+  function topPointsBucket(pointsData) {
+    if (!pointsData || !pointsData.hasData) return null;
+    var best = { points: POINT_TOTALS[0], pct: -1 };
+    POINT_TOTALS.forEach(function(points) {
+      var value = pointsData.values[points] || 0;
+      if (value > best.pct || (value === best.pct && parseInt(points, 10) > parseInt(best.points, 10))) {
+        best = { points: points, pct: value };
+      }
+    });
+    return best;
+  }
+
+  function renderGroupProbabilityTables(data) {
+    var byCode = {};
+    data.standings.forEach(function(row) {
+      byCode[row.team_code] = row;
+    });
+
+    var html = '<h3 class="pred-subsection-title">Probabilidades por Grupo</h3>'
+      + '<div class="pred-group-prob-grid">';
+
+    GROUP_ORDER.forEach(function(group) {
+      var rows = (GROUP_TEAMS[group] || []).map(function(code) {
+        return byCode[code];
+      }).filter(Boolean);
+      if (!rows.length) return;
+
+      rows.sort(function(a, b) {
+        var qDiff = pctNumber(b.qualified_pct) - pctNumber(a.qualified_pct);
+        if (qDiff !== 0) return qDiff;
+        var fDiff = pctNumber(b.first_pct) - pctNumber(a.first_pct);
+        if (fDiff !== 0) return fDiff;
+        return GROUP_TEAMS[group].indexOf(a.team_code) - GROUP_TEAMS[group].indexOf(b.team_code);
+      });
+
+      html += '<section class="pred-group-prob" style="--grp-col:' + groupColor(group) + '">'
+        + '<div class="pred-group-prob-title"><span>Grupo ' + group + '</span></div>'
+        + '<div class="standings-wrap pred-points-wrap">'
+        + '<table class="standings-table pred-points-table">'
+        + '<thead><tr>'
+        + '<th class="st-pos-hdr">#</th>'
+        + '<th class="st-team-hdr">Equipo</th>'
+        + '<th>Clasif.</th>'
+        + '<th class="st-pts-hdr">PTS prob.</th>';
+
+      POINT_TOTALS.forEach(function(points) {
+        html += '<th title="' + points + ' puntos">' + points + '</th>';
+      });
+
+      html += '</tr></thead><tbody>';
+
+      rows.forEach(function(row, index) {
+        var pointsData = getPointsData(row);
+        var topPoints = topPointsBucket(pointsData);
+        var rowClass = index < 2 ? 'st-qualify' : (index === 2 ? 'st-third' : '');
+        var bestLabel = topPoints
+          ? '<span class="pred-points-main">' + topPoints.points + ' pts</span><span class="pred-points-pct">' + pctText(topPoints.pct) + '</span>'
+          : '<span class="pred-points-empty">-</span>';
+
+        html += '<tr class="' + rowClass + '">'
+          + '<td class="st-pos-cell">' + (index + 1) + '</td>'
+          + '<td class="st-team-cell">' + flag(row.team_code) + ' ' + (NAMES[row.team_code] || row.team_code.toUpperCase()) + '</td>'
+          + '<td><span class="pred-q-badge ' + qualifyClass(row.qualified_pct) + '">' + pctText(row.qualified_pct) + '</span></td>'
+          + '<td class="pred-points-best">' + bestLabel + '</td>';
+
+        POINT_TOTALS.forEach(function(points) {
+          var value = pointsData.values[points] || 0;
+          var isTop = topPoints && points === topPoints.points;
+          html += '<td class="pred-point-pct' + (isTop ? ' pred-point-top' : '') + '">' + (pointsData.hasData ? pctText(value) : '-') + '</td>';
+        });
+
+        html += '</tr>';
+      });
+
+      html += '</tbody></table></div></section>';
+    });
+
     html += '</div>';
     return html;
   }
@@ -274,6 +404,8 @@
       + '<span class="pred-premium-badge">&#x2705; Acceso Premium Activo</span>'
       + (runsLabel ? '<span class="pred-model-note">' + runsLabel + ' &nbsp;·&nbsp; Monte Carlo &nbsp;·&nbsp; ELO híbrido</span>' : '')
       + '</div>';
+
+    html += renderGroupProbabilityTables(data);
 
     // — Tabla 1: Probabilidades de clasificación —
     html += '<h3 class="pred-subsection-title">Probabilidad de Clasificación</h3>';

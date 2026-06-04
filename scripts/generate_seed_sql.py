@@ -84,29 +84,49 @@ def gen_mc(mc_data, out_path):
 
     run_rows = []
     for code, r in mc_data['teams'].items():
+        points_pct = json.dumps(r.get('points_pct', {}), ensure_ascii=False, separators=(',', ':'))
         run_rows.append(
-            f"({q(code)},{n(r['qualified_pct'])},{n(r['first_pct'])},{n(r['second_pct'])},{n(r['third_pct'])},{n(r.get('best_third_pct',0))},{n(r['fourth_pct'])})"
+            f"({q(code)},{n(r['qualified_pct'])},{n(r['first_pct'])},{n(r['second_pct'])},{n(r['third_pct'])},{n(r.get('best_third_pct',0))},{n(r['fourth_pct'])},{q(points_pct)})"
+        )
+
+    terceros_rows = []
+    for row in mc_data.get('terceros_table', []):
+        group_id = row.get('group_id') or row.get('group')
+        qualifies = str(bool(row.get('qualifies', False))).upper()
+        terceros_rows.append(
+            f"({n(row['rank'])},{q(group_id)},{q(row['team_code'])},{n(row['third_pct'])},{n(row['qualifies_pct'])},{n(row['avg_pts'])},{n(row['avg_gd'])},{n(row['avg_gf'])},{qualifies})"
         )
 
     sql = (
-        "-- simulation_runs + simulation_group_standings\n"
+        "-- simulation_runs + simulation_group_standings + simulation_terceros_table\n"
+        "TRUNCATE simulation_terceros_table RESTART IDENTITY CASCADE;\n"
         "TRUNCATE simulation_group_standings RESTART IDENTITY CASCADE;\n"
         "TRUNCATE simulation_runs RESTART IDENTITY CASCADE;\n"
         "\n"
         "WITH inserted_run AS (\n"
         f"  INSERT INTO simulation_runs (runs,seed,version) VALUES ({runs},{n(seed)},{q(version)})\n"
         "  RETURNING id\n"
-        ")\n"
-        "INSERT INTO simulation_group_standings\n"
-        "  (simulation_run,team_code,qualified_pct,first_pct,second_pct,third_pct,best_third_pct,fourth_pct)\n"
-        "SELECT r.id, v.team_code, v.qualified_pct, v.first_pct, v.second_pct, v.third_pct, v.best_third_pct, v.fourth_pct\n"
-        "FROM inserted_run r,\n"
-        "(VALUES\n"
+        "), inserted_standings AS (\n"
+        "  INSERT INTO simulation_group_standings\n"
+        "    (simulation_run,team_code,qualified_pct,first_pct,second_pct,third_pct,best_third_pct,fourth_pct,points_pct)\n"
+        "  SELECT r.id, v.team_code, v.qualified_pct, v.first_pct, v.second_pct, v.third_pct, v.best_third_pct, v.fourth_pct, v.points_pct::jsonb\n"
+        "  FROM inserted_run r,\n"
+        "  (VALUES\n"
         + ',\n'.join(run_rows)
-        + "\n) AS v(team_code,qualified_pct,first_pct,second_pct,third_pct,best_third_pct,fourth_pct);\n"
+        + "\n  ) AS v(team_code,qualified_pct,first_pct,second_pct,third_pct,best_third_pct,fourth_pct,points_pct)\n"
+        "  RETURNING 1\n"
+        ")\n"
+        "INSERT INTO simulation_terceros_table\n"
+        "  (simulation_run,rank,group_id,team_code,third_pct,qualifies_pct,avg_pts,avg_gd,avg_gf,qualifies)\n"
+        "SELECT r.id, v.rank, v.group_id, v.team_code, v.third_pct, v.qualifies_pct, v.avg_pts, v.avg_gd, v.avg_gf, v.qualifies\n"
+        "FROM inserted_run r,\n"
+        "(SELECT count(*) FROM inserted_standings) s,\n"
+        "(VALUES\n"
+        + ',\n'.join(terceros_rows)
+        + "\n) AS v(rank,group_id,team_code,third_pct,qualifies_pct,avg_pts,avg_gd,avg_gf,qualifies);\n"
     )
     out_path.write_text(sql, encoding='utf-8')
-    print(f"  {len(run_rows)} team rows -> {out_path.name}")
+    print(f"  {len(run_rows)} team rows + {len(terceros_rows)} terceros rows -> {out_path.name}")
 
 
 def main():

@@ -67,7 +67,9 @@ mundial-2026/
 │   │                               #   players, national_elo_ratings,
 │   │                               #   team_strength_snapshots,
 │   │                               #   simulation_runs, simulation_group_standings
-│   └── 06_national_elo_schema.sql  # Migración: simulation_terceros_table
+│   ├── 06_national_elo_schema.sql  # Tabla ELO internacional pública
+│   ├── 07_prediction_engine_rls_hardening.sql # Lectura premium del motor
+│   └── 08_security_advisors_hardening.sql # Permisos de funciones SECURITY DEFINER
 │
 └── docs/
     └── superpowers/
@@ -184,7 +186,12 @@ python scripts/generate_seed_sql.py
 | `simulation_group_standings` | 48 | Probabilidades de clasificación por equipo |
 | `simulation_terceros_table` | 12 | Proyección de mejores terceros por grupo |
 
-Todas las tablas tienen RLS habilitado con política `FOR SELECT USING (true)` (lectura pública).
+`national_elo_ratings` queda con lectura pública. Las tablas del motor premium
+(`team_strength_snapshots`, `simulation_runs`, `simulation_group_standings`,
+`players` y `simulation_terceros_table`, si existe) se endurecen con
+`supabase/07_prediction_engine_rls_hardening.sql`: `authenticated` puede leer
+solo si `profiles.is_premium = true`, `anon` no tiene acceso y `service_role`
+mantiene permisos de carga.
 
 ---
 

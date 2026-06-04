@@ -109,6 +109,7 @@ def export_mc_results(supabase_url, service_key, mc_data, version='1.0'):
             'third_pct':       r['third_pct'],
             'best_third_pct':  r['best_third_pct'],
             'fourth_pct':      r['fourth_pct'],
+            'points_pct':      r.get('points_pct', {}),
         })
 
     print(f"Inserting {len(rows)} simulation_group_standings rows...")
@@ -120,6 +121,32 @@ def export_mc_results(supabase_url, service_key, mc_data, version='1.0'):
     if err:
         print(f"ERROR: {err}")
         return False
+
+    terceros_rows = []
+    for row in mc_data.get('terceros_table', []):
+        terceros_rows.append({
+            'simulation_run': run_id,
+            'rank':           row['rank'],
+            'group_id':       row.get('group_id') or row.get('group'),
+            'team_code':      row['team_code'],
+            'third_pct':      row['third_pct'],
+            'qualifies_pct':  row['qualifies_pct'],
+            'avg_pts':        row['avg_pts'],
+            'avg_gd':         row['avg_gd'],
+            'avg_gf':         row['avg_gf'],
+            'qualifies':      bool(row.get('qualifies', False)),
+        })
+
+    print(f"Inserting {len(terceros_rows)} simulation_terceros_table rows...")
+    err, _ = supabase_request(
+        supabase_url, service_key, 'POST',
+        'simulation_terceros_table',
+        terceros_rows,
+    )
+    if err:
+        print(f"ERROR: {err}")
+        return False
+
     print(f"  Done. Run id: {run_id}")
     return True
 

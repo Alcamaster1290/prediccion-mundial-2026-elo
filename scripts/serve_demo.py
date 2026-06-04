@@ -37,6 +37,22 @@ INJECT = """
         third_pct:      t.third_pct,
         best_third_pct: t.best_third_pct,
         fourth_pct:     t.fourth_pct,
+        points_pct:     t.points_pct || {},
+      };
+    });
+
+    var terceros = (mc.terceros_table || []).map(function (row) {
+      return {
+        simulation_run: 'demo',
+        rank:           row.rank,
+        group_id:       row.group,
+        team_code:      row.team_code,
+        third_pct:      row.third_pct,
+        qualifies_pct:  row.qualifies_pct,
+        avg_pts:        row.avg_pts,
+        avg_gd:         row.avg_gd,
+        avg_gf:         row.avg_gf,
+        qualifies:      row.qualifies,
       };
     });
 
@@ -44,7 +60,7 @@ INJECT = """
       simulation_runs: [{ id: 'demo', runs: mc.runs, seed: mc.seed || 42,
                           created_at: new Date().toISOString(), version: '1.1' }],
       simulation_group_standings: standings,
-      simulation_terceros_table: [],
+      simulation_terceros_table: terceros,
     };
 
     function Builder(table) { this._t = table; }

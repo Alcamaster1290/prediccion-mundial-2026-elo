@@ -25,13 +25,21 @@ from simulate_group_stage import (
 )
 
 REPO_ROOT = Path(__file__).parent.parent
+POSSIBLE_POINTS = (0, 1, 2, 3, 4, 5, 6, 7, 9)
 
 
 def run_monte_carlo(runs, seed, matches, strengths, base_goals):
     if seed is not None:
         random.seed(seed)
 
-    counts = defaultdict(lambda: {'first': 0, 'second': 0, 'third': 0, 'fourth': 0, 'best_third': 0})
+    counts = defaultdict(lambda: {
+        'first': 0,
+        'second': 0,
+        'third': 0,
+        'fourth': 0,
+        'best_third': 0,
+        'points': defaultdict(int),
+    })
 
     # Per-group tracking for the terceros table
     group_thirds = defaultdict(lambda: {
@@ -58,6 +66,7 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals):
                     g['team_counts'][code] += 1
                 else:
                     counts[code]['fourth'] += 1
+                counts[code]['points'][t['PTS']] += 1
 
         for i, t in enumerate(best_thirds(standings)):
             if i < 8:
@@ -74,6 +83,10 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals):
             'third_pct':        round(100 * c['third']   / runs, 1),
             'best_third_pct':   round(100 * c['best_third'] / runs, 1),
             'fourth_pct':       round(100 * c['fourth']  / runs, 1),
+            'points_pct': {
+                str(points): round(100 * c['points'].get(points, 0) / runs, 1)
+                for points in POSSIBLE_POINTS
+            },
         }
 
     # Build projected terceros table (one row per group)
