@@ -41,7 +41,7 @@ async function seed() {
   let allFixtures = [];
   groupsData.groups.forEach(function(g) {
     g.fixtures.forEach(function(f) {
-      allFixtures.push(Object.assign({}, f, { group_id: g.id.toLowerCase() }));
+      allFixtures.push(Object.assign({}, f, { group_id: g.id.toUpperCase() }));
     });
   });
   allFixtures.sort(function(a, b) {
@@ -67,7 +67,8 @@ async function seed() {
       away_label: NAMES[f.away] || f.away,
       kickoff_utc: f.date + 'T' + f.time + ':00Z',
       stadium: stadium,
-      city: city
+      city: city,
+      status: 'scheduled'
     });
   });
 
@@ -89,7 +90,8 @@ async function seed() {
       away_label: isR32 ? m.awayLabel : null,
       kickoff_utc: m.date + 'T' + m.time + ':00Z',
       stadium: m.venue || null,
-      city: m.city || null
+      city: m.city || null,
+      status: 'scheduled'
     });
   });
 

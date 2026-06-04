@@ -5552,7 +5552,8 @@
   var TEAM_CODES = {
     'corea':         'kor', 'bosnia':        'bih', 'suiza':        'sui',
     'brasil':        'bra', 'haiti':         'hti', 'escocia':      'sco',
-    'costa-marfil':  'civ', 'suecia':        'swe', 'belgica':      'bel',
+    'costa-marfil':  'civ', 'curazao':       'cuw', 'japon':        'jpn',
+    'suecia':        'swe', 'tunez':         'tun', 'belgica':      'bel',
     'nueva-zelanda': 'nzl', 'cabo-verde':    'cpv', 'francia':      'fra',
     'austria':       'aut', 'portugal':      'por', 'rd-congo':     'cod',
     'alemania':      'ger', 'noruega':       'nor',
@@ -5560,73 +5561,118 @@
     'espana':        'esp', 'colombia':      'col',
     'estados-unidos':'usa'
   };
-  var TEAM_KO_PATH = {
-    'kor': [{pos:'1°',r32:79,r32opp:'3.° Grupo C/E/F/H/I',r16:92,r16opp:'Ganador P80 (1.° L ó 3.° E/H/I/J/K)'},
-            {pos:'2°',r32:73,r32opp:'2.° Grupo B',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
-    'bih': [{pos:'1°',r32:85,r32opp:'3.° E/F/G/I/J',r16:96,r16opp:'Ganador P87 (1.° K ó 3.° D/E/I/J/L)'},
-            {pos:'2°',r32:73,r32opp:'2.° Grupo A',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
-    'sui': [{pos:'1°',r32:85,r32opp:'3.° E/F/G/I/J',r16:96,r16opp:'Ganador P87 (1.° K ó 3.° D/E/I/J/L)'},
-            {pos:'2°',r32:73,r32opp:'2.° Grupo A',r16:90,r16opp:'Ganador P75 (1.° F ó 2.° C)'}],
-    'bra': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
-            {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
-    'hti': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
-            {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
-    'sco': [{pos:'1°',r32:76,r32opp:'2.° Grupo F',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'},
-            {pos:'2°',r32:75,r32opp:'1.° Grupo F',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'}],
-    'civ': [{pos:'1°',r32:74,r32opp:'3.° A/B/C/D/F',r16:89,r16opp:'Ganador P77 (1.° I ó 3.° C/D/F/G/H)'},
-            {pos:'2°',r32:78,r32opp:'2.° Grupo I',r16:91,r16opp:'Ganador P76 (1.° C ó 2.° F)'}],
-    'swe': [{pos:'1°',r32:75,r32opp:'2.° Grupo C',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'},
-            {pos:'2°',r32:76,r32opp:'1.° Grupo C',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'}],
-    'nor': [{pos:'1°',r32:75,r32opp:'2.° Grupo C',r16:90,r16opp:'Ganador P73 (2.° A ó 2.° B)'},
-            {pos:'2°',r32:76,r32opp:'1.° Grupo C',r16:91,r16opp:'Ganador P78 (2.° E ó 2.° I)'}],
-    'bel': [{pos:'1°',r32:82,r32opp:'3.° A/E/H/I/J',r16:94,r16opp:'Ganador P81 (1.° D ó 3.° B/E/F/I/J)'},
-            {pos:'2°',r32:88,r32opp:'2.° Grupo D',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}],
-    'nzl': [{pos:'1°',r32:82,r32opp:'3.° A/E/H/I/J',r16:94,r16opp:'Ganador P81 (1.° D ó 3.° B/E/F/I/J)'},
-            {pos:'2°',r32:88,r32opp:'2.° Grupo D',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}],
-    'cpv': [{pos:'1°',r32:84,r32opp:'2.° Grupo J',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'},
-            {pos:'2°',r32:86,r32opp:'1.° Grupo J',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'}],
-    'fra': [{pos:'1°',r32:77,r32opp:'3.° C/D/F/G/H',r16:89,r16opp:'Ganador P74 (1.° E ó 3.° A/B/C/D/F)'},
-            {pos:'2°',r32:78,r32opp:'2.° Grupo E',r16:91,r16opp:'Ganador P76 (1.° C ó 2.° F)'}],
-    'aut': [{pos:'1°',r32:86,r32opp:'2.° Grupo H',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'},
-            {pos:'2°',r32:84,r32opp:'1.° Grupo H',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'}],
-    'ger': [{pos:'1°',r32:86,r32opp:'2.° Grupo H',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'},
-            {pos:'2°',r32:84,r32opp:'1.° Grupo H',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'}],
-    'por': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
-            {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
-    'cod': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
-            {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
-    'eng': [{pos:'1°',r32:80,r32opp:'3.° E/H/I/J/K',r16:92,r16opp:'Ganador P79 (1.° A ó 3.° C/E/F/H/I)'},
-            {pos:'2°',r32:83,r32opp:'2.° Grupo K',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
-    'esp': [{pos:'1°',r32:84,r32opp:'2.° Grupo J',r16:93,r16opp:'Ganador P83 (2.° K ó 2.° L)'},
-            {pos:'2°',r32:86,r32opp:'1.° Grupo J',r16:95,r16opp:'Ganador P88 (2.° D ó 2.° G)'}],
-    'col': [{pos:'1°',r32:87,r32opp:'3.° D/E/I/J/L',r16:96,r16opp:'Ganador P85 (1.° B ó 3.° E/F/G/I/J)'},
-            {pos:'2°',r32:83,r32opp:'2.° Grupo L',r16:93,r16opp:'Ganador P84 (1.° H ó 2.° J)'}],
-    'usa': [{pos:'1°',r32:81,r32opp:'3.° Grupo B/E/F/I/J',r16:94,r16opp:'Ganador P82 (1.° G ó 3.° A/E/H/I/J)'},
-            {pos:'2°',r32:88,r32opp:'2.° Grupo G',r16:95,r16opp:'Ganador P86 (1.° J ó 2.° H)'}]
+  var GROUP_TEAMS = {
+    A:['mex','zaf','kor','cze'], B:['can','bih','qat','sui'],
+    C:['bra','mar','hti','sco'], D:['usa','pry','aus','tur'],
+    E:['ger','cuw','civ','ecu'], F:['ned','jpn','swe','tun'],
+    G:['bel','egy','irn','nzl'], H:['esp','cpv','ksa','ury'],
+    I:['fra','sen','irq','nor'], J:['arg','alg','aut','jor'],
+    K:['por','cod','uzb','col'], L:['eng','cro','gha','pan']
   };
-  var TEAM_KO_3RD = {
-    'kor': [{r32:74,r16:89},{r32:82,r16:94}],
-    'bih': [{r32:74,r16:89},{r32:81,r16:94}],
-    'sui': [{r32:74,r16:89},{r32:81,r16:94}],
-    'bra': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
-    'hti': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
-    'sco': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92}],
-    'civ': [{r32:79,r16:92},{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
-    'swe': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92},{r32:81,r16:94},{r32:85,r16:96}],
-    'nor': [{r32:74,r16:89},{r32:77,r16:89},{r32:79,r16:92},{r32:81,r16:94},{r32:85,r16:96}],
-    'bel': [{r32:77,r16:89},{r32:85,r16:96}],
-    'nzl': [{r32:77,r16:89},{r32:85,r16:96}],
-    'cpv': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:82,r16:94}],
-    'fra': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
-    'aut': [{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
-    'ger': [{r32:80,r16:92},{r32:81,r16:94},{r32:82,r16:94},{r32:85,r16:96},{r32:87,r16:96}],
-    'por': [{r32:80,r16:92},{r32:87,r16:96}],
-    'cod': [{r32:80,r16:92},{r32:87,r16:96}],
-    'eng': [{r32:87,r16:96}],
-    'esp': [{r32:77,r16:89},{r32:79,r16:92},{r32:80,r16:92},{r32:82,r16:94}],
-    'col': [{r32:80,r16:92},{r32:87,r16:96}],
-    'usa': [{r32:74,r16:89},{r32:77,r16:89},{r32:87,r16:96}]
-  };
+  var TEAM_GROUP = {};
+  Object.keys(GROUP_TEAMS).forEach(function(groupId) {
+    GROUP_TEAMS[groupId].forEach(function(code) { TEAM_GROUP[code] = groupId; });
+  });
+
+  function slotFromLabel(label) {
+    var clean = String(label || '').replace(/Grupo\s+/g, '').replace(/Â/g, '');
+    var direct = clean.match(/^([12])\D+([A-L])$/);
+    if (direct) return { t: direct[1], g: direct[2] };
+    var third = clean.match(/^3\D+([A-L](?:\/[A-L])*)$/);
+    if (third) return { t: '3', gs: third[1].split('/') };
+    return null;
+  }
+
+  function sameSlot(a, b) {
+    if (!a || !b || a.t !== b.t) return false;
+    if (a.t === '3') return false;
+    return a.g === b.g;
+  }
+
+  function slotLabel(slot) {
+    if (!slot) return '';
+    if (slot.t === '3') return '3.° ' + slot.gs.join('/');
+    return slot.t + '.° Grupo ' + slot.g;
+  }
+
+  function slotsForMatch(matchNum) {
+    var m = koByMatch[matchNum];
+    return m ? [slotFromLabel(m.homeLabel), slotFromLabel(m.awayLabel)] : [];
+  }
+
+  function r32ForSlot(slot) {
+    for (var i = 0; i < KNOCKOUT_MATCHES.length; i++) {
+      var m = KNOCKOUT_MATCHES[i];
+      if (m.phase !== 'R32') continue;
+      var home = slotFromLabel(m.homeLabel);
+      var away = slotFromLabel(m.awayLabel);
+      if (sameSlot(home, slot) || sameSlot(away, slot)) {
+        return { match: m, teamSide: sameSlot(home, slot) ? 'home' : 'away' };
+      }
+    }
+    return null;
+  }
+
+  function r16ForR32(matchNum) {
+    for (var i = 0; i < KNOCKOUT_MATCHES.length; i++) {
+      var m = KNOCKOUT_MATCHES[i];
+      if (m.phase !== 'R16') continue;
+      var home = String(m.homeLabel || '').match(/Partido\s+(\d+)/);
+      var away = String(m.awayLabel || '').match(/Partido\s+(\d+)/);
+      if (home && parseInt(home[1], 10) === matchNum) return { match: m, other: parseInt(away[1], 10) };
+      if (away && parseInt(away[1], 10) === matchNum) return { match: m, other: parseInt(home[1], 10) };
+    }
+    return null;
+  }
+
+  function r32Summary(matchNum) {
+    return slotsForMatch(matchNum).map(slotLabel).join(' ó ');
+  }
+
+  function buildTeamKoPath(code) {
+    var groupId = TEAM_GROUP[code];
+    if (!groupId) return [];
+    return ['1','2'].map(function(pos) {
+      var r32 = r32ForSlot({ t: pos, g: groupId });
+      if (!r32) return null;
+      var otherLabel = r32.teamSide === 'home' ? r32.match.awayLabel : r32.match.homeLabel;
+      var r16 = r16ForR32(r32.match.matchNum);
+      if (!r16) return null;
+      return {
+        pos: pos + '°',
+        r32: r32.match.matchNum,
+        r32opp: slotLabel(slotFromLabel(otherLabel)),
+        r16: r16.match.matchNum,
+        r16opp: 'Ganador P' + r16.other + ' (' + r32Summary(r16.other) + ')'
+      };
+    }).filter(Boolean);
+  }
+
+  function buildTeamThirdPath(code) {
+    var groupId = TEAM_GROUP[code];
+    if (!groupId) return [];
+    var paths = [];
+    KNOCKOUT_MATCHES.forEach(function(m) {
+      if (m.phase !== 'R32') return;
+      var slots = slotsForMatch(m.matchNum);
+      var third = slots.find(function(slot) {
+        return slot && slot.t === '3' && slot.gs.indexOf(groupId) !== -1;
+      });
+      if (!third) return;
+      var r16 = r16ForR32(m.matchNum);
+      if (r16) paths.push({ r32: m.matchNum, r16: r16.match.matchNum });
+    });
+    return paths;
+  }
+
+  var koByMatch = {};
+  KNOCKOUT_MATCHES.forEach(function(m) { koByMatch[m.matchNum] = m; });
+  var TEAM_KO_PATH = {};
+  var TEAM_KO_3RD = {};
+  Object.keys(TEAM_GROUP).forEach(function(code) {
+    TEAM_KO_PATH[code] = buildTeamKoPath(code);
+    TEAM_KO_3RD[code] = buildTeamThirdPath(code);
+  });
   function renderTeamKOPaths() {
     document.querySelectorAll('.ko-path').forEach(function(el) { el.remove(); });
     var koByNum = {};
@@ -5984,6 +6030,7 @@
   })();
 
 </script>
+<script src="js/supa-data.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/premium.js"></script>
 <script src="js/predicciones.js"></script>

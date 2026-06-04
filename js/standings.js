@@ -38,6 +38,10 @@
   var _client = null;
   function getClient() {
     if (_client) return _client;
+    if (window.SupaData && window.SupaData.getClient) {
+      _client = window.SupaData.getClient();
+      if (_client) return _client;
+    }
     if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return null;
     if (!window.supabase) return null;
     _client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
@@ -156,6 +160,38 @@
     });
   }
 
+  function applyRpcStandings(rows) {
+    var byGroup = {};
+    rows.forEach(function (row) {
+      var gid = String(row.group_id || '').toLowerCase();
+      if (!gid) return;
+      if (!byGroup[gid]) byGroup[gid] = [];
+      byGroup[gid].push({
+        code: row.team_code,
+        name: row.team_name || row.team_code,
+        flagSrc: row.flag_url || ('assets/flags/' + row.team_code + '.svg'),
+        group: String(row.group_id || '').toUpperCase(),
+        PJ: row.pj || 0,
+        PG: row.pg || 0,
+        PE: row.pe || 0,
+        PP: row.pp || 0,
+        GF: row.gf || 0,
+        GC: row.gc || 0,
+        DG: row.dg || 0,
+        PTS: row.pts || 0,
+        groupRank: row.group_rank || 0
+      });
+    });
+
+    Object.keys(byGroup).forEach(function (gid) {
+      var ranked = byGroup[gid].sort(function (a, b) {
+        return (a.groupRank || 99) - (b.groupRank || 99);
+      });
+      window.CURRENT_STANDINGS[gid] = ranked;
+      updateStandingsTable(gid, ranked);
+    });
+  }
+
   // ── RESOLVE OPPONENT FLAG FROM TEXT ───────────────────────────────────────
   // "1.° Grupo A" → {type:'single', flagSrc, name, code}
   // "3.° A/B/C/D/F" or "3.° Grupo C/E/F/H/I" → {type:'multi', teams:[{flagSrc,name,code},...]}
@@ -267,6 +303,16 @@
     }
 
     try {
+      if (window.SUPABASE_USE_STANDINGS_RPC && window.SupaData && window.SupaData.loadGroupStandings) {
+        var standingsRows = await window.SupaData.loadGroupStandings();
+        if (standingsRows && standingsRows.length) {
+          applyRpcStandings(standingsRows);
+          renderBestThirds(collectBestThirds());
+          if (typeof renderTeamKOPaths === 'function') renderTeamKOPaths();
+          return;
+        }
+      }
+
       var ref = await client.from('match_results').select('*').eq('phase', 'group');
       var data = ref.data || [];
 
@@ -298,7 +344,7 @@
     if (!client) return;
     client.channel('standings-live')
       .on('postgres_changes', {
-        event: 'UPDATE', schema: 'public', table: 'match_results',
+        event: '*', schema: 'public', table: 'match_results',
         filter: 'phase=eq.group'
       }, function () { loadAndRender(); })
       .subscribe();

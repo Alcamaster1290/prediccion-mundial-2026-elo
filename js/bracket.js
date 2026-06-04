@@ -87,8 +87,15 @@
 
   /* ── Build team-by-position map ── */
   var teamsByGroup = {};
+  var bestThirdSlots = {};
+
+  function pctNumber(value) {
+    var n = parseFloat(value);
+    return isNaN(n) ? 0 : n;
+  }
 
   function buildTeamsByGroup(mc) {
+    teamsByGroup = {};
     Object.keys(GROUP_TEAMS).forEach(function (g) {
       var teams = GROUP_TEAMS[g];
       var top = function (key) {
@@ -100,31 +107,119 @@
     });
   }
 
-  function getBestThird(groupsStr, mc) {
-    var best = null, bestPct = -1;
-    groupsStr.split('/').forEach(function (g) {
-      var t = (teamsByGroup[g] || {})[3];
-      if (!t) return;
-      var p = (mc[t] || {}).best_third_pct || 0;
-      if (p > bestPct) { bestPct = p; best = t; }
+  function thirdSlotCodes() {
+    var slots = [];
+    function addMatch(m) {
+      [m.h.s, m.a.s].forEach(function (slotCode) {
+        if (slotCode.indexOf('3:') === 0) slots.push(slotCode);
+      });
+    }
+    STRUCTURE.left.r32.forEach(function (pair) { pair.forEach(addMatch); });
+    STRUCTURE.right.r32.forEach(function (pair) { pair.forEach(addMatch); });
+    return slots;
+  }
+
+  function normalizeThirdRows(terceros, mc) {
+    var byGroup = {};
+    (terceros || []).forEach(function (row) {
+      var group = String(row.group_id || row.group || '').toUpperCase();
+      if (!group || !row.team_code) return;
+      byGroup[group] = {
+        group: group,
+        code: row.team_code,
+        rank: parseInt(row.rank, 10) || 99,
+        qualifies: row.qualifies === true || row.qualifies === 'true',
+        qualifies_pct: pctNumber(row.qualifies_pct),
+        third_pct: pctNumber(row.third_pct)
+      };
     });
-    return best;
+
+    Object.keys(GROUP_TEAMS).forEach(function (group) {
+      if (byGroup[group]) return;
+      var code = (teamsByGroup[group] || {})[3];
+      if (!code) return;
+      byGroup[group] = {
+        group: group,
+        code: code,
+        rank: 99,
+        qualifies: false,
+        qualifies_pct: pctNumber((mc[code] || {}).best_third_pct),
+        third_pct: pctNumber((mc[code] || {}).third_pct)
+      };
+    });
+    return byGroup;
+  }
+
+  function thirdCandidateScore(candidate) {
+    var qualifiedScore = candidate.qualifies ? 10000 : 0;
+    var rankScore = candidate.rank ? (100 - candidate.rank) : 0;
+    return qualifiedScore + rankScore + (candidate.qualifies_pct / 1000);
+  }
+
+  function buildBestThirdSlots(mc, terceros) {
+    var rowsByGroup = normalizeThirdRows(terceros, mc);
+    var slots = thirdSlotCodes().map(function (slotCode, order) {
+      var candidates = slotCode.split(':')[1].split('/').map(function (group) {
+        return rowsByGroup[group];
+      }).filter(Boolean).sort(function (a, b) {
+        return thirdCandidateScore(b) - thirdCandidateScore(a);
+      });
+      return { slotCode: slotCode, order: order, candidates: candidates };
+    });
+
+    var best = null;
+    var bestScore = -Infinity;
+
+    function search(index, usedGroups, assignment, score) {
+      if (index === slots.length) {
+        if (score > bestScore) {
+          bestScore = score;
+          best = Object.assign({}, assignment);
+        }
+        return;
+      }
+
+      var slotInfo = slots[index];
+      slotInfo.candidates.forEach(function (candidate) {
+        if (usedGroups[candidate.group]) return;
+        usedGroups[candidate.group] = true;
+        assignment[slotInfo.slotCode] = candidate;
+        search(index + 1, usedGroups, assignment, score + thirdCandidateScore(candidate));
+        delete assignment[slotInfo.slotCode];
+        delete usedGroups[candidate.group];
+      });
+    }
+
+    search(0, {}, {}, 0);
+    bestThirdSlots = best || {};
   }
 
   function resolveSlot(slotCode, mc) {
     var parts = slotCode.split(':'), pos = parts[0], val = parts[1];
     if (pos === 'W' || pos === 'L') return null;
-    if (pos === '1' || pos === '2') return (teamsByGroup[val] || {})[+pos] || null;
-    if (pos === '3') return getBestThird(val, mc);
+    if (pos === '1' || pos === '2') {
+      var code = (teamsByGroup[val] || {})[+pos] || null;
+      return code ? { code: code, pct: pctNumber((mc[code] || {}).qualified_pct) } : null;
+    }
+    if (pos === '3') {
+      var third = bestThirdSlots[slotCode];
+      return third ? {
+        code: third.code,
+        pct: third.qualifies_pct,
+        label: 'Mejor 3. Grupo ' + third.group
+      } : null;
+    }
     return null;
   }
 
   /* ── HTML rendering ── */
   function slot(slotCode, label, mc) {
-    var code = mc ? resolveSlot(slotCode, mc) : null;
+    var resolved = mc ? resolveSlot(slotCode, mc) : null;
+    var code = resolved ? resolved.code : null;
     var isTbd = !code;
     var name  = code ? (NAMES[code] || code.toUpperCase()) : label;
-    var pct   = (code && mc && mc[code]) ? (mc[code].qualified_pct || 0).toFixed(1) + '%' : '—';
+    var pct   = resolved ? pctNumber(resolved.pct).toFixed(1) + '%' : '—';
+    var tag   = resolved && resolved.label ? resolved.label : label;
     var flag  = code
       ? '<img class="bk-flag" src="assets/flags/' + code + '.svg" alt="' + (NAMES[code] || code) + '" loading="lazy">'
       : '<span class="bk-flag-ph"></span>';
@@ -132,7 +227,7 @@
       + flag
       + '<div class="bk-slot-info">'
       + '<span class="bk-slot-name">' + name + '</span>'
-      + '<span class="bk-slot-tag">' + label + '</span>'
+      + '<span class="bk-slot-tag">' + tag + '</span>'
       + '</div>'
       + '<span class="bk-pct">' + pct + '</span>'
       + '</div>';
@@ -231,6 +326,38 @@
   }
 
   /* ── Init ── */
+  function fetchLocalSimulationData() {
+    return fetch('data/mc_results.json').then(function (r) { return r.json(); });
+  }
+
+  function normalizeSimulationData(data) {
+    var teams = {};
+    if (data && data.teams) {
+      teams = data.teams;
+    } else if (data && Array.isArray(data.standings)) {
+      data.standings.forEach(function (row) {
+        teams[row.team_code] = row;
+      });
+    } else if (data && typeof data === 'object') {
+      teams = data;
+    }
+
+    return {
+      teams: teams,
+      terceros: (data && (data.terceros || data.terceros_table)) || []
+    };
+  }
+
+  function loadSimulationData() {
+    if (window.SupaData && window.SupaData.loadSimulationData) {
+      return window.SupaData.loadSimulationData().then(function (data) {
+        return data || fetchLocalSimulationData();
+      }).catch(fetchLocalSimulationData);
+    }
+
+    return fetchLocalSimulationData();
+  }
+
   function init() {
     var inner = document.getElementById('bracket-inner');
     if (!inner) return;
@@ -239,11 +366,13 @@
     inner.innerHTML = renderBracket(null);
     inner.classList.add('bk-locked');
 
-    fetch('data/mc_results.json')
-      .then(function (r) { return r.json(); })
+    loadSimulationData()
       .then(function (data) {
-        var mc = data.teams || data;
+        var normalized = normalizeSimulationData(data);
+        var mc = normalized.teams;
+        if (!mc) return;
         buildTeamsByGroup(mc);
+        buildBestThirdSlots(mc, normalized.terceros);
         inner.innerHTML = renderBracket(mc);
       })
       .catch(function () { /* labels remain as-is */ });

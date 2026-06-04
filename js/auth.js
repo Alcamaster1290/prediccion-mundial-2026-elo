@@ -10,6 +10,10 @@
 
   function getClient() {
     if (!_client) {
+      if (window.SupaData && window.SupaData.getClient) {
+        _client = window.SupaData.getClient();
+        if (_client) return _client;
+      }
       if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY ||
           window.SUPABASE_URL.includes('TU-PROYECTO')) {
         console.warn('[SupaAuth] config.js no configurado — modo demo activo');

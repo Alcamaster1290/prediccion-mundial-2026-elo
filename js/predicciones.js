@@ -65,6 +65,9 @@
   // ── Carga de datos desde Supabase ────────────────────────────
 
   async function loadSimulationData() {
+    if (window.SupaData && window.SupaData.loadSimulationData) {
+      return await window.SupaData.loadSimulationData();
+    }
     var c = window.SupaAuth && window.SupaAuth.getClient();
     if (!c) return null;
 
@@ -317,18 +320,79 @@
 
     // Build group->terceros index
     var tercByGroup = {};
-    data.terceros.forEach(function(r) { tercByGroup[r.group_id] = r; });
+    (data.terceros || []).forEach(function(r) {
+      var group = String(r.group_id || r.group || '').toUpperCase();
+      if (!group) return;
+      r.group_id = group;
+      tercByGroup[group] = r;
+    });
 
-    function getTeamForSlot(slot) {
-      if (slot.t === '3') {
-        // Pick the best-ranked tercero from the candidate groups
-        var best = null;
-        slot.gs.forEach(function(g) {
-          var r = tercByGroup[g];
-          if (!r) return;
-          if (!best || r.rank < best.rank) best = r;
+    function thirdCandidateScore(candidate) {
+      var rank = parseInt(candidate.rank, 10) || 99;
+      var qualifiedScore = candidate.qualifies ? 10000 : 0;
+      return qualifiedScore + (100 - rank) + (parseFloat(candidate.qualifies_pct) || 0) / 1000;
+    }
+
+    function buildThirdAssignments() {
+      var slots = [];
+      R32.forEach(function(m) {
+        if (m.home.t === '3') slots.push({ key: m.num + ':home', slot: m.home });
+        if (m.away.t === '3') slots.push({ key: m.num + ':away', slot: m.away });
+      });
+
+      slots.forEach(function(item) {
+        item.candidates = item.slot.gs.map(function(group) {
+          var row = tercByGroup[group];
+          if (!row) return null;
+          return {
+            group: group,
+            code: row.team_code,
+            pct: parseFloat(row.qualifies_pct) || 0,
+            rank: parseInt(row.rank, 10) || 99,
+            qualifies: row.qualifies === true || row.qualifies === 'true'
+          };
+        }).filter(Boolean).sort(function(a, b) {
+          return thirdCandidateScore(b) - thirdCandidateScore(a);
         });
-        return best ? { code: best.team_code, pct: parseFloat(best.qualifies_pct) } : null;
+      });
+
+      var best = null;
+      var bestScore = -Infinity;
+
+      function search(index, usedGroups, assignment, score) {
+        if (index === slots.length) {
+          if (score > bestScore) {
+            bestScore = score;
+            best = Object.assign({}, assignment);
+          }
+          return;
+        }
+
+        var item = slots[index];
+        item.candidates.forEach(function(candidate) {
+          if (usedGroups[candidate.group]) return;
+          usedGroups[candidate.group] = true;
+          assignment[item.key] = candidate;
+          search(index + 1, usedGroups, assignment, score + thirdCandidateScore(candidate));
+          delete assignment[item.key];
+          delete usedGroups[candidate.group];
+        });
+      }
+
+      search(0, {}, {}, 0);
+      return best || {};
+    }
+
+    var thirdAssignments = buildThirdAssignments();
+
+    function getTeamForSlot(slot, slotKey) {
+      if (slot.t === '3') {
+        var third = thirdAssignments[slotKey];
+        return third ? {
+          code: third.code,
+          pct: third.pct,
+          slotLabel: 'Mejor 3. Grupo ' + third.group
+        } : null;
       }
       // For 1st or 2nd: pick team in that group with highest first_pct or second_pct
       var field = slot.t === '1' ? 'first_pct' : 'second_pct';
@@ -348,7 +412,7 @@
     }
 
     function renderSlot(slot, team) {
-      var label = slotLabel(slot);
+      var label = team && team.slotLabel ? team.slotLabel : slotLabel(slot);
       var teamHtml = team
         ? (flag(team.code) + '<span>' + (NAMES[team.code] || team.code.toUpperCase()) + '</span>')
         : '<span class="pred-slot-tbd">Por definir</span>';
@@ -365,8 +429,8 @@
       + '<div class="pred-r32-grid">';
 
     R32.forEach(function(m) {
-      var homeTeam = getTeamForSlot(m.home);
-      var awayTeam = getTeamForSlot(m.away);
+      var homeTeam = getTeamForSlot(m.home, m.num + ':home');
+      var awayTeam = getTeamForSlot(m.away, m.num + ':away');
       html += '<div class="pred-r32-card">'
         + '<span class="pred-r32-num">P' + m.num + '</span>'
         + renderSlot(m.home, homeTeam)
@@ -520,6 +584,9 @@
   // ── Canje de código ──────────────────────────────────────────
 
   async function redeemCode(code) {
+    if (window.SupaData && window.SupaData.redeemPremiumCode) {
+      return await window.SupaData.redeemPremiumCode(code);
+    }
     var c = window.SupaAuth && window.SupaAuth.getClient();
     if (!c) return { success: false, message: 'Supabase no configurado.' };
     var ref = await c.rpc('redeem_premium_code', { input_code: code });

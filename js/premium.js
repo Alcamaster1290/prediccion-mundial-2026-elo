@@ -29,6 +29,9 @@
   // ── Canje de código premium ─────────────────────────────────
 
   async function redeemCode(code) {
+    if (window.SupaData && window.SupaData.redeemPremiumCode) {
+      return await window.SupaData.redeemPremiumCode(code);
+    }
     var c = window.SupaAuth && window.SupaAuth.getClient();
     if (!c) return { success: false, message: 'Supabase no configurado.' };
 
@@ -42,6 +45,9 @@
   // ── Carga de predicciones desde Supabase ────────────────────
 
   async function loadPredictions() {
+    if (window.SupaData && window.SupaData.loadPredictions) {
+      return await window.SupaData.loadPredictions();
+    }
     var c = window.SupaAuth && window.SupaAuth.getClient();
     if (!c) {
       return loadMockPredictions();
