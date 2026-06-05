@@ -20,10 +20,41 @@
     eng:'Inglaterra', cro:'Croacia', gha:'Ghana', pan:'Panamá',
     usa:'EE.UU.', pry:'Paraguay', aus:'Australia', tur:'Turquía'
   };
+  var ACCESS_READY_MESSAGE = 'Todo desbloqueado. Ya puedes ver todas las predicciones.';
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function safeTeamCode(code) {
+    var value = String(code || '').toLowerCase();
+    return /^[a-z0-9]{3}$/.test(value) ? value : '';
+  }
+
+  function teamName(code) {
+    return NAMES[code] || String(code || '').toUpperCase();
+  }
 
   function flag(code) {
-    var name = NAMES[code] || code;
-    return '<img class="flag-svg" src="assets/flags/' + code + '.svg" alt="' + name + '" loading="lazy">';
+    var safeCode = safeTeamCode(code);
+    if (!safeCode) return '';
+    var name = teamName(safeCode);
+    return '<img class="flag-svg" src="assets/flags/' + safeCode + '.svg" alt="' + escapeHtml(name) + '" loading="lazy">';
+  }
+
+  function pctValue(value) {
+    var n = parseFloat(value);
+    if (isNaN(n)) return 0;
+    return Math.max(0, Math.min(100, n));
+  }
+
+  function hasStandaloneContainer() {
+    return !!document.getElementById('pronosticos-content');
   }
 
   // ── Canje de código premium ─────────────────────────────────
@@ -40,6 +71,12 @@
       return { success: false, message: ref.error.message || 'Error al canjear el código.' };
     }
     return ref.data || { success: false, message: 'Respuesta inesperada del servidor.' };
+  }
+
+  function accessMessage(message, fallback) {
+    var text = message ? String(message) : '';
+    if (/premium/i.test(text)) return fallback;
+    return text || fallback;
   }
 
   // ── Carga de predicciones desde Supabase ────────────────────
@@ -98,7 +135,7 @@
       + '  ELO ponderado del XI · ELO de banca · Orden de partidos · Presión clasificatoria · Riesgo de rotación'
       + '</div>'
       + renderGhostCards(3)
-      + '<button class="prono-join-btn" onclick="window.SupaAuth && window.SupaAuth.openAuthModal()">Únete — S/. 15 · $5</button>'
+      + '<button class="prono-join-btn" onclick="window.SupaAuth && window.SupaAuth.openAuthModal()">Crear cuenta</button>'
       + '</div>';
   }
 
@@ -108,7 +145,7 @@
     el.innerHTML = '<div class="prono-payment">'
       + '<div class="prono-payment-icon">&#x1F4B3;</div>'
       + '<h3>Un paso más…</h3>'
-      + '<p>Selecciona tu método de pago y escanea el QR.</p>'
+      + '<p>Elige cómo completar tu acceso y escanea el QR.</p>'
       + '<div class="prono-pay-tabs">'
       + '  <button class="prono-pay-tab active" id="prono-tab-yape" onclick="window.PremiumSection.showQR(\'yape\')">'
       + '    &#x1F1F5;&#x1F1EA; Yape<span class="prono-pay-tab-amount">S/. 15</span>'
@@ -149,16 +186,29 @@
     paypalTab.classList.toggle('active', !isYape);
   }
 
-  async function renderActive(predictions) {
-    var el = document.getElementById('pronosticos-content');
-    if (!el) return;
+  function renderActiveContent(predictions, options) {
+    options = options || {};
+    var includeTitle = options.includeTitle !== false;
+    var includeBadge = options.includeBadge === true;
+    var isEmbedded = options.embedded === true;
+    var html = '<section class="' + (isEmbedded ? 'pred-pronosticos-block' : 'prono-active-block') + '">';
+
+    if (includeTitle) {
+      html += '<h3 class="pred-subsection-title">Pronósticos Fase de Grupos</h3>'
+        + '<p class="pred-terceros-note">Probabilidades por partido, contexto táctico y explicación del pronóstico para la fase de grupos.</p>';
+    }
+
+    if (includeBadge) {
+      html += '<div class="prono-active-header">'
+        + '<span class="prono-premium-badge">&#x2705; Todo desbloqueado</span>'
+        + '</div>';
+    }
 
     if (!predictions || predictions.length === 0) {
-      el.innerHTML = '<div class="prono-empty">'
-        + '<span class="prono-premium-badge">&#x2705; Acceso Premium Activo</span>'
+      html += '<div class="prono-empty">'
         + '<p style="color:var(--muted);margin-top:1rem">Los pronósticos se publicarán a medida que se acerquen los partidos.</p>'
-        + '</div>';
-      return;
+        + '</div></section>';
+      return html;
     }
 
     var byGroup = {};
@@ -167,40 +217,52 @@
       byGroup[p.group_code].push(p);
     });
 
-    var html = '<div class="prono-active-header">'
-      + '<span class="prono-premium-badge">&#x2705; Acceso Premium Activo</span>'
-      + '</div>';
-
     Object.keys(byGroup).sort().forEach(function(grp) {
       html += '<div class="prono-group-block">'
-        + '<div class="prono-group-title">Grupo ' + grp + '</div>';
+        + '<div class="prono-group-title">Grupo ' + escapeHtml(grp) + '</div>';
       byGroup[grp].forEach(function(p) {
         html += renderPredictionCard(p);
       });
       html += '</div>';
     });
 
-    el.innerHTML = html;
+    html += '</section>';
+    return html;
+  }
+
+  async function renderActive(predictions) {
+    var el = document.getElementById('pronosticos-content');
+    if (!el) return;
+
+    el.innerHTML = renderActiveContent(predictions, {
+      includeTitle: false,
+      includeBadge: true,
+      embedded: false
+    });
   }
 
   function renderPredictionCard(p) {
-    var aWin  = parseFloat(p.team_a_win_probability) || 0;
-    var draw  = parseFloat(p.draw_probability) || 0;
-    var bWin  = parseFloat(p.team_b_win_probability) || 0;
+    var codeA = safeTeamCode(p.team_a);
+    var codeB = safeTeamCode(p.team_b);
+    var nameA = teamName(codeA || p.team_a);
+    var nameB = teamName(codeB || p.team_b);
+    var aWin  = pctValue(p.team_a_win_probability);
+    var draw  = pctValue(p.draw_probability);
+    var bWin  = pctValue(p.team_b_win_probability);
 
     return '<div class="prono-card">'
       + '  <div class="prono-card-header">'
-      + '    <span class="prono-matchday">J' + p.matchday + '</span>'
+      + '    <span class="prono-matchday">J' + escapeHtml(p.matchday) + '</span>'
       + '    <div class="prono-teams">'
-      + '      <div class="prono-team">' + flag(p.team_a) + '<span>' + (NAMES[p.team_a] || p.team_a) + '</span></div>'
+      + '      <div class="prono-team">' + flag(codeA) + '<span>' + escapeHtml(nameA) + '</span></div>'
       + '      <span class="prono-vs">vs</span>'
-      + '      <div class="prono-team">' + flag(p.team_b) + '<span>' + (NAMES[p.team_b] || p.team_b) + '</span></div>'
+      + '      <div class="prono-team">' + flag(codeB) + '<span>' + escapeHtml(nameB) + '</span></div>'
       + '    </div>'
-      + (p.global_tag ? '<span class="prono-global-tag">' + p.global_tag + '</span>' : '')
+      + (p.global_tag ? '<span class="prono-global-tag">' + escapeHtml(p.global_tag) + '</span>' : '')
       + '  </div>'
       + '  <div class="prono-probs">'
       + '    <div class="prono-prob-row">'
-      + '      <span class="prono-prob-label">' + (NAMES[p.team_a] || p.team_a) + '</span>'
+      + '      <span class="prono-prob-label">' + escapeHtml(nameA) + '</span>'
       + '      <div class="prono-prob-bar-wrap"><div class="prono-prob-bar prono-bar-a" style="width:' + aWin + '%"></div></div>'
       + '      <span class="prono-prob-pct">' + aWin.toFixed(0) + '%</span>'
       + '    </div>'
@@ -210,18 +272,18 @@
       + '      <span class="prono-prob-pct">' + draw.toFixed(0) + '%</span>'
       + '    </div>'
       + '    <div class="prono-prob-row">'
-      + '      <span class="prono-prob-label">' + (NAMES[p.team_b] || p.team_b) + '</span>'
+      + '      <span class="prono-prob-label">' + escapeHtml(nameB) + '</span>'
       + '      <div class="prono-prob-bar-wrap"><div class="prono-prob-bar prono-bar-b" style="width:' + bWin + '%"></div></div>'
       + '      <span class="prono-prob-pct">' + bWin.toFixed(0) + '%</span>'
       + '    </div>'
       + '  </div>'
       + (p.team_a_context || p.team_b_context
          ? '<div class="prono-contexts">'
-           + (p.team_a_context ? '<div class="prono-ctx prono-ctx-a"><strong>' + (NAMES[p.team_a]||p.team_a) + ':</strong> ' + p.team_a_context + '</div>' : '')
-           + (p.team_b_context ? '<div class="prono-ctx prono-ctx-b"><strong>' + (NAMES[p.team_b]||p.team_b) + ':</strong> ' + p.team_b_context + '</div>' : '')
+           + (p.team_a_context ? '<div class="prono-ctx prono-ctx-a"><strong>' + escapeHtml(nameA) + ':</strong> ' + escapeHtml(p.team_a_context) + '</div>' : '')
+           + (p.team_b_context ? '<div class="prono-ctx prono-ctx-b"><strong>' + escapeHtml(nameB) + ':</strong> ' + escapeHtml(p.team_b_context) + '</div>' : '')
            + '</div>'
          : '')
-      + (p.explanation ? '<div class="prono-explanation">' + p.explanation + '</div>' : '')
+      + (p.explanation ? '<div class="prono-explanation">' + escapeHtml(p.explanation) + '</div>' : '')
       + '</div>';
   }
 
@@ -264,18 +326,20 @@
 
     if (result.success) {
       errEl.style.color = 'var(--yes)';
-      errEl.textContent = result.message;
+      errEl.textContent = ACCESS_READY_MESSAGE;
       setTimeout(function() {
         window.SupaAuth && window.SupaAuth.refreshAuthState();
       }, 1200);
     } else {
-      errEl.textContent = result.message;
+      errEl.textContent = accessMessage(result.message, 'No pudimos completar el acceso. Revisa el código e inténtalo de nuevo.');
     }
   }
 
   // ── Auth change callback (llamado desde auth.js) ─────────────
 
   async function onAuthChange(user, isPremium, profile) {
+    if (!hasStandaloneContainer()) return;
+
     if (!user) {
       renderLocked();
     } else if (!isPremium) {
@@ -289,6 +353,7 @@
   // ── Init ────────────────────────────────────────────────────
 
   function init() {
+    if (!hasStandaloneContainer()) return;
     renderLocked();
   }
 
@@ -297,6 +362,7 @@
     onAuthChange: onAuthChange,
     submitCode: submitCode,
     loadPredictions: loadPredictions,
+    renderActiveContent: renderActiveContent,
     showQR: showQR,
   };
 

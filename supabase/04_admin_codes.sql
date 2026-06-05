@@ -10,7 +10,7 @@
 --
 -- INSERT INTO public.premium_codes (code_hash, notes)
 -- VALUES (
---   encode(digest('TU-CODIGO-AQUI', 'sha256'), 'hex'),
+--   encode(extensions.digest('TU-CODIGO-AQUI', 'sha256'), 'hex'),
 --   'Pago Yape S/15 - Juan Pérez - 22 may 2026'
 -- );
 --

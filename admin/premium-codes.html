@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; connect-src 'self' https://hqgrgcvtzzsjmjjqqqjf.supabase.co; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <title>Admin codigos de acceso - Mundial 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f5f7fb;
+      color: #172033;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    button, input, textarea { font: inherit; }
+    button {
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    button:disabled {
+      cursor: not-allowed;
+      opacity: .55;
+    }
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .title-block h1 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+    .title-block p {
+      margin: 0;
+      color: #5f6b7a;
+      font-size: 14px;
+    }
+    .userbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #4f5c6b;
+      font-size: 13px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #dde3ec;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(30, 45, 70, .07);
+      padding: 22px;
+    }
+    .panel + .panel { margin-top: 18px; }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 420px) 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .stack { display: grid; gap: 14px; }
+    .hidden { display: none !important; }
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+    .field label {
+      color: #39465a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #cfd8e3;
+      border-radius: 6px;
+      color: #172033;
+      background: #fff;
+      padding: 10px 12px;
+      outline: none;
+    }
+    .field textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      border-color: #2766d8;
+      box-shadow: 0 0 0 3px rgba(39, 102, 216, .14);
+    }
+    .hint {
+      margin: 0;
+      color: #687789;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .primary {
+      background: #1f5fd4;
+      color: #fff;
+      min-height: 40px;
+      padding: 0 16px;
+    }
+    .secondary {
+      background: #e8edf5;
+      color: #23324a;
+      min-height: 36px;
+      padding: 0 13px;
+    }
+    .danger-text { color: #9a1f28; }
+    .status {
+      min-height: 22px;
+      color: #516176;
+      font-size: 13px;
+    }
+    .status.error { color: #9a1f28; }
+    .status.ok { color: #16633d; }
+    .result {
+      border: 1px solid #b8d3bc;
+      border-radius: 8px;
+      background: #f0faf2;
+      padding: 14px;
+    }
+    .result-label {
+      margin: 0 0 8px;
+      color: #245337;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .code-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .code-output {
+      flex: 1;
+      min-width: 0;
+      border-radius: 6px;
+      border: 1px solid #aac9b0;
+      background: #fff;
+      color: #10251a;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      padding: 10px 12px;
+      overflow-wrap: anywhere;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid #e1e7ef;
+      border-radius: 8px;
+    }
+    .wide-panel { grid-column: 1 / -1; }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .metric-box {
+      border: 1px solid #e1e7ef;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 14px;
+      min-height: 132px;
+    }
+    .metric-box h3 {
+      margin: 0 0 10px;
+      color: #23324a;
+      font-size: 15px;
+    }
+    .metric-box dl {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 7px 12px;
+      margin: 0;
+      color: #536176;
+      font-size: 13px;
+    }
+    .metric-box dt { margin: 0; }
+    .metric-box dd {
+      margin: 0;
+      color: #172033;
+      font-weight: 700;
+      text-align: right;
+    }
+    .team-controls {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) 140px auto;
+      gap: 10px;
+      align-items: center;
+      margin: 14px 0;
+    }
+    .team-controls input,
+    .team-controls select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid #cfd8e3;
+      border-radius: 6px;
+      color: #172033;
+      background: #fff;
+      padding: 0 11px;
+      outline: none;
+    }
+    .checkline {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #39465a;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .team-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 4px 0 10px;
+    }
+    .summary-pill,
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .summary-pill {
+      min-height: 26px;
+      background: #eef3fa;
+      color: #23324a;
+      padding: 0 10px;
+    }
+    .mini-badge {
+      min-height: 22px;
+      border: 1px solid #d7e0eb;
+      color: #405069;
+      background: #fff;
+      padding: 0 8px;
+      margin: 0 4px 4px 0;
+    }
+    .mini-badge.ok {
+      border-color: #b7d8c4;
+      background: #edf8f1;
+      color: #16633d;
+    }
+    .mini-badge.warn {
+      border-color: #f2d49b;
+      background: #fff7e7;
+      color: #83540d;
+    }
+    .mini-badge.miss {
+      border-color: #efb8bf;
+      background: #fff0f2;
+      color: #9a1f28;
+    }
+    .team-name-cell strong {
+      display: block;
+      color: #172033;
+      font-size: 13px;
+    }
+    .team-name-cell span {
+      display: block;
+      color: #687789;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .missing-list {
+      max-width: 280px;
+    }
+    .team-table { min-width: 1040px; }
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid #e8edf3;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f7f9fc;
+      color: #516176;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      border-radius: 999px;
+      padding: 0 9px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge.used {
+      background: #f7e8e9;
+      color: #8c2028;
+    }
+    .badge.open {
+      background: #e7f4ec;
+      color: #155d37;
+    }
+    .empty {
+      padding: 22px;
+      color: #66758a;
+      font-size: 14px;
+    }
+    @media (max-width: 820px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .grid { grid-template-columns: 1fr; }
+      .userbar { align-items: flex-start; flex-direction: column; }
+      .code-row { align-items: stretch; flex-direction: column; }
+      .team-controls { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="title-block">
+        <h1>Codigos de acceso</h1>
+        <p>Administracion interna de codigos de acceso.</p>
+      </div>
+      <div class="userbar hidden" id="admin-premium-userbar">
+        <span id="admin-premium-user-email"></span>
+        <button class="secondary" type="button" id="admin-premium-signout">Cerrar sesion</button>
+      </div>
+    </header>
+
+    <section class="panel" id="admin-premium-loading">
+      <p class="status">Verificando sesion y permisos...</p>
+    </section>
+
+    <section class="panel hidden" id="admin-premium-auth">
+      <form class="stack" id="admin-premium-login-form" novalidate>
+        <div>
+          <h2>Acceso admin</h2>
+          <p class="hint">Inicia sesion con una cuenta que tenga rol admin en Supabase.</p>
+        </div>
+        <div class="field">
+          <label for="admin-premium-email">Email</label>
+          <input id="admin-premium-email" type="email" autocomplete="email" maxlength="254" required>
+        </div>
+        <div class="field">
+          <label for="admin-premium-password">Password</label>
+          <input id="admin-premium-password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="primary" type="submit" id="admin-premium-login-button">Iniciar sesion</button>
+        <p class="status" id="admin-premium-login-status"></p>
+      </form>
+    </section>
+
+    <section class="panel hidden" id="admin-premium-denied">
+      <h2>Acceso restringido</h2>
+      <p class="status error">Tu cuenta no tiene rol admin. Revisa app_private.staff_roles.</p>
+    </section>
+
+    <section class="grid hidden" id="admin-premium-app">
+      <section class="panel">
+        <form class="stack" id="admin-premium-create-form" novalidate>
+          <div>
+            <h2>Generar codigo</h2>
+            <p class="hint">El codigo plano se muestra solo una vez. La base guarda solo el hash SHA-256.</p>
+          </div>
+          <div class="field">
+            <label for="admin-premium-notes">Notas internas</label>
+            <textarea id="admin-premium-notes" maxlength="500" placeholder="Ej: alvarojohn1290@gmail.com - acceso completo"></textarea>
+            <p class="hint">Maximo 500 caracteres. No pegues datos de tarjeta ni secretos.</p>
+          </div>
+          <button class="primary" type="submit" id="admin-premium-create-button">Generar codigo</button>
+          <p class="status" id="admin-premium-create-status"></p>
+        </form>
+
+        <div class="result hidden" id="admin-premium-result">
+          <p class="result-label">Codigo visible solo una vez</p>
+          <div class="code-row">
+            <output class="code-output" id="admin-premium-code-output"></output>
+            <button class="secondary" type="button" id="admin-premium-copy-button">Copiar</button>
+          </div>
+          <p class="hint danger-text">Envia este codigo ahora. No podras recuperarlo desde Supabase.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="topbar">
+          <div class="title-block">
+            <h2>Codigos recientes</h2>
+            <p>Metadata segura. No se muestran hashes ni codigos planos.</p>
+          </div>
+          <button class="secondary" type="button" id="admin-premium-refresh">Actualizar</button>
+        </div>
+        <p class="status" id="admin-premium-list-status"></p>
+        <div class="table-wrap">
+          <table aria-describedby="admin-premium-list-status">
+            <thead>
+              <tr>
+                <th>Estado</th>
+                <th>Creado</th>
+                <th>Usado</th>
+                <th>Usuario</th>
+                <th>Notas</th>
+              </tr>
+            </thead>
+            <tbody id="admin-premium-code-rows"></tbody>
+          </table>
+          <div class="empty hidden" id="admin-premium-empty">No hay codigos para mostrar.</div>
+        </div>
+      </section>
+
+      <section class="panel wide-panel" id="admin-content-status">
+        <div class="topbar">
+          <div class="title-block">
+            <h2>Monitor de datos</h2>
+            <p>Estado de cargas de simulacion, pronosticos y resultados reales.</p>
+          </div>
+          <button class="secondary" type="button" id="admin-content-refresh">Actualizar</button>
+        </div>
+        <p class="status" id="admin-content-status-text"></p>
+        <div class="metric-grid">
+          <article class="metric-box">
+            <h3>Simulacion</h3>
+            <dl id="admin-simulation-status"></dl>
+          </article>
+          <article class="metric-box">
+            <h3>Resultados reales</h3>
+            <dl id="admin-real-results-status"></dl>
+          </article>
+          <article class="metric-box">
+            <h3>Pronosticos</h3>
+            <dl id="admin-predictions-status"></dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel wide-panel" id="admin-team-content-status">
+        <div class="topbar">
+          <div class="title-block">
+            <h2>Cobertura por equipo</h2>
+            <p>Datos cargados desde Supabase, pagina principal y assets locales.</p>
+          </div>
+          <button class="secondary" type="button" id="admin-team-content-refresh">Actualizar</button>
+        </div>
+        <p class="status" id="admin-team-content-status-text"></p>
+        <div class="team-summary" id="admin-team-summary"></div>
+        <div class="team-controls">
+          <input id="admin-team-search" type="search" placeholder="Buscar equipo, codigo o faltante">
+          <select id="admin-team-group-filter" aria-label="Filtrar por grupo">
+            <option value="">Todos los grupos</option>
+            <option value="A">Grupo A</option>
+            <option value="B">Grupo B</option>
+            <option value="C">Grupo C</option>
+            <option value="D">Grupo D</option>
+            <option value="E">Grupo E</option>
+            <option value="F">Grupo F</option>
+            <option value="G">Grupo G</option>
+            <option value="H">Grupo H</option>
+            <option value="I">Grupo I</option>
+            <option value="J">Grupo J</option>
+            <option value="K">Grupo K</option>
+            <option value="L">Grupo L</option>
+          </select>
+          <label class="checkline" for="admin-team-missing-filter">
+            <input id="admin-team-missing-filter" type="checkbox">
+            Solo faltantes
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table class="team-table" aria-describedby="admin-team-content-status-text">
+            <thead>
+              <tr>
+                <th>Equipo</th>
+                <th>Modelo</th>
+                <th>Plantel</th>
+                <th>Contenido</th>
+                <th>Assets</th>
+                <th>Faltantes</th>
+              </tr>
+            </thead>
+            <tbody id="admin-team-status-rows"></tbody>
+          </table>
+          <div class="empty hidden" id="admin-team-empty">No hay equipos para mostrar.</div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/admin-premium-codes.js"></script>
+</body>
+</html>

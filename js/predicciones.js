@@ -16,6 +16,7 @@
   };
   var GROUP_ORDER = ['A','B','C','D','E','F','G','H','I','J','K','L'];
   var POINT_TOTALS = ['0','1','2','3','4','5','6','7','9'];
+  var ACCESS_READY_MESSAGE = 'Todo desbloqueado. Ya puedes ver todas las predicciones.';
 
   /* reverse map: team_code → group letter */
   var TEAM_GROUP = {};
@@ -62,6 +63,26 @@
     return '<img class="flag-svg" src="assets/flags/' + code + '.svg" alt="' + name + '" loading="lazy">';
   }
 
+  function escapeHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function safeTeamCode(code) {
+    var value = String(code || '').toLowerCase();
+    return /^[a-z0-9]{3}$/.test(value) ? value : '';
+  }
+
+  function modelFlag(code, name) {
+    var safeCode = safeTeamCode(code);
+    if (!safeCode) return '';
+    return '<img class="flag-svg" src="assets/flags/' + safeCode + '.svg" alt="' + escapeHtml(name || safeCode) + '" loading="lazy">';
+  }
+
   // ── Carga de datos desde Supabase ────────────────────────────
 
   async function loadSimulationData() {
@@ -106,6 +127,37 @@
   }
 
   // ── Ghost table para blur preview ────────────────────────────
+
+  async function loadEloModelExplainer() {
+    var c = window.SupaAuth && window.SupaAuth.getClient();
+    if (!c) return null;
+
+    try {
+      var ref = await c.rpc('get_elo_model_explainer');
+      if (ref.error || !ref.data || ref.data.success === false) return null;
+      return ref.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function loadEmbeddedPronosticos() {
+    if (!window.PremiumSection || !window.PremiumSection.loadPredictions) return [];
+    try {
+      return await window.PremiumSection.loadPredictions();
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function renderEmbeddedPronosticos(predictions) {
+    if (!window.PremiumSection || !window.PremiumSection.renderActiveContent) return '';
+    return window.PremiumSection.renderActiveContent(predictions, {
+      embedded: true,
+      includeTitle: true,
+      includeBadge: false
+    });
+  }
 
   function renderGhostTable() {
     var html = '<div class="pred-ghost-rows">';
@@ -168,6 +220,99 @@
       }
     });
     return best;
+  }
+
+  function formatModelValue(value, decimals) {
+    var n = parseFloat(value);
+    if (isNaN(n)) return '-';
+    var digits = typeof decimals === 'number' ? decimals : 1;
+    return n.toLocaleString('es-PE', {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits
+    });
+  }
+
+  function eloTierClass(tier) {
+    if (tier === 'xi_blend_ready') return 'pred-elo-status-ready';
+    if (tier === 'needs_player_elo') return 'pred-elo-status-needs';
+    return 'pred-elo-status-base';
+  }
+
+  function renderEloModelExplainer(payload) {
+    if (!payload || !payload.success) {
+      return '<section class="pred-elo-model pred-elo-model-empty">'
+        + '<div class="pred-elo-copy">'
+        + '<span class="pred-elo-kicker">Modelo ELO</span>'
+        + '<h3>Calculo de fuerza por seleccion</h3>'
+        + '<p>La explicacion del modelo se carga desde Supabase para usuarios con acceso completo. Las probabilidades de la simulacion siguen disponibles abajo.</p>'
+        + '</div>'
+        + '</section>';
+    }
+
+    var summary = payload.summary || {};
+    var teams = Array.isArray(payload.teams) ? payload.teams : [];
+    var readyTeams = teams.filter(function(team) {
+      return team.coverage_tier === 'xi_blend_ready';
+    }).slice(0, 8);
+
+    var html = '<section class="pred-elo-model">'
+      + '<div class="pred-elo-copy">'
+      + '<span class="pred-elo-kicker">Modelo ELO</span>'
+      + '<h3>Como se calcula la fuerza de cada seleccion</h3>'
+      + '<p>El punto de partida es el ELO internacional. Cuando existe suficiente informacion del XI titular, el modelo ajusta esa base con el ELO promedio de clubes de los titulares.</p>'
+      + '<div class="pred-elo-formula">'
+      + '<span>ELO ajustado</span>'
+      + '<code>ELO internacional + (XI titular - promedio XI) x 0.35</code>'
+      + '</div>'
+      + '<p>Si faltan jugadores o ELOs, el equipo no queda fuera: se mantiene con base internacional hasta que la data este completa.</p>'
+      + '</div>'
+      + '<div class="pred-elo-metrics" aria-label="Resumen de cobertura del modelo">'
+      + '<div><strong>' + formatModelValue(summary.xi_blend_ready, 0) + '</strong><span>Listos para XI</span></div>'
+      + '<div><strong>' + formatModelValue(summary.needs_player_elo, 0) + '</strong><span>Faltan ELOs</span></div>'
+      + '<div><strong>' + formatModelValue(summary.elo_intl_only, 0) + '</strong><span>Base internacional</span></div>'
+      + '</div>';
+
+    if (readyTeams.length) {
+      html += '<div class="pred-elo-ready-strip" aria-label="Equipos con mejor cobertura">'
+        + '<span>Mejor cobertura</span>';
+      readyTeams.forEach(function(team) {
+        var code = safeTeamCode(team.team_code);
+        var name = team.name || NAMES[code] || String(code || '').toUpperCase();
+        html += '<div class="pred-elo-ready-team">'
+          + modelFlag(code, name)
+          + '<span>' + escapeHtml(name) + '</span>'
+          + '<small>' + formatModelValue(team.starter_elo_rows, 0) + '/11</small>'
+          + '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '<div class="pred-table-wrap pred-elo-team-wrap">'
+      + '<table class="pred-table pred-elo-team-table">'
+      + '<thead><tr>'
+      + '<th>Equipo</th><th>Estado</th><th>XI con ELO</th><th>ELO int.</th><th>XI blend</th><th>Score</th><th>Uso</th>'
+      + '</tr></thead><tbody>';
+
+    teams.forEach(function(team) {
+      var code = safeTeamCode(team.team_code);
+      var name = team.name || NAMES[code] || String(code || '').toUpperCase();
+      var method = team.strength_method === 'xi_blend_adj' ? 'Hibrido' : 'Base';
+      html += '<tr>'
+        + '<td class="pred-team-cell">' + modelFlag(code, name) + '<span>' + escapeHtml(name) + '</span><span class="pred-group-badge">' + escapeHtml(team.group_id || TEAM_GROUP[code] || '?') + '</span></td>'
+        + '<td><span class="pred-elo-status ' + eloTierClass(team.coverage_tier) + '">' + escapeHtml(team.coverage_label || 'Base internacional') + '</span></td>'
+        + '<td class="pred-mono">' + formatModelValue(team.starter_elo_rows, 0) + '/11</td>'
+        + '<td class="pred-mono">' + formatModelValue(team.elo_intl, 0) + '</td>'
+        + '<td class="pred-mono">' + formatModelValue(team.xi_blend, 1) + '</td>'
+        + '<td class="pred-mono">' + formatModelValue(team.strength_score, 1) + '</td>'
+        + '<td>' + method + '</td>'
+        + '</tr>';
+    });
+
+    html += '</tbody></table></div>'
+      + '<p class="pred-elo-footnote">Listo para XI significa que el modelo ya tiene muestra suficiente de titulares con ELO para ajustar la base internacional. Los faltantes se iran refinando sin romper la simulacion.</p>'
+      + '</section>';
+
+    return html;
   }
 
   function renderGroupProbabilityTables(data) {
@@ -261,7 +406,7 @@
       + '  <li>&#x2714; 10,000 escenarios · Modelo ELO híbrido · Poisson por goles</li>'
       + '</ul>'
       + renderGhostTable()
-      + '<button class="pred-join-btn" onclick="window.SupaAuth && window.SupaAuth.openAuthModal()">Únete — S/. 15 · $5</button>'
+      + '<button class="pred-join-btn" onclick="window.SupaAuth && window.SupaAuth.openAuthModal()">Crear cuenta</button>'
       + '</div>';
   }
 
@@ -272,7 +417,7 @@
     el.innerHTML = '<div class="pred-payment">'
       + '<div class="pred-payment-icon">&#x1F4B3;</div>'
       + '<h3>Un paso más…</h3>'
-      + '<p>Selecciona tu método de pago y escanea el QR.</p>'
+      + '<p>Elige cómo completar tu acceso y escanea el QR.</p>'
       + '<div class="pred-pay-tabs">'
       + '  <button class="pred-pay-tab active" id="pred-tab-yape" onclick="window.PredicionesSection.showQR(\'yape\')">'
       + '    &#x1F1F5;&#x1F1EA; Yape<span class="pred-pay-tab-amount">S/. 15</span>'
@@ -451,10 +596,12 @@
     el.innerHTML = '<div class="pred-loading">Cargando datos de simulación…</div>';
 
     var data = await loadSimulationData();
+    var eloModel = await loadEloModelExplainer();
+    var pronosticos = await loadEmbeddedPronosticos();
 
     if (!data || !data.standings.length) {
       el.innerHTML = '<div class="pred-empty">'
-        + '<span class="pred-premium-badge">&#x2705; Acceso Premium Activo</span>'
+        + '<span class="pred-premium-badge">&#x2705; Todo desbloqueado</span>'
         + '<p style="color:var(--muted);margin-top:1rem">Los datos de simulación se cargarán en breve.</p>'
         + '</div>';
       return;
@@ -465,11 +612,13 @@
       : '';
 
     var html = '<div class="pred-active-header">'
-      + '<span class="pred-premium-badge">&#x2705; Acceso Premium Activo</span>'
+      + '<span class="pred-premium-badge">&#x2705; Todo desbloqueado</span>'
       + (runsLabel ? '<span class="pred-model-note">' + runsLabel + ' &nbsp;·&nbsp; Monte Carlo &nbsp;·&nbsp; ELO híbrido</span>' : '')
       + '</div>';
 
+    html += renderEloModelExplainer(eloModel);
     html += renderGroupProbabilityTables(data);
+    html += renderEmbeddedPronosticos(pronosticos);
 
     // — Tabla 1: Probabilidades de clasificación —
     html += '<h3 class="pred-subsection-title">Probabilidad de Clasificación</h3>';
@@ -594,6 +743,12 @@
     return ref.data || { success: false, message: 'Respuesta inesperada del servidor.' };
   }
 
+  function accessMessage(message, fallback) {
+    var text = message ? String(message) : '';
+    if (/premium/i.test(text)) return fallback;
+    return text || fallback;
+  }
+
   async function submitCode() {
     var input = document.getElementById('pred-code-input');
     var errEl = document.getElementById('pred-code-error');
@@ -610,10 +765,10 @@
     btn.textContent = 'Activar';
     if (result.success) {
       errEl.style.color = 'var(--yes)';
-      errEl.textContent = result.message;
+      errEl.textContent = ACCESS_READY_MESSAGE;
       setTimeout(function () { window.SupaAuth && window.SupaAuth.refreshAuthState(); }, 1200);
     } else {
-      errEl.textContent = result.message;
+      errEl.textContent = accessMessage(result.message, 'No pudimos completar el acceso. Revisa el código e inténtalo de nuevo.');
     }
   }
 

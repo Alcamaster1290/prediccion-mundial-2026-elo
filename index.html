@@ -1459,6 +1459,8 @@
     color: var(--yes); border: 1px solid rgba(34,197,94,.3);
     padding: .3rem .8rem; border-radius: 4px;
   }
+  .pred-pronosticos-block { margin: 0 0 2rem; }
+  .pred-pronosticos-block .prono-group-block:last-child { margin-bottom: 0; }
   .prono-group-block { margin-bottom: 2.5rem; }
   .prono-group-title {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
@@ -1587,6 +1589,185 @@
   .pred-terceros-note { font-size: 13px; color: var(--muted); margin-bottom: .75rem; }
   .pred-loading { color: var(--muted); font-size: 14px; padding: 1.5rem 0; }
   .pred-empty { text-align: center; padding: 2rem; }
+
+  .pred-elo-model {
+    background: linear-gradient(135deg, rgba(20,27,40,.96), rgba(12,18,28,.94));
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0 0 2rem;
+    overflow: hidden;
+  }
+  .pred-elo-model-empty { border-left-color: var(--muted); }
+  .pred-elo-copy {
+    display: grid;
+    gap: .55rem;
+    max-width: 860px;
+  }
+  .pred-elo-kicker {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .pred-elo-copy h3 {
+    color: var(--white);
+    font-size: 1.15rem;
+    line-height: 1.25;
+  }
+  .pred-elo-copy p,
+  .pred-elo-footnote {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .pred-elo-formula {
+    display: grid;
+    grid-template-columns: minmax(130px, .4fr) 1fr;
+    align-items: center;
+    gap: .5rem;
+    background: rgba(0,0,0,.22);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 6px;
+    padding: .7rem .85rem;
+    margin: .2rem 0;
+  }
+  .pred-elo-formula span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .pred-elo-formula code {
+    color: #ffd166;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .pred-elo-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .55rem;
+    margin: 1rem 0;
+  }
+  .pred-elo-metrics div {
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: .75rem;
+    min-width: 0;
+  }
+  .pred-elo-metrics strong {
+    display: block;
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  .pred-elo-metrics span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: .35rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .pred-elo-ready-strip {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    flex-wrap: wrap;
+    margin: .25rem 0 1rem;
+  }
+  .pred-elo-ready-strip > span {
+    color: var(--muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-right: .2rem;
+  }
+  .pred-elo-ready-team {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    background: rgba(34,197,94,.08);
+    border: 1px solid rgba(34,197,94,.22);
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 12px;
+    padding: .28rem .45rem;
+    max-width: 180px;
+  }
+  .pred-elo-ready-team span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .pred-elo-ready-team small {
+    color: #8ee6ad;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .pred-elo-team-wrap {
+    margin-top: .5rem;
+    max-height: 440px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .pred-elo-team-table {
+    min-width: 760px;
+  }
+  .pred-elo-team-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    z-index: 1;
+  }
+  .pred-elo-status {
+    display: inline-block;
+    border-radius: 4px;
+    padding: .16rem .5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .pred-elo-status-ready { background: rgba(34,197,94,.16); color: #8ee6ad; }
+  .pred-elo-status-needs { background: rgba(245,158,11,.16); color: #facc6b; }
+  .pred-elo-status-base { background: rgba(148,163,184,.14); color: #b8c2d2; }
+  .pred-elo-footnote {
+    margin-top: .75rem;
+  }
+  [data-theme="light"] .pred-elo-model {
+    background: #f8fafc;
+  }
+  [data-theme="light"] .pred-elo-formula,
+  [data-theme="light"] .pred-elo-metrics div,
+  [data-theme="light"] .pred-elo-team-wrap {
+    background: #ffffff;
+  }
+  [data-theme="light"] .pred-elo-copy h3,
+  [data-theme="light"] .pred-elo-formula span,
+  [data-theme="light"] .pred-elo-metrics strong {
+    color: #18202c;
+  }
+  @media (max-width: 640px) {
+    .pred-elo-model { padding: .85rem; }
+    .pred-elo-formula { grid-template-columns: 1fr; }
+    .pred-elo-metrics { grid-template-columns: 1fr; }
+    .pred-elo-ready-team { max-width: 100%; }
+  }
 
   .pred-group-prob-grid {
     display: grid;
@@ -2095,7 +2276,7 @@
   <a href="#calendario">Calendario</a>
   <a href="#grupos">Grupos</a>
   <a href="#bracket">Llave</a>
-  <a href="#predicciones">Predicciones &#x1F512;</a>
+  <a href="#predicciones">Predicciones <span id="nav-pred-lock" aria-hidden="true">&#x1F512;</span></a>
   <button class="grupos-nav-btn" id="grupos-nav-btn" onclick="openGruposModal()">Equipos <span class="g-arrow">▾</span></button>
   <a href="#tracker">Tracker</a>
   <div class="tz-wrap">
@@ -2111,7 +2292,7 @@
   <button id="join-btn" class="join-btn" onclick="window.SupaAuth && window.SupaAuth.openAuthModal()">Únete</button>
   <div id="nav-user-info" class="nav-user-info">
     <span id="nav-user-email" class="nav-user-email"></span>
-    <span id="nav-premium-badge" class="nav-premium-tag">Premium</span>
+    <span id="nav-premium-badge" class="nav-premium-tag">Completo</span>
     <button id="nav-signout-btn" class="nav-signout-btn">Salir</button>
   </div>
   <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">&#x1F319;</button>
@@ -4557,7 +4738,7 @@
       <h2>Llave Eliminatoria</h2>
     </div>
     <p style="color:var(--muted);font-size:14px;margin-bottom:1.5rem">
-      Pronóstico basado en 10,000 simulaciones Monte Carlo · Equipos más probables por grupo · Win% solo Premium
+      Pronóstico basado en 10,000 simulaciones Monte Carlo · Equipos más probables por grupo · Win% con acceso completo
     </p>
   </div>
   <div class="bracket-scroll">
@@ -4565,7 +4746,7 @@
   </div>
   <div class="container">
     <div class="bk-premium-note" id="bk-premium-note">
-      <span class="lock-icon">&#x1F512;</span> El % de clasificación es exclusivo para usuarios <strong style="color:var(--gold)">Premium</strong>
+      <span class="lock-icon">&#x1F512;</span> El % de clasificación se desbloquea con acceso completo
     </div>
   </div>
 </section>
@@ -4574,7 +4755,7 @@
 <section id="predicciones">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag tag-gold">★ Premium</span>
+      <span class="section-tag tag-gold">★ Acceso completo</span>
       <h2>Predicciones <span class="pred-header-lock" id="pred-header-lock">&#x1F512;</span></h2>
     </div>
     <div id="predicciones-content"></div>
@@ -5355,19 +5536,6 @@
   </div>
 </section>
 
-<!-- §06 PRONÓSTICOS PREMIUM -->
-<section id="pronosticos" style="background:var(--bg)">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag tag-accent">§06</span>
-      <h2>Pronósticos Fase de Grupos</h2>
-    </div>
-    <div id="pronosticos-content">
-      <!-- Renderizado por js/premium.js según estado de autenticación -->
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -5494,7 +5662,7 @@
     if (!state.user) {
       if (window.SupaAuth) window.SupaAuth.openAuthModal('', 'signup');
     } else {
-      var el = document.getElementById('pronosticos');
+      var el = document.getElementById('predicciones');
       if (el) el.scrollIntoView({ behavior: 'instant' });
     }
   };

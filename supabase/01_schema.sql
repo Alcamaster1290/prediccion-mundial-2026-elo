@@ -4,7 +4,8 @@
 -- ============================================================
 
 -- Extensión para hashing SHA-256
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE SCHEMA IF NOT EXISTS extensions;
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
 
 -- ────────────────────────────────────────────────────────────
 -- profiles

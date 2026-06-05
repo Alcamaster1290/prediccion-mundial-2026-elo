@@ -59,7 +59,7 @@ BEGIN
   END IF;
 
   -- Hashear el código recibido
-  v_code_hash := encode(digest(trim(input_code), 'sha256'), 'hex');
+  v_code_hash := encode(extensions.digest(trim(input_code), 'sha256'), 'hex');
 
   -- Buscar código válido y no usado
   SELECT id INTO v_code_id

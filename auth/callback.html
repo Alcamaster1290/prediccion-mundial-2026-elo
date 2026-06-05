@@ -231,6 +231,12 @@
 
     // ── Canje de código ─────────────────────────────────────────
 
+    function accessMessage(message, fallback) {
+      var text = message ? String(message) : '';
+      if (/premium/i.test(text)) return fallback;
+      return text || fallback;
+    }
+
     async function submitCode() {
       var input = document.getElementById('code-input');
       var errEl = document.getElementById('code-error');
@@ -258,10 +264,10 @@
       var result = ref.data || {};
       if (result.success) {
         errEl.className = 'code-error ok';
-        errEl.textContent = result.message || '¡Código válido!';
+        errEl.textContent = 'Todo desbloqueado. Ya puedes ver todas las predicciones.';
         setTimeout(showActivated, 1000);
       } else {
-        errEl.textContent = result.message || 'Código inválido o ya utilizado.';
+        errEl.textContent = accessMessage(result.message, 'Código inválido o ya utilizado.');
       }
     }
 
@@ -288,7 +294,7 @@
         + '  <div class="step"><div class="step-num">3</div>Acceso</div>'
         + '</div>'
         + '<div class="verified-row">&#x2705; Cuenta verificada correctamente</div>'
-        + '<p class="section-title">Activa tu acceso Premium</p>'
+        + '<p class="section-title">Completa tu acceso</p>'
         + '<div class="pay-tabs">'
         + '  <button class="pay-tab active" id="cb-tab-yape" onclick="showQR(\'yape\')">'
         + '    &#x1F1F5;&#x1F1EA; Yape<span class="pay-tab-amount">S/. 15</span>'
@@ -322,7 +328,7 @@
         + '</div>'
         + '<div class="activated">'
         + '  <div class="big-icon">&#x1F3C6;</div>'
-        + '  <p class="title">¡Acceso Premium Activado!</p>'
+        + '  <p class="title">Todo desbloqueado</p>'
         + '  <p class="subtitle">Puedes cerrar este recuadro y ver todas las predicciones.<br>Tu acceso está activo en el sitio.</p>'
         + '  <a class="go-btn" href="../index.html#predicciones">Ver Predicciones &#x2192;</a>'
         + '</div>';

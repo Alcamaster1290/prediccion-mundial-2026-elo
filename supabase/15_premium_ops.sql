@@ -162,7 +162,7 @@ BEGIN
     RETURN json_build_object('success', false, 'message', 'Tu cuenta ya tiene acceso premium activo.');
   END IF;
 
-  v_code_hash := encode(digest(trim(input_code), 'sha256'), 'hex');
+  v_code_hash := encode(extensions.digest(trim(input_code), 'sha256'), 'hex');
 
   SELECT id INTO v_code_id
   FROM public.premium_codes

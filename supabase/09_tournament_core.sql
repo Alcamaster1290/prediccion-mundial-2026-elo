@@ -2,7 +2,8 @@
 -- Canonical public tournament data and live match results.
 -- Apply after 08_security_advisors_hardening.sql.
 
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE SCHEMA IF NOT EXISTS extensions;
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
 
 CREATE OR REPLACE FUNCTION public.set_updated_at()
 RETURNS trigger

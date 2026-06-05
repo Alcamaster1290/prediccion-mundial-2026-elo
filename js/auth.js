@@ -43,6 +43,17 @@
     return ref.data || null;
   }
 
+  async function hasAdminRole() {
+    var c = getClient();
+    if (!c) return false;
+    try {
+      var ref = await c.rpc('has_staff_role', { required_role: 'admin' });
+      return !ref.error && ref.data === true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   async function signUp(email, password, fullName, country) {
     var c = getClient();
     if (!c) return { error: { message: 'Supabase no configurado' } };
@@ -160,25 +171,33 @@
     var user    = await getCurrentUser();
     var profile = user ? await getProfile(user.id) : null;
     var isPrem  = profile && profile.is_premium;
+    var isAdmin = user ? await hasAdminRole() : false;
+    var hasFullAccess = !!isPrem || !!isAdmin;
+    if (profile) {
+      profile.is_admin = !!isAdmin;
+      profile.has_full_access = hasFullAccess;
+    }
 
-    window.__authState = { user: user, isPremium: !!isPrem };
+    window.__authState = { user: user, isPremium: !!isPrem, isAdmin: !!isAdmin, hasFullAccess: hasFullAccess };
 
-    updateNavAuthUI(user, isPrem);
+    updateNavAuthUI(user, hasFullAccess);
 
     if (window.PremiumSection) {
-      window.PremiumSection.onAuthChange(user, isPrem, profile);
+      window.PremiumSection.onAuthChange(user, hasFullAccess, profile);
     }
     if (window.PredicionesSection) {
-      window.PredicionesSection.onAuthChange(user, isPrem, profile);
+      window.PredicionesSection.onAuthChange(user, hasFullAccess, profile);
     }
     if (window.BracketSection) {
-      window.BracketSection.setPremiumState(!!isPrem);
+      window.BracketSection.setPremiumState(hasFullAccess);
     }
   }
 
-  function updateNavAuthUI(user, isPremium) {
+  function updateNavAuthUI(user, hasFullAccess) {
     var joinBtn    = document.getElementById('join-btn');
     var userInfo   = document.getElementById('nav-user-info');
+    var navPredLock = document.getElementById('nav-pred-lock');
+    if (navPredLock) navPredLock.style.display = hasFullAccess ? 'none' : '';
     if (!joinBtn) return;
 
     if (user) {
@@ -188,7 +207,7 @@
         var emailEl = document.getElementById('nav-user-email');
         if (emailEl) emailEl.textContent = user.email.split('@')[0];
         var premBadge = document.getElementById('nav-premium-badge');
-        if (premBadge) premBadge.style.display = isPremium ? 'inline' : 'none';
+        if (premBadge) premBadge.style.display = hasFullAccess ? 'inline' : 'none';
       }
     } else {
       joinBtn.style.display = '';
@@ -238,6 +257,7 @@
     getClient: getClient,
     getCurrentUser: getCurrentUser,
     getProfile: getProfile,
+    hasAdminRole: hasAdminRole,
     signIn: signIn,
     signUp: signUp,
     signOut: signOut,
