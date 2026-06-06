@@ -145,6 +145,27 @@ POSITION_BY_HEADING = (
     ("atacante", "FW"),
 )
 
+TACTICAL_HEADING_TOKENS = (
+    "esquema tactico",
+    "analisis tactico",
+    "xi ideal",
+    "como juega",
+)
+
+TACTICAL_STOP_HEADING_TOKENS = (
+    "lista",
+    "convocados",
+    "ausencias",
+    "historia",
+    "mejores jugadores",
+    "arqueros",
+    "defensores",
+    "volantes",
+    "delanteros",
+)
+
+SCHEME_RE = re.compile(r"\b[1-5](?:-[1-5]){2,4}\b")
+
 
 def normalize_country_name(value):
     """Return a lowercase, accent-free country key for source matching."""
@@ -224,6 +245,55 @@ def extract_players_from_article(html):
     return players
 
 
+def heading_matches_any(text, tokens):
+    key = normalize_country_name(text)
+    return any(token in key for token in tokens)
+
+
+def extract_scheme(text):
+    match = SCHEME_RE.search(text or "")
+    return match.group(0) if match else None
+
+
+def extract_tactical_info_from_article(html, max_paragraphs=3):
+    """Extract tactical system and article-backed tactical paragraphs."""
+    soup = BeautifulSoup(html, "html.parser")
+    root = article_content_root(soup)
+    tactics = []
+    in_tactical_block = False
+
+    for node in root.find_all(["h2", "h3", "h4", "p"]):
+        text = normalize_text(node.get_text(" ", strip=True))
+        if not text:
+            continue
+
+        if node.name in ("h2", "h3", "h4"):
+            if heading_matches_any(text, TACTICAL_HEADING_TOKENS):
+                in_tactical_block = True
+                continue
+            if in_tactical_block and heading_matches_any(text, TACTICAL_STOP_HEADING_TOKENS):
+                break
+            if in_tactical_block:
+                break
+            continue
+
+        if in_tactical_block and node.name == "p":
+            tactics.append(text)
+            if len(tactics) >= max_paragraphs:
+                break
+
+    scheme = None
+    for paragraph in tactics:
+        scheme = extract_scheme(paragraph)
+        if scheme:
+            break
+
+    return {
+        "scheme": scheme,
+        "tactics": tactics,
+    }
+
+
 def meta_content(soup, selector):
     tag = soup.select_one(selector)
     return normalize_text(tag.get("content")) if tag and tag.get("content") else None
@@ -275,6 +345,7 @@ def build_article_entry(team_code, article_html, url):
     """Build one traceable source record from an AlterFutbol article."""
     soup = BeautifulSoup(article_html, "html.parser")
     players = extract_players_from_article(article_html)
+    tactical_info = extract_tactical_info_from_article(article_html)
     image_urls, formation_images = extract_article_images(soup, url)
     title = meta_content(soup, 'meta[property="og:title"]')
     if not title:
@@ -297,6 +368,8 @@ def build_article_entry(team_code, article_html, url):
         "featured_image": meta_content(soup, 'meta[property="og:image"]'),
         "image_urls": image_urls,
         "formation_images": formation_images,
+        "scheme": tactical_info["scheme"],
+        "tactics": tactical_info["tactics"],
         "players": players,
         "player_count": player_count,
         "status": status,

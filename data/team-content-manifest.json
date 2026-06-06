@@ -16,7 +16,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -29,7 +29,6 @@
         "player_elo_json_rows": 5
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -46,7 +45,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -59,7 +58,6 @@
         "player_elo_json_rows": 8
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -102,7 +100,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -115,7 +113,6 @@
         "player_elo_json_rows": 8
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -132,7 +129,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -145,7 +142,6 @@
         "player_elo_json_rows": 1
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -188,7 +184,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -201,7 +197,6 @@
         "player_elo_json_rows": 0
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -375,7 +370,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -388,7 +383,6 @@
         "player_elo_json_rows": 4
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -405,7 +399,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -418,7 +412,6 @@
         "player_elo_json_rows": 1
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -435,7 +428,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -448,7 +441,6 @@
         "player_elo_json_rows": 4
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -540,7 +532,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -553,7 +545,6 @@
         "player_elo_json_rows": 4
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -570,7 +561,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -583,7 +574,6 @@
         "player_elo_json_rows": 4
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -698,7 +688,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -711,7 +701,6 @@
         "player_elo_json_rows": 7
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -728,7 +717,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -741,7 +730,6 @@
         "player_elo_json_rows": 0
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -865,7 +853,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -878,7 +866,6 @@
         "player_elo_json_rows": 9
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -921,7 +908,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -934,7 +921,6 @@
         "player_elo_json_rows": 7
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -951,7 +937,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -964,7 +950,6 @@
         "player_elo_json_rows": 2
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -1007,7 +992,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -1020,7 +1005,6 @@
         "player_elo_json_rows": 7
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -1037,7 +1021,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -1050,7 +1034,6 @@
         "player_elo_json_rows": 5
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -1177,7 +1160,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -1190,7 +1173,6 @@
         "player_elo_json_rows": 1
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -1256,7 +1238,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -1269,7 +1251,6 @@
         "player_elo_json_rows": 10
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",
@@ -1286,7 +1267,7 @@
       "source": "alterfutbol.com",
       "assets": {
         "flag": true,
-        "xi_image": false,
+        "xi_image": true,
         "star_image": false,
         "list_png": false,
         "list_txt": false
@@ -1299,7 +1280,6 @@
         "player_elo_json_rows": 3
       },
       "local_missing": [
-        "xi_image",
         "star_image",
         "list_png",
         "list_txt",

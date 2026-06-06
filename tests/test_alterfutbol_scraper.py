@@ -1,6 +1,7 @@
 from scripts.scrape_alterfutbol_news import (
     build_article_entry,
     build_source_manifest,
+    extract_tactical_info_from_article,
     extract_players_from_article,
     normalize_country_name,
     resolve_output_path,
@@ -197,6 +198,70 @@ def test_build_article_entry_records_source_images_and_complete_status():
     assert len(entry["players"]) == 26
     assert entry["player_count"] == 26
     assert entry["status"] == "complete"
+
+
+def test_extract_tactical_info_from_article_reads_scheme_and_tactics_block():
+    html = """
+    <html>
+      <body>
+        <article><h2>Relacionado</h2><p>Texto externo con 5-4-1.</p></article>
+        <div class="elementor-widget-theme-post-content">
+          <h2>El esquema tactico y el XI ideal</h2>
+          <p>El tecnico se inclino principalmente por el clasico 4-3-3, aunque alterno con variantes.</p>
+          <p>El sistema busca cubrir cada zona del campo con orden y presion alta.</p>
+          <h2>Lista completa de convocados</h2>
+          <p>Arqueros:</p>
+        </div>
+      </body>
+    </html>
+    """
+
+    info = extract_tactical_info_from_article(html)
+
+    assert info["scheme"] == "4-3-3"
+    assert info["tactics"] == [
+        "El tecnico se inclino principalmente por el clasico 4-3-3, aunque alterno con variantes.",
+        "El sistema busca cubrir cada zona del campo con orden y presion alta.",
+    ]
+
+
+def test_extract_tactical_info_from_article_handles_analysis_heading_variant():
+    html = """
+    <article>
+      <h2>Analisis tactico y XI ideal</h2>
+      <p>La estructura base oscila entre el 3-4-2-1 y el 4-2-3-1 segun el rival.</p>
+      <h2>Las ausencias</h2>
+      <p>Este parrafo ya no pertenece al bloque tactico.</p>
+    </article>
+    """
+
+    info = extract_tactical_info_from_article(html)
+
+    assert info["scheme"] == "3-4-2-1"
+    assert info["tactics"] == [
+        "La estructura base oscila entre el 3-4-2-1 y el 4-2-3-1 segun el rival."
+    ]
+
+
+def test_extract_tactical_info_from_article_limits_tactics_to_three_paragraphs():
+    html = """
+    <article>
+      <h2>El esquema tactico y el XI ideal</h2>
+      <p>El equipo parte de un 4-2-3-1 compacto.</p>
+      <p>La presion se activa por bandas.</p>
+      <p>El doble cinco sostiene las transiciones.</p>
+      <p>Este cuarto parrafo describe un puesto especifico y debe quedar fuera.</p>
+    </article>
+    """
+
+    info = extract_tactical_info_from_article(html)
+
+    assert info["scheme"] == "4-2-3-1"
+    assert info["tactics"] == [
+        "El equipo parte de un 4-2-3-1 compacto.",
+        "La presion se activa por bandas.",
+        "El doble cinco sostiene las transiciones.",
+    ]
 
 
 def test_build_source_manifest_maps_listing_articles_and_marks_missing_teams():

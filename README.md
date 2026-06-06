@@ -20,7 +20,7 @@ mundial-2026/
 ├── assets/
 │   ├── flags/                      # 48 banderas SVG — código ISO 3166-1 alpha-3
 │   ├── players/                    # 25 fotos de figura clave — una por selección
-│   ├── xi/                         # 26 imágenes de XI Ideal (AlterFutbol)
+│   ├── xi/                         # 46 imágenes de XI Ideal / formación (AlterFutbol)
 │   ├── og-image.png                # Open Graph image (1200×630)
 │   ├── yape-qr.jpeg                # QR de pago Yape
 │   └── paypal-qr.jpeg              # QR de pago PayPal
@@ -249,7 +249,7 @@ La `anon key` es pública y segura porque:
 
 ### `assets/xi/`
 - Formato: `{código-equipo}-xi.png` — capturas de AlterFutbol
-- 26 selecciones disponibles al 6 de junio de 2026
+- 46 selecciones disponibles al 6 de junio de 2026
 
 ---
 
@@ -331,6 +331,7 @@ Para activar el sistema premium, copiar `js/config.example.js` como `js/config.j
 - [x] 48 banderas SVG descargadas (grupos A-L)
 - [x] 24 selecciones con análisis táctico completo (XI, figura, plantilla)
 - [x] 1196 jugadores en `teams.json`: 624 de análisis completo + 572 squad-only desde AlterFutbol
+- [x] 46 imágenes de XI/formación en `assets/xi` y tácticas fuenteadas para los equipos squad-only
 - [x] ELO internacional real de 48 selecciones (international-football.net)
 - [x] Modelo ELO híbrido v1.1 (ranking intl + xi_blend de clubes, weight=0.35)
 - [x] `team_strength_snapshots.json` — 48 selecciones con fuerza compuesta
@@ -346,7 +347,7 @@ Para activar el sistema premium, copiar `js/config.example.js` como `js/config.j
 
 ### Pendiente 🔲
 
-- [ ] Análisis táctico de Marruecos y Panamá (XI pendiente de AlterFutbol)
+- [ ] Marcar titulares por país a partir de cada `xi_image` validado
 - [ ] Insertar predicciones reales en tabla `predictions` (pronósticos por partido)
 - [ ] Actualizar `mc_results.json` cuando se añadan los 2 equipos pendientes
 - [ ] Configurar templates de email de Supabase (confirmación, reset de contraseña)
