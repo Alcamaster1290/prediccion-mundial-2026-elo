@@ -179,7 +179,7 @@ python scripts/generate_seed_sql.py
 | `profiles` | dinámica | Usuarios registrados — `is_premium`, email |
 | `premium_codes` | manual | Códigos hash SHA-256 para activación |
 | `predictions` | manual | Pronósticos por partido (tabla legacy) |
-| `players` | 1196 | Planteles: pos, nombre, edad, club, país, ELO, titular |
+| `players` | 1196 | Planteles: pos, nombre, edad, club, país del club, ELO, titular |
 | `national_elo_ratings` | 48 | ELO internacional por selección |
 | `team_strength_snapshots` | 48 | Fuerza compuesta (ELO híbrido v1.1) |
 | `simulation_runs` | 1 | Metadatos del run: iteraciones, semilla, fecha |

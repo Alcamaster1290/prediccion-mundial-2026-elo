@@ -25,7 +25,7 @@
           "name": "Guillermo Ochoa",
           "age": 40,
           "club": "AEL Limassol",
-          "country": null,
+          "country": "Chipre",
           "elo": null,
           "titular": false
         },
@@ -35,7 +35,7 @@
           "name": "Raúl Rangel",
           "age": 26,
           "club": "Chivas Guadalajara",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -45,7 +45,7 @@
           "name": "Carlos Acevedo",
           "age": 30,
           "club": "Santos Laguna",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -55,7 +55,7 @@
           "name": "Johan Vásquez",
           "age": 27,
           "club": "Genoa CFC",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -65,7 +65,7 @@
           "name": "César Montes",
           "age": 29,
           "club": "Lokomotiv Moskva",
-          "country": null,
+          "country": "Rusia",
           "elo": null,
           "titular": true
         },
@@ -75,7 +75,7 @@
           "name": "Israel Reyes",
           "age": 26,
           "club": "CF América",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -85,7 +85,7 @@
           "name": "Mateo Chávez",
           "age": 22,
           "club": "AZ Alkmaar",
-          "country": null,
+          "country": "Países Bajos",
           "elo": 1479,
           "titular": false
         },
@@ -95,7 +95,7 @@
           "name": "Jesús Gallardo",
           "age": 31,
           "club": "CD Toluca",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -105,7 +105,7 @@
           "name": "Jorge Sánchez",
           "age": 28,
           "club": "PAOK",
-          "country": null,
+          "country": "Grecia",
           "elo": 1510,
           "titular": true
         },
@@ -115,7 +115,7 @@
           "name": "Édson Álvarez",
           "age": 28,
           "club": "Fenerbahce SK",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -125,7 +125,7 @@
           "name": "Érik Lira",
           "age": 26,
           "club": "Cruz Azul",
-          "country": null,
+          "country": "México",
           "elo": 1448,
           "titular": true
         },
@@ -135,7 +135,7 @@
           "name": "Luis Chávez",
           "age": 30,
           "club": "Dinamo Moskva",
-          "country": null,
+          "country": "Rusia",
           "elo": null,
           "titular": false
         },
@@ -145,7 +145,7 @@
           "name": "Luis Romo",
           "age": 30,
           "club": "Chivas Guadalajara",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -155,7 +155,7 @@
           "name": "Álvaro Fidalgo",
           "age": 29,
           "club": "Real Betis",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -165,7 +165,7 @@
           "name": "Obed Vargas",
           "age": 20,
           "club": "Atlético Madrid",
-          "country": null,
+          "country": "España",
           "elo": 1832,
           "titular": false
         },
@@ -175,7 +175,7 @@
           "name": "Orbelín Pineda",
           "age": 30,
           "club": "AEK Atenas",
-          "country": null,
+          "country": "Grecia",
           "elo": null,
           "titular": false
         },
@@ -185,7 +185,7 @@
           "name": "Gilberto Mora",
           "age": 17,
           "club": "Club Tijuana",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -195,7 +195,7 @@
           "name": "Brian Gutiérrez",
           "age": 22,
           "club": "Chivas Guadalajara",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -205,7 +205,7 @@
           "name": "Alexis Vega",
           "age": 28,
           "club": "CD Toluca",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -215,7 +215,7 @@
           "name": "César Huerta",
           "age": 25,
           "club": "RSC Anderlecht",
-          "country": null,
+          "country": "Bélgica",
           "elo": 1423,
           "titular": false
         },
@@ -225,7 +225,7 @@
           "name": "Roberto Alvarado",
           "age": 27,
           "club": "Chivas Guadalajara",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -235,7 +235,7 @@
           "name": "Santiago Giménez",
           "age": 25,
           "club": "AC Milan",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -245,7 +245,7 @@
           "name": "Armando González",
           "age": 23,
           "club": "Chivas Guadalajara",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -255,7 +255,7 @@
           "name": "Julián Quiñones",
           "age": 29,
           "club": "Al-Qadisiyah FC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": true
         },
@@ -265,7 +265,7 @@
           "name": "Raúl Jiménez",
           "age": 35,
           "club": "Fulham FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -275,7 +275,7 @@
           "name": "Guillermo Martínez",
           "age": 31,
           "club": "Pumas UNAM",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         }
@@ -308,7 +308,7 @@
           "name": "Ronwen Williams",
           "age": 34,
           "club": "Mamelodi Sundowns",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": 1567,
           "titular": true
         },
@@ -318,7 +318,7 @@
           "name": "Sipho Chaine",
           "age": 29,
           "club": "Orlando Pirates",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": false
         },
@@ -328,7 +328,7 @@
           "name": "Ricardo Goss",
           "age": 32,
           "club": "Siwelele FC",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": false
         },
@@ -338,7 +338,7 @@
           "name": "Nkosinathi Sibisi",
           "age": 30,
           "club": "Orlando Pirates",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": false
         },
@@ -348,7 +348,7 @@
           "name": "Mbekezeli Mbokazi",
           "age": 20,
           "club": "Chicago Fire",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": true
         },
@@ -358,7 +358,7 @@
           "name": "Ime Okon",
           "age": 22,
           "club": "Hannover 96",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -368,7 +368,7 @@
           "name": "Khulumani Ndamane",
           "age": 22,
           "club": "Mamelodi Sundowns",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": 1567,
           "titular": false
         },
@@ -378,7 +378,7 @@
           "name": "Olwethu Makhanya",
           "age": 22,
           "club": "Philadelphia Union",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -388,7 +388,7 @@
           "name": "Aubrey Modiba",
           "age": 30,
           "club": "Mamelodi Sundowns",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": 1567,
           "titular": true
         },
@@ -398,7 +398,7 @@
           "name": "Samukele Kabini",
           "age": 22,
           "club": "Molde FK",
-          "country": null,
+          "country": "Noruega",
           "elo": null,
           "titular": false
         },
@@ -408,7 +408,7 @@
           "name": "Khuliso Mudau",
           "age": 31,
           "club": "Mamelodi Sundowns",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": 1567,
           "titular": true
         },
@@ -418,7 +418,7 @@
           "name": "Thabang Matuludi",
           "age": 27,
           "club": "Polokwane City FC",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": false
         },
@@ -428,7 +428,7 @@
           "name": "Bradley Cross",
           "age": 25,
           "club": "Kaizer Chiefs",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": false
         },
@@ -438,7 +438,7 @@
           "name": "Kamogelo Sebelebele",
           "age": 23,
           "club": "Orlando Pirates",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": false
         },
@@ -448,7 +448,7 @@
           "name": "Teboho Mokoena",
           "age": 29,
           "club": "Mamelodi Sundowns",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": 1567,
           "titular": true
         },
@@ -458,7 +458,7 @@
           "name": "Thalente Mbatha",
           "age": 26,
           "club": "Orlando Pirates",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": false
         },
@@ -468,7 +468,7 @@
           "name": "Sphephelo Sithole",
           "age": 27,
           "club": "CD Tondela",
-          "country": null,
+          "country": "Portugal",
           "elo": null,
           "titular": true
         },
@@ -478,7 +478,7 @@
           "name": "Jayden Adams",
           "age": 25,
           "club": "Mamelodi Sundowns",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": 1567,
           "titular": false
         },
@@ -488,7 +488,7 @@
           "name": "Themba Zwane",
           "age": 36,
           "club": "Mamelodi Sundowns",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": 1567,
           "titular": false
         },
@@ -498,7 +498,7 @@
           "name": "Lyle Foster",
           "age": 25,
           "club": "Burnley FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -508,7 +508,7 @@
           "name": "Oswin Appollis",
           "age": 24,
           "club": "Orlando Pirates",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": true
         },
@@ -518,7 +518,7 @@
           "name": "Relebohile Mofokeng",
           "age": 21,
           "club": "Orlando Pirates",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": true
         },
@@ -528,7 +528,7 @@
           "name": "Tshepang Moremi",
           "age": 25,
           "club": "Orlando Pirates",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": true
         },
@@ -538,7 +538,7 @@
           "name": "Thapelo Maseko",
           "age": 22,
           "club": "AEL Limassol",
-          "country": null,
+          "country": "Chipre",
           "elo": null,
           "titular": false
         },
@@ -548,7 +548,7 @@
           "name": "Iqraam Rayners",
           "age": 30,
           "club": "Mamelodi Sundowns",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": 1567,
           "titular": false
         },
@@ -558,7 +558,7 @@
           "name": "Evidence Makgopa",
           "age": 25,
           "club": "Orlando Pirates",
-          "country": null,
+          "country": "Sudáfrica",
           "elo": null,
           "titular": false
         }
@@ -879,7 +879,7 @@
           "name": "Matěj Kovář",
           "age": 26,
           "club": "PSV Eindhoven",
-          "country": null,
+          "country": "Países Bajos",
           "elo": 1726,
           "titular": true
         },
@@ -889,7 +889,7 @@
           "name": "Jindřich Staněk",
           "age": 30,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -899,7 +899,7 @@
           "name": "Lukáš Horníček",
           "age": 23,
           "club": "SC Braga",
-          "country": null,
+          "country": "Portugal",
           "elo": null,
           "titular": false
         },
@@ -909,7 +909,7 @@
           "name": "Vladimír Coufal",
           "age": 33,
           "club": "TSG Hoffenheim",
-          "country": null,
+          "country": "Alemania",
           "elo": 1587,
           "titular": true
         },
@@ -919,7 +919,7 @@
           "name": "David Douděra",
           "age": 27,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -929,7 +929,7 @@
           "name": "Tomáš Holeš",
           "age": 33,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -939,7 +939,7 @@
           "name": "Robin Hranáč",
           "age": 26,
           "club": "TSG Hoffenheim",
-          "country": null,
+          "country": "Alemania",
           "elo": 1587,
           "titular": true
         },
@@ -949,7 +949,7 @@
           "name": "Štěpán Chaloupek",
           "age": 23,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": true
         },
@@ -959,7 +959,7 @@
           "name": "David Jurásek",
           "age": 25,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": true
         },
@@ -969,7 +969,7 @@
           "name": "Ladislav Krejčí",
           "age": 27,
           "club": "Wolverhampton Wanderers",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1456,
           "titular": true
         },
@@ -979,7 +979,7 @@
           "name": "Jaroslav Zelený",
           "age": 33,
           "club": "Sparta Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -989,7 +989,7 @@
           "name": "David Zima",
           "age": 25,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -999,7 +999,7 @@
           "name": "Lukáš Červ",
           "age": 25,
           "club": "Viktoria Plzeň",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -1009,7 +1009,7 @@
           "name": "Vladimír Darida",
           "age": 35,
           "club": "Hradec Králové",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": true
         },
@@ -1019,7 +1019,7 @@
           "name": "Lukáš Provod",
           "age": 29,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": true
         },
@@ -1029,7 +1029,7 @@
           "name": "Michal Sadílek",
           "age": 27,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -1039,7 +1039,7 @@
           "name": "Hugo Sochůrek",
           "age": 17,
           "club": "Sparta Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -1049,7 +1049,7 @@
           "name": "Alexandr Sojka",
           "age": 23,
           "club": "Viktoria Plzeň",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -1059,7 +1059,7 @@
           "name": "Tomáš Souček",
           "age": 31,
           "club": "West Ham United",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1573,
           "titular": true
         },
@@ -1069,7 +1069,7 @@
           "name": "Pavel Šulc",
           "age": 25,
           "club": "Olympique Lyon",
-          "country": null,
+          "country": "Francia",
           "elo": 1636,
           "titular": true
         },
@@ -1079,7 +1079,7 @@
           "name": "Denis Višinský",
           "age": 23,
           "club": "Viktoria Plzeň",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -1089,7 +1089,7 @@
           "name": "Adam Hložek",
           "age": 23,
           "club": "TSG Hoffenheim",
-          "country": null,
+          "country": "Alemania",
           "elo": 1587,
           "titular": false
         },
@@ -1099,7 +1099,7 @@
           "name": "Tomáš Chorý",
           "age": 30,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -1109,7 +1109,7 @@
           "name": "Mojmír Chytil",
           "age": 27,
           "club": "Slavia Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -1119,7 +1119,7 @@
           "name": "Jan Kuchta",
           "age": 29,
           "club": "Sparta Praga",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -1129,7 +1129,7 @@
           "name": "Patrik Schick",
           "age": 30,
           "club": "Bayer Leverkusen",
-          "country": null,
+          "country": "Alemania",
           "elo": 1784,
           "titular": true
         }
@@ -1162,7 +1162,7 @@
           "name": "Maxime Crépeau",
           "age": 32,
           "club": "Orlando City SC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -1172,7 +1172,7 @@
           "name": "Dayne St. Clair",
           "age": 29,
           "club": "Inter Miami",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": true
         },
@@ -1182,7 +1182,7 @@
           "name": "Owen Goodman",
           "age": 22,
           "club": "Barnsley FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -1192,7 +1192,7 @@
           "name": "Alphonso Davies",
           "age": 25,
           "club": "Bayern Munich",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -1202,7 +1202,7 @@
           "name": "Moïse Bombito",
           "age": 26,
           "club": "OGC Nice",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -1212,7 +1212,7 @@
           "name": "Alfie Jones",
           "age": 28,
           "club": "Middlesbrough FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -1222,7 +1222,7 @@
           "name": "Derek Cornelius",
           "age": 28,
           "club": "Rangers FC",
-          "country": null,
+          "country": "Escocia",
           "elo": null,
           "titular": true
         },
@@ -1232,7 +1232,7 @@
           "name": "Luc de Fougerolles",
           "age": 20,
           "club": "FCV Denver EH",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": false
         },
@@ -1242,7 +1242,7 @@
           "name": "Alistair Johnston",
           "age": 27,
           "club": "Celtic FC",
-          "country": null,
+          "country": "Escocia",
           "elo": null,
           "titular": true
         },
@@ -1252,7 +1252,7 @@
           "name": "Richie Laryea",
           "age": 31,
           "club": "Toronto FC",
-          "country": null,
+          "country": "Canadá",
           "elo": null,
           "titular": false
         },
@@ -1262,7 +1262,7 @@
           "name": "Niko Sigur",
           "age": 22,
           "club": "HNK Hajduk Split",
-          "country": null,
+          "country": "Croacia",
           "elo": null,
           "titular": false
         },
@@ -1272,7 +1272,7 @@
           "name": "Joel Waterman",
           "age": 30,
           "club": "Chicago Fire FC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -1282,7 +1282,7 @@
           "name": "Mathieu Choinière",
           "age": 27,
           "club": "LAFC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -1292,7 +1292,7 @@
           "name": "Stephen Eustáquio",
           "age": 29,
           "club": "LAFC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": true
         },
@@ -1302,7 +1302,7 @@
           "name": "Marcelo Flores",
           "age": 22,
           "club": "Tigres UANL",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -1312,7 +1312,7 @@
           "name": "Ismaël Koné",
           "age": 23,
           "club": "US Sassuolo",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -1322,7 +1322,7 @@
           "name": "Jonathan Osorio",
           "age": 33,
           "club": "Toronto FC",
-          "country": null,
+          "country": "Canadá",
           "elo": null,
           "titular": false
         },
@@ -1332,7 +1332,7 @@
           "name": "Nathan Saliba",
           "age": 22,
           "club": "RSC Anderlecht",
-          "country": null,
+          "country": "Bélgica",
           "elo": 1423,
           "titular": false
         },
@@ -1342,7 +1342,7 @@
           "name": "Ali Ahmed",
           "age": 25,
           "club": "Norwich City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -1352,7 +1352,7 @@
           "name": "Jonathan David",
           "age": 26,
           "club": "Juventus FC",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -1362,7 +1362,7 @@
           "name": "Promise David",
           "age": 24,
           "club": "RSC Union Saint-Gilloise",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": false
         },
@@ -1372,7 +1372,7 @@
           "name": "Cyle Larin",
           "age": 31,
           "club": "Southampton FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -1382,7 +1382,7 @@
           "name": "Tani Oluwaseyi",
           "age": 26,
           "club": "Villarreal CF",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -1392,7 +1392,7 @@
           "name": "Jacob Shaffelburg",
           "age": 26,
           "club": "LAFC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -1402,7 +1402,7 @@
           "name": "Liam Millar",
           "age": 26,
           "club": "Hull City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -1412,7 +1412,7 @@
           "name": "Tajon Buchanan",
           "age": 27,
           "club": "Villarreal CF",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         }
@@ -1731,7 +1731,7 @@
           "name": "Meshaal Barsham",
           "age": 28,
           "club": "Al-Sadd SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1741,7 +1741,7 @@
           "name": "Mahmoud Abunada",
           "age": 26,
           "club": "Al-Rayyan SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1751,7 +1751,7 @@
           "name": "Salah Zakaria",
           "age": 27,
           "club": "Al-Duhail SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1761,7 +1761,7 @@
           "name": "Lucas Mendes",
           "age": 35,
           "club": "Al-Wakrah SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1771,7 +1771,7 @@
           "name": "Issa Laye",
           "age": 28,
           "club": "Al-Arabi SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1781,7 +1781,7 @@
           "name": "Pedro Miguel",
           "age": 35,
           "club": "Al-Sadd SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1791,7 +1791,7 @@
           "name": "Al-Hashmi Al-Hussain",
           "age": 22,
           "club": "Al-Arabi SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1801,7 +1801,7 @@
           "name": "Boualem Khoukhi",
           "age": 35,
           "club": "Al-Sadd SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1811,7 +1811,7 @@
           "name": "Homam Ahmed Al-Amin",
           "age": 26,
           "club": "Cultural Leonesa",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -1821,7 +1821,7 @@
           "name": "Sultan Al-Brake",
           "age": 30,
           "club": "Al-Duhail SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1831,7 +1831,7 @@
           "name": "Ayoub Al-Oui",
           "age": 21,
           "club": "Al-Gharafa SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1841,7 +1841,7 @@
           "name": "Jassem Gaber",
           "age": 24,
           "club": "Al-Rayyan SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1851,7 +1851,7 @@
           "name": "Mohamed Al-Mannai",
           "age": 22,
           "club": "Al-Shamal SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1861,7 +1861,7 @@
           "name": "Assim Madibo",
           "age": 29,
           "club": "Al-Wakrah SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1871,7 +1871,7 @@
           "name": "Ahmed Fathi",
           "age": 33,
           "club": "Al-Arabi SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1881,7 +1881,7 @@
           "name": "Karim Bouadiaf",
           "age": 35,
           "club": "Al-Duhail SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1891,7 +1891,7 @@
           "name": "Abdulaziz Hatem",
           "age": 35,
           "club": "Al-Rayyan SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1901,7 +1901,7 @@
           "name": "Hassan Al-Haydos",
           "age": 35,
           "club": "Al-Sadd SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1911,7 +1911,7 @@
           "name": "Akram Afif",
           "age": 29,
           "club": "Al-Sadd SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1921,7 +1921,7 @@
           "name": "Edmílson Júnior",
           "age": 31,
           "club": "Al-Duhail SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1931,7 +1931,7 @@
           "name": "Yusuf Abdurisag",
           "age": 26,
           "club": "Al-Wakrah SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1941,7 +1941,7 @@
           "name": "Tahsin Jamshid",
           "age": 19,
           "club": "Al-Duhail SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1951,7 +1951,7 @@
           "name": "Ahmed Al-Ganehi",
           "age": 25,
           "club": "Al-Wakrah SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1961,7 +1961,7 @@
           "name": "Almoez Ali",
           "age": 29,
           "club": "Al-Duhail SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": true
         },
@@ -1971,7 +1971,7 @@
           "name": "Ahmed Alaa’eldin",
           "age": 33,
           "club": "Al-Rayyan SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -1981,7 +1981,7 @@
           "name": "Mohammed Muntari",
           "age": 32,
           "club": "Al-Gharafa SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         }
@@ -2552,7 +2552,7 @@
           "name": "Yassine Bono",
           "age": 35,
           "club": "Al-Hilal SFC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": 1629,
           "titular": true
         },
@@ -2562,7 +2562,7 @@
           "name": "Munir El Kajoui",
           "age": 37,
           "club": "RS Berkane",
-          "country": null,
+          "country": "Marruecos",
           "elo": null,
           "titular": false
         },
@@ -2572,7 +2572,7 @@
           "name": "Ahmed Reda Tagnaouti",
           "age": 30,
           "club": "AS FAR",
-          "country": null,
+          "country": "Marruecos",
           "elo": null,
           "titular": false
         },
@@ -2582,7 +2582,7 @@
           "name": "Achraf Hakimi",
           "age": 27,
           "club": "Paris Saint-Germain",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -2592,7 +2592,7 @@
           "name": "Noussair Mazraoui",
           "age": 28,
           "club": "Manchester United",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1784,
           "titular": true
         },
@@ -2602,7 +2602,7 @@
           "name": "Anass Salah-Eddine",
           "age": 24,
           "club": "PSV Eindhoven",
-          "country": null,
+          "country": "Países Bajos",
           "elo": 1726,
           "titular": false
         },
@@ -2612,7 +2612,7 @@
           "name": "Nayef Aguerd",
           "age": 30,
           "club": "Olympique de Marsella",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -2622,7 +2622,7 @@
           "name": "Issa Diop",
           "age": 29,
           "club": "Fulham FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -2632,7 +2632,7 @@
           "name": "Chadi Riad",
           "age": 22,
           "club": "Crystal Palace",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1630,
           "titular": false
         },
@@ -2642,7 +2642,7 @@
           "name": "Youssef Belammari",
           "age": 27,
           "club": "Al-Ahly SC",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": false
         },
@@ -2652,7 +2652,7 @@
           "name": "Redouane Halhal",
           "age": 23,
           "club": "KV Mechelen",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": false
         },
@@ -2662,7 +2662,7 @@
           "name": "Zakaria El Ouahdi",
           "age": 24,
           "club": "KRC Genk",
-          "country": null,
+          "country": "Bélgica",
           "elo": 1520,
           "titular": false
         },
@@ -2672,7 +2672,7 @@
           "name": "Sofyan Amrabat",
           "age": 29,
           "club": "Real Betis",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -2682,7 +2682,7 @@
           "name": "Azzedine Ounahi",
           "age": 26,
           "club": "Girona FC",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -2692,7 +2692,7 @@
           "name": "Neil El Aynaoui",
           "age": 24,
           "club": "AS Roma",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -2702,7 +2702,7 @@
           "name": "Ayyoub Bouaddi",
           "age": 18,
           "club": "LOSC Lille",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -2712,7 +2712,7 @@
           "name": "Samir El Mourabet",
           "age": 20,
           "club": "RC Estrasburgo",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -2722,7 +2722,7 @@
           "name": "Bilal El Khannouss",
           "age": 22,
           "club": "VfB Stuttgart",
-          "country": null,
+          "country": "Alemania",
           "elo": 1647,
           "titular": true
         },
@@ -2732,7 +2732,7 @@
           "name": "Ismael Saibari",
           "age": 25,
           "club": "PSV Eindhoven",
-          "country": null,
+          "country": "Países Bajos",
           "elo": 1726,
           "titular": false
         },
@@ -2742,7 +2742,7 @@
           "name": "Brahim Díaz",
           "age": 26,
           "club": "Real Madrid CF",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -2752,7 +2752,7 @@
           "name": "Abde Ezzalzouli",
           "age": 24,
           "club": "Real Betis",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -2762,7 +2762,7 @@
           "name": "Yassine Gessime",
           "age": 20,
           "club": "RC Estrasburgo",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -2772,7 +2772,7 @@
           "name": "Chemsdine Talbi",
           "age": 21,
           "club": "AFC Sunderland",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1516,
           "titular": false
         },
@@ -2782,7 +2782,7 @@
           "name": "Soufiane Rahimi",
           "age": 29,
           "club": "Al-Ain FC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": false
         },
@@ -2792,7 +2792,7 @@
           "name": "Ayoub El Kaabi",
           "age": 32,
           "club": "Olympiakos",
-          "country": null,
+          "country": "Grecia",
           "elo": null,
           "titular": true
         },
@@ -2802,7 +2802,7 @@
           "name": "Ayoub Amaimouni-Echghouyab",
           "age": 21,
           "club": "Eintracht Frankfurt",
-          "country": null,
+          "country": "Alemania",
           "elo": 1545,
           "titular": false
         }
@@ -3642,7 +3642,7 @@
           "name": "Roberto Fernández",
           "age": 38,
           "club": "Cerro Porteño",
-          "country": null,
+          "country": "Paraguay",
           "elo": null,
           "titular": true
         },
@@ -3652,7 +3652,7 @@
           "name": "Orlando Gill",
           "age": 25,
           "club": "San Lorenzo de Almagro",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": false
         },
@@ -3662,7 +3662,7 @@
           "name": "Gastón Olveira",
           "age": 33,
           "club": "Olimpia",
-          "country": null,
+          "country": "Paraguay",
           "elo": null,
           "titular": false
         },
@@ -3672,7 +3672,7 @@
           "name": "Gustavo Gómez",
           "age": 33,
           "club": "Palmeiras",
-          "country": null,
+          "country": "Brasil",
           "elo": 1529,
           "titular": true
         },
@@ -3682,7 +3682,7 @@
           "name": "Omar Alderete",
           "age": 29,
           "club": "Sunderland",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -3692,7 +3692,7 @@
           "name": "Junior Alonso",
           "age": 33,
           "club": "Atlético Mineiro",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": true
         },
@@ -3702,7 +3702,7 @@
           "name": "Fabián Balbuena",
           "age": 34,
           "club": "Gremio",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -3712,7 +3712,7 @@
           "name": "Juan José Cáceres",
           "age": 25,
           "club": "Dynamo Moscú",
-          "country": null,
+          "country": "Rusia",
           "elo": null,
           "titular": true
         },
@@ -3722,7 +3722,7 @@
           "name": "Gustavo Velázquez",
           "age": 35,
           "club": "Cerro Porteño",
-          "country": null,
+          "country": "Paraguay",
           "elo": null,
           "titular": false
         },
@@ -3732,7 +3732,7 @@
           "name": "José Canale",
           "age": 29,
           "club": "Lanús",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": false
         },
@@ -3742,7 +3742,7 @@
           "name": "Alexandro Maidana",
           "age": 20,
           "club": "Talleres de Córdoba",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": false
         },
@@ -3752,7 +3752,7 @@
           "name": "Andrés Cubas",
           "age": 30,
           "club": "Vancouver Whitecaps",
-          "country": null,
+          "country": "Canadá",
           "elo": null,
           "titular": true
         },
@@ -3762,7 +3762,7 @@
           "name": "Diego Gómez",
           "age": 22,
           "club": "Brighton & Hove Albion",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1680,
           "titular": true
         },
@@ -3772,7 +3772,7 @@
           "name": "Maurício Magalhães",
           "age": 24,
           "club": "Palmeiras",
-          "country": null,
+          "country": "Brasil",
           "elo": 1529,
           "titular": false
         },
@@ -3782,7 +3782,7 @@
           "name": "Damián Bobadilla",
           "age": 24,
           "club": "São Paulo",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -3792,7 +3792,7 @@
           "name": "Braian Ojeda",
           "age": 25,
           "club": "Orlando City",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -3802,7 +3802,7 @@
           "name": "Matías Galarza Fonda",
           "age": 24,
           "club": "Atlanta United",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -3812,7 +3812,7 @@
           "name": "Alejandro “Kaku” Romero Gamarra",
           "age": 31,
           "club": "Al-Ain",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": false
         },
@@ -3822,7 +3822,7 @@
           "name": "Ramón Sosa",
           "age": 26,
           "club": "Palmeiras",
-          "country": null,
+          "country": "Brasil",
           "elo": 1529,
           "titular": true
         },
@@ -3832,7 +3832,7 @@
           "name": "Gustavo Caballero",
           "age": 24,
           "club": "Portsmouth",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -3842,7 +3842,7 @@
           "name": "Julio Enciso",
           "age": 22,
           "club": "Racing de Estrasburgo",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -3852,7 +3852,7 @@
           "name": "Antonio Sanabria",
           "age": 30,
           "club": "Cremonese",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -3862,7 +3862,7 @@
           "name": "Miguel Almirón",
           "age": 32,
           "club": "Atlanta United",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": true
         },
@@ -3872,7 +3872,7 @@
           "name": "Gabriel Ávalos",
           "age": 35,
           "club": "Independiente",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": false
         },
@@ -3882,7 +3882,7 @@
           "name": "Álex Arce",
           "age": 30,
           "club": "Independiente Rivadavia",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": false
         },
@@ -3892,7 +3892,7 @@
           "name": "Isidro Pitta",
           "age": 26,
           "club": "RB Bragantino",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         }
@@ -3925,7 +3925,7 @@
           "name": "Matthew Ryan",
           "age": 34,
           "club": "UD Levante",
-          "country": null,
+          "country": "España",
           "elo": 1485,
           "titular": true
         },
@@ -3935,7 +3935,7 @@
           "name": "Patrick Beach",
           "age": 22,
           "club": "Melbourne City FC",
-          "country": null,
+          "country": "Australia",
           "elo": null,
           "titular": false
         },
@@ -3945,7 +3945,7 @@
           "name": "Paul Izzo",
           "age": 31,
           "club": "Randers FC",
-          "country": null,
+          "country": "Dinamarca",
           "elo": null,
           "titular": false
         },
@@ -3955,7 +3955,7 @@
           "name": "Harry Souttar",
           "age": 27,
           "club": "Leicester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -3965,7 +3965,7 @@
           "name": "Alessandro Circati",
           "age": 22,
           "club": "Parma Calcio 1913",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -3975,7 +3975,7 @@
           "name": "Jordan Bos",
           "age": 23,
           "club": "Feyenoord",
-          "country": null,
+          "country": "Países Bajos",
           "elo": null,
           "titular": true
         },
@@ -3985,7 +3985,7 @@
           "name": "Cameron Burgess",
           "age": 30,
           "club": "Swansea City",
-          "country": null,
+          "country": "Gales",
           "elo": null,
           "titular": true
         },
@@ -3995,7 +3995,7 @@
           "name": "Milos Degenek",
           "age": 32,
           "club": "APOEL",
-          "country": null,
+          "country": "Chipre",
           "elo": null,
           "titular": false
         },
@@ -4005,7 +4005,7 @@
           "name": "Aziz Behich",
           "age": 35,
           "club": "Melbourne City FC",
-          "country": null,
+          "country": "Australia",
           "elo": null,
           "titular": false
         },
@@ -4015,7 +4015,7 @@
           "name": "Jason Geria",
           "age": 33,
           "club": "Albirex Niigata",
-          "country": null,
+          "country": "Japón",
           "elo": null,
           "titular": false
         },
@@ -4025,7 +4025,7 @@
           "name": "Lucas Herrington",
           "age": 18,
           "club": "Colorado Rapids",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -4035,7 +4035,7 @@
           "name": "Kai Trewin",
           "age": 24,
           "club": "New York City FC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -4045,7 +4045,7 @@
           "name": "Jacob Italiano",
           "age": 24,
           "club": "Grazer AK 1902",
-          "country": null,
+          "country": "Austria",
           "elo": null,
           "titular": true
         },
@@ -4055,7 +4055,7 @@
           "name": "Jackson Irvine",
           "age": 33,
           "club": "FC St. Pauli",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -4065,7 +4065,7 @@
           "name": "Paul Okon-Engstler",
           "age": 21,
           "club": "Sydney FC",
-          "country": null,
+          "country": "Australia",
           "elo": null,
           "titular": false
         },
@@ -4075,7 +4075,7 @@
           "name": "Cameron Devlin",
           "age": 27,
           "club": "Heart of Midlothian FC",
-          "country": null,
+          "country": "Escocia",
           "elo": null,
           "titular": false
         },
@@ -4085,7 +4085,7 @@
           "name": "Ajdin Hrustic",
           "age": 29,
           "club": "Heracles Almelo",
-          "country": null,
+          "country": "Países Bajos",
           "elo": null,
           "titular": false
         },
@@ -4095,7 +4095,7 @@
           "name": "Connor Metcalfe",
           "age": 26,
           "club": "FC St. Pauli",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -4105,7 +4105,7 @@
           "name": "Aiden O’Neill",
           "age": 27,
           "club": "New York City FC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": true
         },
@@ -4115,7 +4115,7 @@
           "name": "Mathew Leckie",
           "age": 35,
           "club": "Melbourne City FC",
-          "country": null,
+          "country": "Australia",
           "elo": null,
           "titular": false
         },
@@ -4125,7 +4125,7 @@
           "name": "Nishan Velupillay",
           "age": 25,
           "club": "Melbourne Victory",
-          "country": null,
+          "country": "Australia",
           "elo": null,
           "titular": false
         },
@@ -4135,7 +4135,7 @@
           "name": "Nestory Irankunda",
           "age": 20,
           "club": "Watford FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -4145,7 +4145,7 @@
           "name": "Awer Mabil",
           "age": 30,
           "club": "CD Castellón",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -4155,7 +4155,7 @@
           "name": "Mohamed Touré",
           "age": 22,
           "club": "Norwich City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -4165,7 +4165,7 @@
           "name": "Cristian Volpato",
           "age": 22,
           "club": "US Sassuolo",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -4175,7 +4175,7 @@
           "name": "Tete Yengi",
           "age": 25,
           "club": "Machida Zelvia",
-          "country": null,
+          "country": "Japón",
           "elo": null,
           "titular": false
         }
@@ -4208,7 +4208,7 @@
           "name": "Altay Bayındır",
           "age": 28,
           "club": "Manchester United",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1784,
           "titular": false
         },
@@ -4218,7 +4218,7 @@
           "name": "Uğurcan Çakır",
           "age": 30,
           "club": "Galatasaray",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": true
         },
@@ -4228,7 +4228,7 @@
           "name": "Mert Günok",
           "age": 37,
           "club": "Fenerbahçe",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4238,7 +4238,7 @@
           "name": "Ozan Kabak",
           "age": 25,
           "club": "Hoffenheim",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": false
         },
@@ -4248,7 +4248,7 @@
           "name": "Merih Demiral",
           "age": 28,
           "club": "Al-Ahli",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": true
         },
@@ -4258,7 +4258,7 @@
           "name": "Abdülkerim Bardakcı",
           "age": 31,
           "club": "Galatasaray",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": true
         },
@@ -4268,7 +4268,7 @@
           "name": "Çağlar Söyüncü",
           "age": 30,
           "club": "Fenerbahçe",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4278,7 +4278,7 @@
           "name": "Samet Akaydın",
           "age": 32,
           "club": "Çaykur Rizespor",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4288,7 +4288,7 @@
           "name": "Ferdi Kadıoğlu",
           "age": 26,
           "club": "Brighton",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -4298,7 +4298,7 @@
           "name": "Eren Elmalı",
           "age": 25,
           "club": "Galatasaray",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4308,7 +4308,7 @@
           "name": "Zeki Çelik",
           "age": 29,
           "club": "Roma",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -4318,7 +4318,7 @@
           "name": "Mert Müldür",
           "age": 27,
           "club": "Fenerbahçe",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4328,7 +4328,7 @@
           "name": "Hakan Çalhanoğlu",
           "age": 32,
           "club": "Inter",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -4338,7 +4338,7 @@
           "name": "İsmail Yüksek",
           "age": 27,
           "club": "Fenerbahçe",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": true
         },
@@ -4348,7 +4348,7 @@
           "name": "Orkun Kökçü",
           "age": 25,
           "club": "Beşiktaş",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": true
         },
@@ -4358,7 +4358,7 @@
           "name": "Salih Özcan",
           "age": 28,
           "club": "Borussia Dortmund",
-          "country": null,
+          "country": "Alemania",
           "elo": 1808,
           "titular": false
         },
@@ -4368,7 +4368,7 @@
           "name": "Kaan Ayhan",
           "age": 31,
           "club": "Galatasaray",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4378,7 +4378,7 @@
           "name": "Arda Güler",
           "age": 21,
           "club": "Real Madrid",
-          "country": null,
+          "country": "España",
           "elo": 2012,
           "titular": true
         },
@@ -4388,7 +4388,7 @@
           "name": "Can Uzun",
           "age": 20,
           "club": "Eintracht Frankfurt",
-          "country": null,
+          "country": "Alemania",
           "elo": 1545,
           "titular": false
         },
@@ -4398,7 +4398,7 @@
           "name": "Kenan Yıldız",
           "age": 21,
           "club": "Juventus",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -4408,7 +4408,7 @@
           "name": "Barış Alper Yılmaz",
           "age": 26,
           "club": "Galatasaray",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4418,7 +4418,7 @@
           "name": "Kerem Aktürkoğlu",
           "age": 27,
           "club": "Fenerbahçe",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": true
         },
@@ -4428,7 +4428,7 @@
           "name": "Oğuz Aydın",
           "age": 25,
           "club": "Fenerbahçe",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4438,7 +4438,7 @@
           "name": "Yunus Akgün",
           "age": 25,
           "club": "Galatasaray",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4448,7 +4448,7 @@
           "name": "İrfan Can Kahveci",
           "age": 30,
           "club": "Kasımpaşa",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -4458,7 +4458,7 @@
           "name": "Deniz Gül",
           "age": 21,
           "club": "Porto",
-          "country": null,
+          "country": "Portugal",
           "elo": null,
           "titular": false
         }
@@ -5298,7 +5298,7 @@
           "name": "Hernán Galíndez",
           "age": 39,
           "club": "CA Huracán",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": true
         },
@@ -5308,7 +5308,7 @@
           "name": "Moisés Ramírez",
           "age": 25,
           "club": "AE Kifisias",
-          "country": null,
+          "country": "Grecia",
           "elo": null,
           "titular": false
         },
@@ -5318,7 +5318,7 @@
           "name": "Gonzalo Valle",
           "age": 30,
           "club": "Liga de Quito",
-          "country": null,
+          "country": "Ecuador",
           "elo": null,
           "titular": false
         },
@@ -5328,7 +5328,7 @@
           "name": "Willian Pacho",
           "age": 24,
           "club": "Paris Saint-Germain",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -5338,7 +5338,7 @@
           "name": "Piero Hincapié",
           "age": 24,
           "club": "Arsenal",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -5348,7 +5348,7 @@
           "name": "Joel Ordóñez",
           "age": 22,
           "club": "Club Brujas",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": true
         },
@@ -5358,7 +5358,7 @@
           "name": "Jackson Porozo",
           "age": 25,
           "club": "Club Tijuana",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -5368,7 +5368,7 @@
           "name": "Félix Torres",
           "age": 29,
           "club": "Internacional",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -5378,7 +5378,7 @@
           "name": "Pervis Estupiñán",
           "age": 28,
           "club": "AC Milan",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -5388,7 +5388,7 @@
           "name": "Yaimar Medina",
           "age": 21,
           "club": "Genk",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": false
         },
@@ -5398,7 +5398,7 @@
           "name": "Ángelo Preciado",
           "age": 28,
           "club": "Atlético Mineiro",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -5408,7 +5408,7 @@
           "name": "Moisés Caicedo",
           "age": 24,
           "club": "Chelsea",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -5418,7 +5418,7 @@
           "name": "Jordy Alcívar",
           "age": 26,
           "club": "Independiente del Valle",
-          "country": null,
+          "country": "Ecuador",
           "elo": null,
           "titular": false
         },
@@ -5428,7 +5428,7 @@
           "name": "Denil Castillo",
           "age": 22,
           "club": "Midtjylland",
-          "country": null,
+          "country": "Dinamarca",
           "elo": null,
           "titular": false
         },
@@ -5438,7 +5438,7 @@
           "name": "Alan Franco",
           "age": 27,
           "club": "Atlético Mineiro",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": true
         },
@@ -5448,7 +5448,7 @@
           "name": "Pedro Vite",
           "age": 24,
           "club": "Pumas UNAM",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -5458,7 +5458,7 @@
           "name": "Alan Minda",
           "age": 23,
           "club": "Atlético Mineiro",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -5468,7 +5468,7 @@
           "name": "Kendry Páez",
           "age": 19,
           "club": "River Plate",
-          "country": null,
+          "country": "Argentina",
           "elo": 1421,
           "titular": false
         },
@@ -5478,7 +5478,7 @@
           "name": "Nilson Angulo",
           "age": 22,
           "club": "Sunderland",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -5488,7 +5488,7 @@
           "name": "Gonzalo Plata",
           "age": 25,
           "club": "Flamengo",
-          "country": null,
+          "country": "Brasil",
           "elo": 1530,
           "titular": true
         },
@@ -5498,7 +5498,7 @@
           "name": "John Yeboah",
           "age": 25,
           "club": "Venezia",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -5508,7 +5508,7 @@
           "name": "Énner Valencia",
           "age": 36,
           "club": "Pachuca",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -5518,7 +5518,7 @@
           "name": "Jordy Caicedo",
           "age": 28,
           "club": "CA Huracán",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": false
         },
@@ -5528,7 +5528,7 @@
           "name": "Jeremy Arévalo",
           "age": 21,
           "club": "VfB Stuttgart",
-          "country": null,
+          "country": "Alemania",
           "elo": 1647,
           "titular": false
         },
@@ -5538,7 +5538,7 @@
           "name": "Anthony Valencia",
           "age": 22,
           "club": "Royal Antwerp",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": false
         },
@@ -5548,7 +5548,7 @@
           "name": "Kevin Rodríguez",
           "age": 26,
           "club": "Union Saint-Gilloise",
-          "country": null,
+          "country": "Bélgica",
           "elo": 1666,
           "titular": false
         }
@@ -5581,7 +5581,7 @@
           "name": "Bart Verbruggen",
           "age": 23,
           "club": "Brighton",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -5591,7 +5591,7 @@
           "name": "Mark Flekken",
           "age": 32,
           "club": "Bayer Leverkusen",
-          "country": null,
+          "country": "Alemania",
           "elo": 1784,
           "titular": false
         },
@@ -5601,7 +5601,7 @@
           "name": "Robin Roefs",
           "age": 23,
           "club": "Sunderland",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -5611,7 +5611,7 @@
           "name": "Virgil van Dijk",
           "age": 34,
           "club": "Liverpool",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -5621,7 +5621,7 @@
           "name": "Micky van de Ven",
           "age": 25,
           "club": "Tottenham",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -5631,7 +5631,7 @@
           "name": "Jan Paul van Hecke",
           "age": 25,
           "club": "Brighton",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -5641,7 +5641,7 @@
           "name": "Nathan Aké",
           "age": 31,
           "club": "Manchester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1889,
           "titular": true
         },
@@ -5651,7 +5651,7 @@
           "name": "Jorrel Hato",
           "age": 20,
           "club": "Chelsea",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -5661,7 +5661,7 @@
           "name": "Denzel Dumfries",
           "age": 30,
           "club": "Inter de Milán",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -5671,7 +5671,7 @@
           "name": "Jurriën Timber",
           "age": 24,
           "club": "Arsenal",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -5681,7 +5681,7 @@
           "name": "Mats Wieffer",
           "age": 26,
           "club": "Brighton",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -5691,7 +5691,7 @@
           "name": "Ryan Gravenberch",
           "age": 24,
           "club": "Liverpool",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -5701,7 +5701,7 @@
           "name": "Frenkie de Jong",
           "age": 29,
           "club": "Barcelona",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -5711,7 +5711,7 @@
           "name": "Teun Koopmeiners",
           "age": 28,
           "club": "Juventus",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -5721,7 +5721,7 @@
           "name": "Tijjani Reijnders",
           "age": 27,
           "club": "Manchester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1889,
           "titular": true
         },
@@ -5731,7 +5731,7 @@
           "name": "Marten de Roon",
           "age": 35,
           "club": "Atalanta",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -5741,7 +5741,7 @@
           "name": "Guus Til",
           "age": 28,
           "club": "PSV Eindhoven",
-          "country": null,
+          "country": "Países Bajos",
           "elo": 1726,
           "titular": false
         },
@@ -5751,7 +5751,7 @@
           "name": "Quinten Timber",
           "age": 24,
           "club": "Olympique de Marsella",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -5761,7 +5761,7 @@
           "name": "Justin Kluivert",
           "age": 27,
           "club": "Bournemouth",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -5771,7 +5771,7 @@
           "name": "Cody Gakpo",
           "age": 27,
           "club": "Liverpool",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -5781,7 +5781,7 @@
           "name": "Brian Brobbey",
           "age": 24,
           "club": "Sunderland",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -5791,7 +5791,7 @@
           "name": "Memphis Depay",
           "age": 32,
           "club": "Corinthians",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": true
         },
@@ -5801,7 +5801,7 @@
           "name": "Noa Lang",
           "age": 26,
           "club": "Galatasaray",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -5811,7 +5811,7 @@
           "name": "Donyell Malen",
           "age": 27,
           "club": "AS Roma",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -5821,7 +5821,7 @@
           "name": "Wout Weghorst",
           "age": 33,
           "club": "Ajax",
-          "country": null,
+          "country": "Países Bajos",
           "elo": null,
           "titular": false
         },
@@ -5831,7 +5831,7 @@
           "name": "Crysencio Summerville",
           "age": 24,
           "club": "West Ham",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         }
@@ -6932,7 +6932,7 @@
           "name": "Mohamed El Shenawy",
           "age": 37,
           "club": "Al-Ahly",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": false
         },
@@ -6942,7 +6942,7 @@
           "name": "Mostafa Oufa Shobeir",
           "age": 26,
           "club": "Al-Ahly",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": true
         },
@@ -6952,7 +6952,7 @@
           "name": "El Mahdy Soliman",
           "age": 38,
           "club": "Zamalek",
-          "country": null,
+          "country": "Egipto",
           "elo": 1413,
           "titular": false
         },
@@ -6962,7 +6962,7 @@
           "name": "Mohamed Alaa",
           "age": 26,
           "club": "El Gouna",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": false
         },
@@ -6972,7 +6972,7 @@
           "name": "Mohamed Hany",
           "age": 30,
           "club": "Al-Ahly",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": true
         },
@@ -6982,7 +6982,7 @@
           "name": "Tarek Alaa",
           "age": 28,
           "club": "ZED",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": false
         },
@@ -6992,7 +6992,7 @@
           "name": "Hamdy Fathy",
           "age": 31,
           "club": "Al-Wakrah SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -7002,7 +7002,7 @@
           "name": "Rami Rabia",
           "age": 33,
           "club": "Al-Ain FC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": false
         },
@@ -7012,7 +7012,7 @@
           "name": "Yasser Ibrahim",
           "age": 33,
           "club": "Al-Ahly",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": true
         },
@@ -7022,7 +7022,7 @@
           "name": "Hossam Abdelmagid",
           "age": 25,
           "club": "Zamalek",
-          "country": null,
+          "country": "Egipto",
           "elo": 1413,
           "titular": false
         },
@@ -7032,7 +7032,7 @@
           "name": "Mohamed Abdelmonem",
           "age": 27,
           "club": "OGC Nice",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -7042,7 +7042,7 @@
           "name": "Ahmed Fatouh",
           "age": 28,
           "club": "Zamalek",
-          "country": null,
+          "country": "Egipto",
           "elo": 1413,
           "titular": false
         },
@@ -7052,7 +7052,7 @@
           "name": "Karim Hafez",
           "age": 30,
           "club": "Pyramids",
-          "country": null,
+          "country": "Egipto",
           "elo": 1502,
           "titular": true
         },
@@ -7062,7 +7062,7 @@
           "name": "Marwan Ateya",
           "age": 27,
           "club": "Al-Ahly",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": true
         },
@@ -7072,7 +7072,7 @@
           "name": "Mohanad Lasheen",
           "age": 30,
           "club": "Pyramids",
-          "country": null,
+          "country": "Egipto",
           "elo": 1502,
           "titular": true
         },
@@ -7082,7 +7082,7 @@
           "name": "Nabil Emad “Dunga”",
           "age": 30,
           "club": "Al-Najma",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": false
         },
@@ -7092,7 +7092,7 @@
           "name": "Mahmoud Saber",
           "age": 24,
           "club": "Zed",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": false
         },
@@ -7102,7 +7102,7 @@
           "name": "Ahmed Sayed “Zizo”",
           "age": 30,
           "club": "Al-Ahly",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": false
         },
@@ -7112,7 +7112,7 @@
           "name": "Emam Ashour",
           "age": 28,
           "club": "Al-Ahly",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": true
         },
@@ -7122,7 +7122,7 @@
           "name": "Omar Marmoush",
           "age": 27,
           "club": "Manchester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1889,
           "titular": true
         },
@@ -7132,7 +7132,7 @@
           "name": "Hamza Abdelkarim",
           "age": 18,
           "club": "Barcelona FC",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -7142,7 +7142,7 @@
           "name": "Mostafa Abdelrahman “Ziko”",
           "age": 29,
           "club": "Pyramids",
-          "country": null,
+          "country": "Egipto",
           "elo": 1502,
           "titular": false
         },
@@ -7152,7 +7152,7 @@
           "name": "Mahmoud “Trezeguet” Hassan",
           "age": 31,
           "club": "Al-Ahly",
-          "country": null,
+          "country": "Egipto",
           "elo": null,
           "titular": true
         },
@@ -7162,7 +7162,7 @@
           "name": "Ibrahim Adel",
           "age": 25,
           "club": "Nordsjælland FC",
-          "country": null,
+          "country": "Dinamarca",
           "elo": null,
           "titular": false
         },
@@ -7172,7 +7172,7 @@
           "name": "Haissem Hassan",
           "age": 24,
           "club": "Real Oviedo",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -7182,7 +7182,7 @@
           "name": "Mohamed Salah",
           "age": 33,
           "club": "Liverpool",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         }
@@ -7215,7 +7215,7 @@
           "name": "Alireza Beiranvand",
           "age": 33,
           "club": "Tractor FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": true
         },
@@ -7225,7 +7225,7 @@
           "name": "Payam Niazmand",
           "age": 31,
           "club": "Persepolis FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7235,7 +7235,7 @@
           "name": "Seyed Hossein Hosseini",
           "age": 33,
           "club": "Sepahan FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7245,7 +7245,7 @@
           "name": "Hossein Kanaani",
           "age": 32,
           "club": "Persepolis FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": true
         },
@@ -7255,7 +7255,7 @@
           "name": "Danial Eiri",
           "age": 22,
           "club": "Malavan Bandar Anzali",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7265,7 +7265,7 @@
           "name": "Ali Nemati",
           "age": 30,
           "club": "Foolad FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": true
         },
@@ -7275,7 +7275,7 @@
           "name": "Shoja Khalilzadeh",
           "age": 37,
           "club": "Tractor FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7285,7 +7285,7 @@
           "name": "Milad Mohammadi",
           "age": 32,
           "club": "Persepolis FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7295,7 +7295,7 @@
           "name": "Ehsan Hajsafi",
           "age": 36,
           "club": "Sepahan FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": true
         },
@@ -7305,7 +7305,7 @@
           "name": "Arya Yousefi",
           "age": 24,
           "club": "Sepahan FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": true
         },
@@ -7315,7 +7315,7 @@
           "name": "Saleh Hardani",
           "age": 27,
           "club": "Esteghlal FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7325,7 +7325,7 @@
           "name": "Ramin Rezaeian",
           "age": 36,
           "club": "Foolad FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7335,7 +7335,7 @@
           "name": "Saeed Ezatolahi",
           "age": 29,
           "club": "Shabab Al-Ahli Dubai",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": true
         },
@@ -7345,7 +7345,7 @@
           "name": "Mohammad Ghorbani",
           "age": 25,
           "club": "Al-Wahda FC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": true
         },
@@ -7355,7 +7355,7 @@
           "name": "Roozbeh Cheshmi",
           "age": 32,
           "club": "Esteghlal FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7365,7 +7365,7 @@
           "name": "Amirmohammad Razzaghinia",
           "age": 20,
           "club": "Esteghlal FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7375,7 +7375,7 @@
           "name": "Saman Ghoddos",
           "age": 32,
           "club": "Al-Ittihad Kalba SCC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": true
         },
@@ -7385,7 +7385,7 @@
           "name": "Mehdi Taremi",
           "age": 33,
           "club": "Olympiakos",
-          "country": null,
+          "country": "Grecia",
           "elo": null,
           "titular": true
         },
@@ -7395,7 +7395,7 @@
           "name": "Mehdi Ghayedi",
           "age": 27,
           "club": "Al-Nasr FC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": true
         },
@@ -7405,7 +7405,7 @@
           "name": "Mohammad Mohebi",
           "age": 27,
           "club": "FK Rostov",
-          "country": null,
+          "country": "Rusia",
           "elo": null,
           "titular": true
         },
@@ -7415,7 +7415,7 @@
           "name": "Alireza Jahanbakhsh",
           "age": 32,
           "club": "FC Dender EH",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": false
         },
@@ -7425,7 +7425,7 @@
           "name": "Amirhossein Hosseinzadeh",
           "age": 25,
           "club": "Tractor FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7435,7 +7435,7 @@
           "name": "Dennis Eckert Ayensa",
           "age": 29,
           "club": "Standard Lieja",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": false
         },
@@ -7445,7 +7445,7 @@
           "name": "Ali Alipour",
           "age": 30,
           "club": "Persepolis FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -7455,7 +7455,7 @@
           "name": "Shahriar Moghanlou",
           "age": 31,
           "club": "Al-Ittihad Kalba SCC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": false
         },
@@ -7465,7 +7465,7 @@
           "name": "Mehdi Torabi",
           "age": 31,
           "club": "Tractor FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         }
@@ -8305,7 +8305,7 @@
           "name": "Sergio Rochet",
           "age": 33,
           "club": "SC Internacional",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": true
         },
@@ -8315,7 +8315,7 @@
           "name": "Fernando Muslera",
           "age": 39,
           "club": "Estudiantes de La Plata",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": false
         },
@@ -8325,7 +8325,7 @@
           "name": "Santiago Mele",
           "age": 28,
           "club": "CF Monterrey",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -8335,7 +8335,7 @@
           "name": "José María Giménez",
           "age": 31,
           "club": "Atlético Madrid",
-          "country": null,
+          "country": "España",
           "elo": 1832,
           "titular": true
         },
@@ -8345,7 +8345,7 @@
           "name": "Ronald Araújo",
           "age": 27,
           "club": "FC Barcelona",
-          "country": null,
+          "country": "España",
           "elo": 2019,
           "titular": true
         },
@@ -8355,7 +8355,7 @@
           "name": "Sebastián Cáceres",
           "age": 26,
           "club": "CF América",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -8365,7 +8365,7 @@
           "name": "Santiago Bueno",
           "age": 27,
           "club": "Wolverhampton Wanderers",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1456,
           "titular": false
         },
@@ -8375,7 +8375,7 @@
           "name": "Matías Viña",
           "age": 28,
           "club": "River Plate",
-          "country": null,
+          "country": "Argentina",
           "elo": 1421,
           "titular": false
         },
@@ -8385,7 +8385,7 @@
           "name": "Joaquín Piquerez",
           "age": 27,
           "club": "SE Palmeiras",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -8395,7 +8395,7 @@
           "name": "Mathías Olivera",
           "age": 28,
           "club": "SSC Napoli",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -8405,7 +8405,7 @@
           "name": "Juan Manuel Sanabria",
           "age": 26,
           "club": "Real Salt Lake City",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -8415,7 +8415,7 @@
           "name": "Guillermo Varela",
           "age": 33,
           "club": "CR Flamengo",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": true
         },
@@ -8425,7 +8425,7 @@
           "name": "Federico Valverde",
           "age": 27,
           "club": "Real Madrid",
-          "country": null,
+          "country": "España",
           "elo": 2012,
           "titular": true
         },
@@ -8435,7 +8435,7 @@
           "name": "Manuel Ugarte",
           "age": 25,
           "club": "Manchester United",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1784,
           "titular": true
         },
@@ -8445,7 +8445,7 @@
           "name": "Rodrigo Bentancur",
           "age": 28,
           "club": "Tottenham Hotspur",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1686,
           "titular": true
         },
@@ -8455,7 +8455,7 @@
           "name": "Rodrigo Zalazar",
           "age": 26,
           "club": "SC Braga",
-          "country": null,
+          "country": "Portugal",
           "elo": null,
           "titular": false
         },
@@ -8465,7 +8465,7 @@
           "name": "Giorgian de Arrascaeta",
           "age": 31,
           "club": "CR Flamengo",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -8475,7 +8475,7 @@
           "name": "Nicolás de la Cruz",
           "age": 28,
           "club": "CR Flamengo",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -8485,7 +8485,7 @@
           "name": "Emiliano Martínez",
           "age": 26,
           "club": "SE Palmeiras",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": false
         },
@@ -8495,7 +8495,7 @@
           "name": "Brian Rodríguez",
           "age": 26,
           "club": "CF América",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -8505,7 +8505,7 @@
           "name": "Facundo Pellistri",
           "age": 24,
           "club": "Panathinaikos",
-          "country": null,
+          "country": "Grecia",
           "elo": 1509,
           "titular": false
         },
@@ -8515,7 +8515,7 @@
           "name": "Darwin Núñez",
           "age": 26,
           "club": "Al-Hilal SFC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": 1629,
           "titular": true
         },
@@ -8525,7 +8525,7 @@
           "name": "Maximiliano Araujo",
           "age": 26,
           "club": "SC Sporting",
-          "country": null,
+          "country": "Portugal",
           "elo": null,
           "titular": true
         },
@@ -8535,7 +8535,7 @@
           "name": "Agustín Canobbio",
           "age": 27,
           "club": "Fluminense FC",
-          "country": null,
+          "country": "Brasil",
           "elo": null,
           "titular": true
         },
@@ -8545,7 +8545,7 @@
           "name": "Federico Viñas",
           "age": 27,
           "club": "Real Oviedo CF",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -8555,7 +8555,7 @@
           "name": "Rodrigo Aguirre",
           "age": 31,
           "club": "Tigres UANL",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         }
@@ -8857,7 +8857,7 @@
           "name": "Édouard Mendy",
           "age": 34,
           "club": "Al-Ahli Saudi FC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": true
         },
@@ -8867,7 +8867,7 @@
           "name": "Mory Diaw",
           "age": 32,
           "club": "AC Le Havre",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -8877,7 +8877,7 @@
           "name": "Yehvann Diouf",
           "age": 26,
           "club": "OGC Nice",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -8887,7 +8887,7 @@
           "name": "Kalidou Koulibaly",
           "age": 34,
           "club": "Al-Hilal SFC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": 1629,
           "titular": true
         },
@@ -8897,7 +8897,7 @@
           "name": "Moussa Niakhaté",
           "age": 30,
           "club": "Olympique Lyonnais",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -8907,7 +8907,7 @@
           "name": "Mamadou Sarr",
           "age": 20,
           "club": "Chelsea FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -8917,7 +8917,7 @@
           "name": "Abdoulaye Seck",
           "age": 34,
           "club": "Maccabi Haifa",
-          "country": null,
+          "country": "Israel",
           "elo": 1428,
           "titular": false
         },
@@ -8927,7 +8927,7 @@
           "name": "Ismail Jakobs",
           "age": 26,
           "club": "Galatasaray SK",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -8937,7 +8937,7 @@
           "name": "Krépin Diatta",
           "age": 27,
           "club": "AS Mónaco",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -8947,7 +8947,7 @@
           "name": "El Hadji Malick Diouf",
           "age": 21,
           "club": "West Ham United",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1573,
           "titular": true
         },
@@ -8957,7 +8957,7 @@
           "name": "Antoine Mendy",
           "age": 22,
           "club": "OGC Nice",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -8967,7 +8967,7 @@
           "name": "Idrissa Gueye",
           "age": 36,
           "club": "Everton FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -8977,7 +8977,7 @@
           "name": "Pape Gueye",
           "age": 27,
           "club": "Villarreal CF",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -8987,7 +8987,7 @@
           "name": "Pape Matar Sarr",
           "age": 23,
           "club": "Tottenham Hotspur",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1686,
           "titular": false
         },
@@ -8997,7 +8997,7 @@
           "name": "Pathé Ciss",
           "age": 32,
           "club": "Rayo Vallecano",
-          "country": null,
+          "country": "España",
           "elo": 1588,
           "titular": false
         },
@@ -9007,7 +9007,7 @@
           "name": "Lamine Camara",
           "age": 22,
           "club": "AS Mónaco",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -9017,7 +9017,7 @@
           "name": "Habib Diarra",
           "age": 22,
           "club": "Sunderland AFC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -9027,7 +9027,7 @@
           "name": "Bara Sapoko Ndiaye",
           "age": 18,
           "club": "Bayern Munich",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": false
         },
@@ -9037,7 +9037,7 @@
           "name": "Sadio Mané",
           "age": 34,
           "club": "Al-Nassr FC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": true
         },
@@ -9047,7 +9047,7 @@
           "name": "Ismaïla Sarr",
           "age": 28,
           "club": "Crystal Palace",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1630,
           "titular": false
         },
@@ -9057,7 +9057,7 @@
           "name": "Iliman Ndiaye",
           "age": 26,
           "club": "Everton FC",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -9067,7 +9067,7 @@
           "name": "Nicolas Jackson",
           "age": 24,
           "club": "Bayern Munich",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -9077,7 +9077,7 @@
           "name": "Bamba Dieng",
           "age": 26,
           "club": "FC Lorient",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -9087,7 +9087,7 @@
           "name": "Cherif Ndiaye",
           "age": 30,
           "club": "Samsunspor",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -9097,7 +9097,7 @@
           "name": "Ibrahim Mbaye",
           "age": 18,
           "club": "Paris Saint-Germain",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -9107,7 +9107,7 @@
           "name": "Assane Diao",
           "age": 20,
           "club": "Como 1907",
-          "country": null,
+          "country": "Italia",
           "elo": 1554,
           "titular": false
         }
@@ -9140,7 +9140,7 @@
           "name": "Ahmed Basil Fadhil",
           "age": 29,
           "club": "Al-Shorta FC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": false
         },
@@ -9150,7 +9150,7 @@
           "name": "Fahad Talib",
           "age": 31,
           "club": "Al-Talaba SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": false
         },
@@ -9160,7 +9160,7 @@
           "name": "Jalal Hassan",
           "age": 35,
           "club": "Al-Zawraa SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": true
         },
@@ -9170,7 +9170,7 @@
           "name": "Zaid Tahseen",
           "age": 25,
           "club": "Pakhtakor Tashkent",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": true
         },
@@ -9180,7 +9180,7 @@
           "name": "Akam Hashem",
           "age": 27,
           "club": "Al-Zawraa SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": true
         },
@@ -9190,7 +9190,7 @@
           "name": "Manaf Younis",
           "age": 29,
           "club": "Al-Shorta SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": false
         },
@@ -9200,7 +9200,7 @@
           "name": "Frans Putros",
           "age": 32,
           "club": "Persib Bandung",
-          "country": null,
+          "country": "Indonesia",
           "elo": null,
           "titular": false
         },
@@ -9210,7 +9210,7 @@
           "name": "Rebin Sulaka",
           "age": 34,
           "club": "Port FC",
-          "country": null,
+          "country": "Tailandia",
           "elo": null,
           "titular": false
         },
@@ -9220,7 +9220,7 @@
           "name": "Merchas Doski",
           "age": 26,
           "club": "Viktoria Plzen",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": true
         },
@@ -9230,7 +9230,7 @@
           "name": "Ahmed Yahya",
           "age": 30,
           "club": "Al-Shorta SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": false
         },
@@ -9240,7 +9240,7 @@
           "name": "Hussein Ali",
           "age": 24,
           "club": "Pogon Szczecin",
-          "country": null,
+          "country": "Polonia",
           "elo": null,
           "titular": true
         },
@@ -9250,7 +9250,7 @@
           "name": "Mustafa Saadoon",
           "age": 25,
           "club": "Al-Shorta SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": false
         },
@@ -9260,7 +9260,7 @@
           "name": "Amir Al-Ammari",
           "age": 28,
           "club": "KS Cracovia",
-          "country": null,
+          "country": "Polonia",
           "elo": null,
           "titular": true
         },
@@ -9270,7 +9270,7 @@
           "name": "Zaid Ismail",
           "age": 24,
           "club": "Al-Talaba SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": false
         },
@@ -9280,7 +9280,7 @@
           "name": "Aimar Sher",
           "age": 23,
           "club": "Sarpsborg 08 FF",
-          "country": null,
+          "country": "Noruega",
           "elo": null,
           "titular": true
         },
@@ -9290,7 +9290,7 @@
           "name": "Zidane Iqbal",
           "age": 23,
           "club": "FC Utrecht",
-          "country": null,
+          "country": "Países Bajos",
           "elo": null,
           "titular": false
         },
@@ -9300,7 +9300,7 @@
           "name": "Kevin Yakob",
           "age": 25,
           "club": "Aarhus GF",
-          "country": null,
+          "country": "Dinamarca",
           "elo": 1449,
           "titular": false
         },
@@ -9310,7 +9310,7 @@
           "name": "Ibrahim Bayesh",
           "age": 26,
           "club": "Al-Dhafra SCC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": false
         },
@@ -9320,7 +9320,7 @@
           "name": "Marko Farji",
           "age": 22,
           "club": "Venezia FC",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -9330,7 +9330,7 @@
           "name": "Youssef Amyn",
           "age": 22,
           "club": "AEK Larnaka",
-          "country": null,
+          "country": "Chipre",
           "elo": 1456,
           "titular": true
         },
@@ -9340,7 +9340,7 @@
           "name": "Ali Jasim",
           "age": 22,
           "club": "Al-Najmah FC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": true
         },
@@ -9350,7 +9350,7 @@
           "name": "Ahmed Qasem",
           "age": 22,
           "club": "Nashville SC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -9360,7 +9360,7 @@
           "name": "Ali Al-Hammadi",
           "age": 24,
           "club": "Luton Town",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -9370,7 +9370,7 @@
           "name": "Mohanad Ali",
           "age": 25,
           "club": "Dibba Al-Fujairah SCC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": false
         },
@@ -9380,7 +9380,7 @@
           "name": "Aymen Hussein",
           "age": 30,
           "club": "Al-Karma SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": true
         },
@@ -9390,7 +9390,7 @@
           "name": "Ali Yousif",
           "age": 30,
           "club": "Al-Talaba SC",
-          "country": null,
+          "country": "Irak",
           "elo": null,
           "titular": false
         }
@@ -9692,7 +9692,7 @@
           "name": "Emiliano Martínez",
           "age": 33,
           "club": "Aston Villa",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1861,
           "titular": true
         },
@@ -9702,7 +9702,7 @@
           "name": "Gerónimo Rulli",
           "age": 34,
           "club": "Olympique de Marsella",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -9712,7 +9712,7 @@
           "name": "Juan Musso",
           "age": 32,
           "club": "Atlético de Madrid",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -9722,7 +9722,7 @@
           "name": "Cristian Romero",
           "age": 28,
           "club": "Tottenham Hotspur",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1686,
           "titular": true
         },
@@ -9732,7 +9732,7 @@
           "name": "Nicolás Otamendi",
           "age": 38,
           "club": "SL Benfica",
-          "country": null,
+          "country": "Portugal",
           "elo": null,
           "titular": false
         },
@@ -9742,7 +9742,7 @@
           "name": "Lisandro Martínez",
           "age": 28,
           "club": "Manchester United",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1784,
           "titular": true
         },
@@ -9752,7 +9752,7 @@
           "name": "Leonardo Balerdi",
           "age": 27,
           "club": "Olympique de Marsella",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -9762,7 +9762,7 @@
           "name": "Gonzalo Montiel",
           "age": 29,
           "club": "River Plate",
-          "country": null,
+          "country": "Argentina",
           "elo": 1421,
           "titular": false
         },
@@ -9772,7 +9772,7 @@
           "name": "Facundo Medina",
           "age": 27,
           "club": "Olympique de Marsella",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -9782,7 +9782,7 @@
           "name": "Nahuel Molina",
           "age": 28,
           "club": "Atlético de Madrid",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -9792,7 +9792,7 @@
           "name": "Nicolás Tagliafico",
           "age": 33,
           "club": "Olympique de Lyon",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -9802,7 +9802,7 @@
           "name": "Enzo Fernández",
           "age": 25,
           "club": "Chelsea",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -9812,7 +9812,7 @@
           "name": "Alexis Mac Allister",
           "age": 27,
           "club": "Liverpool",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -9822,7 +9822,7 @@
           "name": "Rodrigo De Paul",
           "age": 32,
           "club": "Inter Miami",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": true
         },
@@ -9832,7 +9832,7 @@
           "name": "Leandro Paredes",
           "age": 31,
           "club": "Boca Juniors",
-          "country": null,
+          "country": "Argentina",
           "elo": null,
           "titular": false
         },
@@ -9842,7 +9842,7 @@
           "name": "Giovani Lo Celso",
           "age": 30,
           "club": "Real Betis",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -9852,7 +9852,7 @@
           "name": "Exequiel Palacios",
           "age": 27,
           "club": "Bayer Leverkusen",
-          "country": null,
+          "country": "Alemania",
           "elo": 1784,
           "titular": false
         },
@@ -9862,7 +9862,7 @@
           "name": "Valentín Barco",
           "age": 21,
           "club": "Racing de Estrasburgo",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -9872,7 +9872,7 @@
           "name": "Nicolás Paz",
           "age": 21,
           "club": "Como 1907",
-          "country": null,
+          "country": "Italia",
           "elo": 1554,
           "titular": false
         },
@@ -9882,7 +9882,7 @@
           "name": "Lionel Messi",
           "age": 38,
           "club": "Inter Miami",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": true
         },
@@ -9892,7 +9892,7 @@
           "name": "Julián Álvarez",
           "age": 26,
           "club": "Atlético de Madrid",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -9902,7 +9902,7 @@
           "name": "Thiago Almada",
           "age": 25,
           "club": "Atlético de Madrid",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -9912,7 +9912,7 @@
           "name": "Lautaro Martínez",
           "age": 28,
           "club": "Inter de Milán",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -9922,7 +9922,7 @@
           "name": "Nicolás González",
           "age": 28,
           "club": "Atlético de Madrid",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -9932,7 +9932,7 @@
           "name": "Giuliano Simeone",
           "age": 23,
           "club": "Atlético de Madrid",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -9942,7 +9942,7 @@
           "name": "José Manuel López",
           "age": 25,
           "club": "Palmeiras",
-          "country": null,
+          "country": "Brasil",
           "elo": 1529,
           "titular": false
         }
@@ -9975,7 +9975,7 @@
           "name": "Luca Zidane",
           "age": 28,
           "club": "Granada CF",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -9985,7 +9985,7 @@
           "name": "Melvin Mastil",
           "age": 26,
           "club": "FC Stade Nyonnais",
-          "country": null,
+          "country": "Suiza",
           "elo": null,
           "titular": false
         },
@@ -9995,7 +9995,7 @@
           "name": "Oussama Benbot",
           "age": 31,
           "club": "USM Alger",
-          "country": null,
+          "country": "Argelia",
           "elo": null,
           "titular": false
         },
@@ -10005,7 +10005,7 @@
           "name": "Ramy Bensebaïni",
           "age": 31,
           "club": "Borussia Dortmund",
-          "country": null,
+          "country": "Alemania",
           "elo": 1808,
           "titular": true
         },
@@ -10015,7 +10015,7 @@
           "name": "Samir Chergui",
           "age": 27,
           "club": "Paris FC",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -10025,7 +10025,7 @@
           "name": "Zineddine Belaïd",
           "age": 27,
           "club": "JS Kabylie",
-          "country": null,
+          "country": "Argelia",
           "elo": null,
           "titular": false
         },
@@ -10035,7 +10035,7 @@
           "name": "Mohamed Tougaï",
           "age": 26,
           "club": "Espérance Tunis",
-          "country": null,
+          "country": "Túnez",
           "elo": null,
           "titular": false
         },
@@ -10045,7 +10045,7 @@
           "name": "Aïssa Mandi",
           "age": 34,
           "club": "LOSC Lille",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -10055,7 +10055,7 @@
           "name": "Achref Abada",
           "age": 26,
           "club": "USM Alger",
-          "country": null,
+          "country": "Argelia",
           "elo": null,
           "titular": false
         },
@@ -10065,7 +10065,7 @@
           "name": "Rafik Belghali",
           "age": 23,
           "club": "Hellas Verona",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -10075,7 +10075,7 @@
           "name": "Rayan Aït-Nouri",
           "age": 24,
           "club": "Manchester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1889,
           "titular": true
         },
@@ -10085,7 +10085,7 @@
           "name": "Jaouen Hadjam",
           "age": 23,
           "club": "BSC Young Boys",
-          "country": null,
+          "country": "Suiza",
           "elo": null,
           "titular": false
         },
@@ -10095,7 +10095,7 @@
           "name": "Nabil Bentaleb",
           "age": 31,
           "club": "LOSC Lille",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -10105,7 +10105,7 @@
           "name": "Hicham Boudaoui",
           "age": 26,
           "club": "OGC Nice",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -10115,7 +10115,7 @@
           "name": "Ramiz Zerrouki",
           "age": 28,
           "club": "FC Twente",
-          "country": null,
+          "country": "Países Bajos",
           "elo": null,
           "titular": false
         },
@@ -10125,7 +10125,7 @@
           "name": "Yassine Titraoui",
           "age": 22,
           "club": "RSC Charleroi",
-          "country": null,
+          "country": "Bélgica",
           "elo": null,
           "titular": false
         },
@@ -10135,7 +10135,7 @@
           "name": "Ibrahim Maza",
           "age": 20,
           "club": "Bayer 04 Leverkusen",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -10145,7 +10145,7 @@
           "name": "Farès Chaïbi",
           "age": 23,
           "club": "Eintracht Frankfurt",
-          "country": null,
+          "country": "Alemania",
           "elo": 1545,
           "titular": true
         },
@@ -10155,7 +10155,7 @@
           "name": "Houssem Aouar",
           "age": 27,
           "club": "Al-Ittihad Club",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": false
         },
@@ -10165,7 +10165,7 @@
           "name": "Riyad Mahrez",
           "age": 35,
           "club": "Al-Ahli Saudi FC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": true
         },
@@ -10175,7 +10175,7 @@
           "name": "Adil Boulbina",
           "age": 23,
           "club": "Al-Duhail SC",
-          "country": null,
+          "country": "Qatar",
           "elo": null,
           "titular": false
         },
@@ -10185,7 +10185,7 @@
           "name": "Anis Hadj Moussa",
           "age": 24,
           "club": "Feyenoord",
-          "country": null,
+          "country": "Países Bajos",
           "elo": null,
           "titular": false
         },
@@ -10195,7 +10195,7 @@
           "name": "Farès Ghedjemis",
           "age": 23,
           "club": "Frosinone Calcio",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -10205,7 +10205,7 @@
           "name": "Amine Gouiri",
           "age": 26,
           "club": "Olympique de Marsella",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -10215,7 +10215,7 @@
           "name": "Mohamed Amoura",
           "age": 26,
           "club": "VfL Wolfsburg",
-          "country": null,
+          "country": "Alemania",
           "elo": 1440,
           "titular": true
         },
@@ -10225,7 +10225,7 @@
           "name": "Nadhir Benbouali",
           "age": 26,
           "club": "ETO FC Győr",
-          "country": null,
+          "country": "Hungary",
           "elo": 1472,
           "titular": false
         }
@@ -11065,7 +11065,7 @@
           "name": "Abduvokhid Nematov",
           "age": 25,
           "club": "PFC Nasaf Qarshi",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": true
         },
@@ -11075,7 +11075,7 @@
           "name": "Botirali Ergashev",
           "age": 30,
           "club": "Neftchi Fergana",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11085,7 +11085,7 @@
           "name": "Utkir Yusupov",
           "age": 35,
           "club": "Navbahor Namangan",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11095,7 +11095,7 @@
           "name": "Abdukodir Khusanov",
           "age": 22,
           "club": "Manchester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1889,
           "titular": true
         },
@@ -11105,7 +11105,7 @@
           "name": "Rustam Ashurmatov",
           "age": 29,
           "club": "Esteghlal FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": true
         },
@@ -11115,7 +11115,7 @@
           "name": "Jakhongir Urozov",
           "age": 22,
           "club": "Dinamo Samarqand",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11125,7 +11125,7 @@
           "name": "Sherzod Nasrullaev",
           "age": 27,
           "club": "Pakhtakor Tashkent",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": true
         },
@@ -11135,7 +11135,7 @@
           "name": "Khozhiakbar Alizhonov",
           "age": 29,
           "club": "Pakhtakor Tashkent",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": true
         },
@@ -11145,7 +11145,7 @@
           "name": "Bekhruz Karimov",
           "age": 18,
           "club": "Surkhon Termiz",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11155,7 +11155,7 @@
           "name": "Avazbek Ulmasaliev",
           "age": 26,
           "club": "AGMK Olmaliq",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11165,7 +11165,7 @@
           "name": "Farrukh Sayfiev",
           "age": 35,
           "club": "Neftchi Fergana",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11175,7 +11175,7 @@
           "name": "Umar Eshmurodov",
           "age": 33,
           "club": "Nasaf Qarshi",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11185,7 +11185,7 @@
           "name": "Odildzhon Khamrobekov",
           "age": 30,
           "club": "Tractor FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": true
         },
@@ -11195,7 +11195,7 @@
           "name": "Abdulla Abdullaev",
           "age": 28,
           "club": "Dibba Al-Fujairah SCC",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": true
         },
@@ -11205,7 +11205,7 @@
           "name": "Azizjon Ganiev",
           "age": 28,
           "club": "Al-Bataeh Club",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": true
         },
@@ -11215,7 +11215,7 @@
           "name": "Otabek Shukurov",
           "age": 29,
           "club": "FC Baniyas",
-          "country": null,
+          "country": "EAU",
           "elo": null,
           "titular": true
         },
@@ -11225,7 +11225,7 @@
           "name": "Jamshid Iskanderov",
           "age": 32,
           "club": "Neftchi Fergana",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11235,7 +11235,7 @@
           "name": "Jaloliddin Masharipov",
           "age": 32,
           "club": "Esteghlal FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -11245,7 +11245,7 @@
           "name": "Sherzod Esanov",
           "age": 23,
           "club": "FC Buxoro",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11255,7 +11255,7 @@
           "name": "Akmal Mozgovoy",
           "age": 27,
           "club": "Pakhtakor Tashkent",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11265,7 +11265,7 @@
           "name": "Eldor Shomurodov",
           "age": 30,
           "club": "Istanbul Basaksehir FK",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": true
         },
@@ -11275,7 +11275,7 @@
           "name": "Abbosbek Fayzullaev",
           "age": 22,
           "club": "Istanbul Basaksehir FK",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": false
         },
@@ -11285,7 +11285,7 @@
           "name": "Oston Urunov",
           "age": 25,
           "club": "Persepolis FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": true
         },
@@ -11295,7 +11295,7 @@
           "name": "Dostonbek Khamdamov",
           "age": 29,
           "club": "Pakhtakor Tashkent",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         },
@@ -11305,7 +11305,7 @@
           "name": "Igor Sergeev",
           "age": 33,
           "club": "Persepolis FC",
-          "country": null,
+          "country": "Irán",
           "elo": null,
           "titular": false
         },
@@ -11315,7 +11315,7 @@
           "name": "Azizbek Amanov",
           "age": 28,
           "club": "Dinamo Samarqand",
-          "country": null,
+          "country": "Uzbekistán",
           "elo": null,
           "titular": false
         }
@@ -11886,7 +11886,7 @@
           "name": "Dominik Kotarski",
           "age": 26,
           "club": "FC Copenhague",
-          "country": null,
+          "country": "Dinamarca",
           "elo": null,
           "titular": false
         },
@@ -11896,7 +11896,7 @@
           "name": "Ivor Pandur",
           "age": 26,
           "club": "Hull City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -11906,7 +11906,7 @@
           "name": "Dominik Livaković",
           "age": 31,
           "club": "GNK Dinamo Zagreb",
-          "country": null,
+          "country": "Croacia",
           "elo": null,
           "titular": true
         },
@@ -11916,7 +11916,7 @@
           "name": "Joško Gvardiol",
           "age": 24,
           "club": "Manchester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1889,
           "titular": true
         },
@@ -11926,7 +11926,7 @@
           "name": "Duje Ćaleta-Car",
           "age": 29,
           "club": "Real Sociedad",
-          "country": null,
+          "country": "España",
           "elo": 1568,
           "titular": true
         },
@@ -11936,7 +11936,7 @@
           "name": "Luka Vušković",
           "age": 19,
           "club": "Hamburgo SV",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": false
         },
@@ -11946,7 +11946,7 @@
           "name": "Josip Šutalo",
           "age": 26,
           "club": "AFC Ajax",
-          "country": null,
+          "country": "Países Bajos",
           "elo": null,
           "titular": true
         },
@@ -11956,7 +11956,7 @@
           "name": "Marin Pongračić",
           "age": 28,
           "club": "ACF Fiorentina",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -11966,7 +11966,7 @@
           "name": "Martin Erlić",
           "age": 28,
           "club": "FC Midtjylland",
-          "country": null,
+          "country": "Dinamarca",
           "elo": 1587,
           "titular": false
         },
@@ -11976,7 +11976,7 @@
           "name": "Josip Stanišić",
           "age": 26,
           "club": "Bayern Munich",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -11986,7 +11986,7 @@
           "name": "Luka Modrić",
           "age": 40,
           "club": "AC Milan",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -11996,7 +11996,7 @@
           "name": "Nikola Moro",
           "age": 28,
           "club": "Bologna FC 1909",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -12006,7 +12006,7 @@
           "name": "Kristijan Jakić",
           "age": 29,
           "club": "FC Augsburg",
-          "country": null,
+          "country": "Alemania",
           "elo": 1515,
           "titular": false
         },
@@ -12016,7 +12016,7 @@
           "name": "Petar Sučić",
           "age": 22,
           "club": "Inter Milan",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -12026,7 +12026,7 @@
           "name": "Mateo Kovačić",
           "age": 32,
           "club": "Manchester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1889,
           "titular": true
         },
@@ -12036,7 +12036,7 @@
           "name": "Luka Sučić",
           "age": 23,
           "club": "Real Sociedad",
-          "country": null,
+          "country": "España",
           "elo": 1568,
           "titular": true
         },
@@ -12046,7 +12046,7 @@
           "name": "Mario Pašalić",
           "age": 31,
           "club": "Atalanta BC",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -12056,7 +12056,7 @@
           "name": "Nikola Vlašić",
           "age": 28,
           "club": "FC Torino",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": false
         },
@@ -12066,7 +12066,7 @@
           "name": "Martin Baturina",
           "age": 23,
           "club": "Como 1907",
-          "country": null,
+          "country": "Italia",
           "elo": 1554,
           "titular": true
         },
@@ -12076,7 +12076,7 @@
           "name": "Toni Fruk",
           "age": 25,
           "club": "HNK Rijeka",
-          "country": null,
+          "country": "Croacia",
           "elo": null,
           "titular": false
         },
@@ -12086,7 +12086,7 @@
           "name": "Andrej Kramarić",
           "age": 34,
           "club": "TSG 1899 Hoffenheim",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -12096,7 +12096,7 @@
           "name": "Ivan Perišić",
           "age": 37,
           "club": "PSV Eindhoven",
-          "country": null,
+          "country": "Países Bajos",
           "elo": 1726,
           "titular": false
         },
@@ -12106,7 +12106,7 @@
           "name": "Marco Pašalić",
           "age": 25,
           "club": "Orlando City SC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -12116,7 +12116,7 @@
           "name": "Igor Matanović",
           "age": 23,
           "club": "SC Freiburg",
-          "country": null,
+          "country": "Alemania",
           "elo": 1636,
           "titular": false
         },
@@ -12126,7 +12126,7 @@
           "name": "Petar Musa",
           "age": 28,
           "club": "FC Dallas",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -12136,7 +12136,7 @@
           "name": "Ante Budimir",
           "age": 34,
           "club": "CA Osasuna",
-          "country": null,
+          "country": "España",
           "elo": 1516,
           "titular": true
         }
@@ -12169,7 +12169,7 @@
           "name": "Lawrence Ati-Zigi",
           "age": 29,
           "club": "St. Gallen",
-          "country": null,
+          "country": "Suiza",
           "elo": null,
           "titular": true
         },
@@ -12179,7 +12179,7 @@
           "name": "Benjamin Asare",
           "age": 33,
           "club": "Hearts of Oak",
-          "country": null,
+          "country": "Ghana",
           "elo": null,
           "titular": false
         },
@@ -12189,7 +12189,7 @@
           "name": "Joseph Anang",
           "age": 25,
           "club": "St. Patrick’s Athletic",
-          "country": null,
+          "country": "Irlanda",
           "elo": null,
           "titular": false
         },
@@ -12199,7 +12199,7 @@
           "name": "Kojo Oppong",
           "age": 21,
           "club": "OGC Nice",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -12209,7 +12209,7 @@
           "name": "Jonas Adjetey",
           "age": 22,
           "club": "Wolfsburg",
-          "country": null,
+          "country": "Alemania",
           "elo": null,
           "titular": true
         },
@@ -12219,7 +12219,7 @@
           "name": "Alidu Seidu",
           "age": 25,
           "club": "Stade Rennais",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -12229,7 +12229,7 @@
           "name": "Jerome Opoku",
           "age": 27,
           "club": "Istanbul Basaksehir",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": true
         },
@@ -12239,7 +12239,7 @@
           "name": "Abdul Mumin",
           "age": 27,
           "club": "Rayo Vallecano",
-          "country": null,
+          "country": "España",
           "elo": 1588,
           "titular": false
         },
@@ -12249,7 +12249,7 @@
           "name": "Gideon Mensah",
           "age": 27,
           "club": "AJ Auxerre",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -12259,7 +12259,7 @@
           "name": "Abdul Rahman Baba",
           "age": 31,
           "club": "PAOK",
-          "country": null,
+          "country": "Grecia",
           "elo": 1510,
           "titular": false
         },
@@ -12269,7 +12269,7 @@
           "name": "Marvin Senaya",
           "age": 25,
           "club": "AJ Auxerre",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -12279,7 +12279,7 @@
           "name": "Derrick Luckassen",
           "age": 30,
           "club": "Pafos FC",
-          "country": null,
+          "country": "Chipre",
           "elo": null,
           "titular": false
         },
@@ -12289,7 +12289,7 @@
           "name": "Thomas Partey",
           "age": 32,
           "club": "Villarreal",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": true
         },
@@ -12299,7 +12299,7 @@
           "name": "Kwasi Sibo",
           "age": 27,
           "club": "Real Oviedo",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -12309,7 +12309,7 @@
           "name": "Elisha Owusu",
           "age": 28,
           "club": "AJ Auxerre",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": true
         },
@@ -12319,7 +12319,7 @@
           "name": "Caleb Yirenkyi",
           "age": 20,
           "club": "Nordsjælland",
-          "country": null,
+          "country": "Dinamarca",
           "elo": null,
           "titular": false
         },
@@ -12329,7 +12329,7 @@
           "name": "Augustine Boakye",
           "age": 25,
           "club": "Saint-Étienne",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         },
@@ -12339,7 +12339,7 @@
           "name": "Kamaldeen Sulemana",
           "age": 24,
           "club": "Atalanta",
-          "country": null,
+          "country": "Italia",
           "elo": null,
           "titular": true
         },
@@ -12349,7 +12349,7 @@
           "name": "Christopher Bonsu Baah",
           "age": 21,
           "club": "Al-Qadisiyah",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": false
         },
@@ -12359,7 +12359,7 @@
           "name": "Antoine Semenyo",
           "age": 26,
           "club": "Manchester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": 1889,
           "titular": true
         },
@@ -12369,7 +12369,7 @@
           "name": "Abdul Fatawu",
           "age": 22,
           "club": "Leicester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -12379,7 +12379,7 @@
           "name": "Iñaki Williams",
           "age": 31,
           "club": "Athletic Club",
-          "country": null,
+          "country": "España",
           "elo": null,
           "titular": false
         },
@@ -12389,7 +12389,7 @@
           "name": "Brandon Thomas-Asante",
           "age": 27,
           "club": "Coventry City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": false
         },
@@ -12399,7 +12399,7 @@
           "name": "Jordan Ayew",
           "age": 34,
           "club": "Leicester City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -12409,7 +12409,7 @@
           "name": "Prince Adu",
           "age": 22,
           "club": "Viktoria Plzen",
-          "country": null,
+          "country": "Chequia",
           "elo": null,
           "titular": false
         },
@@ -12419,7 +12419,7 @@
           "name": "Ernest Nuamah",
           "age": 22,
           "club": "Olympique Lyonnais",
-          "country": null,
+          "country": "Francia",
           "elo": null,
           "titular": false
         }
@@ -12452,7 +12452,7 @@
           "name": "Luis Mejía",
           "age": 35,
           "club": "Club Nacional",
-          "country": null,
+          "country": "Uruguay",
           "elo": null,
           "titular": false
         },
@@ -12462,7 +12462,7 @@
           "name": "César Samudio",
           "age": 32,
           "club": "CD Marathón",
-          "country": null,
+          "country": "Honduras",
           "elo": null,
           "titular": false
         },
@@ -12472,7 +12472,7 @@
           "name": "Orlando Mosquera",
           "age": 31,
           "club": "Al-Fayha FC",
-          "country": null,
+          "country": "Arabia Saudita",
           "elo": null,
           "titular": true
         },
@@ -12482,7 +12482,7 @@
           "name": "José Córdoba",
           "age": 24,
           "club": "Norwich City",
-          "country": null,
+          "country": "Inglaterra",
           "elo": null,
           "titular": true
         },
@@ -12492,7 +12492,7 @@
           "name": "Andrés Andrade",
           "age": 27,
           "club": "LASK Linz",
-          "country": null,
+          "country": "Austria",
           "elo": null,
           "titular": true
         },
@@ -12502,7 +12502,7 @@
           "name": "Edgardo Fariña",
           "age": 24,
           "club": "Pari Nizhny Novgorod",
-          "country": null,
+          "country": "Rusia",
           "elo": null,
           "titular": false
         },
@@ -12512,7 +12512,7 @@
           "name": "Fidel Escobar",
           "age": 31,
           "club": "Deportivo Saprissa",
-          "country": null,
+          "country": "Costa Rica",
           "elo": null,
           "titular": true
         },
@@ -12522,7 +12522,7 @@
           "name": "Roderick Miller",
           "age": 34,
           "club": "FC Turan-Tovuz",
-          "country": null,
+          "country": "Azerbaiyán",
           "elo": null,
           "titular": false
         },
@@ -12532,7 +12532,7 @@
           "name": "Jiovany Ramos",
           "age": 29,
           "club": "Academia Puerto Cabello",
-          "country": null,
+          "country": "Venezuela",
           "elo": null,
           "titular": false
         },
@@ -12542,7 +12542,7 @@
           "name": "Amir Murillo",
           "age": 30,
           "club": "Beşiktaş JK",
-          "country": null,
+          "country": "Turquía",
           "elo": null,
           "titular": true
         },
@@ -12552,7 +12552,7 @@
           "name": "César Blackman",
           "age": 28,
           "club": "Slovan Bratislava",
-          "country": null,
+          "country": "Slovakia",
           "elo": 1470,
           "titular": false
         },
@@ -12562,7 +12562,7 @@
           "name": "Jorge Gutiérrez",
           "age": 27,
           "club": "Deportivo La Guaira",
-          "country": null,
+          "country": "Venezuela",
           "elo": null,
           "titular": true
         },
@@ -12572,7 +12572,7 @@
           "name": "Éric Davis",
           "age": 35,
           "club": "CD Plaza Amador",
-          "country": null,
+          "country": "Panamá",
           "elo": null,
           "titular": false
         },
@@ -12582,7 +12582,7 @@
           "name": "Adalberto Carrasquilla",
           "age": 27,
           "club": "Pumas UNAM",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -12592,7 +12592,7 @@
           "name": "Cristian Martínez",
           "age": 29,
           "club": "Ironi Kiryat Shmona",
-          "country": null,
+          "country": "Israel",
           "elo": null,
           "titular": false
         },
@@ -12602,7 +12602,7 @@
           "name": "Carlos Harvey",
           "age": 26,
           "club": "Minnesota United",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": false
         },
@@ -12612,7 +12612,7 @@
           "name": "Aníbal Godoy",
           "age": 36,
           "club": "San Diego FC",
-          "country": null,
+          "country": "EE.UU.",
           "elo": null,
           "titular": true
         },
@@ -12622,7 +12622,7 @@
           "name": "José Luis Rodríguez",
           "age": 27,
           "club": "FC Juárez",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -12632,7 +12632,7 @@
           "name": "Édgar Yoel Bárcenas",
           "age": 32,
           "club": "Mazatlán FC",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": false
         },
@@ -12642,7 +12642,7 @@
           "name": "César Yanis",
           "age": 30,
           "club": "CD Cobresal",
-          "country": null,
+          "country": "Chile",
           "elo": null,
           "titular": false
         },
@@ -12652,7 +12652,7 @@
           "name": "Cecilio Waterman",
           "age": 35,
           "club": "U. de Concepción",
-          "country": null,
+          "country": "Chile",
           "elo": null,
           "titular": false
         },
@@ -12662,7 +12662,7 @@
           "name": "Ismael Díaz",
           "age": 29,
           "club": "Club León",
-          "country": null,
+          "country": "México",
           "elo": null,
           "titular": true
         },
@@ -12672,7 +12672,7 @@
           "name": "José Fajardo",
           "age": 32,
           "club": "U. Católica",
-          "country": null,
+          "country": "Ecuador",
           "elo": null,
           "titular": true
         },
@@ -12682,7 +12682,7 @@
           "name": "Azarías Londoño",
           "age": 24,
           "club": "U. Católica",
-          "country": null,
+          "country": "Ecuador",
           "elo": null,
           "titular": false
         },
@@ -12692,7 +12692,7 @@
           "name": "Tomás Rodríguez",
           "age": 27,
           "club": "Deportivo Saprissa",
-          "country": null,
+          "country": "Costa Rica",
           "elo": null,
           "titular": false
         },
@@ -12702,7 +12702,7 @@
           "name": "Alberto Quintero",
           "age": 38,
           "club": "CD Plaza Amador",
-          "country": null,
+          "country": "Panamá",
           "elo": null,
           "titular": false
         }

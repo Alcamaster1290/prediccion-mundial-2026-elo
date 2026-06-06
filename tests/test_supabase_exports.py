@@ -5,7 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import export_to_supabase  # noqa: E402
-from generate_seed_sql import gen_mc  # noqa: E402
+from generate_seed_sql import gen_mc, gen_players  # noqa: E402
 
 
 def sample_mc_data():
@@ -49,6 +49,70 @@ def test_gen_mc_includes_terceros_seed_rows(tmp_path):
     assert "INSERT INTO simulation_terceros_table" in sql
     assert "(simulation_run,rank,group_id,team_code,third_pct,qualifies_pct,avg_pts,avg_gd,avg_gf,qualifies)" in sql
     assert "(1,'A','mex',15.0,10.0,3.2,-0.4,2.1,TRUE)" in sql
+
+
+def test_gen_players_includes_club_country_seed_column(tmp_path):
+    out_path = tmp_path / "seed_players.sql"
+    teams_data = {
+        "teams": [
+            {
+                "id": "mex",
+                "players": [
+                    {
+                        "number": 9,
+                        "pos": "FW",
+                        "name": "Raúl Jiménez",
+                        "age": 35,
+                        "club": "Fulham FC",
+                        "country": "Inglaterra",
+                        "elo": None,
+                        "titular": True,
+                    }
+                ],
+            }
+        ]
+    }
+
+    gen_players(teams_data, out_path)
+
+    sql = out_path.read_text(encoding="utf-8")
+    assert "(team_code,shirt_number,pos,name,age,club,club_country,elo_club,elo_player,titular,version)" in sql
+    assert "('mex',9,'FW','Raúl Jiménez',35,'Fulham FC','Inglaterra',NULL,NULL,TRUE,'1.0')" in sql
+
+
+def test_build_player_rows_includes_club_country():
+    rows = export_to_supabase.build_player_rows(
+        {
+            "teams": [
+                {
+                    "id": "mex",
+                    "players": [
+                        {
+                            "number": 9,
+                            "pos": "FW",
+                            "name": "Raúl Jiménez",
+                            "age": 35,
+                            "club": "Fulham FC",
+                            "country": "Inglaterra",
+                            "elo": None,
+                            "titular": True,
+                        }
+                    ],
+                }
+            ]
+        }
+    )
+
+    assert rows[0]["club_country"] == "Inglaterra"
+
+
+def test_players_schema_includes_club_country_column():
+    schema = (Path(__file__).resolve().parents[1] / "supabase" / "05_prediction_engine_schema.sql").read_text(
+        encoding="utf-8"
+    )
+
+    assert "club_country TEXT" in schema
+    assert "ADD COLUMN IF NOT EXISTS club_country TEXT" in schema
 
 
 def test_export_mc_results_uploads_terceros_table(monkeypatch):

@@ -228,6 +228,7 @@ def build_player_rows(teams_data, version='1.0'):
                 'name': player.get('name'),
                 'age': player.get('age'),
                 'club': player.get('club'),
+                'club_country': player.get('country'),
                 'elo_club': player.get('elo'),
                 'elo_player': None,
                 'titular': bool(player.get('titular', False)),

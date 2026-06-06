@@ -3,7 +3,7 @@
 
 Outputs:
   data/seed_strengths.sql    -- team_strength_snapshots (48 rows)
-  data/seed_players.sql      -- players (24 teams x 26 players)
+  data/seed_players.sql      -- players (loaded teams x 26 players)
   data/seed_mc.sql           -- simulation_runs + simulation_group_standings
 
 Run: python scripts/generate_seed_sql.py
@@ -57,13 +57,13 @@ def gen_players(teams_data, out_path):
         code = team['id']
         for p in team.get('players', []):
             rows.append(
-                f"({q(code)},{n(p.get('number'))},{q(p.get('pos'))},{q(p.get('name'))},{n(p.get('age'))},{q(p.get('club'))},{n(p.get('elo'))},NULL,{str(bool(p.get('titular', False))).upper()},{q(version)})"
+                f"({q(code)},{n(p.get('number'))},{q(p.get('pos'))},{q(p.get('name'))},{n(p.get('age'))},{q(p.get('club'))},{q(p.get('country'))},{n(p.get('elo'))},NULL,{str(bool(p.get('titular', False))).upper()},{q(version)})"
             )
 
     # Split into chunks of 200 to avoid SQL size limits
     chunk_size = 200
     chunks = [rows[i:i+chunk_size] for i in range(0, len(rows), chunk_size)]
-    cols = "(team_code,shirt_number,pos,name,age,club,elo_club,elo_player,titular,version)"
+    cols = "(team_code,shirt_number,pos,name,age,club,club_country,elo_club,elo_player,titular,version)"
 
     parts = ["-- players\nTRUNCATE players RESTART IDENTITY CASCADE;\n"]
     for chunk in chunks:

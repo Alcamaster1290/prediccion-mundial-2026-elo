@@ -58,6 +58,7 @@ def main():
                 'name':         p.get('name'),
                 'age':          p.get('age'),
                 'club':         p.get('club'),
+                'club_country': p.get('country'),
                 'elo_club':     p.get('elo'),
                 'elo_player':   None,
                 'titular':      bool(p.get('titular', False)),

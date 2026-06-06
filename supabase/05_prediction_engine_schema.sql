@@ -106,12 +106,16 @@ CREATE TABLE IF NOT EXISTS players (
   name        TEXT        NOT NULL,
   age         INTEGER,
   club        TEXT,
+  club_country TEXT,
   elo_club    NUMERIC,
   elo_player  NUMERIC,
   titular     BOOLEAN     DEFAULT false,
   version     TEXT        NOT NULL DEFAULT '1.0',
   created_at  TIMESTAMPTZ DEFAULT NOW()
 );
+
+ALTER TABLE players
+  ADD COLUMN IF NOT EXISTS club_country TEXT;
 
 ALTER TABLE players ENABLE ROW LEVEL SECURITY;
 
