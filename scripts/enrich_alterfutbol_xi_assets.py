@@ -15,6 +15,13 @@ except ModuleNotFoundError:
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
+XI_IMAGE_SCHEME_BY_CODE = {
+    "qat": "4-3-3",
+    "egy": "4-3-3",
+    "sen": "4-3-3",
+    "uzb": "3-4-2-1",
+}
+
 
 def load_json(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
@@ -88,7 +95,16 @@ def enrich_teams_with_xi_assets(
             tactical_info = {"scheme": None, "tactics": []}
             report["fetch_error"].append({"team_code": code, "error": str(exc)})
 
-        team["scheme"] = tactical_info.get("scheme")
+        scheme = tactical_info.get("scheme")
+        if scheme:
+            team["scheme"] = scheme
+            team["scheme_source"] = "article_text"
+        elif code in XI_IMAGE_SCHEME_BY_CODE:
+            team["scheme"] = XI_IMAGE_SCHEME_BY_CODE[code]
+            team["scheme_source"] = "xi_image"
+        else:
+            team["scheme"] = None
+            team["scheme_source"] = None
         team["tactics"] = tactical_info.get("tactics") or []
         team["xi_image"] = f"assets/xi/{asset_name}"
         team["xi_source_url"] = formation_images[0]

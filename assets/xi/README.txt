@@ -13,9 +13,16 @@ Estado auditado: 46 imágenes locales al 6 junio 2026.
 No agregar XI autogenerados. Si no hay imagen real o captura validada, dejar pendiente.
 
 Uso de datos:
-  data/teams.json guarda xi_image, xi_source_url, scheme y tactics cuando se extrajo
-  desde el artículo. El marcado de players[].titular queda pendiente hasta leer/validar
-  cada xi_image por país.
+  data/teams.json guarda xi_image, xi_source_url, scheme, scheme_source y tactics.
+  scheme_source diferencia article_text de xi_image cuando la formación se validó
+  visualmente desde el XI local. El marcado de players[].titular queda pendiente
+  hasta leer/validar cada xi_image por país.
+
+Schemes derivados desde xi_image:
+  qat -> 4-3-3
+  egy -> 4-3-3
+  sen -> 4-3-3
+  uzb -> 3-4-2-1
 
 Imágenes locales disponibles:
   alg-xi.png   OK  Argelia

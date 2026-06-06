@@ -331,7 +331,7 @@ Para activar el sistema premium, copiar `js/config.example.js` como `js/config.j
 - [x] 48 banderas SVG descargadas (grupos A-L)
 - [x] 24 selecciones con análisis táctico completo (XI, figura, plantilla)
 - [x] 1196 jugadores en `teams.json`: 624 de análisis completo + 572 squad-only desde AlterFutbol
-- [x] 46 imágenes de XI/formación en `assets/xi` y tácticas fuenteadas para los equipos squad-only
+- [x] 46 imágenes de XI/formación en `assets/xi`, tácticas fuenteadas y 22 `scheme` completos para equipos squad-only
 - [x] ELO internacional real de 48 selecciones (international-football.net)
 - [x] Modelo ELO híbrido v1.1 (ranking intl + xi_blend de clubes, weight=0.35)
 - [x] `team_strength_snapshots.json` — 48 selecciones con fuerza compuesta

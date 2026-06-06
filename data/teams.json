@@ -288,7 +288,8 @@
       ],
       "xi_image": "assets/xi/mex-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/mexico-forma1-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/concacaf/mexico/los-convocados-de-mexico-al-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/concacaf/mexico/los-convocados-de-mexico-al-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "zaf",
@@ -570,7 +571,8 @@
       ],
       "xi_image": "assets/xi/zaf-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/sudafrica-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/africa/sudafrica/sudafrica-anuncio-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/africa/sudafrica/sudafrica-anuncio-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "kor",
@@ -1140,7 +1142,8 @@
       ],
       "xi_image": "assets/xi/cze-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/chequia-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/europa/republica-checa/republica-checa-oficializo-su-lista-para-el-mundial-2026-analisis-tactico/"
+      "source_tactics_url": "https://www.alterfutbol.com/europa/republica-checa/republica-checa-oficializo-su-lista-para-el-mundial-2026-analisis-tactico/",
+      "scheme_source": "article_text"
     },
     {
       "id": "can",
@@ -1422,7 +1425,8 @@
       ],
       "xi_image": "assets/xi/can-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/canada-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/concacaf/canada/canada-oficializo-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/concacaf/canada/canada-oficializo-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "bih",
@@ -1982,7 +1986,7 @@
           "titular": false
         }
       ],
-      "scheme": null,
+      "scheme": "4-3-3",
       "tactics": [
         "El plan de juego de Qatar pasa por una idea conocida. El equipo busca quitarle ritmo al partido y hacerlo largo y pesado para el rival. La intención es esperar el momento en el que aparezca la genialidad de Akram Afif para abrir el marcador. Después, el objetivo es cuidar el resultado con orden defensivo. Esa fórmula le dio resultado en sus mejores años y vuelve a ser la apuesta. El problema es que el Grupo B golpea justo en su punto débil. Canadá, Suiza y Bosnia proponen un juego físico e intenso que incomoda a la selección.",
         "En el arco, el titular viene siendo Meshaal Barsham, del Al-Sadd. El arquero representa a la nueva generación, aunque a veces comete errores puntuales. En el amistoso ante Irlanda atajó Mahmoud Abunada, lo que dejó alguna duda sobre la jerarquía. La pelea por el puesto está abierta, pero Barsham parte con ventaja. Salah Zakaria completa la lista. La definición del arco será una de las primeras decisiones de Lopetegui. La continuidad parece inclinarse hacia el hombre del Al-Sadd.",
@@ -1990,7 +1994,8 @@
       ],
       "xi_image": "assets/xi/qat-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/qatar-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/qatar/qatar-anuncio-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/qatar/qatar-anuncio-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "xi_image"
     },
     {
       "id": "sui",
@@ -2810,7 +2815,8 @@
       ],
       "xi_image": "assets/xi/mar-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/marruecos-forma1-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/africa/marruecos/marruecos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/africa/marruecos/marruecos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "hti",
@@ -3899,7 +3905,8 @@
       ],
       "xi_image": "assets/xi/pry-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/paraguay-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/otras-noticias/paraguay-al-mundial-2026-el-analisis-de-la-lista-de-convocados/"
+      "source_tactics_url": "https://www.alterfutbol.com/otras-noticias/paraguay-al-mundial-2026-el-analisis-de-la-lista-de-convocados/",
+      "scheme_source": "article_text"
     },
     {
       "id": "aus",
@@ -4181,7 +4188,8 @@
       ],
       "xi_image": "assets/xi/aus-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/australia-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/asia/australia/australia-presento-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/asia/australia/australia-presento-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "tur",
@@ -4463,7 +4471,8 @@
       ],
       "xi_image": "assets/xi/tur-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/turquia-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/europa/turquia/turquia-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/"
+      "source_tactics_url": "https://www.alterfutbol.com/europa/turquia/turquia-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/",
+      "scheme_source": "article_text"
     },
     {
       "id": "ger",
@@ -5552,7 +5561,8 @@
       ],
       "xi_image": "assets/xi/ecu-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/ecuador-forma3-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/sudamerica/ecuador/ecuador-al-mundial-2026-analisis-tactico-de-la-lista-de-convocados/"
+      "source_tactics_url": "https://www.alterfutbol.com/sudamerica/ecuador/ecuador-al-mundial-2026-analisis-tactico-de-la-lista-de-convocados/",
+      "scheme_source": "article_text"
     },
     {
       "id": "ned",
@@ -5834,7 +5844,8 @@
       ],
       "xi_image": "assets/xi/ned-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/holanda-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/europa/paises-bajos/paises-bajos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/europa/paises-bajos/paises-bajos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "jpn",
@@ -7176,7 +7187,7 @@
           "titular": false
         }
       ],
-      "scheme": null,
+      "scheme": "4-3-3",
       "tactics": [
         "El técnico de Egipto es un viejo conocido del fútbol del país. Hossam Hassan fue un delantero histórico y es el máximo goleador de la selección con 69 tantos. Disputó 176 partidos con la camiseta nacional entre 1985 y 2006. Su carrera como jugador incluyó dos etapas extensas en el Al-Ahly, con goles y títulos. También tuvo un paso por el fútbol europeo que amplió su recorrido. Salah lo persigue de cerca en la tabla de artilleros con 67 goles. El capitán podría superar a su propio entrenador durante este Mundial.",
         "El recorrido de Hassan como entrenador resultó más modesto que su trayectoria como futbolista. Dirigió casi toda su carrera en Egipto, con resultados discretos en el plano de los clubes. Su experiencia internacional se reduce a un breve paso por Jordania en 2014. En aquel ciclo estuvo al frente del equipo que disputó el repechaje ante Uruguay. Su propuesta táctica se inclina hacia el pragmatismo y el orden defensivo. No es un técnico que despierte unanimidad entre los hinchas egipcios, mas allá del respeto que evoca su nombre. Aun así, condujo a la selección de regreso a la cita mundialista tras el fracaso de las eliminatorias a Qatar 2022.",
@@ -7184,7 +7195,8 @@
       ],
       "xi_image": "assets/xi/egy-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/egipto-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/africa/egipto/egipto-anuncio-sus-convocados-al-mundial-2026-el-analisis-de-la-lista-y-su-historia/"
+      "source_tactics_url": "https://www.alterfutbol.com/africa/egipto/egipto-anuncio-sus-convocados-al-mundial-2026-el-analisis-de-la-lista-y-su-historia/",
+      "scheme_source": "xi_image"
     },
     {
       "id": "irn",
@@ -7466,7 +7478,8 @@
       ],
       "xi_image": "assets/xi/irn-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/iran-forma1-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/iran/iran-confirmo-sus-convocados-al-mundial-2026/"
+      "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/iran/iran-confirmo-sus-convocados-al-mundial-2026/",
+      "scheme_source": "article_text"
     },
     {
       "id": "nzl",
@@ -8555,7 +8568,8 @@
       ],
       "xi_image": "assets/xi/ury-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/uruguay-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/sudamerica/uruguay/uruguay-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/sudamerica/uruguay/uruguay-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "fra",
@@ -9098,7 +9112,7 @@
           "titular": false
         }
       ],
-      "scheme": null,
+      "scheme": "4-3-3",
       "tactics": [
         "El esquema de Senegal mantiene los principios que ya habían marcado el ciclo anterior. Thiaw apuesta por un bloque compacto en el mediocampo y líneas juntas. La selección se apoya en la imposición física y en salidas rápidas por los costados. La idea no se aleja demasiado de lo que proponía Aliou Cissé en su momento. El salto de calidad debe llegar de la mano de sus individualidades en ataque, especialmente Sadio Mané (y ahora Iliman Ndiaye). El equipo prioriza el orden defensivo antes que la tenencia prolongada del balón. Sobre esa base se ordena el resto de las decisiones tácticas.",
         "El arco quedará en manos de Édouard Mendy, una de las certezas del equipo. El arquero del Al-Ahli saudí se mantiene como titular indiscutido. Detrás suyo aparecen Yehvann Diouf y Mory Diaw como alternativas. Diouf, hoy en el Niza, espera su oportunidad tras un rol secundario en la última Copa Africana.",
@@ -9106,7 +9120,8 @@
       ],
       "xi_image": "assets/xi/sen-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/senegal-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/africa/senegal/senegal-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/"
+      "source_tactics_url": "https://www.alterfutbol.com/africa/senegal/senegal-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/",
+      "scheme_source": "xi_image"
     },
     {
       "id": "irq",
@@ -9388,7 +9403,8 @@
       ],
       "xi_image": "assets/xi/irq-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/irak-forma1-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/irak/irak-confirmo-sus-convocados-al-mundial-2026/"
+      "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/irak/irak-confirmo-sus-convocados-al-mundial-2026/",
+      "scheme_source": "article_text"
     },
     {
       "id": "nor",
@@ -9939,7 +9955,8 @@
       ],
       "xi_image": "assets/xi/arg-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/argentina-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/sudamerica/argentina/argentina-oficializo-sus-convocados-al-mundial-2026-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/sudamerica/argentina/argentina-oficializo-sus-convocados-al-mundial-2026-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "alg",
@@ -10221,7 +10238,8 @@
       ],
       "xi_image": "assets/xi/alg-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/argelia-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/africa/argelia/argelia-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/africa/argelia/argelia-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "aut",
@@ -11302,7 +11320,7 @@
           "titular": false
         }
       ],
-      "scheme": null,
+      "scheme": "3-4-2-1",
       "tactics": [
         "Cannavaro está intentando construir un equipo de identidad defensiva, compacto y ordenado. El italiano apuesta por una línea de tres centrales, dos carrileros, dos volantes centrales y dos volantes ofensivos detrás de un único delantero. El sistema prioriza la acumulación de jugadores en campo propio para cerrar los espacios. Cuando defiende, el bloque se transforma en una línea de cinco con cuatro mediocampistas tapando los caminos centrales. La recuperación del balón da paso a transiciones directas y verticales buscando siempre a Shomurodov lo antes posible. La pelota parada también figura como un recurso ofensivo importante. La propuesta busca compensar la diferencia de jerarquía con sus rivales mediante el orden.",
         "El arco presenta una competencia abierta entre dos nombres. Utkir Yusupov es el titular histórico, con la experiencia de varios años bajo los tres palos. En el último tiempo, sin embargo, Abduvokhid Nematov ganó terreno y se volvió una alternativa constante. El joven guardameta atajó frente a Canadá y aparece como una opción seria para el debut. La decisión final quedará en manos de Cannavaro según el estado de ambos. La portería es una de las pocas zonas con discusión genuina por la titularidad. El cuerpo técnico llega con margen para definir recién en la antesala del estreno.",
@@ -11310,7 +11328,8 @@
       ],
       "xi_image": "assets/xi/uzb-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/uzbekistan-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/asia/uzbekistan/uzbekistan-anuncio-sus-convocados-al-mundial-analisis-de-la-lista-y-su-historia/"
+      "source_tactics_url": "https://www.alterfutbol.com/asia/uzbekistan/uzbekistan-anuncio-sus-convocados-al-mundial-analisis-de-la-lista-y-su-historia/",
+      "scheme_source": "xi_image"
     },
     {
       "id": "col",
@@ -12130,7 +12149,8 @@
       ],
       "xi_image": "assets/xi/cro-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/croacia-forma1-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/europa/croacia/croacia-oficializo-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/europa/croacia/croacia-oficializo-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     },
     {
       "id": "gha",
@@ -12412,7 +12432,8 @@
       ],
       "xi_image": "assets/xi/gha-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/ghana-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/africa/ghana/ghana-oficializo-la-lista-para-el-mundial-2026-el-analisis/"
+      "source_tactics_url": "https://www.alterfutbol.com/africa/ghana/ghana-oficializo-la-lista-para-el-mundial-2026-el-analisis/",
+      "scheme_source": "article_text"
     },
     {
       "id": "pan",
@@ -12694,7 +12715,8 @@
       ],
       "xi_image": "assets/xi/pan-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/panama-forma-1024x1024.png",
-      "source_tactics_url": "https://www.alterfutbol.com/concacaf/panama/panama-anuncio-sus-convocados-al-mundial-2026-analisis-de-la-lista/"
+      "source_tactics_url": "https://www.alterfutbol.com/concacaf/panama/panama-anuncio-sus-convocados-al-mundial-2026-analisis-de-la-lista/",
+      "scheme_source": "article_text"
     }
   ]
 }

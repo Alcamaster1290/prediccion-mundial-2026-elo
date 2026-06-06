@@ -19,6 +19,17 @@ TACTICAL_HTML = """
 """
 
 
+TACTICAL_HTML_WITHOUT_SCHEME = """
+<article>
+  <h2>El esquema tactico y el XI ideal</h2>
+  <p>El equipo prioriza extremos abiertos y mediocentros de recorrido.</p>
+  <p>La estructura se confirma en la imagen del XI ideal.</p>
+  <h2>Lista completa</h2>
+  <p>Arqueros:</p>
+</article>
+"""
+
+
 def test_enrich_teams_downloads_missing_xi_and_adds_tactical_fields(tmp_path):
     teams_data = {
         "teams": [
@@ -55,6 +66,7 @@ def test_enrich_teams_downloads_missing_xi_and_adds_tactical_fields(tmp_path):
     assert report["downloaded"] == ["mex"]
     assert (tmp_path / "mex-xi.png").read_bytes() == b"fake-png"
     assert team["scheme"] == "4-3-3"
+    assert team["scheme_source"] == "article_text"
     assert team["tactics"] == [
         "El tecnico se inclino por el 4-3-3 para presionar alto.",
         "El equipo junta extremos abiertos y laterales profundos.",
@@ -106,6 +118,49 @@ def test_enrich_teams_preserves_existing_xi_without_overwrite(tmp_path):
     assert existing.read_bytes() == b"existing"
     assert team["xi_image"] == "assets/xi/mar-xi.png"
     assert team["scheme"] == "4-3-3"
+    assert team["scheme_source"] == "article_text"
+
+
+def test_enrich_teams_uses_reviewed_xi_image_scheme_when_article_has_no_explicit_formation(tmp_path):
+    teams_data = {
+        "teams": [
+            {
+                "id": "qat",
+                "name": "Qatar",
+                "group": "H",
+                "dt": "",
+                "analyzed": False,
+                "source_status": "squad_only",
+                "players": [],
+            }
+        ]
+    }
+    sources = {
+        "teams": [
+            {
+                "team_code": "qat",
+                "url": "https://example.test/qatar/",
+                "formation_images": ["https://example.test/qat-xi.png"],
+            }
+        ]
+    }
+
+    enriched, report = enrich_teams_with_xi_assets(
+        teams_data=teams_data,
+        source_manifest=sources,
+        xi_dir=tmp_path,
+        fetch_article_html=lambda url: TACTICAL_HTML_WITHOUT_SCHEME,
+        download_image=lambda url: b"fake-png",
+    )
+
+    team = enriched["teams"][0]
+    assert report["downloaded"] == ["qat"]
+    assert team["scheme"] == "4-3-3"
+    assert team["scheme_source"] == "xi_image"
+    assert team["tactics"] == [
+        "El equipo prioriza extremos abiertos y mediocentros de recorrido.",
+        "La estructura se confirma en la imagen del XI ideal.",
+    ]
 
 
 def test_enrich_cli_can_run_as_script():
