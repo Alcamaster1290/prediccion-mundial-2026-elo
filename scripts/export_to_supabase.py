@@ -237,6 +237,22 @@ def build_player_rows(teams_data, version='1.0'):
     return rows
 
 
+def is_publishable_team_profile(team):
+    if team.get('analyzed', False):
+        return True
+
+    players = team.get('players') or []
+    starter_count = sum(1 for player in players if player.get('titular') is True)
+    return (
+        team.get('source_status') == 'squad_only'
+        and len(players) >= 26
+        and starter_count >= 11
+        and bool(team.get('scheme'))
+        and bool(team.get('xi_image'))
+        and bool(team.get('tactics'))
+    )
+
+
 def build_team_profile_rows(teams_data, version='1.0'):
     public_rows = []
     premium_rows = []
@@ -250,7 +266,7 @@ def build_team_profile_rows(teams_data, version='1.0'):
             'strengths': tactics[:3],
             'weaknesses': tactics[3:],
             'version': version,
-            'published': bool(team.get('analyzed', False)),
+            'published': is_publishable_team_profile(team),
         })
         premium_rows.append({
             'team_code': code,

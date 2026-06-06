@@ -3,7 +3,7 @@
     "updated": "2026-06-06",
     "source_analysis": "alterfutbol.com",
     "source_elo": "worldclubratings.com",
-    "total_teams_analyzed": 24,
+    "total_teams_analyzed": 46,
     "total_teams_with_squads": 46,
     "source_squads": "AlterFutbol noticias; see data/alterfutbol_sources.json"
   },
@@ -12,8 +12,8 @@
       "id": "mex",
       "name": "México",
       "group": "A",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Javier Aguirre",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/concacaf/mexico/los-convocados-de-mexico-al-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Los convocados de México al Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-06-03",
@@ -289,14 +289,23 @@
       "xi_image": "assets/xi/mex-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/mexico-forma1-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/concacaf/mexico/los-convocados-de-mexico-al-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/mexico-forma1-1024x1024.png",
+      "absences": [
+        "La ausencia más comentada de la lista, aunque no sorpresiva, es la de Hirving “Chucky” Lozano. El extremo quedó fuera del Mundial tras perder protagonismo en el San Diego FC de la MLS.",
+        "Quien terminó ingresando en la lista en ese perfil de jugador ofensivo por la banda es César Huerta, a pesar de casi no tener minutos en Bélgica a merced de una lesión que lo marginó buena parte de la temporada.",
+        "Marcel Ruiz tampoco llegó, condicionado por una rotura parcial de ligamento que decidió no operar. La apuesta no rindió frutos a tiempo y quedó fuera de la nómina final."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/concacaf/mexico/los-convocados-de-mexico-al-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "zaf",
       "name": "Sudáfrica",
       "group": "A",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Hugo Broos",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/africa/sudafrica/sudafrica-anuncio-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Sudáfrica anunció sus convocados para el Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-05-27",
@@ -572,7 +581,14 @@
       "xi_image": "assets/xi/zaf-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/sudafrica-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/africa/sudafrica/sudafrica-anuncio-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/sudafrica-forma-1024x1024.png",
+      "absences": [
+        "Bradley Cross, del Kaizer Chiefs, aparece como alternativa principal después de la lesión que sufrió Modiba en la final de la Champions Africana. Quedó afuera de la nómina final Thapelo Morena, quien venía peleando el puesto con Mudau pero arrastraba una lesión."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/africa/sudafrica/sudafrica-anuncio-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "kor",
@@ -866,8 +882,8 @@
       "id": "cze",
       "name": "República Checa",
       "group": "A",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Miroslav Koubek",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/europa/republica-checa/republica-checa-oficializo-su-lista-para-el-mundial-2026-analisis-tactico/",
       "source_title": "República Checa oficializó su lista para el Mundial 2026: análisis táctico - Alterfutbol",
       "source_published_date": "2026-05-31",
@@ -1143,14 +1159,23 @@
       "xi_image": "assets/xi/cze-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/chequia-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/europa/republica-checa/republica-checa-oficializo-su-lista-para-el-mundial-2026-analisis-tactico/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/chequia-forma-1024x1024.png",
+      "absences": [
+        "Un nombre a vigilar es el de Adam Hložek, delantero del TSG Hoffenheim en Budesliga, casi sin minutos en la temporada por lesiones.",
+        "El técnico también mantuvo a Tomáš Chorý y David Douděra pese a una sanción en su club que pesa desde inicios de mayo.",
+        "Quedaron afuera Christophe Kabongo, Pavel Bucha y Tomáš Ladra. Este último marcó su primer gol con la camiseta nacional en ese mismo partido y aun así no entró."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/europa/republica-checa/republica-checa-oficializo-su-lista-para-el-mundial-2026-analisis-tactico/"
     },
     {
       "id": "can",
       "name": "Canadá",
       "group": "B",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Jesse Marsch",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/concacaf/canada/canada-oficializo-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Canadá oficializó sus convocados para el Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-05-30",
@@ -1426,7 +1451,16 @@
       "xi_image": "assets/xi/can-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/canada-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/concacaf/canada/canada-oficializo-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/canada-forma-1024x1024.png",
+      "absences": [
+        "Jesse Marsch debió tomar decisiones complejas en una nómina marcada por las lesiones.",
+        "El proceso de selección incluyó a 32 jugadores en el campamento previo, de los cuales seis quedaron fuera del corte definitivo.",
+        "Davies todavía se recupera en Alemania de una lesión muscular en el isquiotibial. Bombito, Laryea, Shaffelburg, De Fougerolles y Koné también llegan con distintas molestias o sin ritmo competitivo."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/concacaf/canada/canada-oficializo-sus-convocados-para-el-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "bih",
@@ -1718,8 +1752,8 @@
       "id": "qat",
       "name": "Qatar",
       "group": "B",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Julen Lopetegui",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/asia/medio-oriente/qatar/qatar-anuncio-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Qatar anunció los convocados al Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-06-01",
@@ -1995,7 +2029,15 @@
       "xi_image": "assets/xi/qat-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/qatar-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/qatar/qatar-anuncio-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "xi_image"
+      "scheme_source": "xi_image",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/qatar-forma-1024x1024.png",
+      "absences": [
+        "El delantero se perdió buena parte de la temporada por lesión y llega sin ritmo.",
+        "Sin embargo, llega tras perderse casi toda la temporada por lesión y con la roja ante Irlanda."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/asia/medio-oriente/qatar/qatar-anuncio-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "sui",
@@ -2539,8 +2581,8 @@
       "id": "mar",
       "name": "Marruecos",
       "group": "C",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Mohamed Ouahbi",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/africa/marruecos/marruecos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Marruecos confirmó los convocados al Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-05-27",
@@ -2816,7 +2858,15 @@
       "xi_image": "assets/xi/mar-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/marruecos-forma1-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/africa/marruecos/marruecos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/marruecos-forma1-1024x1024.png",
+      "absences": [
+        "Una de las bajas más comentada es la de Youssef En-Nesyri, símbolo del ataque marroquí en Qatar 2022. El delantero del Al-Ittihad saudí queda afuera de un Mundial por primera vez en su carrera.",
+        "Ait Boudlal, considerado el central con más proyección a futuro, también quedó afuera. Las lesiones que sufrió en el Rennes durante el primer semestre del año condicionaron su llegada al torneo."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/africa/marruecos/marruecos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "hti",
@@ -3629,8 +3679,8 @@
       "id": "pry",
       "name": "Paraguay",
       "group": "D",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Gustavo Alfaro",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/otras-noticias/paraguay-al-mundial-2026-el-analisis-de-la-lista-de-convocados/",
       "source_title": "Paraguay al Mundial 2026: el análisis de la lista de convocados - Alterfutbol",
       "source_published_date": "2026-06-04",
@@ -3906,14 +3956,23 @@
       "xi_image": "assets/xi/pry-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/paraguay-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/otras-noticias/paraguay-al-mundial-2026-el-analisis-de-la-lista-de-convocados/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/paraguay-forma-1024x1024.png",
+      "absences": [
+        "Algunas exclusiones respondieron a lesiones y otras a definiciones puramente futbolísticas del cuerpo técnico.",
+        "La lesión de Adam Bareiro fue un golpe inesperado: el delantero atravesaba un gran momento goleador en Boca, pero un doble desgarro lo dejó marginado. Mathías Villasanti también quedó afuera por falta de continuidad en lo que va del año tras una lesión en Gremio.",
+        "Quedó afuera por una estricta decisión técnica tras un semestre irregular, donde no logró jugar los minutos necesarios y en el nivel deseado."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/otras-noticias/paraguay-al-mundial-2026-el-analisis-de-la-lista-de-convocados/"
     },
     {
       "id": "aus",
       "name": "Australia",
       "group": "D",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Tony Popovic",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/asia/australia/australia-presento-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Australia presentó sus convocados al Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-06-01",
@@ -4189,14 +4248,23 @@
       "xi_image": "assets/xi/aus-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/australia-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/asia/australia/australia-presento-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/australia-forma-1024x1024.png",
+      "absences": [
+        "El volante del Middlesbrough se lesionó en el playoff final de ascenso ante el Hull City, una baja sensible en una zona clave para Popovic.",
+        "Fue el cuarto australiano descartado por lesión, junto a Hayden Matthews, Nick D’Agostino y Patrick Yazbek.",
+        "La creación es el gran interrogante tras la lesión de McGree."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/asia/australia/australia-presento-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "tur",
       "name": "Turquía",
       "group": "D",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Vincenzo Montella",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/europa/turquia/turquia-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/",
       "source_title": "Turquía anunció su lista de convocados para el Mundial 2026: análisis táctico del equipo - Alterfutbol",
       "source_published_date": "2026-06-02",
@@ -4472,7 +4540,16 @@
       "xi_image": "assets/xi/tur-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/turquia-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/europa/turquia/turquia-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/turquia-forma-1024x1024.png",
+      "absences": [
+        "Tres jugadores, sin embargo, viajarán igual a Estados Unidos como reservas en espera por posibles lesiones.",
+        "La baja más sensible es la de Enes Ünal, del Bournemouth, que pudo ser titular o recambio de jerarquía como delantero. Su temporada arrastró lesiones graves durante todo el año y apenas jugó en la Premier League, donde marcó un solo gol y no fue titular en ningún partido.",
+        "En el mediocampo quedó afuera Atakan Karazor, capitán del Stuttgart, cuya exclusión generó críticas aunque lo cierto es que nunca fue del gusto de Montella."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/europa/turquia/turquia-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/"
     },
     {
       "id": "ger",
@@ -5285,8 +5362,8 @@
       "id": "ecu",
       "name": "Ecuador",
       "group": "E",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Sebastián Beccacece",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/sudamerica/ecuador/ecuador-al-mundial-2026-analisis-tactico-de-la-lista-de-convocados/",
       "source_title": "Ecuador al Mundial 2026: análisis táctico de la lista de convocados - Alterfutbol",
       "source_published_date": "2026-06-04",
@@ -5562,14 +5639,21 @@
       "xi_image": "assets/xi/ecu-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/ecuador-forma3-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/sudamerica/ecuador/ecuador-al-mundial-2026-analisis-tactico-de-la-lista-de-convocados/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/ecuador-forma3-1024x1024.png",
+      "absences": [
+        "La baja más dolorosa fue por lesión: Leonardo Campana quedó afuera tras una nueva dolencia a mediados de mayo. El delantero repite el drama de Qatar 2022, que también se perdió por una lesión."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/sudamerica/ecuador/ecuador-al-mundial-2026-analisis-tactico-de-la-lista-de-convocados/"
     },
     {
       "id": "ned",
       "name": "Países Bajos",
       "group": "F",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Ronald Koeman",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/europa/paises-bajos/paises-bajos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Países Bajos confirmó los convocados al Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-05-27",
@@ -5845,7 +5929,16 @@
       "xi_image": "assets/xi/ned-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/holanda-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/europa/paises-bajos/paises-bajos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/holanda-forma-1024x1024.png",
+      "absences": [
+        "La baja más sensible llegó a fines de abril con la rotura del ligamento cruzado de Xavi Simons en un partido del Tottenham frente al Wolverhampton. A esa pérdida se sumó la de Jerdy Schouten, capitán del PSV, que sufrió la misma lesión a comienzos de abril ante el Utrecht.",
+        "El lateral del Liverpool estuvo inactivo desde finales de enero y acumuló cuatro tramos largos de lesión durante la temporada.",
+        "El volante de Atalanta se había perdido la Eurocopa por lesión y ya no figuraba en los planes del cuerpo técnico."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/europa/paises-bajos/paises-bajos-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "jpn",
@@ -6919,8 +7012,8 @@
       "id": "egy",
       "name": "Egipto",
       "group": "G",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Hossam Hassan",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/africa/egipto/egipto-anuncio-sus-convocados-al-mundial-2026-el-analisis-de-la-lista-y-su-historia/",
       "source_title": "Egipto anunció sus convocados al Mundial 2026: el análisis de la lista y su historia - Alterfutbol",
       "source_published_date": "2026-05-30",
@@ -7196,14 +7289,23 @@
       "xi_image": "assets/xi/egy-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/egipto-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/africa/egipto/egipto-anuncio-sus-convocados-al-mundial-2026-el-analisis-de-la-lista-y-su-historia/",
-      "scheme_source": "xi_image"
+      "scheme_source": "xi_image",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/egipto-forma-1024x1024.png",
+      "absences": [
+        "De los 27 preseleccionados, el técnico decidió excluir a Aqtai Abdallah, atacante de 22 años del ENPPI.",
+        "Esa dupla ya funcionó en el Al-Ahly y aporta firmeza y experiencia, aunque la falta de rodaje de Abdelmonem en Francia debido a su lesión es un tema preocupante.",
+        "Su principal problema son las lesiones que interrumpen con frecuencia su continuidad."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/africa/egipto/egipto-anuncio-sus-convocados-al-mundial-2026-el-analisis-de-la-lista-y-su-historia/"
     },
     {
       "id": "irn",
       "name": "Irán",
       "group": "G",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Amir Ghalenoei",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/asia/medio-oriente/iran/iran-confirmo-sus-convocados-al-mundial-2026/",
       "source_title": "Irán confirmó sus convocados al Mundial 2026 - Alterfutbol",
       "source_published_date": "2026-06-01",
@@ -7479,7 +7581,15 @@
       "xi_image": "assets/xi/irn-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/iran-forma1-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/iran/iran-confirmo-sus-convocados-al-mundial-2026/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/iran-forma1-1024x1024.png",
+      "absences": [
+        "La gran ausencia es la de Sardar Azmoun, marginado por el propio gobierno tras ser acusado de traición .",
+        "Ali Gholizadeh, extremo zurdo del Lech Poznan, sufrió la rotura del ligamento cruzado anterior. Su lesión dejó al equipo sin una de sus principales vías de desequilibrio por las bandas."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/asia/medio-oriente/iran/iran-confirmo-sus-convocados-al-mundial-2026/"
     },
     {
       "id": "nzl",
@@ -8292,8 +8402,8 @@
       "id": "ury",
       "name": "Uruguay",
       "group": "H",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Marcelo Bielsa",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/sudamerica/uruguay/uruguay-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Uruguay confirmó los convocados al Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-06-03",
@@ -8569,7 +8679,16 @@
       "xi_image": "assets/xi/ury-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/uruguay-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/sudamerica/uruguay/uruguay-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/uruguay-forma-1024x1024.png",
+      "absences": [
+        "La gran ausencia, no sorpresiva ni ilógica, pero sí como referencia de este principio, es Luis Suárez, que queda afuera de un Mundial por primera vez desde Alemania 2006.",
+        "Los motivos no son claros, ya que Nández está bien fisicamente, viene con regularidad en la liga saudí, pero el jugador no fue convocado en marzo y sus últimos partidos fueron en noviembre. Otros nombres que quedaron afuera fueron Facundo Torres, Nicolás Fonseca y Luciano Rodríguez, a quienes Bielsa les comunicó la decisión en los días previos.",
+        "El atacante, que superó una grave lesión de ligamentos cruzados sufrida en 2024, había manifestado públicamente su deseo de volver a la Celeste."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/sudamerica/uruguay/uruguay-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "fra",
@@ -8844,8 +8963,8 @@
       "id": "sen",
       "name": "Senegal",
       "group": "I",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Pape Thiaw",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/africa/senegal/senegal-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/",
       "source_title": "Senegal anunció su lista de convocados para el Mundial 2026: análisis táctico del equipo - Alterfutbol",
       "source_published_date": "2026-06-02",
@@ -9121,14 +9240,21 @@
       "xi_image": "assets/xi/sen-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/senegal-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/africa/senegal/senegal-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/",
-      "scheme_source": "xi_image"
+      "scheme_source": "xi_image",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/senegal-forma-1024x1024.png",
+      "absences": [
+        "Entre los jugadores, la principal incógnita pasa por el estado de forma del capitán Kalidou Koulibaly, que arrastra una lesión muscular y no jugó el amistoso ante Estados Unidos."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/africa/senegal/senegal-anuncio-su-lista-de-convocados-para-el-mundial-2026-analisis-tactico-del-equipo/"
     },
     {
       "id": "irq",
       "name": "Irak",
       "group": "I",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Graham Arnold",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/asia/medio-oriente/irak/irak-confirmo-sus-convocados-al-mundial-2026/",
       "source_title": "Irak confirmó sus convocados al Mundial 2026 - Alterfutbol",
       "source_published_date": "2026-06-01",
@@ -9404,7 +9530,14 @@
       "xi_image": "assets/xi/irq-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/irak-forma1-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/asia/medio-oriente/irak/irak-confirmo-sus-convocados-al-mundial-2026/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/irak-forma1-1024x1024.png",
+      "absences": [
+        "El arquero se perdió el repechaje por una lesión, pero recuperado vuelve a ser el titular indiscutido."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/asia/medio-oriente/irak/irak-confirmo-sus-convocados-al-mundial-2026/"
     },
     {
       "id": "nor",
@@ -9679,8 +9812,8 @@
       "id": "arg",
       "name": "Argentina",
       "group": "J",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Lionel Scaloni",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/sudamerica/argentina/argentina-oficializo-sus-convocados-al-mundial-2026-analisis-de-la-lista/",
       "source_title": "Argentina oficializó sus convocados al Mundial 2026: análisis de la lista - Alterfutbol",
       "source_published_date": "2026-05-28",
@@ -9956,14 +10089,23 @@
       "xi_image": "assets/xi/arg-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/argentina-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/sudamerica/argentina/argentina-oficializo-sus-convocados-al-mundial-2026-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/argentina-forma-1024x1024.png",
+      "absences": [
+        "El cuerpo técnico terminó apostando por los dos centrales del Olympique y quién quedó descartado, a pesar de su buen año en el Bournemouth, es Marcos Senesi.",
+        "Lo Celso vuelve a una lista mundialista luego de haberse perdido Qatar 2022 por lesión. Algunas de las ausencia más comentadas son la de Máximo Perrone, otro de los jugadores del Como que había sido seguido de cerca por el cuerpo técnico.",
+        "Quedaron fuera del listado nombres que sonaron fuerte como Alejandro Garnacho, de mala temporada en el Chelsea, Matías Soulé y Gianluca Prestianni. Otra ausencia relevante es Emiliano Buendía, quién a pesar de su gran año en el Aston Villa terminó siendo marginado."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/sudamerica/argentina/argentina-oficializo-sus-convocados-al-mundial-2026-analisis-de-la-lista/"
     },
     {
       "id": "alg",
       "name": "Argelia",
       "group": "J",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Vladimir Petkovic",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/africa/argelia/argelia-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Argelia confirmó los convocados al Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-06-01",
@@ -10239,7 +10381,16 @@
       "xi_image": "assets/xi/alg-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/argelia-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/africa/argelia/argelia-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/argelia-forma-1024x1024.png",
+      "absences": [
+        "Petković lo dejó afuera por sus lesiones repetidas y la falta de continuidad.",
+        "La ausencia más polémica, aún así, es la de Ilan Kebbal.",
+        "A eso se le agregó un altercado con su técnico, Habib Beye, que derivó en una sanción."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/africa/argelia/argelia-confirmo-los-convocados-al-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "aut",
@@ -11052,8 +11203,8 @@
       "id": "uzb",
       "name": "Uzbekistán",
       "group": "K",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Fabio Cannavaro",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/asia/uzbekistan/uzbekistan-anuncio-sus-convocados-al-mundial-analisis-de-la-lista-y-su-historia/",
       "source_title": "Uzbekistán anunció sus convocados al mundial: análisis de la lista y su historia - Alterfutbol",
       "source_published_date": "2026-06-02",
@@ -11329,7 +11480,14 @@
       "xi_image": "assets/xi/uzb-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/uzbekistan-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/asia/uzbekistan/uzbekistan-anuncio-sus-convocados-al-mundial-analisis-de-la-lista-y-su-historia/",
-      "scheme_source": "xi_image"
+      "scheme_source": "xi_image",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/uzbekistan-forma-1024x1024.png",
+      "absences": [
+        "La selección viene de caer ante Canadá por dos a cero en Edmonton, en un partido que expuso algunas limitaciones ofensivas y además marcó la lesión de Aziz Ganiev, uno de sus volantes titulares."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/asia/uzbekistan/uzbekistan-anuncio-sus-convocados-al-mundial-analisis-de-la-lista-y-su-historia/"
     },
     {
       "id": "col",
@@ -11873,8 +12031,8 @@
       "id": "cro",
       "name": "Croacia",
       "group": "L",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Zlatko Dalic",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/europa/croacia/croacia-oficializo-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/",
       "source_title": "Croacia oficializó sus convocados al Mundial 2026: el análisis de la lista - Alterfutbol",
       "source_published_date": "2026-06-01",
@@ -12150,14 +12308,22 @@
       "xi_image": "assets/xi/cro-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/croacia-forma1-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/europa/croacia/croacia-oficializo-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/croacia-forma1-1024x1024.png",
+      "absences": [
+        "Ambos llegaron a la concentración recuperándose de molestias recientes.",
+        "Otra baja sensible fue la del delantero Bruno Petković, golpeado por las lesiones durante los últimos seis meses."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/europa/croacia/croacia-oficializo-sus-convocados-al-mundial-2026-el-analisis-de-la-lista/"
     },
     {
       "id": "gha",
       "name": "Ghana",
       "group": "L",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Carlos Queiroz",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/africa/ghana/ghana-oficializo-la-lista-para-el-mundial-2026-el-analisis/",
       "source_title": "Ghana oficializó la lista para el Mundial 2026: el análisis - Alterfutbol",
       "source_published_date": "2026-06-02",
@@ -12433,14 +12599,22 @@
       "xi_image": "assets/xi/gha-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/ghana-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/africa/ghana/ghana-oficializo-la-lista-para-el-mundial-2026-el-analisis/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/06/ghana-forma-1024x1024.png",
+      "absences": [
+        "Mohammed Kudus, la figura del ataque, quedó afuera por una lesión que arrastra desde enero.",
+        "Mohammed Salisu, central titular, quedó descartado tras romperse los ligamentos cruzados con el Monaco. El experimentado central se lesionó sobre el cierre de la lista y Queiroz debió reemplazarlo sobre la hora."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/africa/ghana/ghana-oficializo-la-lista-para-el-mundial-2026-el-analisis/"
     },
     {
       "id": "pan",
       "name": "Panamá",
       "group": "L",
-      "dt": "",
-      "analyzed": false,
+      "dt": "Thomas Christiansen",
+      "analyzed": true,
       "source_url": "https://www.alterfutbol.com/concacaf/panama/panama-anuncio-sus-convocados-al-mundial-2026-analisis-de-la-lista/",
       "source_title": "Panamá anunció sus convocados al Mundial 2026: análisis de la lista - Alterfutbol",
       "source_published_date": "2026-05-26",
@@ -12716,7 +12890,15 @@
       "xi_image": "assets/xi/pan-xi.png",
       "xi_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/panama-forma-1024x1024.png",
       "source_tactics_url": "https://www.alterfutbol.com/concacaf/panama/panama-anuncio-sus-convocados-al-mundial-2026-analisis-de-la-lista/",
-      "scheme_source": "article_text"
+      "scheme_source": "article_text",
+      "dt_source": "xi_image",
+      "dt_source_url": "https://www.alterfutbol.com/wp-content/uploads/2026/05/panama-forma-1024x1024.png",
+      "absences": [
+        "La ausencia más resonante fue la de Kadir Barría, la joya de 18 años del Botafogo.",
+        "Los estudios determinaron que la lesión era menos grave de lo aparente, con lo cual Christiansen confía en su recuperación."
+      ],
+      "absences_source": "alterfutbol_article",
+      "absences_source_url": "https://www.alterfutbol.com/concacaf/panama/panama-anuncio-sus-convocados-al-mundial-2026-analisis-de-la-lista/"
     }
   ]
 }

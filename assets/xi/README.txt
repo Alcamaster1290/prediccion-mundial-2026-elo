@@ -17,6 +17,8 @@ Uso de datos:
   scheme_source diferencia article_text de xi_image cuando la formación se validó
   visualmente desde el XI local. players[].titular está marcado para los 46 equipos
   cargados en data/teams.json, con 11 titulares exactos por selección.
+  Para los 22 equipos squad-only, data/teams.json también guarda dt, dt_source
+  y dt_source_url a partir del rótulo "DT:" impreso en la imagen local del XI.
 
 Excepción auditada:
   aus-xi.png tiene título de Australia pero lista nombres de Chequia. Los titulares

@@ -30,3 +30,28 @@ def test_every_loaded_player_has_club_country():
                 missing.append(f"{team['id']}:{player['name']}:{player.get('club')}")
 
     assert missing == []
+
+
+def test_every_loaded_team_has_coach_name():
+    teams = json.loads((REPO_ROOT / "data" / "teams.json").read_text(encoding="utf-8"))["teams"]
+
+    missing = [
+        team["id"]
+        for team in teams
+        if not (team.get("dt") or "").strip()
+    ]
+
+    assert missing == []
+
+
+def test_squad_only_coaches_are_sourced_from_xi_images():
+    teams = json.loads((REPO_ROOT / "data" / "teams.json").read_text(encoding="utf-8"))["teams"]
+
+    missing_source = [
+        team["id"]
+        for team in teams
+        if team.get("source_status") == "squad_only"
+        and team.get("dt_source") != "xi_image"
+    ]
+
+    assert missing_source == []

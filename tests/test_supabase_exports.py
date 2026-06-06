@@ -106,6 +106,51 @@ def test_build_player_rows_includes_club_country():
     assert rows[0]["club_country"] == "Inglaterra"
 
 
+def test_complete_squad_only_team_profiles_are_published_without_dt_source():
+    public_rows, premium_rows = export_to_supabase.build_team_profile_rows(
+        {
+            "teams": [
+                {
+                    "id": "mex",
+                    "source_status": "squad_only",
+                    "scheme": "4-3-3",
+                    "xi_image": "assets/xi/mex-xi.png",
+                    "dt": "Javier Aguirre",
+                    "dt_source": "xi_image",
+                    "tactics": ["Bloque compacto", "Salida vertical"],
+                    "players": [
+                        {"name": f"Player {index}", "titular": index <= 11}
+                        for index in range(1, 27)
+                    ],
+                }
+            ]
+        }
+    )
+
+    assert public_rows[0]["published"] is True
+    assert "dt_source" not in public_rows[0]
+    assert "dt_source" not in premium_rows[0]
+
+
+def test_incomplete_squad_only_team_profiles_stay_unpublished():
+    public_rows, _ = export_to_supabase.build_team_profile_rows(
+        {
+            "teams": [
+                {
+                    "id": "ksa",
+                    "source_status": "squad_only",
+                    "scheme": None,
+                    "xi_image": None,
+                    "tactics": [],
+                    "players": [],
+                }
+            ]
+        }
+    )
+
+    assert public_rows[0]["published"] is False
+
+
 def test_players_schema_includes_club_country_column():
     schema = (Path(__file__).resolve().parents[1] / "supabase" / "05_prediction_engine_schema.sql").read_text(
         encoding="utf-8"

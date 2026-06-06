@@ -11,32 +11,11 @@ ASSET_ALIASES = {
     "jpn": "jap",
     "cuw": "cur",
 }
-SECTION_BY_CODE = {
-    "ger": "alemania",
-    "aut": "austria",
-    "bel": "belgica",
-    "bih": "bosnia",
-    "bra": "brasil",
-    "cpv": "cabo-verde",
-    "col": "colombia",
-    "kor": "corea",
-    "civ": "costa-marfil",
-    "cuw": "curazao",
-    "sco": "escocia",
-    "esp": "espana",
-    "usa": "estados-unidos",
-    "fra": "francia",
-    "hti": "haiti",
-    "eng": "inglaterra",
-    "jpn": "japon",
-    "nor": "noruega",
-    "nzl": "nueva-zelanda",
-    "por": "portugal",
-    "cod": "rd-congo",
-    "swe": "suecia",
-    "sui": "suiza",
-    "tun": "tunez",
-}
+
+try:
+    from scripts.render_team_sections import SECTION_BY_CODE
+except ModuleNotFoundError:
+    from render_team_sections import SECTION_BY_CODE
 
 
 def load_json(path):

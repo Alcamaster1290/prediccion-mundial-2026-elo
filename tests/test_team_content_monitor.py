@@ -26,6 +26,13 @@ def test_team_content_manifest_tracks_all_teams_and_asset_aliases():
     assert by_code["mar"]["assets"]["list_txt"] is False
     assert "list_txt" in by_code["mar"]["local_missing"]
 
+    missing_html = {
+        team["team_code"]
+        for team in teams
+        if not team["local"]["html_section"]
+    }
+    assert missing_html == {"ksa", "jor"}
+
 
 def test_team_content_monitor_rpc_is_admin_only_and_reports_missing_fields():
     sql = read("supabase/21_admin_team_content_monitor.sql").lower()

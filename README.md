@@ -19,7 +19,7 @@ mundial-2026/
 │                                   #   → verificación de cuenta + pago + código de activación
 ├── assets/
 │   ├── flags/                      # 48 banderas SVG — código ISO 3166-1 alpha-3
-│   ├── players/                    # 25 fotos de figura clave — una por selección
+│   ├── players/                    # 24 fotos verificadas de figura clave; nuevos perfiles usan placeholder
 │   ├── xi/                         # 46 imágenes de XI Ideal / formación (AlterFutbol)
 │   ├── og-image.png                # Open Graph image (1200×630)
 │   ├── yape-qr.jpeg                # QR de pago Yape
@@ -36,7 +36,7 @@ mundial-2026/
 │   ├── groups.json                 # 12 grupos A-L, fixtures y fechas oficiales FIFA
 │   ├── matches.json                # 72 partidos de fase de grupos (generado por generate_matches.py)
 │   ├── match_context.json          # Matriz narrativa — análisis táctico por partido
-│   ├── teams.json                  # 24 análisis completos + 46 planteles fuenteados (1196 jugadores)
+│   ├── teams.json                  # 46 perfiles publicados + 46 planteles fuenteados (1196 jugadores)
 │   ├── team_strength_snapshots.json # Fuerza de las 48 selecciones (v1.1 — ELO híbrido)
 │   ├── international_elo.json      # ELO internacional real (international-football.net, 48 equipos)
 │   ├── club_elo.json               # ELO de clubes de referencia (worldclubratings.com)
@@ -131,7 +131,7 @@ score = elo_intl + (xi_blend − avg_xi_blend) × club_adj_weight
 
 - **`elo_intl`**: ELO nacional de international-football.net (rango real: 1423–2165)
 - **`xi_blend`**: promedio de ELO de club de los 11 titulares (worldclubratings.com)
-- Las 24 selecciones con análisis completo usan ELO híbrido; las demás usan solo `elo_intl` hasta tener XI titular fuenteado.
+- Las 46 selecciones con XI titular fuenteado usan ELO híbrido; Arabia Saudita y Jordania siguen con `elo_intl` hasta tener fuente directa confiable.
 
 ### Simulación de goles (Poisson / Knuth)
 
@@ -255,36 +255,14 @@ La `anon key` es pública y segura porque:
 
 ## Estado del análisis
 
-| Selección | Grupo | XI | Figura | Plantilla | ELO híbrido |
-|-----------|-------|----|--------|-----------|-------------|
-| Bosnia | B | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Suiza | B | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Suecia | F | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Corea del Sur | A | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Brasil | C | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Haití | C | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Escocia | C | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Costa de Marfil | E | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Bélgica | G | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Nueva Zelanda | G | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Cabo Verde | H | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Francia | I | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Austria | J | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Portugal | K | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| RD del Congo | K | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Alemania | E | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Noruega | I | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Inglaterra | L | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| España | H | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Colombia | K | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Japón | F | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Túnez | F | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Curazao | E | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Estados Unidos | D | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Marruecos | C | ✅ | ❌ | ✅ 26 jugadores (squad-only) | solo elo_intl |
-| Panamá | L | ✅ | ❌ | ✅ 26 jugadores (squad-only) | solo elo_intl |
-| Squad-only restantes (20) | varios | fuente remota | pendiente | ✅ 26 jugadores | solo elo_intl |
-| Arabia Saudita / Jordania | H / J | ❌ | ❌ | ❌ sin artículo directo | solo elo_intl |
+| Cobertura | Estado |
+|-----------|--------|
+| Perfiles HTML publicados | 46 selecciones |
+| Planteles fuenteados | 46 selecciones · 1196 jugadores |
+| XI probable local | 46 imágenes en `assets/xi` |
+| Titulares marcados | 46 selecciones con 11 `players[].titular` |
+| Retratos reales de figura | 24 selecciones; los 22 perfiles nuevos usan placeholder |
+| Pendientes por fuente directa | Arabia Saudita (`ksa`) y Jordania (`jor`) |
 
 ---
 
@@ -329,8 +307,8 @@ Para activar el sistema premium, copiar `js/config.example.js` como `js/config.j
 ### Completado ✅
 
 - [x] 48 banderas SVG descargadas (grupos A-L)
-- [x] 24 selecciones con análisis táctico completo (XI, figura, plantilla)
-- [x] 1196 jugadores en `teams.json`: 624 de análisis completo + 572 squad-only desde AlterFutbol
+- [x] 46 selecciones con perfil HTML publicado (sistema, ausencias, XI, tabla, partidos y ruta)
+- [x] 1196 jugadores en `teams.json` con club y país de club desde AlterFutbol
 - [x] 46 imágenes de XI/formación en `assets/xi`, tácticas fuenteadas y 22 `scheme` completos para equipos squad-only
 - [x] 46 selecciones cargadas con 11 titulares marcados en `players[].titular`
 - [x] ELO internacional real de 48 selecciones (international-football.net)
