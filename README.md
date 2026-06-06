@@ -36,7 +36,7 @@ mundial-2026/
 │   ├── groups.json                 # 12 grupos A-L, fixtures y fechas oficiales FIFA
 │   ├── matches.json                # 72 partidos de fase de grupos (generado por generate_matches.py)
 │   ├── match_context.json          # Matriz narrativa — análisis táctico por partido
-│   ├── teams.json                  # 24 selecciones analizadas + 624 jugadores con ELO de club
+│   ├── teams.json                  # 24 análisis completos + 46 planteles fuenteados (1196 jugadores)
 │   ├── team_strength_snapshots.json # Fuerza de las 48 selecciones (v1.1 — ELO híbrido)
 │   ├── international_elo.json      # ELO internacional real (international-football.net, 48 equipos)
 │   ├── club_elo.json               # ELO de clubes de referencia (worldclubratings.com)
@@ -91,7 +91,7 @@ AlterFutbol (HTML)          international-football.net   worldclubratings.com
 extract_squads.py           international_elo.json         club_elo.json
       │                              │                          │
  teams.json                          └──────────┬──────────────┘
-(24 equipos · 624 jugadores)                    │
+(46 planteles · 1196 jugadores)                 │
                                      build_team_strength.py
                                                 │
                                   team_strength_snapshots.json
@@ -106,7 +106,7 @@ extract_squads.py           international_elo.json         club_elo.json
                                   generate_seed_sql.py
                                                 │
                               Supabase (MCP / export_to_supabase.py)
-                              ├── players (624 filas)
+                              ├── players (1196 filas)
                               ├── national_elo_ratings (48 filas)
                               ├── team_strength_snapshots (48 filas)
                               ├── simulation_runs (1 fila)
@@ -131,7 +131,7 @@ score = elo_intl + (xi_blend − avg_xi_blend) × club_adj_weight
 
 - **`elo_intl`**: ELO nacional de international-football.net (rango real: 1423–2165)
 - **`xi_blend`**: promedio de ELO de club de los 11 titulares (worldclubratings.com)
-- Las 24 selecciones con análisis completo usan ELO híbrido; las 24 restantes usan solo `elo_intl`
+- Las 24 selecciones con análisis completo usan ELO híbrido; las demás usan solo `elo_intl` hasta tener XI titular fuenteado.
 
 ### Simulación de goles (Poisson / Knuth)
 
@@ -179,7 +179,7 @@ python scripts/generate_seed_sql.py
 | `profiles` | dinámica | Usuarios registrados — `is_premium`, email |
 | `premium_codes` | manual | Códigos hash SHA-256 para activación |
 | `predictions` | manual | Pronósticos por partido (tabla legacy) |
-| `players` | 624 | Planteles: pos, nombre, edad, club, país, ELO, titular |
+| `players` | 1196 | Planteles: pos, nombre, edad, club, país, ELO, titular |
 | `national_elo_ratings` | 48 | ELO internacional por selección |
 | `team_strength_snapshots` | 48 | Fuerza compuesta (ELO híbrido v1.1) |
 | `simulation_runs` | 1 | Metadatos del run: iteraciones, semilla, fecha |
@@ -249,7 +249,7 @@ La `anon key` es pública y segura porque:
 
 ### `assets/xi/`
 - Formato: `{código-equipo}-xi.png` — capturas de AlterFutbol
-- 26 selecciones disponibles al 3 de junio de 2026
+- 26 selecciones disponibles al 6 de junio de 2026
 
 ---
 
@@ -281,9 +281,10 @@ La `anon key` es pública y segura porque:
 | Túnez | F | ✅ | ✅ | ✅ 26 jugadores | ✅ |
 | Curazao | E | ✅ | ✅ | ✅ 26 jugadores | ✅ |
 | Estados Unidos | D | ✅ | ✅ | ✅ 26 jugadores | ✅ |
-| Marruecos | — | ❌ | ❌ | ❌ pendiente | ❌ |
-| Panamá | — | ❌ | ❌ | ❌ pendiente | ❌ |
-| Resto (22) | — | ❌ | ❌ | ❌ pendiente | solo elo_intl |
+| Marruecos | C | ✅ | ❌ | ✅ 26 jugadores (squad-only) | solo elo_intl |
+| Panamá | L | ✅ | ❌ | ✅ 26 jugadores (squad-only) | solo elo_intl |
+| Squad-only restantes (20) | varios | fuente remota | pendiente | ✅ 26 jugadores | solo elo_intl |
+| Arabia Saudita / Jordania | H / J | ❌ | ❌ | ❌ sin artículo directo | solo elo_intl |
 
 ---
 
@@ -329,13 +330,13 @@ Para activar el sistema premium, copiar `js/config.example.js` como `js/config.j
 
 - [x] 48 banderas SVG descargadas (grupos A-L)
 - [x] 24 selecciones con análisis táctico completo (XI, figura, plantilla)
-- [x] 624 jugadores en `teams.json` con ELO de club (extraídos de index.html)
+- [x] 1196 jugadores en `teams.json`: 624 de análisis completo + 572 squad-only desde AlterFutbol
 - [x] ELO internacional real de 48 selecciones (international-football.net)
 - [x] Modelo ELO híbrido v1.1 (ranking intl + xi_blend de clubes, weight=0.35)
 - [x] `team_strength_snapshots.json` — 48 selecciones con fuerza compuesta
 - [x] Simulación Poisson Monte Carlo — 10,000 iteraciones, seed=42
 - [x] Proyección tabla mejores terceros (12 grupos, criterios FIFA)
-- [x] Motor de datos completo en Supabase (6 tablas, RLS, 624+48+1+48+48+12 filas)
+- [x] Motor de datos completo en Supabase (6 tablas, RLS, 1196+48+1+48+48+12 filas)
 - [x] Sección "Predicciones" premium — 2 tablas (clasificación + mejores terceros)
 - [x] Sección "Pronósticos" premium — análisis por partido (estructura lista)
 - [x] Sistema de pago con QR Yape + PayPal (tabs interactivos)
@@ -355,4 +356,4 @@ Para activar el sistema premium, copiar `js/config.example.js` como `js/config.j
 
 ---
 
-*Datos actualizados al 3 de junio de 2026. Fuentes: AlterFutbol · worldclubratings.com · international-football.net · FIFA*
+*Datos actualizados al 6 de junio de 2026. Fuentes: AlterFutbol · worldclubratings.com · international-football.net · FIFA*

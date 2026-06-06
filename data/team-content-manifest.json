@@ -10,10 +10,10 @@
     {
       "team_code": "mex",
       "asset_code": "mex",
-      "name": null,
+      "name": "México",
       "group_id": "A",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -22,30 +22,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 5
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "zaf",
       "asset_code": "zaf",
-      "name": null,
+      "name": "Sudáfrica",
       "group_id": "A",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -54,20 +52,18 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 8
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -100,10 +96,10 @@
     {
       "team_code": "cze",
       "asset_code": "cze",
-      "name": null,
+      "name": "República Checa",
       "group_id": "A",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -112,30 +108,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 8
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "can",
       "asset_code": "can",
-      "name": null,
+      "name": "Canadá",
       "group_id": "B",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -144,20 +138,18 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 1
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -190,10 +182,10 @@
     {
       "team_code": "qat",
       "asset_code": "qat",
-      "name": null,
+      "name": "Qatar",
       "group_id": "B",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -202,9 +194,9 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
         "player_elo_json_rows": 0
       },
@@ -213,9 +205,7 @@
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -274,10 +264,10 @@
     {
       "team_code": "mar",
       "asset_code": "mar",
-      "name": null,
+      "name": "Marruecos",
       "group_id": "C",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": true,
@@ -286,18 +276,16 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 9
       },
       "local_missing": [
         "star_image",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -381,10 +369,10 @@
     {
       "team_code": "pry",
       "asset_code": "pry",
-      "name": null,
+      "name": "Paraguay",
       "group_id": "D",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -393,30 +381,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 4
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "aus",
       "asset_code": "aus",
-      "name": null,
+      "name": "Australia",
       "group_id": "D",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -425,30 +411,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 1
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "tur",
       "asset_code": "tur",
-      "name": null,
+      "name": "Turquía",
       "group_id": "D",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -457,20 +441,18 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 4
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -552,10 +534,10 @@
     {
       "team_code": "ecu",
       "asset_code": "ecu",
-      "name": null,
+      "name": "Ecuador",
       "group_id": "E",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -564,30 +546,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 4
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "ned",
       "asset_code": "ned",
-      "name": null,
+      "name": "Países Bajos",
       "group_id": "F",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -596,20 +576,18 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 4
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -714,10 +692,10 @@
     {
       "team_code": "egy",
       "asset_code": "egy",
-      "name": null,
+      "name": "Egipto",
       "group_id": "G",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -726,30 +704,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 7
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "irn",
       "asset_code": "irn",
-      "name": null,
+      "name": "Irán",
       "group_id": "G",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -758,9 +734,9 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
         "player_elo_json_rows": 0
       },
@@ -769,9 +745,7 @@
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -885,10 +859,10 @@
     {
       "team_code": "ury",
       "asset_code": "ury",
-      "name": null,
+      "name": "Uruguay",
       "group_id": "H",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -897,20 +871,18 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 9
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -943,10 +915,10 @@
     {
       "team_code": "sen",
       "asset_code": "sen",
-      "name": null,
+      "name": "Senegal",
       "group_id": "I",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -955,30 +927,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 7
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "irq",
       "asset_code": "irq",
-      "name": null,
+      "name": "Irak",
       "group_id": "I",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -987,20 +957,18 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 2
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -1033,10 +1001,10 @@
     {
       "team_code": "arg",
       "asset_code": "arg",
-      "name": null,
+      "name": "Argentina",
       "group_id": "J",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -1045,30 +1013,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 7
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "alg",
       "asset_code": "alg",
-      "name": null,
+      "name": "Argelia",
       "group_id": "J",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -1077,20 +1043,18 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 5
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -1207,10 +1171,10 @@
     {
       "team_code": "uzb",
       "asset_code": "uzb",
-      "name": null,
+      "name": "Uzbekistán",
       "group_id": "K",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -1219,20 +1183,18 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 1
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
@@ -1288,10 +1250,10 @@
     {
       "team_code": "cro",
       "asset_code": "cro",
-      "name": null,
+      "name": "Croacia",
       "group_id": "L",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -1300,30 +1262,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 10
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "gha",
       "asset_code": "gha",
-      "name": null,
+      "name": "Ghana",
       "group_id": "L",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": false,
@@ -1332,30 +1292,28 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 3
       },
       "local_missing": [
         "xi_image",
         "star_image",
         "list_png",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     },
     {
       "team_code": "pan",
       "asset_code": "pan",
-      "name": null,
+      "name": "Panamá",
       "group_id": "L",
       "section_id": null,
-      "source": null,
+      "source": "alterfutbol.com",
       "assets": {
         "flag": true,
         "xi_image": true,
@@ -1364,18 +1322,16 @@
         "list_txt": false
       },
       "local": {
-        "analysis_json": false,
+        "analysis_json": true,
         "html_section": false,
-        "players_json": false,
+        "players_json": true,
         "starter_json": false,
-        "player_elo_json_rows": 0
+        "player_elo_json_rows": 1
       },
       "local_missing": [
         "star_image",
         "list_txt",
-        "analysis_json",
         "html_section",
-        "players_json",
         "starter_json"
       ]
     }
