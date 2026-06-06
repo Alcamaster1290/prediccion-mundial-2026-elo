@@ -15,8 +15,13 @@ No agregar XI autogenerados. Si no hay imagen real o captura validada, dejar pen
 Uso de datos:
   data/teams.json guarda xi_image, xi_source_url, scheme, scheme_source y tactics.
   scheme_source diferencia article_text de xi_image cuando la formación se validó
-  visualmente desde el XI local. El marcado de players[].titular queda pendiente
-  hasta leer/validar cada xi_image por país.
+  visualmente desde el XI local. players[].titular está marcado para los 46 equipos
+  cargados en data/teams.json, con 11 titulares exactos por selección.
+
+Excepción auditada:
+  aus-xi.png tiene título de Australia pero lista nombres de Chequia. Los titulares
+  de Australia se marcaron desde el análisis textual por puesto del mismo artículo
+  de AlterFutbol, no desde esa lámina.
 
 Schemes derivados desde xi_image:
   qat -> 4-3-3

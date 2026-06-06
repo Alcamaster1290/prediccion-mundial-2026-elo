@@ -37,7 +37,7 @@
           "club": "Chivas Guadalajara",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -57,7 +57,7 @@
           "club": "Genoa CFC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -67,7 +67,7 @@
           "club": "Lokomotiv Moskva",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -97,7 +97,7 @@
           "club": "CD Toluca",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -107,7 +107,7 @@
           "club": "PAOK",
           "country": null,
           "elo": 1510,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -127,7 +127,7 @@
           "club": "Cruz Azul",
           "country": null,
           "elo": 1448,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -157,7 +157,7 @@
           "club": "Real Betis",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -197,7 +197,7 @@
           "club": "Chivas Guadalajara",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -227,7 +227,7 @@
           "club": "Chivas Guadalajara",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -257,7 +257,7 @@
           "club": "Al-Qadisiyah FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -267,7 +267,7 @@
           "club": "Fulham FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -310,7 +310,7 @@
           "club": "Mamelodi Sundowns",
           "country": null,
           "elo": 1567,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -350,7 +350,7 @@
           "club": "Chicago Fire",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -360,7 +360,7 @@
           "club": "Hannover 96",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -390,7 +390,7 @@
           "club": "Mamelodi Sundowns",
           "country": null,
           "elo": 1567,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -410,7 +410,7 @@
           "club": "Mamelodi Sundowns",
           "country": null,
           "elo": 1567,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -450,7 +450,7 @@
           "club": "Mamelodi Sundowns",
           "country": null,
           "elo": 1567,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -470,7 +470,7 @@
           "club": "CD Tondela",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -500,7 +500,7 @@
           "club": "Burnley FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -510,7 +510,7 @@
           "club": "Orlando Pirates",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -520,7 +520,7 @@
           "club": "Orlando Pirates",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -530,7 +530,7 @@
           "club": "Orlando Pirates",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -881,7 +881,7 @@
           "club": "PSV Eindhoven",
           "country": null,
           "elo": 1726,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -911,7 +911,7 @@
           "club": "TSG Hoffenheim",
           "country": null,
           "elo": 1587,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -941,7 +941,7 @@
           "club": "TSG Hoffenheim",
           "country": null,
           "elo": 1587,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -951,7 +951,7 @@
           "club": "Slavia Praga",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -961,7 +961,7 @@
           "club": "Slavia Praga",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -971,7 +971,7 @@
           "club": "Wolverhampton Wanderers",
           "country": null,
           "elo": 1456,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1011,7 +1011,7 @@
           "club": "Hradec Králové",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1021,7 +1021,7 @@
           "club": "Slavia Praga",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1061,7 +1061,7 @@
           "club": "West Ham United",
           "country": null,
           "elo": 1573,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1071,7 +1071,7 @@
           "club": "Olympique Lyon",
           "country": null,
           "elo": 1636,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1131,7 +1131,7 @@
           "club": "Bayer Leverkusen",
           "country": null,
           "elo": 1784,
-          "titular": false
+          "titular": true
         }
       ],
       "scheme": "3-4-1-2",
@@ -1174,7 +1174,7 @@
           "club": "Inter Miami",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1194,7 +1194,7 @@
           "club": "Bayern Munich",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1204,7 +1204,7 @@
           "club": "OGC Nice",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1224,7 +1224,7 @@
           "club": "Rangers FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1244,7 +1244,7 @@
           "club": "Celtic FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1294,7 +1294,7 @@
           "club": "LAFC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1314,7 +1314,7 @@
           "club": "US Sassuolo",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1354,7 +1354,7 @@
           "club": "Juventus FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1374,7 +1374,7 @@
           "club": "Southampton FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1404,7 +1404,7 @@
           "club": "Hull City",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1414,7 +1414,7 @@
           "club": "Villarreal CF",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         }
       ],
       "scheme": "4-4-2",
@@ -1733,7 +1733,7 @@
           "club": "Al-Sadd SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1763,7 +1763,7 @@
           "club": "Al-Wakrah SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1803,7 +1803,7 @@
           "club": "Al-Sadd SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1813,7 +1813,7 @@
           "club": "Cultural Leonesa",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1833,7 +1833,7 @@
           "club": "Al-Gharafa SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1843,7 +1843,7 @@
           "club": "Al-Rayyan SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1853,7 +1853,7 @@
           "club": "Al-Shamal SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1873,7 +1873,7 @@
           "club": "Al-Arabi SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1913,7 +1913,7 @@
           "club": "Al-Sadd SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1923,7 +1923,7 @@
           "club": "Al-Duhail SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -1963,7 +1963,7 @@
           "club": "Al-Duhail SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2554,7 +2554,7 @@
           "club": "Al-Hilal SFC",
           "country": null,
           "elo": 1629,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2584,7 +2584,7 @@
           "club": "Paris Saint-Germain",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2594,7 +2594,7 @@
           "club": "Manchester United",
           "country": null,
           "elo": 1784,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2614,7 +2614,7 @@
           "club": "Olympique de Marsella",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2624,7 +2624,7 @@
           "club": "Fulham FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2694,7 +2694,7 @@
           "club": "AS Roma",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2714,7 +2714,7 @@
           "club": "RC Estrasburgo",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2724,7 +2724,7 @@
           "club": "VfB Stuttgart",
           "country": null,
           "elo": 1647,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2744,7 +2744,7 @@
           "club": "Real Madrid CF",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2754,7 +2754,7 @@
           "club": "Real Betis",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -2794,7 +2794,7 @@
           "club": "Olympiakos",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3644,7 +3644,7 @@
           "club": "Cerro Porteño",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3674,7 +3674,7 @@
           "club": "Palmeiras",
           "country": null,
           "elo": 1529,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3684,7 +3684,7 @@
           "club": "Sunderland",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3694,7 +3694,7 @@
           "club": "Atlético Mineiro",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3714,7 +3714,7 @@
           "club": "Dynamo Moscú",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3754,7 +3754,7 @@
           "club": "Vancouver Whitecaps",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3764,7 +3764,7 @@
           "club": "Brighton & Hove Albion",
           "country": null,
           "elo": 1680,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3824,7 +3824,7 @@
           "club": "Palmeiras",
           "country": null,
           "elo": 1529,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3844,7 +3844,7 @@
           "club": "Racing de Estrasburgo",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3854,7 +3854,7 @@
           "club": "Cremonese",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3864,7 +3864,7 @@
           "club": "Atlanta United",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3927,7 +3927,7 @@
           "club": "UD Levante",
           "country": null,
           "elo": 1485,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3957,7 +3957,7 @@
           "club": "Leicester City",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3967,7 +3967,7 @@
           "club": "Parma Calcio 1913",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3977,7 +3977,7 @@
           "club": "Feyenoord",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -3987,7 +3987,7 @@
           "club": "Swansea City",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4047,7 +4047,7 @@
           "club": "Grazer AK 1902",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4057,7 +4057,7 @@
           "club": "FC St. Pauli",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4097,7 +4097,7 @@
           "club": "FC St. Pauli",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4107,7 +4107,7 @@
           "club": "New York City FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4137,7 +4137,7 @@
           "club": "Watford FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4157,7 +4157,7 @@
           "club": "Norwich City",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4220,7 +4220,7 @@
           "club": "Galatasaray",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4250,7 +4250,7 @@
           "club": "Al-Ahli",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4260,7 +4260,7 @@
           "club": "Galatasaray",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4290,7 +4290,7 @@
           "club": "Brighton",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4310,7 +4310,7 @@
           "club": "Roma",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4330,7 +4330,7 @@
           "club": "Inter",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4340,7 +4340,7 @@
           "club": "Fenerbahçe",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4350,7 +4350,7 @@
           "club": "Beşiktaş",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4380,7 +4380,7 @@
           "club": "Real Madrid",
           "country": null,
           "elo": 2012,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4400,7 +4400,7 @@
           "club": "Juventus",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -4420,7 +4420,7 @@
           "club": "Fenerbahçe",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5300,7 +5300,7 @@
           "club": "CA Huracán",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5330,7 +5330,7 @@
           "club": "Paris Saint-Germain",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5340,7 +5340,7 @@
           "club": "Arsenal",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5350,7 +5350,7 @@
           "club": "Club Brujas",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5410,7 +5410,7 @@
           "club": "Chelsea",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5440,7 +5440,7 @@
           "club": "Atlético Mineiro",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5450,7 +5450,7 @@
           "club": "Pumas UNAM",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5480,7 +5480,7 @@
           "club": "Sunderland",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5490,7 +5490,7 @@
           "club": "Flamengo",
           "country": null,
           "elo": 1530,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5500,7 +5500,7 @@
           "club": "Venezia",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5510,7 +5510,7 @@
           "club": "Pachuca",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5583,7 +5583,7 @@
           "club": "Brighton",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5613,7 +5613,7 @@
           "club": "Liverpool",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5633,7 +5633,7 @@
           "club": "Brighton",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5643,7 +5643,7 @@
           "club": "Manchester City",
           "country": null,
           "elo": 1889,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5663,7 +5663,7 @@
           "club": "Inter de Milán",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5693,7 +5693,7 @@
           "club": "Liverpool",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5703,7 +5703,7 @@
           "club": "Barcelona",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5723,7 +5723,7 @@
           "club": "Manchester City",
           "country": null,
           "elo": 1889,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5773,7 +5773,7 @@
           "club": "Liverpool",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5793,7 +5793,7 @@
           "club": "Corinthians",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -5813,7 +5813,7 @@
           "club": "AS Roma",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -6944,7 +6944,7 @@
           "club": "Al-Ahly",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -6974,7 +6974,7 @@
           "club": "Al-Ahly",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7014,7 +7014,7 @@
           "club": "Al-Ahly",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7034,7 +7034,7 @@
           "club": "OGC Nice",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7054,7 +7054,7 @@
           "club": "Pyramids",
           "country": null,
           "elo": 1502,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7064,7 +7064,7 @@
           "club": "Al-Ahly",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7074,7 +7074,7 @@
           "club": "Pyramids",
           "country": null,
           "elo": 1502,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7114,7 +7114,7 @@
           "club": "Al-Ahly",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7124,7 +7124,7 @@
           "club": "Manchester City",
           "country": null,
           "elo": 1889,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7154,7 +7154,7 @@
           "club": "Al-Ahly",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7184,7 +7184,7 @@
           "club": "Liverpool",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         }
       ],
       "scheme": "4-3-3",
@@ -7217,7 +7217,7 @@
           "club": "Tractor FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7247,7 +7247,7 @@
           "club": "Persepolis FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7267,7 +7267,7 @@
           "club": "Foolad FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7297,7 +7297,7 @@
           "club": "Sepahan FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7307,7 +7307,7 @@
           "club": "Sepahan FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7337,7 +7337,7 @@
           "club": "Shabab Al-Ahli Dubai",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7347,7 +7347,7 @@
           "club": "Al-Wahda FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7377,7 +7377,7 @@
           "club": "Al-Ittihad Kalba SCC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7387,7 +7387,7 @@
           "club": "Olympiakos",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7397,7 +7397,7 @@
           "club": "Al-Nasr FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -7407,7 +7407,7 @@
           "club": "FK Rostov",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8307,7 +8307,7 @@
           "club": "SC Internacional",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8337,7 +8337,7 @@
           "club": "Atlético Madrid",
           "country": null,
           "elo": 1832,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8347,7 +8347,7 @@
           "club": "FC Barcelona",
           "country": null,
           "elo": 2019,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8397,7 +8397,7 @@
           "club": "SSC Napoli",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8417,7 +8417,7 @@
           "club": "CR Flamengo",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8427,7 +8427,7 @@
           "club": "Real Madrid",
           "country": null,
           "elo": 2012,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8437,7 +8437,7 @@
           "club": "Manchester United",
           "country": null,
           "elo": 1784,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8447,7 +8447,7 @@
           "club": "Tottenham Hotspur",
           "country": null,
           "elo": 1686,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8517,7 +8517,7 @@
           "club": "Al-Hilal SFC",
           "country": null,
           "elo": 1629,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8527,7 +8527,7 @@
           "club": "SC Sporting",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8537,7 +8537,7 @@
           "club": "Fluminense FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8859,7 +8859,7 @@
           "club": "Al-Ahli Saudi FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8889,7 +8889,7 @@
           "club": "Al-Hilal SFC",
           "country": null,
           "elo": 1629,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8899,7 +8899,7 @@
           "club": "Olympique Lyonnais",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8939,7 +8939,7 @@
           "club": "AS Mónaco",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8949,7 +8949,7 @@
           "club": "West Ham United",
           "country": null,
           "elo": 1573,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8969,7 +8969,7 @@
           "club": "Everton FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -8979,7 +8979,7 @@
           "club": "Villarreal CF",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9019,7 +9019,7 @@
           "club": "Sunderland AFC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9039,7 +9039,7 @@
           "club": "Al-Nassr FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9059,7 +9059,7 @@
           "club": "Everton FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9069,7 +9069,7 @@
           "club": "Bayern Munich",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9162,7 +9162,7 @@
           "club": "Al-Zawraa SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9172,7 +9172,7 @@
           "club": "Pakhtakor Tashkent",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9182,7 +9182,7 @@
           "club": "Al-Zawraa SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9222,7 +9222,7 @@
           "club": "Viktoria Plzen",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9242,7 +9242,7 @@
           "club": "Pogon Szczecin",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9262,7 +9262,7 @@
           "club": "KS Cracovia",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9282,7 +9282,7 @@
           "club": "Sarpsborg 08 FF",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9332,7 +9332,7 @@
           "club": "AEK Larnaka",
           "country": null,
           "elo": 1456,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9342,7 +9342,7 @@
           "club": "Al-Najmah FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9362,7 +9362,7 @@
           "club": "Luton Town",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9382,7 +9382,7 @@
           "club": "Al-Karma SC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9694,7 +9694,7 @@
           "club": "Aston Villa",
           "country": null,
           "elo": 1861,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9724,7 +9724,7 @@
           "club": "Tottenham Hotspur",
           "country": null,
           "elo": 1686,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9744,7 +9744,7 @@
           "club": "Manchester United",
           "country": null,
           "elo": 1784,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9784,7 +9784,7 @@
           "club": "Atlético de Madrid",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9794,7 +9794,7 @@
           "club": "Olympique de Lyon",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9804,7 +9804,7 @@
           "club": "Chelsea",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9814,7 +9814,7 @@
           "club": "Liverpool",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9824,7 +9824,7 @@
           "club": "Inter Miami",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9884,7 +9884,7 @@
           "club": "Inter Miami",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9894,7 +9894,7 @@
           "club": "Atlético de Madrid",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9904,7 +9904,7 @@
           "club": "Atlético de Madrid",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -9977,7 +9977,7 @@
           "club": "Granada CF",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10007,7 +10007,7 @@
           "club": "Borussia Dortmund",
           "country": null,
           "elo": 1808,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10047,7 +10047,7 @@
           "club": "LOSC Lille",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10067,7 +10067,7 @@
           "club": "Hellas Verona",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10077,7 +10077,7 @@
           "club": "Manchester City",
           "country": null,
           "elo": 1889,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10097,7 +10097,7 @@
           "club": "LOSC Lille",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10107,7 +10107,7 @@
           "club": "OGC Nice",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10137,7 +10137,7 @@
           "club": "Bayer 04 Leverkusen",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10147,7 +10147,7 @@
           "club": "Eintracht Frankfurt",
           "country": null,
           "elo": 1545,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10167,7 +10167,7 @@
           "club": "Al-Ahli Saudi FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -10217,7 +10217,7 @@
           "club": "VfL Wolfsburg",
           "country": null,
           "elo": 1440,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11067,7 +11067,7 @@
           "club": "PFC Nasaf Qarshi",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11097,7 +11097,7 @@
           "club": "Manchester City",
           "country": null,
           "elo": 1889,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11107,7 +11107,7 @@
           "club": "Esteghlal FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11127,7 +11127,7 @@
           "club": "Pakhtakor Tashkent",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11137,7 +11137,7 @@
           "club": "Pakhtakor Tashkent",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11187,7 +11187,7 @@
           "club": "Tractor FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11197,7 +11197,7 @@
           "club": "Dibba Al-Fujairah SCC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11207,7 +11207,7 @@
           "club": "Al-Bataeh Club",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11217,7 +11217,7 @@
           "club": "FC Baniyas",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11267,7 +11267,7 @@
           "club": "Istanbul Basaksehir FK",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11287,7 +11287,7 @@
           "club": "Persepolis FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11908,7 +11908,7 @@
           "club": "GNK Dinamo Zagreb",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11918,7 +11918,7 @@
           "club": "Manchester City",
           "country": null,
           "elo": 1889,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11928,7 +11928,7 @@
           "club": "Real Sociedad",
           "country": null,
           "elo": 1568,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11948,7 +11948,7 @@
           "club": "AFC Ajax",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11978,7 +11978,7 @@
           "club": "Bayern Munich",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -11988,7 +11988,7 @@
           "club": "AC Milan",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12028,7 +12028,7 @@
           "club": "Manchester City",
           "country": null,
           "elo": 1889,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12038,7 +12038,7 @@
           "club": "Real Sociedad",
           "country": null,
           "elo": 1568,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12068,7 +12068,7 @@
           "club": "Como 1907",
           "country": null,
           "elo": 1554,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12088,7 +12088,7 @@
           "club": "TSG 1899 Hoffenheim",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12138,7 +12138,7 @@
           "club": "CA Osasuna",
           "country": null,
           "elo": 1516,
-          "titular": false
+          "titular": true
         }
       ],
       "scheme": "3-4-2-1",
@@ -12171,7 +12171,7 @@
           "club": "St. Gallen",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12211,7 +12211,7 @@
           "club": "Wolfsburg",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12231,7 +12231,7 @@
           "club": "Istanbul Basaksehir",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12251,7 +12251,7 @@
           "club": "AJ Auxerre",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12271,7 +12271,7 @@
           "club": "AJ Auxerre",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12291,7 +12291,7 @@
           "club": "Villarreal",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12311,7 +12311,7 @@
           "club": "AJ Auxerre",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12341,7 +12341,7 @@
           "club": "Atalanta",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12361,7 +12361,7 @@
           "club": "Manchester City",
           "country": null,
           "elo": 1889,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12371,7 +12371,7 @@
           "club": "Leicester City",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12401,7 +12401,7 @@
           "club": "Leicester City",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12474,7 +12474,7 @@
           "club": "Al-Fayha FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12484,7 +12484,7 @@
           "club": "Norwich City",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12494,7 +12494,7 @@
           "club": "LASK Linz",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12514,7 +12514,7 @@
           "club": "Deportivo Saprissa",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12544,7 +12544,7 @@
           "club": "Beşiktaş JK",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12564,7 +12564,7 @@
           "club": "Deportivo La Guaira",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12584,7 +12584,7 @@
           "club": "Pumas UNAM",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12614,7 +12614,7 @@
           "club": "San Diego FC",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12624,7 +12624,7 @@
           "club": "FC Juárez",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12664,7 +12664,7 @@
           "club": "Club León",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
@@ -12674,7 +12674,7 @@
           "club": "U. Católica",
           "country": null,
           "elo": null,
-          "titular": false
+          "titular": true
         },
         {
           "number": null,
