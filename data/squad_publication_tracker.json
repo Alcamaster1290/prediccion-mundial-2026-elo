@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "updated": "2026-06-07",
+    "source": "manual_user_input",
+    "description": "Fechas de publicación de convocatorias registradas para el tracker. Estas fechas no reemplazan la fecha de publicación del artículo fuente de AlterFutbol.",
+    "total_published": 22,
+    "total_teams": 48,
+    "pending_registered_date": 26
+  },
+  "teams": [
+    {
+      "team_code": "usa",
+      "name": "Estados Unidos",
+      "group_id": "D",
+      "published_date": "2026-05-26"
+    },
+    {
+      "team_code": "mar",
+      "name": "Marruecos",
+      "group_id": "C",
+      "published_date": "2026-05-26"
+    },
+    {
+      "team_code": "pan",
+      "name": "Panamá",
+      "group_id": "L",
+      "published_date": "2026-05-26"
+    },
+    {
+      "team_code": "zaf",
+      "name": "Sudáfrica",
+      "group_id": "A",
+      "published_date": "2026-05-27"
+    },
+    {
+      "team_code": "ned",
+      "name": "Países Bajos",
+      "group_id": "F",
+      "published_date": "2026-05-27"
+    },
+    {
+      "team_code": "arg",
+      "name": "Argentina",
+      "group_id": "J",
+      "published_date": "2026-05-28"
+    },
+    {
+      "team_code": "can",
+      "name": "Canadá",
+      "group_id": "B",
+      "published_date": "2026-05-29"
+    },
+    {
+      "team_code": "egy",
+      "name": "Egipto",
+      "group_id": "G",
+      "published_date": "2026-05-29"
+    },
+    {
+      "team_code": "alg",
+      "name": "Argelia",
+      "group_id": "J",
+      "published_date": "2026-05-31"
+    },
+    {
+      "team_code": "cze",
+      "name": "Chequia",
+      "group_id": "A",
+      "published_date": "2026-05-31"
+    },
+    {
+      "team_code": "ksa",
+      "name": "Arabia Saudita",
+      "group_id": "H",
+      "published_date": "2026-05-31"
+    },
+    {
+      "team_code": "ecu",
+      "name": "Ecuador",
+      "group_id": "E",
+      "published_date": "2026-05-31"
+    },
+    {
+      "team_code": "mex",
+      "name": "México",
+      "group_id": "A",
+      "published_date": "2026-05-31"
+    },
+    {
+      "team_code": "ury",
+      "name": "Uruguay",
+      "group_id": "H",
+      "published_date": "2026-05-31"
+    },
+    {
+      "team_code": "irn",
+      "name": "Irán",
+      "group_id": "G",
+      "published_date": "2026-06-01"
+    },
+    {
+      "team_code": "irq",
+      "name": "Irak",
+      "group_id": "I",
+      "published_date": "2026-06-01"
+    },
+    {
+      "team_code": "aus",
+      "name": "Australia",
+      "group_id": "D",
+      "published_date": "2026-06-01"
+    },
+    {
+      "team_code": "qat",
+      "name": "Qatar",
+      "group_id": "B",
+      "published_date": "2026-06-01"
+    },
+    {
+      "team_code": "cro",
+      "name": "Croacia",
+      "group_id": "L",
+      "published_date": "2026-06-01"
+    },
+    {
+      "team_code": "gha",
+      "name": "Ghana",
+      "group_id": "L",
+      "published_date": "2026-06-01"
+    },
+    {
+      "team_code": "pry",
+      "name": "Paraguay",
+      "group_id": "D",
+      "published_date": "2026-06-01"
+    },
+    {
+      "team_code": "sen",
+      "name": "Senegal",
+      "group_id": "I",
+      "published_date": "2026-06-01"
+    }
+  ]
+}

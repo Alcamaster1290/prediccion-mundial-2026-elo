@@ -881,7 +881,7 @@ def render_pending_tracker(groups_data, teams_by_code):
 
     chunks = [
         "    <!-- Selecciones pendientes por grupo -->",
-        '    <h3 style="margin-top:3rem;margin-bottom:1.5rem">Pendientes por anunciar</h3>',
+        '    <h3 style="margin-top:3rem;margin-bottom:1.5rem">Pendientes de perfil fuenteado</h3>',
     ]
     if not pending_by_group:
         chunks.append(
@@ -891,7 +891,7 @@ def render_pending_tracker(groups_data, teams_by_code):
 
     chunks.extend(
         [
-            '    <p style="font-size:13px;color:var(--muted);margin-top:-.75rem;margin-bottom:1.25rem">Solo quedan sin publicar las selecciones para las que no hay articulo directo y lista confiable en AlterFutbol.</p>',
+            '    <p style="font-size:13px;color:var(--muted);margin-top:-.75rem;margin-bottom:1.25rem">Estas selecciones pueden tener convocatoria registrada, pero aun no tienen articulo directo y lista confiable en AlterFutbol para publicar perfil completo.</p>',
             '    <div class="groups-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">',
         ]
     )
