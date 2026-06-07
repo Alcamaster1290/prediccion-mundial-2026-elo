@@ -6,8 +6,8 @@ Standalone: python scripts/simulate_group_stage.py [--seed 42]
 
 Algorithm:
   - Team strength score = ELO-based value from team_strength_snapshots.json
-  - Goals per team drawn from Poisson(lambda), where lambda = base_goals * 10^(diff/800)
-  - 10^(diff/800) is the square root of the standard ELO win probability ratio
+  - ELO difference defines expected goal share through the standard expected-score curve
+  - Goals per team drawn from Poisson(lambda), keeping total expected goals stable
   - Group standings: PTS -> DG -> GF -> draw_order (GROUP_TEAMS index)
 """
 import argparse
@@ -16,6 +16,8 @@ import math
 import random
 from collections import defaultdict
 from pathlib import Path
+
+from elo_probability import match_lambdas as elo_match_lambdas
 
 REPO_ROOT = Path(__file__).parent.parent
 
@@ -60,26 +62,21 @@ def poisson_goals(lam):
     return k - 1
 
 
-def match_lambdas(strength_a, strength_b, base_goals_per_team):
+def match_lambdas(strength_a, strength_b, base_goals_per_team, elo_scale=400):
     """Returns (lambda_a, lambda_b) using ELO ratio method.
 
-    lambda_a / lambda_b = 10^(diff/400), same ratio as win probability.
-    Both lambdas multiply to base_goals_per_team^2 (geometric mean preserved).
+    The ELO expected-score curve controls each team's expected goal share.
+    Total expected goals stay fixed at 2 * base_goals_per_team.
     """
-    diff = strength_a - strength_b
-    # sqrt of win-probability ratio keeps geometric mean constant
-    factor = 10 ** (diff / 800)
-    lambda_a = base_goals_per_team * factor
-    lambda_b = base_goals_per_team / factor
-    return lambda_a, lambda_b
+    return elo_match_lambdas(strength_a, strength_b, base_goals_per_team, elo_scale)
 
 
-def simulate_match(home_strength, away_strength, base_goals):
-    la, lb = match_lambdas(home_strength, away_strength, base_goals)
+def simulate_match(home_strength, away_strength, base_goals, elo_scale=400):
+    la, lb = elo_match_lambdas(home_strength, away_strength, base_goals, elo_scale)
     return poisson_goals(la), poisson_goals(lb)
 
 
-def simulate_group(group_id, group_matches, strengths, base_goals):
+def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400):
     """Simulate 6 matches and return ranked team list (4 items)."""
     draw_order = GROUP_ORDER.get(group_id.upper(), [])
     stats = defaultdict(lambda: {'PJ':0,'PG':0,'PE':0,'PP':0,'GF':0,'GC':0,'DG':0,'PTS':0})
@@ -88,7 +85,7 @@ def simulate_group(group_id, group_matches, strengths, base_goals):
         h, a = m['home_team'], m['away_team']
         sh = strengths.get(h, 1600)
         sa = strengths.get(a, 1600)
-        hg, ag = simulate_match(sh, sa, base_goals)
+        hg, ag = simulate_match(sh, sa, base_goals, elo_scale)
 
         stats[h]['PJ'] += 1; stats[a]['PJ'] += 1
         stats[h]['GF'] += hg; stats[h]['GC'] += ag
@@ -115,14 +112,14 @@ def simulate_group(group_id, group_matches, strengths, base_goals):
     return [{'code': c, **stats[c]} for c in teams]
 
 
-def simulate_all_groups(matches, strengths, base_goals):
+def simulate_all_groups(matches, strengths, base_goals, elo_scale=400):
     """Run one full group stage simulation. Returns {group_id: [ranked_teams]}."""
     by_group = defaultdict(list)
     for m in matches:
         by_group[m['group']].append(m)
 
     return {
-        gid: simulate_group(gid, gmatches, strengths, base_goals)
+        gid: simulate_group(gid, gmatches, strengths, base_goals, elo_scale)
         for gid, gmatches in by_group.items()
     }
 
@@ -149,11 +146,12 @@ def main():
 
     weights   = load_json(REPO_ROOT / 'data' / 'model_weights.json')
     base_goals = weights.get('base_goals_per_team', 1.3)
+    elo_scale = weights.get('elo_scale', 400)
 
     matches   = load_matches()
     strengths = load_strengths()
 
-    standings = simulate_all_groups(matches, strengths, base_goals)
+    standings = simulate_all_groups(matches, strengths, base_goals, elo_scale)
 
     print("Group Stage Results")
     print("=" * 40)

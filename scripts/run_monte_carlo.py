@@ -28,7 +28,7 @@ REPO_ROOT = Path(__file__).parent.parent
 POSSIBLE_POINTS = (0, 1, 2, 3, 4, 5, 6, 7, 9)
 
 
-def run_monte_carlo(runs, seed, matches, strengths, base_goals):
+def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400):
     if seed is not None:
         random.seed(seed)
 
@@ -48,7 +48,7 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals):
     })
 
     for _ in range(runs):
-        standings = simulate_all_groups(matches, strengths, base_goals)
+        standings = simulate_all_groups(matches, strengths, base_goals, elo_scale)
 
         for gid, ranked in standings.items():
             for pos, t in enumerate(ranked):
@@ -122,12 +122,13 @@ def main():
 
     weights    = json.loads((REPO_ROOT / 'data' / 'model_weights.json').read_text(encoding='utf-8'))
     base_goals = weights.get('base_goals_per_team', 1.3)
+    elo_scale = weights.get('elo_scale', 400)
 
     matches   = load_matches()
     strengths = load_strengths()
 
     print(f"Running {args.runs} simulations (seed={args.seed})...")
-    results_by_team, terceros_table = run_monte_carlo(args.runs, args.seed, matches, strengths, base_goals)
+    results_by_team, terceros_table = run_monte_carlo(args.runs, args.seed, matches, strengths, base_goals, elo_scale)
 
     output = {
         'runs':           args.runs,

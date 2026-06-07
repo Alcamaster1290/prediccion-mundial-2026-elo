@@ -60,6 +60,27 @@ def test_prediction_explanation_adds_probability_and_calendar_when_context_is_mi
     assert "Calendario:" in explanation
 
 
+def test_prediction_explanation_keeps_base_context_and_adds_model_probability():
+    build_probability_note = helper("build_probability_note")
+    compose_prediction_explanation = helper("compose_prediction_explanation")
+    match = {
+        "home_name": "Qatar",
+        "away_name": "Suiza",
+    }
+
+    model_note = build_probability_note(match, 0.69, 9.01, 90.30)
+    explanation = compose_prediction_explanation(
+        "Qatar puede competir si sostiene el bloque bajo.",
+        model_note,
+        "Calendario: el debut condiciona la segunda jornada.",
+    )
+
+    assert explanation.startswith("Qatar puede competir")
+    assert "El modelo ELO da ventaja a Suiza" in explanation
+    assert "90.3%" in explanation
+    assert "Calendario:" in explanation
+
+
 def test_context_lookup_keeps_team_context_aligned_when_match_order_changes():
     build_context_lookup = helper("build_context_lookup")
     find_context_for_match = helper("find_context_for_match")

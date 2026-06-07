@@ -3,14 +3,14 @@ generate_predictions.py
 Generates probabilistic predictions for all 72 group-stage matches of
 the 2026 World Cup and writes data/predictions_seed.sql for Supabase seeding.
 
-Algorithm: Poisson Monte Carlo (N=50000, seed=42)
+Algorithm: exact Poisson probabilities from ELO-style team strength.
 """
 
 import json
-import math
-import random
 from datetime import date
 from pathlib import Path
+
+from elo_probability import rounded_outcome_percentages
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 REPO_ROOT = Path(__file__).parent.parent
@@ -22,46 +22,13 @@ WEIGHTS_FILE  = DATA_DIR / "model_weights.json"
 CONTEXT_FILE  = DATA_DIR / "match_context.json"
 OUTPUT_SQL    = DATA_DIR / "predictions_seed.sql"
 
-# ── Reproducibility ────────────────────────────────────────────────────────────
-random.seed(42)
-N_SIMULATIONS = 50_000
-
-
-# ── Poisson helpers ────────────────────────────────────────────────────────────
-def poisson_goals(lam: float) -> int:
-    """Knuth algorithm for Poisson-distributed integer."""
-    L = math.exp(-max(lam, 0.01))
-    k, p = 0, 1.0
-    while p > L:
-        k += 1
-        p *= random.random()
-    return k - 1
-
-
-def match_probs(sa: float, sb: float, base_goals: float, n: int = N_SIMULATIONS):
+def match_probs(sa: float, sb: float, base_goals: float, n=None, elo_scale: float = 400, max_goals: int = 12):
     """
     Returns (pa, pd, pb) in 0–100 scale where pa + pd + pb == 100.00
     sa, sb: ELO-style strength scores for team A and team B.
+    n is accepted for backward compatibility; direct predictions are exact.
     """
-    factor = 10 ** ((sa - sb) / 800)
-    la = base_goals * factor
-    lb = base_goals / factor
-
-    wins_a = wins_b = draws = 0
-    for _ in range(n):
-        ga = poisson_goals(la)
-        gb = poisson_goals(lb)
-        if ga > gb:
-            wins_a += 1
-        elif ga == gb:
-            draws += 1
-        else:
-            wins_b += 1
-
-    pa = round(100 * wins_a / n, 2)
-    pd = round(100 * draws  / n, 2)
-    pb = round(100.00 - pa - pd, 2)   # guarantees exact sum = 100
-    return pa, pd, pb
+    return rounded_outcome_percentages(sa, sb, base_goals, elo_scale, max_goals)
 
 
 # ── Tag logic ─────────────────────────────────────────────────────────────────
@@ -270,7 +237,11 @@ def build_probability_note(match, pa, pd, pb):
 
 def compose_prediction_explanation(base_explanation, probability_note, calendar_note):
     base = (base_explanation or "").strip()
-    parts = [base] if base else ([probability_note] if probability_note else [])
+    parts = []
+    if base:
+        parts.append(base)
+    if probability_note:
+        parts.append(probability_note)
     if calendar_note:
         parts.append(calendar_note)
     return " ".join(part for part in parts if part).strip()
@@ -288,6 +259,8 @@ def main():
     ctx_data  = load_json(CONTEXT_FILE)
 
     base_goals = weights["base_goals_per_team"]   # 1.3
+    elo_scale = weights.get("elo_scale", 400)
+    max_goals = weights.get("poisson_max_goals", 12)
 
     ctx_by_id, ctx_by_group_round_pair = build_context_lookup(ctx_data["matches"])
     fixture_index = build_group_fixture_index(matches)
@@ -316,7 +289,7 @@ def main():
         sa = strengths.get(team_a, {}).get("strength_score", 1500.0)
         sb = strengths.get(team_b, {}).get("strength_score", 1500.0)
 
-        pa, pd, pb = match_probs(sa, sb, base_goals)
+        pa, pd, pb = match_probs(sa, sb, base_goals, elo_scale=elo_scale, max_goals=max_goals)
 
         is_inaugural = (mid == inaugural_id)
         tag = global_tag(pa, pd, pb, is_inaugural)

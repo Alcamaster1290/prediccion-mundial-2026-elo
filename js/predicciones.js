@@ -263,12 +263,17 @@
     var sourceText = 'ELO internacional: ' + escapeHtml(model.elo_source || 'international-football.net')
       + ratingDate
       + '; ELO clubes: ' + escapeHtml(model.club_elo_source || 'worldclubratings.com') + '.';
+    var baseGoals = model.base_goals_per_team == null ? 1.3 : parseFloat(model.base_goals_per_team);
+    var totalGoalsText = isNaN(baseGoals) ? '-' : formatModelValue(baseGoals * 2, 1);
+    var eloScale = model.elo_scale == null ? 400 : model.elo_scale;
+    var eloScaleText = formatModelValue(eloScale, 0);
+    var probabilityFormula = model.probability_formula || 'ELO expected-score -> Poisson; fixed 2 * base_goals_per_team expected goals split by team strength';
 
     var html = '<section class="pred-elo-model">'
       + '<div class="pred-elo-copy">'
       + '<span class="pred-elo-kicker">Modelo ELO</span>'
       + '<h3>Como se calcula la fuerza de cada seleccion</h3>'
-      + '<p>El punto de partida es el ELO internacional. Cuando el XI titular tiene muestra suficiente de ELO de clubes, la fuerza se ajusta contra el promedio global del XI para premiar plantillas fuertes sin castigar de forma desproporcionada a selecciones con menor exposicion de clubes.</p>'
+      + '<p>El punto de partida es el ELO internacional. Cuando el XI titular tiene muestra suficiente de ELO de clubes, la fuerza se ajusta contra el promedio global del XI. Luego esa fuerza se transforma en probabilidades con una curva ELO y Poisson sin inflar el total esperado de goles.</p>'
       + '<div class="pred-elo-formula">'
       + '<span>Fuerza seleccion</span>'
       + '<code>ELO internacional + (XI blend - ' + avgXiBlendText + ') x ' + clubAdjWeightText + '</code>'
@@ -276,6 +281,10 @@
       + '<div class="pred-elo-formula">'
       + '<span>promedio XI actual</span>'
       + '<code>' + avgXiBlendText + ' &middot; peso clubes ' + clubAdjWeightText + '</code>'
+      + '</div>'
+      + '<div class="pred-elo-formula">'
+      + '<span>Probabilidad partido</span>'
+      + '<code>' + escapeHtml(probabilityFormula) + ' &middot; total goles ' + totalGoalsText + ' &middot; escala ELO ' + eloScaleText + '</code>'
       + '</div>'
       + '<p>Snapshot actual: ' + formatModelValue(summary.xi_blend_ready, 0) + ' selecciones usan ajuste por XI titular; ' + formatModelValue(summary.needs_player_elo, 0) + ' necesitan mas ELOs de jugadores; ' + formatModelValue(summary.elo_intl_only, 0) + ' quedan con base internacional. ' + sourceText + '</p>'
       + '</div>'
