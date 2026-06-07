@@ -41,3 +41,20 @@ def test_every_team_section_has_knockout_route_mapping():
 
     unknown_codes = sorted(set(team_codes.values()) - all_team_codes)
     assert unknown_codes == []
+
+
+def test_best_third_slot_parser_keeps_every_group_option():
+    index_html = (REPO_ROOT / "index.html").read_text(encoding="utf-8")
+
+    assert "var third = clean.match(/^3[^A-L]*([A-L](?:\\/[A-L])*)$/);" in index_html
+    assert "var third = clean.match(/^3\\D+([A-L](?:\\/[A-L])*)$/);" not in index_html
+
+    third_labels = re.findall(r"(?:homeLabel|awayLabel):'([^']*3\.[^']*)'", index_html)
+    parsed_groups = set()
+    for label in third_labels:
+        clean = label.replace("Grupo ", "").replace("Ã‚", "")
+        match = re.match(r"^3[^A-L]*([A-L](?:/[A-L])*)$", clean)
+        assert match, label
+        parsed_groups.update(match.group(1).split("/"))
+
+    assert parsed_groups == set("ABCDEFGHIJKL")

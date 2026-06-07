@@ -1,6 +1,8 @@
 import sys
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
@@ -52,6 +54,49 @@ def test_generated_team_section_hides_dt_source_and_contains_required_blocks():
     assert 'id="mexico"' in section
     assert "Sistema de juego" in section
     assert "Ausencias notables" in section
+    assert "3er Mundial en casa" in section
+    assert "Perfil fuenteado" not in section
+    assert '<span class="absence-name">' in section
+    assert '<span class="absence-reason">Hirving Lozano quedo fuera de la nomina final.</span>' in section
     assert "XI Probable" in section
     assert "squad-table" in section
     assert "dt_source" not in section
+
+
+def test_published_absence_cards_use_name_reason_format():
+    html = (Path(__file__).resolve().parents[1] / "index.html").read_text(encoding="utf-8")
+    soup = BeautifulSoup(html, "html.parser")
+
+    missing = []
+    for h4 in soup.select("h4"):
+        if h4.get_text(" ", strip=True) != "Ausencias notables":
+            continue
+        card = h4.find_parent(class_="info-card")
+        if not card:
+            continue
+        for index, item in enumerate(card.select(".absence-list li"), start=1):
+            if not item.select_one(".absence-name") or not item.select_one(".absence-reason"):
+                team = item.find_parent(class_="team-section")
+                missing.append(f"{team.get('id') if team else 'unknown'}:{index}")
+
+    assert missing == []
+    assert "Dudas y novedades" not in html
+    assert "Perfil fuenteado" not in html
+
+
+def test_generated_team_pills_use_contextual_badges():
+    html = (Path(__file__).resolve().parents[1] / "index.html").read_text(encoding="utf-8")
+    soup = BeautifulSoup(html, "html.parser")
+
+    missing = []
+    for code, badge in render_team_sections.TEAM_CONTEXT_BADGES.items():
+        section_id = render_team_sections.SECTION_BY_CODE[code]
+        section = soup.find(id=section_id)
+        if not section:
+            missing.append(f"{section_id}:missing-section")
+            continue
+        pills = [pill.get_text(" ", strip=True) for pill in section.select(".team-pills .team-pill")]
+        if badge not in pills:
+            missing.append(f"{section_id}:{badge}")
+
+    assert missing == []

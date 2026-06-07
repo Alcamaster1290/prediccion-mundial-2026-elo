@@ -1,4 +1,8 @@
-from scripts.import_alterfutbol_squads import merge_squad_only_teams
+from scripts.import_alterfutbol_squads import (
+    club_elo_map,
+    lookup_club_elo,
+    merge_squad_only_teams,
+)
 
 
 def test_merge_squad_only_teams_adds_only_complete_missing_sources():
@@ -57,3 +61,24 @@ def test_merge_squad_only_teams_adds_only_complete_missing_sources():
     assert all(player["titular"] is False for player in by_code["mex"]["players"])
     assert merged["meta"]["total_teams_analyzed"] == 1
     assert merged["meta"]["total_teams_with_squads"] == 2
+
+
+def test_club_elo_lookup_resolves_common_source_aliases():
+    club_elos = club_elo_map(
+        {
+            "clubs": [
+                {"club": "AC Mailand", "elo": 1688},
+                {"club": "FC Arsenal", "elo": 2106},
+                {"club": "Inter Mailand", "elo": 1864},
+                {"club": "Olympique Marseille", "elo": 1588},
+                {"club": "FC Kopenhagen", "elo": 1495},
+            ]
+        }
+    )
+
+    assert lookup_club_elo("AC Milan", club_elos) == 1688
+    assert lookup_club_elo("Milan", club_elos) == 1688
+    assert lookup_club_elo("Arsenal", club_elos) == 2106
+    assert lookup_club_elo("Inter de Milán", club_elos) == 1864
+    assert lookup_club_elo("Olympique de Marsella", club_elos) == 1588
+    assert lookup_club_elo("FC Copenhague", club_elos) == 1495

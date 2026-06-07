@@ -154,6 +154,116 @@ GROUP_BORDER = {
 
 POS_LABEL = {"DF": "DEF", "MF": "MED", "FW": "DEL"}
 POS_CLASS = {"GK": "pos-gk", "DF": "pos-def", "DEF": "pos-def", "MF": "pos-med", "MED": "pos-med", "FW": "pos-del", "DEL": "pos-del"}
+TEAM_CONTEXT_BADGES = {
+    "mex": "3er Mundial en casa",
+    "zaf": "Sundowns como base",
+    "cze": "Kovář figura del repechaje",
+    "can": "Co-sede · 3er Mundial",
+    "qat": "Campeón Asia 2023",
+    "mar": "Semifinalista Qatar 2022",
+    "pry": "Regresa tras 16 años",
+    "aus": "6° Mundial consecutivo",
+    "tur": "Regresa tras 24 años",
+    "ecu": "5° Mundial",
+    "ned": "Finalista 3 veces",
+    "egy": "Salah a 2 goles del récord",
+    "irn": "4° Mundial consecutivo",
+    "ury": "Muslera · 5° Mundial",
+    "sen": "Campeón África 2021",
+    "irq": "Regresa tras 40 años",
+    "arg": "Campeona Qatar 2022",
+    "alg": "Regresa tras 12 años",
+    "uzb": "1° Mundial histórico",
+    "cro": "Último Mundial de Modrić",
+    "gha": "5° Mundial",
+    "pan": "2° Mundial",
+}
+ABSENCE_LABEL_OVERRIDES = {
+    "mex": [
+        "Hirving “Chucky” Lozano (no convocado)",
+        "César Huerta (duda física)",
+        "Marcel Ruiz (lesionado)",
+    ],
+    "zaf": ["Modiba / Thapelo Morena (lesionados)"],
+    "cze": [
+        "Adam Hložek (lesionado)",
+        "Tomáš Chorý / David Douděra (sanción)",
+        "Christophe Kabongo / Pavel Bucha / Tomáš Ladra (no convocados)",
+    ],
+    "can": [
+        "Lista marcada por lesiones (seguimiento)",
+        "Corte final de seis jugadores (no convocados)",
+        "Davies / Bombito / Laryea / Shaffelburg / De Fougerolles / Koné (duda física)",
+    ],
+    "qat": [
+        "Delantero sin ritmo (lesionado)",
+        "Titular con roja y lesión (duda física)",
+    ],
+    "mar": [
+        "Youssef En-Nesyri (no convocado)",
+        "Ait Boudlal (lesionado)",
+    ],
+    "pry": [
+        "Exclusiones por lesión o decisión técnica (seguimiento)",
+        "Adam Bareiro / Mathías Villasanti (lesionados)",
+        "Decisión técnica (no convocado)",
+    ],
+    "aus": [
+        "Volante del Middlesbrough (lesionado)",
+        "Hayden Matthews / Nick D’Agostino / Patrick Yazbek (lesionados)",
+        "Riley McGree (lesionado)",
+    ],
+    "tur": [
+        "Reservas por posibles lesiones (seguimiento)",
+        "Enes Ünal (lesionado)",
+        "Atakan Karazor (no convocado)",
+    ],
+    "ecu": ["Leonardo Campana (lesionado)"],
+    "ned": [
+        "Xavi Simons / Jerdy Schouten (lesionados)",
+        "Lateral del Liverpool (lesionado)",
+        "Volante de Atalanta (no convocado)",
+    ],
+    "egy": [
+        "Aqtai Abdallah (no convocado)",
+        "Abdelmonem (duda física)",
+        "Continuidad física (seguimiento)",
+    ],
+    "irn": [
+        "Sardar Azmoun (marginado)",
+        "Ali Gholizadeh (lesionado)",
+    ],
+    "ury": [
+        "Luis Suárez (no convocado)",
+        "Nández / Facundo Torres / Nicolás Fonseca / Luciano Rodríguez (no convocados)",
+        "Atacante recuperado (seguimiento)",
+    ],
+    "sen": ["Kalidou Koulibaly (duda física)"],
+    "irq": ["Arquero titular (recuperado)"],
+    "arg": [
+        "Marcos Senesi (no convocado)",
+        "Lo Celso / Máximo Perrone (seguimiento)",
+        "Garnacho / Soulé / Prestianni / Buendía (no convocados)",
+    ],
+    "alg": [
+        "Ausencia por lesiones repetidas (no convocado)",
+        "Ilan Kebbal (no convocado)",
+        "Sanción por altercado (seguimiento)",
+    ],
+    "uzb": ["Aziz Ganiev (lesionado)"],
+    "cro": [
+        "Molestias recientes (duda física)",
+        "Bruno Petković (lesionado)",
+    ],
+    "gha": [
+        "Mohammed Kudus (lesionado)",
+        "Mohammed Salisu (lesionado)",
+    ],
+    "pan": [
+        "Kadir Barría (lesionado)",
+        "Kadir Barría (recuperación)",
+    ],
+}
 ABSENCE_PATTERNS = (
     "ausencia mas",
     "ausencia notable",
@@ -444,13 +554,47 @@ def render_star_card(team):
         </div>"""
 
 
+def absence_status_label(note):
+    key = normalize_country_name(note)
+    if "sancion" in key or "altercado" in key:
+        return "sanción"
+    if any(term in key for term in ("lesion", "rotura", "desgarro", "ligamento", "molestia", "sin ritmo")):
+        return "duda física"
+    if any(term in key for term in ("no convoc", "fuera", "afuera", "descart", "exclu", "margin", "corte")):
+        return "no convocado"
+    return "seguimiento"
+
+
+def fallback_absence_label(note):
+    key = normalize_country_name(note)
+    if "decision tecnica" in key or "definicion" in key:
+        return "Decisión técnica (no convocado)"
+    if "reserva" in key:
+        return "Reservas por posibles lesiones (seguimiento)"
+    if "lesion" in key or "molestia" in key:
+        return f"Situación física ({absence_status_label(note)})"
+    if "corte" in key or "preseleccion" in key:
+        return "Corte de lista (no convocado)"
+    return f"Situación de lista ({absence_status_label(note)})"
+
+
+def absence_label_for(team, index, note):
+    labels = ABSENCE_LABEL_OVERRIDES.get(team.get("id"), [])
+    if index < len(labels):
+        return labels[index]
+    return fallback_absence_label(note)
+
+
 def render_absences(team):
     notes = team.get("absences") or []
     if not notes:
         notes = ["La fuente revisada no detalla ausencias puntuales en el bloque de convocatoria y análisis."]
     items = "\n".join(
-        f'            <li><span class="absence-reason">{h(note)}</span></li>'
-        for note in notes[:3]
+        (
+            f'            <li><span class="absence-name">{h(absence_label_for(team, index, note))}</span><br>'
+            f'<span class="absence-reason">{h(note)}</span></li>'
+        )
+        for index, note in enumerate(notes[:3])
     )
     source_url = team.get("absences_source_url") or team.get("source_url")
     source_link = ""
@@ -465,6 +609,10 @@ def render_absences(team):
 {items}
           </ul>{source_link}
         </div>"""
+
+
+def team_context_badge(team):
+    return TEAM_CONTEXT_BADGES.get(team.get("id")) or "Dato histórico"
 
 
 def render_squad_table(team):
@@ -522,7 +670,7 @@ def render_team_section(team):
         <div>
           <div class="team-name">{h(team.get('name'))}</div>
           <div class="team-sub">DT: {h(team.get('dt') or 'Por confirmar')} · Grupo {h(group)}</div>
-          <div class="team-pills"><span class="team-pill" style="color:var(--accent);border-color:var(--accent)">{h(scheme)}</span><span class="team-pill" style="color:var(--grp-{h(group).lower()});border-color:var(--grp-{h(group).lower()})">Grupo {h(group)}</span><span class="team-pill" style="color:var(--gold);border-color:var(--gold)">Perfil fuenteado</span></div>
+          <div class="team-pills"><span class="team-pill" style="color:var(--accent);border-color:var(--accent)">{h(scheme)}</span><span class="team-pill" style="color:var(--grp-{h(group).lower()});border-color:var(--grp-{h(group).lower()})">Grupo {h(group)}</span><span class="team-pill" style="color:var(--gold);border-color:var(--gold)">{h(team_context_badge(team))}</span></div>
         </div>
 {render_star_card(team)}
       </div>
