@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 TRACKER_PATH = REPO_ROOT / "data" / "squad_publication_tracker.json"
@@ -49,6 +51,48 @@ def test_index_tracker_renders_publication_dates():
 
     assert "22 selecciones con fecha de convocatoria registrada" in html
     assert "26 pendientes de fecha registrada" in html
-    assert "Arabia Saudita</strong></td><td>31 may</td>" in html
-    assert "Uruguay</strong></td><td>31 may</td>" in html
-    assert "Senegal</strong></td><td>1 jun</td>" in html
+    assert "<!-- Fechas de publicación de convocatorias -->" not in html
+    assert "Cronología de anuncios" in html
+    assert "31 May</span>" in html
+    assert "Arabia Saudita" in html
+    assert "Uruguay" in html
+    assert "Senegal" in html
+
+
+def test_index_tracker_uses_current_profile_totals():
+    html = INDEX_PATH.read_text(encoding="utf-8")
+
+    assert "46 perfiles publicados" in html
+    assert "2 pendientes de perfil fuenteado" in html
+    assert "24 con análisis completo" not in html
+
+
+def test_rendered_starters_have_club_elo_in_team_tables():
+    soup = BeautifulSoup(INDEX_PATH.read_text(encoding="utf-8"), "html.parser")
+
+    missing = []
+    for section in soup.select(".team-section"):
+        section_id = section.get("id")
+        for row in section.select(".squad-table tbody tr"):
+            if not row.select_one(".titl-yes"):
+                continue
+            elo = row.select_one(".elo-cell")
+            name = row.select_one(".player-name")
+            if not elo or "elo-nd" in (elo.get("class") or []) or elo.get_text(strip=True) == "N/D":
+                missing.append(f"{section_id}:{name.get_text(strip=True) if name else 'unknown'}")
+
+    assert missing == []
+
+
+def test_tracker_team_table_lists_all_teams_with_current_status():
+    soup = BeautifulSoup(INDEX_PATH.read_text(encoding="utf-8"), "html.parser")
+    tracker = soup.find(id="tracker")
+
+    rows = tracker.select(".tracker-squad tbody tr")
+    tracker_text = tracker.get_text(" ", strip=True)
+
+    assert len(rows) == 48
+    assert "Arabia Saudita" in tracker_text
+    assert "31 May" in tracker_text
+    assert "Jordania" in tracker_text
+    assert "Pendiente perfil" in tracker_text

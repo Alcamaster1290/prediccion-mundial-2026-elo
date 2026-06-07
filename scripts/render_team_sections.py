@@ -689,6 +689,48 @@ def render_team_section(team):
     </div>"""
 
 
+def find_squad_table_bounds(section_html):
+    start = section_html.find('<div class="squad-wrap"><table class="squad-table">')
+    if start == -1:
+        return None
+    table_end_marker = "</tbody></table></div>"
+    table_end = section_html.find(table_end_marker, start)
+    if table_end == -1:
+        return None
+    end = table_end + len(table_end_marker)
+    note_start = section_html.find('<div class="nd-note">', end)
+    if note_start == end:
+        note_end = section_html.find("</div>", note_start)
+        if note_end != -1:
+            end = note_end + len("</div>")
+    return start, end
+
+
+def replace_existing_squad_tables(index_html, teams_by_code):
+    for code, team in teams_by_code.items():
+        if not team.get("players") or not has_public_profile(team):
+            continue
+        section_id = SECTION_BY_CODE.get(code)
+        if not section_id:
+            continue
+        section_bounds = find_team_section_bounds(index_html, section_id)
+        if not section_bounds:
+            continue
+        section_start, section_end = section_bounds
+        section_html = index_html[section_start:section_end]
+        table_bounds = find_squad_table_bounds(section_html)
+        if not table_bounds:
+            continue
+        table_start, table_end = table_bounds
+        updated_section = (
+            section_html[:table_start]
+            + render_squad_table(team)
+            + section_html[table_end:]
+        )
+        index_html = index_html[:section_start] + updated_section + index_html[section_end:]
+    return index_html
+
+
 def render_pending_grid(codes, groups_data):
     if not codes:
         return ""
@@ -867,6 +909,239 @@ def replace_team_codes(index_html, teams_by_code):
     return re.sub(r"  var TEAM_CODES = \{.*?\n  \};", replacement, index_html, flags=re.S)
 
 
+def load_publication_tracker():
+    path = REPO_ROOT / "data" / "squad_publication_tracker.json"
+    if not path.exists():
+        return {"meta": {"total_published": 0, "total_teams": 48}, "teams": []}
+    return load_json(path)
+
+
+def format_publication_date(value):
+    month_labels = {"05": "May", "06": "Jun"}
+    try:
+        _, month, day = str(value).split("-")
+    except ValueError:
+        return str(value or "")
+    return f"{int(day)} {month_labels.get(month, month)}"
+
+
+def publication_tracker_rows_by_date(publication_tracker):
+    rows_by_date = {}
+    for row in publication_tracker.get("teams", []):
+        rows_by_date.setdefault(row.get("published_date"), []).append(row)
+    return rows_by_date
+
+
+def render_tracker_summary(groups_data, teams_by_code, publication_tracker):
+    total_teams = publication_tracker.get("meta", {}).get("total_teams", 48)
+    dated_count = len(publication_tracker.get("teams", []))
+    groups_with_dates = len({row.get("group_id") for row in publication_tracker.get("teams", []) if row.get("group_id")})
+    published_profiles = 0
+    for group in groups_data.get("groups", []):
+        for code in group.get("teams", []):
+            team = teams_by_code.get(code)
+            if team and has_public_profile(team):
+                published_profiles += 1
+    pending_profiles = total_teams - published_profiles
+    pending_dates = total_teams - dated_count
+    return f"""    <p style="color:var(--muted);margin-bottom:2rem;font-size:14px">
+      {dated_count} selecciones con fecha de convocatoria registrada entre el <strong style="color:var(--text)">26 mayo 2026</strong> y el <strong style="color:var(--text)">1 junio 2026</strong>. Hay {published_profiles} perfiles publicados y {pending_profiles} pendientes de perfil fuenteado; las fechas de convocatoria y el perfil analizado se gestionan como datos separados.
+      Las marcadas con <span class="analyzed-badge">✓ Detallado</span> tienen análisis completo en este documento.
+    </p>
+
+    <!-- Resumen global -->
+    <div class="format-grid" style="margin-bottom:3rem">
+      <div class="fmt-card"><div class="fmt-num" style="color:var(--accent)">{dated_count}</div><div class="fmt-label">Convocatorias<br>con fecha registrada</div></div>
+      <div class="fmt-card"><div class="fmt-num" style="color:var(--gold)">{groups_with_dates}</div><div class="fmt-label">Grupos con al menos<br>una fecha registrada</div></div>
+      <div class="fmt-card"><div class="fmt-num" style="color:var(--red)">{pending_dates}</div><div class="fmt-label">{pending_dates} pendientes de fecha registrada</div></div>
+      <div class="fmt-card"><div class="fmt-num" style="color:var(--accent)">{published_profiles}</div><div class="fmt-label">{published_profiles} perfiles publicados<br>{pending_profiles} pendientes de perfil fuenteado</div></div>
+    </div>"""
+
+
+def replace_tracker_summary_block(index_html, groups_data, teams_by_code, publication_tracker):
+    header = '      <h2>Tracker de Convocatorias</h2>'
+    header_pos = index_html.find(header)
+    if header_pos == -1:
+        return index_html
+    start = index_html.find('    <p style="color:var(--muted);margin-bottom:2rem;font-size:14px">', header_pos)
+    end = index_html.find("    <!-- Tabla tracker por grupo -->", start)
+    if start == -1 or end == -1:
+        return index_html
+    return index_html[:start] + render_tracker_summary(groups_data, teams_by_code, publication_tracker) + "\n\n" + index_html[end:]
+
+
+def render_publication_timeline(publication_tracker):
+    chunks = [
+        "    <!-- Timeline publicación -->",
+        '    <h3 style="margin-top:3rem;margin-bottom:1.5rem">Cronología de anuncios</h3>',
+        '    <div style="display:flex;flex-direction:column;gap:.5rem">',
+    ]
+    rows_by_date = publication_tracker_rows_by_date(publication_tracker)
+    for index, (date_value, rows) in enumerate(rows_by_date.items()):
+        border = "var(--accent)" if index in (0, len(rows_by_date) - 1) else "var(--border)"
+        flags = " ".join(
+            f'<img class="flag-svg" src="assets/flags/{h(row.get("team_code"))}.svg" alt="{h(row.get("name"))}" loading="lazy">'
+            for row in rows
+        )
+        names = " · ".join(h(row.get("name")) for row in rows)
+        chunks.extend(
+            [
+                f'      <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:var(--card);border-radius:8px;border-left:3px solid {border}">',
+                f'        <span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);min-width:80px">{h(format_publication_date(date_value))}</span>',
+                f'        <span>{flags}</span><span style="font-size:13px"><strong style="color:var(--white)">{names}</strong></span>',
+                '        <span class="analyzed-badge" style="margin-left:auto">Convocatoria</span>',
+                "      </div>",
+            ]
+        )
+    chunks.append("    </div>")
+    return "\n".join(chunks)
+
+
+def replace_publication_timeline_block(index_html, publication_tracker):
+    start = index_html.find("    <!-- Timeline publicación -->")
+    end = index_html.find("    <!-- Selecciones pendientes por grupo -->", start)
+    if start == -1 or end == -1:
+        return index_html
+    return index_html[:start] + render_publication_timeline(publication_tracker) + "\n\n" + index_html[end:]
+
+
+def publication_date_by_code(publication_tracker):
+    return {
+        row.get("team_code"): format_publication_date(row.get("published_date"))
+        for row in publication_tracker.get("teams", [])
+    }
+
+
+def tracker_status_html(team, date_label):
+    date_html = f'<span style="display:block;margin-top:.25rem;font-size:11px;color:var(--muted)">{h(date_label)}</span>' if date_label else ""
+    if team and has_public_profile(team):
+        return f'<span class="analyzed-badge">✓ Detallado</span>{date_html}'
+    if date_label:
+        return f'<span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">Convocatoria</span>{date_html}<span style="display:block;margin-top:.25rem;font-size:11px;color:var(--muted)">Pendiente perfil</span>'
+    return '<span style="font-size:12px;color:var(--muted)">Pendiente perfil</span>'
+
+
+def tracker_team_name(code, team, names):
+    return (team or {}).get("name") or names.get(code, code.upper())
+
+
+def tracker_featured_name(team):
+    if not team or not has_public_profile(team):
+        return "Por definir"
+    player = choose_featured_player(team)
+    return player.get("name") or "Jugador destacado"
+
+
+def render_tracker_profile_table(groups_data, teams_by_code, publication_tracker):
+    names = team_names_from_groups(groups_data)
+    dates = publication_date_by_code(publication_tracker)
+    chunks = [
+        "    <!-- Tabla tracker por grupo -->",
+        '    <div class="squad-wrap tracker-squad">',
+        '      <table class="squad-table">',
+        "        <thead>",
+        "          <tr>",
+        "            <th>Grupo</th><th>Selección</th><th>DT</th><th>Sistema</th><th>Figura clave</th><th>Estado</th>",
+        "          </tr>",
+        "        </thead>",
+        "        <tbody>",
+    ]
+    for group_index, group in enumerate(groups_data.get("groups", [])):
+        group_id = group["id"]
+        row_style = ' style="background:rgba(255,255,255,.02)"' if group_index % 2 == 0 else ""
+        teams = group.get("teams", [])
+        short_names = " · ".join(code.upper() for code in teams[:2]) + "<br>" + " · ".join(code.upper() for code in teams[2:])
+        for team_index, code in enumerate(teams):
+            team = teams_by_code.get(code)
+            name = tracker_team_name(code, team, names)
+            dt = (team or {}).get("dt") or "Por confirmar"
+            scheme = (team or {}).get("scheme") or "Por definir"
+            featured = tracker_featured_name(team)
+            chunks.append(f"          <tr{row_style}>")
+            if team_index == 0:
+                chunks.append(
+                    f'            <td rowspan="{len(teams)}"><strong style="color:var(--grp-{group_id.lower()})">{h(group_id)}</strong><br><span style="font-size:11px;color:var(--muted)">{short_names}</span></td>'
+                )
+            chunks.extend(
+                [
+                    f'            <td><img class="flag-svg" src="assets/flags/{h(code)}.svg" alt="{h(name)}" loading="lazy"> <strong class="player-name">{h(name)}</strong></td>',
+                    f'            <td style="font-size:13px">{h(dt)}</td>',
+                    f'            <td><span class="team-pill tp-scheme" style="font-size:11px;padding:.1rem .5rem">{h(scheme)}</span></td>',
+                    f'            <td style="font-size:13px">{h(featured)}</td>',
+                    f"            <td>{tracker_status_html(team, dates.get(code))}</td>",
+                    "          </tr>",
+                ]
+            )
+    chunks.extend(["        </tbody>", "      </table>", "    </div>"])
+    return "\n".join(chunks)
+
+
+def render_tracker_accordion(groups_data, teams_by_code, publication_tracker):
+    names = team_names_from_groups(groups_data)
+    dates = publication_date_by_code(publication_tracker)
+    chunks = [
+        "    <!-- Tracker accordion (mobile) -->",
+        '    <div class="tracker-accordion">',
+    ]
+    for group in groups_data.get("groups", []):
+        group_id = group["id"]
+        team_codes = group.get("teams", [])
+        chunks.extend(
+            [
+                f'      <div class="tacc-group" style="--gc:var(--grp-{group_id.lower()})">',
+                '        <div class="tacc-group-header">',
+                f'          <span class="tacc-group-letter">{h(group_id)}</span>',
+                f'          <span class="tacc-group-teams">{" · ".join(h(code.upper()) for code in team_codes)}</span>',
+                "        </div>",
+            ]
+        )
+        for code in team_codes:
+            team = teams_by_code.get(code)
+            name = tracker_team_name(code, team, names)
+            date_label = dates.get(code) or "Sin fecha registrada"
+            status = "✓" if team and has_public_profile(team) else "Pendiente"
+            dt = (team or {}).get("dt") or "Por confirmar"
+            scheme = (team or {}).get("scheme") or "Por definir"
+            featured = tracker_featured_name(team)
+            chunks.extend(
+                [
+                    '        <details class="tacc-item">',
+                    '          <summary class="tacc-summary">',
+                    '            <div class="tacc-left">',
+                    f'              <img class="flag-svg" src="assets/flags/{h(code)}.svg" alt="{h(name)}" loading="lazy">',
+                    f"              <strong>{h(name)}</strong>",
+                    f'              <span class="analyzed-badge">{h(status)}</span>',
+                    "            </div>",
+                    '            <span class="tacc-chevron">›</span>',
+                    "          </summary>",
+                    '          <div class="tacc-body">',
+                    f'            <div class="tacc-field"><span class="tacc-label">DT</span><span>{h(dt)}</span></div>',
+                    f'            <div class="tacc-field"><span class="tacc-label">Sistema</span><span class="team-pill tp-scheme">{h(scheme)}</span></div>',
+                    f'            <div class="tacc-field tacc-full"><span class="tacc-label">Figura clave</span><span>{h(featured)}</span></div>',
+                    f'            <div class="tacc-field tacc-full"><span class="tacc-label">Convocatoria</span><span>{h(date_label)}</span></div>',
+                    "          </div>",
+                    "        </details>",
+                ]
+            )
+        chunks.append("      </div>")
+    chunks.append("    </div>")
+    return "\n".join(chunks)
+
+
+def replace_tracker_profile_blocks(index_html, groups_data, teams_by_code, publication_tracker):
+    start = index_html.find("    <!-- Tabla tracker por grupo -->")
+    end = index_html.find("    <!-- Timeline publicación -->", start)
+    if start == -1 or end == -1:
+        return index_html
+    replacement = (
+        render_tracker_profile_table(groups_data, teams_by_code, publication_tracker)
+        + "\n\n"
+        + render_tracker_accordion(groups_data, teams_by_code, publication_tracker)
+        + "\n\n"
+    )
+    return index_html[:start] + replacement + index_html[end:]
+
+
 def render_pending_tracker(groups_data, teams_by_code):
     pending_by_group = []
     names = team_names_from_groups(groups_data)
@@ -939,11 +1214,16 @@ def replace_footer_summary(index_html, teams_by_code):
 
 def render_index(index_html, teams_data, groups_data):
     teams_by_code = {team["id"]: team for team in teams_data.get("teams", [])}
+    publication_tracker = load_publication_tracker()
     index_html = replace_grupos_modal(index_html, groups_data, teams_by_code)
     index_html = replace_groups_grid(index_html, groups_data, teams_by_code)
     index_html = replace_existing_generated_sections(index_html, teams_by_code)
+    index_html = replace_existing_squad_tables(index_html, teams_by_code)
     index_html = replace_pending_grids(index_html, teams_by_code, groups_data)
     index_html = replace_team_codes(index_html, teams_by_code)
+    index_html = replace_tracker_summary_block(index_html, groups_data, teams_by_code, publication_tracker)
+    index_html = replace_tracker_profile_blocks(index_html, groups_data, teams_by_code, publication_tracker)
+    index_html = replace_publication_timeline_block(index_html, publication_tracker)
     index_html = replace_pending_tracker_block(index_html, groups_data, teams_by_code)
     index_html = replace_footer_summary(index_html, teams_by_code)
     return index_html

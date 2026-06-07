@@ -100,3 +100,45 @@ def test_generated_team_pills_use_contextual_badges():
             missing.append(f"{section_id}:{badge}")
 
     assert missing == []
+
+
+def test_render_index_refreshes_existing_public_squad_tables():
+    old_table = (
+        '<div class="squad-wrap"><table class="squad-table"><thead><tr>'
+        '<th>Pos</th><th>Jugador</th><th>Edad</th><th>Club</th><th>País</th><th>ELO</th><th>Titular</th>'
+        '</tr></thead><tbody><tr><td><span class="pos-badge pos-gk">GK</span></td>'
+        '<td class="player-name">Raul Rangel</td><td style="color:var(--muted)">26</td>'
+        '<td style="font-size:13px">Chivas Guadalajara</td><td style="font-size:12px;color:var(--muted)">Mexico</td>'
+        '<td class="elo-cell elo-nd">N/D</td><td><span class="titl-yes">Si</span></td></tr></tbody></table></div>'
+        '<div class="nd-note">ELO de clubes: old</div>'
+    )
+    index_html = f'<div class="team-section" id="mexico">{old_table}</div>'
+    teams_data = {
+        "teams": [
+            {
+                "id": "mex",
+                "name": "Mexico",
+                "group": "A",
+                "analyzed": True,
+                "players": [
+                    {
+                        "pos": "GK",
+                        "name": "Raul Rangel",
+                        "age": 26,
+                        "club": "Chivas Guadalajara",
+                        "country": "Mexico",
+                        "elo": 1317,
+                        "titular": True,
+                    }
+                ],
+            }
+        ]
+    }
+
+    rendered = render_team_sections.replace_existing_squad_tables(
+        index_html,
+        {team["id"]: team for team in teams_data["teams"]},
+    )
+
+    assert "N/D" not in rendered
+    assert '<td class="elo-cell elo-low">1317</td>' in rendered
