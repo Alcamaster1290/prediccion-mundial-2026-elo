@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 
@@ -32,6 +33,24 @@ def test_team_content_manifest_tracks_all_teams_and_asset_aliases():
         if not team["local"]["html_section"]
     }
     assert missing_html == {"ksa", "jor"}
+
+
+def test_grupos_modal_links_every_published_team_profile():
+    manifest = json.loads(read("data/team-content-manifest.json"))
+    html = read("index.html")
+
+    expected_sections = {
+        team["section_id"]
+        for team in manifest["teams"]
+        if team["local"]["html_section"]
+    }
+    modal_sections = set(re.findall(r'class="gmod-team has-analysis"[^>]+href="#([^"]+)"', html))
+    inactive_codes = set(
+        re.findall(r'<div class="gmod-team"[^>]*>\s*<img src="assets/flags/([a-z]{3})\.svg"', html)
+    )
+
+    assert modal_sections == expected_sections
+    assert inactive_codes == {"ksa", "jor"}
 
 
 def test_team_content_monitor_rpc_is_admin_only_and_reports_missing_fields():

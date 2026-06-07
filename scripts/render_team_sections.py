@@ -594,6 +594,41 @@ def render_group_cards(groups_data, teams_by_code):
     return "\n".join(chunks).rstrip()
 
 
+def render_grupos_modal_body(groups_data, teams_by_code):
+    chunks = []
+    for group in groups_data.get("groups", []):
+        group_id = group["id"]
+        chunks.append(f"      <!-- {h(group_id)} -->")
+        chunks.append('      <div class="gmod-group">')
+        chunks.append(
+            f'        <div class="gmod-group-header" style="background:{GROUP_BORDER.get(group_id, "rgba(148,163,184,.3)").replace(".3", ".1")};border-color:var(--grp-{group_id.lower()})"><span class="gmod-dot" style="background:var(--grp-{group_id.lower()})"></span>Grupo {h(group_id)}</div>'
+        )
+        for code in group.get("teams", []):
+            team = teams_by_code.get(code)
+            name = team.get("name") if team else TEAM_DISPLAY_NAMES.get(code, code.upper())
+            flag = f'<img src="assets/flags/{h(code)}.svg" alt="">'
+            if team and has_public_profile(team) and SECTION_BY_CODE.get(code):
+                chunks.append(
+                    f'        <a class="gmod-team has-analysis" data-name="{h(name)}" href="#{h(SECTION_BY_CODE[code])}">{flag}<span class="gmod-name">{h(name)}</span><span class="gmod-ana"></span></a>'
+                )
+            else:
+                chunks.append(
+                    f'        <div class="gmod-team" data-name="{h(name)}">{flag}<span class="gmod-name">{h(name)}</span></div>'
+                )
+        chunks.append("      </div>")
+    chunks.append('      <div class="gmod-no-results" id="gmod-no-results">Sin resultados</div>')
+    return "\n".join(chunks)
+
+
+def replace_grupos_modal(index_html, groups_data, teams_by_code):
+    marker = '    <div class="grupos-modal-body" id="grupos-modal-body">'
+    body_start = index_html.index(marker)
+    content_start = body_start + len(marker)
+    body_end = index_html.index('    </div>\n    <div class="grupos-modal-footer">', content_start)
+    replacement = "\n" + render_grupos_modal_body(groups_data, teams_by_code) + "\n"
+    return index_html[:content_start] + replacement + index_html[body_end:]
+
+
 def replace_groups_grid(index_html, groups_data, teams_by_code):
     section_start = index_html.index('<section id="grupos">')
     grid_start = index_html.index('    <div class="groups-grid">', section_start)
@@ -756,6 +791,7 @@ def replace_footer_summary(index_html, teams_by_code):
 
 def render_index(index_html, teams_data, groups_data):
     teams_by_code = {team["id"]: team for team in teams_data.get("teams", [])}
+    index_html = replace_grupos_modal(index_html, groups_data, teams_by_code)
     index_html = replace_groups_grid(index_html, groups_data, teams_by_code)
     index_html = replace_existing_generated_sections(index_html, teams_by_code)
     index_html = replace_pending_grids(index_html, teams_by_code, groups_data)
