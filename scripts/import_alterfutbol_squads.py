@@ -3,6 +3,7 @@
 
 import argparse
 import copy
+import html as html_lib
 import json
 import re
 import unicodedata
@@ -10,6 +11,28 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+CLUB_TRANSLITERATION = str.maketrans(
+    {
+        "ı": "i",
+        "İ": "I",
+        "ø": "o",
+        "Ø": "O",
+        "ł": "l",
+        "Ł": "L",
+        "đ": "d",
+        "Đ": "D",
+        "ð": "d",
+        "Ð": "D",
+        "þ": "th",
+        "Þ": "Th",
+        "æ": "ae",
+        "Æ": "AE",
+        "œ": "oe",
+        "Œ": "OE",
+        "ß": "ss",
+    }
+)
 
 CLUB_ELO_ALIASES = {
     "ac milan": "ac mailand",
@@ -43,6 +66,13 @@ CLUB_ELO_ALIASES = {
     "atalanta bc": "atalanta bergamo",
     "brighton": "brighton hove albion",
     "brighton hove albion": "brighton hove albion",
+    "borussia m gladbach": "borussia monchengladbach",
+    "b monchengladbach": "borussia monchengladbach",
+    "gladbach": "borussia monchengladbach",
+    "dortmund": "borussia dortmund",
+    "stuttgart": "vfb stuttgart",
+    "mainz 05": "fsv mainz 05",
+    "fsv mainz": "fsv mainz 05",
     "real betis": "betis sevilla",
     "galatasaray": "galatasaray istanbul",
     "galatasaray sk": "galatasaray istanbul",
@@ -98,6 +128,8 @@ CLUB_ELO_ALIASES = {
     "celtic fc": "celtic glasgow",
     "rangers fc": "glasgow rangers",
     "heart of midlothian fc": "heart of midlothian",
+    "bsc young boys": "young boys bern",
+    "young boys": "young boys bern",
     "olympiakos": "olympiakos piraus",
     "olympiakos piraeus": "olympiakos piraus",
     "aek atenas": "aek athen",
@@ -108,7 +140,10 @@ CLUB_ELO_ALIASES = {
     "rc strasbourg": "racing strassburg",
     "stade rennais": "stade rennes",
     "stade rennais fc": "stade rennes",
+    "rennes": "stade rennes",
     "toulouse fc": "toulouse",
+    "ogc nice": "ogc nizza",
+    "nice": "ogc nizza",
     "genoa cfc": "cfc genua",
     "ac genoa": "cfc genua",
     "udinese": "udinese calcio",
@@ -127,6 +162,8 @@ CLUB_ELO_ALIASES = {
     "cagliari calcio": "cagliari calcio",
     "como": "como 1907",
     "como 1907": "como 1907",
+    "wolverhampton": "wolverhampton wanderers",
+    "wolves": "wolverhampton wanderers",
     "al ahli": "al ahli",
     "al ahli saudi": "al ahli",
     "al ahli saudi fc": "al ahli",
@@ -136,6 +173,21 @@ CLUB_ELO_ALIASES = {
     "al hilal sfc": "al hilal sfc",
     "al nassr": "al nassr riyadh",
     "al nassr fc": "al nassr riyadh",
+    "al wakrah": "al wakra",
+    "al wakrah sc": "al wakra",
+    "al ittihad kalba": "ittihad kalba",
+    "al ittihad kalba scc": "ittihad kalba",
+    "al shamal": "shamal",
+    "al shamal sc": "shamal",
+    "al najmah": "al najma",
+    "al najmah fc": "al najma",
+    "baniyas": "bani yas",
+    "fc baniyas": "bani yas",
+    "pumas unam": "unam pumas",
+    "sint truidense": "st truiden",
+    "sint truidense vv": "st truiden",
+    "sharjah": "al sharjah",
+    "sharjah fc": "al sharjah",
     "esperance tunis": "esperance tunis",
     "rs berkane": "berkane",
     "as far": "far rabat",
@@ -158,6 +210,8 @@ CLUB_ELO_ALIASES = {
     "sunderland afc": "sunderland",
     "bournemouth": "bournemouth",
     "athletic club": "athletic bilbao",
+    "atlético mineiro": "atletico-mg",
+    "atletico mineiro": "atletico-mg",
     "leverkusen": "bayer leverkusen",
     "bayer 04 leverkusen": "bayer leverkusen",
     "hoffenheim": "tsg hoffenheim",
@@ -167,10 +221,139 @@ CLUB_ELO_ALIASES = {
     "st gallen": "st gallen",
     "pafos fc": "paphos",
     "pafos": "paphos",
+    "friburgo": "freiburg",
+    "sc friburgo": "freiburg",
+    "newcastle": "newcastle united",
+    "lyon": "olympique lyon",
     "pfc ludogorets": "ludogorez rasgrad",
     "ludogorets": "ludogorez rasgrad",
     "qarabag": "qarabag agdam",
     "lask linz": "lask",
+    "lafc": "los angeles fc",
+    "norwich city": "norwich",
+    "swansea city": "swansea",
+    "hull city": "hull",
+    "leicester city": "leicester",
+    "watford fc": "watford",
+    "hannover 96": "hannover",
+    "stoke city": "stoke",
+    "middlesbrough fc": "middlesbrough",
+    "coventry city": "coventry",
+    "rkc waalwijk": "waalwijk",
+    "derby county": "derby",
+    "birmingham city": "birmingham",
+    "barnsley fc": "barnsley",
+    "karlsruher sc": "karlsruhe",
+    "fortuna dusseldorf": "dusseldorf",
+    "almere city": "almere",
+    "almere city fc": "almere",
+    "charlton athletic": "charlton",
+    "ipswich town": "ipswich",
+    "vvv venlo": "venlo",
+    "beveren": "waasland beveren",
+    "sk beveren": "waasland beveren",
+    "stade reims": "reims",
+    "stade de reims": "reims",
+    "holstein kiel": "holstein",
+    "ifk norrkoping": "norrkoping",
+    "peterborough united": "peterboro",
+    "gd chaves": "chaves",
+    "hamburger sv": "hamburg",
+    "racing santander": "santander",
+    "agmk olmaliq": "fc agmk",
+    "nancy lorraine": "nancy",
+    "rotherham united": "rotherham",
+    "luton town": "luton",
+    "frosinone calcio": "frosinone",
+    "fcv dender": "dender",
+    "fcv dender eh": "dender",
+    "chivas guadalajara": "cd guadalajara",
+    "pakhtakor tashkent": "pakhtakor",
+    "neftchi fergana": "neftchi fargona",
+    "cd toluca": "deportivo toluca",
+    "toluca": "deportivo toluca",
+    "jeonbuk hyundai motors": "jeonbuk fc",
+    "tigres uanl": "uanl tigres",
+    "rijeka": "hnk rijeka",
+    "atlanta united": "atlanta utd",
+    "standard lieja": "standard luttich",
+    "standard liège": "standard luttich",
+    "deportivo saprissa": "saprissa",
+    "jagiellonia": "jagiellonia bialystok",
+    "kasimpasa": "kasimpasa istanbul",
+    "kasimpasa sk": "kasimpasa istanbul",
+    "botafogo": "botafogo rj",
+    "dinamo samarqand": "din samarkand",
+    "dinamo samarkand": "din samarkand",
+    "polokwane city": "polokwane",
+    "polokwane city fc": "polokwane",
+    "daejeon hana citizen": "daejeon",
+    "tatran presov": "presov",
+    "fc tatran presov": "presov",
+    "univ cluj": "universitatea cluj",
+    "ferencvaros": "ferencvaros budapest",
+    "ferencvaros tc": "ferencvaros budapest",
+    "san lorenzo almagro": "san lorenzo",
+    "san lorenzo de almagro": "san lorenzo",
+    "independiente rivadavia": "ind rivadavia",
+    "rb bragantino": "bragantino",
+    "grazer ak 1902": "grazer ak",
+    "leipzig": "rb leipzig",
+    "apoel": "apoel nikosia",
+    "kifisias": "kifisia",
+    "ae kifisias": "kifisia",
+    "ae kifisia": "kifisia",
+    "liga quito": "ldu quito",
+    "liga de quito": "ldu quito",
+    "independiente valle": "ind valle",
+    "independiente del valle": "ind valle",
+    "royal antwerp": "royal antwerpen",
+    "west ham": "west ham united",
+    "etoile du sahel": "etoile sahel",
+    "servette": "servette genf",
+    "sporting lisboa": "sporting cp",
+    "sporting de lisboa": "sporting cp",
+    "el gouna": "el gounah",
+    "aik": "aik stockholm",
+    "twente": "twente enschede",
+    "fc twente": "twente enschede",
+    "malavan bandar anzali": "malavan",
+    "sjk": "sjk seinajoki",
+    "surkhon termiz": "termez surkhon",
+    "shabab al ahli dubai": "al ahli dubai",
+    "rostov": "rostow",
+    "fk rostov": "rostow",
+    "western sydney wanderers": "western sydney wanderers",
+    "w sydney wanderers": "western sydney wanderers",
+    "celta": "celta vigo",
+    "rc celta": "celta vigo",
+    "omonoia nicosia": "omonia nikosia",
+    "akron tolyatti": "akron togliatti",
+    "estudiantes la plata": "estudiantes",
+    "estudiantes de la plata": "estudiantes",
+    "real salt lake city": "real salt lake",
+    "persib bandung": "persib",
+    "port fc": "port mti",
+    "pogon szczecin": "pogon stettin",
+    "larissa": "larisa",
+    "ael larissa": "larisa",
+    "atletico nacional": "atl nacional",
+    "atlas": "atlas guadalajara",
+    "athletico paranaense": "athletico pr",
+    "vasco da gama": "vasco",
+    "cr vasco da gama": "vasco",
+    "st patrick s athletic": "st patrick s",
+    "pari nizhny novgorod": "pari nn",
+    "academia puerto cabello": "puerto cabello",
+    "deportivo la guaira": "la guaira",
+    "ironi kiryat shmona": "kiryat shmona",
+    "rcd espanyol": "espanyol barcelona",
+    "espanyol": "espanyol barcelona",
+    "fcsb": "fcsb bukarest",
+    "zhejiang": "zhejiang professional",
+    "zhejiang fc": "zhejiang professional",
+    "idgir": "igdir",
+    "idgir fk": "igdir",
 }
 
 
@@ -178,8 +361,22 @@ def load_json(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def load_club_elo_sources(primary_path, supplement_paths=None):
+    data = copy.deepcopy(load_json(primary_path))
+    data.setdefault("clubs", [])
+    for supplement_path in supplement_paths or []:
+        path = Path(supplement_path)
+        if not path.exists():
+            continue
+        supplement = load_json(path)
+        data["clubs"].extend(supplement.get("clubs", []))
+    return data
+
+
 def normalize_club_key(value):
     text = "" if value is None else str(value)
+    text = html_lib.unescape(text)
+    text = text.translate(CLUB_TRANSLITERATION)
     text = re.sub(r"[\U0001F1E6-\U0001F1FF]+", " ", text)
     text = "".join(
         char
@@ -195,29 +392,52 @@ def normalize_club_key(value):
         "04",
         "1909",
         "1913",
+        "1902",
         "ac",
         "afc",
+        "ae",
+        "ael",
         "as",
         "bc",
+        "bsc",
+        "c",
+        "ca",
+        "calcio",
         "cd",
         "cf",
         "club",
         "de",
         "del",
+        "eh",
+        "f",
         "fc",
+        "fcv",
+        "ff",
         "fk",
         "football",
         "futbol",
+        "gd",
+        "gnk",
+        "hnk",
+        "hsc",
+        "if",
         "jk",
+        "pfk",
         "pfc",
         "rc",
+        "rcd",
         "rsc",
         "sc",
+        "scc",
+        "sco",
+        "scu",
         "sk",
         "ss",
         "sv",
+        "tc",
         "the",
         "us",
+        "vv",
     }
     tokens = [token for token in text.split() if token not in stopwords]
     return " ".join(tokens)
@@ -230,23 +450,33 @@ def club_elo_map(club_elo_data):
         elo = row.get("elo")
         if not club or elo is None:
             continue
-        elos[club] = elo
-        elos[normalize_club_key(club)] = elo
+        unescaped_club = html_lib.unescape(str(club))
+        elos.setdefault(club, elo)
+        elos.setdefault(unescaped_club, elo)
+
+        key = normalize_club_key(club)
+        if key not in elos or elo > elos[key]:
+            elos[key] = elo
     return elos
 
 
 def lookup_club_elo(club, club_elos):
     if not club:
         return None
-    if club in club_elos:
-        return club_elos[club]
     key = normalize_club_key(club)
     aliases = {
         normalize_club_key(alias): normalize_club_key(target)
         for alias, target in CLUB_ELO_ALIASES.items()
     }
-    alias = aliases.get(key, key)
-    return club_elos.get(alias)
+    alias = aliases.get(key)
+    if alias in club_elos:
+        return club_elos[alias]
+    if club in club_elos:
+        return club_elos[club]
+    unescaped_club = html_lib.unescape(str(club))
+    if unescaped_club in club_elos:
+        return club_elos[unescaped_club]
+    return club_elos.get(key)
 
 
 def apply_club_elos_to_teams(teams_data, club_elos, only_missing=True):
@@ -333,7 +563,7 @@ def merge_squad_only_teams(teams_data, source_manifest, groups_data, exact_elos)
     meta["total_teams_analyzed"] = sum(1 for team in merged["teams"] if team.get("analyzed"))
     meta["total_teams_with_squads"] = len(merged["teams"])
     meta["source_squads"] = "AlterFutbol noticias; see data/alterfutbol_sources.json"
-    apply_club_elos_to_teams(merged, exact_elos)
+    apply_club_elos_to_teams(merged, exact_elos, only_missing=False)
     return merged, added
 
 
@@ -343,13 +573,21 @@ def main():
     parser.add_argument("--sources", default=str(REPO_ROOT / "data" / "alterfutbol_sources.json"))
     parser.add_argument("--groups", default=str(REPO_ROOT / "data" / "groups.json"))
     parser.add_argument("--club-elo", default=str(REPO_ROOT / "data" / "club_elo.json"))
+    parser.add_argument(
+        "--club-elo-supplement",
+        action="append",
+        default=[
+            str(REPO_ROOT / "data" / "club_elo_flerosport_supplement.json"),
+            str(REPO_ROOT / "data" / "club_elo_elofootball_supplement.json"),
+        ],
+    )
     args = parser.parse_args()
 
     teams_path = Path(args.teams)
     teams_data = load_json(teams_path)
     source_manifest = load_json(args.sources)
     groups_data = load_json(args.groups)
-    exact_elos = club_elo_map(load_json(args.club_elo))
+    exact_elos = club_elo_map(load_club_elo_sources(args.club_elo, args.club_elo_supplement))
 
     merged, added = merge_squad_only_teams(teams_data, source_manifest, groups_data, exact_elos)
     teams_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

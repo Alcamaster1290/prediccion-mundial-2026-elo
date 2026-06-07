@@ -1,4 +1,5 @@
 import sys
+import re
 from pathlib import Path
 
 
@@ -158,6 +159,25 @@ def test_players_schema_includes_club_country_column():
 
     assert "club_country TEXT" in schema
     assert "ADD COLUMN IF NOT EXISTS club_country TEXT" in schema
+
+
+def test_predictions_match_id_has_regular_unique_index_for_postgrest_upsert():
+    repo = Path(__file__).resolve().parents[1]
+    schema = (repo / "supabase" / "01_schema.sql").read_text(encoding="utf-8")
+    migration = (repo / "supabase" / "23_predictions_match_id_unique.sql").read_text(encoding="utf-8")
+
+    assert "CREATE UNIQUE INDEX IF NOT EXISTS idx_predictions_match_id_unique ON public.predictions(match_id);" in schema
+    assert "DROP INDEX IF EXISTS public.idx_predictions_match_id_unique;" in migration
+    assert "CREATE UNIQUE INDEX idx_predictions_match_id_unique" in migration
+    assert "ON public.predictions(match_id)" in migration
+    index_defs = re.findall(
+        r"CREATE UNIQUE INDEX(?: IF NOT EXISTS)? idx_predictions_match_id_unique\s+ON public\.predictions\(match_id\)[^;]*;",
+        schema + migration,
+        flags=re.S,
+    )
+    assert index_defs
+    assert all("WHERE" not in index_def.upper() for index_def in index_defs)
+    assert "NOTIFY pgrst, 'reload schema';" in migration
 
 
 def test_export_mc_results_uploads_terceros_table(monkeypatch):

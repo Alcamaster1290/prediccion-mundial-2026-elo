@@ -169,7 +169,7 @@ CLUB_COUNTRY_OVERRIDES = {
     "FC Turan-Tovuz": "Azerbaiyán",
     "FC Twente": "Países Bajos",
     "FC Utrecht": "Países Bajos",
-    "FCV Denver EH": "Bélgica",
+    "FCV Dender EH": "Bélgica",
     "FK Rostov": "Rusia",
     "Fenerbahce SK": "Turquía",
     "Fenerbahçe": "Turquía",

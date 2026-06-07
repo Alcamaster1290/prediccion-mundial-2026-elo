@@ -26,7 +26,7 @@
           "age": 40,
           "club": "AEL Limassol",
           "country": "Chipre",
-          "elo": null,
+          "elo": 1195,
           "titular": false
         },
         {
@@ -36,7 +36,7 @@
           "age": 26,
           "club": "Chivas Guadalajara",
           "country": "México",
-          "elo": null,
+          "elo": 1317,
           "titular": true
         },
         {
@@ -46,7 +46,7 @@
           "age": 30,
           "club": "Santos Laguna",
           "country": "México",
-          "elo": null,
+          "elo": 1090,
           "titular": false
         },
         {
@@ -76,7 +76,7 @@
           "age": 26,
           "club": "CF América",
           "country": "México",
-          "elo": null,
+          "elo": 1363,
           "titular": false
         },
         {
@@ -96,7 +96,7 @@
           "age": 31,
           "club": "CD Toluca",
           "country": "México",
-          "elo": null,
+          "elo": 1415,
           "titular": true
         },
         {
@@ -146,7 +146,7 @@
           "age": 30,
           "club": "Chivas Guadalajara",
           "country": "México",
-          "elo": null,
+          "elo": 1317,
           "titular": false
         },
         {
@@ -186,7 +186,7 @@
           "age": 17,
           "club": "Club Tijuana",
           "country": "México",
-          "elo": null,
+          "elo": 1184,
           "titular": false
         },
         {
@@ -196,7 +196,7 @@
           "age": 22,
           "club": "Chivas Guadalajara",
           "country": "México",
-          "elo": null,
+          "elo": 1317,
           "titular": true
         },
         {
@@ -206,7 +206,7 @@
           "age": 28,
           "club": "CD Toluca",
           "country": "México",
-          "elo": null,
+          "elo": 1415,
           "titular": false
         },
         {
@@ -226,7 +226,7 @@
           "age": 27,
           "club": "Chivas Guadalajara",
           "country": "México",
-          "elo": null,
+          "elo": 1317,
           "titular": true
         },
         {
@@ -246,7 +246,7 @@
           "age": 23,
           "club": "Chivas Guadalajara",
           "country": "México",
-          "elo": null,
+          "elo": 1317,
           "titular": false
         },
         {
@@ -256,7 +256,7 @@
           "age": 29,
           "club": "Al-Qadisiyah FC",
           "country": "Arabia Saudita",
-          "elo": null,
+          "elo": 965,
           "titular": true
         },
         {
@@ -276,7 +276,7 @@
           "age": 31,
           "club": "Pumas UNAM",
           "country": "México",
-          "elo": null,
+          "elo": 1284,
           "titular": false
         }
       ],
@@ -338,7 +338,7 @@
           "age": 32,
           "club": "Siwelele FC",
           "country": "Sudáfrica",
-          "elo": null,
+          "elo": 1137,
           "titular": false
         },
         {
@@ -358,7 +358,7 @@
           "age": 20,
           "club": "Chicago Fire",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1120,
           "titular": true
         },
         {
@@ -368,7 +368,7 @@
           "age": 22,
           "club": "Hannover 96",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1554,
           "titular": true
         },
         {
@@ -388,7 +388,7 @@
           "age": 22,
           "club": "Philadelphia Union",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1239,
           "titular": false
         },
         {
@@ -408,7 +408,7 @@
           "age": 22,
           "club": "Molde FK",
           "country": "Noruega",
-          "elo": null,
+          "elo": 1386,
           "titular": false
         },
         {
@@ -428,7 +428,7 @@
           "age": 27,
           "club": "Polokwane City FC",
           "country": "Sudáfrica",
-          "elo": null,
+          "elo": 1146,
           "titular": false
         },
         {
@@ -438,7 +438,7 @@
           "age": 25,
           "club": "Kaizer Chiefs",
           "country": "Sudáfrica",
-          "elo": null,
+          "elo": 1245,
           "titular": false
         },
         {
@@ -478,7 +478,7 @@
           "age": 27,
           "club": "CD Tondela",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1144,
           "titular": true
         },
         {
@@ -508,7 +508,7 @@
           "age": 25,
           "club": "Burnley FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1381,
           "titular": true
         },
         {
@@ -548,7 +548,7 @@
           "age": 22,
           "club": "AEL Limassol",
           "country": "Chipre",
-          "elo": null,
+          "elo": 1195,
           "titular": false
         },
         {
@@ -621,7 +621,7 @@
           "age": 34,
           "club": "Ulsan HD",
           "country": "Corea",
-          "elo": null,
+          "elo": 1281,
           "titular": true
         },
         {
@@ -631,7 +631,7 @@
           "age": 35,
           "club": "FC Tokyo",
           "country": "Japón",
-          "elo": null,
+          "elo": 1303,
           "titular": false
         },
         {
@@ -641,7 +641,7 @@
           "age": 28,
           "club": "Jeonbuk Hyundai Motors",
           "country": "Corea",
-          "elo": null,
+          "elo": 1362,
           "titular": false
         },
         {
@@ -661,7 +661,7 @@
           "age": 29,
           "club": "Sharjah FC",
           "country": "EAU",
-          "elo": 1236,
+          "elo": 1239,
           "titular": true
         },
         {
@@ -691,7 +691,7 @@
           "age": 23,
           "club": "FK Austria Wien",
           "country": "Austria",
-          "elo": null,
+          "elo": 1371,
           "titular": true
         },
         {
@@ -701,7 +701,7 @@
           "age": 30,
           "club": "Zhejiang FC",
           "country": "China",
-          "elo": null,
+          "elo": 1192,
           "titular": false
         },
         {
@@ -711,7 +711,7 @@
           "age": 30,
           "club": "Daejeon Hana Citizen",
           "country": "Corea",
-          "elo": null,
+          "elo": 1170,
           "titular": false
         },
         {
@@ -721,7 +721,7 @@
           "age": 25,
           "club": "Kashima Antlers",
           "country": "Japón",
-          "elo": 1410,
+          "elo": 1405,
           "titular": false
         },
         {
@@ -731,7 +731,7 @@
           "age": 25,
           "club": "Gangwon FC",
           "country": "Corea",
-          "elo": null,
+          "elo": 1236,
           "titular": false
         },
         {
@@ -772,7 +772,7 @@
           "age": 25,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -782,7 +782,7 @@
           "age": 29,
           "club": "Jeonbuk Hyundai Motors",
           "country": "Corea",
-          "elo": null,
+          "elo": 1362,
           "titular": false
         },
         {
@@ -792,7 +792,7 @@
           "age": 29,
           "club": "Birmingham City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1541,
           "titular": false
         },
         {
@@ -802,7 +802,7 @@
           "age": 22,
           "club": "Stoke City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1467,
           "titular": false
         },
         {
@@ -812,7 +812,7 @@
           "age": 28,
           "club": "Ulsan HD",
           "country": "Corea",
-          "elo": null,
+          "elo": 1281,
           "titular": false
         },
         {
@@ -822,7 +822,7 @@
           "age": 33,
           "club": "LAFC",
           "country": "EE.UU.",
-          "elo": 1392,
+          "elo": 1384,
           "titular": true,
           "captain": true
         },
@@ -833,7 +833,7 @@
           "age": 30,
           "club": "Wolverhampton",
           "country": "Inglaterra",
-          "elo": 1454,
+          "elo": 1456,
           "titular": false
         },
         {
@@ -843,7 +843,7 @@
           "age": 25,
           "club": "Beşiktaş JK",
           "country": "Turquía",
-          "elo": 1407,
+          "elo": 1405,
           "titular": false
         },
         {
@@ -873,7 +873,7 @@
           "age": 24,
           "club": "Swansea City",
           "country": "Gales",
-          "elo": null,
+          "elo": 1516,
           "titular": false
         }
       ]
@@ -1026,7 +1026,7 @@
           "age": 35,
           "club": "Hradec Králové",
           "country": "Chequia",
-          "elo": null,
+          "elo": 1358,
           "titular": true
         },
         {
@@ -1188,7 +1188,7 @@
           "age": 32,
           "club": "Orlando City SC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1225,
           "titular": false
         },
         {
@@ -1198,7 +1198,7 @@
           "age": 29,
           "club": "Inter Miami",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1382,
           "titular": true
         },
         {
@@ -1208,7 +1208,7 @@
           "age": 22,
           "club": "Barnsley FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1405,
           "titular": false
         },
         {
@@ -1228,7 +1228,7 @@
           "age": 26,
           "club": "OGC Nice",
           "country": "Francia",
-          "elo": null,
+          "elo": 1384,
           "titular": true
         },
         {
@@ -1238,7 +1238,7 @@
           "age": 28,
           "club": "Middlesbrough FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1564,
           "titular": false
         },
         {
@@ -1256,9 +1256,9 @@
           "pos": "DF",
           "name": "Luc de Fougerolles",
           "age": 20,
-          "club": "FCV Denver EH",
+          "club": "FCV Dender EH",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1139,
           "titular": false
         },
         {
@@ -1278,7 +1278,7 @@
           "age": 31,
           "club": "Toronto FC",
           "country": "Canadá",
-          "elo": null,
+          "elo": 1094,
           "titular": false
         },
         {
@@ -1288,7 +1288,7 @@
           "age": 22,
           "club": "HNK Hajduk Split",
           "country": "Croacia",
-          "elo": null,
+          "elo": 1437,
           "titular": false
         },
         {
@@ -1298,7 +1298,7 @@
           "age": 30,
           "club": "Chicago Fire FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1120,
           "titular": false
         },
         {
@@ -1308,7 +1308,7 @@
           "age": 27,
           "club": "LAFC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1384,
           "titular": false
         },
         {
@@ -1318,7 +1318,7 @@
           "age": 29,
           "club": "LAFC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1384,
           "titular": true
         },
         {
@@ -1328,7 +1328,7 @@
           "age": 22,
           "club": "Tigres UANL",
           "country": "México",
-          "elo": null,
+          "elo": 1369,
           "titular": false
         },
         {
@@ -1348,7 +1348,7 @@
           "age": 33,
           "club": "Toronto FC",
           "country": "Canadá",
-          "elo": null,
+          "elo": 1094,
           "titular": false
         },
         {
@@ -1368,7 +1368,7 @@
           "age": 25,
           "club": "Norwich City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -1398,7 +1398,7 @@
           "age": 31,
           "club": "Southampton FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1623,
           "titular": true
         },
         {
@@ -1418,7 +1418,7 @@
           "age": 26,
           "club": "LAFC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1384,
           "titular": false
         },
         {
@@ -1428,7 +1428,7 @@
           "age": 26,
           "club": "Hull City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1520,
           "titular": true
         },
         {
@@ -1492,7 +1492,7 @@
           "age": 30,
           "club": "FC St. Pauli",
           "country": "Alemania",
-          "elo": 1321,
+          "elo": 1313,
           "titular": true
         },
         {
@@ -1502,7 +1502,7 @@
           "age": 27,
           "club": "Rijeka",
           "country": "Croacia",
-          "elo": 1398,
+          "elo": 1402,
           "titular": false
         },
         {
@@ -1512,7 +1512,7 @@
           "age": 30,
           "club": "Slaven Belupo",
           "country": "Croacia",
-          "elo": 1221,
+          "elo": 1207,
           "titular": false
         },
         {
@@ -1532,7 +1532,7 @@
           "age": 27,
           "club": "Sampdoria",
           "country": "Italia",
-          "elo": null,
+          "elo": 1446,
           "titular": false
         },
         {
@@ -1552,7 +1552,7 @@
           "age": 29,
           "club": "Schalke 04",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1554,
           "titular": true
         },
         {
@@ -1562,7 +1562,7 @@
           "age": 23,
           "club": "Sassuolo",
           "country": "Italia",
-          "elo": 1458,
+          "elo": 1436,
           "titular": true
         },
         {
@@ -1572,7 +1572,7 @@
           "age": 28,
           "club": "Gaziantep",
           "country": "Turquía",
-          "elo": 1187,
+          "elo": 1184,
           "titular": false
         },
         {
@@ -1582,7 +1582,7 @@
           "age": 28,
           "club": "Rijeka",
           "country": "Croacia",
-          "elo": 1398,
+          "elo": 1402,
           "titular": false
         },
         {
@@ -1602,7 +1602,7 @@
           "age": 29,
           "club": "Hull City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1520,
           "titular": true
         },
         {
@@ -1612,7 +1612,7 @@
           "age": 23,
           "club": "Brøndby",
           "country": "Dinamarca",
-          "elo": 1377,
+          "elo": 1383,
           "titular": false
         },
         {
@@ -1622,7 +1622,7 @@
           "age": 24,
           "club": "Young Boys",
           "country": "Suiza",
-          "elo": 1381,
+          "elo": 1390,
           "titular": false
         },
         {
@@ -1632,7 +1632,7 @@
           "age": 28,
           "club": "Karlsruher SC",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1497,
           "titular": false
         },
         {
@@ -1642,7 +1642,7 @@
           "age": 24,
           "club": "Astana",
           "country": "Kazajistán",
-          "elo": 1339,
+          "elo": 1331,
           "titular": false
         },
         {
@@ -1672,7 +1672,7 @@
           "age": 29,
           "club": "Pafos",
           "country": "Chipre",
-          "elo": 1471,
+          "elo": 1475,
           "titular": true
         },
         {
@@ -1682,7 +1682,7 @@
           "age": 18,
           "club": "RB Salzburg",
           "country": "Austria",
-          "elo": 1423,
+          "elo": 1410,
           "titular": false
         },
         {
@@ -1692,7 +1692,7 @@
           "age": 21,
           "club": "Slovan Liberec",
           "country": "Chequia",
-          "elo": 1318,
+          "elo": 1294,
           "titular": false
         },
         {
@@ -1702,7 +1702,7 @@
           "age": 40,
           "club": "Schalke 04",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1554,
           "titular": true,
           "captain": true
         },
@@ -1723,7 +1723,7 @@
           "age": 22,
           "club": "Jagiellonia",
           "country": "Polonia",
-          "elo": 1389,
+          "elo": 1404,
           "titular": false
         },
         {
@@ -1743,7 +1743,7 @@
           "age": 27,
           "club": "Univ. Cluj",
           "country": "Rumania",
-          "elo": 1227,
+          "elo": 1379,
           "titular": false
         }
       ]
@@ -1766,7 +1766,7 @@
           "age": 28,
           "club": "Al-Sadd SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1350,
           "titular": true
         },
         {
@@ -1776,7 +1776,7 @@
           "age": 26,
           "club": "Al-Rayyan SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1161,
           "titular": false
         },
         {
@@ -1786,7 +1786,7 @@
           "age": 27,
           "club": "Al-Duhail SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1298,
           "titular": false
         },
         {
@@ -1796,7 +1796,7 @@
           "age": 35,
           "club": "Al-Wakrah SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1046,
           "titular": true
         },
         {
@@ -1806,7 +1806,7 @@
           "age": 28,
           "club": "Al-Arabi SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1276,
           "titular": false
         },
         {
@@ -1816,7 +1816,7 @@
           "age": 35,
           "club": "Al-Sadd SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1350,
           "titular": false
         },
         {
@@ -1826,7 +1826,7 @@
           "age": 22,
           "club": "Al-Arabi SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1276,
           "titular": false
         },
         {
@@ -1836,7 +1836,7 @@
           "age": 35,
           "club": "Al-Sadd SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1350,
           "titular": true
         },
         {
@@ -1846,7 +1846,7 @@
           "age": 26,
           "club": "Cultural Leonesa",
           "country": "España",
-          "elo": null,
+          "elo": 1460,
           "titular": true
         },
         {
@@ -1856,7 +1856,7 @@
           "age": 30,
           "club": "Al-Duhail SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1298,
           "titular": false
         },
         {
@@ -1866,7 +1866,7 @@
           "age": 21,
           "club": "Al-Gharafa SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1146,
           "titular": true
         },
         {
@@ -1876,7 +1876,7 @@
           "age": 24,
           "club": "Al-Rayyan SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1161,
           "titular": true
         },
         {
@@ -1886,7 +1886,7 @@
           "age": 22,
           "club": "Al-Shamal SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1013,
           "titular": true
         },
         {
@@ -1896,7 +1896,7 @@
           "age": 29,
           "club": "Al-Wakrah SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1046,
           "titular": false
         },
         {
@@ -1906,7 +1906,7 @@
           "age": 33,
           "club": "Al-Arabi SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1276,
           "titular": true
         },
         {
@@ -1916,7 +1916,7 @@
           "age": 35,
           "club": "Al-Duhail SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1298,
           "titular": false
         },
         {
@@ -1926,7 +1926,7 @@
           "age": 35,
           "club": "Al-Rayyan SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1161,
           "titular": false
         },
         {
@@ -1936,7 +1936,7 @@
           "age": 35,
           "club": "Al-Sadd SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1350,
           "titular": false
         },
         {
@@ -1946,7 +1946,7 @@
           "age": 29,
           "club": "Al-Sadd SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1350,
           "titular": true
         },
         {
@@ -1956,7 +1956,7 @@
           "age": 31,
           "club": "Al-Duhail SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1298,
           "titular": true
         },
         {
@@ -1966,7 +1966,7 @@
           "age": 26,
           "club": "Al-Wakrah SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1046,
           "titular": false
         },
         {
@@ -1976,7 +1976,7 @@
           "age": 19,
           "club": "Al-Duhail SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1298,
           "titular": false
         },
         {
@@ -1986,7 +1986,7 @@
           "age": 25,
           "club": "Al-Wakrah SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1046,
           "titular": false
         },
         {
@@ -1996,7 +1996,7 @@
           "age": 29,
           "club": "Al-Duhail SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1298,
           "titular": true
         },
         {
@@ -2006,7 +2006,7 @@
           "age": 33,
           "club": "Al-Rayyan SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1161,
           "titular": false
         },
         {
@@ -2016,7 +2016,7 @@
           "age": 32,
           "club": "Al-Gharafa SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1146,
           "titular": false
         }
       ],
@@ -2063,7 +2063,7 @@
           "age": 32,
           "club": "Lorient",
           "country": "Francia",
-          "elo": 1407,
+          "elo": 1395,
           "titular": false
         },
         {
@@ -2073,7 +2073,7 @@
           "age": 23,
           "club": "Young Boys",
           "country": "Suiza",
-          "elo": 1381,
+          "elo": 1390,
           "titular": false
         },
         {
@@ -2123,7 +2123,7 @@
           "age": 28,
           "club": "HSV (Hamburgo)",
           "country": "Alemania",
-          "elo": 1434,
+          "elo": 1440,
           "titular": false
         },
         {
@@ -2203,7 +2203,7 @@
           "age": 29,
           "club": "Sevilla",
           "country": "España",
-          "elo": 1490,
+          "elo": 1492,
           "titular": false
         },
         {
@@ -2213,7 +2213,7 @@
           "age": 29,
           "club": "Pisa",
           "country": "Italia",
-          "elo": 1159,
+          "elo": 1154,
           "titular": false
         },
         {
@@ -2263,7 +2263,7 @@
           "age": 27,
           "club": "Sevilla",
           "country": "España",
-          "elo": 1490,
+          "elo": 1492,
           "titular": true
         },
         {
@@ -2283,7 +2283,7 @@
           "age": 32,
           "club": "Young Boys",
           "country": "Suiza",
-          "elo": 1381,
+          "elo": 1390,
           "titular": false
         },
         {
@@ -2293,7 +2293,7 @@
           "age": 29,
           "club": "Fortuna Düsseldorf",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1477,
           "titular": false
         },
         {
@@ -2342,7 +2342,7 @@
           "age": 38,
           "club": "Grêmio",
           "country": "Brasil",
-          "elo": 1298,
+          "elo": 1301,
           "titular": false
         },
         {
@@ -2352,7 +2352,7 @@
           "age": 32,
           "club": "PSG",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -2392,7 +2392,7 @@
           "age": 30,
           "club": "Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -2402,7 +2402,7 @@
           "age": 34,
           "club": "Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -2422,7 +2422,7 @@
           "age": 35,
           "club": "Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -2462,7 +2462,7 @@
           "age": 25,
           "club": "Botafogo",
           "country": "Brasil",
-          "elo": 1426,
+          "elo": 1428,
           "titular": false
         },
         {
@@ -2472,7 +2472,7 @@
           "age": 34,
           "club": "Al-Ittihad",
           "country": "Arabia S.",
-          "elo": 1057,
+          "elo": 1047,
           "titular": false
         },
         {
@@ -2482,7 +2482,7 @@
           "age": 28,
           "club": "Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -2492,7 +2492,7 @@
           "age": 34,
           "club": "Santos",
           "country": "Brasil",
-          "elo": 1255,
+          "elo": 1253,
           "titular": true
         },
         {
@@ -2615,7 +2615,7 @@
           "age": 30,
           "club": "AS FAR",
           "country": "Marruecos",
-          "elo": 1452,
+          "elo": 1450,
           "titular": false
         },
         {
@@ -2625,7 +2625,7 @@
           "age": 27,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -2675,7 +2675,7 @@
           "age": 22,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         },
         {
@@ -2695,7 +2695,7 @@
           "age": 23,
           "club": "KV Mechelen",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1331,
           "titular": false
         },
         {
@@ -2705,7 +2705,7 @@
           "age": 24,
           "club": "KRC Genk",
           "country": "Bélgica",
-          "elo": 1520,
+          "elo": 1507,
           "titular": false
         },
         {
@@ -2825,7 +2825,7 @@
           "age": 29,
           "club": "Al-Ain FC",
           "country": "EAU",
-          "elo": null,
+          "elo": 1333,
           "titular": false
         },
         {
@@ -2882,7 +2882,7 @@
           "age": 25,
           "club": "FC Sochaux",
           "country": "Francia",
-          "elo": null,
+          "elo": 1442,
           "titular": true
         },
         {
@@ -2892,7 +2892,7 @@
           "age": 38,
           "club": "SC Bastia",
           "country": "Francia",
-          "elo": 1065,
+          "elo": 1425,
           "titular": false
         },
         {
@@ -2912,7 +2912,7 @@
           "age": 35,
           "club": "LDU Quito",
           "country": "Ecuador",
-          "elo": 1363,
+          "elo": 1388,
           "titular": true
         },
         {
@@ -2922,7 +2922,7 @@
           "age": 29,
           "club": "Angers SCO",
           "country": "Francia",
-          "elo": 1300,
+          "elo": 1303,
           "titular": true
         },
         {
@@ -2932,7 +2932,7 @@
           "age": 24,
           "club": "SV Zulte Waregem",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1232,
           "titular": false
         },
         {
@@ -2942,7 +2942,7 @@
           "age": 27,
           "club": "AS Nancy Lorraine",
           "country": "Francia",
-          "elo": null,
+          "elo": 1415,
           "titular": true
         },
         {
@@ -2952,7 +2952,7 @@
           "age": 32,
           "club": "Colorado Springs",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1344,
           "titular": false
         },
         {
@@ -2972,7 +2972,7 @@
           "age": 28,
           "club": "KAA Gent",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1396,
           "titular": false
         },
         {
@@ -2982,7 +2982,7 @@
           "age": 20,
           "club": "Young Boys",
           "country": "Suiza",
-          "elo": 1381,
+          "elo": 1390,
           "titular": false
         },
         {
@@ -3002,7 +3002,7 @@
           "age": 25,
           "club": "Philadelphia Union",
           "country": "EE.UU.",
-          "elo": 1247,
+          "elo": 1239,
           "titular": true
         },
         {
@@ -3012,7 +3012,7 @@
           "age": 23,
           "club": "FC Tatran Presov",
           "country": "Eslovaquia",
-          "elo": null,
+          "elo": 1057,
           "titular": false
         },
         {
@@ -3022,7 +3022,7 @@
           "age": 28,
           "club": "FC Vizela",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1380,
           "titular": true
         },
         {
@@ -3042,7 +3042,7 @@
           "age": 23,
           "club": "El Paso Locomotive",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1338,
           "titular": false
         },
         {
@@ -3062,7 +3062,7 @@
           "age": 29,
           "club": "Toronto FC",
           "country": "EE.UU.",
-          "elo": 1103,
+          "elo": 1094,
           "titular": false
         },
         {
@@ -3072,7 +3072,7 @@
           "age": 25,
           "club": "FC Dallas",
           "country": "EE.UU.",
-          "elo": 1181,
+          "elo": 1186,
           "titular": false
         },
         {
@@ -3082,7 +3082,7 @@
           "age": 24,
           "club": "Almere City FC",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1307,
           "titular": false
         },
         {
@@ -3092,7 +3092,7 @@
           "age": 24,
           "club": "AJ Auxerre",
           "country": "Francia",
-          "elo": 1363,
+          "elo": 1378,
           "titular": true
         },
         {
@@ -3112,7 +3112,7 @@
           "age": 31,
           "club": "Çaykur Rizespor",
           "country": "Turquía",
-          "elo": 1213,
+          "elo": 1214,
           "titular": false
         },
         {
@@ -3122,7 +3122,7 @@
           "age": 27,
           "club": "FC Vizela",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1380,
           "titular": false
         },
         {
@@ -3171,7 +3171,7 @@
           "age": 29,
           "club": "Rangers",
           "country": "Escocia",
-          "elo": 1050,
+          "elo": 1468,
           "titular": false
         },
         {
@@ -3231,7 +3231,7 @@
           "age": 34,
           "club": "Hibernian",
           "country": "Escocia",
-          "elo": 1310,
+          "elo": 1312,
           "titular": true
         },
         {
@@ -3241,7 +3241,7 @@
           "age": 29,
           "club": "Rangers",
           "country": "Escocia",
-          "elo": 1050,
+          "elo": 1468,
           "titular": false
         },
         {
@@ -3261,7 +3261,7 @@
           "age": 31,
           "club": "Al-Ettifaq",
           "country": "Arabia S.",
-          "elo": 1156,
+          "elo": 1153,
           "titular": false
         },
         {
@@ -3271,7 +3271,7 @@
           "age": 30,
           "club": "Wrexham",
           "country": "Gales",
-          "elo": null,
+          "elo": 1541,
           "titular": false
         },
         {
@@ -3311,7 +3311,7 @@
           "age": 34,
           "club": "Norwich City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -3351,7 +3351,7 @@
           "age": 19,
           "club": "Kilmarnock FC",
           "country": "Escocia",
-          "elo": null,
+          "elo": 1176,
           "titular": false
         },
         {
@@ -3361,7 +3361,7 @@
           "age": 29,
           "club": "Torino",
           "country": "Italia",
-          "elo": 1484,
+          "elo": 1477,
           "titular": true
         },
         {
@@ -3371,7 +3371,7 @@
           "age": 30,
           "club": "Charlton Athletic",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1466,
           "titular": false
         },
         {
@@ -3391,7 +3391,7 @@
           "age": 27,
           "club": "Ipswich Town",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1613,
           "titular": false
         },
         {
@@ -3401,7 +3401,7 @@
           "age": 29,
           "club": "Southampton",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1623,
           "titular": false
         }
       ]
@@ -3420,7 +3420,7 @@
           "age": 27,
           "club": "New York City FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1240,
           "titular": true
         },
         {
@@ -3430,7 +3430,7 @@
           "age": 31,
           "club": "New England Revolution",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1207,
           "titular": false
         },
         {
@@ -3440,7 +3440,7 @@
           "age": 22,
           "club": "Chicago Fire",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1120,
           "titular": false
         },
         {
@@ -3460,7 +3460,7 @@
           "age": 26,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": true
         },
         {
@@ -3470,7 +3470,7 @@
           "age": 35,
           "club": "Charlotte FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1208,
           "titular": true
         },
         {
@@ -3520,7 +3520,7 @@
           "age": 27,
           "club": "Toulouse FC",
           "country": "Francia",
-          "elo": 1445,
+          "elo": 1448,
           "titular": false
         },
         {
@@ -3530,7 +3530,7 @@
           "age": 29,
           "club": "FC Cincinnati",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1282,
           "titular": false
         },
         {
@@ -3540,7 +3540,7 @@
           "age": 25,
           "club": "Columbus Crew",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1320,
           "titular": false
         },
         {
@@ -3590,7 +3590,7 @@
           "age": 25,
           "club": "Vancouver Whitecaps",
           "country": "Canadá",
-          "elo": null,
+          "elo": 1268,
           "titular": false
         },
         {
@@ -3600,7 +3600,7 @@
           "age": 30,
           "club": "Seattle Sounders",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1354,
           "titular": false
         },
         {
@@ -3660,7 +3660,7 @@
           "age": 28,
           "club": "Club América",
           "country": "México",
-          "elo": null,
+          "elo": 1363,
           "titular": false
         },
         {
@@ -3670,7 +3670,7 @@
           "age": 28,
           "club": "Coventry City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1622,
           "titular": false
         }
       ]
@@ -3693,7 +3693,7 @@
           "age": 38,
           "club": "Cerro Porteño",
           "country": "Paraguay",
-          "elo": null,
+          "elo": 1306,
           "titular": true
         },
         {
@@ -3703,7 +3703,7 @@
           "age": 25,
           "club": "San Lorenzo de Almagro",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1222,
           "titular": false
         },
         {
@@ -3713,7 +3713,7 @@
           "age": 33,
           "club": "Olimpia",
           "country": "Paraguay",
-          "elo": null,
+          "elo": 1346,
           "titular": false
         },
         {
@@ -3723,7 +3723,7 @@
           "age": 33,
           "club": "Palmeiras",
           "country": "Brasil",
-          "elo": 1529,
+          "elo": 1538,
           "titular": true
         },
         {
@@ -3743,7 +3743,7 @@
           "age": 33,
           "club": "Atlético Mineiro",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1355,
           "titular": true
         },
         {
@@ -3753,7 +3753,7 @@
           "age": 34,
           "club": "Gremio",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1301,
           "titular": false
         },
         {
@@ -3773,7 +3773,7 @@
           "age": 35,
           "club": "Cerro Porteño",
           "country": "Paraguay",
-          "elo": null,
+          "elo": 1306,
           "titular": false
         },
         {
@@ -3783,7 +3783,7 @@
           "age": 29,
           "club": "Lanús",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1353,
           "titular": false
         },
         {
@@ -3793,7 +3793,7 @@
           "age": 20,
           "club": "Talleres de Córdoba",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1297,
           "titular": false
         },
         {
@@ -3803,7 +3803,7 @@
           "age": 30,
           "club": "Vancouver Whitecaps",
           "country": "Canadá",
-          "elo": null,
+          "elo": 1268,
           "titular": true
         },
         {
@@ -3823,7 +3823,7 @@
           "age": 24,
           "club": "Palmeiras",
           "country": "Brasil",
-          "elo": 1529,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -3833,7 +3833,7 @@
           "age": 24,
           "club": "São Paulo",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1330,
           "titular": false
         },
         {
@@ -3843,7 +3843,7 @@
           "age": 25,
           "club": "Orlando City",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1225,
           "titular": false
         },
         {
@@ -3853,7 +3853,7 @@
           "age": 24,
           "club": "Atlanta United",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1139,
           "titular": false
         },
         {
@@ -3863,7 +3863,7 @@
           "age": 31,
           "club": "Al-Ain",
           "country": "EAU",
-          "elo": null,
+          "elo": 1333,
           "titular": false
         },
         {
@@ -3873,7 +3873,7 @@
           "age": 26,
           "club": "Palmeiras",
           "country": "Brasil",
-          "elo": 1529,
+          "elo": 1538,
           "titular": true
         },
         {
@@ -3883,7 +3883,7 @@
           "age": 24,
           "club": "Portsmouth",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1487,
           "titular": false
         },
         {
@@ -3903,7 +3903,7 @@
           "age": 30,
           "club": "Cremonese",
           "country": "Italia",
-          "elo": null,
+          "elo": 1294,
           "titular": true
         },
         {
@@ -3913,7 +3913,7 @@
           "age": 32,
           "club": "Atlanta United",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1139,
           "titular": true
         },
         {
@@ -3923,7 +3923,7 @@
           "age": 35,
           "club": "Independiente",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1235,
           "titular": false
         },
         {
@@ -3933,7 +3933,7 @@
           "age": 30,
           "club": "Independiente Rivadavia",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1292,
           "titular": false
         },
         {
@@ -3943,7 +3943,7 @@
           "age": 26,
           "club": "RB Bragantino",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1291,
           "titular": false
         }
       ],
@@ -3995,7 +3995,7 @@
           "age": 22,
           "club": "Melbourne City FC",
           "country": "Australia",
-          "elo": null,
+          "elo": 1251,
           "titular": false
         },
         {
@@ -4005,7 +4005,7 @@
           "age": 31,
           "club": "Randers FC",
           "country": "Dinamarca",
-          "elo": null,
+          "elo": 1260,
           "titular": false
         },
         {
@@ -4015,7 +4015,7 @@
           "age": 27,
           "club": "Leicester City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1529,
           "titular": true
         },
         {
@@ -4045,7 +4045,7 @@
           "age": 30,
           "club": "Swansea City",
           "country": "Gales",
-          "elo": null,
+          "elo": 1516,
           "titular": true
         },
         {
@@ -4055,7 +4055,7 @@
           "age": 32,
           "club": "APOEL",
           "country": "Chipre",
-          "elo": null,
+          "elo": 1374,
           "titular": false
         },
         {
@@ -4065,7 +4065,7 @@
           "age": 35,
           "club": "Melbourne City FC",
           "country": "Australia",
-          "elo": null,
+          "elo": 1251,
           "titular": false
         },
         {
@@ -4075,7 +4075,7 @@
           "age": 33,
           "club": "Albirex Niigata",
           "country": "Japón",
-          "elo": null,
+          "elo": 1343,
           "titular": false
         },
         {
@@ -4085,7 +4085,7 @@
           "age": 18,
           "club": "Colorado Rapids",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1155,
           "titular": false
         },
         {
@@ -4095,7 +4095,7 @@
           "age": 24,
           "club": "New York City FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1240,
           "titular": false
         },
         {
@@ -4105,7 +4105,7 @@
           "age": 24,
           "club": "Grazer AK 1902",
           "country": "Austria",
-          "elo": null,
+          "elo": 1187,
           "titular": true
         },
         {
@@ -4115,7 +4115,7 @@
           "age": 33,
           "club": "FC St. Pauli",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1313,
           "titular": true
         },
         {
@@ -4125,7 +4125,7 @@
           "age": 21,
           "club": "Sydney FC",
           "country": "Australia",
-          "elo": null,
+          "elo": 1220,
           "titular": false
         },
         {
@@ -4145,7 +4145,7 @@
           "age": 29,
           "club": "Heracles Almelo",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1101,
           "titular": false
         },
         {
@@ -4155,7 +4155,7 @@
           "age": 26,
           "club": "FC St. Pauli",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1313,
           "titular": true
         },
         {
@@ -4165,7 +4165,7 @@
           "age": 27,
           "club": "New York City FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1240,
           "titular": true
         },
         {
@@ -4175,7 +4175,7 @@
           "age": 35,
           "club": "Melbourne City FC",
           "country": "Australia",
-          "elo": null,
+          "elo": 1251,
           "titular": false
         },
         {
@@ -4185,7 +4185,7 @@
           "age": 25,
           "club": "Melbourne Victory",
           "country": "Australia",
-          "elo": null,
+          "elo": 1132,
           "titular": false
         },
         {
@@ -4195,7 +4195,7 @@
           "age": 20,
           "club": "Watford FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1468,
           "titular": true
         },
         {
@@ -4205,7 +4205,7 @@
           "age": 30,
           "club": "CD Castellón",
           "country": "España",
-          "elo": null,
+          "elo": 1593,
           "titular": false
         },
         {
@@ -4215,7 +4215,7 @@
           "age": 22,
           "club": "Norwich City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1538,
           "titular": true
         },
         {
@@ -4235,7 +4235,7 @@
           "age": 25,
           "club": "Machida Zelvia",
           "country": "Japón",
-          "elo": null,
+          "elo": 1372,
           "titular": false
         }
       ],
@@ -4347,7 +4347,7 @@
           "age": 32,
           "club": "Çaykur Rizespor",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1214,
           "titular": false
         },
         {
@@ -4517,7 +4517,7 @@
           "age": 30,
           "club": "Kasımpaşa",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1237,
           "titular": false
         },
         {
@@ -4834,7 +4834,7 @@
           "age": 37,
           "club": "Miami FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1226,
           "titular": true
         },
         {
@@ -4844,7 +4844,7 @@
           "age": 23,
           "club": "SC Telstar",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1219,
           "titular": false
         },
         {
@@ -4854,7 +4854,7 @@
           "age": 27,
           "club": "VVV-Venlo",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1209,
           "titular": false
         },
         {
@@ -4874,7 +4874,7 @@
           "age": 32,
           "club": "Kayserispor",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1198,
           "titular": false
         },
         {
@@ -4884,7 +4884,7 @@
           "age": 29,
           "club": "Konyaspor",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1249,
           "titular": false
         },
         {
@@ -4894,7 +4894,7 @@
           "age": 27,
           "club": "PEC Zwolle",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1221,
           "titular": true
         },
         {
@@ -4904,7 +4904,7 @@
           "age": 23,
           "club": "Sparta Rotterdam",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1277,
           "titular": true
         },
         {
@@ -4914,7 +4914,7 @@
           "age": 25,
           "club": "NEC Nijmegen",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1369,
           "titular": false
         },
         {
@@ -4924,7 +4924,7 @@
           "age": 26,
           "club": "RKC Waalwijk",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1324,
           "titular": true
         },
         {
@@ -4944,7 +4944,7 @@
           "age": 34,
           "club": "Idgir FK",
           "country": "Azerbaiyán",
-          "elo": null,
+          "elo": 1478,
           "titular": true
         },
         {
@@ -4954,7 +4954,7 @@
           "age": 28,
           "club": "FC Volendam",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1104,
           "titular": true
         },
         {
@@ -4964,7 +4964,7 @@
           "age": 22,
           "club": "FC Zürich",
           "country": "Suiza",
-          "elo": null,
+          "elo": 1219,
           "titular": true
         },
         {
@@ -4974,7 +4974,7 @@
           "age": 26,
           "club": "Sheffield United",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1543,
           "titular": true
         },
         {
@@ -4984,7 +4984,7 @@
           "age": 22,
           "club": "Rotherham United",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1328,
           "titular": false
         },
         {
@@ -4994,7 +4994,7 @@
           "age": 23,
           "club": "SC Telstar",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1219,
           "titular": false
         },
         {
@@ -5004,7 +5004,7 @@
           "age": 26,
           "club": "FC Den Bosch",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1218,
           "titular": false
         },
         {
@@ -5014,7 +5014,7 @@
           "age": 26,
           "club": "RKC Waalwijk",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1324,
           "titular": false
         },
         {
@@ -5024,7 +5024,7 @@
           "age": 23,
           "club": "Middlesbrough FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1564,
           "titular": true
         },
         {
@@ -5034,7 +5034,7 @@
           "age": 29,
           "club": "Terengganu FC",
           "country": "Malasia",
-          "elo": null,
+          "elo": 1177,
           "titular": false
         },
         {
@@ -5054,7 +5054,7 @@
           "age": 32,
           "club": "Miami FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1226,
           "titular": true
         },
         {
@@ -5064,7 +5064,7 @@
           "age": 24,
           "club": "AE Kifisia",
           "country": "Grecia",
-          "elo": null,
+          "elo": 1097,
           "titular": false
         },
         {
@@ -5074,7 +5074,7 @@
           "age": 27,
           "club": "SK Beveren",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1450,
           "titular": false
         },
         {
@@ -5084,7 +5084,7 @@
           "age": 33,
           "club": "FC Volendam",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1104,
           "titular": false
         }
       ]
@@ -5103,7 +5103,7 @@
           "age": 25,
           "club": "Çaykur Rizespor",
           "country": "Turquía",
-          "elo": 1213,
+          "elo": 1214,
           "titular": true
         },
         {
@@ -5123,7 +5123,7 @@
           "age": 24,
           "club": "RSC Charleroi",
           "country": "Bélgica",
-          "elo": 1336,
+          "elo": 1334,
           "titular": false
         },
         {
@@ -5153,7 +5153,7 @@
           "age": 30,
           "club": "Gil Vicente",
           "country": "Portugal",
-          "elo": 1282,
+          "elo": 1280,
           "titular": true
         },
         {
@@ -5173,7 +5173,7 @@
           "age": 28,
           "club": "Beşiktaş JK",
           "country": "Turquía",
-          "elo": 1407,
+          "elo": 1405,
           "titular": false
         },
         {
@@ -5203,7 +5203,7 @@
           "age": 24,
           "club": "AJ Auxerre",
           "country": "Francia",
-          "elo": 1363,
+          "elo": 1378,
           "titular": false
         },
         {
@@ -5213,7 +5213,7 @@
           "age": 29,
           "club": "Al-Ahli Saudi FC",
           "country": "Arabia S.",
-          "elo": 1400,
+          "elo": 1561,
           "titular": true
         },
         {
@@ -5223,7 +5223,7 @@
           "age": 34,
           "club": "NK Maribor",
           "country": "Eslovenia",
-          "elo": 1357,
+          "elo": 1349,
           "titular": false
         },
         {
@@ -5263,7 +5263,7 @@
           "age": 25,
           "club": "RSC Charleroi",
           "country": "Bélgica",
-          "elo": 1336,
+          "elo": 1334,
           "titular": false
         },
         {
@@ -5293,7 +5293,7 @@
           "age": 24,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         },
         {
@@ -5323,7 +5323,7 @@
           "age": 23,
           "club": "OGC Nice",
           "country": "Francia",
-          "elo": null,
+          "elo": 1384,
           "titular": false
         },
         {
@@ -5353,7 +5353,7 @@
           "age": 22,
           "club": "Cercle Brugge",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1299,
           "titular": false
         }
       ]
@@ -5376,7 +5376,7 @@
           "age": 39,
           "club": "CA Huracán",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1183,
           "titular": true
         },
         {
@@ -5386,7 +5386,7 @@
           "age": 25,
           "club": "AE Kifisias",
           "country": "Grecia",
-          "elo": null,
+          "elo": 1097,
           "titular": false
         },
         {
@@ -5396,7 +5396,7 @@
           "age": 30,
           "club": "Liga de Quito",
           "country": "Ecuador",
-          "elo": null,
+          "elo": 1388,
           "titular": false
         },
         {
@@ -5406,7 +5406,7 @@
           "age": 24,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -5436,7 +5436,7 @@
           "age": 25,
           "club": "Club Tijuana",
           "country": "México",
-          "elo": null,
+          "elo": 1184,
           "titular": false
         },
         {
@@ -5446,7 +5446,7 @@
           "age": 29,
           "club": "Internacional",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1327,
           "titular": false
         },
         {
@@ -5466,7 +5466,7 @@
           "age": 21,
           "club": "Genk",
           "country": "Bélgica",
-          "elo": 1520,
+          "elo": 1507,
           "titular": false
         },
         {
@@ -5476,7 +5476,7 @@
           "age": 28,
           "club": "Atlético Mineiro",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1355,
           "titular": false
         },
         {
@@ -5496,7 +5496,7 @@
           "age": 26,
           "club": "Independiente del Valle",
           "country": "Ecuador",
-          "elo": null,
+          "elo": 1376,
           "titular": false
         },
         {
@@ -5516,7 +5516,7 @@
           "age": 27,
           "club": "Atlético Mineiro",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1355,
           "titular": true
         },
         {
@@ -5526,7 +5526,7 @@
           "age": 24,
           "club": "Pumas UNAM",
           "country": "México",
-          "elo": null,
+          "elo": 1284,
           "titular": true
         },
         {
@@ -5536,7 +5536,7 @@
           "age": 23,
           "club": "Atlético Mineiro",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1355,
           "titular": false
         },
         {
@@ -5546,7 +5546,7 @@
           "age": 19,
           "club": "River Plate",
           "country": "Argentina",
-          "elo": 1421,
+          "elo": 1424,
           "titular": false
         },
         {
@@ -5566,7 +5566,7 @@
           "age": 25,
           "club": "Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": true
         },
         {
@@ -5576,7 +5576,7 @@
           "age": 25,
           "club": "Venezia",
           "country": "Italia",
-          "elo": null,
+          "elo": 1612,
           "titular": true
         },
         {
@@ -5586,7 +5586,7 @@
           "age": 36,
           "club": "Pachuca",
           "country": "México",
-          "elo": null,
+          "elo": 1304,
           "titular": true
         },
         {
@@ -5596,7 +5596,7 @@
           "age": 28,
           "club": "CA Huracán",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1183,
           "titular": false
         },
         {
@@ -5616,7 +5616,7 @@
           "age": 22,
           "club": "Royal Antwerp",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1342,
           "titular": false
         },
         {
@@ -5876,7 +5876,7 @@
           "age": 32,
           "club": "Corinthians",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1366,
           "titular": true
         },
         {
@@ -5916,7 +5916,7 @@
           "age": 24,
           "club": "West Ham",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1573,
           "titular": false
         }
       ],
@@ -5979,7 +5979,7 @@
           "age": 26,
           "club": "Sanfrecce Hiroshima",
           "country": "Japón",
-          "elo": null,
+          "elo": 1397,
           "titular": false
         },
         {
@@ -5988,7 +5988,7 @@
           "age": 27,
           "club": "Kashima Antlers",
           "country": "Japón",
-          "elo": 1410,
+          "elo": 1405,
           "titular": false
         },
         {
@@ -6042,7 +6042,7 @@
           "age": 34,
           "club": "Sint-Truidense VV",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1401,
           "titular": false
         },
         {
@@ -6051,7 +6051,7 @@
           "age": 25,
           "club": "Le Havre AC",
           "country": "Francia",
-          "elo": null,
+          "elo": 1326,
           "titular": false
         },
         {
@@ -6069,7 +6069,7 @@
           "age": 39,
           "club": "FC Tokyo",
           "country": "Japón",
-          "elo": null,
+          "elo": 1303,
           "titular": false
         },
         {
@@ -6097,7 +6097,7 @@
           "age": 29,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         },
         {
@@ -6115,7 +6115,7 @@
           "age": 27,
           "club": "KRC Genk",
           "country": "Bélgica",
-          "elo": 1520,
+          "elo": 1507,
           "titular": true
         },
         {
@@ -6142,7 +6142,7 @@
           "age": 25,
           "club": "Stade de Reims",
           "country": "Francia",
-          "elo": null,
+          "elo": 1551,
           "titular": true
         },
         {
@@ -6169,7 +6169,7 @@
           "age": 28,
           "club": "NEC Nijmegen",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1369,
           "titular": false
         },
         {
@@ -6178,7 +6178,7 @@
           "age": 20,
           "club": "Sint-Truidense VV",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1401,
           "titular": false
         },
         {
@@ -6187,7 +6187,7 @@
           "age": 21,
           "club": "VfL Wolfsburg",
           "country": "Alemania",
-          "elo": 1448,
+          "elo": 1440,
           "titular": false
         },
         {
@@ -6215,7 +6215,7 @@
           "age": 27,
           "club": "Stoke City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1467,
           "titular": true
         },
         {
@@ -6225,7 +6225,7 @@
           "age": 36,
           "club": "AIK",
           "country": "Suecia",
-          "elo": 1337,
+          "elo": 1336,
           "titular": false
         },
         {
@@ -6235,7 +6235,7 @@
           "age": 27,
           "club": "Derby County",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1524,
           "titular": false
         },
         {
@@ -6325,7 +6325,7 @@
           "age": 29,
           "club": "FC St. Pauli",
           "country": "Alemania",
-          "elo": 1321,
+          "elo": 1313,
           "titular": false
         },
         {
@@ -6335,7 +6335,7 @@
           "age": 23,
           "club": "Mjällby AIF",
           "country": "Suecia",
-          "elo": 1413,
+          "elo": 1398,
           "titular": false
         },
         {
@@ -6345,7 +6345,7 @@
           "age": 30,
           "club": "Udinese",
           "country": "Italia",
-          "elo": 1483,
+          "elo": 1464,
           "titular": true
         },
         {
@@ -6375,7 +6375,7 @@
           "age": 27,
           "club": "Wolfsburg",
           "country": "Alemania",
-          "elo": 1448,
+          "elo": 1440,
           "titular": false
         },
         {
@@ -6385,7 +6385,7 @@
           "age": 32,
           "club": "Pafos FC",
           "country": "Chipre",
-          "elo": 1471,
+          "elo": 1475,
           "titular": false
         },
         {
@@ -6405,7 +6405,7 @@
           "age": 27,
           "club": "Malmö FF",
           "country": "Suecia",
-          "elo": 1355,
+          "elo": 1340,
           "titular": false
         },
         {
@@ -6415,7 +6415,7 @@
           "age": 27,
           "club": "Holstein Kiel",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1511,
           "titular": false
         },
         {
@@ -6484,7 +6484,7 @@
           "age": 29,
           "club": "CS Sfaxien",
           "country": "Túnez",
-          "elo": null,
+          "elo": 1275,
           "titular": true
         },
         {
@@ -6494,7 +6494,7 @@
           "age": 29,
           "club": "Étoile du Sahel",
           "country": "Túnez",
-          "elo": null,
+          "elo": 1295,
           "titular": false
         },
         {
@@ -6504,7 +6504,7 @@
           "age": 24,
           "club": "Club Africain",
           "country": "Túnez",
-          "elo": null,
+          "elo": 1314,
           "titular": false
         },
         {
@@ -6514,7 +6514,7 @@
           "age": 32,
           "club": "OGC Nice",
           "country": "Francia",
-          "elo": null,
+          "elo": 1384,
           "titular": true
         },
         {
@@ -6524,7 +6524,7 @@
           "age": 27,
           "club": "FC Lorient",
           "country": "Francia",
-          "elo": null,
+          "elo": 1395,
           "titular": true
         },
         {
@@ -6534,7 +6534,7 @@
           "age": 30,
           "club": "Servette FC",
           "country": "Suiza",
-          "elo": null,
+          "elo": 1376,
           "titular": true
         },
         {
@@ -6554,7 +6554,7 @@
           "age": 24,
           "club": "NK Maribor",
           "country": "Eslovenia",
-          "elo": null,
+          "elo": 1349,
           "titular": false
         },
         {
@@ -6564,7 +6564,7 @@
           "age": 21,
           "club": "Kasımpaşa SK",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1237,
           "titular": false
         },
         {
@@ -6584,7 +6584,7 @@
           "age": 21,
           "club": "US Monastir",
           "country": "Túnez",
-          "elo": null,
+          "elo": 1288,
           "titular": false
         },
         {
@@ -6594,7 +6594,7 @@
           "age": 27,
           "club": "BSC Young Boys",
           "country": "Suiza",
-          "elo": null,
+          "elo": 1390,
           "titular": true
         },
         {
@@ -6624,7 +6624,7 @@
           "age": 23,
           "club": "Burnley FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1381,
           "titular": true
         },
         {
@@ -6634,7 +6634,7 @@
           "age": 25,
           "club": "Norwich City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -6654,7 +6654,7 @@
           "age": 26,
           "club": "Hannover 96",
           "country": "Alemania",
-          "elo": null,
+          "elo": 1554,
           "titular": true
         },
         {
@@ -6674,7 +6674,7 @@
           "age": 21,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": false
         },
         {
@@ -6684,7 +6684,7 @@
           "age": 31,
           "club": "Kasımpaşa SK",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1237,
           "titular": false
         },
         {
@@ -6694,7 +6694,7 @@
           "age": 30,
           "club": "Club Africain",
           "country": "Túnez",
-          "elo": null,
+          "elo": 1314,
           "titular": false
         },
         {
@@ -6704,7 +6704,7 @@
           "age": 28,
           "club": "Dynamo Makhachkala",
           "country": "Rusia",
-          "elo": null,
+          "elo": 1207,
           "titular": true
         },
         {
@@ -6734,7 +6734,7 @@
           "age": 18,
           "club": "Vancouver Whitecaps",
           "country": "Canadá",
-          "elo": null,
+          "elo": 1268,
           "titular": false
         }
       ]
@@ -6903,7 +6903,7 @@
           "age": 25,
           "club": "Rangers",
           "country": "Escocia",
-          "elo": 1050,
+          "elo": 1468,
           "titular": false
         },
         {
@@ -6933,7 +6933,7 @@
           "age": 37,
           "club": "Girona",
           "country": "España",
-          "elo": 1441,
+          "elo": 1489,
           "titular": false
         },
         {
@@ -7056,7 +7056,7 @@
           "age": 26,
           "club": "El Gouna",
           "country": "Egipto",
-          "elo": null,
+          "elo": 1075,
           "titular": false
         },
         {
@@ -7076,7 +7076,7 @@
           "age": 28,
           "club": "ZED",
           "country": "Egipto",
-          "elo": null,
+          "elo": 1086,
           "titular": false
         },
         {
@@ -7086,7 +7086,7 @@
           "age": 31,
           "club": "Al-Wakrah SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1046,
           "titular": false
         },
         {
@@ -7096,7 +7096,7 @@
           "age": 33,
           "club": "Al-Ain FC",
           "country": "EAU",
-          "elo": null,
+          "elo": 1333,
           "titular": false
         },
         {
@@ -7126,7 +7126,7 @@
           "age": 27,
           "club": "OGC Nice",
           "country": "Francia",
-          "elo": null,
+          "elo": 1384,
           "titular": true
         },
         {
@@ -7176,7 +7176,7 @@
           "age": 30,
           "club": "Al-Najma",
           "country": "Arabia Saudita",
-          "elo": null,
+          "elo": 1034,
           "titular": false
         },
         {
@@ -7186,7 +7186,7 @@
           "age": 24,
           "club": "Zed",
           "country": "Egipto",
-          "elo": null,
+          "elo": 1086,
           "titular": false
         },
         {
@@ -7266,7 +7266,7 @@
           "age": 24,
           "club": "Real Oviedo",
           "country": "España",
-          "elo": null,
+          "elo": 1316,
           "titular": false
         },
         {
@@ -7318,7 +7318,7 @@
           "age": 33,
           "club": "Tractor FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1354,
           "titular": true
         },
         {
@@ -7328,7 +7328,7 @@
           "age": 31,
           "club": "Persepolis FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1369,
           "titular": false
         },
         {
@@ -7338,7 +7338,7 @@
           "age": 33,
           "club": "Sepahan FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1301,
           "titular": false
         },
         {
@@ -7348,7 +7348,7 @@
           "age": 32,
           "club": "Persepolis FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1369,
           "titular": true
         },
         {
@@ -7358,7 +7358,7 @@
           "age": 22,
           "club": "Malavan Bandar Anzali",
           "country": "Irán",
-          "elo": null,
+          "elo": 1129,
           "titular": false
         },
         {
@@ -7368,7 +7368,7 @@
           "age": 30,
           "club": "Foolad FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1231,
           "titular": true
         },
         {
@@ -7378,7 +7378,7 @@
           "age": 37,
           "club": "Tractor FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1354,
           "titular": false
         },
         {
@@ -7388,7 +7388,7 @@
           "age": 32,
           "club": "Persepolis FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1369,
           "titular": false
         },
         {
@@ -7398,7 +7398,7 @@
           "age": 36,
           "club": "Sepahan FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1301,
           "titular": true
         },
         {
@@ -7408,7 +7408,7 @@
           "age": 24,
           "club": "Sepahan FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1301,
           "titular": true
         },
         {
@@ -7418,7 +7418,7 @@
           "age": 27,
           "club": "Esteghlal FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1303,
           "titular": false
         },
         {
@@ -7428,7 +7428,7 @@
           "age": 36,
           "club": "Foolad FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1231,
           "titular": false
         },
         {
@@ -7438,7 +7438,7 @@
           "age": 29,
           "club": "Shabab Al-Ahli Dubai",
           "country": "EAU",
-          "elo": null,
+          "elo": 1397,
           "titular": true
         },
         {
@@ -7448,7 +7448,7 @@
           "age": 25,
           "club": "Al-Wahda FC",
           "country": "EAU",
-          "elo": null,
+          "elo": 1287,
           "titular": true
         },
         {
@@ -7458,7 +7458,7 @@
           "age": 32,
           "club": "Esteghlal FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1303,
           "titular": false
         },
         {
@@ -7468,7 +7468,7 @@
           "age": 20,
           "club": "Esteghlal FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1303,
           "titular": false
         },
         {
@@ -7478,7 +7478,7 @@
           "age": 32,
           "club": "Al-Ittihad Kalba SCC",
           "country": "EAU",
-          "elo": null,
+          "elo": 991,
           "titular": true
         },
         {
@@ -7498,7 +7498,7 @@
           "age": 27,
           "club": "Al-Nasr FC",
           "country": "EAU",
-          "elo": null,
+          "elo": 1240,
           "titular": true
         },
         {
@@ -7508,7 +7508,7 @@
           "age": 27,
           "club": "FK Rostov",
           "country": "Rusia",
-          "elo": null,
+          "elo": 1305,
           "titular": true
         },
         {
@@ -7518,7 +7518,7 @@
           "age": 32,
           "club": "FC Dender EH",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1139,
           "titular": false
         },
         {
@@ -7528,7 +7528,7 @@
           "age": 25,
           "club": "Tractor FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1354,
           "titular": false
         },
         {
@@ -7538,7 +7538,7 @@
           "age": 29,
           "club": "Standard Lieja",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1322,
           "titular": false
         },
         {
@@ -7548,7 +7548,7 @@
           "age": 30,
           "club": "Persepolis FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1369,
           "titular": false
         },
         {
@@ -7558,7 +7558,7 @@
           "age": 31,
           "club": "Al-Ittihad Kalba SCC",
           "country": "EAU",
-          "elo": null,
+          "elo": 991,
           "titular": false
         },
         {
@@ -7568,7 +7568,7 @@
           "age": 31,
           "club": "Tractor FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1354,
           "titular": false
         }
       ],
@@ -7605,7 +7605,7 @@
           "age": 32,
           "club": "Millwall FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1578,
           "titular": true
         },
         {
@@ -7615,7 +7615,7 @@
           "age": 23,
           "club": "Lechia Gdansk",
           "country": "Polonia",
-          "elo": null,
+          "elo": 1206,
           "titular": false
         },
         {
@@ -7625,7 +7625,7 @@
           "age": 27,
           "club": "Auckland FC",
           "country": "N. Zelanda",
-          "elo": 1110,
+          "elo": 1116,
           "titular": false
         },
         {
@@ -7635,7 +7635,7 @@
           "age": 21,
           "club": "Sheffield United",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1543,
           "titular": true
         },
         {
@@ -7645,7 +7645,7 @@
           "age": 37,
           "club": "Minnesota United",
           "country": "EE.UU.",
-          "elo": 1211,
+          "elo": 1201,
           "titular": false
         },
         {
@@ -7655,7 +7655,7 @@
           "age": 25,
           "club": "Wrexham",
           "country": "Gales",
-          "elo": null,
+          "elo": 1541,
           "titular": true
         },
         {
@@ -7665,7 +7665,7 @@
           "age": 31,
           "club": "Auckland FC",
           "country": "N. Zelanda",
-          "elo": 1110,
+          "elo": 1116,
           "titular": false
         },
         {
@@ -7675,7 +7675,7 @@
           "age": 26,
           "club": "Auckland FC",
           "country": "N. Zelanda",
-          "elo": 1110,
+          "elo": 1116,
           "titular": false
         },
         {
@@ -7695,7 +7695,7 @@
           "age": 27,
           "club": "Portland Timbers",
           "country": "EE.UU.",
-          "elo": 1201,
+          "elo": 1191,
           "titular": false
         },
         {
@@ -7705,7 +7705,7 @@
           "age": 36,
           "club": "Exeter City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1376,
           "titular": false
         },
         {
@@ -7715,7 +7715,7 @@
           "age": 22,
           "club": "Portland Timbers",
           "country": "EE.UU.",
-          "elo": 1201,
+          "elo": 1191,
           "titular": true
         },
         {
@@ -7725,7 +7725,7 @@
           "age": 23,
           "club": "Newcastle Jets",
           "country": "N. Zelanda",
-          "elo": null,
+          "elo": 1045,
           "titular": false
         },
         {
@@ -7745,7 +7745,7 @@
           "age": 24,
           "club": "Peterborough United",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1380,
           "titular": false
         },
         {
@@ -7755,7 +7755,7 @@
           "age": 23,
           "club": "Saint-Etienne",
           "country": "Francia",
-          "elo": 1217,
+          "elo": 1305,
           "titular": true
         },
         {
@@ -7785,7 +7785,7 @@
           "age": 24,
           "club": "Swansea City",
           "country": "Gales",
-          "elo": null,
+          "elo": 1516,
           "titular": true
         },
         {
@@ -7795,7 +7795,7 @@
           "age": 31,
           "club": "PEC Zwolle",
           "country": "Países Bajos",
-          "elo": 1225,
+          "elo": 1221,
           "titular": false
         },
         {
@@ -7805,7 +7805,7 @@
           "age": 36,
           "club": "W. Sydney Wanderers",
           "country": "Australia",
-          "elo": null,
+          "elo": 1091,
           "titular": false
         },
         {
@@ -7815,7 +7815,7 @@
           "age": 26,
           "club": "Motherwell AFC",
           "country": "Escocia",
-          "elo": 1275,
+          "elo": 1282,
           "titular": true
         },
         {
@@ -7825,7 +7825,7 @@
           "age": 27,
           "club": "Silkeborg IF",
           "country": "Dinamarca",
-          "elo": 1267,
+          "elo": 1256,
           "titular": true
         },
         {
@@ -7835,7 +7835,7 @@
           "age": 23,
           "club": "Auckland FC",
           "country": "N. Zelanda",
-          "elo": 1110,
+          "elo": 1116,
           "titular": false
         },
         {
@@ -7845,7 +7845,7 @@
           "age": 24,
           "club": "Port Vale FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1367,
           "titular": false
         },
         {
@@ -7884,7 +7884,7 @@
           "age": 30,
           "club": "Arsenal FC",
           "country": "Inglaterra",
-          "elo": 1947,
+          "elo": 2106,
           "titular": false
         },
         {
@@ -7994,7 +7994,7 @@
           "age": 27,
           "club": "Arsenal FC",
           "country": "Inglaterra",
-          "elo": 1947,
+          "elo": 2106,
           "titular": false
         },
         {
@@ -8024,7 +8024,7 @@
           "age": 30,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -8034,7 +8034,7 @@
           "age": 29,
           "club": "Arsenal FC",
           "country": "Inglaterra",
-          "elo": 1947,
+          "elo": 2106,
           "titular": false
         },
         {
@@ -8114,7 +8114,7 @@
           "age": 23,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         },
         {
@@ -8143,7 +8143,7 @@
           "age": 38,
           "club": "GD Chaves",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1339,
           "titular": true
         },
         {
@@ -8153,7 +8153,7 @@
           "age": 25,
           "club": "San Diego FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1125,
           "titular": false
         },
         {
@@ -8163,7 +8163,7 @@
           "age": 29,
           "club": "PFC Montana",
           "country": "Bulgaria",
-          "elo": null,
+          "elo": 969,
           "titular": false
         },
         {
@@ -8173,7 +8173,7 @@
           "age": 33,
           "club": "Shamrock Rovers",
           "country": "Irlanda",
-          "elo": 1408,
+          "elo": 1417,
           "titular": true
         },
         {
@@ -8193,7 +8193,7 @@
           "age": 28,
           "club": "FCSB",
           "country": "Rumania",
-          "elo": null,
+          "elo": 1409,
           "titular": false
         },
         {
@@ -8203,7 +8203,7 @@
           "age": 31,
           "club": "Al-Bataeh SCC",
           "country": "EAU",
-          "elo": null,
+          "elo": 1006,
           "titular": false
         },
         {
@@ -8213,7 +8213,7 @@
           "age": 38,
           "club": "SCU Torreense",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1170,
           "titular": false
         },
         {
@@ -8223,7 +8223,7 @@
           "age": 31,
           "club": "Columbus Crew",
           "country": "EE.UU.",
-          "elo": 1323,
+          "elo": 1320,
           "titular": false
         },
         {
@@ -8253,7 +8253,7 @@
           "age": 26,
           "club": "SJK",
           "country": "Finlandia",
-          "elo": null,
+          "elo": 1275,
           "titular": false
         },
         {
@@ -8273,7 +8273,7 @@
           "age": 32,
           "club": "PEC Zwolle",
           "country": "Países Bajos",
-          "elo": 1225,
+          "elo": 1221,
           "titular": true
         },
         {
@@ -8283,7 +8283,7 @@
           "age": 26,
           "club": "PFC Ludogorets",
           "country": "Bulgaria",
-          "elo": 1491,
+          "elo": 1497,
           "titular": true
         },
         {
@@ -8293,7 +8293,7 @@
           "age": 29,
           "club": "Puskás Akadémia",
           "country": "Hungría",
-          "elo": null,
+          "elo": 1361,
           "titular": false
         },
         {
@@ -8303,7 +8303,7 @@
           "age": 24,
           "club": "Vitória Guimarães",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1364,
           "titular": false
         },
         {
@@ -8313,7 +8313,7 @@
           "age": 30,
           "club": "Farense SC",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1357,
           "titular": false
         },
         {
@@ -8323,7 +8323,7 @@
           "age": 36,
           "club": "Igdir FK",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1478,
           "titular": true
         },
         {
@@ -8333,7 +8333,7 @@
           "age": 35,
           "club": "Apollon Limassol",
           "country": "Chipre",
-          "elo": null,
+          "elo": 1368,
           "titular": false
         },
         {
@@ -8343,7 +8343,7 @@
           "age": 32,
           "club": "Omonoia Nicosia",
           "country": "Chipre",
-          "elo": null,
+          "elo": 1451,
           "titular": true
         },
         {
@@ -8353,7 +8353,7 @@
           "age": 27,
           "club": "Estrela Amadora",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1164,
           "titular": false
         },
         {
@@ -8363,7 +8363,7 @@
           "age": 24,
           "club": "Akron Tolyatti",
           "country": "Rusia",
-          "elo": 1202,
+          "elo": 1189,
           "titular": false
         },
         {
@@ -8383,7 +8383,7 @@
           "age": 35,
           "club": "İstanbul Başakşehir",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1393,
           "titular": false
         },
         {
@@ -8393,7 +8393,7 @@
           "age": 25,
           "club": "Casa Pia AC",
           "country": "Portugal",
-          "elo": null,
+          "elo": 1224,
           "titular": true
         }
       ]
@@ -8416,7 +8416,7 @@
           "age": 33,
           "club": "SC Internacional",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1327,
           "titular": true
         },
         {
@@ -8426,7 +8426,7 @@
           "age": 39,
           "club": "Estudiantes de La Plata",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1314,
           "titular": false
         },
         {
@@ -8436,7 +8436,7 @@
           "age": 28,
           "club": "CF Monterrey",
           "country": "México",
-          "elo": null,
+          "elo": 1344,
           "titular": false
         },
         {
@@ -8466,7 +8466,7 @@
           "age": 26,
           "club": "CF América",
           "country": "México",
-          "elo": null,
+          "elo": 1363,
           "titular": false
         },
         {
@@ -8486,7 +8486,7 @@
           "age": 28,
           "club": "River Plate",
           "country": "Argentina",
-          "elo": 1421,
+          "elo": 1424,
           "titular": false
         },
         {
@@ -8496,7 +8496,7 @@
           "age": 27,
           "club": "SE Palmeiras",
           "country": "Brasil",
-          "elo": 1529,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -8516,7 +8516,7 @@
           "age": 26,
           "club": "Real Salt Lake City",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1226,
           "titular": false
         },
         {
@@ -8526,7 +8526,7 @@
           "age": 33,
           "club": "CR Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": true
         },
         {
@@ -8576,7 +8576,7 @@
           "age": 31,
           "club": "CR Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -8586,7 +8586,7 @@
           "age": 28,
           "club": "CR Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -8596,7 +8596,7 @@
           "age": 26,
           "club": "SE Palmeiras",
           "country": "Brasil",
-          "elo": 1529,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -8606,7 +8606,7 @@
           "age": 26,
           "club": "CF América",
           "country": "México",
-          "elo": null,
+          "elo": 1363,
           "titular": false
         },
         {
@@ -8646,7 +8646,7 @@
           "age": 27,
           "club": "Fluminense FC",
           "country": "Brasil",
-          "elo": 1437,
+          "elo": 1444,
           "titular": true
         },
         {
@@ -8656,7 +8656,7 @@
           "age": 27,
           "club": "Real Oviedo CF",
           "country": "España",
-          "elo": null,
+          "elo": 1316,
           "titular": false
         },
         {
@@ -8666,7 +8666,7 @@
           "age": 31,
           "club": "Tigres UANL",
           "country": "México",
-          "elo": null,
+          "elo": 1369,
           "titular": false
         }
       ],
@@ -8774,7 +8774,7 @@
           "age": 26,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         },
         {
@@ -8784,7 +8784,7 @@
           "age": 30,
           "club": "PSG",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": false
         },
         {
@@ -8864,7 +8864,7 @@
           "age": 20,
           "club": "PSG",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": false
         },
         {
@@ -8884,7 +8884,7 @@
           "age": 28,
           "club": "PSG",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -8914,7 +8914,7 @@
           "age": 23,
           "club": "PSG",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": false
         },
         {
@@ -8934,7 +8934,7 @@
           "age": 20,
           "club": "PSG",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": false
         },
         {
@@ -8954,7 +8954,7 @@
           "age": 28,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         }
       ]
@@ -8987,7 +8987,7 @@
           "age": 32,
           "club": "AC Le Havre",
           "country": "Francia",
-          "elo": null,
+          "elo": 1326,
           "titular": false
         },
         {
@@ -8997,7 +8997,7 @@
           "age": 26,
           "club": "OGC Nice",
           "country": "Francia",
-          "elo": null,
+          "elo": 1384,
           "titular": false
         },
         {
@@ -9077,7 +9077,7 @@
           "age": 22,
           "club": "OGC Nice",
           "country": "Francia",
-          "elo": null,
+          "elo": 1384,
           "titular": false
         },
         {
@@ -9117,7 +9117,7 @@
           "age": 32,
           "club": "Rayo Vallecano",
           "country": "España",
-          "elo": 1588,
+          "elo": 1579,
           "titular": false
         },
         {
@@ -9167,7 +9167,7 @@
           "age": 28,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         },
         {
@@ -9197,7 +9197,7 @@
           "age": 26,
           "club": "FC Lorient",
           "country": "Francia",
-          "elo": null,
+          "elo": 1395,
           "titular": false
         },
         {
@@ -9207,7 +9207,7 @@
           "age": 30,
           "club": "Samsunspor",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1320,
           "titular": false
         },
         {
@@ -9217,7 +9217,7 @@
           "age": 18,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": false
         },
         {
@@ -9267,7 +9267,7 @@
           "age": 29,
           "club": "Al-Shorta FC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1331,
           "titular": false
         },
         {
@@ -9277,7 +9277,7 @@
           "age": 31,
           "club": "Al-Talaba SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1204,
           "titular": false
         },
         {
@@ -9287,7 +9287,7 @@
           "age": 35,
           "club": "Al-Zawraa SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1293,
           "titular": true
         },
         {
@@ -9297,7 +9297,7 @@
           "age": 25,
           "club": "Pakhtakor Tashkent",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1267,
           "titular": true
         },
         {
@@ -9307,7 +9307,7 @@
           "age": 27,
           "club": "Al-Zawraa SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1293,
           "titular": true
         },
         {
@@ -9317,7 +9317,7 @@
           "age": 29,
           "club": "Al-Shorta SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1331,
           "titular": false
         },
         {
@@ -9327,7 +9327,7 @@
           "age": 32,
           "club": "Persib Bandung",
           "country": "Indonesia",
-          "elo": null,
+          "elo": 1297,
           "titular": false
         },
         {
@@ -9337,7 +9337,7 @@
           "age": 34,
           "club": "Port FC",
           "country": "Tailandia",
-          "elo": null,
+          "elo": 1245,
           "titular": false
         },
         {
@@ -9357,7 +9357,7 @@
           "age": 30,
           "club": "Al-Shorta SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1331,
           "titular": false
         },
         {
@@ -9367,7 +9367,7 @@
           "age": 24,
           "club": "Pogon Szczecin",
           "country": "Polonia",
-          "elo": null,
+          "elo": 1320,
           "titular": true
         },
         {
@@ -9377,7 +9377,7 @@
           "age": 25,
           "club": "Al-Shorta SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1331,
           "titular": false
         },
         {
@@ -9387,7 +9387,7 @@
           "age": 28,
           "club": "KS Cracovia",
           "country": "Polonia",
-          "elo": null,
+          "elo": 1252,
           "titular": true
         },
         {
@@ -9397,7 +9397,7 @@
           "age": 24,
           "club": "Al-Talaba SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1204,
           "titular": false
         },
         {
@@ -9407,7 +9407,7 @@
           "age": 23,
           "club": "Sarpsborg 08 FF",
           "country": "Noruega",
-          "elo": null,
+          "elo": 1248,
           "titular": true
         },
         {
@@ -9417,7 +9417,7 @@
           "age": 23,
           "club": "FC Utrecht",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1387,
           "titular": false
         },
         {
@@ -9437,7 +9437,7 @@
           "age": 26,
           "club": "Al-Dhafra SCC",
           "country": "EAU",
-          "elo": null,
+          "elo": 925,
           "titular": false
         },
         {
@@ -9447,7 +9447,7 @@
           "age": 22,
           "club": "Venezia FC",
           "country": "Italia",
-          "elo": null,
+          "elo": 1612,
           "titular": false
         },
         {
@@ -9467,7 +9467,7 @@
           "age": 22,
           "club": "Al-Najmah FC",
           "country": "Arabia Saudita",
-          "elo": null,
+          "elo": 1034,
           "titular": true
         },
         {
@@ -9477,7 +9477,7 @@
           "age": 22,
           "club": "Nashville SC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1254,
           "titular": false
         },
         {
@@ -9487,7 +9487,7 @@
           "age": 24,
           "club": "Luton Town",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1489,
           "titular": true
         },
         {
@@ -9497,7 +9497,7 @@
           "age": 25,
           "club": "Dibba Al-Fujairah SCC",
           "country": "EAU",
-          "elo": null,
+          "elo": 924,
           "titular": false
         },
         {
@@ -9507,7 +9507,7 @@
           "age": 30,
           "club": "Al-Karma SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1128,
           "titular": true
         },
         {
@@ -9517,7 +9517,7 @@
           "age": 30,
           "club": "Al-Talaba SC",
           "country": "Irak",
-          "elo": null,
+          "elo": 1204,
           "titular": false
         }
       ],
@@ -9553,7 +9553,7 @@
           "age": 35,
           "club": "Sevilla FC",
           "country": "España",
-          "elo": 1490,
+          "elo": 1492,
           "titular": true
         },
         {
@@ -9563,7 +9563,7 @@
           "age": 26,
           "club": "Watford FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1468,
           "titular": false
         },
         {
@@ -9573,7 +9573,7 @@
           "age": 24,
           "club": "Hamburger SV",
           "country": "Alemania",
-          "elo": 1434,
+          "elo": 1593,
           "titular": false
         },
         {
@@ -9613,7 +9613,7 @@
           "age": 23,
           "club": "Derby County",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1524,
           "titular": false
         },
         {
@@ -9663,7 +9663,7 @@
           "age": 27,
           "club": "Bodø/Glimt",
           "country": "Noruega",
-          "elo": 1692,
+          "elo": 1685,
           "titular": false
         },
         {
@@ -9683,7 +9683,7 @@
           "age": 25,
           "club": "Bodø/Glimt",
           "country": "Noruega",
-          "elo": 1692,
+          "elo": 1685,
           "titular": false
         },
         {
@@ -9713,7 +9713,7 @@
           "age": 26,
           "club": "Sassuolo",
           "country": "Italia",
-          "elo": 1458,
+          "elo": 1436,
           "titular": false
         },
         {
@@ -9723,7 +9723,7 @@
           "age": 29,
           "club": "Cremonese",
           "country": "Italia",
-          "elo": 1286,
+          "elo": 1294,
           "titular": false
         },
         {
@@ -9733,7 +9733,7 @@
           "age": 23,
           "club": "Rangers FC",
           "country": "Escocia",
-          "elo": 1476,
+          "elo": 1468,
           "titular": false
         },
         {
@@ -9793,7 +9793,7 @@
           "age": 26,
           "club": "Bodø/Glimt",
           "country": "Noruega",
-          "elo": 1692,
+          "elo": 1685,
           "titular": false
         },
         {
@@ -9803,7 +9803,7 @@
           "age": 26,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         }
       ]
@@ -9896,7 +9896,7 @@
           "age": 29,
           "club": "River Plate",
           "country": "Argentina",
-          "elo": 1421,
+          "elo": 1424,
           "titular": false
         },
         {
@@ -9956,7 +9956,7 @@
           "age": 32,
           "club": "Inter Miami",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1382,
           "titular": true
         },
         {
@@ -9966,7 +9966,7 @@
           "age": 31,
           "club": "Boca Juniors",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1379,
           "titular": false
         },
         {
@@ -10016,7 +10016,7 @@
           "age": 38,
           "club": "Inter Miami",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1382,
           "titular": true
         },
         {
@@ -10076,7 +10076,7 @@
           "age": 25,
           "club": "Palmeiras",
           "country": "Brasil",
-          "elo": 1529,
+          "elo": 1538,
           "titular": false
         }
       ],
@@ -10118,7 +10118,7 @@
           "age": 28,
           "club": "Granada CF",
           "country": "España",
-          "elo": null,
+          "elo": 1566,
           "titular": true
         },
         {
@@ -10138,7 +10138,7 @@
           "age": 31,
           "club": "USM Alger",
           "country": "Argelia",
-          "elo": null,
+          "elo": 1286,
           "titular": false
         },
         {
@@ -10158,7 +10158,7 @@
           "age": 27,
           "club": "Paris FC",
           "country": "Francia",
-          "elo": null,
+          "elo": 1341,
           "titular": false
         },
         {
@@ -10168,7 +10168,7 @@
           "age": 27,
           "club": "JS Kabylie",
           "country": "Argelia",
-          "elo": null,
+          "elo": 1308,
           "titular": false
         },
         {
@@ -10198,7 +10198,7 @@
           "age": 26,
           "club": "USM Alger",
           "country": "Argelia",
-          "elo": null,
+          "elo": 1286,
           "titular": false
         },
         {
@@ -10208,7 +10208,7 @@
           "age": 23,
           "club": "Hellas Verona",
           "country": "Italia",
-          "elo": null,
+          "elo": 1310,
           "titular": true
         },
         {
@@ -10228,7 +10228,7 @@
           "age": 23,
           "club": "BSC Young Boys",
           "country": "Suiza",
-          "elo": null,
+          "elo": 1390,
           "titular": false
         },
         {
@@ -10248,7 +10248,7 @@
           "age": 26,
           "club": "OGC Nice",
           "country": "Francia",
-          "elo": null,
+          "elo": 1384,
           "titular": true
         },
         {
@@ -10258,7 +10258,7 @@
           "age": 28,
           "club": "FC Twente",
           "country": "Países Bajos",
-          "elo": null,
+          "elo": 1472,
           "titular": false
         },
         {
@@ -10268,7 +10268,7 @@
           "age": 22,
           "club": "RSC Charleroi",
           "country": "Bélgica",
-          "elo": null,
+          "elo": 1334,
           "titular": false
         },
         {
@@ -10298,7 +10298,7 @@
           "age": 27,
           "club": "Al-Ittihad Club",
           "country": "Arabia Saudita",
-          "elo": null,
+          "elo": 1366,
           "titular": false
         },
         {
@@ -10318,7 +10318,7 @@
           "age": 23,
           "club": "Al-Duhail SC",
           "country": "Qatar",
-          "elo": null,
+          "elo": 1298,
           "titular": false
         },
         {
@@ -10338,7 +10338,7 @@
           "age": 23,
           "club": "Frosinone Calcio",
           "country": "Italia",
-          "elo": null,
+          "elo": 1588,
           "titular": false
         },
         {
@@ -10416,7 +10416,7 @@
           "age": 29,
           "club": "Brøndby IF",
           "country": "Dinamarca",
-          "elo": 1377,
+          "elo": 1383,
           "titular": false
         },
         {
@@ -10506,7 +10506,7 @@
           "age": 27,
           "club": "Venezia FC",
           "country": "Italia",
-          "elo": null,
+          "elo": 1612,
           "titular": false
         },
         {
@@ -10516,7 +10516,7 @@
           "age": 25,
           "club": "Elche CF",
           "country": "España",
-          "elo": 1429,
+          "elo": 1442,
           "titular": false
         },
         {
@@ -10606,7 +10606,7 @@
           "age": 24,
           "club": "Wolfsburg",
           "country": "Alemania",
-          "elo": 1448,
+          "elo": 1440,
           "titular": true
         },
         {
@@ -10626,7 +10626,7 @@
           "age": 32,
           "club": "Wolfsberger AC",
           "country": "Austria",
-          "elo": null,
+          "elo": 1277,
           "titular": false
         },
         {
@@ -10735,7 +10735,7 @@
           "age": 23,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -10805,7 +10805,7 @@
           "age": 25,
           "club": "Mallorca",
           "country": "España",
-          "elo": 1507,
+          "elo": 1494,
           "titular": false
         },
         {
@@ -10815,7 +10815,7 @@
           "age": 21,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -10825,7 +10825,7 @@
           "age": 26,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": true
         },
         {
@@ -10915,7 +10915,7 @@
           "age": 24,
           "club": "Paris Saint-Germain",
           "country": "Francia",
-          "elo": 2038,
+          "elo": 2072,
           "titular": false
         },
         {
@@ -10944,7 +10944,7 @@
           "age": 31,
           "club": "AC Le Havre",
           "country": "Francia",
-          "elo": 1314,
+          "elo": 1326,
           "titular": true
         },
         {
@@ -10954,7 +10954,7 @@
           "age": 26,
           "club": "FC Noah",
           "country": "Armenia",
-          "elo": 1343,
+          "elo": 1350,
           "titular": false
         },
         {
@@ -10964,7 +10964,7 @@
           "age": 21,
           "club": "Standard Lieja",
           "country": "Bélgica",
-          "elo": 1318,
+          "elo": 1322,
           "titular": false
         },
         {
@@ -10994,7 +10994,7 @@
           "age": 26,
           "club": "Hibernian FC",
           "country": "Escocia",
-          "elo": 1310,
+          "elo": 1312,
           "titular": false
         },
         {
@@ -11004,7 +11004,7 @@
           "age": 28,
           "club": "Widzew Lodz",
           "country": "Polonia",
-          "elo": 1203,
+          "elo": 1204,
           "titular": false
         },
         {
@@ -11014,7 +11014,7 @@
           "age": 30,
           "club": "AEL Larissa",
           "country": "Grecia",
-          "elo": null,
+          "elo": 1068,
           "titular": false
         },
         {
@@ -11034,7 +11034,7 @@
           "age": 28,
           "club": "Aris Limassol",
           "country": "Chipre",
-          "elo": null,
+          "elo": 1344,
           "titular": false
         },
         {
@@ -11054,7 +11054,7 @@
           "age": 31,
           "club": "RKC Genk",
           "country": "Bélgica",
-          "elo": 1520,
+          "elo": 1507,
           "titular": false
         },
         {
@@ -11074,7 +11074,7 @@
           "age": 29,
           "club": "RCD Espanyol",
           "country": "España",
-          "elo": 1459,
+          "elo": 1485,
           "titular": false
         },
         {
@@ -11084,7 +11084,7 @@
           "age": 29,
           "club": "Atromitos FC",
           "country": "Grecia",
-          "elo": null,
+          "elo": 1174,
           "titular": true
         },
         {
@@ -11104,7 +11104,7 @@
           "age": 27,
           "club": "Watford FC",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1468,
           "titular": false
         },
         {
@@ -11114,7 +11114,7 @@
           "age": 24,
           "club": "Montpellier HSC",
           "country": "Francia",
-          "elo": null,
+          "elo": 1502,
           "titular": false
         },
         {
@@ -11124,7 +11124,7 @@
           "age": 27,
           "club": "CD Castellón",
           "country": "España",
-          "elo": null,
+          "elo": 1593,
           "titular": false
         },
         {
@@ -11134,7 +11134,7 @@
           "age": 34,
           "club": "AEL Limassol",
           "country": "Chipre",
-          "elo": null,
+          "elo": 1195,
           "titular": false
         },
         {
@@ -11144,7 +11144,7 @@
           "age": 28,
           "club": "Alanyaspor",
           "country": "Turquía",
-          "elo": 1255,
+          "elo": 1250,
           "titular": true
         },
         {
@@ -11154,7 +11154,7 @@
           "age": 30,
           "club": "Spartak Moscow",
           "country": "Rusia",
-          "elo": 990,
+          "elo": 1471,
           "titular": false
         },
         {
@@ -11194,7 +11194,7 @@
           "age": 29,
           "club": "Al-Jazira Club",
           "country": "EAU",
-          "elo": null,
+          "elo": 1170,
           "titular": false
         }
       ]
@@ -11217,7 +11217,7 @@
           "age": 25,
           "club": "PFC Nasaf Qarshi",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1167,
           "titular": true
         },
         {
@@ -11227,7 +11227,7 @@
           "age": 30,
           "club": "Neftchi Fergana",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1115,
           "titular": false
         },
         {
@@ -11237,7 +11237,7 @@
           "age": 35,
           "club": "Navbahor Namangan",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1154,
           "titular": false
         },
         {
@@ -11257,7 +11257,7 @@
           "age": 29,
           "club": "Esteghlal FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1303,
           "titular": true
         },
         {
@@ -11267,7 +11267,7 @@
           "age": 22,
           "club": "Dinamo Samarqand",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 945,
           "titular": false
         },
         {
@@ -11277,7 +11277,7 @@
           "age": 27,
           "club": "Pakhtakor Tashkent",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1267,
           "titular": true
         },
         {
@@ -11287,7 +11287,7 @@
           "age": 29,
           "club": "Pakhtakor Tashkent",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1267,
           "titular": true
         },
         {
@@ -11297,7 +11297,7 @@
           "age": 18,
           "club": "Surkhon Termiz",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 987,
           "titular": false
         },
         {
@@ -11307,7 +11307,7 @@
           "age": 26,
           "club": "AGMK Olmaliq",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1281,
           "titular": false
         },
         {
@@ -11317,7 +11317,7 @@
           "age": 35,
           "club": "Neftchi Fergana",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1115,
           "titular": false
         },
         {
@@ -11327,7 +11327,7 @@
           "age": 33,
           "club": "Nasaf Qarshi",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1167,
           "titular": false
         },
         {
@@ -11337,7 +11337,7 @@
           "age": 30,
           "club": "Tractor FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1354,
           "titular": true
         },
         {
@@ -11347,7 +11347,7 @@
           "age": 28,
           "club": "Dibba Al-Fujairah SCC",
           "country": "EAU",
-          "elo": null,
+          "elo": 924,
           "titular": true
         },
         {
@@ -11357,7 +11357,7 @@
           "age": 28,
           "club": "Al-Bataeh Club",
           "country": "EAU",
-          "elo": null,
+          "elo": 1006,
           "titular": true
         },
         {
@@ -11367,7 +11367,7 @@
           "age": 29,
           "club": "FC Baniyas",
           "country": "EAU",
-          "elo": null,
+          "elo": 1017,
           "titular": true
         },
         {
@@ -11377,7 +11377,7 @@
           "age": 32,
           "club": "Neftchi Fergana",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1115,
           "titular": false
         },
         {
@@ -11387,7 +11387,7 @@
           "age": 32,
           "club": "Esteghlal FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1303,
           "titular": false
         },
         {
@@ -11397,7 +11397,7 @@
           "age": 23,
           "club": "FC Buxoro",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 926,
           "titular": false
         },
         {
@@ -11407,7 +11407,7 @@
           "age": 27,
           "club": "Pakhtakor Tashkent",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1267,
           "titular": false
         },
         {
@@ -11417,7 +11417,7 @@
           "age": 30,
           "club": "Istanbul Basaksehir FK",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1393,
           "titular": true
         },
         {
@@ -11427,7 +11427,7 @@
           "age": 22,
           "club": "Istanbul Basaksehir FK",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1393,
           "titular": false
         },
         {
@@ -11437,7 +11437,7 @@
           "age": 25,
           "club": "Persepolis FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1369,
           "titular": true
         },
         {
@@ -11447,7 +11447,7 @@
           "age": 29,
           "club": "Pakhtakor Tashkent",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 1267,
           "titular": false
         },
         {
@@ -11457,7 +11457,7 @@
           "age": 33,
           "club": "Persepolis FC",
           "country": "Irán",
-          "elo": null,
+          "elo": 1369,
           "titular": false
         },
         {
@@ -11467,7 +11467,7 @@
           "age": 28,
           "club": "Dinamo Samarqand",
           "country": "Uzbekistán",
-          "elo": null,
+          "elo": 945,
           "titular": false
         }
       ],
@@ -11503,7 +11503,7 @@
           "age": 37,
           "club": "Atlético Nacional",
           "country": "Colombia",
-          "elo": null,
+          "elo": 1285,
           "titular": false
         },
         {
@@ -11513,7 +11513,7 @@
           "age": 37,
           "club": "Atlas FC",
           "country": "México",
-          "elo": null,
+          "elo": 1162,
           "titular": true
         },
         {
@@ -11523,7 +11523,7 @@
           "age": 31,
           "club": "Vélez Sarsfield",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1247,
           "titular": false
         },
         {
@@ -11573,7 +11573,7 @@
           "age": 29,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": true
         },
         {
@@ -11583,7 +11583,7 @@
           "age": 34,
           "club": "Independiente",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1235,
           "titular": false
         },
         {
@@ -11603,7 +11603,7 @@
           "age": 32,
           "club": "FC Nantes",
           "country": "Francia",
-          "elo": null,
+          "elo": 1298,
           "titular": false
         },
         {
@@ -11623,7 +11623,7 @@
           "age": 31,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": true
         },
         {
@@ -11633,7 +11633,7 @@
           "age": 25,
           "club": "River Plate",
           "country": "Argentina",
-          "elo": 1421,
+          "elo": 1424,
           "titular": false
         },
         {
@@ -11643,7 +11643,7 @@
           "age": 22,
           "club": "Racing Santander",
           "country": "España",
-          "elo": null,
+          "elo": 1619,
           "titular": false
         },
         {
@@ -11653,7 +11653,7 @@
           "age": 27,
           "club": "Athletico Paranaense",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1336,
           "titular": false
         },
         {
@@ -11663,7 +11663,7 @@
           "age": 33,
           "club": "River Plate",
           "country": "Argentina",
-          "elo": 1421,
+          "elo": 1424,
           "titular": false
         },
         {
@@ -11673,7 +11673,7 @@
           "age": 28,
           "club": "SE Palmeiras",
           "country": "Brasil",
-          "elo": 1529,
+          "elo": 1538,
           "titular": true
         },
         {
@@ -11683,7 +11683,7 @@
           "age": 28,
           "club": "CR Flamengo",
           "country": "Brasil",
-          "elo": 1530,
+          "elo": 1538,
           "titular": false
         },
         {
@@ -11693,7 +11693,7 @@
           "age": 34,
           "club": "Minnesota United FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1201,
           "titular": true
         },
         {
@@ -11733,7 +11733,7 @@
           "age": 23,
           "club": "CR Vasco da Gama",
           "country": "Brasil",
-          "elo": null,
+          "elo": 1227,
           "titular": false
         },
         {
@@ -11753,7 +11753,7 @@
           "age": 26,
           "club": "Rosario Central",
           "country": "Argentina",
-          "elo": null,
+          "elo": 1266,
           "titular": false
         }
       ]
@@ -11782,7 +11782,7 @@
           "age": 29,
           "club": "Crystal Palace",
           "country": "Inglaterra",
-          "elo": 1630,
+          "elo": 1639,
           "titular": false
         },
         {
@@ -12022,7 +12022,7 @@
           "age": 30,
           "club": "Al-Ahli Saudi FC",
           "country": "Arabia Saudita",
-          "elo": 1200,
+          "elo": 1561,
           "titular": false
         }
       ]
@@ -12055,7 +12055,7 @@
           "age": 26,
           "club": "Hull City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1520,
           "titular": false
         },
         {
@@ -12065,7 +12065,7 @@
           "age": 31,
           "club": "GNK Dinamo Zagreb",
           "country": "Croacia",
-          "elo": null,
+          "elo": 1584,
           "titular": true
         },
         {
@@ -12235,7 +12235,7 @@
           "age": 25,
           "club": "HNK Rijeka",
           "country": "Croacia",
-          "elo": null,
+          "elo": 1402,
           "titular": false
         },
         {
@@ -12265,7 +12265,7 @@
           "age": 25,
           "club": "Orlando City SC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1225,
           "titular": false
         },
         {
@@ -12285,7 +12285,7 @@
           "age": 28,
           "club": "FC Dallas",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1186,
           "titular": false
         },
         {
@@ -12336,7 +12336,7 @@
           "age": 29,
           "club": "St. Gallen",
           "country": "Suiza",
-          "elo": null,
+          "elo": 1403,
           "titular": true
         },
         {
@@ -12346,7 +12346,7 @@
           "age": 33,
           "club": "Hearts of Oak",
           "country": "Ghana",
-          "elo": null,
+          "elo": 1155,
           "titular": false
         },
         {
@@ -12356,7 +12356,7 @@
           "age": 25,
           "club": "St. Patrick’s Athletic",
           "country": "Irlanda",
-          "elo": null,
+          "elo": 1340,
           "titular": false
         },
         {
@@ -12366,7 +12366,7 @@
           "age": 21,
           "club": "OGC Nice",
           "country": "Francia",
-          "elo": null,
+          "elo": 1384,
           "titular": false
         },
         {
@@ -12396,7 +12396,7 @@
           "age": 27,
           "club": "Istanbul Basaksehir",
           "country": "Turquía",
-          "elo": null,
+          "elo": 1393,
           "titular": true
         },
         {
@@ -12406,7 +12406,7 @@
           "age": 27,
           "club": "Rayo Vallecano",
           "country": "España",
-          "elo": 1588,
+          "elo": 1579,
           "titular": false
         },
         {
@@ -12416,7 +12416,7 @@
           "age": 27,
           "club": "AJ Auxerre",
           "country": "Francia",
-          "elo": null,
+          "elo": 1378,
           "titular": true
         },
         {
@@ -12436,7 +12436,7 @@
           "age": 25,
           "club": "AJ Auxerre",
           "country": "Francia",
-          "elo": null,
+          "elo": 1378,
           "titular": true
         },
         {
@@ -12466,7 +12466,7 @@
           "age": 27,
           "club": "Real Oviedo",
           "country": "España",
-          "elo": null,
+          "elo": 1316,
           "titular": false
         },
         {
@@ -12476,7 +12476,7 @@
           "age": 28,
           "club": "AJ Auxerre",
           "country": "Francia",
-          "elo": null,
+          "elo": 1378,
           "titular": true
         },
         {
@@ -12496,7 +12496,7 @@
           "age": 25,
           "club": "Saint-Étienne",
           "country": "Francia",
-          "elo": null,
+          "elo": 1305,
           "titular": false
         },
         {
@@ -12516,7 +12516,7 @@
           "age": 21,
           "club": "Al-Qadisiyah",
           "country": "Arabia Saudita",
-          "elo": null,
+          "elo": 965,
           "titular": false
         },
         {
@@ -12536,7 +12536,7 @@
           "age": 22,
           "club": "Leicester City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1529,
           "titular": true
         },
         {
@@ -12556,7 +12556,7 @@
           "age": 27,
           "club": "Coventry City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1622,
           "titular": false
         },
         {
@@ -12566,7 +12566,7 @@
           "age": 34,
           "club": "Leicester City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1529,
           "titular": true
         },
         {
@@ -12627,7 +12627,7 @@
           "age": 35,
           "club": "Club Nacional",
           "country": "Uruguay",
-          "elo": null,
+          "elo": 1294,
           "titular": false
         },
         {
@@ -12637,7 +12637,7 @@
           "age": 32,
           "club": "CD Marathón",
           "country": "Honduras",
-          "elo": null,
+          "elo": 1195,
           "titular": false
         },
         {
@@ -12647,7 +12647,7 @@
           "age": 31,
           "club": "Al-Fayha FC",
           "country": "Arabia Saudita",
-          "elo": null,
+          "elo": 1078,
           "titular": true
         },
         {
@@ -12657,7 +12657,7 @@
           "age": 24,
           "club": "Norwich City",
           "country": "Inglaterra",
-          "elo": null,
+          "elo": 1538,
           "titular": true
         },
         {
@@ -12677,7 +12677,7 @@
           "age": 24,
           "club": "Pari Nizhny Novgorod",
           "country": "Rusia",
-          "elo": null,
+          "elo": 1149,
           "titular": false
         },
         {
@@ -12687,7 +12687,7 @@
           "age": 31,
           "club": "Deportivo Saprissa",
           "country": "Costa Rica",
-          "elo": null,
+          "elo": 1326,
           "titular": true
         },
         {
@@ -12697,7 +12697,7 @@
           "age": 34,
           "club": "FC Turan-Tovuz",
           "country": "Azerbaiyán",
-          "elo": null,
+          "elo": 1139,
           "titular": false
         },
         {
@@ -12707,7 +12707,7 @@
           "age": 29,
           "club": "Academia Puerto Cabello",
           "country": "Venezuela",
-          "elo": null,
+          "elo": 1097,
           "titular": false
         },
         {
@@ -12737,7 +12737,7 @@
           "age": 27,
           "club": "Deportivo La Guaira",
           "country": "Venezuela",
-          "elo": null,
+          "elo": 1151,
           "titular": true
         },
         {
@@ -12747,7 +12747,7 @@
           "age": 35,
           "club": "CD Plaza Amador",
           "country": "Panamá",
-          "elo": null,
+          "elo": 1181,
           "titular": false
         },
         {
@@ -12757,7 +12757,7 @@
           "age": 27,
           "club": "Pumas UNAM",
           "country": "México",
-          "elo": null,
+          "elo": 1284,
           "titular": true
         },
         {
@@ -12767,7 +12767,7 @@
           "age": 29,
           "club": "Ironi Kiryat Shmona",
           "country": "Israel",
-          "elo": null,
+          "elo": 1166,
           "titular": false
         },
         {
@@ -12777,7 +12777,7 @@
           "age": 26,
           "club": "Minnesota United",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1201,
           "titular": false
         },
         {
@@ -12787,7 +12787,7 @@
           "age": 36,
           "club": "San Diego FC",
           "country": "EE.UU.",
-          "elo": null,
+          "elo": 1125,
           "titular": true
         },
         {
@@ -12797,7 +12797,7 @@
           "age": 27,
           "club": "FC Juárez",
           "country": "México",
-          "elo": null,
+          "elo": 1157,
           "titular": true
         },
         {
@@ -12807,7 +12807,7 @@
           "age": 32,
           "club": "Mazatlán FC",
           "country": "México",
-          "elo": null,
+          "elo": 1125,
           "titular": false
         },
         {
@@ -12817,7 +12817,7 @@
           "age": 30,
           "club": "CD Cobresal",
           "country": "Chile",
-          "elo": null,
+          "elo": 1048,
           "titular": false
         },
         {
@@ -12827,7 +12827,7 @@
           "age": 35,
           "club": "U. de Concepción",
           "country": "Chile",
-          "elo": null,
+          "elo": 1108,
           "titular": false
         },
         {
@@ -12837,7 +12837,7 @@
           "age": 29,
           "club": "Club León",
           "country": "México",
-          "elo": null,
+          "elo": 1196,
           "titular": true
         },
         {
@@ -12847,7 +12847,7 @@
           "age": 32,
           "club": "U. Católica",
           "country": "Ecuador",
-          "elo": null,
+          "elo": 1272,
           "titular": true
         },
         {
@@ -12857,7 +12857,7 @@
           "age": 24,
           "club": "U. Católica",
           "country": "Ecuador",
-          "elo": null,
+          "elo": 1272,
           "titular": false
         },
         {
@@ -12867,7 +12867,7 @@
           "age": 27,
           "club": "Deportivo Saprissa",
           "country": "Costa Rica",
-          "elo": null,
+          "elo": 1326,
           "titular": false
         },
         {
@@ -12877,7 +12877,7 @@
           "age": 38,
           "club": "CD Plaza Amador",
           "country": "Panamá",
-          "elo": null,
+          "elo": 1181,
           "titular": false
         }
       ],

@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "source": "elofootball.com",
+    "source_url": "https://elofootball.com/club.php?clubid=1814&season=2024-2025",
+    "snapshot": "2025-05-10",
+    "description": "Fallback club Elo source for clubs missing from World Club Ratings and Flerosport. Values are only used when the primary sources do not publish the club."
+  },
+  "clubs": [
+    {
+      "rank": 748,
+      "club": "Igdir FK",
+      "country": "Turkey",
+      "elo": 1478
+    }
+  ]
+}

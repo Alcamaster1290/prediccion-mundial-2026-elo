@@ -9,6 +9,7 @@ Algorithm: Poisson Monte Carlo (N=50000, seed=42)
 import json
 import math
 import random
+from datetime import date
 from pathlib import Path
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
@@ -96,6 +97,185 @@ def sql_str(value: str) -> str:
 
 
 # ── Load data ─────────────────────────────────────────────────────────────────
+def match_context_key(match):
+    group = match.get("group") or match.get("grupo")
+    jornada = match.get("jornada") or match.get("matchday")
+    team_a = match.get("home_team") or match.get("team_a")
+    team_b = match.get("away_team") or match.get("team_b")
+    return (group, int(jornada), frozenset((team_a, team_b)))
+
+
+def build_context_lookup(context_matches):
+    by_id = {}
+    by_group_round_pair = {}
+    for ctx in context_matches:
+        by_id[ctx["match_id"]] = ctx
+        by_group_round_pair[match_context_key(ctx)] = ctx
+    return by_id, by_group_round_pair
+
+
+def find_context_for_match(match, ctx_by_id, ctx_by_group_round_pair):
+    ctx = ctx_by_id.get(match["match_id"])
+    if ctx:
+        return ctx
+    return ctx_by_group_round_pair.get(match_context_key(match), {})
+
+
+def context_for_team(ctx, team_code):
+    if not ctx:
+        return {}
+    if ctx.get("team_a") == team_code:
+        return ctx.get("team_a_context", {}) or {}
+    if ctx.get("team_b") == team_code:
+        return ctx.get("team_b_context", {}) or {}
+    return {}
+
+
+def build_group_fixture_index(matches):
+    groups = {}
+    teams = {}
+    for match in matches:
+        group = match["group"]
+        groups.setdefault(group, []).append(match)
+        for code in (match["home_team"], match["away_team"]):
+            teams.setdefault(code, []).append(match)
+
+    def sort_key(match):
+        return (
+            int(match.get("jornada", 0)),
+            str(match.get("date") or ""),
+            int(match.get("match_number", 0)),
+        )
+
+    for group in groups:
+        groups[group].sort(key=sort_key)
+    for team in teams:
+        teams[team].sort(key=sort_key)
+
+    return {"groups": groups, "teams": teams}
+
+
+def parse_match_date(match):
+    raw = match.get("date") if match else None
+    if not raw:
+        return None
+    try:
+        return date.fromisoformat(raw)
+    except ValueError:
+        return None
+
+
+def opponent_name(match, team_code):
+    if not match:
+        return "por definir"
+    if match.get("home_team") == team_code:
+        return match.get("away_name") or match.get("away_team", "").upper()
+    return match.get("home_name") or match.get("home_team", "").upper()
+
+
+def neighbor_match(team_code, current_match, fixture_index, offset):
+    schedule = fixture_index["teams"].get(team_code, [])
+    current_id = current_match["match_id"]
+    for index, match in enumerate(schedule):
+        if match["match_id"] == current_id:
+            target = index + offset
+            if 0 <= target < len(schedule):
+                return schedule[target]
+            return None
+    return None
+
+
+def days_between(a_match, b_match):
+    a_date = parse_match_date(a_match)
+    b_date = parse_match_date(b_match)
+    if not a_date or not b_date:
+        return None
+    return abs((b_date - a_date).days)
+
+
+def rest_phrase(days_a, days_b):
+    if days_a is None or days_b is None:
+        return ""
+    if days_a == days_b:
+        return f" Ambos tienen {days_a} dias de margen."
+    return f" El descanso tambien pesa: {days_a} dias para el local y {days_b} para el visitante."
+
+
+def build_calendar_note(match, fixture_index):
+    jornada = int(match.get("jornada", 0))
+    group = match.get("group", "")
+    team_a = match["home_team"]
+    team_b = match["away_team"]
+    name_a = match.get("home_name") or team_a.upper()
+    name_b = match.get("away_name") or team_b.upper()
+
+    if jornada == 1:
+        next_a = neighbor_match(team_a, match, fixture_index, 1)
+        next_b = neighbor_match(team_b, match, fixture_index, 1)
+        days_a = days_between(match, next_a)
+        days_b = days_between(match, next_b)
+        return (
+            f"Calendario: el debut define el margen inicial del Grupo {group}; "
+            f"{name_a} luego enfrenta a {opponent_name(next_a, team_a)} y "
+            f"{name_b} a {opponent_name(next_b, team_b)}, asi que sumar aqui reduce "
+            f"la urgencia de la segunda jornada."
+            + rest_phrase(days_a, days_b)
+        )
+
+    if jornada == 2:
+        next_a = neighbor_match(team_a, match, fixture_index, 1)
+        next_b = neighbor_match(team_b, match, fixture_index, 1)
+        days_a = days_between(match, next_a)
+        days_b = days_between(match, next_b)
+        return (
+            f"Calendario: en segunda jornada pesa el resultado de la J1; "
+            f"{name_a} cierra la J3 contra {opponent_name(next_a, team_a)} y "
+            f"{name_b} contra {opponent_name(next_b, team_b)}, por lo que el riesgo "
+            f"del partido cambia segun los puntos ya sumados."
+            + rest_phrase(days_a, days_b)
+        )
+
+    return (
+        f"Calendario: cierre simultaneo del Grupo {group}; aqui importan el marcador, "
+        f"la diferencia de goles y el corte de mejores terceros. Si un equipo llega "
+        f"con ventaja puede gestionar piernas, pero si llega corto de puntos el partido "
+        f"obliga a tomar mas riesgos."
+    )
+
+
+def pct_text(value):
+    return f"{float(value):.1f}%"
+
+
+def build_probability_note(match, pa, pd, pb):
+    name_a = match.get("home_name") or match.get("team_a") or match.get("home_team", "").upper()
+    name_b = match.get("away_name") or match.get("team_b") or match.get("away_team", "").upper()
+    diff = abs(pa - pb)
+
+    if diff < 7:
+        return (
+            f"El modelo ELO deja un cruce parejo: {name_a} {pct_text(pa)}, "
+            f"empate {pct_text(pd)} y {name_b} {pct_text(pb)}."
+        )
+
+    favorite = name_a if pa > pb else name_b
+    favorite_pct = pa if pa > pb else pb
+    underdog = name_b if pa > pb else name_a
+    underdog_pct = pb if pa > pb else pa
+    return (
+        f"El modelo ELO da ventaja a {favorite} ({pct_text(favorite_pct)}) "
+        f"sobre {underdog} ({pct_text(underdog_pct)}), con empate en {pct_text(pd)}."
+    )
+
+
+def compose_prediction_explanation(base_explanation, probability_note, calendar_note):
+    base = (base_explanation or "").strip()
+    parts = [base] if base else ([probability_note] if probability_note else [])
+    if calendar_note:
+        parts.append(calendar_note)
+    return " ".join(part for part in parts if part).strip()
+
+
 def load_json(path: Path):
     with open(path, encoding="utf-8") as fh:
         return json.load(fh)
@@ -109,8 +289,8 @@ def main():
 
     base_goals = weights["base_goals_per_team"]   # 1.3
 
-    # Build context lookup: match_id → context dict
-    ctx_lookup = {m["match_id"]: m for m in ctx_data["matches"]}
+    ctx_by_id, ctx_by_group_round_pair = build_context_lookup(ctx_data["matches"])
+    fixture_index = build_group_fixture_index(matches)
 
     # Identify the inaugural match
     inaugural_id = None
@@ -142,14 +322,20 @@ def main():
         tag = global_tag(pa, pd, pb, is_inaugural)
 
         # Context fields
-        ctx = ctx_lookup.get(mid, {})
+        ctx = find_context_for_match(match, ctx_by_id, ctx_by_group_round_pair)
         team_a_ctx_text = ""
         team_b_ctx_text = ""
         explanation     = ""
         if ctx:
-            team_a_ctx_text = ctx.get("team_a_context", {}).get("incentivo_competitivo", "") or ""
-            team_b_ctx_text = ctx.get("team_b_context", {}).get("incentivo_competitivo", "") or ""
+            team_a_ctx_text = context_for_team(ctx, team_a).get("incentivo_competitivo", "") or ""
+            team_b_ctx_text = context_for_team(ctx, team_b).get("incentivo_competitivo", "") or ""
             explanation     = ctx.get("prediccion_narrativa", "") or ""
+
+        explanation = compose_prediction_explanation(
+            explanation,
+            build_probability_note(match, pa, pd, pb),
+            build_calendar_note(match, fixture_index),
+        )
 
         rows.append({
             "match_id":   mid,

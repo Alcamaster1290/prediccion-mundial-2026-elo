@@ -2,9 +2,9 @@
 -- Premium grants, audit log, and admin RPCs.
 -- Apply after 13_staff_roles.sql.
 
-CREATE UNIQUE INDEX IF NOT EXISTS idx_predictions_match_id_unique
-  ON public.predictions(match_id)
-  WHERE match_id IS NOT NULL;
+DROP INDEX IF EXISTS public.idx_predictions_match_id_unique;
+CREATE UNIQUE INDEX idx_predictions_match_id_unique
+  ON public.predictions(match_id);
 
 CREATE TABLE IF NOT EXISTS public.premium_grants (
   id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),

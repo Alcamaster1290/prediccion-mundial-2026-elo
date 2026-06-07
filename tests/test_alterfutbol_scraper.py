@@ -1,3 +1,10 @@
+import sys
+from pathlib import Path
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
 from scripts.scrape_alterfutbol_news import (
     build_article_entry,
     build_source_manifest,

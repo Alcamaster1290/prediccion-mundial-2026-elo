@@ -8,16 +8,16 @@
     "base_goals_per_team": 1.3,
     "elo_scale": 400
   },
-  "_avg_xi_blend": 1660.4,
+  "_avg_xi_blend": 1585.0,
   "teams": {
     "esp": {
       "team_code": "esp",
       "country_name": "Spain",
       "intl_rank": 1,
       "elo_intl": 2165,
-      "xi_blend": 1797.7,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 2213.0,
+      "xi_blend": 1800.8,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 2240.5,
       "method": "xi_blend_adj"
     },
     "arg": {
@@ -25,9 +25,9 @@
       "country_name": "Argentina",
       "intl_rank": 2,
       "elo_intl": 2113,
-      "xi_blend": 1784.8,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 2156.5,
+      "xi_blend": 1711.5,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 2157.3,
       "method": "xi_blend_adj"
     },
     "fra": {
@@ -35,9 +35,9 @@
       "country_name": "France",
       "intl_rank": 3,
       "elo_intl": 2081,
-      "xi_blend": 1940.3,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 2179.0,
+      "xi_blend": 1943.4,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 2206.4,
       "method": "xi_blend_adj"
     },
     "eng": {
@@ -46,8 +46,8 @@
       "intl_rank": 4,
       "elo_intl": 2020,
       "xi_blend": 1884.9,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 2098.6,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 2125.0,
       "method": "xi_blend_adj"
     },
     "bra": {
@@ -55,9 +55,9 @@
       "country_name": "Brazil",
       "intl_rank": 5,
       "elo_intl": 1988,
-      "xi_blend": 1812.9,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 2041.4,
+      "xi_blend": 1815.8,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 2068.8,
       "method": "xi_blend_adj"
     },
     "por": {
@@ -65,9 +65,9 @@
       "country_name": "Portugal",
       "intl_rank": 6,
       "elo_intl": 1984,
-      "xi_blend": 1842.2,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 2047.6,
+      "xi_blend": 1851.5,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 2077.3,
       "method": "xi_blend_adj"
     },
     "col": {
@@ -75,9 +75,9 @@
       "country_name": "Colombia",
       "intl_rank": 7,
       "elo_intl": 1975,
-      "xi_blend": 1691.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1985.7,
+      "xi_blend": 1600.8,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1980.5,
       "method": "xi_blend_adj"
     },
     "ned": {
@@ -85,9 +85,9 @@
       "country_name": "Netherlands",
       "intl_rank": 8,
       "elo_intl": 1961,
-      "xi_blend": 1831.8,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 2021.0,
+      "xi_blend": 1789.5,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 2032.6,
       "method": "xi_blend_adj"
     },
     "ecu": {
@@ -95,9 +95,9 @@
       "country_name": "Ecuador",
       "intl_rank": 9,
       "elo_intl": 1935,
-      "xi_blend": 1771.2,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1973.8,
+      "xi_blend": 1582.5,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1934.1,
       "method": "xi_blend_adj"
     },
     "cro": {
@@ -105,9 +105,9 @@
       "country_name": "Croatia",
       "intl_rank": 10,
       "elo_intl": 1930,
-      "xi_blend": 1690.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1940.3,
+      "xi_blend": 1680.4,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1963.4,
       "method": "xi_blend_adj"
     },
     "ger": {
@@ -116,8 +116,8 @@
       "intl_rank": 11,
       "elo_intl": 1925,
       "xi_blend": 1997.9,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 2043.1,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 2069.5,
       "method": "xi_blend_adj"
     },
     "nor": {
@@ -125,9 +125,9 @@
       "country_name": "Norway",
       "intl_rank": 12,
       "elo_intl": 1912,
-      "xi_blend": 1717.5,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1932.0,
+      "xi_blend": 1717.6,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1958.4,
       "method": "xi_blend_adj"
     },
     "jpn": {
@@ -135,9 +135,9 @@
       "country_name": "Japan",
       "intl_rank": 13,
       "elo_intl": 1906,
-      "xi_blend": 1619.7,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1891.7,
+      "xi_blend": 1612.3,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1915.6,
       "method": "xi_blend_adj"
     },
     "tur": {
@@ -146,8 +146,8 @@
       "intl_rank": 14,
       "elo_intl": 1902,
       "xi_blend": 1681.2,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1909.3,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1935.7,
       "method": "xi_blend_adj"
     },
     "sui": {
@@ -155,9 +155,9 @@
       "country_name": "Switzerland",
       "intl_rank": 15,
       "elo_intl": 1894,
-      "xi_blend": 1614.3,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1877.9,
+      "xi_blend": 1614.5,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1904.3,
       "method": "xi_blend_adj"
     },
     "ury": {
@@ -165,9 +165,9 @@
       "country_name": "Uruguay",
       "intl_rank": 16,
       "elo_intl": 1892,
-      "xi_blend": 1744.4,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1921.4,
+      "xi_blend": 1707.8,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1935.0,
       "method": "xi_blend_adj"
     },
     "mex": {
@@ -175,9 +175,9 @@
       "country_name": "Mexico",
       "intl_rank": 18,
       "elo_intl": 1868,
-      "xi_blend": 1524.8,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1820.5,
+      "xi_blend": 1407.3,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1805.8,
       "method": "xi_blend_adj"
     },
     "bel": {
@@ -186,8 +186,8 @@
       "intl_rank": 19,
       "elo_intl": 1867,
       "xi_blend": 1812.8,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1920.3,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1946.7,
       "method": "xi_blend_adj"
     },
     "sen": {
@@ -196,8 +196,8 @@
       "intl_rank": 20,
       "elo_intl": 1866,
       "xi_blend": 1642.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1859.5,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1886.0,
       "method": "xi_blend_adj"
     },
     "pry": {
@@ -205,9 +205,9 @@
       "country_name": "Paraguay",
       "intl_rank": 22,
       "elo_intl": 1833,
-      "xi_blend": 1538.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1790.1,
+      "xi_blend": 1418.9,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1774.9,
       "method": "xi_blend_adj"
     },
     "aut": {
@@ -215,9 +215,9 @@
       "country_name": "Austria",
       "intl_rank": 23,
       "elo_intl": 1827,
-      "xi_blend": 1697.7,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1840.0,
+      "xi_blend": 1697.0,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1866.2,
       "method": "xi_blend_adj"
     },
     "mar": {
@@ -225,9 +225,9 @@
       "country_name": "Morocco",
       "intl_rank": 24,
       "elo_intl": 1822,
-      "xi_blend": 1715.5,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1841.3,
+      "xi_blend": 1718.6,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1868.8,
       "method": "xi_blend_adj"
     },
     "can": {
@@ -235,9 +235,9 @@
       "country_name": "Canada",
       "intl_rank": 26,
       "elo_intl": 1784,
-      "xi_blend": 1665.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1785.6,
+      "xi_blend": 1571.2,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1779.2,
       "method": "xi_blend_adj"
     },
     "aus": {
@@ -245,9 +245,9 @@
       "country_name": "Australia",
       "intl_rank": 27,
       "elo_intl": 1775,
-      "xi_blend": 1479.3,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1711.6,
+      "xi_blend": 1412.9,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1714.8,
       "method": "xi_blend_adj"
     },
     "sco": {
@@ -255,9 +255,9 @@
       "country_name": "Scotland",
       "intl_rank": 28,
       "elo_intl": 1770,
-      "xi_blend": 1649.2,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1766.1,
+      "xi_blend": 1648.7,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1792.3,
       "method": "xi_blend_adj"
     },
     "irn": {
@@ -265,9 +265,9 @@
       "country_name": "Iran",
       "intl_rank": 31,
       "elo_intl": 1764,
-      "xi_blend": 1642.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1757.5,
+      "xi_blend": 1310.7,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1668.0,
       "method": "xi_blend_adj"
     },
     "kor": {
@@ -275,9 +275,9 @@
       "country_name": "South Korea",
       "intl_rank": 32,
       "elo_intl": 1756,
-      "xi_blend": 1623.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1742.9,
+      "xi_blend": 1571.6,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1751.3,
       "method": "xi_blend_adj"
     },
     "alg": {
@@ -285,9 +285,9 @@
       "country_name": "Algeria",
       "intl_rank": 34,
       "elo_intl": 1743,
-      "xi_blend": 1659.4,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1742.6,
+      "xi_blend": 1594.1,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1746.2,
       "method": "xi_blend_adj"
     },
     "cze": {
@@ -295,9 +295,9 @@
       "country_name": "Czech Republic",
       "intl_rank": 36,
       "elo_intl": 1733,
-      "xi_blend": 1614.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1716.7,
+      "xi_blend": 1590.7,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1735.0,
       "method": "xi_blend_adj"
     },
     "usa": {
@@ -305,9 +305,9 @@
       "country_name": "United States",
       "intl_rank": 36,
       "elo_intl": 1733,
-      "xi_blend": 1676.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1738.4,
+      "xi_blend": 1594.6,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1736.4,
       "method": "xi_blend_adj"
     },
     "pan": {
@@ -315,9 +315,9 @@
       "country_name": "Panama",
       "intl_rank": 36,
       "elo_intl": 1733,
-      "xi_blend": 1420.5,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1649.0,
+      "xi_blend": 1269.8,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1622.7,
       "method": "xi_blend_adj"
     },
     "uzb": {
@@ -325,9 +325,9 @@
       "country_name": "Uzbekistan",
       "intl_rank": 39,
       "elo_intl": 1727,
-      "xi_blend": 1889.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1807.0,
+      "xi_blend": 1268.7,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1616.3,
       "method": "xi_blend_adj"
     },
     "swe": {
@@ -335,9 +335,9 @@
       "country_name": "Sweden",
       "intl_rank": 41,
       "elo_intl": 1719,
-      "xi_blend": 1691.4,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1729.8,
+      "xi_blend": 1669.3,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1748.5,
       "method": "xi_blend_adj"
     },
     "egy": {
@@ -345,9 +345,9 @@
       "country_name": "Egypt",
       "intl_rank": 46,
       "elo_intl": 1699,
-      "xi_blend": 1592.1,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1675.1,
+      "xi_blend": 1573.2,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1694.9,
       "method": "xi_blend_adj"
     },
     "jor": {
@@ -365,9 +365,9 @@
       "country_name": "Ivory Coast",
       "intl_rank": 52,
       "elo_intl": 1676,
-      "xi_blend": 1566.2,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1643.0,
+      "xi_blend": 1580.7,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1674.5,
       "method": "xi_blend_adj"
     },
     "cod": {
@@ -375,9 +375,9 @@
       "country_name": "DR Congo",
       "intl_rank": 54,
       "elo_intl": 1655,
-      "xi_blend": 1529.2,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1609.1,
+      "xi_blend": 1497.5,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1624.4,
       "method": "xi_blend_adj"
     },
     "tun": {
@@ -385,9 +385,9 @@
       "country_name": "Tunisia",
       "intl_rank": 58,
       "elo_intl": 1636,
-      "xi_blend": 1519.7,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1586.7,
+      "xi_blend": 1411.0,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1575.1,
       "method": "xi_blend_adj"
     },
     "irq": {
@@ -395,9 +395,9 @@
       "country_name": "Iraq",
       "intl_rank": 63,
       "elo_intl": 1608,
-      "xi_blend": 1506.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1553.9,
+      "xi_blend": 1303.3,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1509.4,
       "method": "xi_blend_adj"
     },
     "bih": {
@@ -405,9 +405,9 @@
       "country_name": "Bosnia Herzegovina",
       "intl_rank": 67,
       "elo_intl": 1591,
-      "xi_blend": 1573.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1560.4,
+      "xi_blend": 1562.4,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1583.1,
       "method": "xi_blend_adj"
     },
     "nzl": {
@@ -415,9 +415,9 @@
       "country_name": "New Zealand",
       "intl_rank": 68,
       "elo_intl": 1585,
-      "xi_blend": 1314.1,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1463.8,
+      "xi_blend": 1404.6,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1521.9,
       "method": "xi_blend_adj"
     },
     "cpv": {
@@ -425,9 +425,9 @@
       "country_name": "Cape Verde",
       "intl_rank": 69,
       "elo_intl": 1576,
-      "xi_blend": 1495.6,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1518.3,
+      "xi_blend": 1452.0,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1529.5,
       "method": "xi_blend_adj"
     },
     "ksa": {
@@ -445,9 +445,9 @@
       "country_name": "Haiti",
       "intl_rank": 76,
       "elo_intl": 1532,
-      "xi_blend": 1369.5,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1430.2,
+      "xi_blend": 1384.4,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1461.8,
       "method": "xi_blend_adj"
     },
     "zaf": {
@@ -455,9 +455,9 @@
       "country_name": "South Africa",
       "intl_rank": 79,
       "elo_intl": 1517,
-      "xi_blend": 1510.4,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1464.5,
+      "xi_blend": 1433.8,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1464.1,
       "method": "xi_blend_adj"
     },
     "gha": {
@@ -465,9 +465,9 @@
       "country_name": "Ghana",
       "intl_rank": 82,
       "elo_intl": 1503,
-      "xi_blend": 1656.2,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1501.5,
+      "xi_blend": 1510.3,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1476.9,
       "method": "xi_blend_adj"
     },
     "cuw": {
@@ -475,9 +475,9 @@
       "country_name": "Curacao",
       "intl_rank": 91,
       "elo_intl": 1433,
-      "xi_blend": 1726.0,
-      "avg_xi_blend": 1660.4,
-      "strength_score": 1455.9,
+      "xi_blend": 1355.3,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1352.6,
       "method": "xi_blend_adj"
     },
     "qat": {
@@ -485,10 +485,10 @@
       "country_name": "Qatar",
       "intl_rank": 96,
       "elo_intl": 1423,
-      "xi_blend": null,
-      "avg_xi_blend": null,
-      "strength_score": 1423.0,
-      "method": "elo_intl_only"
+      "xi_blend": 1249.8,
+      "avg_xi_blend": 1585.0,
+      "strength_score": 1305.7,
+      "method": "xi_blend_adj"
     }
   }
 }

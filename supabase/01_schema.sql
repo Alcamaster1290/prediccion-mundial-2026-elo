@@ -68,5 +68,6 @@ CREATE TABLE IF NOT EXISTS public.predictions (
 
 -- Índices
 CREATE INDEX IF NOT EXISTS idx_predictions_group    ON public.predictions(group_code);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_predictions_match_id_unique ON public.predictions(match_id);
 CREATE INDEX IF NOT EXISTS idx_predictions_published ON public.predictions(published) WHERE published = true;
 CREATE INDEX IF NOT EXISTS idx_profiles_premium     ON public.profiles(is_premium) WHERE is_premium = true;

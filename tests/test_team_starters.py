@@ -7,6 +7,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 from scripts.import_alterfutbol_squads import club_elo_map, lookup_club_elo  # noqa: E402
+from scripts.build_team_strength import calc_xi_blend_from_players  # noqa: E402
 
 
 def test_every_loaded_team_has_exactly_eleven_starters():
@@ -63,7 +64,17 @@ def test_squad_only_coaches_are_sourced_from_xi_images():
 
 def test_every_resolvable_player_club_has_elo_assigned():
     teams = json.loads((REPO_ROOT / "data" / "teams.json").read_text(encoding="utf-8"))["teams"]
-    club_elos = club_elo_map(json.loads((REPO_ROOT / "data" / "club_elo.json").read_text(encoding="utf-8")))
+    club_elo_data = {
+        "clubs": []
+    }
+    for path in [
+        REPO_ROOT / "data" / "club_elo.json",
+        REPO_ROOT / "data" / "club_elo_flerosport_supplement.json",
+        REPO_ROOT / "data" / "club_elo_elofootball_supplement.json",
+    ]:
+        if path.exists():
+            club_elo_data["clubs"].extend(json.loads(path.read_text(encoding="utf-8")).get("clubs", []))
+    club_elos = club_elo_map(club_elo_data)
 
     missing = []
     santiago_elo = None
@@ -78,3 +89,29 @@ def test_every_resolvable_player_club_has_elo_assigned():
 
     assert missing == []
     assert santiago_elo == 1688
+
+
+def test_every_loaded_starter_has_elo_assigned():
+    teams = json.loads((REPO_ROOT / "data" / "teams.json").read_text(encoding="utf-8"))["teams"]
+
+    missing = []
+    for team in teams:
+        for player in team.get("players") or []:
+            if player.get("titular") and player.get("elo") is None:
+                missing.append(f"{team['id']}:{player['name']}:{player.get('club')}")
+
+    assert missing == []
+
+
+def test_team_strength_snapshots_match_current_starter_elos():
+    teams_data = json.loads((REPO_ROOT / "data" / "teams.json").read_text(encoding="utf-8"))
+    snapshots = json.loads((REPO_ROOT / "data" / "team_strength_snapshots.json").read_text(encoding="utf-8"))
+    current_xi_blends = calc_xi_blend_from_players(teams_data)
+
+    mismatches = []
+    for code, current_xi_blend in current_xi_blends.items():
+        snapshot_xi_blend = snapshots["teams"][code]["xi_blend"]
+        if snapshot_xi_blend != current_xi_blend:
+            mismatches.append(f"{code}:{snapshot_xi_blend}!={current_xi_blend}")
+
+    assert mismatches == []

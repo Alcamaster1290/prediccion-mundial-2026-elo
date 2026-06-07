@@ -2,10 +2,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-from scripts.enrich_alterfutbol_xi_assets import enrich_teams_with_xi_assets
-
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
+from scripts.enrich_alterfutbol_xi_assets import enrich_teams_with_xi_assets
 
 
 TACTICAL_HTML = """

@@ -23,6 +23,8 @@ def test_elo_model_rpc_is_full_access_only_and_reports_team_coverage():
     assert "public.has_staff_role('admin')" in sql
     assert "club_adj_weight" in sql
     assert "avg_xi_blend" in sql
+    assert "round(avg(elo_club_avg)" in sql
+    assert "1675.3" not in sql
     assert "base_goals_per_team" in sql
     assert "starter_elo_rows" in sql
     assert "coverage_tier" in sql
@@ -45,6 +47,8 @@ def test_predictions_page_renders_elo_explainer_from_private_rpc():
     assert "Modelo ELO" in pred_js
     assert "ELO internacional" in pred_js
     assert "XI titular" in pred_js
+    assert "promedio XI actual" in pred_js
+    assert "model.avg_xi_blend" in pred_js
     assert "Listo para XI" in pred_js
     assert "Base internacional" in pred_js
     assert "needs_player_elo" in pred_js

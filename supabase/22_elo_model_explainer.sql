@@ -55,6 +55,15 @@ BEGIN
       FROM public.team_strength_snapshots tss
       ORDER BY tss.team_code, tss.created_at DESC, tss.version DESC
     ),
+    model_meta AS (
+      SELECT
+        coalesce(max(version), '1.1') AS version,
+        round(avg(elo_club_avg) FILTER (
+          WHERE method = 'xi_blend_adj'
+            AND elo_club_avg IS NOT NULL
+        ), 1) AS avg_xi_blend
+      FROM latest_strength
+    ),
     team_rows AS (
       SELECT
         t.team_code,
@@ -87,17 +96,19 @@ BEGIN
       'success', true,
       'model', jsonb_build_object(
         'name', 'Modelo ELO hibrido',
+        'version', (SELECT version FROM model_meta),
         'rating_date', '2026-06-02',
         'elo_source', 'international-football.net',
+        'club_elo_source', 'worldclubratings.com',
         'formula', 'elo_intl + (xi_blend - avg_xi_blend) * club_adj_weight',
         'club_adj_weight', 0.35,
-        'avg_xi_blend', 1675.3,
+        'avg_xi_blend', (SELECT avg_xi_blend FROM model_meta),
         'base_goals_per_team', 1.3,
         'elo_scale', 400,
         'minimum_starter_elo_for_xi_blend_ready', 8,
         'notes', jsonb_build_array(
           'El ELO internacional es la base para las 48 selecciones.',
-          'Cuando hay suficientes titulares con ELO de club, el XI ajusta la fuerza del equipo.',
+          'Cuando hay suficientes titulares con ELO de club, el XI ajusta la fuerza del equipo contra el promedio XI actual.',
           'Los equipos sin muestra suficiente siguen activos con base internacional mientras se completa la data.'
         )
       ),

@@ -250,21 +250,34 @@
     }
 
     var summary = payload.summary || {};
+    var model = payload.model || {};
     var teams = Array.isArray(payload.teams) ? payload.teams : [];
     var readyTeams = teams.filter(function(team) {
       return team.coverage_tier === 'xi_blend_ready';
     }).slice(0, 8);
+    var avgXiBlend = model.avg_xi_blend;
+    var avgXiBlendText = formatModelValue(avgXiBlend, 1);
+    var clubAdjWeight = model.club_adj_weight == null ? 0.35 : model.club_adj_weight;
+    var clubAdjWeightText = formatModelValue(clubAdjWeight, 2);
+    var ratingDate = model.rating_date ? ' (' + escapeHtml(model.rating_date) + ')' : '';
+    var sourceText = 'ELO internacional: ' + escapeHtml(model.elo_source || 'international-football.net')
+      + ratingDate
+      + '; ELO clubes: ' + escapeHtml(model.club_elo_source || 'worldclubratings.com') + '.';
 
     var html = '<section class="pred-elo-model">'
       + '<div class="pred-elo-copy">'
       + '<span class="pred-elo-kicker">Modelo ELO</span>'
       + '<h3>Como se calcula la fuerza de cada seleccion</h3>'
-      + '<p>El punto de partida es el ELO internacional. Cuando existe suficiente informacion del XI titular, el modelo ajusta esa base con el ELO promedio de clubes de los titulares.</p>'
+      + '<p>El punto de partida es el ELO internacional. Cuando el XI titular tiene muestra suficiente de ELO de clubes, la fuerza se ajusta contra el promedio global del XI para premiar plantillas fuertes sin castigar de forma desproporcionada a selecciones con menor exposicion de clubes.</p>'
       + '<div class="pred-elo-formula">'
-      + '<span>ELO ajustado</span>'
-      + '<code>ELO internacional + (XI titular - promedio XI) x 0.35</code>'
+      + '<span>Fuerza seleccion</span>'
+      + '<code>ELO internacional + (XI blend - ' + avgXiBlendText + ') x ' + clubAdjWeightText + '</code>'
       + '</div>'
-      + '<p>Si faltan jugadores o ELOs, el equipo no queda fuera: se mantiene con base internacional hasta que la data este completa.</p>'
+      + '<div class="pred-elo-formula">'
+      + '<span>promedio XI actual</span>'
+      + '<code>' + avgXiBlendText + ' &middot; peso clubes ' + clubAdjWeightText + '</code>'
+      + '</div>'
+      + '<p>Snapshot actual: ' + formatModelValue(summary.xi_blend_ready, 0) + ' selecciones usan ajuste por XI titular; ' + formatModelValue(summary.needs_player_elo, 0) + ' necesitan mas ELOs de jugadores; ' + formatModelValue(summary.elo_intl_only, 0) + ' quedan con base internacional. ' + sourceText + '</p>'
       + '</div>'
       + '<div class="pred-elo-metrics" aria-label="Resumen de cobertura del modelo">'
       + '<div><strong>' + formatModelValue(summary.xi_blend_ready, 0) + '</strong><span>Listos para XI</span></div>'
