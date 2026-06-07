@@ -80,7 +80,7 @@ def gen_players(teams_data, out_path):
 def gen_mc(mc_data, out_path):
     runs = mc_data['runs']
     seed = mc_data.get('seed')
-    version = '1.1'
+    version = mc_data.get('version', '1.1')
 
     run_rows = []
     for code, r in mc_data['teams'].items():

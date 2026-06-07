@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from simulate_group_stage import (
     load_matches,
     load_strengths,
+    load_xi_profiles,
     simulate_all_groups,
     best_thirds,
 )
@@ -28,7 +29,7 @@ REPO_ROOT = Path(__file__).parent.parent
 POSSIBLE_POINTS = (0, 1, 2, 3, 4, 5, 6, 7, 9)
 
 
-def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400):
+def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20):
     if seed is not None:
         random.seed(seed)
 
@@ -48,7 +49,7 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400):
     })
 
     for _ in range(runs):
-        standings = simulate_all_groups(matches, strengths, base_goals, elo_scale)
+        standings = simulate_all_groups(matches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight)
 
         for gid, ranked in standings.items():
             for pos, t in enumerate(ranked):
@@ -123,16 +124,29 @@ def main():
     weights    = json.loads((REPO_ROOT / 'data' / 'model_weights.json').read_text(encoding='utf-8'))
     base_goals = weights.get('base_goals_per_team', 1.3)
     elo_scale = weights.get('elo_scale', 400)
+    xi_matchup_weight = weights.get('xi_matchup_weight', 0.20)
 
     matches   = load_matches()
     strengths = load_strengths()
+    xi_profiles = load_xi_profiles()
 
     print(f"Running {args.runs} simulations (seed={args.seed})...")
-    results_by_team, terceros_table = run_monte_carlo(args.runs, args.seed, matches, strengths, base_goals, elo_scale)
+    results_by_team, terceros_table = run_monte_carlo(
+        args.runs,
+        args.seed,
+        matches,
+        strengths,
+        base_goals,
+        elo_scale,
+        xi_profiles,
+        xi_matchup_weight,
+    )
 
     output = {
         'runs':           args.runs,
         'seed':           args.seed,
+        'version':        weights.get('_version', '1.1'),
+        'xi_matchup_weight': xi_matchup_weight,
         'teams':          results_by_team,
         'terceros_table': terceros_table,
     }

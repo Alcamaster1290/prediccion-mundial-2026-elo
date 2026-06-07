@@ -214,3 +214,14 @@ def test_export_mc_results_uploads_terceros_table(monkeypatch):
             "qualifies": True,
         }
     ]
+
+
+def test_gen_mc_uses_mc_data_version(tmp_path):
+    out_path = tmp_path / "seed_mc.sql"
+    mc_data = sample_mc_data()
+    mc_data["version"] = "1.2"
+
+    gen_mc(mc_data, out_path)
+
+    sql = out_path.read_text(encoding="utf-8")
+    assert "INSERT INTO simulation_runs (runs,seed,version) VALUES (10,42,'1.2')" in sql

@@ -11,6 +11,15 @@ from datetime import date
 from pathlib import Path
 
 from elo_probability import rounded_outcome_percentages
+from xi_matchups import (
+    build_xi_profiles,
+    matchup_adjusted_strengths,
+    missing_xi_context,
+    partial_xi_matchup_note,
+    profile_xi_context,
+    team_xi_context,
+    xi_matchup_note,
+)
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 REPO_ROOT = Path(__file__).parent.parent
@@ -20,6 +29,7 @@ MATCHES_FILE  = DATA_DIR / "matches.json"
 STRENGTHS_FILE = DATA_DIR / "team_strength_snapshots.json"
 WEIGHTS_FILE  = DATA_DIR / "model_weights.json"
 CONTEXT_FILE  = DATA_DIR / "match_context.json"
+TEAMS_FILE    = DATA_DIR / "teams.json"
 OUTPUT_SQL    = DATA_DIR / "predictions_seed.sql"
 
 def match_probs(sa: float, sb: float, base_goals: float, n=None, elo_scale: float = 400, max_goals: int = 12):
@@ -257,10 +267,13 @@ def main():
     strengths = load_json(STRENGTHS_FILE)["teams"]
     weights   = load_json(WEIGHTS_FILE)
     ctx_data  = load_json(CONTEXT_FILE)
+    teams_data = load_json(TEAMS_FILE)
 
     base_goals = weights["base_goals_per_team"]   # 1.3
     elo_scale = weights.get("elo_scale", 400)
     max_goals = weights.get("poisson_max_goals", 12)
+    xi_matchup_weight = weights.get("xi_matchup_weight", 0.20)
+    xi_profiles = build_xi_profiles(teams_data)
 
     ctx_by_id, ctx_by_group_round_pair = build_context_lookup(ctx_data["matches"])
     fixture_index = build_group_fixture_index(matches)
@@ -289,7 +302,16 @@ def main():
         sa = strengths.get(team_a, {}).get("strength_score", 1500.0)
         sb = strengths.get(team_b, {}).get("strength_score", 1500.0)
 
-        pa, pd, pb = match_probs(sa, sb, base_goals, elo_scale=elo_scale, max_goals=max_goals)
+        effective_sa, effective_sb, xi_comparison = matchup_adjusted_strengths(
+            team_a,
+            team_b,
+            sa,
+            sb,
+            xi_profiles,
+            xi_matchup_weight=xi_matchup_weight,
+        )
+
+        pa, pd, pb = match_probs(effective_sa, effective_sb, base_goals, elo_scale=elo_scale, max_goals=max_goals)
 
         is_inaugural = (mid == inaugural_id)
         tag = global_tag(pa, pd, pb, is_inaugural)
@@ -303,6 +325,19 @@ def main():
             team_a_ctx_text = context_for_team(ctx, team_a).get("incentivo_competitivo", "") or ""
             team_b_ctx_text = context_for_team(ctx, team_b).get("incentivo_competitivo", "") or ""
             explanation     = ctx.get("prediccion_narrativa", "") or ""
+
+        if xi_comparison:
+            team_a_ctx_text = team_xi_context(xi_comparison["a"])
+            team_b_ctx_text = team_xi_context(xi_comparison["b"])
+            explanation = xi_matchup_note(match, xi_comparison)
+        else:
+            profile_a = xi_profiles.get(team_a)
+            profile_b = xi_profiles.get(team_b)
+            partial_note = partial_xi_matchup_note(match, team_a, team_b, xi_profiles)
+            if partial_note:
+                team_a_ctx_text = profile_xi_context(profile_a) if profile_a else missing_xi_context(match.get("home_name") or team_a.upper())
+                team_b_ctx_text = profile_xi_context(profile_b) if profile_b else missing_xi_context(match.get("away_name") or team_b.upper())
+                explanation = partial_note
 
         explanation = compose_prediction_explanation(
             explanation,

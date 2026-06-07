@@ -109,3 +109,30 @@ def test_context_lookup_keeps_team_context_aligned_when_match_order_changes():
 
     assert context_for_team(ctx, "sco")["incentivo_competitivo"] == "Escocia busca puntos."
     assert context_for_team(ctx, "bra")["incentivo_competitivo"] == "Brasil busca liderato."
+
+
+def test_argentina_austria_prediction_uses_xi_matchup_not_star_solo_claim():
+    sql = (REPO_ROOT / "data/predictions_seed.sql").read_text(encoding="utf-8")
+    match_line = next(
+        line for line in sql.splitlines()
+        if "'grp-j-j2-arg-aut'" in line
+    )
+
+    assert "Comparación XI" in match_line
+    assert "defensa" in match_line.lower()
+    assert "mediocampo" in match_line.lower()
+    assert "resolver el partido solo" not in match_line.lower()
+    assert "puede resolver él solo" not in match_line.lower()
+
+
+def test_predictions_with_incomplete_xi_use_partial_data_notice():
+    sql = (REPO_ROOT / "data/predictions_seed.sql").read_text(encoding="utf-8")
+    jordan_line = next(
+        line for line in sql.splitlines()
+        if "'grp-j-j3-jor-arg'" in line
+    )
+
+    assert "Comparación XI parcial" in jordan_line
+    assert "Jordania no tiene XI titular completo" in jordan_line
+    assert "Messi puede" not in jordan_line
+    assert "golea" not in jordan_line.lower()

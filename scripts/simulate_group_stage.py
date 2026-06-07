@@ -18,6 +18,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from elo_probability import match_lambdas as elo_match_lambdas
+from xi_matchups import build_xi_profiles, matchup_adjusted_strengths
 
 REPO_ROOT = Path(__file__).parent.parent
 
@@ -52,6 +53,10 @@ def load_strengths():
     return {code: t['strength_score'] for code, t in data['teams'].items()}
 
 
+def load_xi_profiles():
+    return build_xi_profiles(load_json(REPO_ROOT / 'data' / 'teams.json'))
+
+
 def poisson_goals(lam):
     """Knuth algorithm: Poisson random variate for goal count."""
     L = math.exp(-max(lam, 0.01))
@@ -76,7 +81,7 @@ def simulate_match(home_strength, away_strength, base_goals, elo_scale=400):
     return poisson_goals(la), poisson_goals(lb)
 
 
-def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400):
+def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20):
     """Simulate 6 matches and return ranked team list (4 items)."""
     draw_order = GROUP_ORDER.get(group_id.upper(), [])
     stats = defaultdict(lambda: {'PJ':0,'PG':0,'PE':0,'PP':0,'GF':0,'GC':0,'DG':0,'PTS':0})
@@ -85,7 +90,15 @@ def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400
         h, a = m['home_team'], m['away_team']
         sh = strengths.get(h, 1600)
         sa = strengths.get(a, 1600)
-        hg, ag = simulate_match(sh, sa, base_goals, elo_scale)
+        eff_h, eff_a, _ = matchup_adjusted_strengths(
+            h,
+            a,
+            sh,
+            sa,
+            xi_profiles,
+            xi_matchup_weight=xi_matchup_weight,
+        )
+        hg, ag = simulate_match(eff_h, eff_a, base_goals, elo_scale)
 
         stats[h]['PJ'] += 1; stats[a]['PJ'] += 1
         stats[h]['GF'] += hg; stats[h]['GC'] += ag
@@ -112,14 +125,14 @@ def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400
     return [{'code': c, **stats[c]} for c in teams]
 
 
-def simulate_all_groups(matches, strengths, base_goals, elo_scale=400):
+def simulate_all_groups(matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20):
     """Run one full group stage simulation. Returns {group_id: [ranked_teams]}."""
     by_group = defaultdict(list)
     for m in matches:
         by_group[m['group']].append(m)
 
     return {
-        gid: simulate_group(gid, gmatches, strengths, base_goals, elo_scale)
+        gid: simulate_group(gid, gmatches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight)
         for gid, gmatches in by_group.items()
     }
 
@@ -147,11 +160,13 @@ def main():
     weights   = load_json(REPO_ROOT / 'data' / 'model_weights.json')
     base_goals = weights.get('base_goals_per_team', 1.3)
     elo_scale = weights.get('elo_scale', 400)
+    xi_matchup_weight = weights.get('xi_matchup_weight', 0.20)
 
     matches   = load_matches()
     strengths = load_strengths()
+    xi_profiles = load_xi_profiles()
 
-    standings = simulate_all_groups(matches, strengths, base_goals, elo_scale)
+    standings = simulate_all_groups(matches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight)
 
     print("Group Stage Results")
     print("=" * 40)

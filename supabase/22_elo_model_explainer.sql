@@ -101,8 +101,9 @@ BEGIN
         'elo_source', 'international-football.net',
         'club_elo_source', 'worldclubratings.com',
         'formula', 'elo_intl + (xi_blend - avg_xi_blend) * club_adj_weight',
-        'probability_formula', 'ELO expected-score -> Poisson; fixed 2 * base_goals_per_team expected goals split by team strength',
+        'probability_formula', 'ELO expected-score -> Poisson; fixed 2 * base_goals_per_team expected goals split by team strength, with starter line-matchup adjustment',
         'club_adj_weight', 0.35,
+        'xi_matchup_weight', 0.20,
         'avg_xi_blend', (SELECT avg_xi_blend FROM model_meta),
         'base_goals_per_team', 1.3,
         'elo_scale', 400,
@@ -111,6 +112,7 @@ BEGIN
           'El ELO internacional es la base para las 48 selecciones.',
           'Cuando hay suficientes titulares con ELO de club, el XI ajusta la fuerza del equipo contra el promedio XI actual.',
           'Las probabilidades de cada partido usan la curva ELO expected-score para repartir un total fijo de 2 * base_goals_per_team goles esperados.',
+          'Cada partido suma una capa line-matchup de titulares: ataque contra defensa rival, mediocampo contra mediocampo, defensa contra ataque rival y arquero contra ataque rival.',
           'Los equipos sin muestra suficiente siguen activos con base internacional mientras se completa la data.'
         )
       ),

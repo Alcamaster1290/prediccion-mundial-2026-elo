@@ -1,6 +1,6 @@
--- 24_elo_probability_formula_explainer.sql
--- Refreshes the ELO model explainer after recalibrating match probabilities.
--- Apply after 23_predictions_match_id_unique.sql.
+-- 25_xi_matchup_model_explainer.sql
+-- Refreshes the ELO model explainer after adding starter line-matchup adjustments.
+-- Apply after 24_elo_probability_formula_explainer.sql.
 
 CREATE OR REPLACE FUNCTION public.get_elo_model_explainer()
 RETURNS jsonb

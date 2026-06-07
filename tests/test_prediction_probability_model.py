@@ -7,6 +7,7 @@ sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
 import generate_predictions as gp  # noqa: E402
 from simulate_group_stage import match_lambdas  # noqa: E402
+from xi_matchups import build_xi_profiles, matchup_adjusted_strengths  # noqa: E402
 
 
 def test_prediction_lambdas_preserve_expected_total_goals():
@@ -37,3 +38,44 @@ def test_equal_strength_match_probs_are_symmetric_with_realistic_draw():
     assert round(abs(home_win - away_win), 2) <= 0.01
     assert 24.0 <= draw <= 28.0
     assert round(home_win + draw + away_win, 2) == 100.0
+
+
+def test_xi_profiles_compare_starter_lines_not_only_team_average():
+    teams_data = {
+        "teams": [
+            {
+                "id": "a",
+                "players": [
+                    {"name": "A GK", "pos": "GK", "elo": 1600, "titular": True},
+                    {"name": "A DEF", "pos": "DEF", "elo": 1700, "titular": True},
+                    {"name": "A MID", "pos": "MED", "elo": 1800, "titular": True},
+                    {"name": "A FW", "pos": "DEL", "elo": 1900, "titular": True},
+                ],
+            },
+            {
+                "id": "b",
+                "players": [
+                    {"name": "B GK", "pos": "GK", "elo": 1500, "titular": True},
+                    {"name": "B DEF", "pos": "DEF", "elo": 2000, "titular": True},
+                    {"name": "B MID", "pos": "MED", "elo": 1500, "titular": True},
+                    {"name": "B FW", "pos": "DEL", "elo": 1500, "titular": True},
+                ],
+            },
+        ]
+    }
+
+    profiles = build_xi_profiles(teams_data)
+    effective_a, effective_b, comparison = matchup_adjusted_strengths(
+        "a",
+        "b",
+        1700,
+        1700,
+        profiles,
+        xi_matchup_weight=0.25,
+    )
+
+    assert profiles["a"]["lines"]["attack"] == 1900
+    assert profiles["b"]["lines"]["defense"] == 2000
+    assert comparison["a"]["line_edges"]["attack_vs_defense"] == -100
+    assert effective_a != 1700
+    assert effective_b != 1700

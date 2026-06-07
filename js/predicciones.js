@@ -267,6 +267,8 @@
     var totalGoalsText = isNaN(baseGoals) ? '-' : formatModelValue(baseGoals * 2, 1);
     var eloScale = model.elo_scale == null ? 400 : model.elo_scale;
     var eloScaleText = formatModelValue(eloScale, 0);
+    var xiMatchupWeight = model.xi_matchup_weight == null ? 0.2 : model.xi_matchup_weight;
+    var xiMatchupWeightText = formatModelValue(xiMatchupWeight, 2);
     var probabilityFormula = model.probability_formula || 'ELO expected-score -> Poisson; fixed 2 * base_goals_per_team expected goals split by team strength';
 
     var html = '<section class="pred-elo-model">'
@@ -285,6 +287,10 @@
       + '<div class="pred-elo-formula">'
       + '<span>Probabilidad partido</span>'
       + '<code>' + escapeHtml(probabilityFormula) + ' &middot; total goles ' + totalGoalsText + ' &middot; escala ELO ' + eloScaleText + '</code>'
+      + '</div>'
+      + '<div class="pred-elo-formula">'
+      + '<span>matchup XI</span>'
+      + '<code>ataque vs defensa, medio vs medio, defensa vs ataque &middot; peso ' + xiMatchupWeightText + '</code>'
       + '</div>'
       + '<p>Snapshot actual: ' + formatModelValue(summary.xi_blend_ready, 0) + ' selecciones usan ajuste por XI titular; ' + formatModelValue(summary.needs_player_elo, 0) + ' necesitan mas ELOs de jugadores; ' + formatModelValue(summary.elo_intl_only, 0) + ' quedan con base internacional. ' + sourceText + '</p>'
       + '</div>'
