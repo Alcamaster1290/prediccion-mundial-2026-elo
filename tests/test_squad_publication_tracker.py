@@ -10,6 +10,29 @@ INDEX_PATH = REPO_ROOT / "index.html"
 
 
 EXPECTED_DATES = {
+    "bih": "2026-05-11",
+    "swe": "2026-05-12",
+    "fra": "2026-05-14",
+    "nzl": "2026-05-14",
+    "bel": "2026-05-15",
+    "civ": "2026-05-15",
+    "hti": "2026-05-15",
+    "jpn": "2026-05-15",
+    "tun": "2026-05-15",
+    "kor": "2026-05-16",
+    "aut": "2026-05-18",
+    "cod": "2026-05-18",
+    "cpv": "2026-05-18",
+    "cuw": "2026-05-18",
+    "sui": "2026-05-19",
+    "por": "2026-05-19",
+    "sco": "2026-05-19",
+    "bra": "2026-05-19",
+    "ger": "2026-05-22",
+    "nor": "2026-05-22",
+    "eng": "2026-05-22",
+    "esp": "2026-05-25",
+    "col": "2026-05-25",
     "usa": "2026-05-26",
     "mar": "2026-05-26",
     "pan": "2026-05-26",
@@ -39,9 +62,10 @@ def test_squad_publication_tracker_matches_manual_dates():
     tracker = json.loads(TRACKER_PATH.read_text(encoding="utf-8"))
     rows = {row["team_code"]: row for row in tracker["teams"]}
 
-    assert tracker["meta"]["total_published"] == 22
+    assert tracker["meta"]["total_published"] == 45
     assert set(rows) == set(EXPECTED_DATES)
     assert {code: rows[code]["published_date"] for code in rows} == EXPECTED_DATES
+    assert rows["bih"]["name"] == "Bosnia y Herzegovina"
     assert rows["ksa"]["name"] == "Arabia Saudita"
     assert rows["ury"]["name"] == "Uruguay"
 
@@ -49,10 +73,23 @@ def test_squad_publication_tracker_matches_manual_dates():
 def test_index_tracker_renders_publication_dates():
     html = INDEX_PATH.read_text(encoding="utf-8")
 
-    assert "22 selecciones con fecha de convocatoria registrada" in html
-    assert "26 pendientes de fecha registrada" in html
+    assert "45 selecciones con fecha de convocatoria registrada" in html
+    assert "11 mayo 2026" in html
+    assert "1 junio 2026" in html
+    assert "3 pendientes de fecha registrada" in html
     assert "<!-- Fechas de publicación de convocatorias -->" not in html
     assert "Cronología de anuncios" in html
+    assert "11 May</span>" in html
+    assert "Bosnia y Herzegovina" in html
+    assert "12 May</span>" in html
+    assert "Suecia" in html
+    assert "14 May</span>" in html
+    assert "Francia" in html
+    assert "Nueva Zelanda" in html
+    assert "25 May</span>" in html
+    assert "España" in html
+    assert "Colombia" in html
+    assert "26 May</span>" in html
     assert "31 May</span>" in html
     assert "Arabia Saudita" in html
     assert "Uruguay" in html

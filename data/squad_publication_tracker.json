@@ -1,13 +1,151 @@
 {
   "meta": {
     "updated": "2026-06-07",
-    "source": "manual_user_input",
+    "source": "manual_user_input_and_existing_chronology",
     "description": "Fechas de publicación de convocatorias registradas para el tracker. Estas fechas no reemplazan la fecha de publicación del artículo fuente de AlterFutbol.",
-    "total_published": 22,
+    "total_published": 45,
     "total_teams": 48,
-    "pending_registered_date": 26
+    "pending_registered_date": 3
   },
   "teams": [
+    {
+      "team_code": "bih",
+      "name": "Bosnia y Herzegovina",
+      "group_id": "B",
+      "published_date": "2026-05-11"
+    },
+    {
+      "team_code": "swe",
+      "name": "Suecia",
+      "group_id": "F",
+      "published_date": "2026-05-12"
+    },
+    {
+      "team_code": "fra",
+      "name": "Francia",
+      "group_id": "I",
+      "published_date": "2026-05-14"
+    },
+    {
+      "team_code": "nzl",
+      "name": "Nueva Zelanda",
+      "group_id": "G",
+      "published_date": "2026-05-14"
+    },
+    {
+      "team_code": "bel",
+      "name": "Bélgica",
+      "group_id": "G",
+      "published_date": "2026-05-15"
+    },
+    {
+      "team_code": "civ",
+      "name": "Costa de Marfil",
+      "group_id": "E",
+      "published_date": "2026-05-15"
+    },
+    {
+      "team_code": "hti",
+      "name": "Haití",
+      "group_id": "C",
+      "published_date": "2026-05-15"
+    },
+    {
+      "team_code": "jpn",
+      "name": "Japón",
+      "group_id": "F",
+      "published_date": "2026-05-15"
+    },
+    {
+      "team_code": "tun",
+      "name": "Túnez",
+      "group_id": "F",
+      "published_date": "2026-05-15"
+    },
+    {
+      "team_code": "kor",
+      "name": "Corea del Sur",
+      "group_id": "A",
+      "published_date": "2026-05-16"
+    },
+    {
+      "team_code": "aut",
+      "name": "Austria",
+      "group_id": "J",
+      "published_date": "2026-05-18"
+    },
+    {
+      "team_code": "cod",
+      "name": "RD Congo",
+      "group_id": "K",
+      "published_date": "2026-05-18"
+    },
+    {
+      "team_code": "cpv",
+      "name": "Cabo Verde",
+      "group_id": "H",
+      "published_date": "2026-05-18"
+    },
+    {
+      "team_code": "cuw",
+      "name": "Curazao",
+      "group_id": "E",
+      "published_date": "2026-05-18"
+    },
+    {
+      "team_code": "sui",
+      "name": "Suiza",
+      "group_id": "B",
+      "published_date": "2026-05-19"
+    },
+    {
+      "team_code": "por",
+      "name": "Portugal",
+      "group_id": "K",
+      "published_date": "2026-05-19"
+    },
+    {
+      "team_code": "sco",
+      "name": "Escocia",
+      "group_id": "C",
+      "published_date": "2026-05-19"
+    },
+    {
+      "team_code": "bra",
+      "name": "Brasil",
+      "group_id": "C",
+      "published_date": "2026-05-19"
+    },
+    {
+      "team_code": "ger",
+      "name": "Alemania",
+      "group_id": "E",
+      "published_date": "2026-05-22"
+    },
+    {
+      "team_code": "nor",
+      "name": "Noruega",
+      "group_id": "I",
+      "published_date": "2026-05-22"
+    },
+    {
+      "team_code": "eng",
+      "name": "Inglaterra",
+      "group_id": "L",
+      "published_date": "2026-05-22"
+    },
+    {
+      "team_code": "esp",
+      "name": "España",
+      "group_id": "H",
+      "published_date": "2026-05-25"
+    },
+    {
+      "team_code": "col",
+      "name": "Colombia",
+      "group_id": "K",
+      "published_date": "2026-05-25"
+    },
     {
       "team_code": "usa",
       "name": "Estados Unidos",

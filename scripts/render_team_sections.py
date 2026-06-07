@@ -925,6 +925,29 @@ def format_publication_date(value):
     return f"{int(day)} {month_labels.get(month, month)}"
 
 
+def format_publication_date_long(value):
+    month_labels = {"05": "mayo", "06": "junio"}
+    try:
+        year, month, day = str(value).split("-")
+    except ValueError:
+        return str(value or "")
+    return f"{int(day)} {month_labels.get(month, month)} {year}"
+
+
+def publication_date_range_label(publication_tracker):
+    dates = sorted(
+        row.get("published_date")
+        for row in publication_tracker.get("teams", [])
+        if row.get("published_date")
+    )
+    if not dates:
+        return "sin fechas registradas"
+    return (
+        f'el <strong style="color:var(--text)">{h(format_publication_date_long(dates[0]))}</strong> '
+        f'y el <strong style="color:var(--text)">{h(format_publication_date_long(dates[-1]))}</strong>'
+    )
+
+
 def publication_tracker_rows_by_date(publication_tracker):
     rows_by_date = {}
     for row in publication_tracker.get("teams", []):
@@ -936,6 +959,7 @@ def render_tracker_summary(groups_data, teams_by_code, publication_tracker):
     total_teams = publication_tracker.get("meta", {}).get("total_teams", 48)
     dated_count = len(publication_tracker.get("teams", []))
     groups_with_dates = len({row.get("group_id") for row in publication_tracker.get("teams", []) if row.get("group_id")})
+    date_range = publication_date_range_label(publication_tracker)
     published_profiles = 0
     for group in groups_data.get("groups", []):
         for code in group.get("teams", []):
@@ -945,7 +969,7 @@ def render_tracker_summary(groups_data, teams_by_code, publication_tracker):
     pending_profiles = total_teams - published_profiles
     pending_dates = total_teams - dated_count
     return f"""    <p style="color:var(--muted);margin-bottom:2rem;font-size:14px">
-      {dated_count} selecciones con fecha de convocatoria registrada entre el <strong style="color:var(--text)">26 mayo 2026</strong> y el <strong style="color:var(--text)">1 junio 2026</strong>. Hay {published_profiles} perfiles publicados y {pending_profiles} pendientes de perfil fuenteado; las fechas de convocatoria y el perfil analizado se gestionan como datos separados.
+      {dated_count} selecciones con fecha de convocatoria registrada entre {date_range}. Hay {published_profiles} perfiles publicados y {pending_profiles} pendientes de perfil fuenteado; las fechas de convocatoria y el perfil analizado se gestionan como datos separados.
       Las marcadas con <span class="analyzed-badge">✓ Detallado</span> tienen análisis completo en este documento.
     </p>
 
@@ -977,8 +1001,9 @@ def render_publication_timeline(publication_tracker):
         '    <div style="display:flex;flex-direction:column;gap:.5rem">',
     ]
     rows_by_date = publication_tracker_rows_by_date(publication_tracker)
-    for index, (date_value, rows) in enumerate(rows_by_date.items()):
-        border = "var(--accent)" if index in (0, len(rows_by_date) - 1) else "var(--border)"
+    dated_rows = sorted(rows_by_date.items())
+    for index, (date_value, rows) in enumerate(dated_rows):
+        border = "var(--accent)" if index in (0, len(dated_rows) - 1) else "var(--border)"
         flags = " ".join(
             f'<img class="flag-svg" src="assets/flags/{h(row.get("team_code"))}.svg" alt="{h(row.get("name"))}" loading="lazy">'
             for row in rows
