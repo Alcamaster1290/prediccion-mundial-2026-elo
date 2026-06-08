@@ -142,7 +142,7 @@ def main():
             else:
                 print(f"PASS data/match_context.json -- {len(entries)} entries, elo_intl present")
 
-    # model_weights.json — validate real schema (v1.1)
+    # model_weights.json — validate real schema (v1.2)
     weights = load_json(REPO_ROOT / 'data' / 'model_weights.json')
     if weights is None:
         print("SKIP data/model_weights.json -- not found")
@@ -157,6 +157,12 @@ def main():
             w_errors.append("missing 'club_adj_weight'")
         elif not (isinstance(caw, (int, float)) and 0 < caw <= 1):
             w_errors.append(f"club_adj_weight={caw!r} must be numeric in (0, 1]")
+
+        xmw = weights.get('xi_matchup_weight')
+        if xmw is None:
+            w_errors.append("missing 'xi_matchup_weight'")
+        elif not (isinstance(xmw, (int, float)) and 0 <= xmw <= 1):
+            w_errors.append(f"xi_matchup_weight={xmw!r} must be numeric in [0, 1]")
 
         bgpt = weights.get('base_goals_per_team')
         if bgpt is None:
@@ -178,7 +184,7 @@ def main():
             ok = False
         else:
             print(f"PASS data/model_weights.json -- club_adj_weight={caw}, "
-                  f"base_goals={bgpt}, elo_scale={es}")
+                  f"xi_matchup_weight={xmw}, base_goals={bgpt}, elo_scale={es}")
 
     sys.exit(0 if ok else 1)
 

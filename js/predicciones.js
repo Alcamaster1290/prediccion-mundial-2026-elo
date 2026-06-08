@@ -95,6 +95,7 @@
     var runRef = await c
       .from('simulation_runs')
       .select('*')
+      .eq('is_active', true)
       .order('created_at', { ascending: false })
       .limit(1)
       .single();
@@ -438,6 +439,26 @@
       + '</div>';
   }
 
+  function renderConfigError() {
+    var el = document.getElementById('predicciones-content');
+    if (!el) return;
+    setLockVisible(true);
+    el.innerHTML = '<div class="pred-locked">'
+      + '<h3 class="pred-lock-title">Predicciones no disponibles</h3>'
+      + '<p class="pred-lock-desc">La conexión con Supabase no está configurada. En producción esta sección no carga resultados locales ni mocks.</p>'
+      + '</div>';
+  }
+
+  function renderDataError() {
+    var el = document.getElementById('predicciones-content');
+    if (!el) return;
+    setLockVisible(false);
+    el.innerHTML = '<div class="pred-empty">'
+      + '<span class="pred-premium-badge">&#x2705; Todo desbloqueado</span>'
+      + '<p style="color:var(--muted);margin-top:1rem">No pudimos cargar la simulación desde Supabase. Revisa la configuración, el run activo o las políticas RLS.</p>'
+      + '</div>';
+  }
+
   function renderPaywall(profile) {
     var el = document.getElementById('predicciones-content');
     if (!el) return;
@@ -627,10 +648,15 @@
     var eloModel = await loadEloModelExplainer();
     var pronosticos = await loadEmbeddedPronosticos();
 
-    if (!data || !data.standings.length) {
+    if (!data) {
+      renderDataError();
+      return;
+    }
+
+    if (!data.standings.length) {
       el.innerHTML = '<div class="pred-empty">'
         + '<span class="pred-premium-badge">&#x2705; Todo desbloqueado</span>'
-        + '<p style="color:var(--muted);margin-top:1rem">Los datos de simulación se cargarán en breve.</p>'
+        + '<p style="color:var(--muted);margin-top:1rem">No hay resultados de simulación publicados para el run activo.</p>'
         + '</div>';
       return;
     }
@@ -706,7 +732,7 @@
     // — Tabla 2: Proyección mejores terceros —
     if (data.terceros && data.terceros.length) {
       html += '<h3 class="pred-subsection-title">Proyección Mejores Terceros</h3>';
-      html += '<p class="pred-terceros-note">Los 8 mejores terceros de 12 grupos avanzan a octavos. Clasificación por criterios FIFA: PTS &gt; DG &gt; GF.</p>';
+      html += '<p class="pred-terceros-note">Los 8 mejores terceros de 12 grupos avanzan a octavos. La fila representa el slot de tercer lugar del grupo; el equipo mostrado es el tercero más frecuente. Criterio actual: PTS prom. &gt; DG prom. &gt; GF prom.</p>';
       html += '<div class="pred-table-wrap"><table class="pred-table">'
         + '<thead><tr>'
         + '<th>#</th><th>Grupo</th><th>Equipo</th><th>3° más frecuente</th>'
@@ -815,6 +841,10 @@
   // ── Init ─────────────────────────────────────────────────────
 
   function init() {
+    if (window.__supabaseConfigError && !(window.SupaData && window.SupaData.isLocalDev && window.SupaData.isLocalDev())) {
+      renderConfigError();
+      return;
+    }
     renderLocked();
   }
 
@@ -823,6 +853,8 @@
     onAuthChange: onAuthChange,
     submitCode:   submitCode,
     showQR:       showQR,
+    renderConfigError: renderConfigError,
+    renderDataError: renderDataError,
   };
 
   if (document.readyState === 'loading') {

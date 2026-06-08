@@ -131,5 +131,18 @@ def test_frontend_loads_supa_data_before_feature_modules():
     supa_data = read("js/supa-data.js")
     assert "window.SupaData" in supa_data
     assert "loadSupabaseOrLocal" in supa_data
+    assert "isLocalDev" in supa_data
+    assert "if (!localUrl || !isLocalDev()) return null;" in supa_data
     assert "redeemPremiumCode" in supa_data
     assert "getSession(client)" in supa_data
+    assert ".eq('is_active', true)" in supa_data
+
+
+def test_bracket_does_not_load_premium_data_before_access():
+    bracket_js = read("js/bracket.js")
+
+    init_body = re.search(r"function init\(\) \{(.*?)\n  \}", bracket_js, flags=re.S).group(1)
+    assert "loadSimulationData()" not in init_body
+    assert "if (hasPremiumAccess && !hasLoadedPremiumData) loadAndRenderPremiumData();" in bracket_js
+    assert "el.innerHTML = renderBracket(null);" in bracket_js
+    assert "window.__authState && window.__authState.hasFullAccess" in bracket_js

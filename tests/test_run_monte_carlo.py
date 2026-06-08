@@ -4,7 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from run_monte_carlo import run_monte_carlo  # noqa: E402
+from run_monte_carlo import rounded_pct_distribution, run_monte_carlo  # noqa: E402
 
 
 def test_run_monte_carlo_returns_points_distribution_for_each_team():
@@ -31,3 +31,10 @@ def test_run_monte_carlo_returns_points_distribution_for_each_team():
     for team_result in results.values():
         assert list(team_result["points_pct"]) == possible_points
         assert sum(team_result["points_pct"].values()) == 100.0
+
+
+def test_rounded_points_distribution_sums_to_100_after_rounding():
+    distribution = rounded_pct_distribution({0: 1, 1: 1, 2: 1}, runs=3)
+
+    assert sum(distribution.values()) == 100.0
+    assert set(distribution) == {"0", "1", "2", "3", "4", "5", "6", "7", "9"}

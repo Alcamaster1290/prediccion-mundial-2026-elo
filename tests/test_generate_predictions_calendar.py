@@ -1,12 +1,37 @@
 import json
+import subprocess
 import sys
 from pathlib import Path
+
+import pytest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
 import generate_predictions as gp  # noqa: E402
+
+
+@pytest.fixture
+def generated_prediction_sql(tmp_path, monkeypatch):
+    strengths_path = tmp_path / "team_strength_snapshots.json"
+    output_sql = tmp_path / "predictions_seed.sql"
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/build_team_strength.py",
+            "--output",
+            str(strengths_path),
+        ],
+        cwd=REPO_ROOT,
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+    monkeypatch.setattr(gp, "STRENGTHS_FILE", strengths_path)
+    monkeypatch.setattr(gp, "OUTPUT_SQL", output_sql)
+    gp.main()
+    return output_sql.read_text(encoding="utf-8")
 
 
 def load_matches():
@@ -111,8 +136,8 @@ def test_context_lookup_keeps_team_context_aligned_when_match_order_changes():
     assert context_for_team(ctx, "bra")["incentivo_competitivo"] == "Brasil busca liderato."
 
 
-def test_argentina_austria_prediction_uses_xi_matchup_not_star_solo_claim():
-    sql = (REPO_ROOT / "data/predictions_seed.sql").read_text(encoding="utf-8")
+def test_argentina_austria_prediction_uses_xi_matchup_not_star_solo_claim(generated_prediction_sql):
+    sql = generated_prediction_sql
     match_line = next(
         line for line in sql.splitlines()
         if "'grp-j-j2-arg-aut'" in line
@@ -125,8 +150,8 @@ def test_argentina_austria_prediction_uses_xi_matchup_not_star_solo_claim():
     assert "puede resolver él solo" not in match_line.lower()
 
 
-def test_predictions_with_incomplete_xi_use_partial_data_notice():
-    sql = (REPO_ROOT / "data/predictions_seed.sql").read_text(encoding="utf-8")
+def test_predictions_with_incomplete_xi_use_partial_data_notice(generated_prediction_sql):
+    sql = generated_prediction_sql
     jordan_line = next(
         line for line in sql.splitlines()
         if "'grp-j-j3-jor-arg'" in line

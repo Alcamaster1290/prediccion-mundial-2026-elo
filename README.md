@@ -37,13 +37,13 @@ mundial-2026/
 │   ├── matches.json                # 72 partidos de fase de grupos (generado por generate_matches.py)
 │   ├── match_context.json          # Matriz narrativa — análisis táctico por partido
 │   ├── teams.json                  # 46 perfiles publicados + 46 planteles fuenteados (1196 jugadores)
-│   ├── team_strength_snapshots.json # Fuerza de las 48 selecciones (v1.1 — ELO híbrido)
+│   ├── team_strength_snapshots.json # Output local ignorado: fuerza v1.2 para exportar a Supabase
 │   ├── international_elo.json      # ELO internacional real (international-football.net, 48 equipos)
 │   ├── club_elo.json               # ELO de clubes de referencia (worldclubratings.com)
-│   ├── model_weights.json          # Pesos del modelo (club_adj_weight, base_goals, elo_scale)
-│   ├── mc_results.json             # Resultados Monte Carlo (10,000 runs, seed=42, 48 equipos)
+│   ├── model_weights.json          # Config del modelo (_version, club_adj_weight, xi_matchup_weight, base_goals_per_team, elo_scale)
+│   ├── mc_results.json             # Output local ignorado: Monte Carlo premium para exportar a Supabase
 │   ├── knockout_matches.json       # Fixture de la fase eliminatoria
-│   └── predictions.mock.json       # Predicciones de demo (modo sin Supabase)
+│   └── predictions.mock.json       # Predicciones ficticias solo para desarrollo local
 │
 ├── scripts/
 │   ├── simulate_group_stage.py     # Motor de simulación Poisson — load_matches, load_strengths,
@@ -95,7 +95,7 @@ extract_squads.py           international_elo.json         club_elo.json
                                      build_team_strength.py
                                                 │
                                   team_strength_snapshots.json
-                                  (48 equipos · v1.1 ELO híbrido)
+                                  (48 equipos · v1.2 ELO híbrido + matchup XI)
                                                 │
                                    run_monte_carlo.py
                                    simulate_group_stage.py
@@ -114,7 +114,7 @@ extract_squads.py           international_elo.json         club_elo.json
                               └── simulation_terceros_table (12 filas)
 ```
 
-### Modelo ELO híbrido (v1.1)
+### Modelo ELO híbrido (v1.2)
 
 Combina el ranking internacional real con el ELO de clubes del XI titular de cada selección:
 
@@ -124,20 +124,25 @@ score = elo_intl + (xi_blend − avg_xi_blend) × club_adj_weight
 
 | Parámetro | Valor |
 |-----------|-------|
+| `_version` | 1.2 |
 | `club_adj_weight` | 0.35 |
-| `avg_xi_blend` (promedio global) | 1675.3 |
+| `xi_matchup_weight` | 0.20 |
+| `avg_xi_blend` (promedio global actual) | 1585.0 |
 | `base_goals_per_team` | 1.3 |
 | `elo_scale` | 400 |
 
 - **`elo_intl`**: ELO nacional de international-football.net (rango real: 1423–2165)
 - **`xi_blend`**: promedio de ELO de club de los 11 titulares (worldclubratings.com)
-- Las 46 selecciones con XI titular fuenteado usan ELO híbrido; Arabia Saudita y Jordania siguen con `elo_intl` hasta tener fuente directa confiable.
+- Las selecciones con XI titular fuenteado usan ELO híbrido; Arabia Saudita y Jordania siguen con `elo_intl` hasta tener fuente directa confiable.
+- En cada partido se aplica una capa pequeña de `xi_matchup_weight` que compara líneas del XI: ataque vs defensa rival, mediocampo vs mediocampo, defensa vs ataque rival y arquero vs ataque rival.
 
 ### Simulación de goles (Poisson / Knuth)
 
 ```
-λ_A = base_goals × 10^((score_A − score_B) / 800)
-λ_B = base_goals × 10^((score_B − score_A) / 800)
+expected_A = 1 / (1 + 10^(-(score_A − score_B) / elo_scale))
+total_goals = 2 × base_goals_per_team
+λ_A = total_goals × expected_A
+λ_B = total_goals × (1 − expected_A)
 ```
 
 Los goles se generan con el algoritmo de Knuth para muestras de distribución Poisson.
@@ -145,9 +150,10 @@ Los goles se generan con el algoritmo de Knuth para muestras de distribución Po
 ### Monte Carlo
 
 - **10,000 iteraciones**, semilla reproducible `seed=42`
-- Trackea por equipo: `first_pct`, `second_pct`, `third_pct`, `best_third_pct`, `fourth_pct`, `qualified_pct`
+- Trackea por equipo: `first_pct`, `second_pct`, `third_pct`, `best_third_pct`, `fourth_pct`, `qualified_pct`, `points_pct`
 - Trackea por grupo (terceros): `avg_pts`, `avg_gd`, `avg_gf`, `qualifies_pct`, equipo más frecuente en 3°
-- Los **8 mejores terceros** de 12 grupos avanzan a octavos, clasificados por criterios FIFA (PTS > DG > GF)
+- Los **8 mejores terceros** de 12 grupos avanzan a octavos, clasificados por criterios actuales del simulador: PTS promedio > DG promedio > GF promedio.
+- En la tabla de terceros, `qualifies_pct` describe el slot de tercer lugar del grupo, no una probabilidad individual del equipo mostrado.
 
 ### Re-ejecutar la simulación
 
@@ -164,10 +170,11 @@ python scripts/run_monte_carlo.py --runs 10000 --seed 42
 # 4. Generar SQL de seed para Supabase
 python scripts/generate_seed_sql.py
 
-# 5. Ejecutar los .sql en Supabase Dashboard → SQL Editor
-#    data/seed_strengths.sql
-#    data/seed_players.sql
-#    data/seed_mc.sql
+# 5. Verificar export sin escribir
+python scripts/export_to_supabase.py --all --dry-run
+
+# 6. Exportar con service role solo desde terminal local/admin
+python scripts/export_to_supabase.py --all
 ```
 
 ---
@@ -181,17 +188,33 @@ python scripts/generate_seed_sql.py
 | `predictions` | manual | Pronósticos por partido (tabla legacy) |
 | `players` | 1196 | Planteles: pos, nombre, edad, club, país del club, ELO, titular |
 | `national_elo_ratings` | 48 | ELO internacional por selección |
-| `team_strength_snapshots` | 48 | Fuerza compuesta (ELO híbrido v1.1) |
-| `simulation_runs` | 1 | Metadatos del run: iteraciones, semilla, fecha |
+| `team_strength_snapshots` | 48 | Fuerza compuesta (ELO híbrido v1.2) |
+| `simulation_runs` | 1+ | Metadatos versionados del run: iteraciones, semilla, escenario, hash, activo |
 | `simulation_group_standings` | 48 | Probabilidades de clasificación por equipo |
 | `simulation_terceros_table` | 12 | Proyección de mejores terceros por grupo |
 
-`national_elo_ratings` queda con lectura pública. Las tablas del motor premium
-(`team_strength_snapshots`, `simulation_runs`, `simulation_group_standings`,
-`players` y `simulation_terceros_table`, si existe) se endurecen con
-`supabase/07_prediction_engine_rls_hardening.sql`: `authenticated` puede leer
-solo si `profiles.is_premium = true`, `anon` no tiene acceso y `service_role`
-mantiene permisos de carga.
+Orden mínimo recomendado para el motor:
+
+```text
+01_schema.sql
+02_rls.sql
+03_functions.sql
+05_prediction_engine_schema.sql
+07_prediction_engine_rls_hardening.sql
+08_security_advisors_hardening.sql
+```
+
+`05_prediction_engine_schema.sql` crea un baseline público para las tablas del
+motor. Si las simulaciones son producto de acceso completo, aplicar `07` después:
+revoca `anon`, deja lectura a `authenticated` solo con `profiles.is_premium =
+true`, y conserva escritura para `service_role`. `08` limita exposición de
+funciones. `national_elo_ratings` queda público porque replica una fuente pública
+de ELO internacional.
+
+Datos públicos: calendario/torneo, perfiles publicados y ELO internacional.
+Datos premium: `predictions`, `team_strength_snapshots`, `simulation_runs`,
+`simulation_group_standings`, `simulation_terceros_table`, `players` como fuente
+Supabase del motor, `team_profile_premium` y el explicador ELO.
 
 ---
 
@@ -312,8 +335,8 @@ Para activar el sistema premium, copiar `js/config.example.js` como `js/config.j
 - [x] 46 imágenes de XI/formación en `assets/xi`, tácticas fuenteadas y 22 `scheme` completos para equipos squad-only
 - [x] 46 selecciones cargadas con 11 titulares marcados en `players[].titular`
 - [x] ELO internacional real de 48 selecciones (international-football.net)
-- [x] Modelo ELO híbrido v1.1 (ranking intl + xi_blend de clubes, weight=0.35)
-- [x] `team_strength_snapshots.json` — 48 selecciones con fuerza compuesta
+- [x] Modelo ELO híbrido v1.2 (ranking intl + xi_blend de clubes + matchup XI)
+- [x] `team_strength_snapshots.json` generado localmente — 48 selecciones con fuerza compuesta
 - [x] Simulación Poisson Monte Carlo — 10,000 iteraciones, seed=42
 - [x] Proyección tabla mejores terceros (12 grupos, criterios FIFA)
 - [x] Motor de datos completo en Supabase (6 tablas, RLS, 1196+48+1+48+48+12 filas)
@@ -328,7 +351,7 @@ Para activar el sistema premium, copiar `js/config.example.js` como `js/config.j
 
 - [ ] Imputar ELO `N/D` de titulares antes de recalcular `xi_blend` y Monte Carlo
 - [ ] Insertar predicciones reales en tabla `predictions` (pronósticos por partido)
-- [ ] Actualizar `mc_results.json` cuando se añadan los 2 equipos pendientes
+- [ ] Recalcular y exportar outputs derivados cuando cambien planteles, XI o pesos del modelo
 - [ ] Configurar templates de email de Supabase (confirmación, reset de contraseña)
 - [ ] Sección interactiva de predicciones por partido (Pronósticos §06)
 - [ ] Conectar `#predicciones` con Ruta Posible hasta octavos (banderas dinámicas)

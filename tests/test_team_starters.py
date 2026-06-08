@@ -1,4 +1,5 @@
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -103,9 +104,22 @@ def test_every_loaded_starter_has_elo_assigned():
     assert missing == []
 
 
-def test_team_strength_snapshots_match_current_starter_elos():
+def test_team_strength_snapshots_match_current_starter_elos(tmp_path):
     teams_data = json.loads((REPO_ROOT / "data" / "teams.json").read_text(encoding="utf-8"))
-    snapshots = json.loads((REPO_ROOT / "data" / "team_strength_snapshots.json").read_text(encoding="utf-8"))
+    snapshots_path = tmp_path / "team_strength_snapshots.json"
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/build_team_strength.py",
+            "--output",
+            str(snapshots_path),
+        ],
+        cwd=REPO_ROOT,
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+    snapshots = json.loads(snapshots_path.read_text(encoding="utf-8"))
     current_xi_blends = calc_xi_blend_from_players(teams_data)
 
     mismatches = []

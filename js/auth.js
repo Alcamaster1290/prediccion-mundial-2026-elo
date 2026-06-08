@@ -16,7 +16,8 @@
       }
       if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY ||
           window.SUPABASE_URL.includes('TU-PROYECTO')) {
-        console.warn('[SupaAuth] config.js no configurado — modo demo activo');
+        window.__supabaseConfigError = true;
+        console.warn('[SupaAuth] config.js no configurado');
         return null;
       }
       _client = window.supabase.createClient(
@@ -219,7 +220,16 @@
 
   function init() {
     var c = getClient();
-    if (!c) return;
+    if (!c) {
+      window.__supabaseConfigError = true;
+      if (window.PremiumSection && window.PremiumSection.renderConfigError) {
+        window.PremiumSection.renderConfigError();
+      }
+      if (window.PredicionesSection && window.PredicionesSection.renderConfigError) {
+        window.PredicionesSection.renderConfigError();
+      }
+      return;
+    }
 
     // Auth state change listener
     c.auth.onAuthStateChange(function (event, session) {

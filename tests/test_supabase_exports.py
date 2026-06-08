@@ -224,4 +224,5 @@ def test_gen_mc_uses_mc_data_version(tmp_path):
     gen_mc(mc_data, out_path)
 
     sql = out_path.read_text(encoding="utf-8")
-    assert "INSERT INTO simulation_runs (runs,seed,version) VALUES (10,42,'1.2')" in sql
+    assert "(runs,seed,version,scenario_name,model_version,is_active,completed_at,input_hash)" in sql
+    assert "VALUES (10,42,'1.2','baseline','1.2',TRUE,NOW()," in sql

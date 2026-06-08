@@ -9,7 +9,7 @@ players, predictions, national_elo_ratings.
 Usage:
   SUPABASE_URL=https://... SUPABASE_SERVICE_KEY=... python scripts/export_to_supabase.py
   python scripts/export_to_supabase.py --strengths-only
-  python scripts/export_to_supabase.py --mc-results data/mc_results.json --runs 1000
+  python scripts/export_to_supabase.py --mc-results data/mc_results.json
   python scripts/export_to_supabase.py --matches --players --predictions --national-elo
   python scripts/export_to_supabase.py --all --dry-run
 """
@@ -575,7 +575,7 @@ def main():
             supabase_url = supabase_url or 'https://dry-run.supabase.co'
             service_key = service_key or 'dry-run-service-role'
         else:
-            print("Set SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables.")
+            print("Set SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables, or use --dry-run.")
             sys.exit(1)
 
     if args.all or args.matches:
@@ -626,7 +626,13 @@ def main():
         sys.exit(1)
 
     mc_data = load_json(mc_path)
-    version = strengths_data.get('_version', '1.0')
+    strengths_version = strengths_data.get('_version', '1.0')
+    version = mc_data.get('version') or strengths_version
+    if mc_data.get('version') and mc_data.get('version') != strengths_version:
+        print(
+            f"WARN: mc_results version {mc_data.get('version')} differs from "
+            f"team_strength_snapshots version {strengths_version}; exporting MC version."
+        )
     if not export_mc_results(supabase_url, service_key, mc_data, version=version, dry_run=args.dry_run):
         sys.exit(1)
 

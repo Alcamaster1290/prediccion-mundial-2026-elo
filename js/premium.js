@@ -57,6 +57,13 @@
     return !!document.getElementById('pronosticos-content');
   }
 
+  function isLocalDev() {
+    if (window.SupaData && window.SupaData.isLocalDev) return window.SupaData.isLocalDev();
+    var host = window.location && window.location.hostname;
+    var protocol = window.location && window.location.protocol;
+    return protocol === 'file:' || host === 'localhost' || host === '127.0.0.1';
+  }
+
   // ── Canje de código premium ─────────────────────────────────
 
   async function redeemCode(code) {
@@ -87,7 +94,7 @@
     }
     var c = window.SupaAuth && window.SupaAuth.getClient();
     if (!c) {
-      return loadMockPredictions();
+      return isLocalDev() ? loadMockPredictions() : null;
     }
     var ref = await c
       .from('predictions')
@@ -99,7 +106,7 @@
 
     if (ref.error) {
       console.error('[PremiumSection] Error loading predictions:', ref.error);
-      return [];
+      return null;
     }
     return ref.data || [];
   }
@@ -136,6 +143,24 @@
       + '</div>'
       + renderGhostCards(3)
       + '<button class="prono-join-btn" onclick="window.SupaAuth && window.SupaAuth.openAuthModal()">Crear cuenta</button>'
+      + '</div>';
+  }
+
+  function renderConfigError() {
+    var el = document.getElementById('pronosticos-content');
+    if (!el) return;
+    el.innerHTML = '<div class="prono-locked">'
+      + '<h3 class="prono-lock-title">Pronósticos no disponibles</h3>'
+      + '<p class="prono-lock-desc">La conexión con Supabase no está configurada. En producción esta sección no carga datos locales ni mocks.</p>'
+      + '</div>';
+  }
+
+  function renderDataError() {
+    var el = document.getElementById('pronosticos-content');
+    if (!el) return;
+    el.innerHTML = '<div class="prono-empty">'
+      + '<span class="prono-premium-badge">&#x2705; Todo desbloqueado</span>'
+      + '<p style="color:var(--muted);margin-top:1rem">No pudimos cargar los pronósticos desde Supabase. Revisa la configuración o las políticas RLS.</p>'
       + '</div>';
   }
 
@@ -346,6 +371,10 @@
       renderPaymentModal(profile);
     } else {
       var predictions = await loadPredictions();
+      if (predictions === null) {
+        renderDataError();
+        return;
+      }
       renderActive(predictions);
     }
   }
@@ -354,6 +383,10 @@
 
   function init() {
     if (!hasStandaloneContainer()) return;
+    if (window.__supabaseConfigError && !isLocalDev()) {
+      renderConfigError();
+      return;
+    }
     renderLocked();
   }
 
@@ -363,6 +396,8 @@
     submitCode: submitCode,
     loadPredictions: loadPredictions,
     renderActiveContent: renderActiveContent,
+    renderConfigError: renderConfigError,
+    renderDataError: renderDataError,
     showQR: showQR,
   };
 

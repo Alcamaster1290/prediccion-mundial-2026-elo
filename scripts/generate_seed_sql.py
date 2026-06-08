@@ -9,6 +9,7 @@ Outputs:
 Run: python scripts/generate_seed_sql.py
 """
 import json
+import hashlib
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
@@ -81,6 +82,10 @@ def gen_mc(mc_data, out_path):
     runs = mc_data['runs']
     seed = mc_data.get('seed')
     version = mc_data.get('version', '1.1')
+    scenario_name = mc_data.get('scenario_name', 'baseline')
+    input_hash = hashlib.sha256(
+        json.dumps(mc_data, sort_keys=True, separators=(',', ':')).encode('utf-8')
+    ).hexdigest()
 
     run_rows = []
     for code, r in mc_data['teams'].items():
@@ -104,7 +109,9 @@ def gen_mc(mc_data, out_path):
         "TRUNCATE simulation_runs RESTART IDENTITY CASCADE;\n"
         "\n"
         "WITH inserted_run AS (\n"
-        f"  INSERT INTO simulation_runs (runs,seed,version) VALUES ({runs},{n(seed)},{q(version)})\n"
+        "  INSERT INTO simulation_runs\n"
+        "    (runs,seed,version,scenario_name,model_version,is_active,completed_at,input_hash)\n"
+        f"  VALUES ({runs},{n(seed)},{q(version)},{q(scenario_name)},{q(version)},TRUE,NOW(),{q(input_hash)})\n"
         "  RETURNING id\n"
         "), inserted_standings AS (\n"
         "  INSERT INTO simulation_group_standings\n"

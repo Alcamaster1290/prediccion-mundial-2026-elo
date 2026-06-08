@@ -11,6 +11,7 @@ Arguments:
 """
 import argparse
 import json
+import math
 import random
 import sys
 from collections import defaultdict
@@ -27,6 +28,24 @@ from simulate_group_stage import (
 
 REPO_ROOT = Path(__file__).parent.parent
 POSSIBLE_POINTS = (0, 1, 2, 3, 4, 5, 6, 7, 9)
+
+
+def rounded_pct_distribution(point_counts, runs):
+    """Return one-decimal percentages that sum exactly to 100.0."""
+    raw_tenths = {
+        points: (point_counts.get(points, 0) * 1000) / runs
+        for points in POSSIBLE_POINTS
+    }
+    floors = {points: int(math.floor(value)) for points, value in raw_tenths.items()}
+    remaining = 1000 - sum(floors.values())
+    remainders = sorted(
+        POSSIBLE_POINTS,
+        key=lambda points: (raw_tenths[points] - floors[points], point_counts.get(points, 0), points),
+        reverse=True,
+    )
+    for points in remainders[:remaining]:
+        floors[points] += 1
+    return {str(points): floors[points] / 10 for points in POSSIBLE_POINTS}
 
 
 def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20):
@@ -84,10 +103,7 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, x
             'third_pct':        round(100 * c['third']   / runs, 1),
             'best_third_pct':   round(100 * c['best_third'] / runs, 1),
             'fourth_pct':       round(100 * c['fourth']  / runs, 1),
-            'points_pct': {
-                str(points): round(100 * c['points'].get(points, 0) / runs, 1)
-                for points in POSSIBLE_POINTS
-            },
+            'points_pct': rounded_pct_distribution(c['points'], runs),
         }
 
     # Build projected terceros table (one row per group)

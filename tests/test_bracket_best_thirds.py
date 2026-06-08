@@ -2,12 +2,67 @@ import subprocess
 import textwrap
 
 
+SYNTHETIC_MC_FIXTURE = r"""
+    const groups = {
+      A: ['mex', 'kor', 'cze', 'rsa'],
+      B: ['can', 'mar', 'sui', 'qat'],
+      C: ['bra', 'ecu', 'hai', 'sco'],
+      D: ['usa', 'aus', 'par', 'tun'],
+      E: ['esp', 'cro', 'irq', 'nzl'],
+      F: ['ned', 'jpn', 'alg', 'pan'],
+      G: ['bel', 'egy', 'irn', 'cur'],
+      H: ['fra', 'sen', 'ksa', 'nor'],
+      I: ['arg', 'aut', 'jor', 'gha'],
+      J: ['eng', 'uru', 'uzb', 'tri'],
+      K: ['ger', 'col', 'uae', 'cpv'],
+      L: ['por', 'tur', 'civ', 'jam'],
+    };
+
+    function buildSyntheticData() {
+      const data = { meta: { runs: 1000, version: 'test' }, teams: {}, terceros_table: [] };
+      const groupKeys = Object.keys(groups);
+      groupKeys.forEach((group, groupIndex) => {
+        groups[group].forEach((code, teamIndex) => {
+          data.teams[code] = {
+            team_code: code,
+            group: group,
+            group_id: group,
+            country_name: code.toUpperCase(),
+            first_pct: teamIndex === 0 ? 74 - groupIndex : 5 + teamIndex,
+            second_pct: teamIndex === 1 ? 68 - groupIndex : 4 + teamIndex,
+            best_third_pct: teamIndex === 2 ? 60 - groupIndex : 1,
+            qualified_pct: teamIndex < 2 ? 88 - groupIndex : (teamIndex === 2 ? 65 - groupIndex : 2),
+            points_avg: 6 - teamIndex,
+            gd_avg: 3 - teamIndex,
+            goals_for_avg: 5 - teamIndex,
+            points_pct: { '9': 10, '6': 40, '3': 30, '0': 20 },
+          };
+        });
+        data.terceros_table.push({
+          rank: groupIndex + 1,
+          group: group,
+          group_id: group,
+          team_code: groups[group][2],
+          country_name: groups[group][2].toUpperCase(),
+          points_avg: 4.2 - groupIndex / 10,
+          gd_avg: 0.5 - groupIndex / 10,
+          goals_for_avg: 2.2 - groupIndex / 10,
+          qualifies: groupIndex < 8,
+          qualifies_pct: 79 - groupIndex,
+        });
+      });
+      return data;
+    }
+
+    const data = buildSyntheticData();
+"""
+
+
 def test_bracket_uses_unique_projected_best_thirds():
-    script = r"""
+    script = SYNTHETIC_MC_FIXTURE + r"""
     const fs = require('fs');
     const vm = require('vm');
 
-    const data = JSON.parse(fs.readFileSync('data/mc_results.json', 'utf8'));
     const inner = {
       _html: '',
       classList: { add() {}, toggle() {} },
@@ -38,6 +93,7 @@ def test_bracket_uses_unique_projected_best_thirds():
 
     (async () => {
       window.BracketSection.init();
+      window.BracketSection.setPremiumState(true);
       await new Promise(resolve => setTimeout(resolve, 25));
 
       const html = inner.innerHTML;
@@ -80,11 +136,10 @@ def test_bracket_uses_unique_projected_best_thirds():
 
 
 def test_prediction_route_uses_unique_projected_best_thirds():
-    script = r"""
+    script = SYNTHETIC_MC_FIXTURE + r"""
     const fs = require('fs');
     const vm = require('vm');
 
-    const data = JSON.parse(fs.readFileSync('data/mc_results.json', 'utf8'));
     const content = {
       _html: '',
       set innerHTML(value) { this._html = value; },

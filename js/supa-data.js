@@ -1,5 +1,5 @@
 /**
- * supa-data.js - shared Supabase data helpers with local fallback.
+ * supa-data.js - shared Supabase data helpers with local-dev fallback.
  * Exposes: window.SupaData
  */
 (function () {
@@ -14,6 +14,12 @@
       !String(window.SUPABASE_URL).includes('TU-PROYECTO') &&
       window.supabase
     );
+  }
+
+  function isLocalDev() {
+    var host = window.location && window.location.hostname;
+    var protocol = window.location && window.location.protocol;
+    return protocol === 'file:' || host === 'localhost' || host === '127.0.0.1';
   }
 
   function getClient() {
@@ -52,7 +58,7 @@
       }
     }
 
-    if (!localUrl) return null;
+    if (!localUrl || !isLocalDev()) return null;
     try {
       return normalize(await fetchJson(localUrl), 'local');
     } catch (e2) {
@@ -98,6 +104,7 @@
     var runRef = await client
       .from('simulation_runs')
       .select('*')
+      .eq('is_active', true)
       .order('created_at', { ascending: false })
       .limit(1)
       .single();
@@ -151,6 +158,7 @@
     getClient: getClient,
     isConfigured: isConfigured,
     loadSupabaseOrLocal: loadSupabaseOrLocal,
+    isLocalDev: isLocalDev,
     redeemPremiumCode: redeemPremiumCode,
     loadPredictions: loadPredictions,
     loadSimulationData: loadSimulationData,

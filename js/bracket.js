@@ -88,6 +88,15 @@
   /* ── Build team-by-position map ── */
   var teamsByGroup = {};
   var bestThirdSlots = {};
+  var hasPremiumAccess = false;
+  var hasLoadedPremiumData = false;
+
+  function isLocalDev() {
+    if (window.SupaData && window.SupaData.isLocalDev) return window.SupaData.isLocalDev();
+    var host = window.location && window.location.hostname;
+    var protocol = window.location && window.location.protocol;
+    return protocol === 'file:' || host === 'localhost' || host === '127.0.0.1';
+  }
 
   function pctNumber(value) {
     var n = parseFloat(value);
@@ -319,14 +328,22 @@
 
   /* ── Premium gate ── */
   function setPremiumState(isPremium) {
+    hasPremiumAccess = !!isPremium;
     var el = document.getElementById('bracket-inner');
-    if (el) el.classList.toggle('bk-locked', !isPremium);
+    if (el) el.classList.toggle('bk-locked', !hasPremiumAccess);
     var note = document.getElementById('bk-premium-note');
-    if (note) note.style.display = isPremium ? 'none' : '';
+    if (note) note.style.display = hasPremiumAccess ? 'none' : '';
+    if (!hasPremiumAccess && el) {
+      el.innerHTML = renderBracket(null);
+      hasLoadedPremiumData = false;
+      return;
+    }
+    if (hasPremiumAccess && !hasLoadedPremiumData) loadAndRenderPremiumData();
   }
 
   /* ── Init ── */
   function fetchLocalSimulationData() {
+    if (!isLocalDev()) return Promise.resolve(null);
     return fetch('data/mc_results.json').then(function (r) { return r.json(); });
   }
 
@@ -351,11 +368,40 @@
   function loadSimulationData() {
     if (window.SupaData && window.SupaData.loadSimulationData) {
       return window.SupaData.loadSimulationData().then(function (data) {
-        return data || fetchLocalSimulationData();
-      }).catch(fetchLocalSimulationData);
+        return data || (isLocalDev() ? fetchLocalSimulationData() : null);
+      }).catch(function () {
+        return isLocalDev() ? fetchLocalSimulationData() : null;
+      });
     }
 
     return fetchLocalSimulationData();
+  }
+
+  function loadAndRenderPremiumData() {
+    var inner = document.getElementById('bracket-inner');
+    if (!inner) return;
+    hasLoadedPremiumData = true;
+
+    loadSimulationData()
+      .then(function (data) {
+        if (!data) {
+          hasLoadedPremiumData = false;
+          return;
+        }
+        var normalized = normalizeSimulationData(data);
+        var mc = normalized.teams;
+        if (!mc) {
+          hasLoadedPremiumData = false;
+          return;
+        }
+        buildTeamsByGroup(mc);
+        buildBestThirdSlots(mc, normalized.terceros);
+        inner.innerHTML = renderBracket(mc);
+      })
+      .catch(function () {
+        hasLoadedPremiumData = false;
+        /* labels remain as-is */
+      });
   }
 
   function init() {
@@ -366,16 +412,9 @@
     inner.innerHTML = renderBracket(null);
     inner.classList.add('bk-locked');
 
-    loadSimulationData()
-      .then(function (data) {
-        var normalized = normalizeSimulationData(data);
-        var mc = normalized.teams;
-        if (!mc) return;
-        buildTeamsByGroup(mc);
-        buildBestThirdSlots(mc, normalized.terceros);
-        inner.innerHTML = renderBracket(mc);
-      })
-      .catch(function () { /* labels remain as-is */ });
+    if (window.__authState && window.__authState.hasFullAccess) {
+      setPremiumState(true);
+    }
   }
 
   window.BracketSection = { init: init, setPremiumState: setPremiumState };

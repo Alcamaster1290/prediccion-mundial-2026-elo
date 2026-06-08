@@ -23,6 +23,15 @@ assets/xi/_originals/
 # Archivos temporales
 *.tmp
 *.bak
+__pycache__/
+data/mc_results.test.json
+
+# Outputs derivados/premium: generar localmente y exportar a Supabase
+data/team_strength_snapshots.json
+data/mc_results.json
+data/predictions_seed.sql
+data/seed_strengths.sql
+data/seed_mc.sql
 
 # Supabase config: anon key is public-safe — committed intentionally
 # js/config.js

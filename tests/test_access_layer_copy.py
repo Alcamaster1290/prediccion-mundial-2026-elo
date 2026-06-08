@@ -75,3 +75,14 @@ def test_code_redemption_does_not_render_backend_premium_wording():
     for source in redemption_files:
         assert "errEl.textContent = result.message" not in source
         assert "Todo desbloqueado. Ya puedes ver todas las predicciones." in source
+
+
+def test_premium_local_mocks_are_dev_only():
+    supa_data = read("js/supa-data.js")
+    premium_js = read("js/premium.js")
+    auth_js = read("js/auth.js")
+
+    assert "function isLocalDev()" in supa_data
+    assert "if (!localUrl || !isLocalDev()) return null;" in supa_data
+    assert "isLocalDev() ? loadMockPredictions() : null" in premium_js
+    assert "window.__supabaseConfigError = true" in auth_js

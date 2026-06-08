@@ -1,6 +1,6 @@
 # Guía de diseño — prediccion-mundial-2026-elo
 
-Proyecto: página estática (`index.html`) con análisis táctico, plantel y ruta eliminatoria de cada selección del Mundial 2026. Todo el contenido vive en un único archivo HTML/CSS/JS.
+Proyecto: página estática (`index.html`) con módulos JS, datos JSON, scripts Python y SQL Supabase para análisis táctico, plantel, ruta eliminatoria y predicciones del Mundial 2026. El HTML conserva la experiencia principal, pero los datos y el motor viven en `data/`, `scripts/`, `js/` y `supabase/`.
 
 ---
 

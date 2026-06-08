@@ -7,24 +7,36 @@
 DROP POLICY IF EXISTS "public read strengths"            ON team_strength_snapshots;
 DROP POLICY IF EXISTS "public read simulation runs"      ON simulation_runs;
 DROP POLICY IF EXISTS "public read simulation standings" ON simulation_group_standings;
+DROP POLICY IF EXISTS "public read terceros"             ON simulation_terceros_table;
 DROP POLICY IF EXISTS "public read players"              ON players;
 DROP POLICY IF EXISTS "premium read strengths"           ON team_strength_snapshots;
 DROP POLICY IF EXISTS "premium read simulation runs"     ON simulation_runs;
 DROP POLICY IF EXISTS "premium read simulation standings" ON simulation_group_standings;
+DROP POLICY IF EXISTS "premium read terceros"            ON simulation_terceros_table;
 DROP POLICY IF EXISTS "premium read players"             ON players;
 
 -- Keep Data API exposure explicit and least-privilege for premium tables.
-REVOKE SELECT ON TABLE
+REVOKE ALL ON TABLE
   team_strength_snapshots,
   simulation_runs,
   simulation_group_standings,
+  simulation_terceros_table,
   players
-FROM anon;
+FROM PUBLIC, anon;
+
+REVOKE INSERT, UPDATE, DELETE ON TABLE
+  team_strength_snapshots,
+  simulation_runs,
+  simulation_group_standings,
+  simulation_terceros_table,
+  players
+FROM authenticated;
 
 GRANT SELECT ON TABLE
   team_strength_snapshots,
   simulation_runs,
   simulation_group_standings,
+  simulation_terceros_table,
   players
 TO authenticated;
 
@@ -32,6 +44,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE
   team_strength_snapshots,
   simulation_runs,
   simulation_group_standings,
+  simulation_terceros_table,
   players
 TO service_role;
 
@@ -66,6 +79,16 @@ CREATE POLICY "premium read simulation standings"
     )
   );
 
+CREATE POLICY "premium read terceros"
+  ON simulation_terceros_table FOR SELECT
+  TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles p
+      WHERE p.id = auth.uid() AND p.is_premium = true
+    )
+  );
+
 CREATE POLICY "premium read players"
   ON players FOR SELECT
   TO authenticated
@@ -75,33 +98,6 @@ CREATE POLICY "premium read players"
       WHERE p.id = auth.uid() AND p.is_premium = true
     )
   );
-
--- ── simulation_terceros_table (conditional — may not exist yet) ───────────────
-DO $$
-BEGIN
-  IF EXISTS (
-    SELECT 1 FROM information_schema.tables
-    WHERE table_schema = 'public' AND table_name = 'simulation_terceros_table'
-  ) THEN
-    EXECUTE 'DROP POLICY IF EXISTS "public read" ON simulation_terceros_table';
-    EXECUTE 'DROP POLICY IF EXISTS "public read terceros" ON simulation_terceros_table';
-    EXECUTE 'DROP POLICY IF EXISTS "premium read terceros" ON simulation_terceros_table';
-    EXECUTE 'REVOKE SELECT ON TABLE simulation_terceros_table FROM anon';
-    EXECUTE 'GRANT SELECT ON TABLE simulation_terceros_table TO authenticated';
-    EXECUTE 'GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE simulation_terceros_table TO service_role';
-    EXECUTE '
-      CREATE POLICY "premium read terceros"
-        ON simulation_terceros_table FOR SELECT
-        TO authenticated
-        USING (
-          EXISTS (
-            SELECT 1 FROM public.profiles p
-            WHERE p.id = auth.uid() AND p.is_premium = true
-          )
-        )
-    ';
-  END IF;
-END $$;
 
 -- ── Verify after applying ─────────────────────────────────────────────────────
 -- Anon (no session) → no table access after REVOKE.
