@@ -168,7 +168,27 @@
 
   // ── Estado global de autenticación ───────────────────────────
 
-  async function refreshAuthState() {
+  // Supabase emite SIGNED_IN/TOKEN_REFRESHED cada vez que la pestaña recupera
+  // el foco. Para no re-renderizar las secciones (y mostrar "Cargando datos de
+  // simulación…") sin necesidad: (1) si ya hay un refresh en vuelo se reutiliza
+  // esa promesa, y (2) solo se notifica a las secciones cuando el estado de
+  // acceso (usuario / premium / admin) realmente cambió.
+  var _refreshPromise = null;
+  var _lastAuthSignature = null;
+
+  function refreshAuthState() {
+    if (_refreshPromise) return _refreshPromise;
+    _refreshPromise = (async function () {
+      try {
+        await doRefreshAuthState();
+      } finally {
+        _refreshPromise = null;
+      }
+    })();
+    return _refreshPromise;
+  }
+
+  async function doRefreshAuthState() {
     var user    = await getCurrentUser();
     var profile = user ? await getProfile(user.id) : null;
     var isPrem  = profile && profile.is_premium;
@@ -182,6 +202,10 @@
     window.__authState = { user: user, isPremium: !!isPrem, isAdmin: !!isAdmin, hasFullAccess: hasFullAccess };
 
     updateNavAuthUI(user, hasFullAccess);
+
+    var signature = (user ? user.id : '') + '|' + !!isPrem + '|' + !!isAdmin;
+    if (signature === _lastAuthSignature) return;
+    _lastAuthSignature = signature;
 
     if (window.PremiumSection) {
       window.PremiumSection.onAuthChange(user, hasFullAccess, profile);

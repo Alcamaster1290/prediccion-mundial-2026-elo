@@ -1635,6 +1635,21 @@
     overflow: hidden;
   }
   .pred-elo-model-empty { border-left-color: var(--muted); }
+  .pred-elo-toggle {
+    display: flex; align-items: center; gap: .75rem; width: 100%;
+    background: none; border: none; padding: 0; cursor: pointer;
+    text-align: left; color: inherit;
+  }
+  .pred-elo-toggle-title {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+    font-size: 1.05rem; color: var(--white); line-height: 1.25;
+  }
+  .pred-elo-chevron {
+    margin-left: auto; color: var(--muted); font-size: 1rem;
+    transition: transform .2s; flex-shrink: 0;
+  }
+  .pred-elo-model:not(.is-collapsed) .pred-elo-chevron { transform: rotate(180deg); }
+  .pred-elo-body { margin-top: 1rem; }
   .pred-elo-copy {
     display: grid;
     gap: .55rem;
@@ -1793,6 +1808,7 @@
     background: #ffffff;
   }
   [data-theme="light"] .pred-elo-copy h3,
+  [data-theme="light"] .pred-elo-toggle-title,
   [data-theme="light"] .pred-elo-formula span,
   [data-theme="light"] .pred-elo-metrics strong {
     color: #18202c;

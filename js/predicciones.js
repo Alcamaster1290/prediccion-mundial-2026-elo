@@ -279,10 +279,14 @@
     var xiMatchupWeightText = formatModelValue(xiMatchupWeight, 2);
     var probabilityFormula = model.probability_formula || 'ELO expected-score -> Poisson; fixed 2 * base_goals_per_team expected goals split by team strength';
 
-    var html = '<section class="pred-elo-model">'
-      + '<div class="pred-elo-copy">'
+    var html = '<section class="pred-elo-model is-collapsed" id="pred-elo-model">'
+      + '<button type="button" class="pred-elo-toggle" aria-expanded="false" aria-controls="pred-elo-body" onclick="window.PredicionesSection.toggleEloModel()">'
       + '<span class="pred-elo-kicker">Modelo ELO</span>'
-      + '<h3>Como se calcula la fuerza de cada seleccion</h3>'
+      + '<span class="pred-elo-toggle-title">Como se calcula la fuerza de cada seleccion</span>'
+      + '<span class="pred-elo-chevron" aria-hidden="true">&#9662;</span>'
+      + '</button>'
+      + '<div class="pred-elo-body" id="pred-elo-body" style="display:none">'
+      + '<div class="pred-elo-copy">'
       + '<p>El punto de partida es el ELO internacional. Cuando el XI titular tiene muestra suficiente de ELO de clubes, la fuerza se ajusta contra el promedio global del XI. Luego esa fuerza se transforma en probabilidades con una curva ELO y Poisson sin inflar el total esperado de goles.</p>'
       + '<div class="pred-elo-formula">'
       + '<span>Fuerza seleccion</span>'
@@ -346,9 +350,23 @@
 
     html += '</tbody></table></div>'
       + '<p class="pred-elo-footnote">Listo para XI significa que el modelo ya tiene muestra suficiente de titulares con ELO para ajustar la base internacional. Los faltantes se iran refinando sin romper la simulacion.</p>'
+      + '</div>'
       + '</section>';
 
     return html;
+  }
+
+  function toggleEloModel() {
+    var body = document.getElementById('pred-elo-body');
+    if (!body) return;
+    var section = document.getElementById('pred-elo-model');
+    var willOpen = body.style.display === 'none';
+    body.style.display = willOpen ? '' : 'none';
+    if (section) {
+      section.classList.toggle('is-collapsed', !willOpen);
+      var btn = section.querySelector('.pred-elo-toggle');
+      if (btn) btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    }
   }
 
   function renderGroupProbabilityTables(data) {
@@ -860,6 +878,7 @@
     onAuthChange: onAuthChange,
     submitCode:   submitCode,
     showQR:       showQR,
+    toggleEloModel: toggleEloModel,
     renderConfigError: renderConfigError,
     renderDataError: renderDataError,
   };
