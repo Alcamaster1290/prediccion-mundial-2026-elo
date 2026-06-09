@@ -274,8 +274,11 @@
     var aWin  = pctValue(p.team_a_win_probability);
     var draw  = pctValue(p.draw_probability);
     var bWin  = pctValue(p.team_b_win_probability);
+    // Ancla navegable por partido: los fixtures de equipo saltan aquí
+    // mediante handleFixtureClick(match_id).
+    var anchorId = String(p.match_id || '').toLowerCase().replace(/[^a-z0-9-]/g, '');
 
-    return '<div class="prono-card">'
+    return '<div class="prono-card"' + (anchorId ? ' id="prono-' + anchorId + '"' : '') + '>'
       + '  <div class="prono-card-header">'
       + '    <span class="prono-matchday">J' + escapeHtml(p.matchday) + '</span>'
       + '    <div class="prono-teams">'

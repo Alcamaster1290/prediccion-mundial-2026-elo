@@ -2598,7 +2598,7 @@
     </div>
 
     <div class="two-col">
-      <div class="info-card fixture-cta-card" role="button" tabindex="0" onclick="handleFixtureClick()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleFixtureClick()}">
+      <div class="info-card fixture-cta-card" role="button" tabindex="0" onclick="handleFixtureClick('grp-a-j1-mex-zaf')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleFixtureClick('grp-a-j1-mex-zaf')}">
         <h4>Partido inaugural</h4>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:var(--white);font-weight:800">
           <img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México vs Sudáfrica <img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy">
@@ -7194,14 +7194,25 @@
   })();
 
   // ── FIXTURE CARD CLICK ────────────────────────────────────────────────────
-  window.handleFixtureClick = function() {
+  // Sin sesión: popup Únete. Con acceso completo y matchId: salto instantáneo
+  // a la card del pronóstico de ese partido (si ya está renderizada); en
+  // cualquier otro caso, salto al inicio de #predicciones.
+  window.handleFixtureClick = function(matchId) {
     var state = window.__authState || {};
     if (!state.user) {
       if (window.SupaAuth) window.SupaAuth.openAuthModal('', 'signup');
-    } else {
-      var el = document.getElementById('predicciones');
-      if (el) el.scrollIntoView({ behavior: 'instant' });
+      return;
     }
+    if (matchId && (state.isPremium || state.hasFullAccess)) {
+      var safeId = String(matchId).toLowerCase().replace(/[^a-z0-9-]/g, '');
+      var card = document.getElementById('prono-' + safeId);
+      if (card) {
+        card.scrollIntoView({ behavior: 'instant', block: 'center' });
+        return;
+      }
+    }
+    var el = document.getElementById('predicciones');
+    if (el) el.scrollIntoView({ behavior: 'instant' });
   };
 
   // ── GROUP CARD CLICK (§03) ────────────────────────────────────────────────
@@ -7648,7 +7659,9 @@
             timeStr = (lh < 10 ? '0' : '') + lh + ':' + (lmin < 10 ? '0' : '') + lmin;
           }
           var badges = m.simultaneous ? '<div class="cal-badges"><span class="cal-badge cal-simul">Simultáneo</span></div>' : '';
-          html += '<div class="cal-match fixture-cta" style="border-left-color:' + m.groupColor + '" onclick="handleFixtureClick()">'
+          var matchId = ('grp-' + String(m.groupId).toLowerCase() + '-j' + m.jornada + '-' + m.home + '-' + m.away)
+            .replace(/[^a-z0-9-]/g, '');
+          html += '<div class="cal-match fixture-cta" style="border-left-color:' + m.groupColor + '" onclick="handleFixtureClick(\'' + matchId + '\')">'
             + '<div class="tf-jornada" style="color:' + m.groupColor + '">J' + m.jornada + '</div>'
             + '<div class="tf-date-time">' + labelDate(m.date) + '<br>' + timeStr + '</div>'
             + '<div class="cal-teams">'
