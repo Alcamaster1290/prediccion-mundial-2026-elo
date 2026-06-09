@@ -473,17 +473,6 @@
     letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
   }
   .hero-meta strong { color: var(--text); }
-  .hero-pills {
-    display: flex; justify-content: center; gap: .75rem; flex-wrap: wrap;
-    margin-top: 2rem;
-  }
-  .pill {
-    padding: .35rem .9rem; border-radius: 20px;
-    border: 1px solid var(--border);
-    font-size: 12px; font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--muted);
-  }
 
   /* ─── LAYOUT ─── */
   .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -556,7 +545,7 @@
   }
   .group-card {
     background: var(--card); padding: 1.25rem 1.5rem;
-    transition: background .2s;
+    transition: background .2s; cursor: pointer;
   }
   .group-card:hover { background: var(--surface); }
   .group-label {
@@ -669,6 +658,16 @@
   }
   .tactic-prose {
     font-size: 15px; line-height: 1.75; color: var(--text);
+  }
+  @media (max-width: 600px) {
+    #formato .tactic-list li { font-size: 80%; }
+  }
+  .fixture-cta-card { cursor: pointer; transition: background .2s; }
+  .fixture-cta-card:hover { background: var(--surface); }
+  .fixture-cta-hint {
+    margin-top: .6rem; font-size: 12px; color: var(--accent);
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
   }
   .absence-list { list-style: none; }
   .absence-list li {
@@ -2558,12 +2557,6 @@
     <div><strong>11 Jun – 19 Jul</strong></div>
     <div><strong>USA · México · Canadá</strong></div>
   </div>
-  <div class="hero-pills">
-    <span class="pill">Fuente: AlterFutbol</span>
-    <span class="pill">ELO: worldclubratings.com</span>
-    <span class="pill">Fixture: FIFA</span>
-    <span class="pill">Actualizado: 27 May 2026</span>
-  </div>
 </header>
 
 <!-- FORMATO -->
@@ -2605,19 +2598,21 @@
     </div>
 
     <div class="two-col">
-      <div class="info-card">
+      <div class="info-card fixture-cta-card" role="button" tabindex="0" onclick="handleFixtureClick()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleFixtureClick()}">
         <h4>Partido inaugural</h4>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:var(--white);font-weight:800">
           <img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México vs Sudáfrica <img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy">
         </div>
         <div style="color:var(--muted);font-size:13px;margin-top:.4rem">Jueves 11 de junio · Estadio Azteca/Banorte · CDMX</div>
+        <div class="fixture-cta-hint">Ver predicción →</div>
       </div>
-      <div class="info-card">
+      <div class="info-card fixture-cta-card" role="button" tabindex="0" onclick="handleFixtureClick()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleFixtureClick()}">
         <h4>Final</h4>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:var(--white);font-weight:800">
           Final del Mundo 🏆
         </div>
         <div style="color:var(--muted);font-size:13px;margin-top:.4rem">Domingo 19 de julio · MetLife Stadium · Nueva York / Nueva Jersey</div>
+        <div class="fixture-cta-hint">Ver predicción →</div>
       </div>
     </div>
     </div></div><!-- /section-body-inner /section-body formato -->
@@ -2666,99 +2661,99 @@
       <div class="group-card" style="border-color:rgba(229,92,92,.3)">
         <div class="group-label" style="color:var(--grp-a)"><span class="group-dot" style="background:var(--grp-a)"></span> Grupo A</div>
         <ul class="group-teams">
-          <li><a href="#mexico" class="group-team-link"><img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México</a> <span class="host-badge">LOCAL</span> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#sudafrica" class="group-team-link"><img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy"> Sudáfrica</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#corea" class="group-team-link"><img class="flag-svg" src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy"> Corea del Sur</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#chequia" class="group-team-link"><img class="flag-svg" src="assets/flags/cze.svg" alt="República Checa" loading="lazy"> República Checa</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#mexico" class="group-team-link"><img class="flag-svg" src="assets/flags/mex.svg" alt="México" loading="lazy"> México</a> <span class="host-badge">LOCAL</span></li>
+          <li><a href="#sudafrica" class="group-team-link"><img class="flag-svg" src="assets/flags/zaf.svg" alt="Sudáfrica" loading="lazy"> Sudáfrica</a></li>
+          <li><a href="#corea" class="group-team-link"><img class="flag-svg" src="assets/flags/kor.svg" alt="Corea del Sur" loading="lazy"> Corea del Sur</a></li>
+          <li><a href="#chequia" class="group-team-link"><img class="flag-svg" src="assets/flags/cze.svg" alt="República Checa" loading="lazy"> República Checa</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(59,139,235,.3)">
         <div class="group-label" style="color:var(--grp-b)"><span class="group-dot" style="background:var(--grp-b)"></span> Grupo B</div>
         <ul class="group-teams">
-          <li><a href="#canada" class="group-team-link"><img class="flag-svg" src="assets/flags/can.svg" alt="Canadá" loading="lazy"> Canadá</a> <span class="host-badge">LOCAL</span> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#bosnia" class="group-team-link"><img class="flag-svg" src="assets/flags/bih.svg" alt="Bosnia y Herzegovina" loading="lazy"> Bosnia y Herzegovina</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#qatar" class="group-team-link"><img class="flag-svg" src="assets/flags/qat.svg" alt="Qatar" loading="lazy"> Qatar</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#suiza" class="group-team-link"><img class="flag-svg" src="assets/flags/sui.svg" alt="Suiza" loading="lazy"> Suiza</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#canada" class="group-team-link"><img class="flag-svg" src="assets/flags/can.svg" alt="Canadá" loading="lazy"> Canadá</a> <span class="host-badge">LOCAL</span></li>
+          <li><a href="#bosnia" class="group-team-link"><img class="flag-svg" src="assets/flags/bih.svg" alt="Bosnia y Herzegovina" loading="lazy"> Bosnia y Herzegovina</a></li>
+          <li><a href="#qatar" class="group-team-link"><img class="flag-svg" src="assets/flags/qat.svg" alt="Qatar" loading="lazy"> Qatar</a></li>
+          <li><a href="#suiza" class="group-team-link"><img class="flag-svg" src="assets/flags/sui.svg" alt="Suiza" loading="lazy"> Suiza</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(16,185,129,.3)">
         <div class="group-label" style="color:var(--grp-c)"><span class="group-dot" style="background:var(--grp-c)"></span> Grupo C</div>
         <ul class="group-teams">
-          <li><a href="#brasil" class="group-team-link"><img class="flag-svg" src="assets/flags/bra.svg" alt="Brasil" loading="lazy"> Brasil</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#marruecos" class="group-team-link"><img class="flag-svg" src="assets/flags/mar.svg" alt="Marruecos" loading="lazy"> Marruecos</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#haiti" class="group-team-link"><img class="flag-svg" src="assets/flags/hti.svg" alt="Haití" loading="lazy"> Haití</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#escocia" class="group-team-link"><img class="flag-svg" src="assets/flags/sco.svg" alt="Escocia" loading="lazy"> Escocia</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#brasil" class="group-team-link"><img class="flag-svg" src="assets/flags/bra.svg" alt="Brasil" loading="lazy"> Brasil</a></li>
+          <li><a href="#marruecos" class="group-team-link"><img class="flag-svg" src="assets/flags/mar.svg" alt="Marruecos" loading="lazy"> Marruecos</a></li>
+          <li><a href="#haiti" class="group-team-link"><img class="flag-svg" src="assets/flags/hti.svg" alt="Haití" loading="lazy"> Haití</a></li>
+          <li><a href="#escocia" class="group-team-link"><img class="flag-svg" src="assets/flags/sco.svg" alt="Escocia" loading="lazy"> Escocia</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(99,102,241,.3)">
         <div class="group-label" style="color:var(--grp-d)"><span class="group-dot" style="background:var(--grp-d)"></span> Grupo D</div>
         <ul class="group-teams">
-          <li><a href="#estados-unidos" class="group-team-link"><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"> EE.UU.</a> <span class="host-badge">LOCAL</span> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#paraguay" class="group-team-link"><img class="flag-svg" src="assets/flags/pry.svg" alt="Paraguay" loading="lazy"> Paraguay</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#australia" class="group-team-link"><img class="flag-svg" src="assets/flags/aus.svg" alt="Australia" loading="lazy"> Australia</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#turquia" class="group-team-link"><img class="flag-svg" src="assets/flags/tur.svg" alt="Turquía" loading="lazy"> Turquía</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#estados-unidos" class="group-team-link"><img class="flag-svg" src="assets/flags/usa.svg" alt="EE.UU." loading="lazy"> EE.UU.</a> <span class="host-badge">LOCAL</span></li>
+          <li><a href="#paraguay" class="group-team-link"><img class="flag-svg" src="assets/flags/pry.svg" alt="Paraguay" loading="lazy"> Paraguay</a></li>
+          <li><a href="#australia" class="group-team-link"><img class="flag-svg" src="assets/flags/aus.svg" alt="Australia" loading="lazy"> Australia</a></li>
+          <li><a href="#turquia" class="group-team-link"><img class="flag-svg" src="assets/flags/tur.svg" alt="Turquía" loading="lazy"> Turquía</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(249,115,22,.3)">
         <div class="group-label" style="color:var(--grp-e)"><span class="group-dot" style="background:var(--grp-e)"></span> Grupo E</div>
         <ul class="group-teams">
-          <li><a href="#alemania" class="group-team-link"><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> Alemania</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#curazao" class="group-team-link"><img class="flag-svg" src="assets/flags/cuw.svg" alt="Curazao" loading="lazy"> Curazao</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#costa-marfil" class="group-team-link"><img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> Costa de Marfil</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#ecuador" class="group-team-link"><img class="flag-svg" src="assets/flags/ecu.svg" alt="Ecuador" loading="lazy"> Ecuador</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#alemania" class="group-team-link"><img class="flag-svg" src="assets/flags/ger.svg" alt="Alemania" loading="lazy"> Alemania</a></li>
+          <li><a href="#curazao" class="group-team-link"><img class="flag-svg" src="assets/flags/cuw.svg" alt="Curazao" loading="lazy"> Curazao</a></li>
+          <li><a href="#costa-marfil" class="group-team-link"><img class="flag-svg" src="assets/flags/civ.svg" alt="Costa de Marfil" loading="lazy"> Costa de Marfil</a></li>
+          <li><a href="#ecuador" class="group-team-link"><img class="flag-svg" src="assets/flags/ecu.svg" alt="Ecuador" loading="lazy"> Ecuador</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(245,158,11,.3)">
         <div class="group-label" style="color:var(--grp-f)"><span class="group-dot" style="background:var(--grp-f)"></span> Grupo F</div>
         <ul class="group-teams">
-          <li><a href="#paises-bajos" class="group-team-link"><img class="flag-svg" src="assets/flags/ned.svg" alt="Países Bajos" loading="lazy"> Países Bajos</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#japon" class="group-team-link"><img class="flag-svg" src="assets/flags/jpn.svg" alt="Japón" loading="lazy"> Japón</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#suecia" class="group-team-link"><img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> Suecia</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#tunez" class="group-team-link"><img class="flag-svg" src="assets/flags/tun.svg" alt="Túnez" loading="lazy"> Túnez</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#paises-bajos" class="group-team-link"><img class="flag-svg" src="assets/flags/ned.svg" alt="Países Bajos" loading="lazy"> Países Bajos</a></li>
+          <li><a href="#japon" class="group-team-link"><img class="flag-svg" src="assets/flags/jpn.svg" alt="Japón" loading="lazy"> Japón</a></li>
+          <li><a href="#suecia" class="group-team-link"><img class="flag-svg" src="assets/flags/swe.svg" alt="Suecia" loading="lazy"> Suecia</a></li>
+          <li><a href="#tunez" class="group-team-link"><img class="flag-svg" src="assets/flags/tun.svg" alt="Túnez" loading="lazy"> Túnez</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(139,92,246,.3)">
         <div class="group-label" style="color:var(--grp-g)"><span class="group-dot" style="background:var(--grp-g)"></span> Grupo G</div>
         <ul class="group-teams">
-          <li><a href="#belgica" class="group-team-link"><img class="flag-svg" src="assets/flags/bel.svg" alt="Bélgica" loading="lazy"> Bélgica</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#egipto" class="group-team-link"><img class="flag-svg" src="assets/flags/egy.svg" alt="Egipto" loading="lazy"> Egipto</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#iran" class="group-team-link"><img class="flag-svg" src="assets/flags/irn.svg" alt="Irán" loading="lazy"> Irán</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#nueva-zelanda" class="group-team-link"><img class="flag-svg" src="assets/flags/nzl.svg" alt="Nueva Zelanda" loading="lazy"> Nueva Zelanda</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#belgica" class="group-team-link"><img class="flag-svg" src="assets/flags/bel.svg" alt="Bélgica" loading="lazy"> Bélgica</a></li>
+          <li><a href="#egipto" class="group-team-link"><img class="flag-svg" src="assets/flags/egy.svg" alt="Egipto" loading="lazy"> Egipto</a></li>
+          <li><a href="#iran" class="group-team-link"><img class="flag-svg" src="assets/flags/irn.svg" alt="Irán" loading="lazy"> Irán</a></li>
+          <li><a href="#nueva-zelanda" class="group-team-link"><img class="flag-svg" src="assets/flags/nzl.svg" alt="Nueva Zelanda" loading="lazy"> Nueva Zelanda</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(236,72,153,.3)">
         <div class="group-label" style="color:var(--grp-h)"><span class="group-dot" style="background:var(--grp-h)"></span> Grupo H</div>
         <ul class="group-teams">
-          <li><a href="#espana" class="group-team-link"><img class="flag-svg" src="assets/flags/esp.svg" alt="España" loading="lazy"> España</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#cabo-verde" class="group-team-link"><img class="flag-svg" src="assets/flags/cpv.svg" alt="Cabo Verde" loading="lazy"> Cabo Verde</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#espana" class="group-team-link"><img class="flag-svg" src="assets/flags/esp.svg" alt="España" loading="lazy"> España</a></li>
+          <li><a href="#cabo-verde" class="group-team-link"><img class="flag-svg" src="assets/flags/cpv.svg" alt="Cabo Verde" loading="lazy"> Cabo Verde</a></li>
           <li><img class="flag-svg" src="assets/flags/ksa.svg" alt="Arabia Saudita" loading="lazy"> Arabia Saudita </li>
-          <li><a href="#uruguay" class="group-team-link"><img class="flag-svg" src="assets/flags/ury.svg" alt="Uruguay" loading="lazy"> Uruguay</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#uruguay" class="group-team-link"><img class="flag-svg" src="assets/flags/ury.svg" alt="Uruguay" loading="lazy"> Uruguay</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(6,182,212,.3)">
         <div class="group-label" style="color:var(--grp-i)"><span class="group-dot" style="background:var(--grp-i)"></span> Grupo I</div>
         <ul class="group-teams">
-          <li><a href="#francia" class="group-team-link"><img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy"> Francia</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#senegal" class="group-team-link"><img class="flag-svg" src="assets/flags/sen.svg" alt="Senegal" loading="lazy"> Senegal</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#irak" class="group-team-link"><img class="flag-svg" src="assets/flags/irq.svg" alt="Irak" loading="lazy"> Irak</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#noruega" class="group-team-link"><img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> Noruega</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#francia" class="group-team-link"><img class="flag-svg" src="assets/flags/fra.svg" alt="Francia" loading="lazy"> Francia</a></li>
+          <li><a href="#senegal" class="group-team-link"><img class="flag-svg" src="assets/flags/sen.svg" alt="Senegal" loading="lazy"> Senegal</a></li>
+          <li><a href="#irak" class="group-team-link"><img class="flag-svg" src="assets/flags/irq.svg" alt="Irak" loading="lazy"> Irak</a></li>
+          <li><a href="#noruega" class="group-team-link"><img class="flag-svg" src="assets/flags/nor.svg" alt="Noruega" loading="lazy"> Noruega</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(132,204,22,.3)">
         <div class="group-label" style="color:var(--grp-j)"><span class="group-dot" style="background:var(--grp-j)"></span> Grupo J</div>
         <ul class="group-teams">
-          <li><a href="#argentina" class="group-team-link"><img class="flag-svg" src="assets/flags/arg.svg" alt="Argentina" loading="lazy"> Argentina</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#argelia" class="group-team-link"><img class="flag-svg" src="assets/flags/alg.svg" alt="Argelia" loading="lazy"> Argelia</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#austria" class="group-team-link"><img class="flag-svg" src="assets/flags/aut.svg" alt="Austria" loading="lazy"> Austria</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#argentina" class="group-team-link"><img class="flag-svg" src="assets/flags/arg.svg" alt="Argentina" loading="lazy"> Argentina</a></li>
+          <li><a href="#argelia" class="group-team-link"><img class="flag-svg" src="assets/flags/alg.svg" alt="Argelia" loading="lazy"> Argelia</a></li>
+          <li><a href="#austria" class="group-team-link"><img class="flag-svg" src="assets/flags/aut.svg" alt="Austria" loading="lazy"> Austria</a></li>
           <li><img class="flag-svg" src="assets/flags/jor.svg" alt="Jordania" loading="lazy"> Jordania </li>
         </ul>
       </div>
@@ -2766,20 +2761,20 @@
       <div class="group-card" style="border-color:rgba(217,119,6,.3)">
         <div class="group-label" style="color:var(--grp-k)"><span class="group-dot" style="background:var(--grp-k)"></span> Grupo K</div>
         <ul class="group-teams">
-          <li><a href="#portugal" class="group-team-link"><img class="flag-svg" src="assets/flags/por.svg" alt="Portugal" loading="lazy"> Portugal</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#rd-congo" class="group-team-link"><img class="flag-svg" src="assets/flags/cod.svg" alt="RD Congo" loading="lazy"> RD Congo</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#uzbekistan" class="group-team-link"><img class="flag-svg" src="assets/flags/uzb.svg" alt="Uzbekistán" loading="lazy"> Uzbekistán</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#colombia" class="group-team-link"><img class="flag-svg" src="assets/flags/col.svg" alt="Colombia" loading="lazy"> Colombia</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#portugal" class="group-team-link"><img class="flag-svg" src="assets/flags/por.svg" alt="Portugal" loading="lazy"> Portugal</a></li>
+          <li><a href="#rd-congo" class="group-team-link"><img class="flag-svg" src="assets/flags/cod.svg" alt="RD Congo" loading="lazy"> RD Congo</a></li>
+          <li><a href="#uzbekistan" class="group-team-link"><img class="flag-svg" src="assets/flags/uzb.svg" alt="Uzbekistán" loading="lazy"> Uzbekistán</a></li>
+          <li><a href="#colombia" class="group-team-link"><img class="flag-svg" src="assets/flags/col.svg" alt="Colombia" loading="lazy"> Colombia</a></li>
         </ul>
       </div>
 
       <div class="group-card" style="border-color:rgba(148,163,184,.3)">
         <div class="group-label" style="color:var(--grp-l)"><span class="group-dot" style="background:var(--grp-l)"></span> Grupo L</div>
         <ul class="group-teams">
-          <li><a href="#inglaterra" class="group-team-link"><img class="flag-svg" src="assets/flags/eng.svg" alt="Inglaterra" loading="lazy"> Inglaterra</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#croacia" class="group-team-link"><img class="flag-svg" src="assets/flags/cro.svg" alt="Croacia" loading="lazy"> Croacia</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#ghana" class="group-team-link"><img class="flag-svg" src="assets/flags/gha.svg" alt="Ghana" loading="lazy"> Ghana</a> <span class="analyzed-badge">✓</span></li>
-          <li><a href="#panama" class="group-team-link"><img class="flag-svg" src="assets/flags/pan.svg" alt="Panamá" loading="lazy"> Panamá</a> <span class="analyzed-badge">✓</span></li>
+          <li><a href="#inglaterra" class="group-team-link"><img class="flag-svg" src="assets/flags/eng.svg" alt="Inglaterra" loading="lazy"> Inglaterra</a></li>
+          <li><a href="#croacia" class="group-team-link"><img class="flag-svg" src="assets/flags/cro.svg" alt="Croacia" loading="lazy"> Croacia</a></li>
+          <li><a href="#ghana" class="group-team-link"><img class="flag-svg" src="assets/flags/gha.svg" alt="Ghana" loading="lazy"> Ghana</a></li>
+          <li><a href="#panama" class="group-team-link"><img class="flag-svg" src="assets/flags/pan.svg" alt="Panamá" loading="lazy"> Panamá</a></li>
         </ul>
       </div>
 
@@ -7209,6 +7204,24 @@
     }
   };
 
+  // ── GROUP CARD CLICK (§03) ────────────────────────────────────────────────
+  // Click en el recuadro del grupo (fuera de los enlaces de equipo) salta
+  // de forma instantánea al inicio de la sección del grupo.
+  (function() {
+    var grid = document.querySelector('#grupos .groups-grid');
+    if (!grid) return;
+    grid.addEventListener('click', function(e) {
+      if (e.target.closest('a')) return;
+      var card = e.target.closest('.group-card');
+      if (!card) return;
+      var label = card.querySelector('.group-label');
+      var match = label && label.textContent.match(/Grupo\s+([A-L])/i);
+      if (!match) return;
+      var target = document.getElementById('grupo-' + match[1].toLowerCase());
+      if (target) target.scrollIntoView({ behavior: 'instant' });
+    });
+  })();
+
   // ── GLOBALS (used by IIFE and standings.js) ──────────────────────────────
   var DAYS_ES = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
   var MONTHS_ES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
@@ -7558,7 +7571,6 @@
         html += '<div class="cal-day"><div class="cal-day-header">' + labelDate(date) + '</div>';
         byDate[date].forEach(function(m) {
           var badges = '';
-          if (m.inaugural) badges += '<span class="cal-badge cal-inaugural">Inaugural</span>';
           if (m.simultaneous) badges += '<span class="cal-badge cal-simul">Simultáneo</span>';
           var timeStr = m.time || '—';
           // If time exists, convert to selected tz

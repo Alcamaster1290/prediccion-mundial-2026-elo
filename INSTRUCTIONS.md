@@ -256,11 +256,12 @@ Cuando se agrega un equipo con sección completa (`has-analysis`), actualizar:
    </a>
    ```
 
-2. **Tarjeta de grupo** (`group-card` → `group-teams`):
+2. **Tarjeta de grupo** (`group-card` → `group-teams`; sin badge ✓ — las
+   tarjetas de §03 ya no muestran iconos de analizado, solo el enlace):
    ```html
    <li><a href="#id-seccion" class="group-team-link">
      <img class="flag-svg" src="assets/flags/[cod].svg" alt="País" loading="lazy"> País
-   </a> <span class="analyzed-badge">✓</span></li>
+   </a></li>
    ```
 
 3. **Tabla de posiciones** (`standings-table` del grupo):
