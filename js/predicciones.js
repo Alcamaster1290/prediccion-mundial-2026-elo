@@ -264,10 +264,17 @@
     var sourceText = 'ELO internacional: ' + escapeHtml(model.elo_source || 'international-football.net')
       + ratingDate
       + '; ELO clubes: ' + escapeHtml(model.club_elo_source || 'worldclubratings.com') + '.';
-    var baseGoals = model.base_goals_per_team == null ? 1.3 : parseFloat(model.base_goals_per_team);
+    var baseGoals = model.base_goals_per_team == null ? 1.25 : parseFloat(model.base_goals_per_team);
     var totalGoalsText = isNaN(baseGoals) ? '-' : formatModelValue(baseGoals * 2, 1);
     var eloScale = model.elo_scale == null ? 400 : model.elo_scale;
     var eloScaleText = formatModelValue(eloScale, 0);
+    var calibrationText = '';
+    if (model.elo_lambda_scale != null) {
+      calibrationText += ' &middot; escala goles ' + formatModelValue(model.elo_lambda_scale, 0);
+    }
+    if (model.draw_bias != null) {
+      calibrationText += ' &middot; ajuste empate ' + formatModelValue(model.draw_bias, 2);
+    }
     var xiMatchupWeight = model.xi_matchup_weight == null ? 0.2 : model.xi_matchup_weight;
     var xiMatchupWeightText = formatModelValue(xiMatchupWeight, 2);
     var probabilityFormula = model.probability_formula || 'ELO expected-score -> Poisson; fixed 2 * base_goals_per_team expected goals split by team strength';
@@ -287,7 +294,7 @@
       + '</div>'
       + '<div class="pred-elo-formula">'
       + '<span>Probabilidad partido</span>'
-      + '<code>' + escapeHtml(probabilityFormula) + ' &middot; total goles ' + totalGoalsText + ' &middot; escala ELO ' + eloScaleText + '</code>'
+      + '<code>' + escapeHtml(probabilityFormula) + ' &middot; total goles ' + totalGoalsText + ' &middot; escala ELO ' + eloScaleText + calibrationText + '</code>'
       + '</div>'
       + '<div class="pred-elo-formula">'
       + '<span>matchup XI</span>'

@@ -11,13 +11,19 @@ Algorithm:
   - Group standings: PTS -> DG -> GF -> draw_order (GROUP_TEAMS index)
 """
 import argparse
+import bisect
 import json
 import math
 import random
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 
-from elo_probability import match_lambdas as elo_match_lambdas
+from elo_probability import (
+    adjust_result_probabilities_for_draw,
+    match_lambdas as elo_match_lambdas,
+    poisson_pmf,
+)
 from xi_matchups import build_xi_profiles, matchup_adjusted_strengths
 
 REPO_ROOT = Path(__file__).parent.parent
@@ -67,21 +73,86 @@ def poisson_goals(lam):
     return k - 1
 
 
-def match_lambdas(strength_a, strength_b, base_goals_per_team, elo_scale=400):
+def match_lambdas(strength_a, strength_b, base_goals_per_team, elo_scale=400,
+                  elo_lambda_scale=None):
     """Returns (lambda_a, lambda_b) using ELO ratio method.
 
     The ELO expected-score curve controls each team's expected goal share.
     Total expected goals stay fixed at 2 * base_goals_per_team.
+    ``elo_lambda_scale`` (calibration v1.3) softens the goal split without
+    touching the win-expectancy ``elo_scale``.
     """
-    return elo_match_lambdas(strength_a, strength_b, base_goals_per_team, elo_scale)
+    return elo_match_lambdas(strength_a, strength_b, base_goals_per_team,
+                             elo_scale, elo_lambda_scale)
 
 
-def simulate_match(home_strength, away_strength, base_goals, elo_scale=400):
-    la, lb = elo_match_lambdas(home_strength, away_strength, base_goals, elo_scale)
-    return poisson_goals(la), poisson_goals(lb)
+MAX_GRID_GOALS = 10
 
 
-def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20):
+@lru_cache(maxsize=512)
+def match_score_sampler(lambda_a, lambda_b, strength_diff, draw_bias, parity_scale):
+    """Build a cached sampler table for one fixed match.
+
+    Joint truncated Poisson score matrix whose win/draw/loss class masses are
+    rescaled to match ``adjust_result_probabilities_for_draw``. Within each
+    outcome class the relative scoreline probabilities are preserved. Returns
+    (scores, cumulative_weights) ready for bisect sampling.
+    """
+    pmf_a = poisson_pmf(lambda_a, MAX_GRID_GOALS)
+    pmf_b = poisson_pmf(lambda_b, MAX_GRID_GOALS)
+
+    win_a = draw = win_b = 0.0
+    cells = []
+    for ga, pa in enumerate(pmf_a):
+        for gb, pb in enumerate(pmf_b):
+            p = pa * pb
+            cells.append((ga, gb, p))
+            if ga > gb:
+                win_a += p
+            elif ga == gb:
+                draw += p
+            else:
+                win_b += p
+
+    adj_a, adj_d, adj_b = adjust_result_probabilities_for_draw(
+        win_a, draw, win_b, draw_bias, strength_diff, parity_scale)
+
+    factor_a = adj_a / win_a if win_a > 0 else 0.0
+    factor_d = adj_d / draw if draw > 0 else 0.0
+    factor_b = adj_b / win_b if win_b > 0 else 0.0
+
+    scores = []
+    cumulative = []
+    acc = 0.0
+    for ga, gb, p in cells:
+        factor = factor_a if ga > gb else (factor_d if ga == gb else factor_b)
+        acc += p * factor
+        scores.append((ga, gb))
+        cumulative.append(acc)
+    return tuple(scores), tuple(cumulative)
+
+
+def simulate_match(home_strength, away_strength, base_goals, elo_scale=400,
+                   draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None):
+    la, lb = elo_match_lambdas(home_strength, away_strength, base_goals,
+                               elo_scale, elo_lambda_scale)
+    if draw_bias <= 0:
+        # Legacy path: direct (untruncated) Poisson sampling.
+        return poisson_goals(la), poisson_goals(lb)
+
+    scores, cumulative = match_score_sampler(
+        round(la, 6),
+        round(lb, 6),
+        round(home_strength - away_strength, 1),
+        draw_bias,
+        parity_scale,
+    )
+    r = random.random() * cumulative[-1]
+    return scores[bisect.bisect_left(cumulative, r)]
+
+
+def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20,
+                   draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None):
     """Simulate 6 matches and return ranked team list (4 items)."""
     draw_order = GROUP_ORDER.get(group_id.upper(), [])
     stats = defaultdict(lambda: {'PJ':0,'PG':0,'PE':0,'PP':0,'GF':0,'GC':0,'DG':0,'PTS':0})
@@ -98,7 +169,8 @@ def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400
             xi_profiles,
             xi_matchup_weight=xi_matchup_weight,
         )
-        hg, ag = simulate_match(eff_h, eff_a, base_goals, elo_scale)
+        hg, ag = simulate_match(eff_h, eff_a, base_goals, elo_scale,
+                                draw_bias, parity_scale, elo_lambda_scale)
 
         stats[h]['PJ'] += 1; stats[a]['PJ'] += 1
         stats[h]['GF'] += hg; stats[h]['GC'] += ag
@@ -125,14 +197,16 @@ def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400
     return [{'code': c, **stats[c]} for c in teams]
 
 
-def simulate_all_groups(matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20):
+def simulate_all_groups(matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20,
+                        draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None):
     """Run one full group stage simulation. Returns {group_id: [ranked_teams]}."""
     by_group = defaultdict(list)
     for m in matches:
         by_group[m['group']].append(m)
 
     return {
-        gid: simulate_group(gid, gmatches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight)
+        gid: simulate_group(gid, gmatches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight,
+                            draw_bias, parity_scale, elo_lambda_scale)
         for gid, gmatches in by_group.items()
     }
 
@@ -161,12 +235,16 @@ def main():
     base_goals = weights.get('base_goals_per_team', 1.3)
     elo_scale = weights.get('elo_scale', 400)
     xi_matchup_weight = weights.get('xi_matchup_weight', 0.20)
+    draw_bias = weights.get('draw_bias', 0.0)
+    parity_scale = weights.get('parity_scale', 600.0)
+    elo_lambda_scale = weights.get('elo_lambda_scale')
 
     matches   = load_matches()
     strengths = load_strengths()
     xi_profiles = load_xi_profiles()
 
-    standings = simulate_all_groups(matches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight)
+    standings = simulate_all_groups(matches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight,
+                                    draw_bias, parity_scale, elo_lambda_scale)
 
     print("Group Stage Results")
     print("=" * 40)

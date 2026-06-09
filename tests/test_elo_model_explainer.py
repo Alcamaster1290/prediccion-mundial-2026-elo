@@ -12,9 +12,11 @@ def test_elo_model_rpc_is_full_access_only_and_reports_team_coverage():
     migration = REPO_ROOT / "supabase/22_elo_model_explainer.sql"
     probability_migration = REPO_ROOT / "supabase/24_elo_probability_formula_explainer.sql"
     matchup_migration = REPO_ROOT / "supabase/25_xi_matchup_model_explainer.sql"
+    calibration_migration = REPO_ROOT / "supabase/26_model_v13_calibration_explainer.sql"
     assert migration.exists()
     assert probability_migration.exists()
     assert matchup_migration.exists()
+    assert calibration_migration.exists()
 
     sql = (
         migration.read_text(encoding="utf-8")
@@ -22,6 +24,8 @@ def test_elo_model_rpc_is_full_access_only_and_reports_team_coverage():
         + probability_migration.read_text(encoding="utf-8")
         + "\n"
         + matchup_migration.read_text(encoding="utf-8")
+        + "\n"
+        + calibration_migration.read_text(encoding="utf-8")
     ).lower()
 
     assert "create or replace function public.get_elo_model_explainer()" in sql
@@ -46,6 +50,24 @@ def test_elo_model_rpc_is_full_access_only_and_reports_team_coverage():
     assert "xi_blend_ready" in sql
     assert "needs_player_elo" in sql
     assert "elo_intl_only" in sql
+    assert "revoke all on function public.get_elo_model_explainer() from public, anon" in sql
+    assert "grant execute on function public.get_elo_model_explainer() to authenticated" in sql
+
+
+def test_v13_calibration_migration_reports_calibrated_parameters():
+    sql = read("supabase/26_model_v13_calibration_explainer.sql").lower()
+
+    assert "create or replace function public.get_elo_model_explainer()" in sql
+    assert "security definer" in sql
+    assert "set search_path = public, pg_temp" in sql
+    assert "p.is_premium = true" in sql
+    assert "'base_goals_per_team', 1.25" in sql
+    assert "'elo_scale', 400" in sql
+    assert "'elo_lambda_scale', 800" in sql
+    assert "'draw_bias', 0.08" in sql
+    assert "'parity_scale', 800" in sql
+    assert "parity-aware draw bias" in sql
+    assert "calibracion v1.3" in sql
     assert "revoke all on function public.get_elo_model_explainer() from public, anon" in sql
     assert "grant execute on function public.get_elo_model_explainer() to authenticated" in sql
 

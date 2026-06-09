@@ -50,6 +50,8 @@ mundial-2026/
 │   │                               #   simulate_all_groups, best_thirds
 │   ├── run_monte_carlo.py          # Runner — 10,000 iteraciones, produce mc_results.json
 │   │                               #   incluye proyección de tabla de mejores terceros
+│   ├── calibration_report.py       # Diagnóstico de calibración: empates, goles,
+│   │                               #   distribución de puntos y grid search de parámetros
 │   ├── build_team_strength.py      # Construye team_strength_snapshots.json con ELO híbrido
 │   ├── extract_squads.py           # Extrae planteles de index.html → popula teams.json
 │   ├── generate_matches.py         # Genera matches.json desde groups.json
@@ -114,7 +116,7 @@ extract_squads.py           international_elo.json         club_elo.json
                               └── simulation_terceros_table (12 filas)
 ```
 
-### Modelo ELO híbrido (v1.2)
+### Modelo ELO híbrido (v1.3)
 
 Combina el ranking internacional real con el ELO de clubes del XI titular de cada selección:
 
@@ -124,28 +126,36 @@ score = elo_intl + (xi_blend − avg_xi_blend) × club_adj_weight
 
 | Parámetro | Valor |
 |-----------|-------|
-| `_version` | 1.2 |
+| `_version` | 1.3 |
 | `club_adj_weight` | 0.35 |
 | `xi_matchup_weight` | 0.20 |
 | `avg_xi_blend` (promedio global actual) | 1585.0 |
-| `base_goals_per_team` | 1.3 |
+| `base_goals_per_team` | 1.25 |
 | `elo_scale` | 400 |
+| `elo_lambda_scale` | 800 |
+| `draw_bias` | 0.08 |
+| `parity_scale` | 800 |
 
 - **`elo_intl`**: ELO nacional de international-football.net (rango real: 1423–2165)
 - **`xi_blend`**: promedio de ELO de club de los 11 titulares (worldclubratings.com)
 - Las selecciones con XI titular fuenteado usan ELO híbrido; Arabia Saudita y Jordania siguen con `elo_intl` hasta tener fuente directa confiable.
 - En cada partido se aplica una capa pequeña de `xi_matchup_weight` que compara líneas del XI: ataque vs defensa rival, mediocampo vs mediocampo, defensa vs ataque rival y arquero vs ataque rival.
 
-### Simulación de goles (Poisson / Knuth)
+### Simulación de goles (Poisson calibrado v1.3)
 
 ```
-expected_A = 1 / (1 + 10^(-(score_A − score_B) / elo_scale))
+share_A = 1 / (1 + 10^(-(score_A − score_B) / elo_lambda_scale))
 total_goals = 2 × base_goals_per_team
-λ_A = total_goals × expected_A
-λ_B = total_goals × (1 − expected_A)
+λ_A = total_goals × share_A
+λ_B = total_goals × (1 − share_A)
 ```
 
-Los goles se generan con el algoritmo de Knuth para muestras de distribución Poisson.
+Sobre el resultado 1X2 se aplica una corrección de empate consciente de la paridad:
+`boost = draw_bias × max(0, 1 − |score_A − score_B| / parity_scale)`, restando la masa
+proporcionalmente de ambas victorias. Calibrado en v1.3 para producir ~25.5% de empates,
+2.46 goles por partido y una distribución de puntos con masa visible en 1, 2, 4, 5 y 7
+(detalle en `docs/prediction-engine.md`). Los goles se muestrean de la matriz conjunta
+de Poisson ajustada (con `draw_bias = 0` se conserva el muestreo Knuth legacy).
 
 ### Monte Carlo
 
@@ -166,6 +176,11 @@ python scripts/build_team_strength.py
 
 # 3. Correr Monte Carlo
 python scripts/run_monte_carlo.py --runs 10000 --seed 42
+
+# 3b. Diagnóstico de calibración (empates, goles, distribución de puntos)
+python scripts/calibration_report.py --runs 10000 --seed 42
+#     Grid search de parámetros:
+python scripts/calibration_report.py --grid --grid-runs 1000 --seed 42
 
 # 4. Generar SQL de seed para Supabase
 python scripts/generate_seed_sql.py

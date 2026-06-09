@@ -40,16 +40,24 @@ assets in production.
 
 | Field | Current meaning |
 |-------|-----------------|
-| `_version` | Model/data version written to generated outputs. Current value: `1.2`. |
+| `_version` | Model/data version written to generated outputs. Current value: `1.3`. |
 | `_note` | Human-readable summary of the model formula. |
 | `club_adj_weight` | Weight applied to the starter XI club-ELO delta against the global XI average. |
 | `xi_matchup_weight` | Weight applied per match to starter line matchup edges. |
-| `base_goals_per_team` | Half of the fixed expected-goals total used by Poisson probabilities. |
-| `elo_scale` | ELO logistic scale. Expected and preferred value is `400`. |
+| `base_goals_per_team` | Half of the fixed expected-goals total used by Poisson probabilities. Calibrated v1.3 value: `1.25`. |
+| `elo_scale` | ELO logistic scale for win expectancy. Expected and preferred value is `400`. |
+| `elo_lambda_scale` | Logistic scale used only for the goal-share split (v1.3). Current value: `800`. Equivalent to the legacy ratio divisor `2 * elo_lambda_scale = 1600`. |
+| `draw_bias` | Maximum parity-aware draw boost applied to the 1X2 outcome (v1.3). Current value: `0.08`. |
+| `parity_scale` | ELO gap at which the draw boost fades to zero (v1.3). Current value: `800`. |
 
 The old fields `elo_intl_weight` and `xi_club_blend_weight` are obsolete. Model
 weights do not sum to `1.0`; the current formula is an additive adjustment on
 the international ELO scale.
+
+Reserved for v1.4 (documented, not read by the engine yet):
+`fecha1_caution_draw_boost` and `fecha3_context_draw_boost`, intended for
+matchday-context draw adjustments. Matchday-3 logic requires simulating the
+group state after two rounds, so it is intentionally out of scope for v1.3.
 
 ---
 
@@ -82,18 +90,39 @@ python scripts/build_team_strength.py
 
 `scripts/elo_probability.py` converts team strengths into outcome probabilities.
 It uses the standard ELO expected-score curve and splits a fixed expected-goals
-total:
+total, then applies a parity-aware draw correction (v1.3):
 
 ```text
-expected_a = 1 / (1 + 10 ^ (-(strength_a - strength_b) / elo_scale))
+share_a = 1 / (1 + 10 ^ (-(strength_a - strength_b) / elo_lambda_scale))
 total_goals = 2 * base_goals_per_team
-lambda_a = total_goals * expected_a
-lambda_b = total_goals * (1 - expected_a)
+lambda_a = total_goals * share_a
+lambda_b = total_goals * (1 - share_a)
+
+# 1X2 from the joint Poisson score matrix, then:
+parity = max(0, 1 - |strength_a - strength_b| / parity_scale)
+boost = min(draw_bias * parity, 0.95 * (p_a + p_b))
+p_draw' = p_draw + boost
+p_a' = p_a - boost * p_a / (p_a + p_b)
+p_b' = p_b - boost * p_b / (p_a + p_b)
 ```
 
-This replaces the older `base_goals * 10^(diff / 800)` description. If the
-legacy divisor `800` appears in old notes, interpret it as the old square-root
-ratio equivalent of `2 * elo_scale`; the active code reads `elo_scale` directly.
+`elo_lambda_scale` decouples the goal split from the win-expectancy
+`elo_scale`; when absent it falls back to `elo_scale` (legacy behavior). The
+legacy ratio divisor from old notes maps to `2 * elo_lambda_scale`.
+
+`adjust_result_probabilities_for_draw` is a pure function: the output triple
+always sums to 1, no probability goes negative (the boost is capped at 95% of
+the decisive mass), the boost is maximal for even matches and zero once the
+strength gap reaches `parity_scale`, and the added draw mass is taken from
+`p_a` and `p_b` proportionally so favoritism direction is preserved.
+
+The simulator (`scripts/simulate_group_stage.py`) applies the same correction
+when sampling scorelines: it reweights the win/draw/loss classes of the joint
+truncated Poisson score matrix to match the adjusted 1X2 probabilities,
+preserving relative scoreline likelihoods within each class. The per-match
+matrix is cached (`match_score_sampler`, `lru_cache`), so Monte Carlo cost
+stays close to the legacy direct-Poisson path. With `draw_bias = 0` the
+simulator uses the legacy untruncated Poisson sampling unchanged.
 
 ---
 
@@ -115,6 +144,107 @@ their starter lines match up.
 
 ---
 
+## Calibration (v1.3)
+
+### Problem detected
+
+The v1.2 engine produced a points distribution hyperconcentrated on 0, 3, 6
+and 9 points. Measured with `scripts/calibration_report.py` (10,000 runs,
+seed 42) before calibration:
+
+| Metric | v1.2 value | Target range |
+|--------|-----------|--------------|
+| Draw rate | 15.3% | 24% – 31% |
+| Goals per match | 2.60 | 2.3 – 2.8 |
+| 0-0 rate | 7.4% | 5% – 10% |
+| 1-1 rate | 5.9% | 8% – 14% |
+| Blowouts (3+ goal margin) | 31.8% | ≤ 18% (review above) |
+| Points mass on 1,2,4,5,7 | 38.8% (2 pts: 3.0%, 5 pts: 3.0%) | visible mass on all |
+
+Root cause: the goal share used the win-expectancy curve with `elo_scale =
+400` directly, so a 200-point ELO gap already produced a 76/24 goal split and
+a 400-point gap a 91/9 split. That crushed the draw rate in any non-even match
+and inflated blowouts, which is exactly what concentrates final points on
+9/6/3/0.
+
+### Targets
+
+World Cup-like group-stage ranges (not strict historical fitting):
+`draw_rate` 24–31%, `goals_per_match` 2.3–2.8, `zero_zero_rate` 5–10%,
+`one_one_rate` 8–14%, `blowout_3plus_rate` flagged above 18%, and the points
+distribution must show visible mass on 1, 2, 4, 5 and 7 points. Encoded in
+`TARGETS` inside `scripts/calibration_report.py`.
+
+### Parameter search and chosen values
+
+Grid search (`--grid`): `base_goals_per_team` × `elo_lambda_scale` ×
+`draw_bias`, scored analytically against the targets (squared normalized
+distance outside each range plus a favoritism guard), with a Monte Carlo
+points-distribution check for the finalists. The user-suggested divisor range
+800–1200 (`elo_lambda_scale` 400–600) could not push blowouts below ~20%
+because the strength spread after the XI adjustment reaches ~800 ELO points,
+so the search was extended to `elo_lambda_scale = 700/800` and
+`parity_scale = 800`. Chosen combination:
+
+```text
+base_goals_per_team = 1.25   (was 1.3)
+elo_lambda_scale    = 800    (goal split softened; elo_scale stays 400)
+draw_bias           = 0.08   (parity-aware draw boost)
+parity_scale        = 800
+```
+
+After calibration (same report, seed 42):
+
+| Metric | v1.3 value |
+|--------|-----------|
+| Draw rate | 25.5% |
+| Goals per match | 2.46 |
+| 0-0 rate | 9.8% |
+| 1-1 rate | 11.5% |
+| Blowouts (3+) | 19.7% (slightly above 18%; accepted, reviewed) |
+| Points mass on 1,2,4,5,7 | 56.9% (minimum bucket 7.2%) |
+| Favorite win rate (mean) | 60.5% (was 76.4%) |
+
+Favoritism is preserved: top seeds keep 96–99% qualification probability and
+the most lopsided fixtures (e.g. `esp` vs `cpv`) stay at ~86% favorite win.
+
+### How to run the diagnostics
+
+```bash
+# Full report: analytic match metrics + Monte Carlo points distributions
+python scripts/calibration_report.py --runs 10000 --seed 42
+
+# Optional JSON output (gitignored — derived from the premium model)
+python scripts/calibration_report.py --runs 1000 --seed 42 --output data/calibration_report.json
+
+# Grid search (75 analytic combinations + MC for the top 5)
+python scripts/calibration_report.py --grid --grid-runs 1000 --seed 42
+
+# Ad-hoc what-if without touching model_weights.json
+python scripts/calibration_report.py --runs 3000 --seed 42 \
+  --base-goals 1.25 --elo-lambda-scale 800 --draw-bias 0.08 --parity-scale 800
+```
+
+Match-level metrics are computed exactly from the same adjusted score matrices
+the simulator samples from; only the points distributions need Monte Carlo.
+
+### Pending for v1.4
+
+- Matchday-context draw adjustments (`fecha1_caution_draw_boost`,
+  `fecha3_context_draw_boost`): require simulating group state after two
+  rounds before adjusting matchday-3 incentives.
+- Premium outputs (`mc_results.json`, predictions) generated with v1.3 weights
+  were exported to Supabase on 2026-06-09 (run
+  `7efb36c1-bf6e-4a84-a805-bddace17bfe3`). Re-export whenever squads, XI or
+  weights change.
+- `26_model_v13_calibration_explainer.sql` updates `get_elo_model_explainer()`
+  with the v1.3 parameters; it is written but must still be applied in
+  Supabase (the live function still reports the v1.2 values from `25_*.sql`).
+- Blowout rate (19.7%) is still slightly above the 18% flag; revisit together
+  with PlayerELO features.
+
+---
+
 ## Monte Carlo
 
 `scripts/run_monte_carlo.py` runs repeated simulations with:
@@ -122,6 +252,7 @@ their starter lines match up.
 - `base_goals_per_team` from `model_weights.json`
 - `elo_scale` from `model_weights.json`
 - `xi_matchup_weight` from `model_weights.json`
+- `elo_lambda_scale`, `draw_bias`, `parity_scale` from `model_weights.json` (v1.3)
 - strengths from `data/team_strength_snapshots.json`
 
 Output per team includes:
@@ -173,6 +304,9 @@ The validator checks:
 - `xi_matchup_weight` is numeric in a valid range
 - `base_goals_per_team` is numeric in a valid range
 - `elo_scale` is positive and warns if it differs from the expected `400`
+- `elo_lambda_scale` (optional) is numeric in `[100, 2000]`
+- `draw_bias` (optional) is numeric in `[0, 0.2]`
+- `parity_scale` (optional) is a positive number
 
 `match_context` IDs not present in `matches.json` are currently warnings because
 legacy context can still be matched by group, matchday and team pair.
@@ -242,6 +376,7 @@ order after that baseline, especially:
 23_predictions_match_id_unique.sql
 24_elo_probability_formula_explainer.sql
 25_xi_matchup_model_explainer.sql
+26_model_v13_calibration_explainer.sql
 ```
 
 `05_prediction_engine_schema.sql` creates a public-readable baseline for the

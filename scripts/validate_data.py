@@ -178,13 +178,27 @@ def main():
         elif abs(es - 400) > 0.01:
             print(f"  WARN elo_scale={es} (expected 400 — document if intentional)")
 
+        # Calibration parameters (v1.3) — optional, validated when present
+        els = weights.get('elo_lambda_scale')
+        if els is not None and not (isinstance(els, (int, float)) and 100 <= els <= 2000):
+            w_errors.append(f"elo_lambda_scale={els!r} must be numeric in [100, 2000]")
+
+        db = weights.get('draw_bias', 0.0)
+        if not (isinstance(db, (int, float)) and 0 <= db <= 0.2):
+            w_errors.append(f"draw_bias={db!r} must be numeric in [0, 0.2]")
+
+        ps = weights.get('parity_scale', 600.0)
+        if not (isinstance(ps, (int, float)) and ps > 0):
+            w_errors.append(f"parity_scale={ps!r} must be a positive number")
+
         if w_errors:
             for e in w_errors:
                 print(f"FAIL [model_weights.json] {e}")
             ok = False
         else:
             print(f"PASS data/model_weights.json -- club_adj_weight={caw}, "
-                  f"xi_matchup_weight={xmw}, base_goals={bgpt}, elo_scale={es}")
+                  f"xi_matchup_weight={xmw}, base_goals={bgpt}, elo_scale={es}, "
+                  f"elo_lambda_scale={els}, draw_bias={db}, parity_scale={ps}")
 
     sys.exit(0 if ok else 1)
 

@@ -32,13 +32,17 @@ CONTEXT_FILE  = DATA_DIR / "match_context.json"
 TEAMS_FILE    = DATA_DIR / "teams.json"
 OUTPUT_SQL    = DATA_DIR / "predictions_seed.sql"
 
-def match_probs(sa: float, sb: float, base_goals: float, n=None, elo_scale: float = 400, max_goals: int = 12):
+def match_probs(sa: float, sb: float, base_goals: float, n=None, elo_scale: float = 400, max_goals: int = 12,
+                elo_lambda_scale=None, draw_bias: float = 0.0, parity_scale: float = 600.0):
     """
     Returns (pa, pd, pb) in 0–100 scale where pa + pd + pb == 100.00
     sa, sb: ELO-style strength scores for team A and team B.
     n is accepted for backward compatibility; direct predictions are exact.
+    The calibration parameters (elo_lambda_scale, draw_bias, parity_scale)
+    keep these probabilities consistent with the Monte Carlo simulator.
     """
-    return rounded_outcome_percentages(sa, sb, base_goals, elo_scale, max_goals)
+    return rounded_outcome_percentages(sa, sb, base_goals, elo_scale, max_goals,
+                                       elo_lambda_scale, draw_bias, parity_scale)
 
 
 # ── Tag logic ─────────────────────────────────────────────────────────────────
@@ -273,6 +277,9 @@ def main():
     elo_scale = weights.get("elo_scale", 400)
     max_goals = weights.get("poisson_max_goals", 12)
     xi_matchup_weight = weights.get("xi_matchup_weight", 0.20)
+    elo_lambda_scale = weights.get("elo_lambda_scale")
+    draw_bias = weights.get("draw_bias", 0.0)
+    parity_scale = weights.get("parity_scale", 600.0)
     xi_profiles = build_xi_profiles(teams_data)
 
     ctx_by_id, ctx_by_group_round_pair = build_context_lookup(ctx_data["matches"])
@@ -311,7 +318,8 @@ def main():
             xi_matchup_weight=xi_matchup_weight,
         )
 
-        pa, pd, pb = match_probs(effective_sa, effective_sb, base_goals, elo_scale=elo_scale, max_goals=max_goals)
+        pa, pd, pb = match_probs(effective_sa, effective_sb, base_goals, elo_scale=elo_scale, max_goals=max_goals,
+                                 elo_lambda_scale=elo_lambda_scale, draw_bias=draw_bias, parity_scale=parity_scale)
 
         is_inaugural = (mid == inaugural_id)
         tag = global_tag(pa, pd, pb, is_inaugural)

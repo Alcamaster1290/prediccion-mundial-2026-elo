@@ -25,6 +25,7 @@ assets/xi/_originals/
 *.bak
 __pycache__/
 data/mc_results.test.json
+data/calibration_report.json
 
 # Outputs derivados/premium: generar localmente y exportar a Supabase
 data/team_strength_snapshots.json

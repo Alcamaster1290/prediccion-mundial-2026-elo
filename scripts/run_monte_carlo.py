@@ -48,7 +48,8 @@ def rounded_pct_distribution(point_counts, runs):
     return {str(points): floors[points] / 10 for points in POSSIBLE_POINTS}
 
 
-def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20):
+def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20,
+                    draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None):
     if seed is not None:
         random.seed(seed)
 
@@ -68,7 +69,8 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, x
     })
 
     for _ in range(runs):
-        standings = simulate_all_groups(matches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight)
+        standings = simulate_all_groups(matches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight,
+                                        draw_bias, parity_scale, elo_lambda_scale)
 
         for gid, ranked in standings.items():
             for pos, t in enumerate(ranked):
@@ -141,6 +143,9 @@ def main():
     base_goals = weights.get('base_goals_per_team', 1.3)
     elo_scale = weights.get('elo_scale', 400)
     xi_matchup_weight = weights.get('xi_matchup_weight', 0.20)
+    draw_bias = weights.get('draw_bias', 0.0)
+    parity_scale = weights.get('parity_scale', 600.0)
+    elo_lambda_scale = weights.get('elo_lambda_scale')
 
     matches   = load_matches()
     strengths = load_strengths()
@@ -156,6 +161,9 @@ def main():
         elo_scale,
         xi_profiles,
         xi_matchup_weight,
+        draw_bias,
+        parity_scale,
+        elo_lambda_scale,
     )
 
     output = {
@@ -163,6 +171,9 @@ def main():
         'seed':           args.seed,
         'version':        weights.get('_version', '1.1'),
         'xi_matchup_weight': xi_matchup_weight,
+        'draw_bias':      draw_bias,
+        'parity_scale':   parity_scale,
+        'elo_lambda_scale': elo_lambda_scale,
         'teams':          results_by_team,
         'terceros_table': terceros_table,
     }
