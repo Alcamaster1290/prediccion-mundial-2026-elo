@@ -245,6 +245,10 @@
     Object.keys(byGroup).sort().forEach(function(grp) {
       html += '<div class="prono-group-block">'
         + '<div class="prono-group-title">Grupo ' + escapeHtml(grp) + '</div>';
+      if (typeof options.renderGroupExtra === 'function') {
+        // Contenido extra por grupo (p. ej. tabla de probabilidades MC)
+        html += options.renderGroupExtra(grp) || '';
+      }
       byGroup[grp].forEach(function(p) {
         html += renderPredictionCard(p);
       });

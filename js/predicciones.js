@@ -151,12 +151,17 @@
     }
   }
 
-  function renderEmbeddedPronosticos(predictions) {
+  function renderEmbeddedPronosticos(predictions, data) {
     if (!window.PremiumSection || !window.PremiumSection.renderActiveContent) return '';
+    var byCode = data ? buildStandingsByCode(data) : null;
     return window.PremiumSection.renderActiveContent(predictions, {
       embedded: true,
       includeTitle: true,
-      includeBadge: false
+      includeBadge: false,
+      // Tabla de probabilidades del grupo embebida al inicio de cada bloque
+      renderGroupExtra: byCode ? function(group) {
+        return renderGroupProbabilityTable(String(group).toUpperCase(), byCode);
+      } : null
     });
   }
 
@@ -369,22 +374,22 @@
     }
   }
 
-  function renderGroupProbabilityTables(data) {
+  function buildStandingsByCode(data) {
     var byCode = {};
     data.standings.forEach(function(row) {
       byCode[row.team_code] = row;
     });
+    return byCode;
+  }
 
-    var html = '<h3 class="pred-subsection-title">Probabilidades por Grupo</h3>'
-      + '<div class="pred-group-prob-grid">';
+  function renderGroupProbabilityTable(group, byCode) {
+    var html = '';
+    var rows = (GROUP_TEAMS[group] || []).map(function(code) {
+      return byCode[code];
+    }).filter(Boolean);
+    if (!rows.length) return html;
 
-    GROUP_ORDER.forEach(function(group) {
-      var rows = (GROUP_TEAMS[group] || []).map(function(code) {
-        return byCode[code];
-      }).filter(Boolean);
-      if (!rows.length) return;
-
-      rows.sort(function(a, b) {
+    rows.sort(function(a, b) {
         var qDiff = pctNumber(b.qualified_pct) - pctNumber(a.qualified_pct);
         if (qDiff !== 0) return qDiff;
         var fDiff = pctNumber(b.first_pct) - pctNumber(a.first_pct);
@@ -431,9 +436,19 @@
         html += '</tr>';
       });
 
-      html += '</tbody></table></div></section>';
-    });
+    html += '</tbody></table></div></section>';
+    return html;
+  }
 
+  // Fallback: tablas en grilla propia cuando no hay pronósticos publicados
+  // (la vista normal las embebe dentro de cada grupo de Pronósticos).
+  function renderGroupProbabilityTables(data) {
+    var byCode = buildStandingsByCode(data);
+    var html = '<h3 class="pred-subsection-title">Probabilidades por Grupo</h3>'
+      + '<div class="pred-group-prob-grid">';
+    GROUP_ORDER.forEach(function(group) {
+      html += renderGroupProbabilityTable(group, byCode);
+    });
     html += '</div>';
     return html;
   }
@@ -696,8 +711,13 @@
       + '</div>';
 
     html += renderEloModelExplainer(eloModel);
-    html += renderGroupProbabilityTables(data);
-    html += renderEmbeddedPronosticos(pronosticos);
+    if (pronosticos && pronosticos.length) {
+      html += renderEmbeddedPronosticos(pronosticos, data);
+    } else {
+      // Sin pronósticos publicados: tablas de grupo en su grilla propia
+      html += renderGroupProbabilityTables(data);
+      html += renderEmbeddedPronosticos(pronosticos);
+    }
 
     // — Tabla 1: Probabilidades de clasificación —
     html += '<h3 class="pred-subsection-title">Probabilidad de Clasificación</h3>';
