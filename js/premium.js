@@ -132,6 +132,7 @@
       + '<p class="prono-lock-desc">Accede a probabilidades calculadas con ELO de clubes, XI probable, contexto de grupo y narrativa competitiva para los 72 partidos de la fase de grupos.</p>'
       + '<ul class="prono-lock-benefits">'
       + '  <li>&#x2714; Probabilidad de victoria / empate / derrota por partido</li>'
+      + '  <li>&#x2714; Marcadores exactos más probables con su probabilidad</li>'
       + '  <li>&#x2714; Contexto táctico y análisis de cada equipo</li>'
       + '  <li>&#x2714; Etiqueta global del partido (favorito, duelo parejo, etc.)</li>'
       + '  <li>&#x2714; Explicación del pronóstico en texto</li>'
@@ -270,6 +271,35 @@
     });
   }
 
+  function parseScorelines(raw) {
+    var list = raw;
+    if (typeof list === 'string') {
+      try { list = JSON.parse(list); } catch (e) { return []; }
+    }
+    if (!Array.isArray(list)) return [];
+    return list.filter(function(item) {
+      return item && /^\d{1,2}-\d{1,2}$/.test(String(item.score || '')) && parseFloat(item.pct) > 0;
+    });
+  }
+
+  function renderScorelines(p) {
+    var scorelines = parseScorelines(p.top_scorelines);
+    if (!scorelines.length) return '';
+    var html = '<div class="prono-scores">'
+      + '<span class="prono-scores-label">Marcadores más probables</span>'
+      + '<div class="prono-scores-chips">';
+    scorelines.forEach(function(item, index) {
+      var pct = parseFloat(item.pct);
+      var pctText = pct.toFixed(1).replace(/\.0$/, '') + '%';
+      html += '<span class="prono-score-chip' + (index === 0 ? ' prono-score-top' : '') + '">'
+        + '<strong>' + escapeHtml(item.score) + '</strong>'
+        + '<small>' + pctText + '</small>'
+        + '</span>';
+    });
+    html += '</div></div>';
+    return html;
+  }
+
   function renderPredictionCard(p) {
     var codeA = safeTeamCode(p.team_a);
     var codeB = safeTeamCode(p.team_b);
@@ -309,6 +339,7 @@
       + '      <span class="prono-prob-pct">' + bWin.toFixed(0) + '%</span>'
       + '    </div>'
       + '  </div>'
+      + renderScorelines(p)
       + (p.team_a_context || p.team_b_context
          ? '<div class="prono-contexts">'
            + (p.team_a_context ? '<div class="prono-ctx prono-ctx-a"><strong>' + escapeHtml(nameA) + ':</strong> ' + escapeHtml(p.team_a_context) + '</div>' : '')

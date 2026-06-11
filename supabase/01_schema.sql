@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS public.predictions (
   team_a_context          text,
   team_b_context          text,
   explanation             text,
+  top_scorelines          jsonb,            -- top marcadores exactos: [{"score":"2-1","pct":12.4}, ...]
   is_premium              boolean NOT NULL DEFAULT true,
   published               boolean NOT NULL DEFAULT false,
   created_at              timestamptz NOT NULL DEFAULT now(),

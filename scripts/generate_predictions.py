@@ -10,7 +10,7 @@ import json
 from datetime import date
 from pathlib import Path
 
-from elo_probability import rounded_outcome_percentages
+from elo_probability import rounded_outcome_percentages, top_scoreline_percentages
 from xi_matchups import (
     build_xi_profiles,
     matchup_adjusted_strengths,
@@ -321,6 +321,12 @@ def main():
         pa, pd, pb = match_probs(effective_sa, effective_sb, base_goals, elo_scale=elo_scale, max_goals=max_goals,
                                  elo_lambda_scale=elo_lambda_scale, draw_bias=draw_bias, parity_scale=parity_scale)
 
+        top_scorelines = top_scoreline_percentages(
+            effective_sa, effective_sb, base_goals, elo_scale=elo_scale, max_goals=max_goals,
+            elo_lambda_scale=elo_lambda_scale, draw_bias=draw_bias, parity_scale=parity_scale,
+            top_n=5,
+        )
+
         is_inaugural = (mid == inaugural_id)
         tag = global_tag(pa, pd, pb, is_inaugural)
 
@@ -367,6 +373,7 @@ def main():
             "team_a_ctx": team_a_ctx_text,
             "team_b_ctx": team_b_ctx_text,
             "explanation": explanation,
+            "top_scorelines": top_scorelines,
         })
 
     if missing_teams:
@@ -383,7 +390,7 @@ def main():
     lines.append("  (match_id, group_code, matchday, match_order, team_a, team_b,")
     lines.append("   team_a_win_probability, draw_probability, team_b_win_probability,")
     lines.append("   global_tag, team_a_context, team_b_context, explanation,")
-    lines.append("   is_premium, published, created_at, updated_at)")
+    lines.append("   top_scorelines, is_premium, published, created_at, updated_at)")
     lines.append("VALUES")
 
     value_lines = []
@@ -402,6 +409,7 @@ def main():
             f"{sql_str(row['team_a_ctx'])}, "
             f"{sql_str(row['team_b_ctx'])}, "
             f"{sql_str(row['explanation'])}, "
+            f"{sql_str(json.dumps(row['top_scorelines'], separators=(',', ':')))}, "
             f"true, true, NOW(), NOW())"
         )
         value_lines.append(v)

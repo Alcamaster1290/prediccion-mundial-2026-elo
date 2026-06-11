@@ -1539,6 +1539,28 @@
   .prono-bar-draw { background: var(--muted); }
   .prono-bar-b    { background: var(--grp-b); }
   .prono-prob-pct { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text); min-width: 34px; text-align: right; }
+  .prono-scores {
+    display: flex; align-items: center; gap: .75rem; flex-wrap: wrap;
+    margin-bottom: .9rem;
+  }
+  .prono-scores-label {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); flex-shrink: 0;
+  }
+  .prono-scores-chips { display: flex; gap: .4rem; flex-wrap: wrap; }
+  .prono-score-chip {
+    display: inline-flex; align-items: baseline; gap: .35rem;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 3px 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .prono-score-chip strong { font-size: 12px; color: var(--text); font-weight: 700; }
+  .prono-score-chip small  { font-size: 10px; color: var(--muted); }
+  .prono-score-top {
+    border-color: rgba(255,170,0,.45); background: rgba(255,170,0,.08);
+  }
+  .prono-score-top strong { color: var(--gold); }
   .prono-contexts { display: flex; gap: 1rem; margin-bottom: .75rem; flex-wrap: wrap; }
   .prono-ctx { flex: 1; min-width: 200px; font-size: 12px; color: var(--muted); line-height: 1.5; }
   .prono-explanation { font-size: 13px; color: var(--text); border-top: 1px solid var(--border); padding-top: .75rem; line-height: 1.6; }

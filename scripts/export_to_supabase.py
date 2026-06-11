@@ -314,6 +314,13 @@ def parse_predictions_seed(sql_text):
             if value.upper() == 'NOW()':
                 continue
             row[column] = sql_value_to_json(value)
+        # top_scorelines viaja como literal de texto en el SQL; PostgREST
+        # necesita el array JSON real para almacenarlo como jsonb.
+        if isinstance(row.get('top_scorelines'), str):
+            try:
+                row['top_scorelines'] = json.loads(row['top_scorelines'])
+            except ValueError:
+                row['top_scorelines'] = None
         rows.append(row)
     return rows
 

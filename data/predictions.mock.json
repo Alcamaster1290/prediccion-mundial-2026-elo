@@ -15,7 +15,14 @@
       "global_tag": "Duelo parejo",
       "team_a_context": "Corea llega con Son como líder y un 3-4-2-1 de presión alta.",
       "team_b_context": "Chequia clasifica por repechaje con solidez defensiva europea.",
-      "explanation": "Ventaja táctica para Corea, pero Chequia puede aguantar y contraatacar."
+      "explanation": "Ventaja táctica para Corea, pero Chequia puede aguantar y contraatacar.",
+      "top_scorelines": [
+        {"score": "1-0", "pct": 13.8},
+        {"score": "1-1", "pct": 12.9},
+        {"score": "2-1", "pct": 9.6},
+        {"score": "2-0", "pct": 9.1},
+        {"score": "0-0", "pct": 8.7}
+      ]
     },
     {
       "id": "mock-2",
@@ -31,7 +38,14 @@
       "global_tag": "Favorito local vs debutante",
       "team_a_context": "Canadá juega de local en Toronto con apoyo masivo del público.",
       "team_b_context": "Bosnia debuta en el Mundial 2026 tras eliminar a Italia en playoffs.",
-      "explanation": "Canadá tiene ventaja de local pero Bosnia es impredecible con Džeko."
+      "explanation": "Canadá tiene ventaja de local pero Bosnia es impredecible con Džeko.",
+      "top_scorelines": [
+        {"score": "1-1", "pct": 13.4},
+        {"score": "1-0", "pct": 12.2},
+        {"score": "0-0", "pct": 9.5},
+        {"score": "2-1", "pct": 8.8},
+        {"score": "0-1", "pct": 8.6}
+      ]
     },
     {
       "id": "mock-3",
@@ -47,7 +61,14 @@
       "global_tag": "Favorito absoluto",
       "team_a_context": "Brasil con Ancelotti y el regreso de Neymar — máxima expectativa.",
       "team_b_context": "Marruecos repite el nivel de Qatar 2022 con la misma base defensiva.",
-      "explanation": "Brasil favorito claro pero Marruecos sabe cómo cerrar espacios y sufrir."
+      "explanation": "Brasil favorito claro pero Marruecos sabe cómo cerrar espacios y sufrir.",
+      "top_scorelines": [
+        {"score": "1-0", "pct": 14.6},
+        {"score": "2-0", "pct": 12.4},
+        {"score": "2-1", "pct": 10.3},
+        {"score": "1-1", "pct": 10.1},
+        {"score": "3-0", "pct": 7.0}
+      ]
     }
   ]
 }
