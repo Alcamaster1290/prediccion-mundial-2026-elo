@@ -7620,6 +7620,23 @@
       return '<img class="flag-svg" src="assets/flags/' + code + '.svg" alt="' + name + '" loading="lazy">';
     }
 
+    // Fecha y hora del partido convertidas a la zona horaria del selector.
+    // En los datos, date/time son el instante UTC (= kickoff_utc en Supabase);
+    // el día y la hora mostrados SIEMPRE se calculan con el offset elegido,
+    // así el agrupado por día nunca se desfasa al cambiar el selector.
+    function toLocal(m) {
+      if (!m.time) return { date: m.date, mins: -1, timeStr: '—' };
+      var p = m.date.split('-'), t = m.time.split(':');
+      var local = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2], +t[0], +t[1]) + tzOffset * 3600000);
+      var mo = local.getUTCMonth() + 1, d = local.getUTCDate();
+      var h = local.getUTCHours(), mi = local.getUTCMinutes();
+      return {
+        date: local.getUTCFullYear() + '-' + (mo < 10 ? '0' : '') + mo + '-' + (d < 10 ? '0' : '') + d,
+        mins: h * 60 + mi,
+        timeStr: (h < 10 ? '0' : '') + h + ':' + (mi < 10 ? '0' : '') + mi
+      };
+    }
+
     // ── Resultados reales (match_results finished) ──
     // En grupos cada par de equipos juega una sola vez: el par identifica el partido.
     var realResults = null;
@@ -7668,35 +7685,20 @@
 
       var byDate = {};
       filtered.forEach(function(m) {
-        if (!byDate[m.date]) byDate[m.date] = [];
-        byDate[m.date].push(m);
+        m.__local = toLocal(m);
+        if (!byDate[m.__local.date]) byDate[m.__local.date] = [];
+        byDate[m.__local.date].push(m);
       });
-      // Hora mostrada (convertida a la zona horaria seleccionada), para ordenar
-      function localMinutesOf(m) {
-        if (!m.time) return -1;
-        var parts = m.time.split(':');
-        var mins = parseInt(parts[0]) * 60 + parseInt(parts[1]) + tzOffset * 60;
-        return ((mins % 1440) + 1440) % 1440;
-      }
       var dates = Object.keys(byDate).sort();
       var html = '';
       dates.forEach(function(date) {
-        // Dentro de cada día: por hora de mayor a menor
-        byDate[date].sort(function(a, b) { return localMinutesOf(b) - localMinutesOf(a); });
+        // Dentro de cada día: del partido más temprano al más tardío
+        byDate[date].sort(function(a, b) { return a.__local.mins - b.__local.mins; });
         html += '<div class="cal-day"><div class="cal-day-header">' + labelDate(date) + '</div>';
         byDate[date].forEach(function(m) {
           var badges = '';
           if (m.simultaneous) badges += '<span class="cal-badge cal-simul">Simultáneo</span>';
-          var timeStr = m.time || '—';
-          // If time exists, convert to selected tz
-          if (m.time) {
-            var parts = m.time.split(':');
-            var utcH = parseInt(parts[0]), utcM = parseInt(parts[1]);
-            var localMins = utcH * 60 + utcM + tzOffset * 60;
-            localMins = ((localMins % 1440) + 1440) % 1440;
-            var lh = Math.floor(localMins / 60), lm = localMins % 60;
-            timeStr = (lh < 10 ? '0' : '') + lh + ':' + (lm < 10 ? '0' : '') + lm;
-          }
+          var timeStr = m.__local.timeStr;
           var isKo = m.homeLabel;
           var matchColor = isKo ? (PHASE_COLORS[m.phase] || '#888') : m.groupColor;
           var matchLabel = isKo ? ((PHASE_LABELS[m.phase] || m.phase) + ' · P' + m.matchNum) : ('Grupo ' + m.groupId);
@@ -7749,7 +7751,12 @@
         if (!section) return;
         var teamMatches = groupMatches
           .filter(function(m) { return m.home === code || m.away === code; })
-          .sort(function(a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+          .map(function(m) { m.__local = toLocal(m); return m; })
+          .sort(function(a, b) {
+            var aKey = a.__local.date + ' ' + a.__local.timeStr;
+            var bKey = b.__local.date + ' ' + b.__local.timeStr;
+            return aKey < bKey ? -1 : aKey > bKey ? 1 : 0;
+          });
         if (!teamMatches.length) return;
         var container = section.querySelector('.team-fixtures');
         if (!container) {
@@ -7759,14 +7766,7 @@
         }
         var html = '<div class="team-fixtures-title">Fase de Grupos · 3 partidos</div>';
         teamMatches.forEach(function(m) {
-          var timeStr = m.time || '—';
-          if (m.time) {
-            var tp = m.time.split(':');
-            var lm = parseInt(tp[0]) * 60 + parseInt(tp[1]) + tzOffset * 60;
-            lm = ((lm % 1440) + 1440) % 1440;
-            var lh = Math.floor(lm / 60), lmin = lm % 60;
-            timeStr = (lh < 10 ? '0' : '') + lh + ':' + (lmin < 10 ? '0' : '') + lmin;
-          }
+          var timeStr = m.__local.timeStr;
           var res = findRealResult(m.home, m.away);
           var badgeList = [];
           if (res) badgeList.push('<span class="cal-badge cal-final">&#x2714; Final</span>');
@@ -7779,7 +7779,7 @@
             .replace(/[^a-z0-9-]/g, '');
           html += '<div class="cal-match fixture-cta" style="border-left-color:' + m.groupColor + '" onclick="handleFixtureClick(\'' + matchId + '\')">'
             + '<div class="tf-jornada" style="color:' + m.groupColor + '">J' + m.jornada + '</div>'
-            + '<div class="tf-date-time">' + labelDate(m.date) + '<br>' + timeStr + '</div>'
+            + '<div class="tf-date-time">' + labelDate(m.__local.date) + '<br>' + timeStr + '</div>'
             + '<div class="cal-teams">'
             +   '<div class="cal-team">' + flag(m.home) + '<span>' + (NAMES[m.home]||m.home) + '</span></div>'
             +   midHtml
