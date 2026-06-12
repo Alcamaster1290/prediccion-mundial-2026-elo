@@ -7671,9 +7671,18 @@
         if (!byDate[m.date]) byDate[m.date] = [];
         byDate[m.date].push(m);
       });
+      // Hora mostrada (convertida a la zona horaria seleccionada), para ordenar
+      function localMinutesOf(m) {
+        if (!m.time) return -1;
+        var parts = m.time.split(':');
+        var mins = parseInt(parts[0]) * 60 + parseInt(parts[1]) + tzOffset * 60;
+        return ((mins % 1440) + 1440) % 1440;
+      }
       var dates = Object.keys(byDate).sort();
       var html = '';
       dates.forEach(function(date) {
+        // Dentro de cada día: por hora de mayor a menor
+        byDate[date].sort(function(a, b) { return localMinutesOf(b) - localMinutesOf(a); });
         html += '<div class="cal-day"><div class="cal-day-header">' + labelDate(date) + '</div>';
         byDate[date].forEach(function(m) {
           var badges = '';
