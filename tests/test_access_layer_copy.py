@@ -84,5 +84,5 @@ def test_premium_local_mocks_are_dev_only():
 
     assert "function isLocalDev()" in supa_data
     assert "if (!localUrl || !isLocalDev()) return null;" in supa_data
-    assert "isLocalDev() ? loadMockPredictions() : null" in premium_js
+    assert "isLocalDev() ? await loadMockPredictions() : null" in premium_js
     assert "window.__supabaseConfigError = true" in auth_js

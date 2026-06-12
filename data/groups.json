@@ -211,7 +211,7 @@
       "fixtures": [
         {
           "jornada": 1,
-          "date": "2026-06-13",
+          "date": "2026-06-12",
           "time": "01:00",
           "home": "usa",
           "away": "pry",
@@ -219,7 +219,7 @@
         },
         {
           "jornada": 1,
-          "date": "2026-06-14",
+          "date": "2026-06-13",
           "time": "04:00",
           "home": "aus",
           "away": "tur",
