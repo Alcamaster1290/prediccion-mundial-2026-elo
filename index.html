@@ -958,6 +958,11 @@
   }
   .cal-inaugural { background: var(--gold); color: #000; }
   .cal-simul { background: rgba(100,116,139,.25); color: var(--muted); }
+  .cal-final { background: rgba(34,197,94,.15); color: var(--yes); border: 1px solid rgba(34,197,94,.35); }
+  .cal-score {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;
+    color: var(--yes); flex-shrink: 0;
+  }
   .cal-venue {
     font-size: 11px; color: var(--muted); text-align: right;
     flex-shrink: 0; max-width: 180px; white-space: nowrap;
@@ -7615,6 +7620,41 @@
       return '<img class="flag-svg" src="assets/flags/' + code + '.svg" alt="' + name + '" loading="lazy">';
     }
 
+    // ── Resultados reales (match_results finished) ──
+    // En grupos cada par de equipos juega una sola vez: el par identifica el partido.
+    var realResults = null;
+
+    function resultPairKey(a, b) { return [a, b].sort().join('|'); }
+
+    function findRealResult(home, away) {
+      if (!realResults) return null;
+      var row = realResults[resultPairKey(home, away)];
+      if (!row) return null;
+      var hg = row.home_team === home ? row.home_goals : row.away_goals;
+      var ag = row.home_team === home ? row.away_goals : row.home_goals;
+      return { hg: hg, ag: ag };
+    }
+
+    function loadRealResults() {
+      if (!(window.SupaData && window.SupaData.loadMatchResults)) return;
+      window.SupaData.loadMatchResults().then(function(rows) {
+        var map = {};
+        (rows || []).forEach(function(row) {
+          if (!row || row.phase !== 'group' || row.status !== 'finished') return;
+          if (row.home_goals == null || row.away_goals == null) return;
+          map[resultPairKey(row.home_team, row.away_team)] = row;
+        });
+        if (!Object.keys(map).length) return;
+        realResults = map;
+        renderCalendar();
+        renderTeamFixtures();
+      }).catch(function() {});
+    }
+
+    // supa-data.js se carga después de este script: esperar a window.load si hace falta
+    if (window.SupaData) loadRealResults();
+    else window.addEventListener('load', loadRealResults);
+
     function renderCalendar() {
       var container = document.getElementById('cal-container');
       if (!container) return;
@@ -7651,12 +7691,17 @@
           var isKo = m.homeLabel;
           var matchColor = isKo ? (PHASE_COLORS[m.phase] || '#888') : m.groupColor;
           var matchLabel = isKo ? ((PHASE_LABELS[m.phase] || m.phase) + ' · P' + m.matchNum) : ('Grupo ' + m.groupId);
+          var res = isKo ? null : findRealResult(m.home, m.away);
+          if (res) badges += '<span class="cal-badge cal-final">&#x2714; Final</span>';
+          var midHtml = res
+            ? '<span class="cal-score">' + res.hg + '-' + res.ag + '</span>'
+            : '<span class="cal-vs">vs</span>';
           var teamsHtml = isKo
             ? ('<div class="cal-team"><span class="cal-ko-label">' + m.homeLabel + '</span></div>'
                + '<span class="cal-vs">vs</span>'
                + '<div class="cal-team"><span class="cal-ko-label">' + m.awayLabel + '</span></div>')
             : ('<div class="cal-team">' + flag(m.home) + '<span>' + (NAMES[m.home]||m.home) + '</span></div>'
-               + '<span class="cal-vs">vs</span>'
+               + midHtml
                + '<div class="cal-team">' + flag(m.away) + '<span>' + (NAMES[m.away]||m.away) + '</span></div>');
           if (m.matchNum === 103) badges += '<span class="cal-badge cal-simul">3.° Puesto</span>';
           if (m.matchNum === 104) badges += '<span class="cal-badge cal-inaugural">Final</span>';
@@ -7713,7 +7758,14 @@
             var lh = Math.floor(lm / 60), lmin = lm % 60;
             timeStr = (lh < 10 ? '0' : '') + lh + ':' + (lmin < 10 ? '0' : '') + lmin;
           }
-          var badges = m.simultaneous ? '<div class="cal-badges"><span class="cal-badge cal-simul">Simultáneo</span></div>' : '';
+          var res = findRealResult(m.home, m.away);
+          var badgeList = [];
+          if (res) badgeList.push('<span class="cal-badge cal-final">&#x2714; Final</span>');
+          if (m.simultaneous) badgeList.push('<span class="cal-badge cal-simul">Simultáneo</span>');
+          var badges = badgeList.length ? '<div class="cal-badges">' + badgeList.join('') + '</div>' : '';
+          var midHtml = res
+            ? '<span class="cal-score">' + res.hg + '-' + res.ag + '</span>'
+            : '<span class="cal-vs">vs</span>';
           var matchId = ('grp-' + String(m.groupId).toLowerCase() + '-j' + m.jornada + '-' + m.home + '-' + m.away)
             .replace(/[^a-z0-9-]/g, '');
           html += '<div class="cal-match fixture-cta" style="border-left-color:' + m.groupColor + '" onclick="handleFixtureClick(\'' + matchId + '\')">'
@@ -7721,7 +7773,7 @@
             + '<div class="tf-date-time">' + labelDate(m.date) + '<br>' + timeStr + '</div>'
             + '<div class="cal-teams">'
             +   '<div class="cal-team">' + flag(m.home) + '<span>' + (NAMES[m.home]||m.home) + '</span></div>'
-            +   '<span class="cal-vs">vs</span>'
+            +   midHtml
             +   '<div class="cal-team">' + flag(m.away) + '<span>' + (NAMES[m.away]||m.away) + '</span></div>'
             +   badges
             + '</div>'
