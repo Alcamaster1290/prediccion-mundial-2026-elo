@@ -11,6 +11,16 @@
       "away_goals": 1
     },
     {
+      "match_number": 3,
+      "phase": "group",
+      "group_id": "B",
+      "home_team": "can",
+      "away_team": "bih",
+      "status": "finished",
+      "home_goals": 1,
+      "away_goals": 1
+    },
+    {
       "match_number": 2,
       "phase": "group",
       "group_id": "A",
