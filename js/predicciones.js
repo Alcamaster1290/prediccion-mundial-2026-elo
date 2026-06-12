@@ -384,17 +384,22 @@
 
   function renderGroupProbabilityTable(group, byCode) {
     var html = '';
+    // Filas en orden de sorteo (posiciones iniciales de la tabla del grupo)
     var rows = (GROUP_TEAMS[group] || []).map(function(code) {
       return byCode[code];
     }).filter(Boolean);
     if (!rows.length) return html;
 
-    rows.sort(function(a, b) {
+    // Ranking por probabilidad solo para el coloreado de clasificación
+    var rankByCode = {};
+    rows.slice().sort(function(a, b) {
         var qDiff = pctNumber(b.qualified_pct) - pctNumber(a.qualified_pct);
         if (qDiff !== 0) return qDiff;
         var fDiff = pctNumber(b.first_pct) - pctNumber(a.first_pct);
         if (fDiff !== 0) return fDiff;
         return GROUP_TEAMS[group].indexOf(a.team_code) - GROUP_TEAMS[group].indexOf(b.team_code);
+      }).forEach(function(row, rank) {
+        rankByCode[row.team_code] = rank;
       });
 
       html += '<section class="pred-group-prob" style="--grp-col:' + groupColor(group) + '">'
@@ -416,7 +421,8 @@
       rows.forEach(function(row, index) {
         var pointsData = getPointsData(row);
         var topPoints = topPointsBucket(pointsData);
-        var rowClass = index < 2 ? 'st-qualify' : (index === 2 ? 'st-third' : '');
+        var rank = rankByCode[row.team_code];
+        var rowClass = rank < 2 ? 'st-qualify' : (rank === 2 ? 'st-third' : '');
         var bestLabel = topPoints
           ? '<span class="pred-points-main">' + topPoints.points + ' pts</span><span class="pred-points-pct">' + pctText(topPoints.pct) + '</span>'
           : '<span class="pred-points-empty">-</span>';
