@@ -89,26 +89,75 @@
   // ── Carga de predicciones desde Supabase ────────────────────
 
   async function loadPredictions() {
+    var predictions;
     if (window.SupaData && window.SupaData.loadPredictions) {
-      return await window.SupaData.loadPredictions();
-    }
-    var c = window.SupaAuth && window.SupaAuth.getClient();
-    if (!c) {
-      return isLocalDev() ? loadMockPredictions() : null;
-    }
-    var ref = await c
-      .from('predictions')
-      .select('*')
-      .eq('published', true)
-      .eq('is_premium', true)
-      .order('group_code')
-      .order('matchday');
+      predictions = await window.SupaData.loadPredictions();
+    } else {
+      var c = window.SupaAuth && window.SupaAuth.getClient();
+      if (!c) {
+        predictions = isLocalDev() ? await loadMockPredictions() : null;
+      } else {
+        var ref = await c
+          .from('predictions')
+          .select('*')
+          .eq('published', true)
+          .eq('is_premium', true)
+          .order('group_code')
+          .order('matchday');
 
-    if (ref.error) {
-      console.error('[PremiumSection] Error loading predictions:', ref.error);
-      return null;
+        if (ref.error) {
+          console.error('[PremiumSection] Error loading predictions:', ref.error);
+          predictions = null;
+        } else {
+          predictions = ref.data || [];
+        }
+      }
     }
-    return ref.data || [];
+    await loadFinishedResults();
+    return predictions;
+  }
+
+  // ── Resultados reales (match_results finished) ──────────────
+  // En fase de grupos cada par de equipos juega una sola vez,
+  // así que el par ordenado identifica el partido.
+
+  var _resultsByPair = null;
+
+  function pairKey(a, b) {
+    return [a, b].sort().join('|');
+  }
+
+  async function loadFinishedResults() {
+    if (_resultsByPair) return _resultsByPair;
+    var rows = null;
+    if (window.SupaData && window.SupaData.loadMatchResults) {
+      try { rows = await window.SupaData.loadMatchResults(); } catch (e) { rows = null; }
+    }
+    _resultsByPair = {};
+    (rows || []).forEach(function(row) {
+      if (!row || row.phase !== 'group' || row.status !== 'finished') return;
+      if (row.home_goals == null || row.away_goals == null) return;
+      var home = safeTeamCode(row.home_team);
+      var away = safeTeamCode(row.away_team);
+      if (!home || !away) return;
+      _resultsByPair[pairKey(home, away)] = row;
+    });
+    return _resultsByPair;
+  }
+
+  function findFinalResult(p) {
+    if (!_resultsByPair) return null;
+    var codeA = safeTeamCode(p.team_a);
+    var codeB = safeTeamCode(p.team_b);
+    if (!codeA || !codeB) return null;
+    var row = _resultsByPair[pairKey(codeA, codeB)];
+    if (!row) return null;
+    var goalsA = row.home_team === codeA ? row.home_goals : row.away_goals;
+    var goalsB = row.home_team === codeA ? row.away_goals : row.home_goals;
+    return {
+      score: goalsA + '-' + goalsB,
+      outcome: goalsA > goalsB ? 'a' : (goalsA < goalsB ? 'b' : 'draw')
+    };
   }
 
   async function loadMockPredictions() {
@@ -282,20 +331,32 @@
     });
   }
 
-  function renderScorelines(p) {
+  function renderScorelines(p, result) {
     var scorelines = parseScorelines(p.top_scorelines);
     if (!scorelines.length) return '';
     var html = '<div class="prono-scores">'
       + '<span class="prono-scores-label">Marcadores más probables</span>'
       + '<div class="prono-scores-chips">';
+    var hitFound = false;
     scorelines.forEach(function(item, index) {
       var pct = parseFloat(item.pct);
       var pctText = pct.toFixed(1).replace(/\.0$/, '') + '%';
-      html += '<span class="prono-score-chip' + (index === 0 ? ' prono-score-top' : '') + '">'
+      var isHit = !!(result && String(item.score) === result.score);
+      if (isHit) hitFound = true;
+      html += '<span class="prono-score-chip' + (index === 0 ? ' prono-score-top' : '') + (isHit ? ' prono-score-hit' : '') + '">'
+        + (isHit ? '<span class="prono-score-check">&#x2714;</span>' : '')
         + '<strong>' + escapeHtml(item.score) + '</strong>'
         + '<small>' + pctText + '</small>'
         + '</span>';
     });
+    if (result && !hitFound) {
+      // El marcador real no estaba en el top-5: se muestra igual como chip final
+      html += '<span class="prono-score-chip prono-score-hit">'
+        + '<span class="prono-score-check">&#x2714;</span>'
+        + '<strong>' + escapeHtml(result.score) + '</strong>'
+        + '<small>real</small>'
+        + '</span>';
+    }
     html += '</div></div>';
     return html;
   }
@@ -308,6 +369,11 @@
     var aWin  = pctValue(p.team_a_win_probability);
     var draw  = pctValue(p.draw_probability);
     var bWin  = pctValue(p.team_b_win_probability);
+    var result = findFinalResult(p);
+    var hitA    = !!(result && result.outcome === 'a');
+    var hitDraw = !!(result && result.outcome === 'draw');
+    var hitB    = !!(result && result.outcome === 'b');
+    var check   = ' <span class="prono-hit-check">&#x2714;</span>';
     // Ancla navegable por partido: los fixtures de equipo saltan aquí
     // mediante handleFixtureClick(match_id).
     var anchorId = String(p.match_id || '').toLowerCase().replace(/[^a-z0-9-]/g, '');
@@ -320,26 +386,27 @@
       + '      <span class="prono-vs">vs</span>'
       + '      <div class="prono-team">' + flag(codeB) + '<span>' + escapeHtml(nameB) + '</span></div>'
       + '    </div>'
+      + (result ? '<span class="prono-final-badge">&#x2714; Final ' + escapeHtml(result.score) + '</span>' : '')
       + (p.global_tag ? '<span class="prono-global-tag">' + escapeHtml(p.global_tag) + '</span>' : '')
       + '  </div>'
       + '  <div class="prono-probs">'
-      + '    <div class="prono-prob-row">'
+      + '    <div class="prono-prob-row' + (hitA ? ' prono-prob-hit' : '') + '">'
       + '      <span class="prono-prob-label">' + escapeHtml(nameA) + '</span>'
       + '      <div class="prono-prob-bar-wrap"><div class="prono-prob-bar prono-bar-a" style="width:' + aWin + '%"></div></div>'
-      + '      <span class="prono-prob-pct">' + aWin.toFixed(0) + '%</span>'
+      + '      <span class="prono-prob-pct">' + aWin.toFixed(0) + '%' + (hitA ? check : '') + '</span>'
       + '    </div>'
-      + '    <div class="prono-prob-row">'
+      + '    <div class="prono-prob-row' + (hitDraw ? ' prono-prob-hit' : '') + '">'
       + '      <span class="prono-prob-label">Empate</span>'
       + '      <div class="prono-prob-bar-wrap"><div class="prono-prob-bar prono-bar-draw" style="width:' + draw + '%"></div></div>'
-      + '      <span class="prono-prob-pct">' + draw.toFixed(0) + '%</span>'
+      + '      <span class="prono-prob-pct">' + draw.toFixed(0) + '%' + (hitDraw ? check : '') + '</span>'
       + '    </div>'
-      + '    <div class="prono-prob-row">'
+      + '    <div class="prono-prob-row' + (hitB ? ' prono-prob-hit' : '') + '">'
       + '      <span class="prono-prob-label">' + escapeHtml(nameB) + '</span>'
       + '      <div class="prono-prob-bar-wrap"><div class="prono-prob-bar prono-bar-b" style="width:' + bWin + '%"></div></div>'
-      + '      <span class="prono-prob-pct">' + bWin.toFixed(0) + '%</span>'
+      + '      <span class="prono-prob-pct">' + bWin.toFixed(0) + '%' + (hitB ? check : '') + '</span>'
       + '    </div>'
       + '  </div>'
-      + renderScorelines(p)
+      + renderScorelines(p, result)
       + (p.team_a_context || p.team_b_context
          ? '<div class="prono-contexts">'
            + (p.team_a_context ? '<div class="prono-ctx prono-ctx-a"><strong>' + escapeHtml(nameA) + ':</strong> ' + escapeHtml(p.team_a_context) + '</div>' : '')

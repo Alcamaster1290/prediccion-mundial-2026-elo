@@ -146,6 +146,23 @@
     );
   }
 
+  async function loadMatchResults() {
+    return await loadSupabaseOrLocal(
+      async function (client) {
+        var ref = await client
+          .from('match_results')
+          .select('match_number,phase,group_id,home_team,away_team,status,home_goals,away_goals')
+          .eq('status', 'finished');
+        if (ref.error) throw ref.error;
+        return ref.data || [];
+      },
+      'data/match_results.mock.json',
+      function (value, source) {
+        return source === 'local' ? (value.results || []) : value;
+      }
+    );
+  }
+
   async function loadGroupStandings() {
     var client = getClient();
     if (!client) return null;
@@ -161,6 +178,7 @@
     isLocalDev: isLocalDev,
     redeemPremiumCode: redeemPremiumCode,
     loadPredictions: loadPredictions,
+    loadMatchResults: loadMatchResults,
     loadSimulationData: loadSimulationData,
     loadSimulationTeams: loadSimulationTeams,
     loadGroupStandings: loadGroupStandings

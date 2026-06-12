@@ -1,0 +1,24 @@
+{
+  "results": [
+    {
+      "match_number": 1,
+      "phase": "group",
+      "group_id": "A",
+      "home_team": "kor",
+      "away_team": "cze",
+      "status": "finished",
+      "home_goals": 2,
+      "away_goals": 1
+    },
+    {
+      "match_number": 2,
+      "phase": "group",
+      "group_id": "A",
+      "home_team": "mex",
+      "away_team": "zaf",
+      "status": "finished",
+      "home_goals": 2,
+      "away_goals": 0
+    }
+  ]
+}
