@@ -24,6 +24,15 @@ import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
+# La consola de Windows usa cp1252 por defecto y rompe los acentos al imprimir.
+# Forzamos UTF-8 en stdout/stderr cuando el runtime lo permite (Python 3.7+).
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8")
+        except (ValueError, OSError):
+            pass
+
 REPO_ROOT = Path(__file__).parent.parent
 
 NAMES = {

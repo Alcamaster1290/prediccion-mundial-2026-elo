@@ -29,6 +29,16 @@
       "status": "finished",
       "home_goals": 2,
       "away_goals": 0
+    },
+    {
+      "match_number": 5,
+      "phase": "group",
+      "group_id": "D",
+      "home_team": "usa",
+      "away_team": "pry",
+      "status": "finished",
+      "home_goals": 4,
+      "away_goals": 1
     }
   ]
 }

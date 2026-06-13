@@ -7,8 +7,18 @@ Algorithm: exact Poisson probabilities from ELO-style team strength.
 """
 
 import json
+import sys
 from datetime import date
 from pathlib import Path
+
+# La consola de Windows usa cp1252 por defecto y rompe los acentos al imprimir.
+# Forzamos UTF-8 en stdout/stderr cuando el runtime lo permite (Python 3.7+).
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8")
+        except (ValueError, OSError):
+            pass
 
 from elo_narrative import (
     build_bench_profiles,
