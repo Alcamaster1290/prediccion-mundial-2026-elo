@@ -63,6 +63,58 @@ def load_xi_profiles():
     return build_xi_profiles(load_json(REPO_ROOT / 'data' / 'teams.json'))
 
 
+def _result_record(r):
+    """Normaliza una fila de resultado a la forma interna, o None si no es un
+    partido de grupos terminado con ambos marcadores presentes."""
+    if r.get('status') != 'finished':
+        return None
+    if r.get('phase') and r.get('phase') != 'group':
+        return None
+    if r.get('home_goals') is None or r.get('away_goals') is None:
+        return None
+    return {
+        'home_team': r.get('home_team'),
+        'away_team': r.get('away_team'),
+        'home_goals': int(r['home_goals']),
+        'away_goals': int(r['away_goals']),
+    }
+
+
+def load_fixed_results(path=None):
+    """Resultados ya jugados desde data/match_results.mock.json.
+
+    Devuelve {match_number: {home_team, away_team, home_goals, away_goals}}
+    para condicionar la simulación. Sin archivo o sin partidos terminados
+    devuelve {} (proyección pre-torneo intacta)."""
+    path = Path(path) if path else (REPO_ROOT / 'data' / 'match_results.mock.json')
+    if not path.exists():
+        return {}
+    fixed = {}
+    for r in load_json(path).get('results', []):
+        rec = _result_record(r)
+        if rec is not None and r.get('match_number') is not None:
+            fixed[r['match_number']] = rec
+    return fixed
+
+
+def load_fixed_results_live(supabase_url, service_key):
+    """Resultados terminados desde la tabla live public.match_results."""
+    import urllib.request
+    q = (supabase_url.rstrip('/')
+         + '/rest/v1/match_results?select=match_number,phase,home_team,away_team,'
+           'home_goals,away_goals,status&status=eq.finished')
+    req = urllib.request.Request(q, headers={
+        'apikey': service_key, 'Authorization': 'Bearer ' + service_key})
+    with urllib.request.urlopen(req) as resp:
+        rows = json.load(resp)
+    fixed = {}
+    for r in rows:
+        rec = _result_record(r)
+        if rec is not None and r.get('match_number') is not None:
+            fixed[r['match_number']] = rec
+    return fixed
+
+
 def poisson_goals(lam):
     """Knuth algorithm: Poisson random variate for goal count."""
     L = math.exp(-max(lam, 0.01))
@@ -151,26 +203,48 @@ def simulate_match(home_strength, away_strength, base_goals, elo_scale=400,
     return scores[bisect.bisect_left(cumulative, r)]
 
 
+def _fixed_score(fixed_results, m):
+    """Devuelve (hg, ag) si el partido ya se jugó, orientado al home/away del
+    fixture; None si debe simularse."""
+    if not fixed_results:
+        return None
+    rec = fixed_results.get(m.get('match_number'))
+    if rec is None:
+        return None
+    h, a = m['home_team'], m['away_team']
+    if rec['home_team'] == a and rec['away_team'] == h:
+        # El resultado viene con orientación invertida: lo volteamos.
+        return rec['away_goals'], rec['home_goals']
+    return rec['home_goals'], rec['away_goals']
+
+
 def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20,
-                   draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None):
-    """Simulate 6 matches and return ranked team list (4 items)."""
+                   draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None, fixed_results=None):
+    """Simulate 6 matches and return ranked team list (4 items).
+
+    Los partidos presentes en ``fixed_results`` (ya jugados) usan su marcador
+    real en vez de muestrearse, condicionando la proyección a la realidad."""
     draw_order = GROUP_ORDER.get(group_id.upper(), [])
     stats = defaultdict(lambda: {'PJ':0,'PG':0,'PE':0,'PP':0,'GF':0,'GC':0,'DG':0,'PTS':0})
 
     for m in group_matches:
         h, a = m['home_team'], m['away_team']
-        sh = strengths.get(h, 1600)
-        sa = strengths.get(a, 1600)
-        eff_h, eff_a, _ = matchup_adjusted_strengths(
-            h,
-            a,
-            sh,
-            sa,
-            xi_profiles,
-            xi_matchup_weight=xi_matchup_weight,
-        )
-        hg, ag = simulate_match(eff_h, eff_a, base_goals, elo_scale,
-                                draw_bias, parity_scale, elo_lambda_scale)
+        fixed = _fixed_score(fixed_results, m)
+        if fixed is not None:
+            hg, ag = fixed
+        else:
+            sh = strengths.get(h, 1600)
+            sa = strengths.get(a, 1600)
+            eff_h, eff_a, _ = matchup_adjusted_strengths(
+                h,
+                a,
+                sh,
+                sa,
+                xi_profiles,
+                xi_matchup_weight=xi_matchup_weight,
+            )
+            hg, ag = simulate_match(eff_h, eff_a, base_goals, elo_scale,
+                                    draw_bias, parity_scale, elo_lambda_scale)
 
         stats[h]['PJ'] += 1; stats[a]['PJ'] += 1
         stats[h]['GF'] += hg; stats[h]['GC'] += ag
@@ -198,7 +272,7 @@ def simulate_group(group_id, group_matches, strengths, base_goals, elo_scale=400
 
 
 def simulate_all_groups(matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20,
-                        draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None):
+                        draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None, fixed_results=None):
     """Run one full group stage simulation. Returns {group_id: [ranked_teams]}."""
     by_group = defaultdict(list)
     for m in matches:
@@ -206,7 +280,7 @@ def simulate_all_groups(matches, strengths, base_goals, elo_scale=400, xi_profil
 
     return {
         gid: simulate_group(gid, gmatches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight,
-                            draw_bias, parity_scale, elo_lambda_scale)
+                            draw_bias, parity_scale, elo_lambda_scale, fixed_results)
         for gid, gmatches in by_group.items()
     }
 

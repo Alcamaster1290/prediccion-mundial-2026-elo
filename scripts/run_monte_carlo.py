@@ -22,6 +22,8 @@ from simulate_group_stage import (
     load_matches,
     load_strengths,
     load_xi_profiles,
+    load_fixed_results,
+    load_fixed_results_live,
     simulate_all_groups,
     best_thirds,
 )
@@ -49,7 +51,7 @@ def rounded_pct_distribution(point_counts, runs):
 
 
 def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20,
-                    draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None):
+                    draw_bias=0.0, parity_scale=600.0, elo_lambda_scale=None, fixed_results=None):
     if seed is not None:
         random.seed(seed)
 
@@ -70,7 +72,7 @@ def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, x
 
     for _ in range(runs):
         standings = simulate_all_groups(matches, strengths, base_goals, elo_scale, xi_profiles, xi_matchup_weight,
-                                        draw_bias, parity_scale, elo_lambda_scale)
+                                        draw_bias, parity_scale, elo_lambda_scale, fixed_results)
 
         for gid, ranked in standings.items():
             for pos, t in enumerate(ranked):
@@ -137,6 +139,11 @@ def main():
     parser.add_argument('--runs',   type=int, default=1000)
     parser.add_argument('--seed',   type=int, default=None)
     parser.add_argument('--output', default=str(REPO_ROOT / 'data' / 'mc_results.json'))
+    parser.add_argument('--results-source', choices=['mock', 'live', 'none'], default='mock',
+                        help="Condicionar la simulación a resultados ya jugados: "
+                             "'mock' (data/match_results.mock.json, por defecto), "
+                             "'live' (tabla Supabase match_results, requiere credenciales), "
+                             "'none' (proyección pre-torneo, ignora resultados).")
     args = parser.parse_args()
 
     weights    = json.loads((REPO_ROOT / 'data' / 'model_weights.json').read_text(encoding='utf-8'))
@@ -151,6 +158,26 @@ def main():
     strengths = load_strengths()
     xi_profiles = load_xi_profiles()
 
+    if args.results_source == 'none':
+        fixed_results = {}
+    elif args.results_source == 'live':
+        import os
+        url = os.environ.get('SUPABASE_URL')
+        key = os.environ.get('SUPABASE_SERVICE_KEY')
+        if not url or not key:
+            print("results-source=live requiere SUPABASE_URL y SUPABASE_SERVICE_KEY.")
+            return 1
+        fixed_results = load_fixed_results_live(url, key)
+    else:
+        fixed_results = load_fixed_results()
+
+    if fixed_results:
+        played = sorted(fixed_results)
+        print(f"Condicionando a {len(played)} partido(s) ya jugado(s) "
+              f"(fuente={args.results_source}): match_numbers {played}")
+    else:
+        print(f"Proyección pre-torneo (sin resultados fijados, fuente={args.results_source}).")
+
     print(f"Running {args.runs} simulations (seed={args.seed})...")
     results_by_team, terceros_table = run_monte_carlo(
         args.runs,
@@ -164,6 +191,7 @@ def main():
         draw_bias,
         parity_scale,
         elo_lambda_scale,
+        fixed_results,
     )
 
     output = {
@@ -174,6 +202,8 @@ def main():
         'draw_bias':      draw_bias,
         'parity_scale':   parity_scale,
         'elo_lambda_scale': elo_lambda_scale,
+        'results_source': args.results_source,
+        'conditioned_matches': sorted(fixed_results),
         'teams':          results_by_team,
         'terceros_table': terceros_table,
     }
