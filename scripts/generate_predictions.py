@@ -337,7 +337,7 @@ def main():
         top_scorelines = top_scoreline_percentages(
             effective_sa, effective_sb, base_goals, elo_scale=elo_scale, max_goals=max_goals,
             elo_lambda_scale=elo_lambda_scale, draw_bias=draw_bias, parity_scale=parity_scale,
-            top_n=5,
+            top_n=10,
         )
 
         is_inaugural = (mid == inaugural_id)

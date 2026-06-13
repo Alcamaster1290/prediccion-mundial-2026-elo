@@ -334,6 +334,10 @@
   function renderScorelines(p, result) {
     var scorelines = parseScorelines(p.top_scorelines);
     if (!scorelines.length) return '';
+    // En mobile mostramos los primeros 5 y colapsamos el resto tras un toggle
+    // para no alargar la tarjeta. El marcador real siempre queda visible.
+    var VISIBLE = 5;
+    var hasExtra = scorelines.length > VISIBLE;
     var html = '<div class="prono-scores">'
       + '<span class="prono-scores-label">Marcadores más probables</span>'
       + '<div class="prono-scores-chips">';
@@ -343,12 +347,18 @@
       var pctText = pct.toFixed(1).replace(/\.0$/, '') + '%';
       var isHit = !!(result && String(item.score) === result.score);
       if (isHit) hitFound = true;
-      html += '<span class="prono-score-chip' + (index === 0 ? ' prono-score-top' : '') + (isHit ? ' prono-score-hit' : '') + '">'
+      // Los extras (índice >= 5) quedan ocultos salvo que sean el marcador real
+      var isExtra = index >= VISIBLE && !isHit;
+      html += '<span class="prono-score-chip' + (index === 0 ? ' prono-score-top' : '') + (isHit ? ' prono-score-hit' : '') + (isExtra ? ' prono-score-extra' : '') + '">'
         + (isHit ? '<span class="prono-score-check">&#x2714;</span>' : '')
         + '<strong>' + escapeHtml(item.score) + '</strong>'
         + '<small>' + pctText + '</small>'
         + '</span>';
     });
+    if (hasExtra) {
+      html += '<button type="button" class="prono-score-more" data-extra="' + (scorelines.length - VISIBLE)
+        + '" onclick="this.closest(\'.prono-scores-chips\').classList.toggle(\'show-extra\')"></button>';
+    }
     if (result && !hitFound) {
       // El marcador real no estaba en el top-5: se muestra igual como chip final
       html += '<span class="prono-score-chip prono-score-hit">'
