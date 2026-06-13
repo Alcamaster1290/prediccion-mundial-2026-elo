@@ -10,16 +10,16 @@ import json
 from datetime import date
 from pathlib import Path
 
-from elo_probability import rounded_outcome_percentages, top_scoreline_percentages
-from xi_matchups import (
-    build_xi_profiles,
-    matchup_adjusted_strengths,
-    missing_xi_context,
-    partial_xi_matchup_note,
-    profile_xi_context,
-    team_xi_context,
-    xi_matchup_note,
+from elo_narrative import (
+    build_bench_profiles,
+    matchup_narrative,
+    missing_side_context,
+    partial_pair_note,
+    partial_side_context,
+    team_context_sentences,
 )
+from elo_probability import rounded_outcome_percentages, top_scoreline_percentages
+from xi_matchups import build_xi_profiles, matchup_adjusted_strengths
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 REPO_ROOT = Path(__file__).parent.parent
@@ -71,9 +71,16 @@ def esc(text: str) -> str:
 
 
 def sql_str(value: str) -> str:
-    """Wrap string in single quotes, or return NULL."""
+    """Wrap string in single quotes, or return NULL.
+
+    Los textos multipárrafo viajan como E'...' con \\n escapado para que el
+    seed siga siendo un INSERT de una línea por fila (el exporter lo parsea
+    línea a línea) y el SQL siga siendo válido si se pega en el editor."""
     if value is None or value == "":
         return "NULL"
+    if "\n" in value:
+        escaped = value.replace("\\", "\\\\").replace("'", "''").replace("\n", "\\n")
+        return f"E'{escaped}'"
     return f"'{esc(value)}'"
 
 
@@ -178,8 +185,8 @@ def rest_phrase(days_a, days_b):
     if days_a is None or days_b is None:
         return ""
     if days_a == days_b:
-        return f" Ambos tienen {days_a} dias de margen."
-    return f" El descanso tambien pesa: {days_a} dias para el local y {days_b} para el visitante."
+        return f" Ambos llegan con {days_a} días de margen."
+    return f" El descanso también pesa, con {days_a} días para el local y {days_b} para el visitante."
 
 
 def build_calendar_note(match, fixture_index):
@@ -196,9 +203,9 @@ def build_calendar_note(match, fixture_index):
         days_a = days_between(match, next_a)
         days_b = days_between(match, next_b)
         return (
-            f"Calendario: el debut define el margen inicial del Grupo {group}; "
-            f"{name_a} luego enfrenta a {opponent_name(next_a, team_a)} y "
-            f"{name_b} a {opponent_name(next_b, team_b)}, asi que sumar aqui reduce "
+            f"En el calendario, el debut define el margen inicial del Grupo {group}. "
+            f"{name_a} enfrentará luego a {opponent_name(next_a, team_a)} y "
+            f"{name_b} a {opponent_name(next_b, team_b)}, así que sumar aquí reduce "
             f"la urgencia de la segunda jornada."
             + rest_phrase(days_a, days_b)
         )
@@ -209,18 +216,17 @@ def build_calendar_note(match, fixture_index):
         days_a = days_between(match, next_a)
         days_b = days_between(match, next_b)
         return (
-            f"Calendario: en segunda jornada pesa el resultado de la J1; "
-            f"{name_a} cierra la J3 contra {opponent_name(next_a, team_a)} y "
+            f"En segunda jornada pesa el resultado del debut. "
+            f"{name_a} cerrará la J3 contra {opponent_name(next_a, team_a)} y "
             f"{name_b} contra {opponent_name(next_b, team_b)}, por lo que el riesgo "
-            f"del partido cambia segun los puntos ya sumados."
+            f"del partido cambia según los puntos ya sumados."
             + rest_phrase(days_a, days_b)
         )
 
     return (
-        f"Calendario: cierre simultaneo del Grupo {group}; aqui importan el marcador, "
-        f"la diferencia de goles y el corte de mejores terceros. Si un equipo llega "
-        f"con ventaja puede gestionar piernas, pero si llega corto de puntos el partido "
-        f"obliga a tomar mas riesgos."
+        f"El cierre del Grupo {group} se juega en simultáneo, así que importan el marcador, "
+        f"la diferencia de goles y el corte de mejores terceros. Quien llega con ventaja "
+        f"puede gestionar piernas y quien llega corto de puntos está obligado a arriesgar."
     )
 
 
@@ -235,8 +241,8 @@ def build_probability_note(match, pa, pd, pb):
 
     if diff < 7:
         return (
-            f"El modelo ELO deja un cruce parejo: {name_a} {pct_text(pa)}, "
-            f"empate {pct_text(pd)} y {name_b} {pct_text(pb)}."
+            f"Con todo, el modelo ELO deja un cruce parejo, con {name_a} al {pct_text(pa)}, "
+            f"el empate al {pct_text(pd)} y {name_b} al {pct_text(pb)}."
         )
 
     favorite = name_a if pa > pb else name_b
@@ -244,21 +250,17 @@ def build_probability_note(match, pa, pd, pb):
     underdog = name_b if pa > pb else name_a
     underdog_pct = pb if pa > pb else pa
     return (
-        f"El modelo ELO da ventaja a {favorite} ({pct_text(favorite_pct)}) "
-        f"sobre {underdog} ({pct_text(underdog_pct)}), con empate en {pct_text(pd)}."
+        f"El modelo ELO concede la ventaja a {favorite} con un {pct_text(favorite_pct)}, "
+        f"mientras {underdog} retiene un {pct_text(underdog_pct)} y el empate queda en {pct_text(pd)}."
     )
 
 
 def compose_prediction_explanation(base_explanation, probability_note, calendar_note):
     base = (base_explanation or "").strip()
-    parts = []
-    if base:
-        parts.append(base)
-    if probability_note:
-        parts.append(probability_note)
-    if calendar_note:
-        parts.append(calendar_note)
-    return " ".join(part for part in parts if part).strip()
+    closing = " ".join(part for part in (probability_note, calendar_note) if part).strip()
+    parts = [part for part in (base, closing) if part]
+    # Párrafos separados por línea en blanco; el frontend los renderiza como <p>.
+    return "\n\n".join(parts).strip()
 
 
 def load_json(path: Path):
@@ -281,6 +283,7 @@ def main():
     draw_bias = weights.get("draw_bias", 0.0)
     parity_scale = weights.get("parity_scale", 600.0)
     xi_profiles = build_xi_profiles(teams_data)
+    bench_profiles = build_bench_profiles(teams_data)
 
     ctx_by_id, ctx_by_group_round_pair = build_context_lookup(ctx_data["matches"])
     fixture_index = build_group_fixture_index(matches)
@@ -341,17 +344,18 @@ def main():
             explanation     = ctx.get("prediccion_narrativa", "") or ""
 
         if xi_comparison:
-            team_a_ctx_text = team_xi_context(xi_comparison["a"])
-            team_b_ctx_text = team_xi_context(xi_comparison["b"])
-            explanation = xi_matchup_note(match, xi_comparison)
+            team_a_ctx_text = team_context_sentences(xi_comparison["a"], bench_profiles.get(team_a))
+            team_b_ctx_text = team_context_sentences(xi_comparison["b"], bench_profiles.get(team_b))
+            explanation = matchup_narrative(match, xi_comparison, bench_profiles)
         else:
             profile_a = xi_profiles.get(team_a)
             profile_b = xi_profiles.get(team_b)
-            partial_note = partial_xi_matchup_note(match, team_a, team_b, xi_profiles)
-            if partial_note:
-                team_a_ctx_text = profile_xi_context(profile_a) if profile_a else missing_xi_context(match.get("home_name") or team_a.upper())
-                team_b_ctx_text = profile_xi_context(profile_b) if profile_b else missing_xi_context(match.get("away_name") or team_b.upper())
-                explanation = partial_note
+            if not profile_a or not profile_b:
+                name_a = match.get("home_name") or team_a.upper()
+                name_b = match.get("away_name") or team_b.upper()
+                team_a_ctx_text = partial_side_context(profile_a) if profile_a else missing_side_context(name_a)
+                team_b_ctx_text = partial_side_context(profile_b) if profile_b else missing_side_context(name_b)
+                explanation = partial_pair_note(name_a, name_b, profile_a, profile_b)
 
         explanation = compose_prediction_explanation(
             explanation,

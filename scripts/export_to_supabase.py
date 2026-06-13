@@ -355,6 +355,10 @@ def sql_value_to_json(value):
         return True
     if upper == 'FALSE':
         return False
+    if value.startswith("E'") and value.endswith("'"):
+        # Cadena con escapes de Postgres (textos multipárrafo del seed).
+        inner = value[2:-1].replace("''", "'")
+        return inner.replace('\\n', '\n').replace('\\\\', '\\')
     if value.startswith("'") and value.endswith("'"):
         return value[1:-1].replace("''", "'")
     try:
