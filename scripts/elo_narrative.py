@@ -10,6 +10,7 @@ guiones dentro de nombres propios (Al-Sadd, Hyun-jun) sí están permitidos.
 La elección de variantes léxicas es determinística por match_id (crc32),
 así el mismo input produce siempre el mismo texto.
 """
+import re
 import zlib
 
 from xi_matchups import normalize_line, strongest_edge, weakest_edge
@@ -53,6 +54,26 @@ def pick(match_id, salt, options):
     """Variante determinística y reproducible (sin RNG)."""
     index = zlib.crc32(f'{match_id}|{salt}'.encode('utf-8')) % len(options)
     return options[index]
+
+
+# ── Pulido de texto ───────────────────────────────────────────────────────────
+
+_CONTRACTIONS = (
+    (re.compile(r'\bde el\b'), 'del'),
+    (re.compile(r'\ba el\b'), 'al'),
+)
+_REPEATED_PERIOD = re.compile(r'\.\.+')
+
+
+def polish(text):
+    """Corrige contracciones del español (de el → del, a el → al) y colapsa
+    los puntos repetidos que aparecen cuando un nombre que ya termina en punto
+    (EE.UU.) cierra una oración. Determinístico e idempotente."""
+    if not text:
+        return text
+    for pattern, replacement in _CONTRACTIONS:
+        text = pattern.sub(replacement, text)
+    return _REPEATED_PERIOD.sub('.', text)
 
 
 # ── Capa de banquillo ─────────────────────────────────────────────────────────
@@ -110,12 +131,16 @@ def build_bench_profiles(teams_data):
     return profiles
 
 
-def bench_sentence(match_id, team_name, bench_profile):
+def bench_sentence(match_id, team_name, bench_profile, avoid_index=None):
+    """Devuelve (texto, índice_de_variante). El índice solo es relevante en la
+    rama de supersub con varias variantes; se usa para que el visitante no
+    repita la misma plantilla que el local en un mismo partido. avoid_index
+    fuerza una variante distinta cuando coincidiría con la del otro equipo."""
     if not bench_profile or not bench_profile.get('supersub'):
         return (
             f'El banquillo de {team_name} no ofrece un salto de nivel respecto '
             'del once inicial, así que lo que arranca es la mejor versión disponible.'
-        )
+        ), None
     sub = bench_profile['supersub']
     line = LINE_PHRASE[sub['line']]
     club_part = f', que juega en {sub["club"]},' if sub['club'] else ','
@@ -133,17 +158,30 @@ def bench_sentence(match_id, team_name, bench_profile):
                 f'de un promedio de {round(sub["line_avg"])} a cerca de {round(sub["new_avg"])} puntos, '
                 'un salto capaz de cambiar el guion del partido.'
             ),
+            (
+                f'El revulsivo de {team_name} es {sub["name"]}{club_part} y aporta '
+                f'{round(sub["elo"])} puntos de roce de club desde la banca. Con él en cancha, '
+                f'{line} sube de {round(sub["line_avg"])} a unos {round(sub["new_avg"])} puntos de promedio.'
+            ),
+            (
+                f'Si el plan no funciona, {team_name} tiene en {sub["name"]}{club_part} '
+                f'un recambio de {round(sub["elo"])} puntos de roce de club que lleva '
+                f'{line} de {round(sub["line_avg"])} a cerca de {round(sub["new_avg"])} puntos.'
+            ),
         ]
-        return pick(match_id, 'bench' + team_name, options)
+        index = zlib.crc32(f'{match_id}|bench{team_name}'.encode('utf-8')) % len(options)
+        if avoid_index is not None and index == avoid_index:
+            index = (index + 1) % len(options)
+        return options[index], index
     if sub['delta'] > 0:
         return (
             f'La banca de {team_name} sostiene el nivel del once, con {sub["name"]}{club_part} '
             'como el recambio de mayor roce de club.'
-        )
+        ), None
     return (
         f'El banquillo de {team_name} no sube el techo del once inicial, '
         'de modo que la versión que arranca es la más fuerte que tiene.'
-    )
+    ), None
 
 
 # ── Narrativa del cruce ───────────────────────────────────────────────────────
@@ -240,13 +278,15 @@ def matchup_narrative(match, comparison, bench_profiles):
         + ' '
         + decisive_edge_sentence(match_id, name_a, name_b, comparison)
     )
+    home_bench = bench_profiles.get(match['home_team']) if bench_profiles else None
+    away_bench = bench_profiles.get(match['away_team']) if bench_profiles else None
+    home_text, home_index = bench_sentence(match_id, name_a, home_bench)
+    away_text, _ = bench_sentence(match_id, name_b, away_bench, avoid_index=home_index)
     paragraph_two = (
         'El partido también puede decidirse desde los cambios. '
-        + bench_sentence(match_id, name_a, bench_profiles.get(match['home_team']) if bench_profiles else None)
-        + ' '
-        + bench_sentence(match_id, name_b, bench_profiles.get(match['away_team']) if bench_profiles else None)
+        + home_text + ' ' + away_text
     )
-    return paragraph_one + '\n\n' + paragraph_two
+    return polish(paragraph_one + '\n\n' + paragraph_two)
 
 
 # ── Contextos por equipo ──────────────────────────────────────────────────────
@@ -279,11 +319,11 @@ def team_context_sentences(side, bench_profile):
         )
     else:
         text += ' La banca no eleva el techo del once inicial.'
-    return text
+    return polish(text)
 
 
 def partial_side_context(profile):
-    return (
+    return polish(
         f'El once promedia {profile["xi_blend"]:.1f} puntos de roce de club, '
         f'con la defensa en {profile["lines"]["defense"]:.1f}, el mediocampo en '
         f'{profile["lines"]["midfield"]:.1f} y el ataque en {profile["lines"]["attack"]:.1f}. '
@@ -293,7 +333,7 @@ def partial_side_context(profile):
 
 
 def missing_side_context(team_name):
-    return (
+    return polish(
         f'{team_name} no tiene un once titular completo con ELO de club, así que el '
         'modelo conserva su base internacional y evita inventar duelos individuales.'
     )
@@ -301,14 +341,14 @@ def missing_side_context(team_name):
 
 def partial_pair_note(name_a, name_b, profile_a, profile_b):
     if not profile_a and not profile_b:
-        return (
+        return polish(
             f'La comparación de onces es parcial porque ni {name_a} ni {name_b} tienen '
             'un once titular completo con ELO de club, de modo que el pronóstico se '
             'apoya en la base internacional y el calendario.'
         )
     available = profile_a or profile_b
     missing = name_b if profile_a else name_a
-    return (
+    return polish(
         f'La comparación de onces es parcial. {available["name"]} sí promedia '
         f'{available["xi_blend"]:.1f} puntos de roce de club, con la defensa en '
         f'{available["lines"]["defense"]:.1f}, el mediocampo en {available["lines"]["midfield"]:.1f} '

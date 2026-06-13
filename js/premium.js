@@ -413,7 +413,13 @@
            + (p.team_b_context ? '<div class="prono-ctx prono-ctx-b"><strong>' + escapeHtml(nameB) + ':</strong> ' + escapeHtml(p.team_b_context) + '</div>' : '')
            + '</div>'
          : '')
-      + (p.explanation ? '<div class="prono-explanation">' + escapeHtml(p.explanation) + '</div>' : '')
+      + (p.explanation
+         ? '<div class="prono-explanation">'
+           + p.explanation.split('\n\n').map(function (para) {
+               return '<p class="prono-explanation-p">' + escapeHtml(para) + '</p>';
+             }).join('')
+           + '</div>'
+         : '')
       + '</div>';
   }
 

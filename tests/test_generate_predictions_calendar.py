@@ -61,7 +61,7 @@ def test_calendar_notes_cover_debut_second_match_and_group_closure():
     assert "segunda jornada" in j2_note.lower()
     assert "j3" in j2_note.lower()
     assert "cierre" in j3_note.lower()
-    assert "simultaneo" in j3_note.lower()
+    assert "simultáneo" in j3_note.lower()
     assert "diferencia de goles" in j3_note.lower()
 
 
@@ -101,7 +101,7 @@ def test_prediction_explanation_keeps_base_context_and_adds_model_probability():
     )
 
     assert explanation.startswith("Qatar puede competir")
-    assert "El modelo ELO da ventaja a Suiza" in explanation
+    assert "El modelo ELO concede la ventaja a Suiza" in explanation
     assert "90.3%" in explanation
     assert "Calendario:" in explanation
 
@@ -143,7 +143,7 @@ def test_argentina_austria_prediction_uses_xi_matchup_not_star_solo_claim(genera
         if "'grp-j-j2-arg-aut'" in line
     )
 
-    assert "Comparación XI" in match_line
+    assert "roce de club" in match_line
     assert "defensa" in match_line.lower()
     assert "mediocampo" in match_line.lower()
     assert "resolver el partido solo" not in match_line.lower()
@@ -157,7 +157,7 @@ def test_predictions_with_incomplete_xi_use_partial_data_notice(generated_predic
         if "'grp-j-j3-jor-arg'" in line
     )
 
-    assert "Comparación XI parcial" in jordan_line
-    assert "Jordania no tiene XI titular completo" in jordan_line
+    assert "comparación de onces es parcial" in jordan_line
+    assert "Jordania no tiene un once titular completo" in jordan_line
     assert "Messi puede" not in jordan_line
     assert "golea" not in jordan_line.lower()
