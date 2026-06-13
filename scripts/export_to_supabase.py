@@ -574,9 +574,24 @@ def main():
                         help='Export predictions parsed from data/predictions_seed.sql')
     parser.add_argument('--national-elo', action='store_true',
                         help='Export national ELO ratings from data/international_elo.json')
+    parser.add_argument('--strengths', action='store_true',
+                        help='Export team strengths and MC results (also implied when no selective flag is given or with --all)')
     parser.add_argument('--dry-run', action='store_true',
                         help='Print planned exports without writing to Supabase')
     args = parser.parse_args()
+
+    # La cola de strengths + MC solía correr en CUALQUIER invocación, de modo
+    # que --predictions arrastraba un nuevo simulation_run. Ahora solo corre
+    # cuando se pide explícitamente (--all/--strengths/--strengths-only) o
+    # cuando no se pasó ningún flag selectivo (compatibilidad con el modo sin
+    # argumentos, que históricamente sincronizaba todo).
+    selective_flags = (
+        args.matches or args.players or args.team_profiles
+        or args.predictions or args.national_elo
+    )
+    run_strengths_tail = (
+        args.all or args.strengths or args.strengths_only or not selective_flags
+    )
 
     supabase_url = os.environ.get('SUPABASE_URL')
     service_key  = os.environ.get('SUPABASE_SERVICE_KEY')
@@ -618,6 +633,9 @@ def main():
             sys.exit(1)
         if not export_predictions_seed(supabase_url, service_key, seed_path.read_text(encoding='utf-8'), dry_run=args.dry_run):
             sys.exit(1)
+
+    if not run_strengths_tail:
+        return
 
     strengths_path = REPO_ROOT / 'data' / 'team_strength_snapshots.json'
     if not strengths_path.exists():
