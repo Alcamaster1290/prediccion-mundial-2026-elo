@@ -21,6 +21,9 @@
     usa:'EE.UU.', pry:'Paraguay', aus:'Australia', tur:'Turquía'
   };
   var ACCESS_READY_MESSAGE = 'Todo desbloqueado. Ya puedes ver todas las predicciones.';
+  // Último perfil conocido, para que el botón "Desbloquear todo" del preview
+  // gratuito pueda abrir la pantalla de pago con el email correcto.
+  var _lastProfile = null;
 
   function escapeHtml(value) {
     return String(value == null ? '' : value)
@@ -320,6 +323,45 @@
     });
   }
 
+  // ── Preview gratuito: pronósticos de partidos ya jugados ────────
+  // El RLS (28_predictions_free_finished.sql) entrega a anon/free solo las
+  // predicciones cuyo partido está finished. Las mostramos desbloqueadas y
+  // añadimos un upsell hacia el acceso completo.
+
+  function renderUpsellBanner(user) {
+    var cta = user
+      ? '<button class="prono-join-btn" onclick="window.PremiumSection.showPayment()">Desbloquear los 72 + Monte Carlo</button>'
+      : '<button class="prono-join-btn" onclick="window.SupaAuth && window.SupaAuth.openAuthModal()">Crear cuenta gratis</button>';
+    return '<div class="prono-free-upsell">'
+      + '<h3 class="prono-free-upsell-title">Desbloquea todos los pronósticos</h3>'
+      + '<p class="prono-free-upsell-desc">Estás viendo gratis los pronósticos de los partidos ya jugados. '
+      + 'Accede a los 72 partidos de la fase de grupos, los marcadores más probables de los próximos cruces '
+      + 'y la simulación Monte Carlo de clasificación.</p>'
+      + cta
+      + '</div>';
+  }
+
+  function renderFreePreview(predictions, user) {
+    var el = document.getElementById('pronosticos-content');
+    if (!el) return;
+    var intro = '<div class="prono-free-intro">'
+      + '<span class="prono-free-badge">Gratis · partidos jugados</span>'
+      + '<h3 class="prono-free-title">Pronósticos de partidos ya jugados</h3>'
+      + '<p class="prono-free-desc">Mira las probabilidades, los marcadores más probables y el análisis '
+      + 'de los partidos que ya se disputaron, y compáralos con el resultado real.</p>'
+      + '</div>';
+    var cards = renderActiveContent(predictions, {
+      includeTitle: false,
+      includeBadge: false,
+      embedded: false
+    });
+    el.innerHTML = intro + cards + renderUpsellBanner(user);
+  }
+
+  function showPayment() {
+    renderPaymentModal(_lastProfile);
+  }
+
   function parseScorelines(raw) {
     var list = raw;
     if (typeof list === 'string') {
@@ -485,18 +527,28 @@
 
   async function onAuthChange(user, isPremium, profile) {
     if (!hasStandaloneContainer()) return;
+    _lastProfile = profile || null;
 
-    if (!user) {
-      renderLocked();
-    } else if (!isPremium) {
-      renderPaymentModal(profile);
-    } else {
+    if (isPremium) {
       var predictions = await loadPredictions();
       if (predictions === null) {
         renderDataError();
         return;
       }
       renderActive(predictions);
+      return;
+    }
+
+    // Free (anon o logueado sin premium): el RLS solo devuelve los partidos
+    // ya jugados. Si hay alguno, lo mostramos desbloqueado + upsell; si no,
+    // caemos al teaser (anon) o a la pantalla de pago (logueado).
+    var freePreds = await loadPredictions();
+    if (freePreds && freePreds.length) {
+      renderFreePreview(freePreds, user);
+    } else if (!user) {
+      renderLocked();
+    } else {
+      renderPaymentModal(profile);
     }
   }
 
@@ -520,6 +572,7 @@
     renderConfigError: renderConfigError,
     renderDataError: renderDataError,
     showQR: showQR,
+    showPayment: showPayment,
   };
 
   if (document.readyState === 'loading') {

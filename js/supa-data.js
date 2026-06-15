@@ -77,13 +77,14 @@
 
   async function loadPredictions() {
     return await loadSupabaseOrLocal(
+      // Sin gate de sesión: anon y free también consultan. El RLS decide qué
+      // filas vuelven — premium ve las 72; anon/free solo los partidos
+      // finished (policy 28_predictions_free_finished.sql).
       async function (client) {
-        if (!(await getSession(client))) return null;
         var ref = await client
           .from('predictions')
           .select('*')
           .eq('published', true)
-          .eq('is_premium', true)
           .order('group_code')
           .order('matchday');
         if (ref.error) throw ref.error;
