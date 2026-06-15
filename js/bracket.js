@@ -90,6 +90,10 @@
   var bestThirdSlots = {};
   var hasPremiumAccess = false;
   var hasLoadedPremiumData = false;
+  // El % de clasificación es premium: los no-premium ven banderas y posiciones
+  // pero nunca el porcentaje. slot() omite el chip de % cuando es false.
+  var showPct = true;
+  var hasLoadedProjection = false;
 
   function isLocalDev() {
     if (window.SupaData && window.SupaData.isLocalDev) return window.SupaData.isLocalDev();
@@ -107,12 +111,20 @@
     teamsByGroup = {};
     Object.keys(GROUP_TEAMS).forEach(function (g) {
       var teams = GROUP_TEAMS[g];
-      var top = function (key) {
-        return teams.slice().sort(function (a, b) {
-          return ((mc[b] || {})[key] || 0) - ((mc[a] || {})[key] || 0);
-        })[0];
+      // top(key, excludes): mayor `key` del grupo, saltando los códigos ya usados,
+      // para que 1.°/2.°/3.° sean siempre equipos distintos.
+      var top = function (key, excludes) {
+        excludes = excludes || [];
+        return teams.slice()
+          .filter(function (c) { return excludes.indexOf(c) === -1; })
+          .sort(function (a, b) {
+            return ((mc[b] || {})[key] || 0) - ((mc[a] || {})[key] || 0);
+          })[0];
       };
-      teamsByGroup[g] = { 1: top('first_pct'), 2: top('second_pct'), 3: top('best_third_pct') };
+      var first  = top('first_pct');
+      var second = top('second_pct', [first]);
+      var third  = top('best_third_pct', [first, second]);
+      teamsByGroup[g] = { 1: first, 2: second, 3: third };
     });
   }
 
@@ -238,7 +250,7 @@
       + '<span class="bk-slot-name">' + name + '</span>'
       + '<span class="bk-slot-tag">' + tag + '</span>'
       + '</div>'
-      + '<span class="bk-pct">' + pct + '</span>'
+      + (showPct ? '<span class="bk-pct">' + pct + '</span>' : '')
       + '</div>';
   }
 
@@ -330,15 +342,76 @@
   function setPremiumState(isPremium) {
     hasPremiumAccess = !!isPremium;
     var el = document.getElementById('bracket-inner');
-    if (el) el.classList.toggle('bk-locked', !hasPremiumAccess);
     var note = document.getElementById('bk-premium-note');
+    // El blur nunca se usa: solo afectaba al %, que ahora se oculta por completo
+    // para los no-premium. Mantenemos la nota de upsell del % visible para ellos.
+    if (el) el.classList.remove('bk-locked');
     if (note) note.style.display = hasPremiumAccess ? 'none' : '';
-    if (!hasPremiumAccess && el) {
-      el.innerHTML = renderBracket(null);
-      hasLoadedPremiumData = false;
+
+    if (hasPremiumAccess) {
+      if (!hasLoadedPremiumData) loadAndRenderPremiumData();
       return;
     }
-    if (hasPremiumAccess && !hasLoadedPremiumData) loadAndRenderPremiumData();
+    // No-premium: banderas + posiciones de los clasificados proyectados, sin %.
+    loadAndRenderPublicProjection();
+  }
+
+  /* ── Proyección pública (solo códigos, sin %) para no-premium ── */
+  function getRpcClient() {
+    if (window.SupaData && window.SupaData.getClient) {
+      var c = window.SupaData.getClient();
+      if (c) return c;
+    }
+    if (window.SupaAuth && window.SupaAuth.getClient) return window.SupaAuth.getClient();
+    return null;
+  }
+
+  function loadPublicProjection() {
+    var c = getRpcClient();
+    if (!c) return Promise.resolve(null);
+    return c.rpc('get_bracket_projection')
+      .then(function (ref) { return ref.error ? null : (ref.data || null); })
+      .catch(function () { return null; });
+  }
+
+  function applyPublicProjection(proj) {
+    teamsByGroup = {};
+    (proj.groups || []).forEach(function (g) {
+      teamsByGroup[String(g.group)] = { 1: g.first, 2: g.second, 3: g.third };
+    });
+    // buildBestThirdSlots solo necesita group/code/rank/qualifies de terceros;
+    // los campos de % faltantes se tratan como 0 (no afectan el orden).
+    buildBestThirdSlots({}, proj.terceros || []);
+  }
+
+  // Render del estado actual sin %: banderas si ya hay proyección en memoria,
+  // etiquetas de posición si todavía no. Idempotente — se puede llamar varias veces.
+  function renderProjection() {
+    var inner = document.getElementById('bracket-inner');
+    if (!inner) return;
+    showPct = false;
+    var hasData = Object.keys(teamsByGroup).length > 0;
+    // mc truthy ({}) hace que resolveSlot corra usando teamsByGroup/bestThirdSlots;
+    // el % queda oculto por showPct=false.
+    inner.innerHTML = renderBracket(hasData ? {} : null);
+  }
+
+  function loadAndRenderPublicProjection() {
+    renderProjection();                  // muestra lo que haya (etiquetas o banderas)
+    if (hasLoadedProjection) return;     // ya se pidió (o está en vuelo)
+    hasLoadedProjection = true;
+
+    loadPublicProjection()
+      .then(function (proj) {
+        if (hasPremiumAccess) return;            // cambió de estado mientras cargaba
+        if (!proj || !(proj.groups && proj.groups.length)) {
+          hasLoadedProjection = false;           // permitir reintento
+          return;
+        }
+        applyPublicProjection(proj);
+        renderProjection();                      // ahora con banderas
+      })
+      .catch(function () { hasLoadedProjection = false; });
   }
 
   /* ── Init ── */
@@ -396,6 +469,7 @@
         }
         buildTeamsByGroup(mc);
         buildBestThirdSlots(mc, normalized.terceros);
+        showPct = true;
         inner.innerHTML = renderBracket(mc);
       })
       .catch(function () {
@@ -408,12 +482,15 @@
     var inner = document.getElementById('bracket-inner');
     if (!inner) return;
 
-    // Render static structure first (no mc data yet)
+    // Estructura estática primero (sin datos, sin blur). El estado real lo fija
+    // auth.js vía setPremiumState; arrancamos en modo no-premium (banderas, sin %).
+    showPct = false;
     inner.innerHTML = renderBracket(null);
-    inner.classList.add('bk-locked');
 
     if (window.__authState && window.__authState.hasFullAccess) {
       setPremiumState(true);
+    } else {
+      setPremiumState(false);
     }
   }
 
