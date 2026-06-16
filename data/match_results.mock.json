@@ -149,6 +149,16 @@
       "status": "finished",
       "home_goals": 1,
       "away_goals": 1
+    },
+    {
+      "match_number": 13,
+      "phase": "group",
+      "group_id": "G",
+      "home_team": "irn",
+      "away_team": "nzl",
+      "status": "finished",
+      "home_goals": 2,
+      "away_goals": 2
     }
   ]
 }
