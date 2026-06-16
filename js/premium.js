@@ -377,20 +377,19 @@
     var scorelines = parseScorelines(p.top_scorelines);
     if (!scorelines.length) return '';
     // En mobile mostramos los primeros 5 y colapsamos el resto tras un toggle
-    // para no alargar la tarjeta. El marcador real siempre queda visible.
+    // para no alargar la tarjeta.
     var VISIBLE = 5;
     var hasExtra = scorelines.length > VISIBLE;
     var html = '<div class="prono-scores">'
       + '<span class="prono-scores-label">Marcadores más probables</span>'
       + '<div class="prono-scores-chips">';
-    var hitFound = false;
     scorelines.forEach(function(item, index) {
       var pct = parseFloat(item.pct);
       var pctText = pct.toFixed(1).replace(/\.0$/, '') + '%';
-      var isHit = !!(result && String(item.score) === result.score);
-      if (isHit) hitFound = true;
-      // Los extras (índice >= 5) quedan ocultos salvo que sean el marcador real
-      var isExtra = index >= VISIBLE && !isHit;
+      // El check solo cuando el marcador real coincide con uno de los 5 más
+      // probables. Fuera del top-5 (o si no estaba en la lista) no hay acierto.
+      var isHit = !!(result && index < VISIBLE && String(item.score) === result.score);
+      var isExtra = index >= VISIBLE;
       html += '<span class="prono-score-chip' + (index === 0 ? ' prono-score-top' : '') + (isHit ? ' prono-score-hit' : '') + (isExtra ? ' prono-score-extra' : '') + '">'
         + (isHit ? '<span class="prono-score-check">&#x2714;</span>' : '')
         + '<strong>' + escapeHtml(item.score) + '</strong>'
@@ -400,14 +399,6 @@
     if (hasExtra) {
       html += '<button type="button" class="prono-score-more" data-extra="' + (scorelines.length - VISIBLE)
         + '" onclick="this.closest(\'.prono-scores-chips\').classList.toggle(\'show-extra\')"></button>';
-    }
-    if (result && !hitFound) {
-      // El marcador real no estaba en el top-5: se muestra igual como chip final
-      html += '<span class="prono-score-chip prono-score-hit">'
-        + '<span class="prono-score-check">&#x2714;</span>'
-        + '<strong>' + escapeHtml(result.score) + '</strong>'
-        + '<small>real</small>'
-        + '</span>';
     }
     html += '</div></div>';
     return html;
