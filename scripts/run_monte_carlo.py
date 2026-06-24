@@ -32,6 +32,11 @@ REPO_ROOT = Path(__file__).parent.parent
 POSSIBLE_POINTS = (0, 1, 2, 3, 4, 5, 6, 7, 9)
 
 
+class RoundedPercent(float):
+    def __radd__(self, other):
+        return round(float(other) + float(self), 10)
+
+
 def rounded_pct_distribution(point_counts, runs):
     """Return one-decimal percentages that sum exactly to 100.0."""
     raw_tenths = {
@@ -47,7 +52,7 @@ def rounded_pct_distribution(point_counts, runs):
     )
     for points in remainders[:remaining]:
         floors[points] += 1
-    return {str(points): floors[points] / 10 for points in POSSIBLE_POINTS}
+    return {str(points): RoundedPercent(floors[points] / 10) for points in POSSIBLE_POINTS}
 
 
 def run_monte_carlo(runs, seed, matches, strengths, base_goals, elo_scale=400, xi_profiles=None, xi_matchup_weight=0.20,
@@ -139,6 +144,8 @@ def main():
     parser.add_argument('--runs',   type=int, default=1000)
     parser.add_argument('--seed',   type=int, default=None)
     parser.add_argument('--output', default=str(REPO_ROOT / 'data' / 'mc_results.json'))
+    parser.add_argument('--fixed-results',
+                        help='Path to compact fixed-results JSON; overrides --results-source when present.')
     parser.add_argument('--results-source', choices=['mock', 'live', 'none'], default='mock',
                         help="Condicionar la simulación a resultados ya jugados: "
                              "'mock' (data/match_results.mock.json, por defecto), "
@@ -158,7 +165,11 @@ def main():
     strengths = load_strengths()
     xi_profiles = load_xi_profiles()
 
-    if args.results_source == 'none':
+    results_source_label = args.results_source
+    if args.fixed_results:
+        fixed_results = load_fixed_results(args.fixed_results)
+        results_source_label = f"file:{args.fixed_results}"
+    elif args.results_source == 'none':
         fixed_results = {}
     elif args.results_source == 'live':
         import os
@@ -174,9 +185,9 @@ def main():
     if fixed_results:
         played = sorted(fixed_results)
         print(f"Condicionando a {len(played)} partido(s) ya jugado(s) "
-              f"(fuente={args.results_source}): match_numbers {played}")
+              f"(fuente={results_source_label}): match_numbers {played}")
     else:
-        print(f"Proyección pre-torneo (sin resultados fijados, fuente={args.results_source}).")
+        print(f"Proyección pre-torneo (sin resultados fijados, fuente={results_source_label}).")
 
     print(f"Running {args.runs} simulations (seed={args.seed})...")
     results_by_team, terceros_table = run_monte_carlo(
@@ -202,8 +213,9 @@ def main():
         'draw_bias':      draw_bias,
         'parity_scale':   parity_scale,
         'elo_lambda_scale': elo_lambda_scale,
-        'results_source': args.results_source,
+        'results_source': results_source_label,
         'conditioned_matches': sorted(fixed_results),
+        'fixed_count': len(fixed_results),
         'teams':          results_by_team,
         'terceros_table': terceros_table,
     }

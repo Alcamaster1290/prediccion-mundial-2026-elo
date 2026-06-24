@@ -216,6 +216,21 @@ def test_export_mc_results_uploads_terceros_table(monkeypatch):
     ]
 
 
+def test_should_run_strengths_tail_respects_mc_only_flag():
+    class Args:
+        all = False
+        strengths = False
+        strengths_only = False
+        matches = False
+        players = False
+        team_profiles = False
+        predictions = False
+        national_elo = False
+        mc_only = True
+
+    assert export_to_supabase.should_run_strengths_tail(Args) is False
+
+
 def test_gen_mc_uses_mc_data_version(tmp_path):
     out_path = tmp_path / "seed_mc.sql"
     mc_data = sample_mc_data()

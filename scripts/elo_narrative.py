@@ -148,25 +148,23 @@ def bench_sentence(match_id, team_name, bench_profile, avoid_index=None):
         options = [
             (
                 f'En el banquillo de {team_name} espera {sub["name"]}{club_part} '
-                f'con un roce de club de {round(sub["elo"])} puntos. Su ingreso elevaría '
-                f'{line} titular de un promedio de {round(sub["line_avg"])} a cerca de '
-                f'{round(sub["new_avg"])} puntos, y por eso es el cambio que puede alterar el desarrollo.'
+                f'con roce competitivo para subir el ritmo de {line}. Su ingreso puede '
+                'cambiar alturas, acelerar la circulación y alterar el desarrollo.'
             ),
             (
                 f'{team_name} guarda una carta fuerte en {sub["name"]}{club_part} '
-                f'con {round(sub["elo"])} puntos de roce de club. Si entra, {line} pasaría '
-                f'de un promedio de {round(sub["line_avg"])} a cerca de {round(sub["new_avg"])} puntos, '
-                'un salto capaz de cambiar el guion del partido.'
+                'con roce de club para sostener el impacto desde la banca. Si entra, '
+                f'{line} gana energía y el guion del partido puede cambiar.'
             ),
             (
                 f'El revulsivo de {team_name} es {sub["name"]}{club_part} y aporta '
-                f'{round(sub["elo"])} puntos de roce de club desde la banca. Con él en cancha, '
-                f'{line} sube de {round(sub["line_avg"])} a unos {round(sub["new_avg"])} puntos de promedio.'
+                f'roce de club desde la banca. Con él en cancha, {line} puede jugar '
+                'más arriba y sostener mejor los duelos.'
             ),
             (
                 f'Si el plan no funciona, {team_name} tiene en {sub["name"]}{club_part} '
-                f'un recambio de {round(sub["elo"])} puntos de roce de club que lleva '
-                f'{line} de {round(sub["line_avg"])} a cerca de {round(sub["new_avg"])} puntos.'
+                f'un recambio con roce de club para refrescar {line} y cambiar la '
+                'dirección emocional del partido.'
             ),
         ]
         index = zlib.crc32(f'{match_id}|bench{team_name}'.encode('utf-8')) % len(options)
@@ -198,41 +196,37 @@ def _names_clause(profile, line):
 
 def opening_sentence(match_id, name_a, name_b, gap):
     abs_gap = abs(gap)
-    gap_int = round(abs_gap)
     phrase = gap_phrase(abs_gap)
     if abs_gap < 25:
         options = [
             (
-                f'Apenas {gap_int} puntos de roce de club separan al once de {name_a} '
-                f'del de {name_b}, un margen que la curva ELO traduce en duelos repartidos '
-                'casi a partes iguales.'
+                f'Los onces de {name_a} y {name_b} llegan casi en la misma línea de '
+                'roce de club, un margen que la curva ELO lee como un partido de detalles.'
             ),
             (
-                f'Los onces de {name_a} y {name_b} llegan separados por solo {gap_int} puntos '
-                'de roce de club, de modo que la curva ELO anticipa duelos muy repartidos.'
+                f'Entre {name_a} y {name_b} no aparece una distancia fuerte en roce de club, '
+                'así que el modelo espera un cruce abierto y muy sensible al primer golpe.'
             ),
             (
                 f'En roce de club casi no hay distancia entre {name_a} y {name_b}, '
-                f'con {gap_int} puntos de diferencia y duelos que se reparten casi a partes iguales.'
+                'con duelos que pueden girar por ritmo, precisión y lectura de los espacios.'
             ),
         ]
         return pick(match_id, 'opening', options)
 
     fav, dog = (name_a, name_b) if gap >= 0 else (name_b, name_a)
-    duel = round(expected_duel_pct(abs_gap))
     options = [
         (
-            f'La brecha global es de {gap_int} puntos de roce de club a favor de {fav}, '
-            f'lo que en la escala ELO equivale a imponerse en unos {duel} de cada 100 duelos '
-            f'directos. Se trata de {phrase}.'
+            f'La lectura global del roce de club favorece a {fav}. La curva ELO lo interpreta '
+            f'como {phrase}, aunque {dog} conserva caminos si logra bajar el ritmo y proteger su área.'
         ),
         (
-            f'{fav} parte con {gap_int} puntos más de roce de club que {dog}, una distancia '
-            f'que la curva ELO traduce en ganar cerca de {duel} de cada 100 duelos directos. Es {phrase}.'
+            f'{fav} parte mejor perfilado que {dog} por jerarquía de once y roce de club. '
+            f'La ventaja no decide sola el partido, pero sí ordena la lectura inicial como {phrase}.'
         ),
         (
-            f'El once de {fav} promedia {gap_int} puntos más que el de {dog}, y en términos ELO '
-            f'eso significa imponerse en aproximadamente {duel} de cada 100 duelos. Hablamos de {phrase}.'
+            f'El once de {fav} llega con más respaldo competitivo que el de {dog}. En términos '
+            f'de modelo, eso coloca el partido en zona de {phrase}.'
         ),
     ]
     return pick(match_id, 'opening', options)
@@ -243,13 +237,11 @@ def decisive_edge_sentence(match_id, name_a, name_b, comparison):
     key = max(edges, key=lambda k: abs(edges[k]))
     value = edges[key]
     mine, theirs = EDGE_PHRASE[key]
-    points = round(abs(value))
     if value >= 0:
         names = _names_clause(comparison['a']['profile'], key.split('_vs_')[0])
         return (
             f'El cruce que más desequilibra enfrenta a {mine} de {name_a}{names} '
-            f'con {theirs} de {name_b}, donde la diferencia llega a {points} puntos '
-            f'a favor de {name_a}.'
+            f'con {theirs} de {name_b}, donde {name_a} encuentra su ventaja más clara.'
         )
     mirror = {
         'attack_vs_defense': 'defense',
@@ -260,7 +252,7 @@ def decisive_edge_sentence(match_id, name_a, name_b, comparison):
     names = _names_clause(comparison['b']['profile'], mirror)
     return (
         f'El cruce que más desequilibra enfrenta a {mine} de {name_a} con {theirs} '
-        f'de {name_b}{names} donde {name_b} manda por {points} puntos.'
+        f'de {name_b}{names} donde {name_b} encuentra su ventaja más clara.'
     )
 
 
@@ -293,10 +285,9 @@ def matchup_narrative(match, comparison, bench_profiles):
 
 def _edge_clause(key, value):
     mine, theirs = EDGE_PHRASE[key]
-    points = round(abs(value))
     if value >= 0:
-        return f'{mine} frente a {theirs} rival, con {points} puntos a favor'
-    return f'{mine} frente a {theirs} rival, donde cede {points} puntos'
+        return f'{mine} frente a {theirs} rival, donde puede imponer condiciones'
+    return f'{mine} frente a {theirs} rival, donde necesita protección colectiva'
 
 
 def team_context_sentences(side, bench_profile):
@@ -304,9 +295,7 @@ def team_context_sentences(side, bench_profile):
     best_key, best_value = strongest_edge(side)
     worst_key, worst_value = weakest_edge(side)
     text = (
-        f'El once promedia {profile["xi_blend"]:.1f} puntos de roce de club, '
-        f'con la defensa en {profile["lines"]["defense"]:.1f}, el mediocampo en '
-        f'{profile["lines"]["midfield"]:.1f} y el ataque en {profile["lines"]["attack"]:.1f}. '
+        'El once tiene una lectura clara de defensa, mediocampo, ataque y roce de club. '
         f'Su mejor argumento aparece en {_edge_clause(best_key, best_value)}, mientras que '
         f'su zona de riesgo está en {_edge_clause(worst_key, worst_value)}.'
     )
@@ -324,10 +313,8 @@ def team_context_sentences(side, bench_profile):
 
 def partial_side_context(profile):
     return polish(
-        f'El once promedia {profile["xi_blend"]:.1f} puntos de roce de club, '
-        f'con la defensa en {profile["lines"]["defense"]:.1f}, el mediocampo en '
-        f'{profile["lines"]["midfield"]:.1f} y el ataque en {profile["lines"]["attack"]:.1f}. '
-        'La comparación de líneas queda limitada porque el rival no tiene un once '
+        'El once tiene una base legible de roce de club, pero la comparación de '
+        'líneas queda limitada porque el rival no tiene un once '
         'completo con ELO de club.'
     )
 
@@ -349,10 +336,8 @@ def partial_pair_note(name_a, name_b, profile_a, profile_b):
     available = profile_a or profile_b
     missing = name_b if profile_a else name_a
     return polish(
-        f'La comparación de onces es parcial. {available["name"]} sí promedia '
-        f'{available["xi_blend"]:.1f} puntos de roce de club, con la defensa en '
-        f'{available["lines"]["defense"]:.1f}, el mediocampo en {available["lines"]["midfield"]:.1f} '
-        f'y el ataque en {available["lines"]["attack"]:.1f}, mientras que {missing} no tiene un '
-        'once titular completo con ELO de club, por lo que ese lado se evalúa con la base '
-        'internacional sin forzar duelos individuales.'
+        f'La comparación de onces es parcial. {available["name"]} sí tiene una base '
+        f'de roce de club para leer sus líneas, mientras que {missing} no tiene un once '
+        'titular completo con ELO de club. Ese lado se evalúa con la base internacional '
+        'sin forzar duelos individuales.'
     )

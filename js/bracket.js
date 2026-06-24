@@ -345,13 +345,11 @@
     var note = document.getElementById('bk-premium-note');
     // El blur nunca se usa: solo afectaba al %, que ahora se oculta por completo
     // para los no-premium. Mantenemos la nota de upsell del % visible para ellos.
-    if (el) el.classList.remove('bk-locked');
+    if (el && el.classList && el.classList.remove) el.classList.remove('bk-locked');
     if (note) note.style.display = hasPremiumAccess ? 'none' : '';
 
-    if (hasPremiumAccess) {
-      if (!hasLoadedPremiumData) loadAndRenderPremiumData();
-      return;
-    }
+    if (hasPremiumAccess && !hasLoadedPremiumData) loadAndRenderPremiumData();
+    if (hasPremiumAccess) return;
     // No-premium: banderas + posiciones de los clasificados proyectados, sin %.
     loadAndRenderPublicProjection();
   }
@@ -479,13 +477,13 @@
   }
 
   function init() {
-    var inner = document.getElementById('bracket-inner');
-    if (!inner) return;
+    var el = document.getElementById('bracket-inner');
+    if (!el) return;
 
     // Estructura estática primero (sin datos, sin blur). El estado real lo fija
     // auth.js vía setPremiumState; arrancamos en modo no-premium (banderas, sin %).
     showPct = false;
-    inner.innerHTML = renderBracket(null);
+    el.innerHTML = renderBracket(null);
 
     if (window.__authState && window.__authState.hasFullAccess) {
       setPremiumState(true);

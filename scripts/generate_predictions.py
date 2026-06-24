@@ -26,10 +26,11 @@ from elo_narrative import (
     missing_side_context,
     partial_pair_note,
     partial_side_context,
+    polish,
     team_context_sentences,
 )
 from elo_probability import rounded_outcome_percentages, top_scoreline_percentages
-from xi_matchups import build_xi_profiles, matchup_adjusted_strengths
+from xi_matchups import build_xi_profiles, matchup_adjusted_strengths, normalize_line
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 REPO_ROOT = Path(__file__).parent.parent
@@ -195,8 +196,10 @@ def rest_phrase(days_a, days_b):
     if days_a is None or days_b is None:
         return ""
     if days_a == days_b:
-        return f" Ambos llegan con {days_a} días de margen."
-    return f" El descanso también pesa, con {days_a} días para el local y {days_b} para el visitante."
+        return " Ambos llegan con un margen de descanso parecido."
+    if days_a > days_b:
+        return " El local llega con algo más de aire."
+    return " El visitante llega con algo más de aire."
 
 
 def build_calendar_note(match, fixture_index):
@@ -213,10 +216,8 @@ def build_calendar_note(match, fixture_index):
         days_a = days_between(match, next_a)
         days_b = days_between(match, next_b)
         return (
-            f"En el calendario, el debut define el margen inicial del Grupo {group}. "
-            f"{name_a} enfrentará luego a {opponent_name(next_a, team_a)} y "
-            f"{name_b} a {opponent_name(next_b, team_b)}, así que sumar aquí reduce "
-            f"la urgencia de la segunda jornada."
+            f"En el calendario, el debut marca el margen inicial del Grupo {group}. "
+            f"Sumar aquí reduce la urgencia de la segunda jornada."
             + rest_phrase(days_a, days_b)
         )
 
@@ -226,18 +227,120 @@ def build_calendar_note(match, fixture_index):
         days_a = days_between(match, next_a)
         days_b = days_between(match, next_b)
         return (
-            f"En segunda jornada pesa el resultado del debut. "
-            f"{name_a} cerrará la J3 contra {opponent_name(next_a, team_a)} y "
-            f"{name_b} contra {opponent_name(next_b, team_b)}, por lo que el riesgo "
-            f"del partido cambia según los puntos ya sumados."
+            f"En segunda jornada pesa el debut. "
+            f"{name_a} cerrará el grupo contra {opponent_name(next_a, team_a)} y "
+            f"{name_b} contra {opponent_name(next_b, team_b)}, así que el riesgo cambia "
+            f"según los puntos ya sumados."
             + rest_phrase(days_a, days_b)
         )
 
     return (
-        f"El cierre del Grupo {group} se juega en simultáneo, así que importan el marcador, "
-        f"la diferencia de goles y el corte de mejores terceros. Quien llega con ventaja "
-        f"puede gestionar piernas y quien llega corto de puntos está obligado a arriesgar."
+        f"El cierre del Grupo {group} se juega en simultáneo. Importan el marcador, "
+        f"la diferencia de goles y el corte de mejores terceros."
     )
+
+
+PLAYER_PRIORITY = (
+    "Lionel Messi",
+    "Kylian Mbappé",
+    "Kylian Mbappe",
+    "Cristiano Ronaldo",
+    "Harry Kane",
+    "Vinícius",
+    "Vinicius",
+    "Kevin De Bruyne",
+    "Erling Haaland",
+    "Mohamed Salah",
+    "Lamine Yamal",
+    "Jude Bellingham",
+    "Son Heung-min",
+)
+
+
+LINE_IMPACT = {
+    "attack": "ataca intervalos y fija marcas",
+    "midfield": "ordena la posesión y acelera el pase vertical",
+    "defense": "sostiene duelos y protege el área",
+    "gk": "sostiene al equipo cuando el rival carga el área",
+}
+
+
+def build_player_profiles(teams_data):
+    profiles = {}
+    for team in teams_data.get("teams", []):
+        players = []
+        for player in team.get("players") or []:
+            name = (player.get("name") or "").strip()
+            if not name:
+                continue
+            players.append({
+                "name": name,
+                "club": (player.get("club") or "").strip(),
+                "line": normalize_line(player.get("pos")),
+                "elo": player.get("elo"),
+                "titular": bool(player.get("titular")),
+            })
+        if not players:
+            continue
+
+        selected = None
+        for wanted in PLAYER_PRIORITY:
+            selected = next(
+                (p for p in players if wanted.lower() in p["name"].lower() and p["titular"]),
+                None,
+            )
+            if selected:
+                break
+        if not selected:
+            pool = [p for p in players if p["titular"]] or players
+            selected = max(pool, key=lambda p: p["elo"] if p["elo"] is not None else -1)
+
+        profiles[team["id"]] = {
+            "team_code": team["id"],
+            "team_name": team.get("name") or team["id"].upper(),
+            "player": selected,
+        }
+    return profiles
+
+
+def player_impact_sentence(team_name, profile):
+    if not profile or not profile.get("player"):
+        return ""
+    player = profile["player"]
+    name = player["name"]
+    if name == "Lionel Messi":
+        return (
+            f"En {team_name}, Lionel Messi pesa porque atrae marcas, limpia la recepción "
+            "final y convierte ataques largos en ocasión real."
+        )
+    line = player.get("line") or "attack"
+    impact = LINE_IMPACT.get(line, LINE_IMPACT["attack"])
+    club = f" desde {player['club']}" if player.get("club") else ""
+    return f"En {team_name}, {name}{club} es el jugador diferencial porque {impact}."
+
+
+def player_priority_score(profile):
+    if not profile or not profile.get("player"):
+        return -1
+    player = profile["player"]
+    name = player["name"].lower()
+    for index, wanted in enumerate(PLAYER_PRIORITY):
+        if wanted.lower() in name:
+            return 10000 - index
+    return player["elo"] if player["elo"] is not None else 0
+
+
+def build_player_factor_note(match, player_profiles):
+    home = player_profiles.get(match["home_team"])
+    away = player_profiles.get(match["away_team"])
+    if not home and not away:
+        return ""
+    chosen = home if player_priority_score(home) >= player_priority_score(away) else away
+    team_name = (
+        match.get("home_name") if chosen is home else match.get("away_name")
+    ) or chosen["team_name"]
+    note = player_impact_sentence(team_name, chosen)
+    return "Jugador diferencial. " + note if note else ""
 
 
 def pct_text(value):
@@ -251,26 +354,25 @@ def build_probability_note(match, pa, pd, pb):
 
     if diff < 7:
         return (
-            f"Con todo, el modelo ELO deja un cruce parejo, con {name_a} al {pct_text(pa)}, "
-            f"el empate al {pct_text(pd)} y {name_b} al {pct_text(pb)}."
+            f"Con todo, el modelo ELO no ve un favorito nítido entre {name_a} y {name_b}. "
+            "El partido queda abierto a detalles, balón parado y gestión emocional."
         )
 
     favorite = name_a if pa > pb else name_b
-    favorite_pct = pa if pa > pb else pb
     underdog = name_b if pa > pb else name_a
-    underdog_pct = pb if pa > pb else pa
     return (
-        f"El modelo ELO concede la ventaja a {favorite} con un {pct_text(favorite_pct)}, "
-        f"mientras {underdog} retiene un {pct_text(underdog_pct)} y el empate queda en {pct_text(pd)}."
+        f"El modelo ELO inclina la lectura hacia {favorite}. {underdog} sigue vivo si "
+        "protege su zona frágil, baja el ritmo y castiga transiciones."
     )
 
 
-def compose_prediction_explanation(base_explanation, probability_note, calendar_note):
+def compose_prediction_explanation(base_explanation, probability_note, calendar_note, player_note=""):
     base = (base_explanation or "").strip()
+    player = (player_note or "").strip()
     closing = " ".join(part for part in (probability_note, calendar_note) if part).strip()
-    parts = [part for part in (base, closing) if part]
+    parts = [part for part in (base, player, closing) if part]
     # Párrafos separados por línea en blanco; el frontend los renderiza como <p>.
-    return "\n\n".join(parts).strip()
+    return polish("\n\n".join(parts).strip())
 
 
 def load_json(path: Path):
@@ -294,6 +396,7 @@ def main():
     parity_scale = weights.get("parity_scale", 600.0)
     xi_profiles = build_xi_profiles(teams_data)
     bench_profiles = build_bench_profiles(teams_data)
+    player_profiles = build_player_profiles(teams_data)
 
     ctx_by_id, ctx_by_group_round_pair = build_context_lookup(ctx_data["matches"])
     fixture_index = build_group_fixture_index(matches)
@@ -371,6 +474,7 @@ def main():
             explanation,
             build_probability_note(match, pa, pd, pb),
             build_calendar_note(match, fixture_index),
+            build_player_factor_note(match, player_profiles),
         )
 
         rows.append({

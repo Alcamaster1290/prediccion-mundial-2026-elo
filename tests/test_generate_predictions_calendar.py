@@ -59,7 +59,7 @@ def test_calendar_notes_cover_debut_second_match_and_group_closure():
 
     assert "debut" in j1_note.lower()
     assert "segunda jornada" in j2_note.lower()
-    assert "j3" in j2_note.lower()
+    assert "cerrará el grupo" in j2_note.lower()
     assert "cierre" in j3_note.lower()
     assert "simultáneo" in j3_note.lower()
     assert "diferencia de goles" in j3_note.lower()
@@ -77,12 +77,14 @@ def test_prediction_explanation_adds_probability_and_calendar_when_context_is_mi
     explanation = compose_prediction_explanation(
         "",
         model_note,
-        "Calendario: el debut obliga a construir margen antes de la segunda jornada.",
+        "El calendario del debut obliga a construir margen antes de la segunda jornada.",
     )
 
     assert "Belgica" in explanation
-    assert "75.7%" in explanation
-    assert "Calendario:" in explanation
+    assert "%" not in explanation
+    assert "75.7" not in explanation
+    assert "El modelo ELO inclina la lectura" in explanation
+    assert "calendario" in explanation.lower()
 
 
 def test_prediction_explanation_keeps_base_context_and_adds_model_probability():
@@ -97,13 +99,14 @@ def test_prediction_explanation_keeps_base_context_and_adds_model_probability():
     explanation = compose_prediction_explanation(
         "Qatar puede competir si sostiene el bloque bajo.",
         model_note,
-        "Calendario: el debut condiciona la segunda jornada.",
+        "El calendario del debut condiciona la segunda jornada.",
     )
 
     assert explanation.startswith("Qatar puede competir")
-    assert "El modelo ELO concede la ventaja a Suiza" in explanation
-    assert "90.3%" in explanation
-    assert "Calendario:" in explanation
+    assert "El modelo ELO inclina la lectura hacia Suiza" in explanation
+    assert "%" not in explanation
+    assert "90.3" not in explanation
+    assert "calendario" in explanation.lower()
 
 
 def test_context_lookup_keeps_team_context_aligned_when_match_order_changes():
@@ -136,6 +139,28 @@ def test_context_lookup_keeps_team_context_aligned_when_match_order_changes():
     assert context_for_team(ctx, "bra")["incentivo_competitivo"] == "Brasil busca liderato."
 
 
+def test_player_factor_note_mentions_messi_without_solo_claim():
+    build_player_profiles = helper("build_player_profiles")
+    build_player_factor_note = helper("build_player_factor_note")
+    teams_data = json.loads((REPO_ROOT / "data/teams.json").read_text(encoding="utf-8"))
+    match = {
+        "match_id": "grp-j-j2-arg-aut",
+        "home_team": "arg",
+        "away_team": "aut",
+        "home_name": "Argentina",
+        "away_name": "Austria",
+    }
+
+    note = build_player_factor_note(match, build_player_profiles(teams_data))
+
+    assert note.startswith("Jugador diferencial.")
+    assert "Lionel Messi" in note
+    assert "atrae marcas" in note
+    assert "%" not in note
+    assert "puntos" not in note
+    assert "solo" not in note.lower()
+
+
 def test_argentina_austria_prediction_uses_xi_matchup_not_star_solo_claim(generated_prediction_sql):
     sql = generated_prediction_sql
     match_line = next(
@@ -146,6 +171,8 @@ def test_argentina_austria_prediction_uses_xi_matchup_not_star_solo_claim(genera
     assert "roce de club" in match_line
     assert "defensa" in match_line.lower()
     assert "mediocampo" in match_line.lower()
+    assert "Jugador diferencial" in match_line
+    assert "Lionel Messi" in match_line
     assert "resolver el partido solo" not in match_line.lower()
     assert "puede resolver él solo" not in match_line.lower()
 

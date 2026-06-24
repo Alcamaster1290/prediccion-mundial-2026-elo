@@ -181,10 +181,10 @@
     el.innerHTML = '<div class="prono-locked">'
       + '<div class="prono-lock-icon">&#x1F512;</div>'
       + '<h3 class="prono-lock-title">Pronósticos detallados por partido</h3>'
-      + '<p class="prono-lock-desc">Accede a probabilidades calculadas con ELO de clubes, XI probable, contexto de grupo y narrativa competitiva para los 72 partidos de la fase de grupos.</p>'
+      + '<p class="prono-lock-desc">Accede a una lectura editorial de cada partido con ELO de clubes, XI probable, contexto de grupo y narrativa competitiva para los 72 partidos de la fase de grupos.</p>'
       + '<ul class="prono-lock-benefits">'
-      + '  <li>&#x2714; Probabilidad de victoria / empate / derrota por partido</li>'
-      + '  <li>&#x2714; Marcadores exactos más probables con su probabilidad</li>'
+      + '  <li>&#x2714; Lectura editorial del favorito, rival incómodo y escenarios de partido</li>'
+      + '  <li>&#x2714; Factor de jugador diferencial en equipos con talentos que alteran el plan</li>'
       + '  <li>&#x2714; Contexto táctico y análisis de cada equipo</li>'
       + '  <li>&#x2714; Etiqueta global del partido (favorito, duelo parejo, etc.)</li>'
       + '  <li>&#x2714; Explicación del pronóstico en texto</li>'
@@ -273,7 +273,7 @@
 
     if (includeTitle) {
       html += '<h3 class="pred-subsection-title">Pronósticos Fase de Grupos</h3>'
-        + '<p class="pred-terceros-note">Probabilidades por partido, contexto táctico y explicación del pronóstico para la fase de grupos.</p>';
+        + '<p class="pred-terceros-note">Lectura editorial por partido, contexto táctico, jugador diferencial y explicación del pronóstico para la fase de grupos.</p>';
     }
 
     if (includeBadge) {
@@ -335,7 +335,7 @@
     return '<div class="prono-free-upsell">'
       + '<h3 class="prono-free-upsell-title">Desbloquea todos los pronósticos</h3>'
       + '<p class="prono-free-upsell-desc">Estás viendo gratis los pronósticos de los partidos ya jugados. '
-      + 'Accede a los 72 partidos de la fase de grupos, los marcadores más probables de los próximos cruces '
+      + 'Accede a los 72 partidos de la fase de grupos, la lectura editorial de los próximos cruces '
       + 'y la simulación Monte Carlo de clasificación.</p>'
       + cta
       + '</div>';
@@ -347,7 +347,7 @@
     var intro = '<div class="prono-free-intro">'
       + '<span class="prono-free-badge">Gratis · partidos jugados</span>'
       + '<h3 class="prono-free-title">Pronósticos de partidos ya jugados</h3>'
-      + '<p class="prono-free-desc">Mira las probabilidades, los marcadores más probables y el análisis '
+      + '<p class="prono-free-desc">Lee la interpretación editorial, el jugador diferencial y el análisis '
       + 'de los partidos que ya se disputaron, y compáralos con el resultado real.</p>'
       + '</div>';
     var cards = renderActiveContent(predictions, {
@@ -362,49 +362,7 @@
     renderPaymentModal(_lastProfile);
   }
 
-  function parseScorelines(raw) {
-    var list = raw;
-    if (typeof list === 'string') {
-      try { list = JSON.parse(list); } catch (e) { return []; }
-    }
-    if (!Array.isArray(list)) return [];
-    return list.filter(function(item) {
-      return item && /^\d{1,2}-\d{1,2}$/.test(String(item.score || '')) && parseFloat(item.pct) > 0;
-    });
-  }
-
-  function renderScorelines(p, result) {
-    var scorelines = parseScorelines(p.top_scorelines);
-    if (!scorelines.length) return '';
-    // En mobile mostramos los primeros 5 y colapsamos el resto tras un toggle
-    // para no alargar la tarjeta.
-    var VISIBLE = 5;
-    var hasExtra = scorelines.length > VISIBLE;
-    var html = '<div class="prono-scores">'
-      + '<span class="prono-scores-label">Marcadores más probables</span>'
-      + '<div class="prono-scores-chips">';
-    scorelines.forEach(function(item, index) {
-      var pct = parseFloat(item.pct);
-      var pctText = pct.toFixed(1).replace(/\.0$/, '') + '%';
-      // El check solo cuando el marcador real coincide con uno de los 5 más
-      // probables. Fuera del top-5 (o si no estaba en la lista) no hay acierto.
-      var isHit = !!(result && index < VISIBLE && String(item.score) === result.score);
-      var isExtra = index >= VISIBLE;
-      html += '<span class="prono-score-chip' + (index === 0 ? ' prono-score-top' : '') + (isHit ? ' prono-score-hit' : '') + (isExtra ? ' prono-score-extra' : '') + '">'
-        + (isHit ? '<span class="prono-score-check">&#x2714;</span>' : '')
-        + '<strong>' + escapeHtml(item.score) + '</strong>'
-        + '<small>' + pctText + '</small>'
-        + '</span>';
-    });
-    if (hasExtra) {
-      html += '<button type="button" class="prono-score-more" data-extra="' + (scorelines.length - VISIBLE)
-        + '" onclick="this.closest(\'.prono-scores-chips\').classList.toggle(\'show-extra\')"></button>';
-    }
-    html += '</div></div>';
-    return html;
-  }
-
-  function renderPredictionCard(p) {
+  function renderEditorialOutlook(p, result) {
     var codeA = safeTeamCode(p.team_a);
     var codeB = safeTeamCode(p.team_b);
     var nameA = teamName(codeA || p.team_a);
@@ -412,11 +370,37 @@
     var aWin  = pctValue(p.team_a_win_probability);
     var draw  = pctValue(p.draw_probability);
     var bWin  = pctValue(p.team_b_win_probability);
+    var text;
+
+    if (Math.abs(aWin - bWin) < 7) {
+      text = 'El modelo no ve un favorito nítido entre ' + nameA + ' y ' + nameB
+        + '. La previa queda abierta a detalles de área, balón parado y manejo emocional.';
+    } else {
+      var favorite = aWin > bWin ? nameA : nameB;
+      var underdog = aWin > bWin ? nameB : nameA;
+      text = 'La lectura previa favorece a ' + favorite + ', pero ' + underdog
+        + ' puede cambiar el guion si protege su zona débil y acelera bien sus transiciones.';
+    }
+
+    if (draw >= Math.max(aWin, bWin) - 8) {
+      text += ' El empate aparece como un escenario competitivo, no como accidente.';
+    }
+    if (result) {
+      text += ' El marcador final permite contrastar esa lectura con lo que pasó en cancha.';
+    }
+
+    return '<div class="prono-editorial-outlook">'
+      + '<span class="prono-editorial-label">Lectura editorial</span>'
+      + '<p>' + escapeHtml(text) + '</p>'
+      + '</div>';
+  }
+
+  function renderPredictionCard(p) {
+    var codeA = safeTeamCode(p.team_a);
+    var codeB = safeTeamCode(p.team_b);
+    var nameA = teamName(codeA || p.team_a);
+    var nameB = teamName(codeB || p.team_b);
     var result = findFinalResult(p);
-    var hitA    = !!(result && result.outcome === 'a');
-    var hitDraw = !!(result && result.outcome === 'draw');
-    var hitB    = !!(result && result.outcome === 'b');
-    var check   = ' <span class="prono-hit-check">&#x2714;</span>';
     // Ancla navegable por partido: los fixtures de equipo saltan aquí
     // mediante handleFixtureClick(match_id).
     var anchorId = String(p.match_id || '').toLowerCase().replace(/[^a-z0-9-]/g, '');
@@ -432,24 +416,7 @@
       + (result ? '<span class="prono-final-badge">&#x2714; Final ' + escapeHtml(result.score) + '</span>' : '')
       + (p.global_tag ? '<span class="prono-global-tag">' + escapeHtml(p.global_tag) + '</span>' : '')
       + '  </div>'
-      + '  <div class="prono-probs">'
-      + '    <div class="prono-prob-row' + (hitA ? ' prono-prob-hit' : '') + '">'
-      + '      <span class="prono-prob-label">' + escapeHtml(nameA) + '</span>'
-      + '      <div class="prono-prob-bar-wrap"><div class="prono-prob-bar prono-bar-a" style="width:' + aWin + '%"></div></div>'
-      + '      <span class="prono-prob-pct">' + aWin.toFixed(0) + '%' + (hitA ? check : '') + '</span>'
-      + '    </div>'
-      + '    <div class="prono-prob-row' + (hitDraw ? ' prono-prob-hit' : '') + '">'
-      + '      <span class="prono-prob-label">Empate</span>'
-      + '      <div class="prono-prob-bar-wrap"><div class="prono-prob-bar prono-bar-draw" style="width:' + draw + '%"></div></div>'
-      + '      <span class="prono-prob-pct">' + draw.toFixed(0) + '%' + (hitDraw ? check : '') + '</span>'
-      + '    </div>'
-      + '    <div class="prono-prob-row' + (hitB ? ' prono-prob-hit' : '') + '">'
-      + '      <span class="prono-prob-label">' + escapeHtml(nameB) + '</span>'
-      + '      <div class="prono-prob-bar-wrap"><div class="prono-prob-bar prono-bar-b" style="width:' + bWin + '%"></div></div>'
-      + '      <span class="prono-prob-pct">' + bWin.toFixed(0) + '%' + (hitB ? check : '') + '</span>'
-      + '    </div>'
-      + '  </div>'
-      + renderScorelines(p, result)
+      + renderEditorialOutlook(p, result)
       + (p.team_a_context || p.team_b_context
          ? '<div class="prono-contexts">'
            + (p.team_a_context ? '<div class="prono-ctx prono-ctx-a"><strong>' + escapeHtml(nameA) + ':</strong> ' + escapeHtml(p.team_a_context) + '</div>' : '')

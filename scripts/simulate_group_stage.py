@@ -63,6 +63,10 @@ def load_xi_profiles():
     return build_xi_profiles(load_json(REPO_ROOT / 'data' / 'teams.json'))
 
 
+def _matches_by_number():
+    return {m['match_number']: m for m in load_matches()}
+
+
 def _result_record(r):
     """Normaliza una fila de resultado a la forma interna, o None si no es un
     partido de grupos terminado con ambos marcadores presentes."""
@@ -80,6 +84,20 @@ def _result_record(r):
     }
 
 
+def _compact_result_record(match_number, score, matches_by_number):
+    fixture = matches_by_number.get(int(match_number))
+    if fixture is None:
+        return None
+    if not isinstance(score, (list, tuple)) or len(score) != 2:
+        return None
+    return {
+        'home_team': fixture.get('home_team'),
+        'away_team': fixture.get('away_team'),
+        'home_goals': int(score[0]),
+        'away_goals': int(score[1]),
+    }
+
+
 def load_fixed_results(path=None):
     """Resultados ya jugados desde data/match_results.mock.json.
 
@@ -89,11 +107,21 @@ def load_fixed_results(path=None):
     path = Path(path) if path else (REPO_ROOT / 'data' / 'match_results.mock.json')
     if not path.exists():
         return {}
+    data = load_json(path)
     fixed = {}
-    for r in load_json(path).get('results', []):
+    results = data.get('results', [])
+    if isinstance(results, dict):
+        matches_by_number = _matches_by_number()
+        for match_number, score in results.items():
+            rec = _compact_result_record(match_number, score, matches_by_number)
+            if rec is not None:
+                fixed[int(match_number)] = rec
+        return fixed
+
+    for r in results:
         rec = _result_record(r)
         if rec is not None and r.get('match_number') is not None:
-            fixed[r['match_number']] = rec
+            fixed[int(r['match_number'])] = rec
     return fixed
 
 

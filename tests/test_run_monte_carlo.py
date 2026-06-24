@@ -93,3 +93,20 @@ def test_load_fixed_results_reads_finished_matches_from_mock():
     # El mock incluye USA 4-1 Paraguay (match 5, grupo D)
     assert 5 in fixed
     assert fixed[5] == {"home_team": "usa", "away_team": "pry", "home_goals": 4, "away_goals": 1}
+
+
+def test_load_fixed_results_reads_compact_fixed_results_file(tmp_path):
+    path = tmp_path / "fixed_results.json"
+    path.write_text(
+        '{"fetched_at":"2026-06-24T00:00:00Z","results":{"25":[2,1]}}',
+        encoding="utf-8",
+    )
+
+    fixed = load_fixed_results(path)
+
+    assert fixed[25] == {
+        "home_team": "mex",
+        "away_team": "kor",
+        "home_goals": 2,
+        "away_goals": 1,
+    }

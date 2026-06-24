@@ -297,12 +297,28 @@ scoreline; only the remaining matches are sampled. The loaders live in
 `simulate_group_stage.py` (`load_fixed_results`, `load_fixed_results_live`),
 keyed by `match_number`, and orientation is corrected if a result's home/away
 is stored inverted relative to the fixture. The output JSON records
-`results_source` and `conditioned_matches`. An empty fixed-results map
-reproduces the pre-tournament run exactly.
+`results_source`, `conditioned_matches`, and `fixed_count`. An empty
+fixed-results map reproduces the pre-tournament run exactly.
+
+The live-update flow writes a compact local snapshot at
+`data/fixed_results.json`:
+
+```json
+{
+  "fetched_at": "2026-06-24T00:00:00Z",
+  "results": {
+    "25": [2, 1]
+  }
+}
+```
+
+`run_monte_carlo.py --fixed-results data/fixed_results.json` uses that snapshot
+and overrides `--results-source`.
 
 ```bash
 python scripts/run_monte_carlo.py --runs 20000 --seed 42                      # conditioned on the mock
 python scripts/run_monte_carlo.py --runs 20000 --seed 42 --results-source live  # conditioned on the DB
+python scripts/run_monte_carlo.py --runs 20000 --seed 42 --fixed-results data/fixed_results.json
 ```
 
 ---
@@ -465,28 +481,36 @@ applied and the service role key is available in the local terminal environment.
 
 ### Matchday update (a result was played)
 
-When a group match finishes, do these in order (service role key in the env):
+When one or more matches finish, provide scores as `match_number:home-away`
+tokens. Example: `25:2-1` means match 25 ended home 2, away 1. CSV input is
+also supported with `match_number,home_goals,away_goals`.
 
 ```bash
-# 1. Load the live result (match_number from matches.json; winner-team optional)
-python scripts/admin_results.py 5 --home-goals 4 --away-goals 1 --status finished --winner-team usa
+# Validate/preview a batch without writing
+python scripts/load_results.py 25:2-1 26:0-0 --dry-run --yes
 
-# 2. Mirror it in the local mock so MC defaults (results-source=mock) see it
-#    -> edit data/match_results.mock.json: add the finished match entry
+# Full admin flow: load results, fetch all finished group matches, run MC, export only the new MC run
+python scripts/update_results.py 25:2-1 26:0-0 --runs 10000 --seed 42
 
-# 3. Refresh the projection conditioned on every finished match
-python scripts/run_monte_carlo.py --runs 20000 --seed 42 --output data/mc_results.json
+# Re-sync projection from already-loaded Supabase results
+python scripts/update_results.py --sync-only --runs 10000 --seed 42
+```
 
-# 4. Push the new projection live (creates a new active simulation_run)
-python scripts/export_to_supabase.py --strengths
+Under the hood, `update_results.py` runs:
+
+```bash
+python scripts/load_results.py 25:2-1 26:0-0 --yes
+python scripts/run_monte_carlo.py --runs 10000 --seed 42 --fixed-results data/fixed_results.json --output data/mc_results.json
+python scripts/export_to_supabase.py --mc-only --mc-results data/mc_results.json
 ```
 
 Notes:
 - `predictions` (1X2 + scorelines) do **not** change when a result is played —
   they are pre-match. Only re-run `generate_predictions.py` + the surgical
   `export_to_supabase.py --predictions` if the *narrative/model* changes.
-- The mock and the live `match_results` table should stay in sync; the mock is
-  the default MC source and is committed, the live table drives the scoreboard.
+- `data/fixed_results.json` is generated from the live `match_results` table and
+  ignored by Git; it replaces manual edits to `data/match_results.mock.json` for
+  admin updates.
 - `data/mc_results.json` and `data/predictions_seed.sql` are gitignored
   artifacts; they sync to Supabase via the exporter, not via git.
 

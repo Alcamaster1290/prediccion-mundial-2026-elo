@@ -564,6 +564,16 @@ def export_mc_results(supabase_url, service_key, mc_data, version='1.0', dry_run
     return True
 
 
+def should_run_strengths_tail(args):
+    if getattr(args, 'mc_only', False):
+        return False
+    selective_flags = (
+        args.matches or args.players or args.team_profiles
+        or args.predictions or args.national_elo
+    )
+    return args.all or args.strengths or args.strengths_only or not selective_flags
+
+
 def main():
     parser = argparse.ArgumentParser(description='Export generated tournament data to Supabase')
     parser.add_argument('--strengths-only', action='store_true',
@@ -571,6 +581,8 @@ def main():
     parser.add_argument('--mc-results',
                         default=str(REPO_ROOT / 'data' / 'mc_results.json'),
                         help='Path to mc_results.json')
+    parser.add_argument('--mc-only', action='store_true',
+                        help='Only export Monte Carlo results; do not require or export team strengths')
     parser.add_argument('--all', action='store_true',
                         help='Export tournament core, players, national ELO, predictions, strengths, and MC results')
     parser.add_argument('--matches', action='store_true',
@@ -594,13 +606,7 @@ def main():
     # cuando se pide explícitamente (--all/--strengths/--strengths-only) o
     # cuando no se pasó ningún flag selectivo (compatibilidad con el modo sin
     # argumentos, que históricamente sincronizaba todo).
-    selective_flags = (
-        args.matches or args.players or args.team_profiles
-        or args.predictions or args.national_elo
-    )
-    run_strengths_tail = (
-        args.all or args.strengths or args.strengths_only or not selective_flags
-    )
+    run_strengths_tail = should_run_strengths_tail(args)
 
     supabase_url = os.environ.get('SUPABASE_URL')
     service_key  = os.environ.get('SUPABASE_SERVICE_KEY')
@@ -642,6 +648,17 @@ def main():
             sys.exit(1)
         if not export_predictions_seed(supabase_url, service_key, seed_path.read_text(encoding='utf-8'), dry_run=args.dry_run):
             sys.exit(1)
+
+    if args.mc_only:
+        mc_path = Path(args.mc_results)
+        if not mc_path.exists():
+            print(f"Run run_monte_carlo.py first: {mc_path} not found.")
+            sys.exit(1)
+        mc_data = load_json(mc_path)
+        version = mc_data.get('version') or '1.3'
+        if not export_mc_results(supabase_url, service_key, mc_data, version=version, dry_run=args.dry_run):
+            sys.exit(1)
+        return
 
     if not run_strengths_tail:
         return
