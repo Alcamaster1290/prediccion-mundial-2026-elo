@@ -20,6 +20,20 @@
     eng:'Inglaterra', cro:'Croacia', gha:'Ghana', pan:'Panamá',
     usa:'EE.UU.', pry:'Paraguay', aus:'Australia', tur:'Turquía'
   };
+  var TEAM_SECTION_BY_CODE = {
+    mex:'mexico', zaf:'sudafrica', kor:'corea', cze:'chequia',
+    can:'canada', bih:'bosnia', qat:'qatar', sui:'suiza',
+    bra:'brasil', mar:'marruecos', hti:'haiti', sco:'escocia',
+    ger:'alemania', cuw:'curazao', civ:'costa-marfil', ecu:'ecuador',
+    ned:'paises-bajos', jpn:'japon', swe:'suecia', tun:'tunez',
+    bel:'belgica', egy:'egipto', irn:'iran', nzl:'nueva-zelanda',
+    esp:'espana', cpv:'cabo-verde', ksa:'arabia-saudita', ury:'uruguay',
+    fra:'francia', sen:'senegal', irq:'irak', nor:'noruega',
+    arg:'argentina', alg:'argelia', aut:'austria', jor:'jordania',
+    por:'portugal', cod:'rd-congo', uzb:'uzbekistan', col:'colombia',
+    eng:'inglaterra', cro:'croacia', gha:'ghana', pan:'panama',
+    usa:'estados-unidos', pry:'paraguay', aus:'australia', tur:'turquia'
+  };
   var ACCESS_READY_MESSAGE = 'Todo desbloqueado. Ya puedes ver todas las predicciones.';
   // Último perfil conocido, para que el botón "Desbloquear todo" del preview
   // gratuito pueda abrir la pantalla de pago con el email correcto.
@@ -48,6 +62,16 @@
     if (!safeCode) return '';
     var name = teamName(safeCode);
     return '<img class="flag-svg" src="assets/flags/' + safeCode + '.svg" alt="' + escapeHtml(name) + '" loading="lazy">';
+  }
+
+  function renderTeamLink(code, name, className) {
+    var safeCode = safeTeamCode(code);
+    var sectionId = TEAM_SECTION_BY_CODE[safeCode];
+    var cls = className || 'prono-team-link';
+    if (!sectionId) {
+      return '<span class="' + escapeHtml(cls) + '">' + escapeHtml(name) + '</span>';
+    }
+    return '<a class="' + escapeHtml(cls) + '" href="#' + escapeHtml(sectionId) + '">' + escapeHtml(name) + '</a>';
   }
 
   function pctValue(value) {
@@ -181,9 +205,11 @@
     el.innerHTML = '<div class="prono-locked">'
       + '<div class="prono-lock-icon">&#x1F512;</div>'
       + '<h3 class="prono-lock-title">Pronósticos detallados por partido</h3>'
-      + '<p class="prono-lock-desc">Accede a una lectura editorial de cada partido con ELO de clubes, XI probable, contexto de grupo y narrativa competitiva para los 72 partidos de la fase de grupos.</p>'
+      + '<p class="prono-lock-desc">Accede a una lectura editorial de cada partido con ELO de clubes, XI probable, porcentajes de victoria, 10 resultados probables y narrativa competitiva para los 72 partidos de la fase de grupos.</p>'
       + '<ul class="prono-lock-benefits">'
       + '  <li>&#x2714; Lectura editorial del favorito, rival incómodo y escenarios de partido</li>'
+      + '  <li>&#x2714; Porcentajes de victoria, empate y derrota por partido</li>'
+      + '  <li>&#x2714; 10 resultados más probables según la simulación</li>'
       + '  <li>&#x2714; Factor de jugador diferencial en equipos con talentos que alteran el plan</li>'
       + '  <li>&#x2714; Contexto táctico y análisis de cada equipo</li>'
       + '  <li>&#x2714; Etiqueta global del partido (favorito, duelo parejo, etc.)</li>'
@@ -273,7 +299,7 @@
 
     if (includeTitle) {
       html += '<h3 class="pred-subsection-title">Pronósticos Fase de Grupos</h3>'
-        + '<p class="pred-terceros-note">Lectura editorial por partido, contexto táctico, jugador diferencial y explicación del pronóstico para la fase de grupos.</p>';
+        + '<p class="pred-terceros-note">Lectura editorial, porcentajes de victoria, 10 resultados probables, jugador diferencial y explicación del pronóstico para la fase de grupos.</p>';
     }
 
     if (includeBadge) {
@@ -335,7 +361,7 @@
     return '<div class="prono-free-upsell">'
       + '<h3 class="prono-free-upsell-title">Desbloquea todos los pronósticos</h3>'
       + '<p class="prono-free-upsell-desc">Estás viendo gratis los pronósticos de los partidos ya jugados. '
-      + 'Accede a los 72 partidos de la fase de grupos, la lectura editorial de los próximos cruces '
+      + 'Accede a los 72 partidos de la fase de grupos, la lectura editorial, los porcentajes de victoria y los 10 resultados de los próximos cruces '
       + 'y la simulación Monte Carlo de clasificación.</p>'
       + cta
       + '</div>';
@@ -347,7 +373,7 @@
     var intro = '<div class="prono-free-intro">'
       + '<span class="prono-free-badge">Gratis · partidos jugados</span>'
       + '<h3 class="prono-free-title">Pronósticos de partidos ya jugados</h3>'
-      + '<p class="prono-free-desc">Lee la interpretación editorial, el jugador diferencial y el análisis '
+      + '<p class="prono-free-desc">Lee la interpretación editorial, los porcentajes de victoria, los 10 resultados probables, el jugador diferencial y el análisis '
       + 'de los partidos que ya se disputaron, y compáralos con el resultado real.</p>'
       + '</div>';
     var cards = renderActiveContent(predictions, {
@@ -360,6 +386,82 @@
 
   function showPayment() {
     renderPaymentModal(_lastProfile);
+  }
+
+  function formatPct(value) {
+    var pct = pctValue(value);
+    return pct.toFixed(1).replace(/\.0$/, '') + '%';
+  }
+
+  function renderProbabilityBars(p, result) {
+    var codeA = safeTeamCode(p.team_a);
+    var codeB = safeTeamCode(p.team_b);
+    var nameA = teamName(codeA || p.team_a);
+    var nameB = teamName(codeB || p.team_b);
+    var aWin = pctValue(p.team_a_win_probability);
+    var draw = pctValue(p.draw_probability);
+    var bWin = pctValue(p.team_b_win_probability);
+
+    return '<div class="prono-probs">'
+      + '<span class="prono-probs-label">Porcentajes de victoria</span>'
+      + renderProbabilityRow(renderTeamLink(codeA, nameA, 'prono-team-link prono-prob-team-link'), aWin, 'prono-bar-a')
+      + renderProbabilityRow('Empate', draw, 'prono-bar-draw')
+      + renderProbabilityRow(renderTeamLink(codeB, nameB, 'prono-team-link prono-prob-team-link'), bWin, 'prono-bar-b')
+      + '</div>';
+  }
+
+  function renderProbabilityRow(labelHtml, value, barClass) {
+    return '<div class="prono-prob-row">'
+      + '<span class="prono-prob-label">' + labelHtml + '</span>'
+      + '<div class="prono-prob-bar-wrap"><div class="prono-prob-bar ' + barClass + '" style="width:' + value + '%"></div></div>'
+      + '<span class="prono-prob-pct">' + formatPct(value) + '</span>'
+      + '</div>';
+  }
+
+  function parseScorelines(raw) {
+    var list = raw;
+    if (typeof list === 'string') {
+      try { list = JSON.parse(list); } catch (e) { return []; }
+    }
+    if (!Array.isArray(list)) return [];
+    return list.filter(function(item) {
+      return item && /^\d{1,2}-\d{1,2}$/.test(String(item.score || '')) && parseFloat(item.pct) > 0;
+    });
+  }
+
+  function renderScorelines(p, result) {
+    var scorelines = parseScorelines(p.top_scorelines).slice(0, 10);
+    if (!scorelines.length && !result) return '';
+
+    var top10Hit = !!(result && scorelines.some(function(item) {
+      return String(item.score) === result.score;
+    }));
+
+    var html = '<div class="prono-scores">'
+      + '<div class="prono-scores-head">'
+      + '<span class="prono-scores-label">10 resultados más probables</span>'
+      + '</div>'
+      + '<div class="prono-scores-chips">';
+
+    scorelines.forEach(function(item) {
+      var pctText = formatPct(item.pct);
+      var isHit = !!(result && String(item.score) === result.score);
+      html += '<span class="prono-score-chip' + (isHit ? ' prono-score-hit' : '') + '">'
+        + (isHit ? '<span class="prono-score-check">&#x2714;</span>' : '')
+        + '<strong>' + escapeHtml(item.score) + '</strong>'
+        + '<small>' + pctText + '</small>'
+        + '</span>';
+    });
+
+    if (result && !top10Hit) {
+      html += '<span class="prono-score-chip prono-score-final-miss">'
+        + '<span class="prono-score-final-label">Final</span>'
+        + '<strong>' + escapeHtml(result.score) + '</strong>'
+        + '</span>';
+    }
+
+    html += '</div></div>';
+    return html;
   }
 
   function renderEditorialOutlook(p, result) {
@@ -409,18 +511,19 @@
       + '  <div class="prono-card-header">'
       + '    <span class="prono-matchday">J' + escapeHtml(p.matchday) + '</span>'
       + '    <div class="prono-teams">'
-      + '      <div class="prono-team">' + flag(codeA) + '<span>' + escapeHtml(nameA) + '</span></div>'
+      + '      <div class="prono-team">' + flag(codeA) + renderTeamLink(codeA, nameA, 'prono-team-link prono-team-link-main') + '</div>'
       + '      <span class="prono-vs">vs</span>'
-      + '      <div class="prono-team">' + flag(codeB) + '<span>' + escapeHtml(nameB) + '</span></div>'
+      + '      <div class="prono-team">' + flag(codeB) + renderTeamLink(codeB, nameB, 'prono-team-link prono-team-link-main') + '</div>'
       + '    </div>'
-      + (result ? '<span class="prono-final-badge">&#x2714; Final ' + escapeHtml(result.score) + '</span>' : '')
       + (p.global_tag ? '<span class="prono-global-tag">' + escapeHtml(p.global_tag) + '</span>' : '')
       + '  </div>'
       + renderEditorialOutlook(p, result)
+      + renderProbabilityBars(p, result)
+      + renderScorelines(p, result)
       + (p.team_a_context || p.team_b_context
          ? '<div class="prono-contexts">'
-           + (p.team_a_context ? '<div class="prono-ctx prono-ctx-a"><strong>' + escapeHtml(nameA) + ':</strong> ' + escapeHtml(p.team_a_context) + '</div>' : '')
-           + (p.team_b_context ? '<div class="prono-ctx prono-ctx-b"><strong>' + escapeHtml(nameB) + ':</strong> ' + escapeHtml(p.team_b_context) + '</div>' : '')
+           + (p.team_a_context ? '<div class="prono-ctx prono-ctx-a"><strong>' + renderTeamLink(codeA, nameA, 'prono-team-link prono-ctx-team-link') + ':</strong> ' + escapeHtml(p.team_a_context) + '</div>' : '')
+           + (p.team_b_context ? '<div class="prono-ctx prono-ctx-b"><strong>' + renderTeamLink(codeB, nameB, 'prono-team-link prono-ctx-team-link') + ':</strong> ' + escapeHtml(p.team_b_context) + '</div>' : '')
            + '</div>'
          : '')
       + (p.explanation

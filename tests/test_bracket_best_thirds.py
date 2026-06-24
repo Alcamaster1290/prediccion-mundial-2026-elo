@@ -135,6 +135,64 @@ def test_bracket_uses_unique_projected_best_thirds():
     assert result.returncode == 0, result.stderr
 
 
+def test_bracket_slots_show_position_probability_not_general_qualification():
+    script = SYNTHETIC_MC_FIXTURE + r"""
+    const fs = require('fs');
+    const vm = require('vm');
+
+    const inner = {
+      _html: '',
+      classList: { add() {}, toggle() {} },
+      set innerHTML(value) { this._html = value; },
+      get innerHTML() { return this._html; },
+    };
+    const document = {
+      readyState: 'loading',
+      addEventListener() {},
+      getElementById(id) { return id === 'bracket-inner' ? inner : null; },
+    };
+    const window = {
+      document,
+      SupaData: { loadSimulationData: async () => data },
+    };
+
+    vm.runInContext(fs.readFileSync('js/bracket.js', 'utf8'), vm.createContext({
+      console,
+      document,
+      window,
+      Promise,
+      setTimeout,
+    }));
+
+    (async () => {
+      window.BracketSection.init();
+      window.BracketSection.setPremiumState(true);
+      await new Promise(resolve => setTimeout(resolve, 25));
+
+      const html = inner.innerHTML;
+      const firstA = html.match(/data-slot="1:A">[\s\S]*?assets\/flags\/mex\.svg[\s\S]*?<span class="bk-pct">([^<]+)<\/span>/);
+      const secondA = html.match(/data-slot="2:A">[\s\S]*?assets\/flags\/kor\.svg[\s\S]*?<span class="bk-pct">([^<]+)<\/span>/);
+      if (!firstA || firstA[1] !== '74.0%') {
+        throw new Error(`Expected 1:A to show first_pct 74.0%, got ${firstA && firstA[1]}`);
+      }
+      if (!secondA || secondA[1] !== '68.0%') {
+        throw new Error(`Expected 2:A to show second_pct 68.0%, got ${secondA && secondA[1]}`);
+      }
+    })().catch(error => {
+      console.error(error.message);
+      process.exit(1);
+    });
+    """
+    result = subprocess.run(
+        ["node", "-e", textwrap.dedent(script)],
+        check=False,
+        cwd=".",
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr
+
+
 def test_prediction_route_uses_unique_projected_best_thirds():
     script = SYNTHETIC_MC_FIXTURE + r"""
     const fs = require('fs');

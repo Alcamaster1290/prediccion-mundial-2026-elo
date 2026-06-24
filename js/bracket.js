@@ -1,7 +1,7 @@
 /**
  * bracket.js — Llave Eliminatoria Mundial 2026
  * Renderiza el bracket de 32 equipos con conectores CSS (Approach C).
- * El win% (qualified_pct de fase de grupos) es premium-gate.
+ * El % de slot (1.º, 2.º o mejor 3.º) es premium-gate.
  * Expone: window.BracketSection
  */
 (function () {
@@ -220,7 +220,13 @@
     if (pos === 'W' || pos === 'L') return null;
     if (pos === '1' || pos === '2') {
       var code = (teamsByGroup[val] || {})[+pos] || null;
-      return code ? { code: code, pct: pctNumber((mc[code] || {}).qualified_pct) } : null;
+      var field = pos === '1' ? 'first_pct' : 'second_pct';
+      var posLabel = pos === '1' ? '1.º Grupo ' : '2.º Grupo ';
+      return code ? {
+        code: code,
+        pct: pctNumber((mc[code] || {})[field]),
+        label: posLabel + val
+      } : null;
     }
     if (pos === '3') {
       var third = bestThirdSlots[slotCode];
