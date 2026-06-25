@@ -138,6 +138,31 @@ def test_build_bench_profiles_supersub_belongs_to_team_and_line(teams_data):
         assert normalize_line(match.get("pos")) == sub["line"]
 
 
+def test_build_bench_profiles_prioritizes_attacking_or_midfield_supersub():
+    teams_data = {
+        "teams": [
+            {
+                "id": "tst",
+                "name": "Equipo Prueba",
+                "players": [
+                    {"name": "Arquero Titular", "pos": "GK", "elo": 1500, "titular": True},
+                    {"name": "Defensa Titular", "pos": "DEF", "elo": 1500, "titular": True},
+                    {"name": "Medio Titular", "pos": "MED", "elo": 1500, "titular": True},
+                    {"name": "Delantero Titular", "pos": "DEL", "elo": 1500, "titular": True},
+                    {"name": "Central Potente", "pos": "DEF", "elo": 1730, "titular": False, "club": "Club Fuerte"},
+                    {"name": "Interior Cambio", "pos": "MED", "elo": 1600, "titular": False, "club": "Club Medio"},
+                    {"name": "Extremo Cambio", "pos": "DEL", "elo": 1580, "titular": False, "club": "Club Ataque"},
+                ],
+            }
+        ]
+    }
+
+    profile = en.build_bench_profiles(teams_data)["tst"]
+
+    assert profile["supersub"]["name"] == "Interior Cambio"
+    assert profile["supersub"]["line"] == "midfield"
+
+
 # ── Propiedades del seed completo ────────────────────────────────────────────────
 
 def test_seed_has_72_rows(seed_rows):
@@ -179,6 +204,59 @@ def test_not_a_fixed_template(seed_rows):
         openings.add(masked.split(". ")[0])
     assert len(skeletons) >= 8, f"muy pocos esqueletos distintos: {len(skeletons)}"
     assert len(openings) >= 4, f"muy pocas aperturas distintas: {len(openings)}"
+
+
+def test_seed_limits_repeated_editorial_transitions(seed_rows):
+    joined = "\n".join(r["explanation"] for r in seed_rows)
+
+    assert joined.count("El cruce que más desequilibra") <= 30
+    assert joined.count("El partido también puede decidirse desde los cambios") <= 30
+
+
+def test_seed_revulsives_do_not_focus_on_goalkeepers_or_defenders(seed_rows):
+    forbidden = [
+        "subir el nivel del arquero",
+        "refrescar el arquero",
+        "el arquero puede jugar",
+        "subir el nivel de la defensa",
+        "refrescar la defensa",
+        "la defensa puede jugar",
+    ]
+
+    for row in seed_rows:
+        text = " ".join(
+            row.get(col) or ""
+            for col in ("explanation", "team_a_context", "team_b_context")
+        )
+        lowered = text.lower()
+        for phrase in forbidden:
+            assert phrase not in lowered, f"{row['match_id']} usa revulsivo defensivo: {phrase}"
+
+
+def test_seed_avoids_malformed_editorial_phrases(seed_rows):
+    forbidden = [
+        ",.",
+        "Su el ",
+        "Su la ",
+        "activa el arquero",
+        "protege el arquero",
+    ]
+
+    for row in seed_rows:
+        text = " ".join(
+            row.get(col) or ""
+            for col in ("explanation", "team_a_context", "team_b_context")
+        )
+        for phrase in forbidden:
+            assert phrase not in text, f"{row['match_id']} contiene frase editorial débil: {phrase}"
+
+
+def test_seed_preserves_contextual_memory_for_specific_match(seed_rows):
+    row = next(r for r in seed_rows if r["match_id"] == "grp-f-j1-ned-jpn")
+
+    assert "Qatar 2022" in row["explanation"]
+    assert "Alemania" in row["explanation"]
+    assert "España" in row["explanation"]
 
 
 def test_probability_paragraph_present(seed_rows):

@@ -161,6 +161,27 @@ def test_player_factor_note_mentions_messi_without_solo_claim():
     assert "solo" not in note.lower()
 
 
+def test_player_profiles_prefer_attack_or_midfield_over_goalkeeper_when_no_priority_star():
+    teams_data = {
+        "teams": [
+            {
+                "id": "tst",
+                "name": "Equipo Prueba",
+                "players": [
+                    {"name": "Arquero Elite", "pos": "GK", "elo": 1950, "titular": True, "club": "Club A"},
+                    {"name": "Central Elite", "pos": "DEF", "elo": 1900, "titular": True, "club": "Club B"},
+                    {"name": "Volante Clave", "pos": "MED", "elo": 1750, "titular": True, "club": "Club C"},
+                    {"name": "Extremo Vivo", "pos": "DEL", "elo": 1720, "titular": True, "club": "Club D"},
+                ],
+            }
+        ]
+    }
+
+    profiles = gp.build_player_profiles(teams_data)
+
+    assert profiles["tst"]["player"]["name"] == "Volante Clave"
+
+
 def test_argentina_austria_prediction_uses_xi_matchup_not_star_solo_claim(generated_prediction_sql):
     sql = generated_prediction_sql
     match_line = next(

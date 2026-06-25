@@ -7,6 +7,7 @@ Algorithm: exact Poisson probabilities from ELO-style team strength.
 """
 
 import json
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -293,6 +294,9 @@ def build_player_profiles(teams_data):
                 break
         if not selected:
             pool = [p for p in players if p["titular"]] or players
+            impact_pool = [p for p in pool if p.get("line") in ("attack", "midfield")]
+            if impact_pool:
+                pool = impact_pool
             selected = max(pool, key=lambda p: p["elo"] if p["elo"] is not None else -1)
 
         profiles[team["id"]] = {
@@ -343,6 +347,100 @@ def build_player_factor_note(match, player_profiles):
     return "Jugador diferencial. " + note if note else ""
 
 
+CONTEXT_MEMORY_MARKERS = (
+    "Qatar 2022",
+    "Copa America",
+    "Copa América",
+    "Eliminatorias",
+    "victoria ante",
+    "derrota ante",
+    "semis",
+    "rival similar",
+    "rivales similares",
+)
+
+
+def clean_context_reference(text):
+    if not text:
+        return ""
+    text = str(text)
+    text = text.replace("—", ".")
+    text = text.replace("â€”", ".")
+    text = text.replace(":", ",")
+    text = text.replace(";", ".")
+    text = re.sub(r"\bvs\.?\b", "ante", text, flags=re.I)
+    text = re.sub(r"\s+", " ", text).strip()
+    return polish(text)
+
+
+def context_reference_sentences(text):
+    clean = clean_context_reference(text)
+    if not clean:
+        return []
+    return [part.strip(" .") for part in clean.split(".") if part.strip(" .")]
+
+
+def context_sentence_score(sentence):
+    lowered = sentence.lower()
+    score = 0
+    for marker in CONTEXT_MEMORY_MARKERS:
+        if marker.lower() in lowered:
+            score += 10
+    if "alemania" in lowered:
+        score += 3
+    if "españa" in lowered or "espana" in lowered:
+        score += 3
+    if "europeo" in lowered:
+        score -= 2
+    return score
+
+
+def trim_context_sentence(sentence, max_len=135):
+    if len(sentence) <= max_len:
+        return sentence
+    trimmed = sentence[:max_len].rsplit(" ", 1)[0].rstrip(" ,")
+    return trimmed
+
+
+def build_context_memory_note(match, ctx):
+    if not ctx:
+        return ""
+
+    sources = []
+    if ctx.get("prediccion_narrativa"):
+        sources.append(ctx.get("prediccion_narrativa"))
+    for key in ("team_a_context", "team_b_context"):
+        side = ctx.get(key) or {}
+        sources.extend([
+            side.get("incentivo_competitivo", ""),
+            side.get("amenaza_principal", ""),
+        ])
+
+    candidates = []
+    for source in sources:
+        for sentence in context_reference_sentences(source):
+            score = context_sentence_score(sentence)
+            if score > 0:
+                candidates.append((score, sentence))
+    if not candidates:
+        return ""
+    _, sentence = max(candidates, key=lambda item: (item[0], len(item[1])))
+    sentence = trim_context_sentence(sentence)
+    prefix = en_note_prefix(match["match_id"])
+    return polish(prefix + " " + sentence + ".")
+
+
+def en_note_prefix(match_id):
+    options = [
+        "La memoria competitiva también pesa.",
+        "El antecedente de perfil suma contexto.",
+        "La referencia previa cambia la lectura.",
+        "El historial reciente deja una pista útil.",
+    ]
+    from elo_narrative import pick
+    return pick(match_id, "context-memory", options)
+
+
 def pct_text(value):
     return f"{float(value):.1f}%"
 
@@ -366,11 +464,16 @@ def build_probability_note(match, pa, pd, pb):
     )
 
 
-def compose_prediction_explanation(base_explanation, probability_note, calendar_note, player_note=""):
+def compose_prediction_explanation(base_explanation, probability_note, calendar_note, player_note="", context_note=""):
     base = (base_explanation or "").strip()
+    context = (context_note or "").strip()
     player = (player_note or "").strip()
     closing = " ".join(part for part in (probability_note, calendar_note) if part).strip()
     parts = [part for part in (base, player, closing) if part]
+    if context:
+        with_context = [part for part in (base, context, player, closing) if part]
+        if len("\n\n".join(with_context)) <= 1400:
+            parts = with_context
     # Párrafos separados por línea en blanco; el frontend los renderiza como <p>.
     return polish("\n\n".join(parts).strip())
 
@@ -455,6 +558,7 @@ def main():
             team_a_ctx_text = context_for_team(ctx, team_a).get("incentivo_competitivo", "") or ""
             team_b_ctx_text = context_for_team(ctx, team_b).get("incentivo_competitivo", "") or ""
             explanation     = ctx.get("prediccion_narrativa", "") or ""
+        context_memory_note = build_context_memory_note(match, ctx)
 
         if xi_comparison:
             team_a_ctx_text = team_context_sentences(xi_comparison["a"], bench_profiles.get(team_a))
@@ -475,6 +579,7 @@ def main():
             build_probability_note(match, pa, pd, pb),
             build_calendar_note(match, fixture_index),
             build_player_factor_note(match, player_profiles),
+            context_memory_note,
         )
 
         rows.append({

@@ -30,6 +30,7 @@ EDGE_PHRASE = {
 }
 
 SUPERSUB_MIN_DELTA = 40.0
+IMPACT_SUB_LINES = ('attack', 'midfield')
 
 
 def expected_duel_pct(gap, elo_scale=400):
@@ -106,19 +107,24 @@ def build_bench_profiles(teams_data):
         if not any(starters.values()) or not bench:
             continue
 
-        best = None
+        candidates = []
         for player in bench:
             line_elos = starters.get(player['line'])
             if not line_elos:
                 continue
             line_avg = sum(line_elos) / len(line_elos)
             delta = player['elo'] - line_avg
-            if best is None or delta > best['delta']:
-                candidate = dict(player)
-                candidate['delta'] = delta
-                candidate['line_avg'] = line_avg
-                candidate['new_avg'] = (sum(line_elos) - min(line_elos) + player['elo']) / len(line_elos)
-                best = candidate
+            candidate = dict(player)
+            candidate['delta'] = delta
+            candidate['line_avg'] = line_avg
+            candidate['new_avg'] = (sum(line_elos) - min(line_elos) + player['elo']) / len(line_elos)
+            candidates.append(candidate)
+
+        impact_candidates = [
+            player for player in candidates
+            if player['line'] in IMPACT_SUB_LINES and player['delta'] > 0
+        ]
+        best = max(impact_candidates, key=lambda player: player['delta']) if impact_candidates else None
 
         top5 = sorted((p['elo'] for p in bench), reverse=True)[:5]
         profiles[team['id']] = {
@@ -232,6 +238,44 @@ def opening_sentence(match_id, name_a, name_b, gap):
     return pick(match_id, 'opening', options)
 
 
+def line_activation(label):
+    actions = {
+        'el arquero': 'se apoya en el arquero',
+        'la defensa': 'se ordena desde la defensa',
+        'el mediocampo': 'activa el mediocampo',
+        'el ataque': 'activa el ataque',
+    }
+    return actions.get(label, f'activa {label}')
+
+
+def protection_clause(team_name, label):
+    actions = {
+        'el arquero': f'{team_name} protege su arco',
+        'la defensa': f'{team_name} ordena su defensa',
+        'el mediocampo': f'{team_name} sostiene su mediocampo',
+        'el ataque': f'{team_name} conserva altura en ataque',
+    }
+    return actions.get(label, f'{team_name} protege {label}')
+
+
+def target_sector(label):
+    sectors = {
+        'el arquero': 'la zona del arquero',
+        'la defensa': 'la defensa',
+        'el mediocampo': 'el mediocampo',
+        'el ataque': 'el ataque',
+    }
+    return sectors.get(label, label)
+
+
+def sentence_start(label):
+    return label[:1].upper() + label[1:]
+
+
+def terminal_names_clause(names):
+    return names.rstrip(',')
+
+
 def decisive_edge_sentence(match_id, name_a, name_b, comparison):
     edges = comparison['a']['line_edges']
     key = max(edges, key=lambda k: abs(edges[k]))
@@ -239,6 +283,22 @@ def decisive_edge_sentence(match_id, name_a, name_b, comparison):
     mine, theirs = EDGE_PHRASE[key]
     if value >= 0:
         names = _names_clause(comparison['a']['profile'], key.split('_vs_')[0])
+        variant = zlib.crc32(f'{match_id}|edge-positive'.encode('utf-8')) % 4
+        if variant == 1:
+            return (
+                f'La zona que abre el partido está en {mine} de {name_a}{names} '
+                f'contra {theirs} de {name_b}. Ahí {name_a} puede romper el equilibrio.'
+            )
+        if variant == 2:
+            return (
+                f'El punto de presión aparece cuando {name_a} {line_activation(mine)}{names} '
+                f'frente a {theirs} de {name_b}. Esa relación explica su mejor camino.'
+            )
+        if variant == 3:
+            return (
+                f'La lectura individual favorece a {name_a} en {mine}{names} '
+                f'ante {theirs} de {name_b}. Si ese sector manda, el partido cambia de ritmo.'
+            )
         return (
             f'El cruce que más desequilibra enfrenta a {mine} de {name_a}{names} '
             f'con {theirs} de {name_b}, donde {name_a} encuentra su ventaja más clara.'
@@ -250,10 +310,38 @@ def decisive_edge_sentence(match_id, name_a, name_b, comparison):
         'gk_vs_attack': 'attack',
     }[key]
     names = _names_clause(comparison['b']['profile'], mirror)
+    terminal_names = terminal_names_clause(names)
+    threat_start = sentence_start(theirs)
+    target = target_sector(mine)
+    variant = zlib.crc32(f'{match_id}|edge-negative'.encode('utf-8')) % 4
+    if variant == 1:
+        return (
+            f'La zona que puede torcer el guion queda del lado de {name_b}. '
+            f'{threat_start}{names} castiga {target} de {name_a}.'
+        )
+    if variant == 2:
+        return (
+            f'El foco está en cómo {protection_clause(name_a, mine)} cuando aparece {theirs} '
+            f'de {name_b}{terminal_names}. Esa es la alerta principal.'
+        )
+    if variant == 3:
+        return (
+            f'{name_b} encuentra su mejor argumento al atacar {target} de {name_a}. '
+            f'{threat_start}{names} sostiene ese margen.'
+        )
     return (
         f'El cruce que más desequilibra enfrenta a {mine} de {name_a} con {theirs} '
         f'de {name_b}{names} donde {name_b} encuentra su ventaja más clara.'
     )
+
+
+def bench_lead_sentence(match_id):
+    return pick(match_id, 'bench-lead', [
+        'Desde la banca también aparece una capa de lectura.',
+        'Los cambios pueden pesar si el partido se estira.',
+        'El segundo tiempo también tiene nombres para mover el plan.',
+        'La gestión de suplentes suma otro matiz al pronóstico.',
+    ])
 
 
 def matchup_narrative(match, comparison, bench_profiles):
@@ -274,10 +362,7 @@ def matchup_narrative(match, comparison, bench_profiles):
     away_bench = bench_profiles.get(match['away_team']) if bench_profiles else None
     home_text, home_index = bench_sentence(match_id, name_a, home_bench)
     away_text, _ = bench_sentence(match_id, name_b, away_bench, avoid_index=home_index)
-    paragraph_two = (
-        'El partido también puede decidirse desde los cambios. '
-        + home_text + ' ' + away_text
-    )
+    paragraph_two = bench_lead_sentence(match_id) + ' ' + home_text + ' ' + away_text
     return polish(paragraph_one + '\n\n' + paragraph_two)
 
 
