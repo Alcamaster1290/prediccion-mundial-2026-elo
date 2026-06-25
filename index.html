@@ -2333,6 +2333,52 @@
     transition: border-color .15s; cursor: default;
   }
   .bk-slot:hover { border-color: var(--bk-pct); }
+  .bk-slot.bk-slot--clinched {
+    background:
+      radial-gradient(circle at 14% 50%, rgba(34,197,94,.34), transparent 35%),
+      linear-gradient(90deg, rgba(6,95,70,.58), rgba(0,229,160,.14));
+    border-color: rgba(34,197,94,.86);
+    box-shadow:
+      0 0 0 1px rgba(34,197,94,.26) inset,
+      0 0 13px rgba(0,229,160,.35),
+      0 0 28px rgba(0,229,160,.13);
+    animation: bk-clinched-led 2.4s ease-in-out infinite;
+  }
+  .bk-slot.bk-slot--clinched .bk-slot-name { color: #d1fae5; }
+  .bk-slot.bk-slot--clinched .bk-slot-tag { color: rgba(187,247,208,.78); }
+  .bk-slot.bk-slot--clinched .bk-pct {
+    color: #86efac; text-shadow: 0 0 8px rgba(134,239,172,.72);
+  }
+  [data-theme="light"] .bk-slot.bk-slot--clinched {
+    background:
+      radial-gradient(circle at 14% 50%, rgba(34,197,94,.26), transparent 35%),
+      linear-gradient(90deg, rgba(187,247,208,.88), rgba(236,253,245,.68));
+    border-color: rgba(22,163,74,.72);
+    box-shadow:
+      0 0 0 1px rgba(22,163,74,.18) inset,
+      0 0 12px rgba(34,197,94,.24),
+      0 0 24px rgba(34,197,94,.12);
+  }
+  [data-theme="light"] .bk-slot.bk-slot--clinched .bk-slot-name { color: #064e3b; }
+  [data-theme="light"] .bk-slot.bk-slot--clinched .bk-slot-tag { color: rgba(6,78,59,.72); }
+  [data-theme="light"] .bk-slot.bk-slot--clinched .bk-pct { color: #047857; }
+  @keyframes bk-clinched-led {
+    0%, 100% {
+      box-shadow:
+        0 0 0 1px rgba(34,197,94,.24) inset,
+        0 0 10px rgba(0,229,160,.24),
+        0 0 20px rgba(0,229,160,.10);
+    }
+    50% {
+      box-shadow:
+        0 0 0 1px rgba(34,197,94,.34) inset,
+        0 0 16px rgba(0,229,160,.44),
+        0 0 34px rgba(0,229,160,.18);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bk-slot.bk-slot--clinched { animation: none; }
+  }
   .bk-flag { width: 16px; height: 11px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
   .bk-slot-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
   .bk-slot-name {

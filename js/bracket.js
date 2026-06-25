@@ -245,12 +245,14 @@
     var code = resolved ? resolved.code : null;
     var isTbd = !code;
     var name  = code ? (NAMES[code] || code.toUpperCase()) : label;
-    var pct   = resolved ? pctNumber(resolved.pct).toFixed(1) + '%' : '—';
+    var slotPct = resolved ? pctNumber(resolved.pct) : 0;
+    var isClinched = !isTbd && slotPct >= 100;
+    var pct   = resolved ? slotPct.toFixed(1) + '%' : '—';
     var tag   = resolved && resolved.label ? resolved.label : label;
     var flag  = code
       ? '<img class="bk-flag" src="assets/flags/' + code + '.svg" alt="' + (NAMES[code] || code) + '" loading="lazy">'
       : '<span class="bk-flag-ph"></span>';
-    return '<div class="bk-slot' + (isTbd ? ' bk-slot--tbd' : '') + '" data-slot="' + slotCode + '">'
+    return '<div class="bk-slot' + (isTbd ? ' bk-slot--tbd' : '') + (isClinched ? ' bk-slot--clinched' : '') + '" data-slot="' + slotCode + '">'
       + flag
       + '<div class="bk-slot-info">'
       + '<span class="bk-slot-name">' + name + '</span>'

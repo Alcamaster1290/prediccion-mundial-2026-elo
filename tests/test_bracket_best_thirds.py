@@ -193,6 +193,82 @@ def test_bracket_slots_show_position_probability_not_general_qualification():
     assert result.returncode == 0, result.stderr
 
 
+def test_bracket_highlights_only_slots_clinched_at_one_hundred_percent():
+    script = SYNTHETIC_MC_FIXTURE + r"""
+    const fs = require('fs');
+    const vm = require('vm');
+
+    data.teams.mex.first_pct = 100;
+    data.teams.kor.qualified_pct = 100;
+    data.terceros_table[0].qualifies_pct = 100;
+
+    const inner = {
+      _html: '',
+      classList: { add() {}, toggle() {} },
+      set innerHTML(value) { this._html = value; },
+      get innerHTML() { return this._html; },
+    };
+    const document = {
+      readyState: 'loading',
+      addEventListener() {},
+      getElementById(id) { return id === 'bracket-inner' ? inner : null; },
+    };
+    const window = {
+      document,
+      SupaData: { loadSimulationData: async () => data },
+    };
+
+    vm.runInContext(fs.readFileSync('js/bracket.js', 'utf8'), vm.createContext({
+      console,
+      document,
+      window,
+      Promise,
+      setTimeout,
+    }));
+
+    function slotMatch(html, slotCode, code) {
+      const escapedSlot = slotCode.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return html.match(new RegExp(
+        '<div class="([^"]*)" data-slot="' + escapedSlot + '">[\\s\\S]*?'
+        + 'assets\\/flags\\/' + code + '\\.svg[\\s\\S]*?'
+        + '<span class="bk-pct">([^<]+)<\\/span>'
+      ));
+    }
+
+    (async () => {
+      window.BracketSection.init();
+      window.BracketSection.setPremiumState(true);
+      await new Promise(resolve => setTimeout(resolve, 25));
+
+      const html = inner.innerHTML;
+      const firstA = slotMatch(html, '1:A', 'mex');
+      const secondA = slotMatch(html, '2:A', 'kor');
+      const bestThirdA = html.match(/<div class="([^"]*)" data-slot="3:[^"]*">[\s\S]*?assets\/flags\/cze\.svg[\s\S]*?<span class="bk-pct">100\.0%<\/span>/);
+
+      if (!firstA || !firstA[1].includes('bk-slot--clinched') || firstA[2] !== '100.0%') {
+        throw new Error(`Expected 1:A to be clinched at 100.0%, got ${firstA && firstA.slice(1).join('|')}`);
+      }
+      if (!secondA || secondA[1].includes('bk-slot--clinched') || secondA[2] !== '68.0%') {
+        throw new Error(`Expected 2:A not to be clinched from qualified_pct alone, got ${secondA && secondA.slice(1).join('|')}`);
+      }
+      if (!bestThirdA || !bestThirdA[1].includes('bk-slot--clinched')) {
+        throw new Error(`Expected the 100.0% best-third slot to be clinched, got ${bestThirdA && bestThirdA[1]}`);
+      }
+    })().catch(error => {
+      console.error(error.message);
+      process.exit(1);
+    });
+    """
+    result = subprocess.run(
+        ["node", "-e", textwrap.dedent(script)],
+        check=False,
+        cwd=".",
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr
+
+
 def test_prediction_route_uses_unique_projected_best_thirds():
     script = SYNTHETIC_MC_FIXTURE + r"""
     const fs = require('fs');
