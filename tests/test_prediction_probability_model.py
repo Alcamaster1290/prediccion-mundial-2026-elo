@@ -113,3 +113,36 @@ def test_xi_profiles_compare_starter_lines_not_only_team_average():
     assert comparison["a"]["line_edges"]["attack_vs_defense"] == -100
     assert effective_a != 1700
     assert effective_b != 1700
+
+
+def test_xi_matchups_use_defensive_unit_instead_of_goalkeeper_alone():
+    teams_data = {
+        "teams": [
+            {
+                "id": "a",
+                "players": [
+                    {"name": "A GK", "pos": "GK", "elo": 1800, "titular": True},
+                    {"name": "A DEF", "pos": "DEF", "elo": 1600, "titular": True},
+                    {"name": "A MID", "pos": "MED", "elo": 1700, "titular": True},
+                    {"name": "A FW", "pos": "DEL", "elo": 1700, "titular": True},
+                ],
+            },
+            {
+                "id": "b",
+                "players": [
+                    {"name": "B GK", "pos": "GK", "elo": 1500, "titular": True},
+                    {"name": "B DEF", "pos": "DEF", "elo": 1500, "titular": True},
+                    {"name": "B MID", "pos": "MED", "elo": 1500, "titular": True},
+                    {"name": "B FW", "pos": "DEL", "elo": 1700, "titular": True},
+                ],
+            },
+        ]
+    }
+
+    profiles = build_xi_profiles(teams_data)
+    _, _, comparison = matchup_adjusted_strengths("a", "b", 1700, 1700, profiles)
+    edge = comparison["a"]["line_edges"]
+
+    expected_unit = round(((1600 * 0.25) + (1800 * 0.10)) / 0.35, 1)
+    assert "gk_vs_attack" not in edge
+    assert edge["defensive_unit_vs_attack"] == round(expected_unit - 1700, 1)

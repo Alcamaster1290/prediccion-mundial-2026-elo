@@ -33,9 +33,11 @@ POSITION_LINES = {
 EDGE_WEIGHTS = {
     "attack_vs_defense": 0.35,
     "midfield_vs_midfield": 0.30,
-    "defense_vs_attack": 0.25,
-    "gk_vs_attack": 0.10,
+    "defensive_unit_vs_attack": 0.35,
 }
+
+DEFENSIVE_UNIT_DEFENSE_WEIGHT = 0.25
+DEFENSIVE_UNIT_GK_WEIGHT = 0.10
 
 
 def average(values):
@@ -83,11 +85,18 @@ def build_xi_profiles(teams_data):
 
 
 def line_edges(profile, opponent):
+    defensive_unit = round(
+        (
+            profile["lines"]["defense"] * DEFENSIVE_UNIT_DEFENSE_WEIGHT
+            + profile["lines"]["gk"] * DEFENSIVE_UNIT_GK_WEIGHT
+        )
+        / (DEFENSIVE_UNIT_DEFENSE_WEIGHT + DEFENSIVE_UNIT_GK_WEIGHT),
+        1,
+    )
     return {
         "attack_vs_defense": round(profile["lines"]["attack"] - opponent["lines"]["defense"], 1),
         "midfield_vs_midfield": round(profile["lines"]["midfield"] - opponent["lines"]["midfield"], 1),
-        "defense_vs_attack": round(profile["lines"]["defense"] - opponent["lines"]["attack"], 1),
-        "gk_vs_attack": round(profile["lines"]["gk"] - opponent["lines"]["attack"], 1),
+        "defensive_unit_vs_attack": round(defensive_unit - opponent["lines"]["attack"], 1),
     }
 
 
@@ -158,8 +167,7 @@ def edge_label(edge_key):
     return {
         "attack_vs_defense": "ataque vs defensa rival",
         "midfield_vs_midfield": "mediocampo vs mediocampo rival",
-        "defense_vs_attack": "defensa vs ataque rival",
-        "gk_vs_attack": "arquero vs ataque rival",
+        "defensive_unit_vs_attack": "unidad defensiva vs ataque rival",
     }.get(edge_key, edge_key)
 
 

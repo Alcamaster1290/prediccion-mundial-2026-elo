@@ -240,6 +240,7 @@ def test_seed_avoids_malformed_editorial_phrases(seed_rows):
         "Su la ",
         "activa el arquero",
         "protege el arquero",
+        "guion",
     ]
 
     for row in seed_rows:
@@ -249,6 +250,25 @@ def test_seed_avoids_malformed_editorial_phrases(seed_rows):
         )
         for phrase in forbidden:
             assert phrase not in text, f"{row['match_id']} contiene frase editorial débil: {phrase}"
+
+
+def test_seed_does_not_frame_goalkeepers_as_editorial_impact(seed_rows):
+    forbidden = [
+        "se apoya en el arquero",
+        "mejor argumento aparece en el arquero",
+        "zona de riesgo está en el arquero",
+        "castiga la zona del arquero",
+        "arquero frente al ataque",
+    ]
+
+    for row in seed_rows:
+        text = " ".join(
+            row.get(col) or ""
+            for col in ("explanation", "team_a_context", "team_b_context")
+        )
+        lowered = text.lower()
+        for phrase in forbidden:
+            assert phrase not in lowered, f"{row['match_id']} destaca arquero como impacto editorial: {phrase}"
 
 
 def test_seed_preserves_contextual_memory_for_specific_match(seed_rows):

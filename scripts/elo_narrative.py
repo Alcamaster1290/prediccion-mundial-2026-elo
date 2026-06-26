@@ -13,7 +13,7 @@ así el mismo input produce siempre el mismo texto.
 import re
 import zlib
 
-from xi_matchups import normalize_line, strongest_edge, weakest_edge
+from xi_matchups import normalize_line
 
 LINE_PHRASE = {
     'gk': 'el arquero',
@@ -25,12 +25,12 @@ LINE_PHRASE = {
 EDGE_PHRASE = {
     'attack_vs_defense': ('el ataque', 'la defensa'),
     'midfield_vs_midfield': ('el mediocampo', 'el mediocampo'),
-    'defense_vs_attack': ('la defensa', 'el ataque'),
-    'gk_vs_attack': ('el arquero', 'el ataque'),
+    'defensive_unit_vs_attack': ('la unidad defensiva', 'el ataque'),
 }
 
 SUPERSUB_MIN_DELTA = 40.0
 IMPACT_SUB_LINES = ('attack', 'midfield')
+EDITORIAL_EDGE_KEYS = ('attack_vs_defense', 'midfield_vs_midfield', 'defensive_unit_vs_attack')
 
 
 def expected_duel_pct(gap, elo_scale=400):
@@ -160,7 +160,7 @@ def bench_sentence(match_id, team_name, bench_profile, avoid_index=None):
             (
                 f'{team_name} guarda una carta fuerte en {sub["name"]}{club_part} '
                 'con roce de club para sostener el impacto desde la banca. Si entra, '
-                f'{line} gana energía y el guion del partido puede cambiar.'
+                f'{line} gana energía para presionar más arriba y atacar espacios.'
             ),
             (
                 f'El revulsivo de {team_name} es {sub["name"]}{club_part} y aporta '
@@ -170,7 +170,7 @@ def bench_sentence(match_id, team_name, bench_profile, avoid_index=None):
             (
                 f'Si el plan no funciona, {team_name} tiene en {sub["name"]}{club_part} '
                 f'un recambio con roce de club para refrescar {line} y cambiar la '
-                'dirección emocional del partido.'
+                'altura del equipo.'
             ),
         ]
         index = zlib.crc32(f'{match_id}|bench{team_name}'.encode('utf-8')) % len(options)
@@ -240,8 +240,9 @@ def opening_sentence(match_id, name_a, name_b, gap):
 
 def line_activation(label):
     actions = {
-        'el arquero': 'se apoya en el arquero',
+        'el arquero': 'se sostiene desde su arco',
         'la defensa': 'se ordena desde la defensa',
+        'la unidad defensiva': 'coordina la unidad defensiva',
         'el mediocampo': 'activa el mediocampo',
         'el ataque': 'activa el ataque',
     }
@@ -252,6 +253,7 @@ def protection_clause(team_name, label):
     actions = {
         'el arquero': f'{team_name} protege su arco',
         'la defensa': f'{team_name} ordena su defensa',
+        'la unidad defensiva': f'{team_name} coordina su unidad defensiva',
         'el mediocampo': f'{team_name} sostiene su mediocampo',
         'el ataque': f'{team_name} conserva altura en ataque',
     }
@@ -262,6 +264,7 @@ def target_sector(label):
     sectors = {
         'el arquero': 'la zona del arquero',
         'la defensa': 'la defensa',
+        'la unidad defensiva': 'la unidad defensiva',
         'el mediocampo': 'el mediocampo',
         'el ataque': 'el ataque',
     }
@@ -276,10 +279,37 @@ def terminal_names_clause(names):
     return names.rstrip(',')
 
 
+def editorial_line_edges(side):
+    edges = side.get('line_edges') or {}
+    filtered = {key: edges[key] for key in EDITORIAL_EDGE_KEYS if key in edges}
+    return filtered or {key: value for key, value in edges.items() if key in EDGE_PHRASE}
+
+
+def strongest_editorial_edge(side):
+    edges = editorial_line_edges(side)
+    if not edges:
+        return None, 0
+    return max(edges.items(), key=lambda item: item[1])
+
+
+def weakest_editorial_edge(side):
+    edges = editorial_line_edges(side)
+    if not edges:
+        return None, 0
+    return min(edges.items(), key=lambda item: item[1])
+
+
+def decisive_editorial_edge(side):
+    edges = editorial_line_edges(side)
+    if not edges:
+        return None, 0
+    return max(edges.items(), key=lambda item: abs(item[1]))
+
+
 def decisive_edge_sentence(match_id, name_a, name_b, comparison):
-    edges = comparison['a']['line_edges']
-    key = max(edges, key=lambda k: abs(edges[k]))
-    value = edges[key]
+    key, value = decisive_editorial_edge(comparison['a'])
+    if key is None:
+        return ''
     mine, theirs = EDGE_PHRASE[key]
     if value >= 0:
         names = _names_clause(comparison['a']['profile'], key.split('_vs_')[0])
@@ -306,8 +336,7 @@ def decisive_edge_sentence(match_id, name_a, name_b, comparison):
     mirror = {
         'attack_vs_defense': 'defense',
         'midfield_vs_midfield': 'midfield',
-        'defense_vs_attack': 'attack',
-        'gk_vs_attack': 'attack',
+        'defensive_unit_vs_attack': 'attack',
     }[key]
     names = _names_clause(comparison['b']['profile'], mirror)
     terminal_names = terminal_names_clause(names)
@@ -316,7 +345,7 @@ def decisive_edge_sentence(match_id, name_a, name_b, comparison):
     variant = zlib.crc32(f'{match_id}|edge-negative'.encode('utf-8')) % 4
     if variant == 1:
         return (
-            f'La zona que puede torcer el guion queda del lado de {name_b}. '
+            f'El punto que puede inclinar el partido queda del lado de {name_b}. '
             f'{threat_start}{names} castiga {target} de {name_a}.'
         )
     if variant == 2:
@@ -369,6 +398,8 @@ def matchup_narrative(match, comparison, bench_profiles):
 # ── Contextos por equipo ──────────────────────────────────────────────────────
 
 def _edge_clause(key, value):
+    if key is None:
+        return 'el bloque colectivo, donde el dato individual no alcanza para aislar una zona'
     mine, theirs = EDGE_PHRASE[key]
     if value >= 0:
         return f'{mine} frente a {theirs} rival, donde puede imponer condiciones'
@@ -377,8 +408,8 @@ def _edge_clause(key, value):
 
 def team_context_sentences(side, bench_profile):
     profile = side['profile']
-    best_key, best_value = strongest_edge(side)
-    worst_key, worst_value = weakest_edge(side)
+    best_key, best_value = strongest_editorial_edge(side)
+    worst_key, worst_value = weakest_editorial_edge(side)
     text = (
         'El once tiene una lectura clara de defensa, mediocampo, ataque y roce de club. '
         f'Su mejor argumento aparece en {_edge_clause(best_key, best_value)}, mientras que '

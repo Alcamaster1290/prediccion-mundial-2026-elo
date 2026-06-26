@@ -51,6 +51,37 @@ def test_prediction_copy_promises_editorial_keys_percentages_and_scorelines():
     assert "10 resultados" in premium_js.lower()
 
 
+def test_editorial_outlook_does_not_use_generic_frontend_templates():
+    premium_js = read("js/premium.js")
+    banned = [
+        "La lectura previa favorece",
+        "puede cambiar el guion",
+        "protege su zona débil",
+        "El marcador final permite contrastar",
+    ]
+
+    for phrase in banned:
+        assert phrase not in premium_js
+
+
+def test_prediction_card_does_not_duplicate_editorial_paragraph():
+    premium_js = read("js/premium.js")
+    card_body = re.search(
+        r"function renderPredictionCard\(p\) \{(.*?)\n  function renderGhostCards",
+        premium_js,
+        flags=re.S,
+    ).group(1)
+    explanation_body = re.search(
+        r"function renderPredictionExplanation\(p\) \{(.*?)\n  function renderPredictionCard",
+        premium_js,
+        flags=re.S,
+    )
+
+    assert "renderPredictionExplanation(p)" in card_body
+    assert explanation_body
+    assert ".slice(1)" in explanation_body.group(1)
+
+
 def test_prediction_team_names_link_to_country_sections_responsively():
     premium_js = read("js/premium.js")
     index_html = read("index.html")

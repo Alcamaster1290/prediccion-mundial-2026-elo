@@ -465,35 +465,40 @@
   }
 
   function renderEditorialOutlook(p, result) {
-    var codeA = safeTeamCode(p.team_a);
-    var codeB = safeTeamCode(p.team_b);
-    var nameA = teamName(codeA || p.team_a);
-    var nameB = teamName(codeB || p.team_b);
-    var aWin  = pctValue(p.team_a_win_probability);
-    var draw  = pctValue(p.draw_probability);
-    var bWin  = pctValue(p.team_b_win_probability);
-    var text;
-
-    if (Math.abs(aWin - bWin) < 7) {
-      text = 'El modelo no ve un favorito nítido entre ' + nameA + ' y ' + nameB
-        + '. La previa queda abierta a detalles de área, balón parado y manejo emocional.';
-    } else {
-      var favorite = aWin > bWin ? nameA : nameB;
-      var underdog = aWin > bWin ? nameB : nameA;
-      text = 'La lectura previa favorece a ' + favorite + ', pero ' + underdog
-        + ' puede cambiar el guion si protege su zona débil y acelera bien sus transiciones.';
-    }
-
-    if (draw >= Math.max(aWin, bWin) - 8) {
-      text += ' El empate aparece como un escenario competitivo, no como accidente.';
-    }
-    if (result) {
-      text += ' El marcador final permite contrastar esa lectura con lo que pasó en cancha.';
-    }
+    var text = selectEditorialOutlook(p);
+    if (!text) return '';
 
     return '<div class="prono-editorial-outlook">'
       + '<span class="prono-editorial-label">Lectura editorial</span>'
       + '<p>' + escapeHtml(text) + '</p>'
+      + '</div>';
+  }
+
+  function predictionParagraphs(text) {
+    return String(text || '')
+      .split(/\n{2,}/)
+      .map(function(para) { return para.trim(); })
+      .filter(Boolean);
+  }
+
+  function selectEditorialOutlook(p) {
+    var paragraphs = predictionParagraphs(p && p.explanation);
+    if (paragraphs.length) return paragraphs[0];
+
+    var contexts = [
+      p && p.team_a_context,
+      p && p.team_b_context
+    ].map(function(text) { return String(text || '').trim(); }).filter(Boolean);
+    return contexts.length ? contexts[0] : '';
+  }
+
+  function renderPredictionExplanation(p) {
+    var paragraphs = predictionParagraphs(p && p.explanation).slice(1);
+    if (!paragraphs.length) return '';
+    return '<div class="prono-explanation">'
+      + paragraphs.map(function(para) {
+          return '<p class="prono-explanation-p">' + escapeHtml(para) + '</p>';
+        }).join('')
       + '</div>';
   }
 
@@ -526,13 +531,7 @@
            + (p.team_b_context ? '<div class="prono-ctx prono-ctx-b"><strong>' + renderTeamLink(codeB, nameB, 'prono-team-link prono-ctx-team-link') + ':</strong> ' + escapeHtml(p.team_b_context) + '</div>' : '')
            + '</div>'
          : '')
-      + (p.explanation
-         ? '<div class="prono-explanation">'
-           + p.explanation.split('\n\n').map(function (para) {
-               return '<p class="prono-explanation-p">' + escapeHtml(para) + '</p>';
-             }).join('')
-           + '</div>'
-         : '')
+      + renderPredictionExplanation(p)
       + '</div>';
   }
 
