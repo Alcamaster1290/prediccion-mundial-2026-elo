@@ -417,6 +417,104 @@ def test_bracket_shows_knockout_advance_percentages_from_round_of_16_onward():
     assert result.returncode == 0, result.stderr
 
 
+def test_round_of_32_uses_match_percentages_and_highlights_actual_winner():
+    script = r"""
+    const fs = require('fs');
+    const vm = require('vm');
+    const data = JSON.parse(fs.readFileSync('data/mc_results.json', 'utf8'));
+    const finalPredictions = {
+      matches: [
+        {
+          match_number: 74,
+          phase: 'r32',
+          home_team: 'ger',
+          away_team: 'pry',
+          home_label: '1.° Grupo E',
+          away_label: 'Mejor 3. Grupo D',
+          advance_home_pct: 90.6,
+          advance_away_pct: 9.4,
+          actual_winner: 'pry',
+        },
+      ],
+    };
+
+    const inner = {
+      _html: '',
+      classList: { add() {}, remove() {}, toggle() {} },
+      set innerHTML(value) { this._html = value; },
+      get innerHTML() { return this._html; },
+    };
+    const note = { style: {} };
+    const document = {
+      readyState: 'loading',
+      addEventListener() {},
+      getElementById(id) {
+        if (id === 'bracket-inner') return inner;
+        if (id === 'bk-premium-note') return note;
+        return null;
+      },
+    };
+    const window = {
+      document,
+      SupaData: { loadSimulationData: async () => data },
+    };
+
+    vm.runInContext(fs.readFileSync('js/bracket.js', 'utf8'), vm.createContext({
+      console,
+      document,
+      window,
+      Promise,
+      setTimeout,
+      fetch: async () => ({ ok: true, json: async () => finalPredictions }),
+    }));
+
+    function slotMatch(block, slotCode, code) {
+      const escapedSlot = slotCode.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return block.match(new RegExp(
+        '<div class="([^"]*)" data-slot="' + escapedSlot + '">[\\s\\S]*?'
+        + 'assets\\/flags\\/' + code + '\\.svg[\\s\\S]*?'
+        + '<span class="bk-pct">([^<]+)<\\/span>'
+      ));
+    }
+
+    (async () => {
+      window.BracketSection.init();
+      window.BracketSection.setPremiumState(true);
+      await new Promise(resolve => setTimeout(resolve, 40));
+
+      const html = inner.innerHTML;
+      const match74 = html.match(/data-match="74"[\s\S]*?data-match="77"/);
+      if (!match74) throw new Error('Expected P74 markup');
+      const block = match74[0];
+      const germany = slotMatch(block, '1:E', 'ger');
+      const paraguay = slotMatch(block, '3:A/B/C/D/F', 'pry');
+      if (!germany || germany[2] !== '90.6%') {
+        throw new Error(`Expected Germany match percentage 90.6%, got ${germany && germany[2]}`);
+      }
+      if (germany[1].includes('bk-slot--clinched')) {
+        throw new Error('Germany should not be highlighted as advanced');
+      }
+      if (!paraguay || paraguay[2] !== '9.4%') {
+        throw new Error(`Expected Paraguay match percentage 9.4%, got ${paraguay && paraguay[2]}`);
+      }
+      if (!paraguay[1].includes('bk-slot--clinched')) {
+        throw new Error('Paraguay should be highlighted as actual winner');
+      }
+    })().catch(error => {
+      console.error(error.message);
+      process.exit(1);
+    });
+    """
+    result = subprocess.run(
+        ["node", "-e", textwrap.dedent(script)],
+        check=False,
+        cwd=".",
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr
+
+
 def test_prediction_route_uses_unique_projected_best_thirds():
     script = SYNTHETIC_MC_FIXTURE + r"""
     const fs = require('fs');

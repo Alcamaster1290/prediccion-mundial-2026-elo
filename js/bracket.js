@@ -266,9 +266,9 @@
     return finalPredictionsPromise;
   }
 
-  function resolveFinalSlot(matchNumber, side) {
+  function matchPredictionForSide(matchNumber, side) {
     var match = finalPredictionsByMatch[String(matchNumber)];
-    if (!match || match.phase === 'r32') return null;
+    if (!match) return null;
     var isHome = side === 'home';
     var code = isHome ? match.home_team : match.away_team;
     if (!code) return null;
@@ -276,30 +276,45 @@
       code: code,
       pct: pctNumber(isHome ? match.advance_home_pct : match.advance_away_pct),
       label: isHome ? match.home_label : match.away_label,
-      publicPct: true
+      publicPct: match.phase !== 'r32',
+      matchPct: true,
+      clinched: !!match.actual_winner && match.actual_winner === code
+    };
+  }
+
+  function applyMatchPrediction(resolved, matchNumber, side) {
+    var prediction = matchPredictionForSide(matchNumber, side);
+    if (!resolved || !prediction || prediction.code !== resolved.code) return resolved;
+    return {
+      code: resolved.code,
+      pct: prediction.pct,
+      label: prediction.label || resolved.label,
+      publicPct: prediction.publicPct,
+      matchPct: true,
+      clinched: prediction.clinched
     };
   }
 
   function resolveSlot(slotCode, mc, matchNumber, side) {
     var parts = slotCode.split(':'), pos = parts[0], val = parts[1];
-    if (pos === 'W' || pos === 'L') return resolveFinalSlot(matchNumber, side);
+    if (pos === 'W' || pos === 'L') return matchPredictionForSide(matchNumber, side);
     if (pos === '1' || pos === '2') {
       var code = (teamsByGroup[val] || {})[+pos] || null;
       var field = pos === '1' ? 'first_pct' : 'second_pct';
       var posLabel = pos === '1' ? '1.º Grupo ' : '2.º Grupo ';
-      return code ? {
+      return applyMatchPrediction(code ? {
         code: code,
         pct: pctNumber((mc[code] || {})[field]),
         label: posLabel + val
-      } : null;
+      } : null, matchNumber, side);
     }
     if (pos === '3') {
       var third = bestThirdSlots[slotCode];
-      return third ? {
+      return applyMatchPrediction(third ? {
         code: third.code,
         pct: third.qualifies_pct,
         label: 'Mejor 3. Grupo ' + third.group
-      } : null;
+      } : null, matchNumber, side);
     }
     return null;
   }
@@ -312,7 +327,7 @@
     var isTbd = !code;
     var name  = code ? (NAMES[code] || code.toUpperCase()) : label;
     var slotPct = resolved ? pctNumber(resolved.pct) : 0;
-    var isClinched = !isTbd && slotPct >= 100;
+    var isClinched = !isTbd && (resolved.clinched || (!resolved.matchPct && slotPct >= 100));
     var pct   = resolved ? slotPct.toFixed(1) + '%' : '—';
     var tag   = resolved && resolved.label ? resolved.label : label;
     var flag  = code
