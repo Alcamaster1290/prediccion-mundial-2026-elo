@@ -76,6 +76,43 @@ def test_final_phase_round_of_32_uses_finished_group_table():
     assert labels[85] == "Mejor 3. Grupo J"
 
 
+def test_final_phase_predictions_include_loaded_round_of_32_results():
+    run_generator()
+    data = load_predictions()
+    matches = {match["match_number"]: match for match in data["matches"]}
+
+    assert data["source"]["knockout_fixed_count"] == 7
+    assert data["source"]["finished_count"] == 79
+
+    expected_results = {
+        73: ("can", 0, 1, None, None),
+        74: ("pry", 1, 1, 3, 4),
+        75: ("mar", 1, 1, 2, 3),
+        76: ("bra", 2, 1, None, None),
+        77: ("fra", 3, 0, None, None),
+        78: ("nor", 1, 2, None, None),
+        79: ("mex", 2, 0, None, None),
+    }
+    for match_number, (winner, home_goals, away_goals, home_penalties, away_penalties) in expected_results.items():
+        match = matches[match_number]
+        assert match["status"] == "finished"
+        assert match["actual_winner"] == winner
+        assert match["projected_winner"] == winner
+        assert match["home_goals"] == home_goals
+        assert match["away_goals"] == away_goals
+        if home_penalties is None:
+            assert "home_penalties" not in match
+            assert "away_penalties" not in match
+        else:
+            assert match["home_penalties"] == home_penalties
+            assert match["away_penalties"] == away_penalties
+
+    assert (matches[89]["home_team"], matches[89]["away_team"]) == ("pry", "fra")
+    assert (matches[90]["home_team"], matches[90]["away_team"]) == ("can", "mar")
+    assert (matches[91]["home_team"], matches[91]["away_team"]) == ("bra", "nor")
+    assert (matches[92]["home_team"], matches[92]["away_team"]) == ("mex", "eng")
+
+
 def test_final_phase_predictions_include_editorial_and_player_context():
     run_generator()
     matches = load_predictions()["matches"]
@@ -89,6 +126,11 @@ def test_final_phase_predictions_include_editorial_and_player_context():
 
 def test_final_phase_predictions_advance_actual_round_of_32_winner(tmp_path):
     fixed = json.loads((REPO_ROOT / "data" / "fixed_results.json").read_text(encoding="utf-8"))
+    expected_knockout_count = len([
+        value
+        for key, value in fixed["results"].items()
+        if int(key) > 72 and isinstance(value, dict) and value.get("phase") != "group"
+    ])
     fixed["results"]["73"] = {
         "phase": "r32",
         "home_team": "zaf",
@@ -104,7 +146,7 @@ def test_final_phase_predictions_advance_actual_round_of_32_winner(tmp_path):
     matches = {match["match_number"]: match for match in data["matches"]}
 
     assert data["source"]["fixed_count"] == 72
-    assert data["source"]["knockout_fixed_count"] == 1
+    assert data["source"]["knockout_fixed_count"] == max(expected_knockout_count, 1)
     assert matches[73]["status"] == "finished"
     assert matches[73]["actual_winner"] == "zaf"
     assert matches[73]["projected_winner"] == "zaf"
