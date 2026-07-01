@@ -56,6 +56,110 @@ def load_json(path):
         return json.load(fh)
 
 
+def normalize_fixed_result(match_number, value, group_matches_by_number):
+    match_number = int(match_number)
+    if isinstance(value, (list, tuple)):
+        fixture = group_matches_by_number.get(match_number)
+        return {
+            "phase": "group" if fixture else None,
+            "home_team": fixture.get("home_team") if fixture else None,
+            "away_team": fixture.get("away_team") if fixture else None,
+            "home_goals": int(value[0]),
+            "away_goals": int(value[1]),
+        }
+    if isinstance(value, dict):
+        record = dict(value)
+        record["home_goals"] = int(record["home_goals"])
+        record["away_goals"] = int(record["away_goals"])
+        for field in ("home_penalties", "away_penalties"):
+            if record.get(field) is not None:
+                record[field] = int(record[field])
+        fixture = group_matches_by_number.get(match_number)
+        if fixture and not record.get("phase"):
+            record["phase"] = "group"
+        if fixture and not record.get("home_team"):
+            record["home_team"] = fixture.get("home_team")
+        if fixture and not record.get("away_team"):
+            record["away_team"] = fixture.get("away_team")
+        return record
+    raise ValueError(f"Unsupported fixed result for match {match_number}: {value!r}")
+
+
+def load_fixed_result_records(path, group_matches):
+    payload = load_json(path)
+    group_matches_by_number = {int(match["match_number"]): match for match in group_matches}
+    records = {}
+    for match_number, value in (payload.get("results") or {}).items():
+        records[int(match_number)] = normalize_fixed_result(match_number, value, group_matches_by_number)
+    return records
+
+
+def split_fixed_results(records):
+    group_results = {}
+    knockout_results = {}
+    for match_number, record in records.items():
+        phase = record.get("phase")
+        if phase == "group" or match_number <= 72:
+            group_results[str(match_number)] = [record["home_goals"], record["away_goals"]]
+        else:
+            knockout_results[match_number] = record
+    return group_results, knockout_results
+
+
+def result_winner(record, home, away):
+    winner = record.get("winner_team")
+    if winner:
+        return winner
+    home_goals = record.get("home_goals")
+    away_goals = record.get("away_goals")
+    if home_goals > away_goals:
+        return home
+    if away_goals > home_goals:
+        return away
+    home_penalties = record.get("home_penalties")
+    away_penalties = record.get("away_penalties")
+    if home_penalties is None or away_penalties is None:
+        raise RuntimeError("Drawn knockout result requires penalty scores or winner_team")
+    if home_penalties == away_penalties:
+        raise RuntimeError("Penalty shootout cannot end tied")
+    return home if home_penalties > away_penalties else away
+
+
+def orient_result(record, home, away):
+    oriented = dict(record)
+    if record.get("home_team") == away and record.get("away_team") == home:
+        oriented["home_team"] = home
+        oriented["away_team"] = away
+        oriented["home_goals"], oriented["away_goals"] = record["away_goals"], record["home_goals"]
+        if record.get("home_penalties") is not None or record.get("away_penalties") is not None:
+            oriented["home_penalties"] = record.get("away_penalties")
+            oriented["away_penalties"] = record.get("home_penalties")
+    else:
+        oriented.setdefault("home_team", home)
+        oriented.setdefault("away_team", away)
+    return oriented
+
+
+def apply_actual_result(prediction, result, home, away):
+    result = orient_result(result, home, away)
+    actual_winner = result_winner(result, home, away)
+    actual_loser = away if actual_winner == home else home
+    prediction.update({
+        "status": "finished",
+        "home_goals": result["home_goals"],
+        "away_goals": result["away_goals"],
+        "actual_winner": actual_winner,
+        "actual_loser": actual_loser,
+        "projected_winner": actual_winner,
+        "projected_loser": actual_loser,
+    })
+    if result.get("home_penalties") is not None:
+        prediction["home_penalties"] = result["home_penalties"]
+    if result.get("away_penalties") is not None:
+        prediction["away_penalties"] = result["away_penalties"]
+    return prediction
+
+
 def build_team_names(teams_data):
     return {
         team["id"]: team.get("name") or team["id"].upper()
@@ -365,15 +469,17 @@ def build_prediction(match, home, away, strengths, weights, xi_profiles, bench_p
     }
 
 
-def build_final_predictions():
+def build_final_predictions(fixed_results_path=None):
     matches = load_json(DATA_DIR / "matches.json")
-    fixed = load_json(DATA_DIR / "fixed_results.json")
+    fixed_results_path = Path(fixed_results_path) if fixed_results_path else DATA_DIR / "fixed_results.json"
+    fixed_records = load_fixed_result_records(fixed_results_path, matches)
+    group_results, knockout_results = split_fixed_results(fixed_records)
     knockout_matches = load_json(DATA_DIR / "knockout_matches.json")
     teams_data = load_json(DATA_DIR / "teams.json")
     strengths = load_json(DATA_DIR / "team_strength_snapshots.json")
     weights = load_json(DATA_DIR / "model_weights.json")
 
-    standings = build_group_standings(matches, fixed["results"])
+    standings = build_group_standings(matches, group_results)
     thirds = best_thirds(standings)
     third_assignments = build_third_assignments(knockout_matches, thirds)
     seed_info = {row["code"]: row for rows in standings.values() for row in rows if row["rank"] <= 2}
@@ -417,6 +523,9 @@ def build_final_predictions():
             seed_info,
             route_info,
         )
+        actual_result = knockout_results.get(match_number)
+        if actual_result:
+            prediction = apply_actual_result(prediction, actual_result, home, away)
         output_matches.append(prediction)
         winners[match_number] = prediction["projected_winner"]
         losers[match_number] = prediction["projected_loser"]
@@ -434,7 +543,9 @@ def build_final_predictions():
     return {
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "source": {
-            "fixed_count": len(fixed["results"]),
+            "fixed_count": len(group_results),
+            "knockout_fixed_count": len(knockout_results),
+            "finished_count": len(group_results) + len(knockout_results),
             "model_version": strengths.get("_version", weights.get("version", "1.3")),
             "best_third_groups": [row["group"] for row in thirds[:8]],
         },

@@ -88,6 +88,15 @@ def _compact_result_record(match_number, score, matches_by_number):
     fixture = matches_by_number.get(int(match_number))
     if fixture is None:
         return None
+    if isinstance(score, dict):
+        if score.get("home_goals") is None or score.get("away_goals") is None:
+            return None
+        return {
+            'home_team': score.get('home_team') or fixture.get('home_team'),
+            'away_team': score.get('away_team') or fixture.get('away_team'),
+            'home_goals': int(score['home_goals']),
+            'away_goals': int(score['away_goals']),
+        }
     if not isinstance(score, (list, tuple)) or len(score) != 2:
         return None
     return {

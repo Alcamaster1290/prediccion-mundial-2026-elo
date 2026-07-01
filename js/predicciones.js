@@ -782,6 +782,20 @@
     return html;
   }
 
+  function renderFinalResult(match) {
+    if (!match || match.status !== 'finished') return '';
+    if (match.home_goals === undefined || match.away_goals === undefined) return '';
+    var result = String(match.home_goals) + '-' + String(match.away_goals);
+    if (match.home_penalties !== undefined && match.away_penalties !== undefined) {
+      result += ' (p ' + String(match.home_penalties) + '-' + String(match.away_penalties) + ')';
+    }
+    var winner = safeTeamCode(match.actual_winner || match.projected_winner);
+    return '<div class="pred-final-result">'
+      + '<span>Resultado</span>'
+      + '<strong>' + escapeHtml(result) + (winner ? ' · ' + escapeHtml(teamName(winner)) : '') + '</strong>'
+      + '</div>';
+  }
+
   function renderFinalMatchCard(match) {
     var winner = safeTeamCode(match.projected_winner);
     return '<article class="pred-final-card" id="pred-final-p' + escapeHtml(match.match_number) + '">'
@@ -795,8 +809,9 @@
       + '<span class="pred-final-vs">vs</span>'
       + renderFinalTeam(match, 'away')
       + '</div>'
+      + renderFinalResult(match)
       + '<div class="pred-final-adv-row">'
-      + '<span>Avanza proyectado</span>'
+      + '<span>' + (match.status === 'finished' ? 'Avanzó' : 'Avanza proyectado') + '</span>'
       + renderPctPill(winner === match.home_team ? match.advance_home_pct : match.advance_away_pct, teamName(winner))
       + '</div>'
       + renderFinalProbabilityRows(match)

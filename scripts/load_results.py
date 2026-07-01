@@ -21,7 +21,7 @@ from export_to_supabase import supabase_request
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-RESULT_TOKEN_RE = re.compile(r"^(\d+):(\d+)-(\d+)$")
+RESULT_TOKEN_RE = re.compile(r"^(\d+):(\d+)-(\d+)(?:p(\d+)-(\d+))?$")
 
 
 def load_json(path):
@@ -32,9 +32,15 @@ def load_json(path):
 def parse_result_token(token):
     match = RESULT_TOKEN_RE.match(token.strip())
     if not match:
-        raise ValueError(f"Invalid result token {token!r}; expected match_number:home-away, e.g. 25:2-1")
-    match_number, home_goals, away_goals = (int(value) for value in match.groups())
-    return match_number, home_goals, away_goals
+        raise ValueError(
+            f"Invalid result token {token!r}; expected match_number:home-away or "
+            "match_number:home-awayphomepens-awaypens, e.g. 25:2-1 or 73:1-1p4-3"
+        )
+    match_number, home_goals, away_goals, home_penalties, away_penalties = match.groups()
+    values = (int(match_number), int(home_goals), int(away_goals))
+    if home_penalties is None:
+        return values
+    return values + (int(home_penalties), int(away_penalties))
 
 
 def parse_results_csv(path):
@@ -47,6 +53,8 @@ def parse_results_csv(path):
             raise ValueError(f"CSV missing required columns: {', '.join(sorted(missing))}")
         for line_number, row in enumerate(reader, start=2):
             token = f"{row.get('match_number', '').strip()}:{row.get('home_goals', '').strip()}-{row.get('away_goals', '').strip()}"
+            if row.get("home_penalties") or row.get("away_penalties"):
+                token += f"p{row.get('home_penalties', '').strip()}-{row.get('away_penalties', '').strip()}"
             try:
                 rows.append(parse_result_token(token))
             except ValueError as exc:
@@ -54,24 +62,70 @@ def parse_results_csv(path):
     return rows
 
 
-def load_fixture_matches():
+def load_knockout_prediction_map(fixed_results_path=None):
+    try:
+        import generate_final_phase_predictions
+
+        data = generate_final_phase_predictions.build_final_predictions(
+            fixed_results_path=fixed_results_path or (REPO_ROOT / "data" / "fixed_results.json")
+        )
+    except Exception as exc:
+        print(f"WARNING: could not resolve knockout teams locally: {exc}", file=sys.stderr)
+        return {}
+    return {
+        int(match["match_number"]): match
+        for match in data.get("matches", [])
+        if match.get("match_number") is not None
+    }
+
+
+def load_fixture_matches(fixed_results_path=None):
     matches = []
     for item in load_json(REPO_ROOT / "data" / "matches.json"):
         row = dict(item)
         row["phase"] = "group"
         matches.append(row)
+    knockout_projection = load_knockout_prediction_map(fixed_results_path)
     for item in load_json(REPO_ROOT / "data" / "knockout_matches.json"):
+        projected = knockout_projection.get(int(item.get("matchNum")))
         matches.append({
             "match_number": item.get("matchNum"),
             "match_id": f"{item.get('phase')}-{item.get('matchNum')}",
             "phase": str(item.get("phase") or "").lower(),
             "group": None,
-            "home_team": None,
-            "away_team": None,
+            "home_team": projected.get("home_team") if projected else None,
+            "away_team": projected.get("away_team") if projected else None,
             "home_label": item.get("homeLabel"),
             "away_label": item.get("awayLabel"),
         })
     return matches
+
+
+def unpack_parsed_result(parsed_row):
+    if len(parsed_row) == 3:
+        match_number, home_goals, away_goals = parsed_row
+        return match_number, home_goals, away_goals, None, None
+    if len(parsed_row) == 5:
+        return parsed_row
+    raise ValueError(f"Invalid parsed result shape for {parsed_row!r}")
+
+
+def infer_winner(phase, home_team, away_team, home_goals, away_goals, home_penalties=None, away_penalties=None):
+    if home_goals > away_goals:
+        return home_team
+    if away_goals > home_goals:
+        return away_team
+    if home_penalties is None and away_penalties is None:
+        if phase != "group" and home_team and away_team:
+            raise ValueError("Knockout draws require penalties, e.g. 73:1-1p4-3")
+        return None
+    if home_penalties is None or away_penalties is None:
+        raise ValueError("Both penalty scores are required")
+    if home_goals != away_goals:
+        raise ValueError("Penalty scores are only valid when regular score is tied")
+    if home_penalties == away_penalties:
+        raise ValueError("Penalty shootout cannot end tied")
+    return home_team if home_penalties > away_penalties else away_team
 
 
 def validate_against_matches(parsed, matches):
@@ -79,7 +133,8 @@ def validate_against_matches(parsed, matches):
     seen = set()
     rows = []
 
-    for match_number, home_goals, away_goals in parsed:
+    for parsed_row in parsed:
+        match_number, home_goals, away_goals, home_penalties, away_penalties = unpack_parsed_result(parsed_row)
         if match_number in seen:
             raise ValueError(f"Duplicate match_number {match_number} in input batch")
         seen.add(match_number)
@@ -89,15 +144,17 @@ def validate_against_matches(parsed, matches):
 
         home_team = fixture.get("home_team")
         away_team = fixture.get("away_team")
-        if home_goals > away_goals and home_team:
-            winner_team = home_team
-        elif away_goals > home_goals and away_team:
-            winner_team = away_team
-        else:
-            winner_team = None
-
         phase = fixture.get("phase") or "group"
-        rows.append({
+        winner_team = infer_winner(
+            phase,
+            home_team,
+            away_team,
+            home_goals,
+            away_goals,
+            home_penalties,
+            away_penalties,
+        )
+        row = {
             "match_number": match_number,
             "phase": phase,
             "group_id": fixture.get("group_id") or fixture.get("group"),
@@ -109,7 +166,12 @@ def validate_against_matches(parsed, matches):
             "home_goals": home_goals,
             "away_goals": away_goals,
             "winner_team": winner_team,
-        })
+        }
+        if home_penalties is not None:
+            row["home_penalties"] = home_penalties
+        if away_penalties is not None:
+            row["away_penalties"] = away_penalties
+        rows.append(row)
 
     return rows
 
@@ -120,6 +182,15 @@ def build_patch(row, status="finished"):
         "away_goals": row["away_goals"],
         "status": status,
     }
+    if row.get("phase") != "group":
+        if row.get("home_team"):
+            patch["home_team"] = row.get("home_team")
+        if row.get("away_team"):
+            patch["away_team"] = row.get("away_team")
+    if row.get("home_penalties") is not None:
+        patch["home_penalties"] = row.get("home_penalties")
+    if row.get("away_penalties") is not None:
+        patch["away_penalties"] = row.get("away_penalties")
     if status == "finished":
         patch["winner_team"] = row.get("winner_team")
     return patch
@@ -147,8 +218,9 @@ def apply_results(supabase_url, key, rows, status="finished", dry_run=False):
 
 def fetch_finished_results(supabase_url, key):
     path = (
-        "match_results?status=eq.finished&phase=eq.group"
-        "&select=match_number,home_goals,away_goals&order=match_number"
+        "match_results?status=eq.finished"
+        "&select=match_number,phase,home_team,away_team,home_goals,away_goals,"
+        "home_penalties,away_penalties,winner_team&order=match_number"
     )
     err, rows = supabase_request(supabase_url, key, "GET", path, prefer="return=representation")
     if err:
@@ -159,8 +231,46 @@ def fetch_finished_results(supabase_url, key):
         match_number = row.get("match_number")
         if match_number is None or row.get("home_goals") is None or row.get("away_goals") is None:
             continue
-        results[int(match_number)] = (int(row["home_goals"]), int(row["away_goals"]))
+        record = {
+            "phase": row.get("phase"),
+            "home_team": row.get("home_team"),
+            "away_team": row.get("away_team"),
+            "home_goals": int(row["home_goals"]),
+            "away_goals": int(row["away_goals"]),
+        }
+        for field in ("home_penalties", "away_penalties"):
+            if row.get(field) is not None:
+                record[field] = int(row[field])
+        if row.get("winner_team"):
+            record["winner_team"] = row["winner_team"]
+        results[int(match_number)] = record
     return results
+
+
+def serialize_fixed_result(score):
+    if isinstance(score, (list, tuple)):
+        return [int(score[0]), int(score[1])]
+
+    phase = score.get("phase")
+    if phase == "group" or (
+        phase is None
+        and score.get("home_penalties") is None
+        and score.get("away_penalties") is None
+        and not score.get("winner_team")
+    ):
+        return [int(score["home_goals"]), int(score["away_goals"])]
+
+    keep = (
+        "phase",
+        "home_team",
+        "away_team",
+        "home_goals",
+        "away_goals",
+        "home_penalties",
+        "away_penalties",
+        "winner_team",
+    )
+    return {key: score[key] for key in keep if score.get(key) is not None}
 
 
 def write_fixed_results(path, results):
@@ -170,7 +280,7 @@ def write_fixed_results(path, results):
     payload = {
         "fetched_at": fetched_at,
         "results": {
-            str(match_number): [score[0], score[1]]
+            str(match_number): serialize_fixed_result(score)
             for match_number, score in sorted(results.items())
         },
     }
@@ -181,8 +291,11 @@ def format_row(row, status):
     left = row.get("home_team") or row.get("home_label") or "home"
     right = row.get("away_team") or row.get("away_label") or "away"
     winner = row.get("winner_team") or "-"
+    penalties = ""
+    if row.get("home_penalties") is not None and row.get("away_penalties") is not None:
+        penalties = f" p{row['home_penalties']}-{row['away_penalties']}"
     return (
-        f"P{row['match_number']:>3}  {left} {row['home_goals']}-{row['away_goals']} {right}"
+        f"P{row['match_number']:>3}  {left} {row['home_goals']}-{row['away_goals']}{penalties} {right}"
         f"  -> {status}, winner={winner}"
     )
 
@@ -227,7 +340,7 @@ def main():
             print("No results provided. Use tokens like 25:2-1, --csv, or --fetch-only.")
             return 1
 
-        rows = validate_against_matches(parsed, load_fixture_matches())
+        rows = validate_against_matches(parsed, load_fixture_matches(args.fixed_results))
         print("Results to apply:")
         for row in rows:
             print("  " + format_row(row, args.status))

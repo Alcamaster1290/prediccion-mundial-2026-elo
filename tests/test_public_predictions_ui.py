@@ -18,6 +18,9 @@ def test_predictions_page_has_group_and_final_phase_tabs():
     assert "renderFinalPhasePredictions" in pred_js
     assert "showPhaseTab" in pred_js
     assert 'id="pred-phase-final"' in pred_js
+    assert "renderFinalResult" in pred_js
+    assert "pred-final-result" in pred_js
+    assert "home_penalties" in pred_js
 
 
 def test_group_pronosticos_are_rendered_inside_collapsible_block():

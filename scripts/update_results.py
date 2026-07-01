@@ -48,6 +48,7 @@ def build_update_commands(python_executable, tokens, csv_path, sync_only, runs, 
     if dry_run:
         export_cmd.append("--dry-run")
     commands.append(export_cmd)
+    commands.append([python_executable, "scripts/generate_final_phase_predictions.py"])
     return commands
 
 

@@ -5,6 +5,9 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT / "scripts"))
+
+import generate_final_phase_predictions  # noqa: E402
 
 
 def run_generator():
@@ -73,3 +76,51 @@ def test_final_phase_predictions_include_editorial_and_player_context():
         assert match["player_factor"]
         assert "arquero" not in match["player_factor"].lower()
         assert "%" not in match["editorial"]
+
+
+def test_final_phase_predictions_advance_actual_round_of_32_winner(tmp_path):
+    fixed = json.loads((REPO_ROOT / "data" / "fixed_results.json").read_text(encoding="utf-8"))
+    fixed["results"]["73"] = {
+        "phase": "r32",
+        "home_team": "zaf",
+        "away_team": "can",
+        "home_goals": 2,
+        "away_goals": 1,
+        "winner_team": "zaf",
+    }
+    fixed_path = tmp_path / "fixed_results.json"
+    fixed_path.write_text(json.dumps(fixed), encoding="utf-8")
+
+    data = generate_final_phase_predictions.build_final_predictions(fixed_results_path=fixed_path)
+    matches = {match["match_number"]: match for match in data["matches"]}
+
+    assert data["source"]["fixed_count"] == 72
+    assert data["source"]["knockout_fixed_count"] == 1
+    assert matches[73]["status"] == "finished"
+    assert matches[73]["actual_winner"] == "zaf"
+    assert matches[73]["projected_winner"] == "zaf"
+    assert matches[90]["home_team"] == "zaf"
+
+
+def test_final_phase_predictions_advance_penalty_winner(tmp_path):
+    fixed = json.loads((REPO_ROOT / "data" / "fixed_results.json").read_text(encoding="utf-8"))
+    fixed["results"]["73"] = {
+        "phase": "r32",
+        "home_team": "zaf",
+        "away_team": "can",
+        "home_goals": 1,
+        "away_goals": 1,
+        "home_penalties": 4,
+        "away_penalties": 5,
+        "winner_team": "can",
+    }
+    fixed_path = tmp_path / "fixed_results.json"
+    fixed_path.write_text(json.dumps(fixed), encoding="utf-8")
+
+    data = generate_final_phase_predictions.build_final_predictions(fixed_results_path=fixed_path)
+    matches = {match["match_number"]: match for match in data["matches"]}
+
+    assert matches[73]["home_penalties"] == 4
+    assert matches[73]["away_penalties"] == 5
+    assert matches[73]["actual_winner"] == "can"
+    assert matches[90]["home_team"] == "can"

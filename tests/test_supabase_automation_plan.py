@@ -151,8 +151,13 @@ def test_bracket_does_not_load_premium_data_before_access():
 def test_knockout_rpc_resolves_best_third_labels():
     sql = read("supabase/30_resolve_knockout_best_thirds.sql").lower()
 
+    assert "create or replace function public.resolve_knockout_slot_team" in sql
     assert "create or replace function public.resolve_knockout_bracket()" in sql
     assert "best_third_slots" in sql
     assert "regexp_match" in sql
+    assert "match_winner" in sql
+    assert "match_loser" in sql
+    assert "source_match_number" in sql
+    assert "winner_team" in sql
     assert "public.v_best_thirds" in sql
     assert "grant execute on function public.resolve_knockout_bracket()" in sql

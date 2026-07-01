@@ -33,6 +33,7 @@ def test_build_update_commands_loads_results_then_runs_conditioned_mc_and_mc_onl
             "data/mc_results.json",
         ],
         ["python", "scripts/export_to_supabase.py", "--mc-only", "--mc-results", "data/mc_results.json"],
+        ["python", "scripts/generate_final_phase_predictions.py"],
     ]
 
 
@@ -59,6 +60,10 @@ def test_build_update_commands_sync_only_skips_loader_and_keeps_dry_run_flag():
         "data/mc_results.json",
     ]
     assert commands[-1] == [
+        "python",
+        "scripts/generate_final_phase_predictions.py",
+    ]
+    assert commands[-2] == [
         "python",
         "scripts/export_to_supabase.py",
         "--mc-only",
