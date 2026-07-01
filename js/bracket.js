@@ -320,6 +320,11 @@
   }
 
   /* ── HTML rendering ── */
+  function sourcePredictionMatch(slotCode) {
+    var match = String(slotCode || '').match(/^W:(\d+)$/);
+    return match ? match[1] : null;
+  }
+
   function slot(slotCode, label, mc, matchNumber, side) {
     var canResolveFinal = slotCode.indexOf('W:') === 0 || slotCode.indexOf('L:') === 0;
     var resolved = (mc || canResolveFinal) ? resolveSlot(slotCode, mc || {}, matchNumber, side) : null;
@@ -333,14 +338,39 @@
     var flag  = code
       ? '<img class="bk-flag" src="assets/flags/' + code + '.svg" alt="' + (NAMES[code] || code) + '" loading="lazy">'
       : '<span class="bk-flag-ph"></span>';
-    return '<div class="bk-slot' + (isTbd ? ' bk-slot--tbd' : '') + (isClinched ? ' bk-slot--clinched' : '') + '" data-slot="' + slotCode + '">'
-      + flag
+    var sourceMatch = sourcePredictionMatch(slotCode);
+    var predictionMatch = isTbd ? sourceMatch : null;
+    var slotClasses = 'bk-slot' + (isTbd ? ' bk-slot--tbd' : '') + (isClinched ? ' bk-slot--clinched' : '') + (predictionMatch ? ' bk-slot-link' : '');
+    var tagHtml = sourceMatch && !isTbd
+      ? '<a class="bk-slot-tag bk-slot-source-link" href="#pred-final-p' + sourceMatch + '" aria-label="Ver prediccion del Partido ' + sourceMatch + '" title="Ver prediccion del Partido ' + sourceMatch + '">' + tag + '</a>'
+      : '<span class="bk-slot-tag">' + tag + '</span>';
+    var content = flag
       + '<div class="bk-slot-info">'
       + '<span class="bk-slot-name">' + name + '</span>'
-      + '<span class="bk-slot-tag">' + tag + '</span>'
+      + tagHtml
       + '</div>'
-      + ((showPct || (resolved && resolved.publicPct)) ? '<span class="bk-pct">' + pct + '</span>' : '')
+      + ((showPct || (resolved && resolved.publicPct)) ? '<span class="bk-pct">' + pct + '</span>' : '');
+    if (predictionMatch) {
+      return '<a class="' + slotClasses + '" href="#pred-final-p' + predictionMatch + '" data-slot="' + slotCode + '" aria-label="Ver prediccion del Partido ' + predictionMatch + '" title="Ver prediccion del Partido ' + predictionMatch + '">'
+        + content
+        + '</a>';
+    }
+    return '<div class="' + slotClasses + '" data-slot="' + slotCode + '">'
+      + content
       + '</div>';
+  }
+
+  function bindPredictionLinks(el) {
+    if (!el || !el.addEventListener || el.__bkPredictionLinksBound) return;
+    el.__bkPredictionLinksBound = true;
+    el.addEventListener('click', function (event) {
+      var target = event && event.target;
+      var link = target && target.closest ? target.closest('a.bk-slot-link[href^="#pred-final-p"], a.bk-slot-source-link[href^="#pred-final-p"]') : null;
+      if (!link || (el.contains && !el.contains(link))) return;
+      if (window.PredicionesSection && typeof window.PredicionesSection.showPhaseTab === 'function') {
+        window.PredicionesSection.showPhaseTab('final');
+      }
+    });
   }
 
   function match(m, mc, isFinal) {
@@ -573,6 +603,7 @@
   function init() {
     var el = document.getElementById('bracket-inner');
     if (!el) return;
+    bindPredictionLinks(el);
 
     // Estructura estática primero (sin datos, sin blur). El estado real lo fija
     // auth.js vía setPremiumState; arrancamos en modo no-premium (banderas, sin %).

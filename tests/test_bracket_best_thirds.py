@@ -515,6 +515,107 @@ def test_round_of_32_uses_match_percentages_and_highlights_actual_winner():
     assert result.returncode == 0, result.stderr
 
 
+def test_knockout_winner_placeholders_link_to_source_prediction():
+    script = r"""
+    const fs = require('fs');
+    const vm = require('vm');
+    const data = JSON.parse(fs.readFileSync('data/mc_results.json', 'utf8'));
+    const finalPredictions = {
+      matches: [
+        {
+          match_number: 89,
+          phase: 'r16',
+          home_team: 'pry',
+          away_team: 'fra',
+          home_label: 'Ganador Partido 74',
+          away_label: 'Ganador Partido 77',
+          advance_home_pct: 8.1,
+          advance_away_pct: 91.9,
+        },
+      ],
+    };
+
+    let clickHandler = null;
+    let shownPhase = null;
+    const inner = {
+      _html: '',
+      classList: { add() {}, remove() {}, toggle() {} },
+      addEventListener(type, handler) {
+        if (type === 'click') clickHandler = handler;
+      },
+      contains(node) { return !!(node && node.insideBracket); },
+      set innerHTML(value) { this._html = value; },
+      get innerHTML() { return this._html; },
+    };
+    const note = { style: {} };
+    const document = {
+      readyState: 'loading',
+      addEventListener() {},
+      getElementById(id) {
+        if (id === 'bracket-inner') return inner;
+        if (id === 'bk-premium-note') return note;
+        return null;
+      },
+    };
+    const window = {
+      document,
+      SupaData: { loadSimulationData: async () => data },
+      PredicionesSection: {
+        showPhaseTab(phase) { shownPhase = phase; },
+      },
+    };
+
+    vm.runInContext(fs.readFileSync('js/bracket.js', 'utf8'), vm.createContext({
+      console,
+      document,
+      window,
+      Promise,
+      setTimeout,
+      fetch: async () => ({ ok: true, json: async () => finalPredictions }),
+    }));
+
+    (async () => {
+      window.BracketSection.init();
+      window.BracketSection.setPremiumState(true);
+      await new Promise(resolve => setTimeout(resolve, 40));
+
+      const html = inner.innerHTML;
+      if (!/<a class="[^"]*bk-slot-link[^"]*" href="#pred-final-p83"[\s\S]*data-slot="W:83"[\s\S]*<span class="bk-slot-name">G\. P\.83<\/span>/.test(html)) {
+        throw new Error('Expected unresolved W:83 placeholder to link to prediction P83');
+      }
+      if (!/data-slot="W:74"[\s\S]*assets\/flags\/pry\.svg[\s\S]*<span class="bk-slot-name">Paraguay<\/span>[\s\S]*<a class="bk-slot-tag bk-slot-source-link" href="#pred-final-p74"[^>]*>Ganador Partido 74<\/a>/.test(html)) {
+        throw new Error('Expected resolved W:74 slot to keep the team and link the source match label');
+      }
+      if (!clickHandler) {
+        throw new Error('Expected delegated bracket click handler');
+      }
+
+      const link = { insideBracket: true };
+      clickHandler({
+        target: {
+          closest(selector) {
+            return selector.indexOf('bk-slot-link') !== -1 && selector.indexOf('bk-slot-source-link') !== -1 ? link : null;
+          },
+        },
+      });
+      if (shownPhase !== 'final') {
+        throw new Error(`Expected bracket prediction link to activate final tab, got ${shownPhase}`);
+      }
+    })().catch(error => {
+      console.error(error.message);
+      process.exit(1);
+    });
+    """
+    result = subprocess.run(
+        ["node", "-e", textwrap.dedent(script)],
+        check=False,
+        cwd=".",
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr
+
+
 def test_prediction_route_uses_unique_projected_best_thirds():
     script = SYNTHETIC_MC_FIXTURE + r"""
     const fs = require('fs');

@@ -2593,6 +2593,20 @@
     transition: border-color .15s; cursor: default;
   }
   .bk-slot:hover { border-color: var(--bk-pct); }
+  .bk-slot-link {
+    color: inherit; text-decoration: none; cursor: pointer;
+  }
+  .bk-slot-link:hover .bk-slot-name { color: var(--bk-pct); }
+  .bk-slot-link:focus-visible {
+    outline: 2px solid var(--bk-pct); outline-offset: 2px;
+  }
+  .bk-slot-source-link {
+    color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor;
+  }
+  .bk-slot-source-link:hover { color: var(--bk-pct); }
+  .bk-slot-source-link:focus-visible {
+    outline: 1px solid var(--bk-pct); outline-offset: 1px; border-bottom-color: transparent;
+  }
   .bk-slot.bk-slot--clinched {
     background:
       radial-gradient(circle at 14% 50%, rgba(34,197,94,.34), transparent 35%),
