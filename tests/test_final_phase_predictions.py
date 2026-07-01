@@ -41,30 +41,39 @@ def test_final_phase_predictions_resolve_full_projected_bracket():
 
 def test_final_phase_round_of_32_uses_finished_group_table():
     run_generator()
+    matches = [m for m in load_predictions()["matches"] if m["phase"] == "r32"]
     r32 = {
         m["match_number"]: (m["home_team"], m["away_team"])
-        for m in load_predictions()["matches"]
-        if m["phase"] == "r32"
+        for m in matches
+    }
+    labels = {
+        m["match_number"]: m["away_label"]
+        for m in matches
     }
 
     assert r32 == {
         73: ("zaf", "can"),
-        74: ("ger", "swe"),
+        74: ("ger", "pry"),
         75: ("ned", "mar"),
         76: ("bra", "jpn"),
-        77: ("fra", "pry"),
+        77: ("fra", "swe"),
         78: ("civ", "nor"),
         79: ("mex", "ecu"),
         80: ("eng", "cod"),
         81: ("usa", "bih"),
-        82: ("bel", "alg"),
+        82: ("bel", "sen"),
         83: ("por", "cro"),
         84: ("esp", "aut"),
-        85: ("sui", "sen"),
+        85: ("sui", "alg"),
         86: ("arg", "cpv"),
         87: ("col", "gha"),
         88: ("aus", "egy"),
     }
+    assert labels[74] == "Mejor 3. Grupo D"
+    assert labels[77] == "Mejor 3. Grupo F"
+    assert labels[79] == "Mejor 3. Grupo E"
+    assert labels[82] == "Mejor 3. Grupo I"
+    assert labels[85] == "Mejor 3. Grupo J"
 
 
 def test_final_phase_predictions_include_editorial_and_player_context():

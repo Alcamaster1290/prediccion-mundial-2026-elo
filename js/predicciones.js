@@ -43,6 +43,17 @@
     {num:88, home:{t:'2',g:'D'}, away:{t:'2',g:'G'}},
   ];
 
+  var CURRENT_BEST_THIRD_SLOT_GROUPS = {
+    '74:away': 'D',
+    '77:away': 'F',
+    '79:away': 'E',
+    '80:away': 'K',
+    '81:away': 'B',
+    '82:away': 'I',
+    '85:away': 'J',
+    '87:away': 'L'
+  };
+
   var NAMES = {
     mex:'México', zaf:'Sudáfrica', kor:'Corea del Sur', cze:'Chequia',
     can:'Canadá', bih:'Bosnia', qat:'Qatar', sui:'Suiza',
@@ -620,17 +631,31 @@
       return qualifiedScore + (100 - rank) + (parseFloat(candidate.qualifies_pct) || 0) / 1000;
     }
 
+    function shouldUseCurrentBestThirdSlots() {
+      var requiredGroups = {};
+      Object.keys(CURRENT_BEST_THIRD_SLOT_GROUPS).forEach(function(slotKey) {
+        requiredGroups[CURRENT_BEST_THIRD_SLOT_GROUPS[slotKey]] = true;
+      });
+      return Object.keys(requiredGroups).every(function(group) {
+        var row = tercByGroup[group];
+        return row && (row.qualifies === true || row.qualifies === 'true');
+      });
+    }
+
     function buildThirdAssignments() {
       var slots = [];
+      var useCurrentBestThirdSlots = shouldUseCurrentBestThirdSlots();
       R32.forEach(function(m) {
         if (m.home.t === '3') slots.push({ key: m.num + ':home', slot: m.home });
         if (m.away.t === '3') slots.push({ key: m.num + ':away', slot: m.away });
       });
 
       slots.forEach(function(item) {
+        var fixedGroup = useCurrentBestThirdSlots ? CURRENT_BEST_THIRD_SLOT_GROUPS[item.key] : null;
         item.candidates = item.slot.gs.map(function(group) {
           var row = tercByGroup[group];
           if (!row) return null;
+          if (fixedGroup && group !== fixedGroup) return null;
           return {
             group: group,
             code: row.team_code,

@@ -119,13 +119,13 @@ def test_current_best_third_knockout_slots_export_as_resolved_rules():
         87: "3.° D/E/I/J/L",
     }
     expected_groups = {
-        74: "F",
-        77: "D",
+        74: "D",
+        77: "F",
         79: "E",
         80: "K",
         81: "B",
-        82: "J",
-        85: "I",
+        82: "I",
+        85: "J",
         87: "L",
     }
 

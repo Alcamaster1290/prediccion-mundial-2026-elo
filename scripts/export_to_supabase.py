@@ -51,13 +51,13 @@ NAMES = {
 }
 
 CURRENT_BEST_THIRD_SLOT_GROUPS = {
-    (74, 'away'): 'F',
-    (77, 'away'): 'D',
+    (74, 'away'): 'D',
+    (77, 'away'): 'F',
     (79, 'away'): 'E',
     (80, 'away'): 'K',
     (81, 'away'): 'B',
-    (82, 'away'): 'J',
-    (85, 'away'): 'I',
+    (82, 'away'): 'I',
+    (85, 'away'): 'J',
     (87, 'away'): 'L',
 }
 

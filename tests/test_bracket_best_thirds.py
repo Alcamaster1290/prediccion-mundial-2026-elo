@@ -269,6 +269,154 @@ def test_bracket_highlights_only_slots_clinched_at_one_hundred_percent():
     assert result.returncode == 0, result.stderr
 
 
+def test_bracket_uses_current_resolved_best_third_pairings():
+    script = r"""
+    const fs = require('fs');
+    const vm = require('vm');
+    const data = JSON.parse(fs.readFileSync('data/mc_results.json', 'utf8'));
+
+    const inner = {
+      _html: '',
+      classList: { add() {}, remove() {}, toggle() {} },
+      set innerHTML(value) { this._html = value; },
+      get innerHTML() { return this._html; },
+    };
+    const note = { style: {} };
+    const document = {
+      readyState: 'loading',
+      addEventListener() {},
+      getElementById(id) {
+        if (id === 'bracket-inner') return inner;
+        if (id === 'bk-premium-note') return note;
+        return null;
+      },
+    };
+    const window = {
+      document,
+      SupaData: { loadSimulationData: async () => data },
+    };
+
+    vm.runInContext(fs.readFileSync('js/bracket.js', 'utf8'), vm.createContext({
+      console,
+      document,
+      window,
+      Promise,
+      setTimeout,
+      fetch: async () => ({ ok: false }),
+    }));
+
+    (async () => {
+      window.BracketSection.init();
+      window.BracketSection.setPremiumState(true);
+      await new Promise(resolve => setTimeout(resolve, 25));
+
+      const html = inner.innerHTML;
+      const expected = [
+        ['74', 'pry'],
+        ['77', 'swe'],
+        ['79', 'ecu'],
+        ['82', 'sen'],
+        ['85', 'alg'],
+      ];
+      for (const [matchNumber, code] of expected) {
+        const pattern = new RegExp('data-match="' + matchNumber + '"[\\s\\S]*assets\\/flags\\/' + code + '\\.svg');
+        if (!pattern.test(html)) {
+          throw new Error(`Expected P${matchNumber} to include ${code}`);
+        }
+      }
+    })().catch(error => {
+      console.error(error.message);
+      process.exit(1);
+    });
+    """
+    result = subprocess.run(
+        ["node", "-e", textwrap.dedent(script)],
+        check=False,
+        cwd=".",
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr
+
+
+def test_bracket_shows_knockout_advance_percentages_from_round_of_16_onward():
+    script = r"""
+    const fs = require('fs');
+    const vm = require('vm');
+    const data = JSON.parse(fs.readFileSync('data/mc_results.json', 'utf8'));
+    const finalPredictions = {
+      matches: [
+        {
+          match_number: 89,
+          phase: 'r16',
+          home_team: 'ger',
+          away_team: 'fra',
+          advance_home_pct: 37.4,
+          advance_away_pct: 62.6,
+        },
+      ],
+    };
+
+    const inner = {
+      _html: '',
+      classList: { add() {}, remove() {}, toggle() {} },
+      set innerHTML(value) { this._html = value; },
+      get innerHTML() { return this._html; },
+    };
+    const note = { style: {} };
+    const document = {
+      readyState: 'loading',
+      addEventListener() {},
+      getElementById(id) {
+        if (id === 'bracket-inner') return inner;
+        if (id === 'bk-premium-note') return note;
+        return null;
+      },
+    };
+    const window = {
+      document,
+      SupaData: { loadSimulationData: async () => data },
+    };
+
+    vm.runInContext(fs.readFileSync('js/bracket.js', 'utf8'), vm.createContext({
+      console,
+      document,
+      window,
+      Promise,
+      setTimeout,
+      fetch: async () => ({ ok: true, json: async () => finalPredictions }),
+    }));
+
+    (async () => {
+      window.BracketSection.init();
+      window.BracketSection.setPremiumState(true);
+      await new Promise(resolve => setTimeout(resolve, 40));
+
+      const html = inner.innerHTML;
+      const match89 = html.match(/data-match="89"[\s\S]*?data-match="90"/);
+      if (!match89) throw new Error('Expected P89 markup');
+      const block = match89[0];
+      if (!/assets\/flags\/ger\.svg[\s\S]*?<span class="bk-pct">37\.4%<\/span>/.test(block)) {
+        throw new Error('Expected Germany advance percentage in P89');
+      }
+      if (!/assets\/flags\/fra\.svg[\s\S]*?<span class="bk-pct">62\.6%<\/span>/.test(block)) {
+        throw new Error('Expected France advance percentage in P89');
+      }
+    })().catch(error => {
+      console.error(error.message);
+      process.exit(1);
+    });
+    """
+    result = subprocess.run(
+        ["node", "-e", textwrap.dedent(script)],
+        check=False,
+        cwd=".",
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr
+
+
 def test_prediction_route_uses_unique_projected_best_thirds():
     script = SYNTHETIC_MC_FIXTURE + r"""
     const fs = require('fs');

@@ -88,12 +88,25 @@
   /* ── Build team-by-position map ── */
   var teamsByGroup = {};
   var bestThirdSlots = {};
+  var finalPredictionsByMatch = {};
+  var finalPredictionsPromise = null;
   var hasPremiumAccess = false;
   var hasLoadedPremiumData = false;
   // El % de clasificación es premium: los no-premium ven banderas y posiciones
   // pero nunca el porcentaje. slot() omite el chip de % cuando es false.
   var showPct = true;
   var hasLoadedProjection = false;
+
+  var CURRENT_BEST_THIRD_SLOT_GROUPS = {
+    '3:A/B/C/D/F': 'D',
+    '3:C/D/F/G/H': 'F',
+    '3:C/E/F/H/I': 'E',
+    '3:E/H/I/J/K': 'K',
+    '3:B/E/F/I/J': 'B',
+    '3:A/E/H/I/J': 'I',
+    '3:E/F/G/I/J': 'J',
+    '3:D/E/I/J/L': 'L'
+  };
 
   function isLocalDev() {
     if (window.SupaData && window.SupaData.isLocalDev) return window.SupaData.isLocalDev();
@@ -177,12 +190,27 @@
     return qualifiedScore + rankScore + (candidate.qualifies_pct / 1000);
   }
 
+  function shouldUseCurrentBestThirdSlots(rowsByGroup) {
+    var requiredGroups = {};
+    Object.keys(CURRENT_BEST_THIRD_SLOT_GROUPS).forEach(function (slotCode) {
+      requiredGroups[CURRENT_BEST_THIRD_SLOT_GROUPS[slotCode]] = true;
+    });
+    return Object.keys(requiredGroups).every(function (group) {
+      var row = rowsByGroup[group];
+      return row && row.qualifies === true;
+    });
+  }
+
   function buildBestThirdSlots(mc, terceros) {
     var rowsByGroup = normalizeThirdRows(terceros, mc);
+    var useCurrentBestThirdSlots = shouldUseCurrentBestThirdSlots(rowsByGroup);
     var slots = thirdSlotCodes().map(function (slotCode, order) {
+      var fixedGroup = useCurrentBestThirdSlots ? CURRENT_BEST_THIRD_SLOT_GROUPS[slotCode] : null;
       var candidates = slotCode.split(':')[1].split('/').map(function (group) {
         return rowsByGroup[group];
-      }).filter(Boolean).sort(function (a, b) {
+      }).filter(function (candidate) {
+        return candidate && (!fixedGroup || candidate.group === fixedGroup);
+      }).sort(function (a, b) {
         return thirdCandidateScore(b) - thirdCandidateScore(a);
       });
       return { slotCode: slotCode, order: order, candidates: candidates };
@@ -215,9 +243,46 @@
     bestThirdSlots = best || {};
   }
 
-  function resolveSlot(slotCode, mc) {
+  function loadFinalPhasePredictions() {
+    if (finalPredictionsPromise) return finalPredictionsPromise;
+    if (typeof fetch !== 'function') {
+      finalPredictionsByMatch = {};
+      finalPredictionsPromise = Promise.resolve(finalPredictionsByMatch);
+      return finalPredictionsPromise;
+    }
+    finalPredictionsPromise = fetch('data/final_phase_predictions.json')
+      .then(function (response) { return response && response.ok ? response.json() : null; })
+      .then(function (payload) {
+        finalPredictionsByMatch = {};
+        ((payload && payload.matches) || []).forEach(function (match) {
+          finalPredictionsByMatch[String(match.match_number)] = match;
+        });
+        return finalPredictionsByMatch;
+      })
+      .catch(function () {
+        finalPredictionsByMatch = {};
+        return finalPredictionsByMatch;
+      });
+    return finalPredictionsPromise;
+  }
+
+  function resolveFinalSlot(matchNumber, side) {
+    var match = finalPredictionsByMatch[String(matchNumber)];
+    if (!match || match.phase === 'r32') return null;
+    var isHome = side === 'home';
+    var code = isHome ? match.home_team : match.away_team;
+    if (!code) return null;
+    return {
+      code: code,
+      pct: pctNumber(isHome ? match.advance_home_pct : match.advance_away_pct),
+      label: isHome ? match.home_label : match.away_label,
+      publicPct: true
+    };
+  }
+
+  function resolveSlot(slotCode, mc, matchNumber, side) {
     var parts = slotCode.split(':'), pos = parts[0], val = parts[1];
-    if (pos === 'W' || pos === 'L') return null;
+    if (pos === 'W' || pos === 'L') return resolveFinalSlot(matchNumber, side);
     if (pos === '1' || pos === '2') {
       var code = (teamsByGroup[val] || {})[+pos] || null;
       var field = pos === '1' ? 'first_pct' : 'second_pct';
@@ -240,8 +305,9 @@
   }
 
   /* ── HTML rendering ── */
-  function slot(slotCode, label, mc) {
-    var resolved = mc ? resolveSlot(slotCode, mc) : null;
+  function slot(slotCode, label, mc, matchNumber, side) {
+    var canResolveFinal = slotCode.indexOf('W:') === 0 || slotCode.indexOf('L:') === 0;
+    var resolved = (mc || canResolveFinal) ? resolveSlot(slotCode, mc || {}, matchNumber, side) : null;
     var code = resolved ? resolved.code : null;
     var isTbd = !code;
     var name  = code ? (NAMES[code] || code.toUpperCase()) : label;
@@ -258,15 +324,15 @@
       + '<span class="bk-slot-name">' + name + '</span>'
       + '<span class="bk-slot-tag">' + tag + '</span>'
       + '</div>'
-      + (showPct ? '<span class="bk-pct">' + pct + '</span>' : '')
+      + ((showPct || (resolved && resolved.publicPct)) ? '<span class="bk-pct">' + pct + '</span>' : '')
       + '</div>';
   }
 
   function match(m, mc, isFinal) {
     return '<div class="bk-match' + (isFinal ? ' bk-match--final' : '') + '" data-match="' + m.num + '">'
       + '<div class="bk-match-num">P.' + m.num + '</div>'
-      + slot(m.h.s, m.h.l, mc)
-      + slot(m.a.s, m.a.l, mc)
+      + slot(m.h.s, m.h.l, mc, m.num, 'home')
+      + slot(m.a.s, m.a.l, mc, m.num, 'away')
       + '</div>';
   }
 
@@ -416,6 +482,10 @@
         }
         applyPublicProjection(proj);
         renderProjection();                      // ahora con banderas
+        return loadFinalPhasePredictions();
+      })
+      .then(function () {
+        if (!hasPremiumAccess) renderProjection();
       })
       .catch(function () { hasLoadedProjection = false; });
   }
@@ -461,8 +531,9 @@
     if (!inner) return;
     hasLoadedPremiumData = true;
 
-    loadSimulationData()
-      .then(function (data) {
+    Promise.all([loadSimulationData(), loadFinalPhasePredictions()])
+      .then(function (values) {
+        var data = values[0];
         if (!data) {
           hasLoadedPremiumData = false;
           return;

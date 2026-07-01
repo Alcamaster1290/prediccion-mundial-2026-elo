@@ -3,6 +3,28 @@
 -- public.resolve_knockout_bracket().
 -- Apply after 10_standings_views.sql and 11_knockout_rules.sql.
 
+WITH current_best_third_slots(match_number, side, source_group) AS (
+  VALUES
+    (74, 'away', 'D'),
+    (77, 'away', 'F'),
+    (79, 'away', 'E'),
+    (80, 'away', 'K'),
+    (81, 'away', 'B'),
+    (82, 'away', 'I'),
+    (85, 'away', 'J'),
+    (87, 'away', 'L')
+)
+UPDATE public.knockout_slot_rules ksr
+SET source_type = 'best_third',
+    source_group = current_best_third_slots.source_group,
+    source_rank = 3,
+    source_match_number = NULL,
+    source_winner = true,
+    label = 'Mejor 3. Grupo ' || current_best_third_slots.source_group
+FROM current_best_third_slots
+WHERE ksr.match_number = current_best_third_slots.match_number
+  AND ksr.side = current_best_third_slots.side;
+
 CREATE OR REPLACE FUNCTION public.resolve_knockout_slot_team(
   p_match_number integer,
   p_side text

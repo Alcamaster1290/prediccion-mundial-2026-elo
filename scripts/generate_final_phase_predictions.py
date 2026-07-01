@@ -50,6 +50,17 @@ ROUND_TITLES = {
     "final": "Final",
 }
 
+CURRENT_BEST_THIRD_SLOT_GROUPS = {
+    (74, "awayLabel"): "D",
+    (77, "awayLabel"): "F",
+    (79, "awayLabel"): "E",
+    (80, "awayLabel"): "K",
+    (81, "awayLabel"): "B",
+    (82, "awayLabel"): "I",
+    (85, "awayLabel"): "J",
+    (87, "awayLabel"): "L",
+}
+
 
 def load_json(path):
     with open(path, encoding="utf-8") as fh:
@@ -266,7 +277,10 @@ def build_third_assignments(knockout_matches, thirds):
             groups = parse_third_slot(match.get(side))
             if not groups:
                 continue
+            fixed_group = CURRENT_BEST_THIRD_SLOT_GROUPS.get((match["matchNum"], side))
             candidates = [third_by_group[group] for group in groups if group in third_by_group]
+            if fixed_group:
+                candidates = [row for row in candidates if row["group"] == fixed_group]
             candidates.sort(key=lambda row: ((10000 if row["qualifies"] else 0) + 100 - row["third_rank"]), reverse=True)
             slots.append({"key": (match["matchNum"], side), "candidates": candidates})
 
@@ -496,10 +510,15 @@ def build_final_predictions(fixed_results_path=None):
 
     for match in sorted(knockout_matches, key=lambda item: item["matchNum"]):
         match_number = match["matchNum"]
+        prediction_match = dict(match)
         if match["phase"] == "r32":
             home_row = resolve_r32_team(match["homeLabel"], match_number, "homeLabel", standings, third_assignments)
             away_row = resolve_r32_team(match["awayLabel"], match_number, "awayLabel", standings, third_assignments)
             home, away = home_row["code"], away_row["code"]
+            for side in ("homeLabel", "awayLabel"):
+                third = third_assignments.get((match_number, side))
+                if third:
+                    prediction_match[side] = f"Mejor 3. Grupo {third['group']}"
         else:
             home_win_ref = knockout_match_ref(match.get("homeLabel"), "winner")
             away_win_ref = knockout_match_ref(match.get("awayLabel"), "winner")
@@ -511,7 +530,7 @@ def build_final_predictions(fixed_results_path=None):
                 raise RuntimeError(f"Cannot resolve knockout match {match_number}")
 
         prediction = build_prediction(
-            match,
+            prediction_match,
             home,
             away,
             strengths["teams"],
