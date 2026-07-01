@@ -20,6 +20,10 @@
         console.warn('[SupaAuth] config.js no configurado');
         return null;
       }
+      if (!window.supabase) {
+        console.warn('[SupaAuth] Supabase JS no disponible');
+        return null;
+      }
       _client = window.supabase.createClient(
         window.SUPABASE_URL,
         window.SUPABASE_ANON_KEY

@@ -1,0 +1,4537 @@
+{
+  "generated_at": "2026-07-01T04:20:59+00:00",
+  "source": {
+    "fixed_count": 72,
+    "model_version": "1.3",
+    "best_third_groups": [
+      "K",
+      "F",
+      "E",
+      "L",
+      "B",
+      "J",
+      "D",
+      "I"
+    ]
+  },
+  "rounds": [
+    {
+      "phase": "r32",
+      "title": "16avos de Final",
+      "matches": [
+        {
+          "match_number": 73,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-06-28",
+          "time": "19:00",
+          "venue": "SoFi Stadium",
+          "city": "Los Ángeles",
+          "home_team": "zaf",
+          "away_team": "can",
+          "home_name": "Sudáfrica",
+          "away_name": "Canadá",
+          "home_label": "2.° Grupo A",
+          "away_label": "2.° Grupo B",
+          "team_a_win_probability": 11.46,
+          "draw_probability": 25.63,
+          "team_b_win_probability": 62.91,
+          "advance_home_pct": 16.5,
+          "advance_away_pct": 83.5,
+          "projected_winner": "can",
+          "projected_loser": "zaf",
+          "global_tag": "Ligero favorito",
+          "editorial": "El modelo ELO perfila mejor a Canadá en 16avos de final, pero Sudáfrica mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Sudáfrica llega como 2. Grupo A con 4 puntos, diferencia -1 y 2 goles en la fase de grupos. Canadá llega como 2. Grupo B con 4 puntos, diferencia +5 y 8 goles en la fase de grupos.",
+          "player_factor": "En Canadá, Jonathan David desde Juventus FC es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "El once de Canadá llega con más respaldo competitivo que el de Sudáfrica. En términos de modelo, eso coloca el partido en zona de un dominio esperado sobre el papel. El cruce que más desequilibra enfrenta al ataque de Sudáfrica con la defensa de Canadá, con Alphonso Davies y Moïse Bombito como protagonistas, donde Canadá encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "0-1",
+              "pct": 14.4
+            },
+            {
+              "score": "0-2",
+              "pct": 13.4
+            },
+            {
+              "score": "1-1",
+              "pct": 11.8
+            },
+            {
+              "score": "0-0",
+              "pct": 9.9
+            },
+            {
+              "score": "1-2",
+              "pct": 8.6
+            },
+            {
+              "score": "0-3",
+              "pct": 8.3
+            },
+            {
+              "score": "1-3",
+              "pct": 5.3
+            },
+            {
+              "score": "1-0",
+              "pct": 5.0
+            },
+            {
+              "score": "0-4",
+              "pct": 3.9
+            },
+            {
+              "score": "2-2",
+              "pct": 3.5
+            }
+          ]
+        },
+        {
+          "match_number": 74,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-06-29",
+          "time": "20:30",
+          "venue": "Gillette Stadium",
+          "city": "Foxborough",
+          "home_team": "ger",
+          "away_team": "swe",
+          "home_name": "Alemania",
+          "away_name": "Suecia",
+          "home_label": "1.° Grupo E",
+          "away_label": "3.° A/B/C/D/F",
+          "team_a_win_probability": 67.75,
+          "draw_probability": 23.22,
+          "team_b_win_probability": 9.03,
+          "advance_home_pct": 87.4,
+          "advance_away_pct": 12.6,
+          "projected_winner": "ger",
+          "projected_loser": "swe",
+          "global_tag": "Favorito claro",
+          "editorial": "El modelo ELO perfila mejor a Alemania en 16avos de final, pero Suecia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Alemania llega como 1. Grupo E con 6 puntos, diferencia +6 y 10 goles en la fase de grupos. Suecia llega como Mejor 3. Grupo F con 4 puntos, diferencia +0 y 7 goles en la fase de grupos.",
+          "player_factor": "En Alemania, Leon Goretzka desde Bayern Munich es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "La lectura global del roce de club favorece a Alemania. La curva ELO lo interpreta como una diferencia de categoría, aunque Suecia conserva caminos si logra bajar el ritmo y proteger su área. El punto de presión aparece cuando Alemania activa el mediocampo, con Leon Goretzka y Aleksandar Pavlović como protagonistas, frente al mediocampo de Suecia. Esa relación explica su mejor camino.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-0",
+              "pct": 15.3
+            },
+            {
+              "score": "2-0",
+              "pct": 14.9
+            },
+            {
+              "score": "1-1",
+              "pct": 10.4
+            },
+            {
+              "score": "3-0",
+              "pct": 9.7
+            },
+            {
+              "score": "0-0",
+              "pct": 9.7
+            },
+            {
+              "score": "2-1",
+              "pct": 8.2
+            },
+            {
+              "score": "3-1",
+              "pct": 5.3
+            },
+            {
+              "score": "4-0",
+              "pct": 4.7
+            },
+            {
+              "score": "0-1",
+              "pct": 4.3
+            },
+            {
+              "score": "2-2",
+              "pct": 2.8
+            }
+          ]
+        },
+        {
+          "match_number": 75,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-06-29",
+          "time": "01:00",
+          "venue": "Estadio BBVA",
+          "city": "Guadalupe",
+          "home_team": "ned",
+          "away_team": "mar",
+          "home_name": "Países Bajos",
+          "away_name": "Marruecos",
+          "home_label": "1.° Grupo F",
+          "away_label": "2.° Grupo C",
+          "team_a_win_probability": 49.04,
+          "draw_probability": 31.19,
+          "team_b_win_probability": 19.77,
+          "advance_home_pct": 70.2,
+          "advance_away_pct": 29.8,
+          "projected_winner": "ned",
+          "projected_loser": "mar",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a Países Bajos en 16avos de final, pero Marruecos mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Países Bajos llega como 1. Grupo F con 7 puntos, diferencia +6 y 10 goles en la fase de grupos. Marruecos llega como 2. Grupo C con 7 puntos, diferencia +3 y 6 goles en la fase de grupos.",
+          "player_factor": "En Países Bajos, Frenkie de Jong desde Barcelona es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "La lectura global del roce de club favorece a Países Bajos. La curva ELO lo interpreta como una ventaja clara, aunque Marruecos conserva caminos si logra bajar el ritmo y proteger su área. La lectura individual favorece a Países Bajos en el mediocampo, con Ryan Gravenberch y Frenkie de Jong como protagonistas, ante el mediocampo de Marruecos. Si ese sector manda, el partido cambia de ritmo.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 14.7
+            },
+            {
+              "score": "1-0",
+              "pct": 12.0
+            },
+            {
+              "score": "0-0",
+              "pct": 10.2
+            },
+            {
+              "score": "2-0",
+              "pct": 9.5
+            },
+            {
+              "score": "2-1",
+              "pct": 8.7
+            },
+            {
+              "score": "0-1",
+              "pct": 6.9
+            },
+            {
+              "score": "2-2",
+              "pct": 5.3
+            },
+            {
+              "score": "3-0",
+              "pct": 5.1
+            },
+            {
+              "score": "1-2",
+              "pct": 5.0
+            },
+            {
+              "score": "3-1",
+              "pct": 4.6
+            }
+          ]
+        },
+        {
+          "match_number": 76,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-06-29",
+          "time": "17:00",
+          "venue": "NRG Stadium",
+          "city": "Houston",
+          "home_team": "bra",
+          "away_team": "jpn",
+          "home_name": "Brasil",
+          "away_name": "Japón",
+          "home_label": "1.° Grupo C",
+          "away_label": "2.° Grupo F",
+          "team_a_win_probability": 51.57,
+          "draw_probability": 30.32,
+          "team_b_win_probability": 18.11,
+          "advance_home_pct": 72.9,
+          "advance_away_pct": 27.1,
+          "projected_winner": "bra",
+          "projected_loser": "jpn",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a Brasil en 16avos de final, pero Japón mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Brasil llega como 1. Grupo C con 7 puntos, diferencia +6 y 7 goles en la fase de grupos. Japón llega como 2. Grupo F con 5 puntos, diferencia +4 y 7 goles en la fase de grupos.",
+          "player_factor": "En Brasil, Vinicius Júnior desde Real Madrid es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "La lectura global del roce de club favorece a Brasil. La curva ELO lo interpreta como una diferencia de categoría, aunque Japón conserva caminos si logra bajar el ritmo y proteger su área. El cruce que más desequilibra enfrenta a la unidad defensiva de Brasil con el ataque de Japón, donde Brasil encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 14.3
+            },
+            {
+              "score": "1-0",
+              "pct": 12.4
+            },
+            {
+              "score": "2-0",
+              "pct": 10.2
+            },
+            {
+              "score": "0-0",
+              "pct": 10.1
+            },
+            {
+              "score": "2-1",
+              "pct": 8.8
+            },
+            {
+              "score": "0-1",
+              "pct": 6.5
+            },
+            {
+              "score": "3-0",
+              "pct": 5.6
+            },
+            {
+              "score": "2-2",
+              "pct": 5.0
+            },
+            {
+              "score": "3-1",
+              "pct": 4.8
+            },
+            {
+              "score": "1-2",
+              "pct": 4.6
+            }
+          ]
+        },
+        {
+          "match_number": 77,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-06-30",
+          "time": "21:00",
+          "venue": "MetLife Stadium",
+          "city": "East Rutherford",
+          "home_team": "fra",
+          "away_team": "pry",
+          "home_name": "Francia",
+          "away_name": "Paraguay",
+          "home_label": "1.° Grupo I",
+          "away_label": "3.° C/D/F/G/H",
+          "team_a_win_probability": 78.4,
+          "draw_probability": 17.04,
+          "team_b_win_probability": 4.56,
+          "advance_home_pct": 94.1,
+          "advance_away_pct": 5.9,
+          "projected_winner": "fra",
+          "projected_loser": "pry",
+          "global_tag": "Favorito claro",
+          "editorial": "El modelo ELO perfila mejor a Francia en 16avos de final, pero Paraguay mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos. Paraguay llega como Mejor 3. Grupo D con 4 puntos, diferencia -2 y 2 goles en la fase de grupos.",
+          "player_factor": "En Francia, Kylian Mbappé desde Real Madrid es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "Francia parte mejor perfilado que Paraguay por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. La zona que abre el partido está en la unidad defensiva de Francia contra el ataque de Paraguay. Ahí Francia puede romper el equilibrio.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "2-0",
+              "pct": 18.8
+            },
+            {
+              "score": "1-0",
+              "pct": 17.4
+            },
+            {
+              "score": "3-0",
+              "pct": 13.5
+            },
+            {
+              "score": "0-0",
+              "pct": 9.1
+            },
+            {
+              "score": "4-0",
+              "pct": 7.3
+            },
+            {
+              "score": "1-1",
+              "pct": 6.7
+            },
+            {
+              "score": "2-1",
+              "pct": 6.4
+            },
+            {
+              "score": "3-1",
+              "pct": 4.6
+            },
+            {
+              "score": "5-0",
+              "pct": 3.1
+            },
+            {
+              "score": "0-1",
+              "pct": 2.7
+            }
+          ]
+        },
+        {
+          "match_number": 78,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-06-30",
+          "time": "17:00",
+          "venue": "AT&T Stadium",
+          "city": "Arlington",
+          "home_team": "civ",
+          "away_team": "nor",
+          "home_name": "Costa de Marfil",
+          "away_name": "Noruega",
+          "home_label": "2.° Grupo E",
+          "away_label": "2.° Grupo I",
+          "team_a_win_probability": 12.81,
+          "draw_probability": 26.77,
+          "team_b_win_probability": 60.42,
+          "advance_home_pct": 18.6,
+          "advance_away_pct": 81.4,
+          "projected_winner": "nor",
+          "projected_loser": "civ",
+          "global_tag": "Ligero favorito",
+          "editorial": "El modelo ELO perfila mejor a Noruega en 16avos de final, pero Costa de Marfil mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Costa de Marfil llega como 2. Grupo E con 6 puntos, diferencia +2 y 4 goles en la fase de grupos. Noruega llega como 2. Grupo I con 6 puntos, diferencia +1 y 8 goles en la fase de grupos.",
+          "player_factor": "En Noruega, Erling Haaland desde Manchester City es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "La lectura global del roce de club favorece a Noruega. La curva ELO lo interpreta como un dominio esperado sobre el papel, aunque Costa de Marfil conserva caminos si logra bajar el ritmo y proteger su área. El punto que puede inclinar el partido queda del lado de Noruega. El ataque, con Alexander Sørloth y Erling Haaland como protagonistas, castiga la unidad defensiva de Costa de Marfil.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "0-1",
+              "pct": 14.0
+            },
+            {
+              "score": "0-2",
+              "pct": 12.7
+            },
+            {
+              "score": "1-1",
+              "pct": 12.4
+            },
+            {
+              "score": "0-0",
+              "pct": 9.9
+            },
+            {
+              "score": "1-2",
+              "pct": 8.7
+            },
+            {
+              "score": "0-3",
+              "pct": 7.6
+            },
+            {
+              "score": "1-0",
+              "pct": 5.3
+            },
+            {
+              "score": "1-3",
+              "pct": 5.3
+            },
+            {
+              "score": "2-2",
+              "pct": 3.9
+            },
+            {
+              "score": "0-4",
+              "pct": 3.5
+            }
+          ]
+        },
+        {
+          "match_number": 79,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-06-30",
+          "time": "01:00",
+          "venue": "Estadio Azteca",
+          "city": "Ciudad de México",
+          "home_team": "mex",
+          "away_team": "ecu",
+          "home_name": "México",
+          "away_name": "Ecuador",
+          "home_label": "1.° Grupo A",
+          "away_label": "3.° C/E/F/H/I",
+          "team_a_win_probability": 18.83,
+          "draw_probability": 30.71,
+          "team_b_win_probability": 50.46,
+          "advance_home_pct": 28.3,
+          "advance_away_pct": 71.7,
+          "projected_winner": "ecu",
+          "projected_loser": "mex",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a Ecuador en 16avos de final, pero México mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. México llega como 1. Grupo A con 9 puntos, diferencia +6 y 6 goles en la fase de grupos. Ecuador llega como Mejor 3. Grupo E con 4 puntos, diferencia +0 y 2 goles en la fase de grupos.",
+          "player_factor": "En Ecuador, Moisés Caicedo desde Chelsea es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "La lectura global del roce de club favorece a Ecuador. La curva ELO lo interpreta como un dominio esperado sobre el papel, aunque México conserva caminos si logra bajar el ritmo y proteger su área. El cruce que más desequilibra enfrenta al ataque de México con la defensa de Ecuador, con Willian Pacho y Piero Hincapié como protagonistas, donde Ecuador encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 14.5
+            },
+            {
+              "score": "0-1",
+              "pct": 12.2
+            },
+            {
+              "score": "0-0",
+              "pct": 10.2
+            },
+            {
+              "score": "0-2",
+              "pct": 9.9
+            },
+            {
+              "score": "1-2",
+              "pct": 8.7
+            },
+            {
+              "score": "1-0",
+              "pct": 6.7
+            },
+            {
+              "score": "0-3",
+              "pct": 5.3
+            },
+            {
+              "score": "2-2",
+              "pct": 5.2
+            },
+            {
+              "score": "2-1",
+              "pct": 4.8
+            },
+            {
+              "score": "1-3",
+              "pct": 4.7
+            }
+          ]
+        },
+        {
+          "match_number": 80,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-01",
+          "time": "16:00",
+          "venue": "Mercedes-Benz Stadium",
+          "city": "Atlanta",
+          "home_team": "eng",
+          "away_team": "cod",
+          "home_name": "Inglaterra",
+          "away_name": "RD Congo",
+          "home_label": "1.° Grupo L",
+          "away_label": "3.° E/H/I/J/K",
+          "team_a_win_probability": 79.3,
+          "draw_probability": 16.47,
+          "team_b_win_probability": 4.23,
+          "advance_home_pct": 94.6,
+          "advance_away_pct": 5.4,
+          "projected_winner": "eng",
+          "projected_loser": "cod",
+          "global_tag": "Favorito claro",
+          "editorial": "El modelo ELO perfila mejor a Inglaterra en 16avos de final, pero RD Congo mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos. RD Congo llega como Mejor 3. Grupo K con 4 puntos, diferencia +1 y 4 goles en la fase de grupos.",
+          "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "El once de Inglaterra llega con más respaldo competitivo que el de RD Congo. En términos de modelo, eso coloca el partido en zona de una diferencia de categoría. La zona que abre el partido está en el mediocampo de Inglaterra, con Declan Rice y Jude Bellingham como protagonistas, contra el mediocampo de RD Congo. Ahí Inglaterra puede romper el equilibrio.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "2-0",
+              "pct": 19.1
+            },
+            {
+              "score": "1-0",
+              "pct": 17.6
+            },
+            {
+              "score": "3-0",
+              "pct": 13.9
+            },
+            {
+              "score": "0-0",
+              "pct": 9.0
+            },
+            {
+              "score": "4-0",
+              "pct": 7.6
+            },
+            {
+              "score": "1-1",
+              "pct": 6.3
+            },
+            {
+              "score": "2-1",
+              "pct": 6.2
+            },
+            {
+              "score": "3-1",
+              "pct": 4.5
+            },
+            {
+              "score": "5-0",
+              "pct": 3.3
+            },
+            {
+              "score": "0-1",
+              "pct": 2.6
+            }
+          ]
+        },
+        {
+          "match_number": 81,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-01",
+          "time": "00:00",
+          "venue": "Levi's Stadium",
+          "city": "Santa Clara",
+          "home_team": "usa",
+          "away_team": "bih",
+          "home_name": "EE.UU.",
+          "away_name": "Bosnia y Herzegovina",
+          "home_label": "1.° Grupo D",
+          "away_label": "3.° B/E/F/I/J",
+          "team_a_win_probability": 46.89,
+          "draw_probability": 31.87,
+          "team_b_win_probability": 21.24,
+          "advance_home_pct": 67.8,
+          "advance_away_pct": 32.2,
+          "projected_winner": "usa",
+          "projected_loser": "bih",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a EE.UU. en 16avos de final, pero Bosnia y Herzegovina mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. EE.UU. llega como 1. Grupo D con 6 puntos, diferencia +4 y 8 goles en la fase de grupos. Bosnia y Herzegovina llega como Mejor 3. Grupo B con 4 puntos, diferencia -1 y 5 goles en la fase de grupos.",
+          "player_factor": "En EE.UU., Malik Tillman desde Bayer Leverkusen es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "El once de EE.UU. llega con más respaldo competitivo que el de Bosnia y Herzegovina. En términos de modelo, eso coloca el partido en zona de una ventaja ligera. El foco está en cómo EE.UU. coordina su unidad defensiva cuando aparece el ataque de Bosnia y Herzegovina, con Edin Džeko y Ermedin Demirović como protagonistas. Esa es la alerta principal.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 15.1
+            },
+            {
+              "score": "1-0",
+              "pct": 11.6
+            },
+            {
+              "score": "0-0",
+              "pct": 10.2
+            },
+            {
+              "score": "2-0",
+              "pct": 9.0
+            },
+            {
+              "score": "2-1",
+              "pct": 8.6
+            },
+            {
+              "score": "0-1",
+              "pct": 7.1
+            },
+            {
+              "score": "2-2",
+              "pct": 5.6
+            },
+            {
+              "score": "1-2",
+              "pct": 5.3
+            },
+            {
+              "score": "3-0",
+              "pct": 4.6
+            },
+            {
+              "score": "3-1",
+              "pct": 4.4
+            }
+          ]
+        },
+        {
+          "match_number": 82,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-01",
+          "time": "20:00",
+          "venue": "Lumen Field",
+          "city": "Seattle",
+          "home_team": "bel",
+          "away_team": "alg",
+          "home_name": "Bélgica",
+          "away_name": "Argelia",
+          "home_label": "1.° Grupo G",
+          "away_label": "3.° A/E/H/I/J",
+          "team_a_win_probability": 57.51,
+          "draw_probability": 28.03,
+          "team_b_win_probability": 14.46,
+          "advance_home_pct": 78.8,
+          "advance_away_pct": 21.2,
+          "projected_winner": "bel",
+          "projected_loser": "alg",
+          "global_tag": "Ligero favorito",
+          "editorial": "El modelo ELO perfila mejor a Bélgica en 16avos de final, pero Argelia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Bélgica llega como 1. Grupo G con 5 puntos, diferencia +4 y 6 goles en la fase de grupos. Argelia llega como Mejor 3. Grupo J con 4 puntos, diferencia -2 y 5 goles en la fase de grupos.",
+          "player_factor": "En Argelia, Ibrahim Maza desde Bayer 04 Leverkusen es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "Bélgica parte mejor perfilado que Argelia por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. El cruce que más desequilibra enfrenta a la unidad defensiva de Bélgica con el ataque de Argelia, donde Bélgica encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-0",
+              "pct": 13.5
+            },
+            {
+              "score": "1-1",
+              "pct": 13.1
+            },
+            {
+              "score": "2-0",
+              "pct": 11.8
+            },
+            {
+              "score": "0-0",
+              "pct": 10.0
+            },
+            {
+              "score": "2-1",
+              "pct": 8.8
+            },
+            {
+              "score": "3-0",
+              "pct": 6.9
+            },
+            {
+              "score": "0-1",
+              "pct": 5.7
+            },
+            {
+              "score": "3-1",
+              "pct": 5.1
+            },
+            {
+              "score": "2-2",
+              "pct": 4.3
+            },
+            {
+              "score": "1-2",
+              "pct": 3.7
+            }
+          ]
+        },
+        {
+          "match_number": 83,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-02",
+          "time": "23:00",
+          "venue": "BMO Field",
+          "city": "Toronto",
+          "home_team": "por",
+          "away_team": "cro",
+          "home_name": "Portugal",
+          "away_name": "Croacia",
+          "home_label": "2.° Grupo K",
+          "away_label": "2.° Grupo L",
+          "team_a_win_probability": 48.12,
+          "draw_probability": 31.48,
+          "team_b_win_probability": 20.4,
+          "advance_home_pct": 69.2,
+          "advance_away_pct": 30.8,
+          "projected_winner": "por",
+          "projected_loser": "cro",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a Portugal en 16avos de final, pero Croacia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Portugal llega como 2. Grupo K con 5 puntos, diferencia +5 y 6 goles en la fase de grupos. Croacia llega como 2. Grupo L con 6 puntos, diferencia +0 y 5 goles en la fase de grupos.",
+          "player_factor": "En Croacia, Mateo Kovačić desde Manchester City es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "El once de Portugal llega con más respaldo competitivo que el de Croacia. En términos de modelo, eso coloca el partido en zona de un dominio esperado sobre el papel. El punto de presión aparece cuando Portugal coordina la unidad defensiva frente al ataque de Croacia. Esa relación explica su mejor camino.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 14.9
+            },
+            {
+              "score": "1-0",
+              "pct": 11.8
+            },
+            {
+              "score": "0-0",
+              "pct": 10.2
+            },
+            {
+              "score": "2-0",
+              "pct": 9.3
+            },
+            {
+              "score": "2-1",
+              "pct": 8.6
+            },
+            {
+              "score": "0-1",
+              "pct": 7.0
+            },
+            {
+              "score": "2-2",
+              "pct": 5.4
+            },
+            {
+              "score": "1-2",
+              "pct": 5.1
+            },
+            {
+              "score": "3-0",
+              "pct": 4.9
+            },
+            {
+              "score": "3-1",
+              "pct": 4.5
+            }
+          ]
+        },
+        {
+          "match_number": 84,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-02",
+          "time": "19:00",
+          "venue": "SoFi Stadium",
+          "city": "Los Ángeles",
+          "home_team": "esp",
+          "away_team": "aut",
+          "home_name": "España",
+          "away_name": "Austria",
+          "home_label": "1.° Grupo H",
+          "away_label": "2.° Grupo J",
+          "team_a_win_probability": 66.94,
+          "draw_probability": 23.64,
+          "team_b_win_probability": 9.42,
+          "advance_home_pct": 86.8,
+          "advance_away_pct": 13.2,
+          "projected_winner": "esp",
+          "projected_loser": "aut",
+          "global_tag": "Favorito claro",
+          "editorial": "El modelo ELO perfila mejor a España en 16avos de final, pero Austria mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos. Austria llega como 2. Grupo J con 4 puntos, diferencia +0 y 6 goles en la fase de grupos.",
+          "player_factor": "En Austria, Konrad Laimer desde Bayern Munich es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "La lectura global del roce de club favorece a España. La curva ELO lo interpreta como una ventaja clara, aunque Austria conserva caminos si logra bajar el ritmo y proteger su área. La zona que abre el partido está en el mediocampo de España, con Rodri y Pedri como protagonistas, contra el mediocampo de Austria. Ahí España puede romper el equilibrio.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-0",
+              "pct": 15.2
+            },
+            {
+              "score": "2-0",
+              "pct": 14.7
+            },
+            {
+              "score": "1-1",
+              "pct": 10.6
+            },
+            {
+              "score": "0-0",
+              "pct": 9.7
+            },
+            {
+              "score": "3-0",
+              "pct": 9.5
+            },
+            {
+              "score": "2-1",
+              "pct": 8.3
+            },
+            {
+              "score": "3-1",
+              "pct": 5.3
+            },
+            {
+              "score": "4-0",
+              "pct": 4.6
+            },
+            {
+              "score": "0-1",
+              "pct": 4.4
+            },
+            {
+              "score": "2-2",
+              "pct": 2.9
+            }
+          ]
+        },
+        {
+          "match_number": 85,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-02",
+          "time": "03:00",
+          "venue": "BC Place",
+          "city": "Vancouver",
+          "home_team": "sui",
+          "away_team": "sen",
+          "home_name": "Suiza",
+          "away_name": "Senegal",
+          "home_label": "1.° Grupo B",
+          "away_label": "3.° E/F/G/I/J",
+          "team_a_win_probability": 32.2,
+          "draw_probability": 34.96,
+          "team_b_win_probability": 32.84,
+          "advance_home_pct": 49.5,
+          "advance_away_pct": 50.5,
+          "projected_winner": "sen",
+          "projected_loser": "sui",
+          "global_tag": "Duelo parejo",
+          "editorial": "El modelo ELO no separa demasiado a Suiza y Senegal en 16avos de final. La lectura se apoya en el roce del XI, lo ya hecho en grupos y la capacidad para sostener ritmo tras el primer golpe. Suiza llega como 1. Grupo B con 7 puntos, diferencia +4 y 7 goles en la fase de grupos. Senegal llega como Mejor 3. Grupo I con 3 puntos, diferencia +2 y 8 goles en la fase de grupos.",
+          "player_factor": "En Senegal, Nicolas Jackson desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "El once de Senegal llega con más respaldo competitivo que el de Suiza. En términos de modelo, eso coloca el partido en zona de una ventaja ligera. Senegal encuentra su mejor argumento al atacar la unidad defensiva de Suiza. El ataque, con Sadio Mané y Iliman Ndiaye como protagonistas, sostiene ese margen.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 16.6
+            },
+            {
+              "score": "0-0",
+              "pct": 10.6
+            },
+            {
+              "score": "0-1",
+              "pct": 9.2
+            },
+            {
+              "score": "1-0",
+              "pct": 9.1
+            },
+            {
+              "score": "1-2",
+              "pct": 7.2
+            },
+            {
+              "score": "2-1",
+              "pct": 7.1
+            },
+            {
+              "score": "2-2",
+              "pct": 6.5
+            },
+            {
+              "score": "0-2",
+              "pct": 5.8
+            },
+            {
+              "score": "2-0",
+              "pct": 5.6
+            },
+            {
+              "score": "1-3",
+              "pct": 3.0
+            }
+          ]
+        },
+        {
+          "match_number": 86,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-03",
+          "time": "22:00",
+          "venue": "Hard Rock Stadium",
+          "city": "Miami Gardens",
+          "home_team": "arg",
+          "away_team": "cpv",
+          "home_name": "Argentina",
+          "away_name": "Cabo Verde",
+          "home_label": "1.° Grupo J",
+          "away_label": "2.° Grupo H",
+          "team_a_win_probability": 81.93,
+          "draw_probability": 14.7,
+          "team_b_win_probability": 3.37,
+          "advance_home_pct": 95.8,
+          "advance_away_pct": 4.2,
+          "projected_winner": "arg",
+          "projected_loser": "cpv",
+          "global_tag": "Favorito claro",
+          "editorial": "El modelo ELO perfila mejor a Argentina en 16avos de final, pero Cabo Verde mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos. Cabo Verde llega como 2. Grupo H con 3 puntos, diferencia +0 y 2 goles en la fase de grupos.",
+          "player_factor": "En Cabo Verde, Kevin Pina Lenini desde FK Krasnodar es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "Argentina parte mejor perfilado que Cabo Verde por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. El cruce que más desequilibra enfrenta a la unidad defensiva de Argentina con el ataque de Cabo Verde, donde Argentina encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "2-0",
+              "pct": 20.2
+            },
+            {
+              "score": "1-0",
+              "pct": 18.1
+            },
+            {
+              "score": "3-0",
+              "pct": 15.0
+            },
+            {
+              "score": "0-0",
+              "pct": 8.6
+            },
+            {
+              "score": "4-0",
+              "pct": 8.4
+            },
+            {
+              "score": "2-1",
+              "pct": 5.5
+            },
+            {
+              "score": "1-1",
+              "pct": 5.2
+            },
+            {
+              "score": "3-1",
+              "pct": 4.1
+            },
+            {
+              "score": "5-0",
+              "pct": 3.7
+            },
+            {
+              "score": "4-1",
+              "pct": 2.3
+            }
+          ]
+        },
+        {
+          "match_number": 87,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-03",
+          "time": "01:30",
+          "venue": "Arrowhead Stadium",
+          "city": "Kansas City",
+          "home_team": "col",
+          "away_team": "gha",
+          "home_name": "Colombia",
+          "away_name": "Ghana",
+          "home_label": "1.° Grupo K",
+          "away_label": "3.° D/E/I/J/L",
+          "team_a_win_probability": 75.08,
+          "draw_probability": 19.11,
+          "team_b_win_probability": 5.81,
+          "advance_home_pct": 92.3,
+          "advance_away_pct": 7.7,
+          "projected_winner": "col",
+          "projected_loser": "gha",
+          "global_tag": "Favorito claro",
+          "editorial": "El modelo ELO perfila mejor a Colombia en 16avos de final, pero Ghana mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Colombia llega como 1. Grupo K con 7 puntos, diferencia +3 y 4 goles en la fase de grupos. Ghana llega como Mejor 3. Grupo L con 4 puntos, diferencia +0 y 2 goles en la fase de grupos.",
+          "player_factor": "En Colombia, Luis Díaz desde Bayern Múnich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "Colombia parte mejor perfilado que Ghana por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una ventaja clara. El punto de presión aparece cuando Colombia activa el ataque, con Luis Díaz y Luis Suárez como protagonistas, frente a la defensa de Ghana. Esa relación explica su mejor camino.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "2-0",
+              "pct": 17.5
+            },
+            {
+              "score": "1-0",
+              "pct": 16.7
+            },
+            {
+              "score": "3-0",
+              "pct": 12.2
+            },
+            {
+              "score": "0-0",
+              "pct": 9.3
+            },
+            {
+              "score": "1-1",
+              "pct": 7.9
+            },
+            {
+              "score": "2-1",
+              "pct": 7.1
+            },
+            {
+              "score": "4-0",
+              "pct": 6.4
+            },
+            {
+              "score": "3-1",
+              "pct": 5.0
+            },
+            {
+              "score": "0-1",
+              "pct": 3.2
+            },
+            {
+              "score": "5-0",
+              "pct": 2.7
+            }
+          ]
+        },
+        {
+          "match_number": 88,
+          "phase": "r32",
+          "round_name": "16avos de Final",
+          "date": "2026-07-03",
+          "time": "18:00",
+          "venue": "AT&T Stadium",
+          "city": "Arlington",
+          "home_team": "aus",
+          "away_team": "egy",
+          "home_name": "Australia",
+          "away_name": "Egipto",
+          "home_label": "2.° Grupo D",
+          "away_label": "2.° Grupo G",
+          "team_a_win_probability": 28.96,
+          "draw_probability": 34.37,
+          "team_b_win_probability": 36.67,
+          "advance_home_pct": 44.5,
+          "advance_away_pct": 55.5,
+          "projected_winner": "egy",
+          "projected_loser": "aus",
+          "global_tag": "Empate probable",
+          "editorial": "El modelo ELO perfila mejor a Egipto en 16avos de final, pero Australia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Australia llega como 2. Grupo D con 4 puntos, diferencia +0 y 2 goles en la fase de grupos. Egipto llega como 2. Grupo G con 5 puntos, diferencia +2 y 5 goles en la fase de grupos.",
+          "player_factor": "En Egipto, Mohamed Salah desde Liverpool es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "La lectura global del roce de club favorece a Egipto. La curva ELO lo interpreta como un dominio esperado sobre el papel, aunque Australia conserva caminos si logra bajar el ritmo y proteger su área. El foco está en cómo Australia coordina su unidad defensiva cuando aparece el ataque de Egipto, con Omar Marmoush y Mahmoud “Trezeguet” Hassan como protagonistas. Esa es la alerta principal.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 16.3
+            },
+            {
+              "score": "0-0",
+              "pct": 10.5
+            },
+            {
+              "score": "0-1",
+              "pct": 9.9
+            },
+            {
+              "score": "1-0",
+              "pct": 8.5
+            },
+            {
+              "score": "1-2",
+              "pct": 7.7
+            },
+            {
+              "score": "2-1",
+              "pct": 6.6
+            },
+            {
+              "score": "0-2",
+              "pct": 6.6
+            },
+            {
+              "score": "2-2",
+              "pct": 6.3
+            },
+            {
+              "score": "2-0",
+              "pct": 5.0
+            },
+            {
+              "score": "1-3",
+              "pct": 3.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "r16",
+      "title": "Octavos de Final",
+      "matches": [
+        {
+          "match_number": 89,
+          "phase": "r16",
+          "round_name": "Octavos de Final",
+          "date": "2026-07-04",
+          "time": "21:00",
+          "venue": "Lincoln Financial Field",
+          "city": "Filadelfia",
+          "home_team": "ger",
+          "away_team": "fra",
+          "home_name": "Alemania",
+          "away_name": "Francia",
+          "home_label": "Ganador Partido 74",
+          "away_label": "Ganador Partido 77",
+          "team_a_win_probability": 24.21,
+          "draw_probability": 33.03,
+          "team_b_win_probability": 42.76,
+          "advance_home_pct": 36.9,
+          "advance_away_pct": 63.1,
+          "projected_winner": "fra",
+          "projected_loser": "ger",
+          "global_tag": "Empate probable",
+          "editorial": "El modelo ELO perfila mejor a Francia en octavos de final, pero Alemania mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Alemania llega como 1. Grupo E con 6 puntos, diferencia +6 y 10 goles en la fase de grupos. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos.",
+          "player_factor": "En Alemania, Leon Goretzka desde Bayern Munich es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "La lectura global del roce de club favorece a Alemania. La curva ELO lo interpreta como una ventaja ligera, aunque Francia conserva caminos si logra bajar el ritmo y proteger su área. El punto de presión aparece cuando Alemania activa el mediocampo, con Leon Goretzka y Aleksandar Pavlović como protagonistas, frente al mediocampo de Francia. Esa relación explica su mejor camino.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 15.7
+            },
+            {
+              "score": "0-1",
+              "pct": 10.9
+            },
+            {
+              "score": "0-0",
+              "pct": 10.3
+            },
+            {
+              "score": "1-2",
+              "pct": 8.3
+            },
+            {
+              "score": "0-2",
+              "pct": 8.0
+            },
+            {
+              "score": "1-0",
+              "pct": 7.7
+            },
+            {
+              "score": "2-2",
+              "pct": 5.9
+            },
+            {
+              "score": "2-1",
+              "pct": 5.8
+            },
+            {
+              "score": "1-3",
+              "pct": 4.0
+            },
+            {
+              "score": "2-0",
+              "pct": 4.0
+            }
+          ]
+        },
+        {
+          "match_number": 90,
+          "phase": "r16",
+          "round_name": "Octavos de Final",
+          "date": "2026-07-04",
+          "time": "17:00",
+          "venue": "NRG Stadium",
+          "city": "Houston",
+          "home_team": "can",
+          "away_team": "ned",
+          "home_name": "Canadá",
+          "away_name": "Países Bajos",
+          "home_label": "Ganador Partido 73",
+          "away_label": "Ganador Partido 75",
+          "team_a_win_probability": 12.41,
+          "draw_probability": 26.45,
+          "team_b_win_probability": 61.14,
+          "advance_home_pct": 18.0,
+          "advance_away_pct": 82.0,
+          "projected_winner": "ned",
+          "projected_loser": "can",
+          "global_tag": "Ligero favorito",
+          "editorial": "El modelo ELO perfila mejor a Países Bajos en octavos de final, pero Canadá mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Canadá llega como 2. Grupo B con 4 puntos, diferencia +5 y 8 goles en la fase de grupos. Países Bajos llega como 1. Grupo F con 7 puntos, diferencia +6 y 10 goles en la fase de grupos.",
+          "player_factor": "En Países Bajos, Frenkie de Jong desde Barcelona es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "El once de Países Bajos llega con más respaldo competitivo que el de Canadá. En términos de modelo, eso coloca el partido en zona de una diferencia de categoría. El punto que puede inclinar el partido queda del lado de Países Bajos. El mediocampo, con Ryan Gravenberch y Frenkie de Jong como protagonistas, castiga el mediocampo de Canadá.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "0-1",
+              "pct": 14.1
+            },
+            {
+              "score": "0-2",
+              "pct": 12.9
+            },
+            {
+              "score": "1-1",
+              "pct": 12.2
+            },
+            {
+              "score": "0-0",
+              "pct": 9.9
+            },
+            {
+              "score": "1-2",
+              "pct": 8.7
+            },
+            {
+              "score": "0-3",
+              "pct": 7.8
+            },
+            {
+              "score": "1-3",
+              "pct": 5.3
+            },
+            {
+              "score": "1-0",
+              "pct": 5.2
+            },
+            {
+              "score": "2-2",
+              "pct": 3.8
+            },
+            {
+              "score": "0-4",
+              "pct": 3.6
+            }
+          ]
+        },
+        {
+          "match_number": 91,
+          "phase": "r16",
+          "round_name": "Octavos de Final",
+          "date": "2026-07-05",
+          "time": "20:00",
+          "venue": "MetLife Stadium",
+          "city": "East Rutherford",
+          "home_team": "bra",
+          "away_team": "nor",
+          "home_name": "Brasil",
+          "away_name": "Noruega",
+          "home_label": "Ganador Partido 76",
+          "away_label": "Ganador Partido 78",
+          "team_a_win_probability": 43.97,
+          "draw_probability": 32.71,
+          "team_b_win_probability": 23.32,
+          "advance_home_pct": 64.5,
+          "advance_away_pct": 35.5,
+          "projected_winner": "bra",
+          "projected_loser": "nor",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a Brasil en octavos de final, pero Noruega mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Brasil llega como 1. Grupo C con 7 puntos, diferencia +6 y 7 goles en la fase de grupos. Noruega llega como 2. Grupo I con 6 puntos, diferencia +1 y 8 goles en la fase de grupos.",
+          "player_factor": "En Brasil, Vinicius Júnior desde Real Madrid es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "Brasil parte mejor perfilado que Noruega por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una ventaja clara. El cruce que más desequilibra enfrenta al ataque de Brasil, con Neymar y Vinicius Júnior como protagonistas, con la defensa de Noruega, donde Brasil encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 15.5
+            },
+            {
+              "score": "1-0",
+              "pct": 11.1
+            },
+            {
+              "score": "0-0",
+              "pct": 10.3
+            },
+            {
+              "score": "2-1",
+              "pct": 8.4
+            },
+            {
+              "score": "2-0",
+              "pct": 8.3
+            },
+            {
+              "score": "0-1",
+              "pct": 7.5
+            },
+            {
+              "score": "2-2",
+              "pct": 5.8
+            },
+            {
+              "score": "1-2",
+              "pct": 5.7
+            },
+            {
+              "score": "3-1",
+              "pct": 4.2
+            },
+            {
+              "score": "3-0",
+              "pct": 4.1
+            }
+          ]
+        },
+        {
+          "match_number": 92,
+          "phase": "r16",
+          "round_name": "Octavos de Final",
+          "date": "2026-07-05",
+          "time": "00:00",
+          "venue": "Estadio Azteca",
+          "city": "Ciudad de México",
+          "home_team": "ecu",
+          "away_team": "eng",
+          "home_name": "Ecuador",
+          "away_name": "Inglaterra",
+          "home_label": "Ganador Partido 79",
+          "away_label": "Ganador Partido 80",
+          "team_a_win_probability": 13.88,
+          "draw_probability": 27.6,
+          "team_b_win_probability": 58.52,
+          "advance_home_pct": 20.3,
+          "advance_away_pct": 79.7,
+          "projected_winner": "eng",
+          "projected_loser": "ecu",
+          "global_tag": "Ligero favorito",
+          "editorial": "El modelo ELO perfila mejor a Inglaterra en octavos de final, pero Ecuador mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Ecuador llega como Mejor 3. Grupo E con 4 puntos, diferencia +0 y 2 goles en la fase de grupos. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+          "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "Inglaterra parte mejor perfilado que Ecuador por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. El foco está en cómo Ecuador sostiene su mediocampo cuando aparece el mediocampo de Inglaterra, con Declan Rice y Jude Bellingham como protagonistas. Esa es la alerta principal.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "0-1",
+              "pct": 13.6
+            },
+            {
+              "score": "1-1",
+              "pct": 12.8
+            },
+            {
+              "score": "0-2",
+              "pct": 12.1
+            },
+            {
+              "score": "0-0",
+              "pct": 10.0
+            },
+            {
+              "score": "1-2",
+              "pct": 8.8
+            },
+            {
+              "score": "0-3",
+              "pct": 7.2
+            },
+            {
+              "score": "1-0",
+              "pct": 5.6
+            },
+            {
+              "score": "1-3",
+              "pct": 5.2
+            },
+            {
+              "score": "2-2",
+              "pct": 4.1
+            },
+            {
+              "score": "2-1",
+              "pct": 3.6
+            }
+          ]
+        },
+        {
+          "match_number": 93,
+          "phase": "r16",
+          "round_name": "Octavos de Final",
+          "date": "2026-07-06",
+          "time": "19:00",
+          "venue": "AT&T Stadium",
+          "city": "Arlington",
+          "home_team": "por",
+          "away_team": "esp",
+          "home_name": "Portugal",
+          "away_name": "España",
+          "home_label": "Ganador Partido 83",
+          "away_label": "Ganador Partido 84",
+          "team_a_win_probability": 21.66,
+          "draw_probability": 32.05,
+          "team_b_win_probability": 46.29,
+          "advance_home_pct": 32.8,
+          "advance_away_pct": 67.2,
+          "projected_winner": "esp",
+          "projected_loser": "por",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a España en octavos de final, pero Portugal mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Portugal llega como 2. Grupo K con 5 puntos, diferencia +5 y 6 goles en la fase de grupos. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos.",
+          "player_factor": "En España, Lamine Yamal desde FC Barcelona es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "La lectura global del roce de club favorece a Portugal. La curva ELO lo interpreta como una ventaja ligera, aunque España conserva caminos si logra bajar el ritmo y proteger su área. El punto que puede inclinar el partido queda del lado de España. La defensa, con Aymeric Laporte y Pau Cubarsí como protagonistas, castiga el ataque de Portugal.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 15.2
+            },
+            {
+              "score": "0-1",
+              "pct": 11.5
+            },
+            {
+              "score": "0-0",
+              "pct": 10.2
+            },
+            {
+              "score": "0-2",
+              "pct": 8.9
+            },
+            {
+              "score": "1-2",
+              "pct": 8.5
+            },
+            {
+              "score": "1-0",
+              "pct": 7.2
+            },
+            {
+              "score": "2-2",
+              "pct": 5.6
+            },
+            {
+              "score": "2-1",
+              "pct": 5.3
+            },
+            {
+              "score": "0-3",
+              "pct": 4.5
+            },
+            {
+              "score": "1-3",
+              "pct": 4.4
+            }
+          ]
+        },
+        {
+          "match_number": 94,
+          "phase": "r16",
+          "round_name": "Octavos de Final",
+          "date": "2026-07-06",
+          "time": "00:00",
+          "venue": "Lumen Field",
+          "city": "Seattle",
+          "home_team": "usa",
+          "away_team": "bel",
+          "home_name": "EE.UU.",
+          "away_name": "Bélgica",
+          "home_label": "Ganador Partido 81",
+          "away_label": "Ganador Partido 82",
+          "team_a_win_probability": 14.75,
+          "draw_probability": 28.23,
+          "team_b_win_probability": 57.02,
+          "advance_home_pct": 21.7,
+          "advance_away_pct": 78.3,
+          "projected_winner": "bel",
+          "projected_loser": "usa",
+          "global_tag": "Ligero favorito",
+          "editorial": "El modelo ELO perfila mejor a Bélgica en octavos de final, pero EE.UU. mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. EE.UU. llega como 1. Grupo D con 6 puntos, diferencia +4 y 8 goles en la fase de grupos. Bélgica llega como 1. Grupo G con 5 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+          "player_factor": "En EE.UU., Malik Tillman desde Bayer Leverkusen es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "Bélgica parte mejor perfilado que EE.UU. por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. El punto que puede inclinar el partido queda del lado de Bélgica. El ataque, con Jérémy Doku y Romelu Lukaku como protagonistas, castiga la unidad defensiva de EE.UU.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "0-1",
+              "pct": 13.4
+            },
+            {
+              "score": "1-1",
+              "pct": 13.2
+            },
+            {
+              "score": "0-2",
+              "pct": 11.7
+            },
+            {
+              "score": "0-0",
+              "pct": 10.0
+            },
+            {
+              "score": "1-2",
+              "pct": 8.8
+            },
+            {
+              "score": "0-3",
+              "pct": 6.8
+            },
+            {
+              "score": "1-0",
+              "pct": 5.8
+            },
+            {
+              "score": "1-3",
+              "pct": 5.1
+            },
+            {
+              "score": "2-2",
+              "pct": 4.3
+            },
+            {
+              "score": "2-1",
+              "pct": 3.8
+            }
+          ]
+        },
+        {
+          "match_number": 95,
+          "phase": "r16",
+          "round_name": "Octavos de Final",
+          "date": "2026-07-07",
+          "time": "16:00",
+          "venue": "Mercedes-Benz Stadium",
+          "city": "Atlanta",
+          "home_team": "arg",
+          "away_team": "egy",
+          "home_name": "Argentina",
+          "away_name": "Egipto",
+          "home_label": "Ganador Partido 86",
+          "away_label": "Ganador Partido 88",
+          "team_a_win_probability": 71.6,
+          "draw_probability": 21.14,
+          "team_b_win_probability": 7.26,
+          "advance_home_pct": 90.1,
+          "advance_away_pct": 9.9,
+          "projected_winner": "arg",
+          "projected_loser": "egy",
+          "global_tag": "Favorito claro",
+          "editorial": "El modelo ELO perfila mejor a Argentina en octavos de final, pero Egipto mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos. Egipto llega como 2. Grupo G con 5 puntos, diferencia +2 y 5 goles en la fase de grupos.",
+          "player_factor": "En Egipto, Mohamed Salah desde Liverpool es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "El once de Argentina llega con más respaldo competitivo que el de Egipto. En términos de modelo, eso coloca el partido en zona de un dominio esperado sobre el papel. El cruce que más desequilibra enfrenta al ataque de Argentina, con Lionel Messi y Julián Álvarez como protagonistas, con la defensa de Egipto, donde Argentina encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "2-0",
+              "pct": 16.2
+            },
+            {
+              "score": "1-0",
+              "pct": 16.0
+            },
+            {
+              "score": "3-0",
+              "pct": 11.0
+            },
+            {
+              "score": "0-0",
+              "pct": 9.5
+            },
+            {
+              "score": "1-1",
+              "pct": 9.2
+            },
+            {
+              "score": "2-1",
+              "pct": 7.7
+            },
+            {
+              "score": "4-0",
+              "pct": 5.6
+            },
+            {
+              "score": "3-1",
+              "pct": 5.2
+            },
+            {
+              "score": "0-1",
+              "pct": 3.7
+            },
+            {
+              "score": "4-1",
+              "pct": 2.6
+            }
+          ]
+        },
+        {
+          "match_number": 96,
+          "phase": "r16",
+          "round_name": "Octavos de Final",
+          "date": "2026-07-07",
+          "time": "20:00",
+          "venue": "BC Place",
+          "city": "Vancouver",
+          "home_team": "sen",
+          "away_team": "col",
+          "home_name": "Senegal",
+          "away_name": "Colombia",
+          "home_label": "Ganador Partido 85",
+          "away_label": "Ganador Partido 87",
+          "team_a_win_probability": 25.16,
+          "draw_probability": 33.34,
+          "team_b_win_probability": 41.5,
+          "advance_home_pct": 38.5,
+          "advance_away_pct": 61.5,
+          "projected_winner": "col",
+          "projected_loser": "sen",
+          "global_tag": "Empate probable",
+          "editorial": "El modelo ELO perfila mejor a Colombia en octavos de final, pero Senegal mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Senegal llega como Mejor 3. Grupo I con 3 puntos, diferencia +2 y 8 goles en la fase de grupos. Colombia llega como 1. Grupo K con 7 puntos, diferencia +3 y 4 goles en la fase de grupos.",
+          "player_factor": "En Senegal, Nicolas Jackson desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "La lectura global del roce de club favorece a Senegal. La curva ELO lo interpreta como una ventaja ligera, aunque Colombia conserva caminos si logra bajar el ritmo y proteger su área. Colombia encuentra su mejor argumento al atacar la unidad defensiva de Senegal. El ataque, con Luis Díaz y Luis Suárez como protagonistas, sostiene ese margen.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 15.8
+            },
+            {
+              "score": "0-1",
+              "pct": 10.7
+            },
+            {
+              "score": "0-0",
+              "pct": 10.4
+            },
+            {
+              "score": "1-2",
+              "pct": 8.2
+            },
+            {
+              "score": "1-0",
+              "pct": 7.9
+            },
+            {
+              "score": "0-2",
+              "pct": 7.7
+            },
+            {
+              "score": "2-2",
+              "pct": 6.0
+            },
+            {
+              "score": "2-1",
+              "pct": 6.0
+            },
+            {
+              "score": "2-0",
+              "pct": 4.2
+            },
+            {
+              "score": "1-3",
+              "pct": 3.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "qf",
+      "title": "Cuartos de Final",
+      "matches": [
+        {
+          "match_number": 97,
+          "phase": "qf",
+          "round_name": "Cuartos de Final",
+          "date": "2026-07-09",
+          "time": "20:00",
+          "venue": "Gillette Stadium",
+          "city": "Foxborough",
+          "home_team": "fra",
+          "away_team": "ned",
+          "home_name": "Francia",
+          "away_name": "Países Bajos",
+          "home_label": "Ganador Partido 89",
+          "away_label": "Ganador Partido 90",
+          "team_a_win_probability": 52.53,
+          "draw_probability": 29.98,
+          "team_b_win_probability": 17.49,
+          "advance_home_pct": 73.9,
+          "advance_away_pct": 26.1,
+          "projected_winner": "fra",
+          "projected_loser": "ned",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a Francia en cuartos de final, pero Países Bajos mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos. Países Bajos llega como 1. Grupo F con 7 puntos, diferencia +6 y 10 goles en la fase de grupos.",
+          "player_factor": "En Países Bajos, Frenkie de Jong desde Barcelona es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+          "tactical_note": "Francia parte mejor perfilado que Países Bajos por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como un dominio esperado sobre el papel. El cruce que más desequilibra enfrenta a la unidad defensiva de Francia con el ataque de Países Bajos, donde Francia encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 14.1
+            },
+            {
+              "score": "1-0",
+              "pct": 12.6
+            },
+            {
+              "score": "2-0",
+              "pct": 10.5
+            },
+            {
+              "score": "0-0",
+              "pct": 10.1
+            },
+            {
+              "score": "2-1",
+              "pct": 8.8
+            },
+            {
+              "score": "0-1",
+              "pct": 6.4
+            },
+            {
+              "score": "3-0",
+              "pct": 5.8
+            },
+            {
+              "score": "2-2",
+              "pct": 4.9
+            },
+            {
+              "score": "3-1",
+              "pct": 4.9
+            },
+            {
+              "score": "1-2",
+              "pct": 4.5
+            }
+          ]
+        },
+        {
+          "match_number": 98,
+          "phase": "qf",
+          "round_name": "Cuartos de Final",
+          "date": "2026-07-10",
+          "time": "19:00",
+          "venue": "SoFi Stadium",
+          "city": "Los Ángeles",
+          "home_team": "esp",
+          "away_team": "bel",
+          "home_name": "España",
+          "away_name": "Bélgica",
+          "home_label": "Ganador Partido 93",
+          "away_label": "Ganador Partido 94",
+          "team_a_win_probability": 56.97,
+          "draw_probability": 28.25,
+          "team_b_win_probability": 14.78,
+          "advance_home_pct": 78.2,
+          "advance_away_pct": 21.8,
+          "projected_winner": "esp",
+          "projected_loser": "bel",
+          "global_tag": "Ligero favorito",
+          "editorial": "El modelo ELO perfila mejor a España en cuartos de final, pero Bélgica mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos. Bélgica llega como 1. Grupo G con 5 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+          "player_factor": "En España, Lamine Yamal desde FC Barcelona es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "Entre España y Bélgica no aparece una distancia fuerte en roce de club, así que el modelo espera un cruce abierto y muy sensible al primer golpe. El foco está en cómo España coordina su unidad defensiva cuando aparece el ataque de Bélgica, con Jérémy Doku y Romelu Lukaku como protagonistas. Esa es la alerta principal.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-0",
+              "pct": 13.4
+            },
+            {
+              "score": "1-1",
+              "pct": 13.2
+            },
+            {
+              "score": "2-0",
+              "pct": 11.7
+            },
+            {
+              "score": "0-0",
+              "pct": 10.0
+            },
+            {
+              "score": "2-1",
+              "pct": 8.8
+            },
+            {
+              "score": "3-0",
+              "pct": 6.8
+            },
+            {
+              "score": "0-1",
+              "pct": 5.8
+            },
+            {
+              "score": "3-1",
+              "pct": 5.1
+            },
+            {
+              "score": "2-2",
+              "pct": 4.3
+            },
+            {
+              "score": "1-2",
+              "pct": 3.8
+            }
+          ]
+        },
+        {
+          "match_number": 99,
+          "phase": "qf",
+          "round_name": "Cuartos de Final",
+          "date": "2026-07-11",
+          "time": "21:00",
+          "venue": "Hard Rock Stadium",
+          "city": "Miami Gardens",
+          "home_team": "bra",
+          "away_team": "eng",
+          "home_name": "Brasil",
+          "away_name": "Inglaterra",
+          "home_label": "Ganador Partido 91",
+          "away_label": "Ganador Partido 92",
+          "team_a_win_probability": 25.74,
+          "draw_probability": 33.52,
+          "team_b_win_probability": 40.74,
+          "advance_home_pct": 39.4,
+          "advance_away_pct": 60.6,
+          "projected_winner": "eng",
+          "projected_loser": "bra",
+          "global_tag": "Empate probable",
+          "editorial": "El modelo ELO perfila mejor a Inglaterra en cuartos de final, pero Brasil mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Brasil llega como 1. Grupo C con 7 puntos, diferencia +6 y 7 goles en la fase de grupos. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+          "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "La lectura global del roce de club favorece a Inglaterra. La curva ELO lo interpreta como una ventaja clara, aunque Brasil conserva caminos si logra bajar el ritmo y proteger su área. El foco está en cómo Brasil sostiene su mediocampo cuando aparece el mediocampo de Inglaterra, con Declan Rice y Jude Bellingham como protagonistas. Esa es la alerta principal.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 15.9
+            },
+            {
+              "score": "0-1",
+              "pct": 10.6
+            },
+            {
+              "score": "0-0",
+              "pct": 10.4
+            },
+            {
+              "score": "1-2",
+              "pct": 8.1
+            },
+            {
+              "score": "1-0",
+              "pct": 8.0
+            },
+            {
+              "score": "0-2",
+              "pct": 7.5
+            },
+            {
+              "score": "2-1",
+              "pct": 6.1
+            },
+            {
+              "score": "2-2",
+              "pct": 6.1
+            },
+            {
+              "score": "2-0",
+              "pct": 4.3
+            },
+            {
+              "score": "1-3",
+              "pct": 3.8
+            }
+          ]
+        },
+        {
+          "match_number": 100,
+          "phase": "qf",
+          "round_name": "Cuartos de Final",
+          "date": "2026-07-11",
+          "time": "01:00",
+          "venue": "Arrowhead Stadium",
+          "city": "Kansas City",
+          "home_team": "arg",
+          "away_team": "col",
+          "home_name": "Argentina",
+          "away_name": "Colombia",
+          "home_label": "Ganador Partido 95",
+          "away_label": "Ganador Partido 96",
+          "team_a_win_probability": 48.06,
+          "draw_probability": 31.5,
+          "team_b_win_probability": 20.44,
+          "advance_home_pct": 69.1,
+          "advance_away_pct": 30.9,
+          "projected_winner": "arg",
+          "projected_loser": "col",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a Argentina en cuartos de final, pero Colombia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos. Colombia llega como 1. Grupo K con 7 puntos, diferencia +3 y 4 goles en la fase de grupos.",
+          "player_factor": "En Colombia, Luis Díaz desde Bayern Múnich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "El once de Argentina llega con más respaldo competitivo que el de Colombia. En términos de modelo, eso coloca el partido en zona de una ventaja clara. El cruce que más desequilibra enfrenta a la unidad defensiva de Argentina con el ataque de Colombia, con Luis Díaz y Luis Suárez como protagonistas, donde Colombia encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 14.9
+            },
+            {
+              "score": "1-0",
+              "pct": 11.8
+            },
+            {
+              "score": "0-0",
+              "pct": 10.2
+            },
+            {
+              "score": "2-0",
+              "pct": 9.3
+            },
+            {
+              "score": "2-1",
+              "pct": 8.6
+            },
+            {
+              "score": "0-1",
+              "pct": 7.0
+            },
+            {
+              "score": "2-2",
+              "pct": 5.4
+            },
+            {
+              "score": "1-2",
+              "pct": 5.1
+            },
+            {
+              "score": "3-0",
+              "pct": 4.9
+            },
+            {
+              "score": "3-1",
+              "pct": 4.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "sf",
+      "title": "Semifinales",
+      "matches": [
+        {
+          "match_number": 101,
+          "phase": "sf",
+          "round_name": "Semifinales",
+          "date": "2026-07-14",
+          "time": "19:00",
+          "venue": "AT&T Stadium",
+          "city": "Arlington",
+          "home_team": "fra",
+          "away_team": "esp",
+          "home_name": "Francia",
+          "away_name": "España",
+          "home_label": "Ganador Partido 97",
+          "away_label": "Ganador Partido 98",
+          "team_a_win_probability": 33.92,
+          "draw_probability": 34.81,
+          "team_b_win_probability": 31.27,
+          "advance_home_pct": 51.9,
+          "advance_away_pct": 48.1,
+          "projected_winner": "fra",
+          "projected_loser": "esp",
+          "global_tag": "Duelo parejo",
+          "editorial": "El modelo ELO no separa demasiado a Francia y España en semifinales. La lectura se apoya en el roce del XI, lo ya hecho en grupos y la capacidad para sostener ritmo tras el primer golpe. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos.",
+          "player_factor": "En España, Lamine Yamal desde FC Barcelona es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "El once de Francia llega con más respaldo competitivo que el de España. En términos de modelo, eso coloca el partido en zona de un dominio esperado sobre el papel. La zona que abre el partido está en el ataque de Francia, con Kylian Mbappé y Ousmane Dembélé como protagonistas, contra la defensa de España. Ahí Francia puede romper el equilibrio.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 16.5
+            },
+            {
+              "score": "0-0",
+              "pct": 10.6
+            },
+            {
+              "score": "1-0",
+              "pct": 9.4
+            },
+            {
+              "score": "0-1",
+              "pct": 8.9
+            },
+            {
+              "score": "2-1",
+              "pct": 7.3
+            },
+            {
+              "score": "1-2",
+              "pct": 7.0
+            },
+            {
+              "score": "2-2",
+              "pct": 6.5
+            },
+            {
+              "score": "2-0",
+              "pct": 6.0
+            },
+            {
+              "score": "0-2",
+              "pct": 5.4
+            },
+            {
+              "score": "3-1",
+              "pct": 3.1
+            }
+          ]
+        },
+        {
+          "match_number": 102,
+          "phase": "sf",
+          "round_name": "Semifinales",
+          "date": "2026-07-15",
+          "time": "19:00",
+          "venue": "Mercedes-Benz Stadium",
+          "city": "Atlanta",
+          "home_team": "eng",
+          "away_team": "arg",
+          "home_name": "Inglaterra",
+          "away_name": "Argentina",
+          "home_label": "Ganador Partido 99",
+          "away_label": "Ganador Partido 100",
+          "team_a_win_probability": 36.71,
+          "draw_probability": 34.36,
+          "team_b_win_probability": 28.93,
+          "advance_home_pct": 55.6,
+          "advance_away_pct": 44.4,
+          "projected_winner": "eng",
+          "projected_loser": "arg",
+          "global_tag": "Empate probable",
+          "editorial": "El modelo ELO perfila mejor a Inglaterra en semifinales, pero Argentina mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos.",
+          "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "Inglaterra parte mejor perfilado que Argentina por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como un dominio esperado sobre el papel. La zona que abre el partido está en el mediocampo de Inglaterra, con Declan Rice y Jude Bellingham como protagonistas, contra el mediocampo de Argentina. Ahí Inglaterra puede romper el equilibrio.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 16.3
+            },
+            {
+              "score": "0-0",
+              "pct": 10.5
+            },
+            {
+              "score": "1-0",
+              "pct": 9.9
+            },
+            {
+              "score": "0-1",
+              "pct": 8.5
+            },
+            {
+              "score": "2-1",
+              "pct": 7.7
+            },
+            {
+              "score": "1-2",
+              "pct": 6.6
+            },
+            {
+              "score": "2-0",
+              "pct": 6.6
+            },
+            {
+              "score": "2-2",
+              "pct": 6.3
+            },
+            {
+              "score": "0-2",
+              "pct": 4.9
+            },
+            {
+              "score": "3-1",
+              "pct": 3.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "tp",
+      "title": "Tercer Puesto",
+      "matches": [
+        {
+          "match_number": 103,
+          "phase": "tp",
+          "round_name": "Tercer Puesto",
+          "date": "2026-07-18",
+          "time": "21:00",
+          "venue": "Hard Rock Stadium",
+          "city": "Miami Gardens",
+          "home_team": "esp",
+          "away_team": "arg",
+          "home_name": "España",
+          "away_name": "Argentina",
+          "home_label": "Perdedor Partido 101",
+          "away_label": "Perdedor Partido 102",
+          "team_a_win_probability": 43.3,
+          "draw_probability": 32.89,
+          "team_b_win_probability": 23.81,
+          "advance_home_pct": 63.7,
+          "advance_away_pct": 36.3,
+          "projected_winner": "esp",
+          "projected_loser": "arg",
+          "global_tag": "Partido abierto",
+          "editorial": "El modelo ELO perfila mejor a España en tercer puesto, pero Argentina mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos.",
+          "player_factor": "En España, Lamine Yamal desde FC Barcelona es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "La lectura global del roce de club favorece a España. La curva ELO lo interpreta como una ventaja clara, aunque Argentina conserva caminos si logra bajar el ritmo y proteger su área. El cruce que más desequilibra enfrenta al mediocampo de España, con Rodri y Pedri como protagonistas, con el mediocampo de Argentina, donde España encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 15.6
+            },
+            {
+              "score": "1-0",
+              "pct": 11.0
+            },
+            {
+              "score": "0-0",
+              "pct": 10.3
+            },
+            {
+              "score": "2-1",
+              "pct": 8.3
+            },
+            {
+              "score": "2-0",
+              "pct": 8.1
+            },
+            {
+              "score": "0-1",
+              "pct": 7.6
+            },
+            {
+              "score": "2-2",
+              "pct": 5.9
+            },
+            {
+              "score": "1-2",
+              "pct": 5.8
+            },
+            {
+              "score": "3-1",
+              "pct": 4.1
+            },
+            {
+              "score": "3-0",
+              "pct": 4.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "final",
+      "title": "Final",
+      "matches": [
+        {
+          "match_number": 104,
+          "phase": "final",
+          "round_name": "Final",
+          "date": "2026-07-19",
+          "time": "19:00",
+          "venue": "MetLife Stadium",
+          "city": "East Rutherford",
+          "home_team": "fra",
+          "away_team": "eng",
+          "home_name": "Francia",
+          "away_name": "Inglaterra",
+          "home_label": "Ganador Partido 101",
+          "away_label": "Ganador Partido 102",
+          "team_a_win_probability": 40.42,
+          "draw_probability": 33.6,
+          "team_b_win_probability": 25.98,
+          "advance_home_pct": 60.2,
+          "advance_away_pct": 39.8,
+          "projected_winner": "fra",
+          "projected_loser": "eng",
+          "global_tag": "Empate probable",
+          "editorial": "El modelo ELO perfila mejor a Francia en final, pero Inglaterra mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+          "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+          "tactical_note": "Francia parte mejor perfilado que Inglaterra por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una ventaja ligera. El cruce que más desequilibra enfrenta al ataque de Francia, con Kylian Mbappé y Ousmane Dembélé como protagonistas, con la defensa de Inglaterra, donde Francia encuentra su ventaja más clara.",
+          "team_home_context": "",
+          "team_away_context": "",
+          "top_scorelines": [
+            {
+              "score": "1-1",
+              "pct": 15.9
+            },
+            {
+              "score": "1-0",
+              "pct": 10.5
+            },
+            {
+              "score": "0-0",
+              "pct": 10.4
+            },
+            {
+              "score": "2-1",
+              "pct": 8.1
+            },
+            {
+              "score": "0-1",
+              "pct": 8.0
+            },
+            {
+              "score": "2-0",
+              "pct": 7.5
+            },
+            {
+              "score": "1-2",
+              "pct": 6.2
+            },
+            {
+              "score": "2-2",
+              "pct": 6.1
+            },
+            {
+              "score": "0-2",
+              "pct": 4.3
+            },
+            {
+              "score": "3-1",
+              "pct": 3.8
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "match_number": 73,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-06-28",
+      "time": "19:00",
+      "venue": "SoFi Stadium",
+      "city": "Los Ángeles",
+      "home_team": "zaf",
+      "away_team": "can",
+      "home_name": "Sudáfrica",
+      "away_name": "Canadá",
+      "home_label": "2.° Grupo A",
+      "away_label": "2.° Grupo B",
+      "team_a_win_probability": 11.46,
+      "draw_probability": 25.63,
+      "team_b_win_probability": 62.91,
+      "advance_home_pct": 16.5,
+      "advance_away_pct": 83.5,
+      "projected_winner": "can",
+      "projected_loser": "zaf",
+      "global_tag": "Ligero favorito",
+      "editorial": "El modelo ELO perfila mejor a Canadá en 16avos de final, pero Sudáfrica mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Sudáfrica llega como 2. Grupo A con 4 puntos, diferencia -1 y 2 goles en la fase de grupos. Canadá llega como 2. Grupo B con 4 puntos, diferencia +5 y 8 goles en la fase de grupos.",
+      "player_factor": "En Canadá, Jonathan David desde Juventus FC es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "El once de Canadá llega con más respaldo competitivo que el de Sudáfrica. En términos de modelo, eso coloca el partido en zona de un dominio esperado sobre el papel. El cruce que más desequilibra enfrenta al ataque de Sudáfrica con la defensa de Canadá, con Alphonso Davies y Moïse Bombito como protagonistas, donde Canadá encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "0-1",
+          "pct": 14.4
+        },
+        {
+          "score": "0-2",
+          "pct": 13.4
+        },
+        {
+          "score": "1-1",
+          "pct": 11.8
+        },
+        {
+          "score": "0-0",
+          "pct": 9.9
+        },
+        {
+          "score": "1-2",
+          "pct": 8.6
+        },
+        {
+          "score": "0-3",
+          "pct": 8.3
+        },
+        {
+          "score": "1-3",
+          "pct": 5.3
+        },
+        {
+          "score": "1-0",
+          "pct": 5.0
+        },
+        {
+          "score": "0-4",
+          "pct": 3.9
+        },
+        {
+          "score": "2-2",
+          "pct": 3.5
+        }
+      ]
+    },
+    {
+      "match_number": 74,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-06-29",
+      "time": "20:30",
+      "venue": "Gillette Stadium",
+      "city": "Foxborough",
+      "home_team": "ger",
+      "away_team": "swe",
+      "home_name": "Alemania",
+      "away_name": "Suecia",
+      "home_label": "1.° Grupo E",
+      "away_label": "3.° A/B/C/D/F",
+      "team_a_win_probability": 67.75,
+      "draw_probability": 23.22,
+      "team_b_win_probability": 9.03,
+      "advance_home_pct": 87.4,
+      "advance_away_pct": 12.6,
+      "projected_winner": "ger",
+      "projected_loser": "swe",
+      "global_tag": "Favorito claro",
+      "editorial": "El modelo ELO perfila mejor a Alemania en 16avos de final, pero Suecia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Alemania llega como 1. Grupo E con 6 puntos, diferencia +6 y 10 goles en la fase de grupos. Suecia llega como Mejor 3. Grupo F con 4 puntos, diferencia +0 y 7 goles en la fase de grupos.",
+      "player_factor": "En Alemania, Leon Goretzka desde Bayern Munich es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "La lectura global del roce de club favorece a Alemania. La curva ELO lo interpreta como una diferencia de categoría, aunque Suecia conserva caminos si logra bajar el ritmo y proteger su área. El punto de presión aparece cuando Alemania activa el mediocampo, con Leon Goretzka y Aleksandar Pavlović como protagonistas, frente al mediocampo de Suecia. Esa relación explica su mejor camino.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "pct": 15.3
+        },
+        {
+          "score": "2-0",
+          "pct": 14.9
+        },
+        {
+          "score": "1-1",
+          "pct": 10.4
+        },
+        {
+          "score": "3-0",
+          "pct": 9.7
+        },
+        {
+          "score": "0-0",
+          "pct": 9.7
+        },
+        {
+          "score": "2-1",
+          "pct": 8.2
+        },
+        {
+          "score": "3-1",
+          "pct": 5.3
+        },
+        {
+          "score": "4-0",
+          "pct": 4.7
+        },
+        {
+          "score": "0-1",
+          "pct": 4.3
+        },
+        {
+          "score": "2-2",
+          "pct": 2.8
+        }
+      ]
+    },
+    {
+      "match_number": 75,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-06-29",
+      "time": "01:00",
+      "venue": "Estadio BBVA",
+      "city": "Guadalupe",
+      "home_team": "ned",
+      "away_team": "mar",
+      "home_name": "Países Bajos",
+      "away_name": "Marruecos",
+      "home_label": "1.° Grupo F",
+      "away_label": "2.° Grupo C",
+      "team_a_win_probability": 49.04,
+      "draw_probability": 31.19,
+      "team_b_win_probability": 19.77,
+      "advance_home_pct": 70.2,
+      "advance_away_pct": 29.8,
+      "projected_winner": "ned",
+      "projected_loser": "mar",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a Países Bajos en 16avos de final, pero Marruecos mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Países Bajos llega como 1. Grupo F con 7 puntos, diferencia +6 y 10 goles en la fase de grupos. Marruecos llega como 2. Grupo C con 7 puntos, diferencia +3 y 6 goles en la fase de grupos.",
+      "player_factor": "En Países Bajos, Frenkie de Jong desde Barcelona es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "La lectura global del roce de club favorece a Países Bajos. La curva ELO lo interpreta como una ventaja clara, aunque Marruecos conserva caminos si logra bajar el ritmo y proteger su área. La lectura individual favorece a Países Bajos en el mediocampo, con Ryan Gravenberch y Frenkie de Jong como protagonistas, ante el mediocampo de Marruecos. Si ese sector manda, el partido cambia de ritmo.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 14.7
+        },
+        {
+          "score": "1-0",
+          "pct": 12.0
+        },
+        {
+          "score": "0-0",
+          "pct": 10.2
+        },
+        {
+          "score": "2-0",
+          "pct": 9.5
+        },
+        {
+          "score": "2-1",
+          "pct": 8.7
+        },
+        {
+          "score": "0-1",
+          "pct": 6.9
+        },
+        {
+          "score": "2-2",
+          "pct": 5.3
+        },
+        {
+          "score": "3-0",
+          "pct": 5.1
+        },
+        {
+          "score": "1-2",
+          "pct": 5.0
+        },
+        {
+          "score": "3-1",
+          "pct": 4.6
+        }
+      ]
+    },
+    {
+      "match_number": 76,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-06-29",
+      "time": "17:00",
+      "venue": "NRG Stadium",
+      "city": "Houston",
+      "home_team": "bra",
+      "away_team": "jpn",
+      "home_name": "Brasil",
+      "away_name": "Japón",
+      "home_label": "1.° Grupo C",
+      "away_label": "2.° Grupo F",
+      "team_a_win_probability": 51.57,
+      "draw_probability": 30.32,
+      "team_b_win_probability": 18.11,
+      "advance_home_pct": 72.9,
+      "advance_away_pct": 27.1,
+      "projected_winner": "bra",
+      "projected_loser": "jpn",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a Brasil en 16avos de final, pero Japón mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Brasil llega como 1. Grupo C con 7 puntos, diferencia +6 y 7 goles en la fase de grupos. Japón llega como 2. Grupo F con 5 puntos, diferencia +4 y 7 goles en la fase de grupos.",
+      "player_factor": "En Brasil, Vinicius Júnior desde Real Madrid es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "La lectura global del roce de club favorece a Brasil. La curva ELO lo interpreta como una diferencia de categoría, aunque Japón conserva caminos si logra bajar el ritmo y proteger su área. El cruce que más desequilibra enfrenta a la unidad defensiva de Brasil con el ataque de Japón, donde Brasil encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 14.3
+        },
+        {
+          "score": "1-0",
+          "pct": 12.4
+        },
+        {
+          "score": "2-0",
+          "pct": 10.2
+        },
+        {
+          "score": "0-0",
+          "pct": 10.1
+        },
+        {
+          "score": "2-1",
+          "pct": 8.8
+        },
+        {
+          "score": "0-1",
+          "pct": 6.5
+        },
+        {
+          "score": "3-0",
+          "pct": 5.6
+        },
+        {
+          "score": "2-2",
+          "pct": 5.0
+        },
+        {
+          "score": "3-1",
+          "pct": 4.8
+        },
+        {
+          "score": "1-2",
+          "pct": 4.6
+        }
+      ]
+    },
+    {
+      "match_number": 77,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-06-30",
+      "time": "21:00",
+      "venue": "MetLife Stadium",
+      "city": "East Rutherford",
+      "home_team": "fra",
+      "away_team": "pry",
+      "home_name": "Francia",
+      "away_name": "Paraguay",
+      "home_label": "1.° Grupo I",
+      "away_label": "3.° C/D/F/G/H",
+      "team_a_win_probability": 78.4,
+      "draw_probability": 17.04,
+      "team_b_win_probability": 4.56,
+      "advance_home_pct": 94.1,
+      "advance_away_pct": 5.9,
+      "projected_winner": "fra",
+      "projected_loser": "pry",
+      "global_tag": "Favorito claro",
+      "editorial": "El modelo ELO perfila mejor a Francia en 16avos de final, pero Paraguay mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos. Paraguay llega como Mejor 3. Grupo D con 4 puntos, diferencia -2 y 2 goles en la fase de grupos.",
+      "player_factor": "En Francia, Kylian Mbappé desde Real Madrid es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "Francia parte mejor perfilado que Paraguay por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. La zona que abre el partido está en la unidad defensiva de Francia contra el ataque de Paraguay. Ahí Francia puede romper el equilibrio.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "2-0",
+          "pct": 18.8
+        },
+        {
+          "score": "1-0",
+          "pct": 17.4
+        },
+        {
+          "score": "3-0",
+          "pct": 13.5
+        },
+        {
+          "score": "0-0",
+          "pct": 9.1
+        },
+        {
+          "score": "4-0",
+          "pct": 7.3
+        },
+        {
+          "score": "1-1",
+          "pct": 6.7
+        },
+        {
+          "score": "2-1",
+          "pct": 6.4
+        },
+        {
+          "score": "3-1",
+          "pct": 4.6
+        },
+        {
+          "score": "5-0",
+          "pct": 3.1
+        },
+        {
+          "score": "0-1",
+          "pct": 2.7
+        }
+      ]
+    },
+    {
+      "match_number": 78,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-06-30",
+      "time": "17:00",
+      "venue": "AT&T Stadium",
+      "city": "Arlington",
+      "home_team": "civ",
+      "away_team": "nor",
+      "home_name": "Costa de Marfil",
+      "away_name": "Noruega",
+      "home_label": "2.° Grupo E",
+      "away_label": "2.° Grupo I",
+      "team_a_win_probability": 12.81,
+      "draw_probability": 26.77,
+      "team_b_win_probability": 60.42,
+      "advance_home_pct": 18.6,
+      "advance_away_pct": 81.4,
+      "projected_winner": "nor",
+      "projected_loser": "civ",
+      "global_tag": "Ligero favorito",
+      "editorial": "El modelo ELO perfila mejor a Noruega en 16avos de final, pero Costa de Marfil mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Costa de Marfil llega como 2. Grupo E con 6 puntos, diferencia +2 y 4 goles en la fase de grupos. Noruega llega como 2. Grupo I con 6 puntos, diferencia +1 y 8 goles en la fase de grupos.",
+      "player_factor": "En Noruega, Erling Haaland desde Manchester City es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "La lectura global del roce de club favorece a Noruega. La curva ELO lo interpreta como un dominio esperado sobre el papel, aunque Costa de Marfil conserva caminos si logra bajar el ritmo y proteger su área. El punto que puede inclinar el partido queda del lado de Noruega. El ataque, con Alexander Sørloth y Erling Haaland como protagonistas, castiga la unidad defensiva de Costa de Marfil.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "0-1",
+          "pct": 14.0
+        },
+        {
+          "score": "0-2",
+          "pct": 12.7
+        },
+        {
+          "score": "1-1",
+          "pct": 12.4
+        },
+        {
+          "score": "0-0",
+          "pct": 9.9
+        },
+        {
+          "score": "1-2",
+          "pct": 8.7
+        },
+        {
+          "score": "0-3",
+          "pct": 7.6
+        },
+        {
+          "score": "1-0",
+          "pct": 5.3
+        },
+        {
+          "score": "1-3",
+          "pct": 5.3
+        },
+        {
+          "score": "2-2",
+          "pct": 3.9
+        },
+        {
+          "score": "0-4",
+          "pct": 3.5
+        }
+      ]
+    },
+    {
+      "match_number": 79,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-06-30",
+      "time": "01:00",
+      "venue": "Estadio Azteca",
+      "city": "Ciudad de México",
+      "home_team": "mex",
+      "away_team": "ecu",
+      "home_name": "México",
+      "away_name": "Ecuador",
+      "home_label": "1.° Grupo A",
+      "away_label": "3.° C/E/F/H/I",
+      "team_a_win_probability": 18.83,
+      "draw_probability": 30.71,
+      "team_b_win_probability": 50.46,
+      "advance_home_pct": 28.3,
+      "advance_away_pct": 71.7,
+      "projected_winner": "ecu",
+      "projected_loser": "mex",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a Ecuador en 16avos de final, pero México mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. México llega como 1. Grupo A con 9 puntos, diferencia +6 y 6 goles en la fase de grupos. Ecuador llega como Mejor 3. Grupo E con 4 puntos, diferencia +0 y 2 goles en la fase de grupos.",
+      "player_factor": "En Ecuador, Moisés Caicedo desde Chelsea es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "La lectura global del roce de club favorece a Ecuador. La curva ELO lo interpreta como un dominio esperado sobre el papel, aunque México conserva caminos si logra bajar el ritmo y proteger su área. El cruce que más desequilibra enfrenta al ataque de México con la defensa de Ecuador, con Willian Pacho y Piero Hincapié como protagonistas, donde Ecuador encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 14.5
+        },
+        {
+          "score": "0-1",
+          "pct": 12.2
+        },
+        {
+          "score": "0-0",
+          "pct": 10.2
+        },
+        {
+          "score": "0-2",
+          "pct": 9.9
+        },
+        {
+          "score": "1-2",
+          "pct": 8.7
+        },
+        {
+          "score": "1-0",
+          "pct": 6.7
+        },
+        {
+          "score": "0-3",
+          "pct": 5.3
+        },
+        {
+          "score": "2-2",
+          "pct": 5.2
+        },
+        {
+          "score": "2-1",
+          "pct": 4.8
+        },
+        {
+          "score": "1-3",
+          "pct": 4.7
+        }
+      ]
+    },
+    {
+      "match_number": 80,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-01",
+      "time": "16:00",
+      "venue": "Mercedes-Benz Stadium",
+      "city": "Atlanta",
+      "home_team": "eng",
+      "away_team": "cod",
+      "home_name": "Inglaterra",
+      "away_name": "RD Congo",
+      "home_label": "1.° Grupo L",
+      "away_label": "3.° E/H/I/J/K",
+      "team_a_win_probability": 79.3,
+      "draw_probability": 16.47,
+      "team_b_win_probability": 4.23,
+      "advance_home_pct": 94.6,
+      "advance_away_pct": 5.4,
+      "projected_winner": "eng",
+      "projected_loser": "cod",
+      "global_tag": "Favorito claro",
+      "editorial": "El modelo ELO perfila mejor a Inglaterra en 16avos de final, pero RD Congo mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos. RD Congo llega como Mejor 3. Grupo K con 4 puntos, diferencia +1 y 4 goles en la fase de grupos.",
+      "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "El once de Inglaterra llega con más respaldo competitivo que el de RD Congo. En términos de modelo, eso coloca el partido en zona de una diferencia de categoría. La zona que abre el partido está en el mediocampo de Inglaterra, con Declan Rice y Jude Bellingham como protagonistas, contra el mediocampo de RD Congo. Ahí Inglaterra puede romper el equilibrio.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "2-0",
+          "pct": 19.1
+        },
+        {
+          "score": "1-0",
+          "pct": 17.6
+        },
+        {
+          "score": "3-0",
+          "pct": 13.9
+        },
+        {
+          "score": "0-0",
+          "pct": 9.0
+        },
+        {
+          "score": "4-0",
+          "pct": 7.6
+        },
+        {
+          "score": "1-1",
+          "pct": 6.3
+        },
+        {
+          "score": "2-1",
+          "pct": 6.2
+        },
+        {
+          "score": "3-1",
+          "pct": 4.5
+        },
+        {
+          "score": "5-0",
+          "pct": 3.3
+        },
+        {
+          "score": "0-1",
+          "pct": 2.6
+        }
+      ]
+    },
+    {
+      "match_number": 81,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-01",
+      "time": "00:00",
+      "venue": "Levi's Stadium",
+      "city": "Santa Clara",
+      "home_team": "usa",
+      "away_team": "bih",
+      "home_name": "EE.UU.",
+      "away_name": "Bosnia y Herzegovina",
+      "home_label": "1.° Grupo D",
+      "away_label": "3.° B/E/F/I/J",
+      "team_a_win_probability": 46.89,
+      "draw_probability": 31.87,
+      "team_b_win_probability": 21.24,
+      "advance_home_pct": 67.8,
+      "advance_away_pct": 32.2,
+      "projected_winner": "usa",
+      "projected_loser": "bih",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a EE.UU. en 16avos de final, pero Bosnia y Herzegovina mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. EE.UU. llega como 1. Grupo D con 6 puntos, diferencia +4 y 8 goles en la fase de grupos. Bosnia y Herzegovina llega como Mejor 3. Grupo B con 4 puntos, diferencia -1 y 5 goles en la fase de grupos.",
+      "player_factor": "En EE.UU., Malik Tillman desde Bayer Leverkusen es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "El once de EE.UU. llega con más respaldo competitivo que el de Bosnia y Herzegovina. En términos de modelo, eso coloca el partido en zona de una ventaja ligera. El foco está en cómo EE.UU. coordina su unidad defensiva cuando aparece el ataque de Bosnia y Herzegovina, con Edin Džeko y Ermedin Demirović como protagonistas. Esa es la alerta principal.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 15.1
+        },
+        {
+          "score": "1-0",
+          "pct": 11.6
+        },
+        {
+          "score": "0-0",
+          "pct": 10.2
+        },
+        {
+          "score": "2-0",
+          "pct": 9.0
+        },
+        {
+          "score": "2-1",
+          "pct": 8.6
+        },
+        {
+          "score": "0-1",
+          "pct": 7.1
+        },
+        {
+          "score": "2-2",
+          "pct": 5.6
+        },
+        {
+          "score": "1-2",
+          "pct": 5.3
+        },
+        {
+          "score": "3-0",
+          "pct": 4.6
+        },
+        {
+          "score": "3-1",
+          "pct": 4.4
+        }
+      ]
+    },
+    {
+      "match_number": 82,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-01",
+      "time": "20:00",
+      "venue": "Lumen Field",
+      "city": "Seattle",
+      "home_team": "bel",
+      "away_team": "alg",
+      "home_name": "Bélgica",
+      "away_name": "Argelia",
+      "home_label": "1.° Grupo G",
+      "away_label": "3.° A/E/H/I/J",
+      "team_a_win_probability": 57.51,
+      "draw_probability": 28.03,
+      "team_b_win_probability": 14.46,
+      "advance_home_pct": 78.8,
+      "advance_away_pct": 21.2,
+      "projected_winner": "bel",
+      "projected_loser": "alg",
+      "global_tag": "Ligero favorito",
+      "editorial": "El modelo ELO perfila mejor a Bélgica en 16avos de final, pero Argelia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Bélgica llega como 1. Grupo G con 5 puntos, diferencia +4 y 6 goles en la fase de grupos. Argelia llega como Mejor 3. Grupo J con 4 puntos, diferencia -2 y 5 goles en la fase de grupos.",
+      "player_factor": "En Argelia, Ibrahim Maza desde Bayer 04 Leverkusen es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "Bélgica parte mejor perfilado que Argelia por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. El cruce que más desequilibra enfrenta a la unidad defensiva de Bélgica con el ataque de Argelia, donde Bélgica encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "pct": 13.5
+        },
+        {
+          "score": "1-1",
+          "pct": 13.1
+        },
+        {
+          "score": "2-0",
+          "pct": 11.8
+        },
+        {
+          "score": "0-0",
+          "pct": 10.0
+        },
+        {
+          "score": "2-1",
+          "pct": 8.8
+        },
+        {
+          "score": "3-0",
+          "pct": 6.9
+        },
+        {
+          "score": "0-1",
+          "pct": 5.7
+        },
+        {
+          "score": "3-1",
+          "pct": 5.1
+        },
+        {
+          "score": "2-2",
+          "pct": 4.3
+        },
+        {
+          "score": "1-2",
+          "pct": 3.7
+        }
+      ]
+    },
+    {
+      "match_number": 83,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-02",
+      "time": "23:00",
+      "venue": "BMO Field",
+      "city": "Toronto",
+      "home_team": "por",
+      "away_team": "cro",
+      "home_name": "Portugal",
+      "away_name": "Croacia",
+      "home_label": "2.° Grupo K",
+      "away_label": "2.° Grupo L",
+      "team_a_win_probability": 48.12,
+      "draw_probability": 31.48,
+      "team_b_win_probability": 20.4,
+      "advance_home_pct": 69.2,
+      "advance_away_pct": 30.8,
+      "projected_winner": "por",
+      "projected_loser": "cro",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a Portugal en 16avos de final, pero Croacia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Portugal llega como 2. Grupo K con 5 puntos, diferencia +5 y 6 goles en la fase de grupos. Croacia llega como 2. Grupo L con 6 puntos, diferencia +0 y 5 goles en la fase de grupos.",
+      "player_factor": "En Croacia, Mateo Kovačić desde Manchester City es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "El once de Portugal llega con más respaldo competitivo que el de Croacia. En términos de modelo, eso coloca el partido en zona de un dominio esperado sobre el papel. El punto de presión aparece cuando Portugal coordina la unidad defensiva frente al ataque de Croacia. Esa relación explica su mejor camino.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 14.9
+        },
+        {
+          "score": "1-0",
+          "pct": 11.8
+        },
+        {
+          "score": "0-0",
+          "pct": 10.2
+        },
+        {
+          "score": "2-0",
+          "pct": 9.3
+        },
+        {
+          "score": "2-1",
+          "pct": 8.6
+        },
+        {
+          "score": "0-1",
+          "pct": 7.0
+        },
+        {
+          "score": "2-2",
+          "pct": 5.4
+        },
+        {
+          "score": "1-2",
+          "pct": 5.1
+        },
+        {
+          "score": "3-0",
+          "pct": 4.9
+        },
+        {
+          "score": "3-1",
+          "pct": 4.5
+        }
+      ]
+    },
+    {
+      "match_number": 84,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-02",
+      "time": "19:00",
+      "venue": "SoFi Stadium",
+      "city": "Los Ángeles",
+      "home_team": "esp",
+      "away_team": "aut",
+      "home_name": "España",
+      "away_name": "Austria",
+      "home_label": "1.° Grupo H",
+      "away_label": "2.° Grupo J",
+      "team_a_win_probability": 66.94,
+      "draw_probability": 23.64,
+      "team_b_win_probability": 9.42,
+      "advance_home_pct": 86.8,
+      "advance_away_pct": 13.2,
+      "projected_winner": "esp",
+      "projected_loser": "aut",
+      "global_tag": "Favorito claro",
+      "editorial": "El modelo ELO perfila mejor a España en 16avos de final, pero Austria mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos. Austria llega como 2. Grupo J con 4 puntos, diferencia +0 y 6 goles en la fase de grupos.",
+      "player_factor": "En Austria, Konrad Laimer desde Bayern Munich es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "La lectura global del roce de club favorece a España. La curva ELO lo interpreta como una ventaja clara, aunque Austria conserva caminos si logra bajar el ritmo y proteger su área. La zona que abre el partido está en el mediocampo de España, con Rodri y Pedri como protagonistas, contra el mediocampo de Austria. Ahí España puede romper el equilibrio.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "pct": 15.2
+        },
+        {
+          "score": "2-0",
+          "pct": 14.7
+        },
+        {
+          "score": "1-1",
+          "pct": 10.6
+        },
+        {
+          "score": "0-0",
+          "pct": 9.7
+        },
+        {
+          "score": "3-0",
+          "pct": 9.5
+        },
+        {
+          "score": "2-1",
+          "pct": 8.3
+        },
+        {
+          "score": "3-1",
+          "pct": 5.3
+        },
+        {
+          "score": "4-0",
+          "pct": 4.6
+        },
+        {
+          "score": "0-1",
+          "pct": 4.4
+        },
+        {
+          "score": "2-2",
+          "pct": 2.9
+        }
+      ]
+    },
+    {
+      "match_number": 85,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-02",
+      "time": "03:00",
+      "venue": "BC Place",
+      "city": "Vancouver",
+      "home_team": "sui",
+      "away_team": "sen",
+      "home_name": "Suiza",
+      "away_name": "Senegal",
+      "home_label": "1.° Grupo B",
+      "away_label": "3.° E/F/G/I/J",
+      "team_a_win_probability": 32.2,
+      "draw_probability": 34.96,
+      "team_b_win_probability": 32.84,
+      "advance_home_pct": 49.5,
+      "advance_away_pct": 50.5,
+      "projected_winner": "sen",
+      "projected_loser": "sui",
+      "global_tag": "Duelo parejo",
+      "editorial": "El modelo ELO no separa demasiado a Suiza y Senegal en 16avos de final. La lectura se apoya en el roce del XI, lo ya hecho en grupos y la capacidad para sostener ritmo tras el primer golpe. Suiza llega como 1. Grupo B con 7 puntos, diferencia +4 y 7 goles en la fase de grupos. Senegal llega como Mejor 3. Grupo I con 3 puntos, diferencia +2 y 8 goles en la fase de grupos.",
+      "player_factor": "En Senegal, Nicolas Jackson desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "El once de Senegal llega con más respaldo competitivo que el de Suiza. En términos de modelo, eso coloca el partido en zona de una ventaja ligera. Senegal encuentra su mejor argumento al atacar la unidad defensiva de Suiza. El ataque, con Sadio Mané y Iliman Ndiaye como protagonistas, sostiene ese margen.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 16.6
+        },
+        {
+          "score": "0-0",
+          "pct": 10.6
+        },
+        {
+          "score": "0-1",
+          "pct": 9.2
+        },
+        {
+          "score": "1-0",
+          "pct": 9.1
+        },
+        {
+          "score": "1-2",
+          "pct": 7.2
+        },
+        {
+          "score": "2-1",
+          "pct": 7.1
+        },
+        {
+          "score": "2-2",
+          "pct": 6.5
+        },
+        {
+          "score": "0-2",
+          "pct": 5.8
+        },
+        {
+          "score": "2-0",
+          "pct": 5.6
+        },
+        {
+          "score": "1-3",
+          "pct": 3.0
+        }
+      ]
+    },
+    {
+      "match_number": 86,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-03",
+      "time": "22:00",
+      "venue": "Hard Rock Stadium",
+      "city": "Miami Gardens",
+      "home_team": "arg",
+      "away_team": "cpv",
+      "home_name": "Argentina",
+      "away_name": "Cabo Verde",
+      "home_label": "1.° Grupo J",
+      "away_label": "2.° Grupo H",
+      "team_a_win_probability": 81.93,
+      "draw_probability": 14.7,
+      "team_b_win_probability": 3.37,
+      "advance_home_pct": 95.8,
+      "advance_away_pct": 4.2,
+      "projected_winner": "arg",
+      "projected_loser": "cpv",
+      "global_tag": "Favorito claro",
+      "editorial": "El modelo ELO perfila mejor a Argentina en 16avos de final, pero Cabo Verde mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos. Cabo Verde llega como 2. Grupo H con 3 puntos, diferencia +0 y 2 goles en la fase de grupos.",
+      "player_factor": "En Cabo Verde, Kevin Pina Lenini desde FK Krasnodar es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "Argentina parte mejor perfilado que Cabo Verde por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. El cruce que más desequilibra enfrenta a la unidad defensiva de Argentina con el ataque de Cabo Verde, donde Argentina encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "2-0",
+          "pct": 20.2
+        },
+        {
+          "score": "1-0",
+          "pct": 18.1
+        },
+        {
+          "score": "3-0",
+          "pct": 15.0
+        },
+        {
+          "score": "0-0",
+          "pct": 8.6
+        },
+        {
+          "score": "4-0",
+          "pct": 8.4
+        },
+        {
+          "score": "2-1",
+          "pct": 5.5
+        },
+        {
+          "score": "1-1",
+          "pct": 5.2
+        },
+        {
+          "score": "3-1",
+          "pct": 4.1
+        },
+        {
+          "score": "5-0",
+          "pct": 3.7
+        },
+        {
+          "score": "4-1",
+          "pct": 2.3
+        }
+      ]
+    },
+    {
+      "match_number": 87,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-03",
+      "time": "01:30",
+      "venue": "Arrowhead Stadium",
+      "city": "Kansas City",
+      "home_team": "col",
+      "away_team": "gha",
+      "home_name": "Colombia",
+      "away_name": "Ghana",
+      "home_label": "1.° Grupo K",
+      "away_label": "3.° D/E/I/J/L",
+      "team_a_win_probability": 75.08,
+      "draw_probability": 19.11,
+      "team_b_win_probability": 5.81,
+      "advance_home_pct": 92.3,
+      "advance_away_pct": 7.7,
+      "projected_winner": "col",
+      "projected_loser": "gha",
+      "global_tag": "Favorito claro",
+      "editorial": "El modelo ELO perfila mejor a Colombia en 16avos de final, pero Ghana mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Colombia llega como 1. Grupo K con 7 puntos, diferencia +3 y 4 goles en la fase de grupos. Ghana llega como Mejor 3. Grupo L con 4 puntos, diferencia +0 y 2 goles en la fase de grupos.",
+      "player_factor": "En Colombia, Luis Díaz desde Bayern Múnich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "Colombia parte mejor perfilado que Ghana por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una ventaja clara. El punto de presión aparece cuando Colombia activa el ataque, con Luis Díaz y Luis Suárez como protagonistas, frente a la defensa de Ghana. Esa relación explica su mejor camino.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "2-0",
+          "pct": 17.5
+        },
+        {
+          "score": "1-0",
+          "pct": 16.7
+        },
+        {
+          "score": "3-0",
+          "pct": 12.2
+        },
+        {
+          "score": "0-0",
+          "pct": 9.3
+        },
+        {
+          "score": "1-1",
+          "pct": 7.9
+        },
+        {
+          "score": "2-1",
+          "pct": 7.1
+        },
+        {
+          "score": "4-0",
+          "pct": 6.4
+        },
+        {
+          "score": "3-1",
+          "pct": 5.0
+        },
+        {
+          "score": "0-1",
+          "pct": 3.2
+        },
+        {
+          "score": "5-0",
+          "pct": 2.7
+        }
+      ]
+    },
+    {
+      "match_number": 88,
+      "phase": "r32",
+      "round_name": "16avos de Final",
+      "date": "2026-07-03",
+      "time": "18:00",
+      "venue": "AT&T Stadium",
+      "city": "Arlington",
+      "home_team": "aus",
+      "away_team": "egy",
+      "home_name": "Australia",
+      "away_name": "Egipto",
+      "home_label": "2.° Grupo D",
+      "away_label": "2.° Grupo G",
+      "team_a_win_probability": 28.96,
+      "draw_probability": 34.37,
+      "team_b_win_probability": 36.67,
+      "advance_home_pct": 44.5,
+      "advance_away_pct": 55.5,
+      "projected_winner": "egy",
+      "projected_loser": "aus",
+      "global_tag": "Empate probable",
+      "editorial": "El modelo ELO perfila mejor a Egipto en 16avos de final, pero Australia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Australia llega como 2. Grupo D con 4 puntos, diferencia +0 y 2 goles en la fase de grupos. Egipto llega como 2. Grupo G con 5 puntos, diferencia +2 y 5 goles en la fase de grupos.",
+      "player_factor": "En Egipto, Mohamed Salah desde Liverpool es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "La lectura global del roce de club favorece a Egipto. La curva ELO lo interpreta como un dominio esperado sobre el papel, aunque Australia conserva caminos si logra bajar el ritmo y proteger su área. El foco está en cómo Australia coordina su unidad defensiva cuando aparece el ataque de Egipto, con Omar Marmoush y Mahmoud “Trezeguet” Hassan como protagonistas. Esa es la alerta principal.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 16.3
+        },
+        {
+          "score": "0-0",
+          "pct": 10.5
+        },
+        {
+          "score": "0-1",
+          "pct": 9.9
+        },
+        {
+          "score": "1-0",
+          "pct": 8.5
+        },
+        {
+          "score": "1-2",
+          "pct": 7.7
+        },
+        {
+          "score": "2-1",
+          "pct": 6.6
+        },
+        {
+          "score": "0-2",
+          "pct": 6.6
+        },
+        {
+          "score": "2-2",
+          "pct": 6.3
+        },
+        {
+          "score": "2-0",
+          "pct": 5.0
+        },
+        {
+          "score": "1-3",
+          "pct": 3.4
+        }
+      ]
+    },
+    {
+      "match_number": 89,
+      "phase": "r16",
+      "round_name": "Octavos de Final",
+      "date": "2026-07-04",
+      "time": "21:00",
+      "venue": "Lincoln Financial Field",
+      "city": "Filadelfia",
+      "home_team": "ger",
+      "away_team": "fra",
+      "home_name": "Alemania",
+      "away_name": "Francia",
+      "home_label": "Ganador Partido 74",
+      "away_label": "Ganador Partido 77",
+      "team_a_win_probability": 24.21,
+      "draw_probability": 33.03,
+      "team_b_win_probability": 42.76,
+      "advance_home_pct": 36.9,
+      "advance_away_pct": 63.1,
+      "projected_winner": "fra",
+      "projected_loser": "ger",
+      "global_tag": "Empate probable",
+      "editorial": "El modelo ELO perfila mejor a Francia en octavos de final, pero Alemania mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Alemania llega como 1. Grupo E con 6 puntos, diferencia +6 y 10 goles en la fase de grupos. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos.",
+      "player_factor": "En Alemania, Leon Goretzka desde Bayern Munich es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "La lectura global del roce de club favorece a Alemania. La curva ELO lo interpreta como una ventaja ligera, aunque Francia conserva caminos si logra bajar el ritmo y proteger su área. El punto de presión aparece cuando Alemania activa el mediocampo, con Leon Goretzka y Aleksandar Pavlović como protagonistas, frente al mediocampo de Francia. Esa relación explica su mejor camino.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 15.7
+        },
+        {
+          "score": "0-1",
+          "pct": 10.9
+        },
+        {
+          "score": "0-0",
+          "pct": 10.3
+        },
+        {
+          "score": "1-2",
+          "pct": 8.3
+        },
+        {
+          "score": "0-2",
+          "pct": 8.0
+        },
+        {
+          "score": "1-0",
+          "pct": 7.7
+        },
+        {
+          "score": "2-2",
+          "pct": 5.9
+        },
+        {
+          "score": "2-1",
+          "pct": 5.8
+        },
+        {
+          "score": "1-3",
+          "pct": 4.0
+        },
+        {
+          "score": "2-0",
+          "pct": 4.0
+        }
+      ]
+    },
+    {
+      "match_number": 90,
+      "phase": "r16",
+      "round_name": "Octavos de Final",
+      "date": "2026-07-04",
+      "time": "17:00",
+      "venue": "NRG Stadium",
+      "city": "Houston",
+      "home_team": "can",
+      "away_team": "ned",
+      "home_name": "Canadá",
+      "away_name": "Países Bajos",
+      "home_label": "Ganador Partido 73",
+      "away_label": "Ganador Partido 75",
+      "team_a_win_probability": 12.41,
+      "draw_probability": 26.45,
+      "team_b_win_probability": 61.14,
+      "advance_home_pct": 18.0,
+      "advance_away_pct": 82.0,
+      "projected_winner": "ned",
+      "projected_loser": "can",
+      "global_tag": "Ligero favorito",
+      "editorial": "El modelo ELO perfila mejor a Países Bajos en octavos de final, pero Canadá mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Canadá llega como 2. Grupo B con 4 puntos, diferencia +5 y 8 goles en la fase de grupos. Países Bajos llega como 1. Grupo F con 7 puntos, diferencia +6 y 10 goles en la fase de grupos.",
+      "player_factor": "En Países Bajos, Frenkie de Jong desde Barcelona es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "El once de Países Bajos llega con más respaldo competitivo que el de Canadá. En términos de modelo, eso coloca el partido en zona de una diferencia de categoría. El punto que puede inclinar el partido queda del lado de Países Bajos. El mediocampo, con Ryan Gravenberch y Frenkie de Jong como protagonistas, castiga el mediocampo de Canadá.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "0-1",
+          "pct": 14.1
+        },
+        {
+          "score": "0-2",
+          "pct": 12.9
+        },
+        {
+          "score": "1-1",
+          "pct": 12.2
+        },
+        {
+          "score": "0-0",
+          "pct": 9.9
+        },
+        {
+          "score": "1-2",
+          "pct": 8.7
+        },
+        {
+          "score": "0-3",
+          "pct": 7.8
+        },
+        {
+          "score": "1-3",
+          "pct": 5.3
+        },
+        {
+          "score": "1-0",
+          "pct": 5.2
+        },
+        {
+          "score": "2-2",
+          "pct": 3.8
+        },
+        {
+          "score": "0-4",
+          "pct": 3.6
+        }
+      ]
+    },
+    {
+      "match_number": 91,
+      "phase": "r16",
+      "round_name": "Octavos de Final",
+      "date": "2026-07-05",
+      "time": "20:00",
+      "venue": "MetLife Stadium",
+      "city": "East Rutherford",
+      "home_team": "bra",
+      "away_team": "nor",
+      "home_name": "Brasil",
+      "away_name": "Noruega",
+      "home_label": "Ganador Partido 76",
+      "away_label": "Ganador Partido 78",
+      "team_a_win_probability": 43.97,
+      "draw_probability": 32.71,
+      "team_b_win_probability": 23.32,
+      "advance_home_pct": 64.5,
+      "advance_away_pct": 35.5,
+      "projected_winner": "bra",
+      "projected_loser": "nor",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a Brasil en octavos de final, pero Noruega mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Brasil llega como 1. Grupo C con 7 puntos, diferencia +6 y 7 goles en la fase de grupos. Noruega llega como 2. Grupo I con 6 puntos, diferencia +1 y 8 goles en la fase de grupos.",
+      "player_factor": "En Brasil, Vinicius Júnior desde Real Madrid es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "Brasil parte mejor perfilado que Noruega por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una ventaja clara. El cruce que más desequilibra enfrenta al ataque de Brasil, con Neymar y Vinicius Júnior como protagonistas, con la defensa de Noruega, donde Brasil encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 15.5
+        },
+        {
+          "score": "1-0",
+          "pct": 11.1
+        },
+        {
+          "score": "0-0",
+          "pct": 10.3
+        },
+        {
+          "score": "2-1",
+          "pct": 8.4
+        },
+        {
+          "score": "2-0",
+          "pct": 8.3
+        },
+        {
+          "score": "0-1",
+          "pct": 7.5
+        },
+        {
+          "score": "2-2",
+          "pct": 5.8
+        },
+        {
+          "score": "1-2",
+          "pct": 5.7
+        },
+        {
+          "score": "3-1",
+          "pct": 4.2
+        },
+        {
+          "score": "3-0",
+          "pct": 4.1
+        }
+      ]
+    },
+    {
+      "match_number": 92,
+      "phase": "r16",
+      "round_name": "Octavos de Final",
+      "date": "2026-07-05",
+      "time": "00:00",
+      "venue": "Estadio Azteca",
+      "city": "Ciudad de México",
+      "home_team": "ecu",
+      "away_team": "eng",
+      "home_name": "Ecuador",
+      "away_name": "Inglaterra",
+      "home_label": "Ganador Partido 79",
+      "away_label": "Ganador Partido 80",
+      "team_a_win_probability": 13.88,
+      "draw_probability": 27.6,
+      "team_b_win_probability": 58.52,
+      "advance_home_pct": 20.3,
+      "advance_away_pct": 79.7,
+      "projected_winner": "eng",
+      "projected_loser": "ecu",
+      "global_tag": "Ligero favorito",
+      "editorial": "El modelo ELO perfila mejor a Inglaterra en octavos de final, pero Ecuador mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Ecuador llega como Mejor 3. Grupo E con 4 puntos, diferencia +0 y 2 goles en la fase de grupos. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+      "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "Inglaterra parte mejor perfilado que Ecuador por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. El foco está en cómo Ecuador sostiene su mediocampo cuando aparece el mediocampo de Inglaterra, con Declan Rice y Jude Bellingham como protagonistas. Esa es la alerta principal.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "0-1",
+          "pct": 13.6
+        },
+        {
+          "score": "1-1",
+          "pct": 12.8
+        },
+        {
+          "score": "0-2",
+          "pct": 12.1
+        },
+        {
+          "score": "0-0",
+          "pct": 10.0
+        },
+        {
+          "score": "1-2",
+          "pct": 8.8
+        },
+        {
+          "score": "0-3",
+          "pct": 7.2
+        },
+        {
+          "score": "1-0",
+          "pct": 5.6
+        },
+        {
+          "score": "1-3",
+          "pct": 5.2
+        },
+        {
+          "score": "2-2",
+          "pct": 4.1
+        },
+        {
+          "score": "2-1",
+          "pct": 3.6
+        }
+      ]
+    },
+    {
+      "match_number": 93,
+      "phase": "r16",
+      "round_name": "Octavos de Final",
+      "date": "2026-07-06",
+      "time": "19:00",
+      "venue": "AT&T Stadium",
+      "city": "Arlington",
+      "home_team": "por",
+      "away_team": "esp",
+      "home_name": "Portugal",
+      "away_name": "España",
+      "home_label": "Ganador Partido 83",
+      "away_label": "Ganador Partido 84",
+      "team_a_win_probability": 21.66,
+      "draw_probability": 32.05,
+      "team_b_win_probability": 46.29,
+      "advance_home_pct": 32.8,
+      "advance_away_pct": 67.2,
+      "projected_winner": "esp",
+      "projected_loser": "por",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a España en octavos de final, pero Portugal mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Portugal llega como 2. Grupo K con 5 puntos, diferencia +5 y 6 goles en la fase de grupos. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos.",
+      "player_factor": "En España, Lamine Yamal desde FC Barcelona es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "La lectura global del roce de club favorece a Portugal. La curva ELO lo interpreta como una ventaja ligera, aunque España conserva caminos si logra bajar el ritmo y proteger su área. El punto que puede inclinar el partido queda del lado de España. La defensa, con Aymeric Laporte y Pau Cubarsí como protagonistas, castiga el ataque de Portugal.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 15.2
+        },
+        {
+          "score": "0-1",
+          "pct": 11.5
+        },
+        {
+          "score": "0-0",
+          "pct": 10.2
+        },
+        {
+          "score": "0-2",
+          "pct": 8.9
+        },
+        {
+          "score": "1-2",
+          "pct": 8.5
+        },
+        {
+          "score": "1-0",
+          "pct": 7.2
+        },
+        {
+          "score": "2-2",
+          "pct": 5.6
+        },
+        {
+          "score": "2-1",
+          "pct": 5.3
+        },
+        {
+          "score": "0-3",
+          "pct": 4.5
+        },
+        {
+          "score": "1-3",
+          "pct": 4.4
+        }
+      ]
+    },
+    {
+      "match_number": 94,
+      "phase": "r16",
+      "round_name": "Octavos de Final",
+      "date": "2026-07-06",
+      "time": "00:00",
+      "venue": "Lumen Field",
+      "city": "Seattle",
+      "home_team": "usa",
+      "away_team": "bel",
+      "home_name": "EE.UU.",
+      "away_name": "Bélgica",
+      "home_label": "Ganador Partido 81",
+      "away_label": "Ganador Partido 82",
+      "team_a_win_probability": 14.75,
+      "draw_probability": 28.23,
+      "team_b_win_probability": 57.02,
+      "advance_home_pct": 21.7,
+      "advance_away_pct": 78.3,
+      "projected_winner": "bel",
+      "projected_loser": "usa",
+      "global_tag": "Ligero favorito",
+      "editorial": "El modelo ELO perfila mejor a Bélgica en octavos de final, pero EE.UU. mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. EE.UU. llega como 1. Grupo D con 6 puntos, diferencia +4 y 8 goles en la fase de grupos. Bélgica llega como 1. Grupo G con 5 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+      "player_factor": "En EE.UU., Malik Tillman desde Bayer Leverkusen es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "Bélgica parte mejor perfilado que EE.UU. por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una diferencia de categoría. El punto que puede inclinar el partido queda del lado de Bélgica. El ataque, con Jérémy Doku y Romelu Lukaku como protagonistas, castiga la unidad defensiva de EE.UU.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "0-1",
+          "pct": 13.4
+        },
+        {
+          "score": "1-1",
+          "pct": 13.2
+        },
+        {
+          "score": "0-2",
+          "pct": 11.7
+        },
+        {
+          "score": "0-0",
+          "pct": 10.0
+        },
+        {
+          "score": "1-2",
+          "pct": 8.8
+        },
+        {
+          "score": "0-3",
+          "pct": 6.8
+        },
+        {
+          "score": "1-0",
+          "pct": 5.8
+        },
+        {
+          "score": "1-3",
+          "pct": 5.1
+        },
+        {
+          "score": "2-2",
+          "pct": 4.3
+        },
+        {
+          "score": "2-1",
+          "pct": 3.8
+        }
+      ]
+    },
+    {
+      "match_number": 95,
+      "phase": "r16",
+      "round_name": "Octavos de Final",
+      "date": "2026-07-07",
+      "time": "16:00",
+      "venue": "Mercedes-Benz Stadium",
+      "city": "Atlanta",
+      "home_team": "arg",
+      "away_team": "egy",
+      "home_name": "Argentina",
+      "away_name": "Egipto",
+      "home_label": "Ganador Partido 86",
+      "away_label": "Ganador Partido 88",
+      "team_a_win_probability": 71.6,
+      "draw_probability": 21.14,
+      "team_b_win_probability": 7.26,
+      "advance_home_pct": 90.1,
+      "advance_away_pct": 9.9,
+      "projected_winner": "arg",
+      "projected_loser": "egy",
+      "global_tag": "Favorito claro",
+      "editorial": "El modelo ELO perfila mejor a Argentina en octavos de final, pero Egipto mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos. Egipto llega como 2. Grupo G con 5 puntos, diferencia +2 y 5 goles en la fase de grupos.",
+      "player_factor": "En Egipto, Mohamed Salah desde Liverpool es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "El once de Argentina llega con más respaldo competitivo que el de Egipto. En términos de modelo, eso coloca el partido en zona de un dominio esperado sobre el papel. El cruce que más desequilibra enfrenta al ataque de Argentina, con Lionel Messi y Julián Álvarez como protagonistas, con la defensa de Egipto, donde Argentina encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "2-0",
+          "pct": 16.2
+        },
+        {
+          "score": "1-0",
+          "pct": 16.0
+        },
+        {
+          "score": "3-0",
+          "pct": 11.0
+        },
+        {
+          "score": "0-0",
+          "pct": 9.5
+        },
+        {
+          "score": "1-1",
+          "pct": 9.2
+        },
+        {
+          "score": "2-1",
+          "pct": 7.7
+        },
+        {
+          "score": "4-0",
+          "pct": 5.6
+        },
+        {
+          "score": "3-1",
+          "pct": 5.2
+        },
+        {
+          "score": "0-1",
+          "pct": 3.7
+        },
+        {
+          "score": "4-1",
+          "pct": 2.6
+        }
+      ]
+    },
+    {
+      "match_number": 96,
+      "phase": "r16",
+      "round_name": "Octavos de Final",
+      "date": "2026-07-07",
+      "time": "20:00",
+      "venue": "BC Place",
+      "city": "Vancouver",
+      "home_team": "sen",
+      "away_team": "col",
+      "home_name": "Senegal",
+      "away_name": "Colombia",
+      "home_label": "Ganador Partido 85",
+      "away_label": "Ganador Partido 87",
+      "team_a_win_probability": 25.16,
+      "draw_probability": 33.34,
+      "team_b_win_probability": 41.5,
+      "advance_home_pct": 38.5,
+      "advance_away_pct": 61.5,
+      "projected_winner": "col",
+      "projected_loser": "sen",
+      "global_tag": "Empate probable",
+      "editorial": "El modelo ELO perfila mejor a Colombia en octavos de final, pero Senegal mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Senegal llega como Mejor 3. Grupo I con 3 puntos, diferencia +2 y 8 goles en la fase de grupos. Colombia llega como 1. Grupo K con 7 puntos, diferencia +3 y 4 goles en la fase de grupos.",
+      "player_factor": "En Senegal, Nicolas Jackson desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "La lectura global del roce de club favorece a Senegal. La curva ELO lo interpreta como una ventaja ligera, aunque Colombia conserva caminos si logra bajar el ritmo y proteger su área. Colombia encuentra su mejor argumento al atacar la unidad defensiva de Senegal. El ataque, con Luis Díaz y Luis Suárez como protagonistas, sostiene ese margen.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 15.8
+        },
+        {
+          "score": "0-1",
+          "pct": 10.7
+        },
+        {
+          "score": "0-0",
+          "pct": 10.4
+        },
+        {
+          "score": "1-2",
+          "pct": 8.2
+        },
+        {
+          "score": "1-0",
+          "pct": 7.9
+        },
+        {
+          "score": "0-2",
+          "pct": 7.7
+        },
+        {
+          "score": "2-2",
+          "pct": 6.0
+        },
+        {
+          "score": "2-1",
+          "pct": 6.0
+        },
+        {
+          "score": "2-0",
+          "pct": 4.2
+        },
+        {
+          "score": "1-3",
+          "pct": 3.9
+        }
+      ]
+    },
+    {
+      "match_number": 97,
+      "phase": "qf",
+      "round_name": "Cuartos de Final",
+      "date": "2026-07-09",
+      "time": "20:00",
+      "venue": "Gillette Stadium",
+      "city": "Foxborough",
+      "home_team": "fra",
+      "away_team": "ned",
+      "home_name": "Francia",
+      "away_name": "Países Bajos",
+      "home_label": "Ganador Partido 89",
+      "away_label": "Ganador Partido 90",
+      "team_a_win_probability": 52.53,
+      "draw_probability": 29.98,
+      "team_b_win_probability": 17.49,
+      "advance_home_pct": 73.9,
+      "advance_away_pct": 26.1,
+      "projected_winner": "fra",
+      "projected_loser": "ned",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a Francia en cuartos de final, pero Países Bajos mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos. Países Bajos llega como 1. Grupo F con 7 puntos, diferencia +6 y 10 goles en la fase de grupos.",
+      "player_factor": "En Países Bajos, Frenkie de Jong desde Barcelona es el jugador diferencial porque ordena la posesión y acelera el pase vertical.",
+      "tactical_note": "Francia parte mejor perfilado que Países Bajos por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como un dominio esperado sobre el papel. El cruce que más desequilibra enfrenta a la unidad defensiva de Francia con el ataque de Países Bajos, donde Francia encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 14.1
+        },
+        {
+          "score": "1-0",
+          "pct": 12.6
+        },
+        {
+          "score": "2-0",
+          "pct": 10.5
+        },
+        {
+          "score": "0-0",
+          "pct": 10.1
+        },
+        {
+          "score": "2-1",
+          "pct": 8.8
+        },
+        {
+          "score": "0-1",
+          "pct": 6.4
+        },
+        {
+          "score": "3-0",
+          "pct": 5.8
+        },
+        {
+          "score": "2-2",
+          "pct": 4.9
+        },
+        {
+          "score": "3-1",
+          "pct": 4.9
+        },
+        {
+          "score": "1-2",
+          "pct": 4.5
+        }
+      ]
+    },
+    {
+      "match_number": 98,
+      "phase": "qf",
+      "round_name": "Cuartos de Final",
+      "date": "2026-07-10",
+      "time": "19:00",
+      "venue": "SoFi Stadium",
+      "city": "Los Ángeles",
+      "home_team": "esp",
+      "away_team": "bel",
+      "home_name": "España",
+      "away_name": "Bélgica",
+      "home_label": "Ganador Partido 93",
+      "away_label": "Ganador Partido 94",
+      "team_a_win_probability": 56.97,
+      "draw_probability": 28.25,
+      "team_b_win_probability": 14.78,
+      "advance_home_pct": 78.2,
+      "advance_away_pct": 21.8,
+      "projected_winner": "esp",
+      "projected_loser": "bel",
+      "global_tag": "Ligero favorito",
+      "editorial": "El modelo ELO perfila mejor a España en cuartos de final, pero Bélgica mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos. Bélgica llega como 1. Grupo G con 5 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+      "player_factor": "En España, Lamine Yamal desde FC Barcelona es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "Entre España y Bélgica no aparece una distancia fuerte en roce de club, así que el modelo espera un cruce abierto y muy sensible al primer golpe. El foco está en cómo España coordina su unidad defensiva cuando aparece el ataque de Bélgica, con Jérémy Doku y Romelu Lukaku como protagonistas. Esa es la alerta principal.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "pct": 13.4
+        },
+        {
+          "score": "1-1",
+          "pct": 13.2
+        },
+        {
+          "score": "2-0",
+          "pct": 11.7
+        },
+        {
+          "score": "0-0",
+          "pct": 10.0
+        },
+        {
+          "score": "2-1",
+          "pct": 8.8
+        },
+        {
+          "score": "3-0",
+          "pct": 6.8
+        },
+        {
+          "score": "0-1",
+          "pct": 5.8
+        },
+        {
+          "score": "3-1",
+          "pct": 5.1
+        },
+        {
+          "score": "2-2",
+          "pct": 4.3
+        },
+        {
+          "score": "1-2",
+          "pct": 3.8
+        }
+      ]
+    },
+    {
+      "match_number": 99,
+      "phase": "qf",
+      "round_name": "Cuartos de Final",
+      "date": "2026-07-11",
+      "time": "21:00",
+      "venue": "Hard Rock Stadium",
+      "city": "Miami Gardens",
+      "home_team": "bra",
+      "away_team": "eng",
+      "home_name": "Brasil",
+      "away_name": "Inglaterra",
+      "home_label": "Ganador Partido 91",
+      "away_label": "Ganador Partido 92",
+      "team_a_win_probability": 25.74,
+      "draw_probability": 33.52,
+      "team_b_win_probability": 40.74,
+      "advance_home_pct": 39.4,
+      "advance_away_pct": 60.6,
+      "projected_winner": "eng",
+      "projected_loser": "bra",
+      "global_tag": "Empate probable",
+      "editorial": "El modelo ELO perfila mejor a Inglaterra en cuartos de final, pero Brasil mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Brasil llega como 1. Grupo C con 7 puntos, diferencia +6 y 7 goles en la fase de grupos. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+      "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "La lectura global del roce de club favorece a Inglaterra. La curva ELO lo interpreta como una ventaja clara, aunque Brasil conserva caminos si logra bajar el ritmo y proteger su área. El foco está en cómo Brasil sostiene su mediocampo cuando aparece el mediocampo de Inglaterra, con Declan Rice y Jude Bellingham como protagonistas. Esa es la alerta principal.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 15.9
+        },
+        {
+          "score": "0-1",
+          "pct": 10.6
+        },
+        {
+          "score": "0-0",
+          "pct": 10.4
+        },
+        {
+          "score": "1-2",
+          "pct": 8.1
+        },
+        {
+          "score": "1-0",
+          "pct": 8.0
+        },
+        {
+          "score": "0-2",
+          "pct": 7.5
+        },
+        {
+          "score": "2-1",
+          "pct": 6.1
+        },
+        {
+          "score": "2-2",
+          "pct": 6.1
+        },
+        {
+          "score": "2-0",
+          "pct": 4.3
+        },
+        {
+          "score": "1-3",
+          "pct": 3.8
+        }
+      ]
+    },
+    {
+      "match_number": 100,
+      "phase": "qf",
+      "round_name": "Cuartos de Final",
+      "date": "2026-07-11",
+      "time": "01:00",
+      "venue": "Arrowhead Stadium",
+      "city": "Kansas City",
+      "home_team": "arg",
+      "away_team": "col",
+      "home_name": "Argentina",
+      "away_name": "Colombia",
+      "home_label": "Ganador Partido 95",
+      "away_label": "Ganador Partido 96",
+      "team_a_win_probability": 48.06,
+      "draw_probability": 31.5,
+      "team_b_win_probability": 20.44,
+      "advance_home_pct": 69.1,
+      "advance_away_pct": 30.9,
+      "projected_winner": "arg",
+      "projected_loser": "col",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a Argentina en cuartos de final, pero Colombia mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos. Colombia llega como 1. Grupo K con 7 puntos, diferencia +3 y 4 goles en la fase de grupos.",
+      "player_factor": "En Colombia, Luis Díaz desde Bayern Múnich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "El once de Argentina llega con más respaldo competitivo que el de Colombia. En términos de modelo, eso coloca el partido en zona de una ventaja clara. El cruce que más desequilibra enfrenta a la unidad defensiva de Argentina con el ataque de Colombia, con Luis Díaz y Luis Suárez como protagonistas, donde Colombia encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 14.9
+        },
+        {
+          "score": "1-0",
+          "pct": 11.8
+        },
+        {
+          "score": "0-0",
+          "pct": 10.2
+        },
+        {
+          "score": "2-0",
+          "pct": 9.3
+        },
+        {
+          "score": "2-1",
+          "pct": 8.6
+        },
+        {
+          "score": "0-1",
+          "pct": 7.0
+        },
+        {
+          "score": "2-2",
+          "pct": 5.4
+        },
+        {
+          "score": "1-2",
+          "pct": 5.1
+        },
+        {
+          "score": "3-0",
+          "pct": 4.9
+        },
+        {
+          "score": "3-1",
+          "pct": 4.5
+        }
+      ]
+    },
+    {
+      "match_number": 101,
+      "phase": "sf",
+      "round_name": "Semifinales",
+      "date": "2026-07-14",
+      "time": "19:00",
+      "venue": "AT&T Stadium",
+      "city": "Arlington",
+      "home_team": "fra",
+      "away_team": "esp",
+      "home_name": "Francia",
+      "away_name": "España",
+      "home_label": "Ganador Partido 97",
+      "away_label": "Ganador Partido 98",
+      "team_a_win_probability": 33.92,
+      "draw_probability": 34.81,
+      "team_b_win_probability": 31.27,
+      "advance_home_pct": 51.9,
+      "advance_away_pct": 48.1,
+      "projected_winner": "fra",
+      "projected_loser": "esp",
+      "global_tag": "Duelo parejo",
+      "editorial": "El modelo ELO no separa demasiado a Francia y España en semifinales. La lectura se apoya en el roce del XI, lo ya hecho en grupos y la capacidad para sostener ritmo tras el primer golpe. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos.",
+      "player_factor": "En España, Lamine Yamal desde FC Barcelona es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "El once de Francia llega con más respaldo competitivo que el de España. En términos de modelo, eso coloca el partido en zona de un dominio esperado sobre el papel. La zona que abre el partido está en el ataque de Francia, con Kylian Mbappé y Ousmane Dembélé como protagonistas, contra la defensa de España. Ahí Francia puede romper el equilibrio.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 16.5
+        },
+        {
+          "score": "0-0",
+          "pct": 10.6
+        },
+        {
+          "score": "1-0",
+          "pct": 9.4
+        },
+        {
+          "score": "0-1",
+          "pct": 8.9
+        },
+        {
+          "score": "2-1",
+          "pct": 7.3
+        },
+        {
+          "score": "1-2",
+          "pct": 7.0
+        },
+        {
+          "score": "2-2",
+          "pct": 6.5
+        },
+        {
+          "score": "2-0",
+          "pct": 6.0
+        },
+        {
+          "score": "0-2",
+          "pct": 5.4
+        },
+        {
+          "score": "3-1",
+          "pct": 3.1
+        }
+      ]
+    },
+    {
+      "match_number": 102,
+      "phase": "sf",
+      "round_name": "Semifinales",
+      "date": "2026-07-15",
+      "time": "19:00",
+      "venue": "Mercedes-Benz Stadium",
+      "city": "Atlanta",
+      "home_team": "eng",
+      "away_team": "arg",
+      "home_name": "Inglaterra",
+      "away_name": "Argentina",
+      "home_label": "Ganador Partido 99",
+      "away_label": "Ganador Partido 100",
+      "team_a_win_probability": 36.71,
+      "draw_probability": 34.36,
+      "team_b_win_probability": 28.93,
+      "advance_home_pct": 55.6,
+      "advance_away_pct": 44.4,
+      "projected_winner": "eng",
+      "projected_loser": "arg",
+      "global_tag": "Empate probable",
+      "editorial": "El modelo ELO perfila mejor a Inglaterra en semifinales, pero Argentina mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos.",
+      "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "Inglaterra parte mejor perfilado que Argentina por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como un dominio esperado sobre el papel. La zona que abre el partido está en el mediocampo de Inglaterra, con Declan Rice y Jude Bellingham como protagonistas, contra el mediocampo de Argentina. Ahí Inglaterra puede romper el equilibrio.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 16.3
+        },
+        {
+          "score": "0-0",
+          "pct": 10.5
+        },
+        {
+          "score": "1-0",
+          "pct": 9.9
+        },
+        {
+          "score": "0-1",
+          "pct": 8.5
+        },
+        {
+          "score": "2-1",
+          "pct": 7.7
+        },
+        {
+          "score": "1-2",
+          "pct": 6.6
+        },
+        {
+          "score": "2-0",
+          "pct": 6.6
+        },
+        {
+          "score": "2-2",
+          "pct": 6.3
+        },
+        {
+          "score": "0-2",
+          "pct": 4.9
+        },
+        {
+          "score": "3-1",
+          "pct": 3.4
+        }
+      ]
+    },
+    {
+      "match_number": 103,
+      "phase": "tp",
+      "round_name": "Tercer Puesto",
+      "date": "2026-07-18",
+      "time": "21:00",
+      "venue": "Hard Rock Stadium",
+      "city": "Miami Gardens",
+      "home_team": "esp",
+      "away_team": "arg",
+      "home_name": "España",
+      "away_name": "Argentina",
+      "home_label": "Perdedor Partido 101",
+      "away_label": "Perdedor Partido 102",
+      "team_a_win_probability": 43.3,
+      "draw_probability": 32.89,
+      "team_b_win_probability": 23.81,
+      "advance_home_pct": 63.7,
+      "advance_away_pct": 36.3,
+      "projected_winner": "esp",
+      "projected_loser": "arg",
+      "global_tag": "Partido abierto",
+      "editorial": "El modelo ELO perfila mejor a España en tercer puesto, pero Argentina mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. España llega como 1. Grupo H con 7 puntos, diferencia +5 y 5 goles en la fase de grupos. Argentina llega como 1. Grupo J con 9 puntos, diferencia +7 y 8 goles en la fase de grupos.",
+      "player_factor": "En España, Lamine Yamal desde FC Barcelona es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "La lectura global del roce de club favorece a España. La curva ELO lo interpreta como una ventaja clara, aunque Argentina conserva caminos si logra bajar el ritmo y proteger su área. El cruce que más desequilibra enfrenta al mediocampo de España, con Rodri y Pedri como protagonistas, con el mediocampo de Argentina, donde España encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 15.6
+        },
+        {
+          "score": "1-0",
+          "pct": 11.0
+        },
+        {
+          "score": "0-0",
+          "pct": 10.3
+        },
+        {
+          "score": "2-1",
+          "pct": 8.3
+        },
+        {
+          "score": "2-0",
+          "pct": 8.1
+        },
+        {
+          "score": "0-1",
+          "pct": 7.6
+        },
+        {
+          "score": "2-2",
+          "pct": 5.9
+        },
+        {
+          "score": "1-2",
+          "pct": 5.8
+        },
+        {
+          "score": "3-1",
+          "pct": 4.1
+        },
+        {
+          "score": "3-0",
+          "pct": 4.0
+        }
+      ]
+    },
+    {
+      "match_number": 104,
+      "phase": "final",
+      "round_name": "Final",
+      "date": "2026-07-19",
+      "time": "19:00",
+      "venue": "MetLife Stadium",
+      "city": "East Rutherford",
+      "home_team": "fra",
+      "away_team": "eng",
+      "home_name": "Francia",
+      "away_name": "Inglaterra",
+      "home_label": "Ganador Partido 101",
+      "away_label": "Ganador Partido 102",
+      "team_a_win_probability": 40.42,
+      "draw_probability": 33.6,
+      "team_b_win_probability": 25.98,
+      "advance_home_pct": 60.2,
+      "advance_away_pct": 39.8,
+      "projected_winner": "fra",
+      "projected_loser": "eng",
+      "global_tag": "Empate probable",
+      "editorial": "El modelo ELO perfila mejor a Francia en final, pero Inglaterra mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados. Francia llega como 1. Grupo I con 9 puntos, diferencia +8 y 10 goles en la fase de grupos. Inglaterra llega como 1. Grupo L con 7 puntos, diferencia +4 y 6 goles en la fase de grupos.",
+      "player_factor": "En Inglaterra, Harry Kane desde Bayern Munich es el jugador diferencial porque ataca intervalos y fija marcas.",
+      "tactical_note": "Francia parte mejor perfilado que Inglaterra por jerarquía de once y roce de club. La ventaja no decide sola el partido, pero sí ordena la lectura inicial como una ventaja ligera. El cruce que más desequilibra enfrenta al ataque de Francia, con Kylian Mbappé y Ousmane Dembélé como protagonistas, con la defensa de Inglaterra, donde Francia encuentra su ventaja más clara.",
+      "team_home_context": "",
+      "team_away_context": "",
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "pct": 15.9
+        },
+        {
+          "score": "1-0",
+          "pct": 10.5
+        },
+        {
+          "score": "0-0",
+          "pct": 10.4
+        },
+        {
+          "score": "2-1",
+          "pct": 8.1
+        },
+        {
+          "score": "0-1",
+          "pct": 8.0
+        },
+        {
+          "score": "2-0",
+          "pct": 7.5
+        },
+        {
+          "score": "1-2",
+          "pct": 6.2
+        },
+        {
+          "score": "2-2",
+          "pct": 6.1
+        },
+        {
+          "score": "0-2",
+          "pct": 4.3
+        },
+        {
+          "score": "3-1",
+          "pct": 3.8
+        }
+      ]
+    }
+  ]
+}

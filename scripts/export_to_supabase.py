@@ -50,6 +50,17 @@ NAMES = {
     'usa': 'United States', 'pry': 'Paraguay', 'aus': 'Australia', 'tur': 'Turkey',
 }
 
+CURRENT_BEST_THIRD_SLOT_GROUPS = {
+    (74, 'away'): 'F',
+    (77, 'away'): 'D',
+    (79, 'away'): 'E',
+    (80, 'away'): 'K',
+    (81, 'away'): 'B',
+    (82, 'away'): 'J',
+    (85, 'away'): 'I',
+    (87, 'away'): 'L',
+}
+
 
 def supabase_request(url, key, method, path, body=None,
                      prefer='resolution=merge-duplicates,return=minimal'):
@@ -151,6 +162,19 @@ def slot_rule_from_label(match_number, side, label):
             'source_rank': int(direct.group(1)),
             'source_match_number': None,
             'label': label,
+        }
+
+    third_pool = re.match(r'^3\D+([A-L](?:/[A-L])*)$', text, re.I)
+    resolved_third_group = CURRENT_BEST_THIRD_SLOT_GROUPS.get((int(match_number), side))
+    if third_pool and resolved_third_group:
+        return {
+            'match_number': match_number,
+            'side': side,
+            'source_type': 'best_third',
+            'source_group': resolved_third_group,
+            'source_rank': 3,
+            'source_match_number': None,
+            'label': f'Mejor 3. Grupo {resolved_third_group}',
         }
 
     winner = re.match(r'^Ganador\s+Partido\s+(\d+)$', str(label or ''), re.I)

@@ -99,9 +99,29 @@
 
   async function loadSimulationData() {
     var client = getClient();
-    if (!client) return null;
-    if (!(await getSession(client))) return null;
+    if (!client) {
+      if (!isLocalDev()) return null;
+      try {
+        return normalizeLocalSimulation(await fetchJson('data/mc_results.json'));
+      } catch (e) {
+        return null;
+      }
+    }
 
+    var session = await getSession(client);
+    if (session) {
+      try {
+        var premium = await loadPremiumSimulationData(client);
+        if (premium && premium.standings && premium.standings.length) return premium;
+      } catch (e1) {
+        console.warn('[SupaData] Premium simulation load failed, falling back public:', e1.message || e1);
+      }
+    }
+
+    return await loadPublicSimulationData();
+  }
+
+  async function loadPremiumSimulationData(client) {
     var runRef = await client
       .from('simulation_runs')
       .select('*')
@@ -127,8 +147,114 @@
     return {
       run: runRef.data,
       standings: standRef.data || [],
-      terceros: terRef.error ? [] : (terRef.data || [])
+      terceros: terRef.error ? [] : (terRef.data || []),
+      source: 'premium'
     };
+  }
+
+  function pointsPct(points) {
+    var values = {};
+    ['0','1','2','3','4','5','6','7','9'].forEach(function(key) {
+      values[key] = key === String(points) ? 100 : 0;
+    });
+    return values;
+  }
+
+  function normalizePublicSimulation(standingsRows, thirdRows, projection) {
+    var classifiedThird = {};
+    (thirdRows || []).forEach(function(row) {
+      classifiedThird[row.team_code] = row.classified === true || row.classified === 'true';
+    });
+
+    var standings = (standingsRows || []).map(function(row) {
+      var rank = parseInt(row.group_rank, 10);
+      var isBestThird = rank === 3 && classifiedThird[row.team_code];
+      return {
+        team_code: row.team_code,
+        qualified_pct: rank <= 2 || isBestThird ? 100 : 0,
+        first_pct: rank === 1 ? 100 : 0,
+        second_pct: rank === 2 ? 100 : 0,
+        third_pct: rank === 3 ? 100 : 0,
+        best_third_pct: isBestThird ? 100 : 0,
+        fourth_pct: rank === 4 ? 100 : 0,
+        points_pct: pointsPct(row.pts || 0)
+      };
+    });
+
+    var terceros = (thirdRows || []).map(function(row) {
+      return {
+        rank: row.third_rank,
+        group_id: row.group_id,
+        team_code: row.team_code,
+        third_pct: 100,
+        qualifies_pct: row.classified ? 100 : 0,
+        avg_pts: row.pts,
+        avg_gd: row.dg,
+        avg_gf: row.gf,
+        qualifies: row.classified === true || row.classified === 'true'
+      };
+    });
+
+    return {
+      run: {
+        id: 'public-final-groups',
+        runs: 1,
+        seed: null,
+        version: 'final',
+        public_final: true
+      },
+      standings: standings,
+      terceros: terceros,
+      bracket_projection: projection || null,
+      source: 'public'
+    };
+  }
+
+  function normalizeLocalSimulation(value) {
+    if (!value) return null;
+    var standings = [];
+    Object.keys(value.teams || {}).forEach(function(code) {
+      var row = Object.assign({ team_code: code }, value.teams[code]);
+      standings.push(row);
+    });
+    var terceros = (value.terceros_table || []).map(function(row) {
+      return Object.assign({ group_id: row.group_id || row.group }, row);
+    });
+    return {
+      run: {
+        id: 'local-mc',
+        runs: value.runs || 0,
+        seed: value.seed,
+        version: value.version || 'local'
+      },
+      standings: standings,
+      terceros: terceros,
+      source: 'local'
+    };
+  }
+
+  async function loadPublicSimulationData() {
+    var client = getClient();
+    if (!client) return null;
+    try {
+      var standingsRef = await client.rpc('get_group_standings');
+      if (standingsRef.error) throw standingsRef.error;
+
+      var thirdsRef = await client.rpc('get_best_thirds');
+      if (thirdsRef.error) throw thirdsRef.error;
+
+      var projectionRef = await client.rpc('get_bracket_projection');
+      var projection = projectionRef.error ? null : (projectionRef.data || null);
+
+      return normalizePublicSimulation(
+        standingsRef.data || [],
+        thirdsRef.data || [],
+        projection
+      );
+    } catch (e) {
+      console.warn('[SupaData] Public simulation load failed:', e.message || e);
+      return null;
+    }
   }
 
   async function loadSimulationTeams() {
@@ -180,6 +306,7 @@
     redeemPremiumCode: redeemPremiumCode,
     loadPredictions: loadPredictions,
     loadMatchResults: loadMatchResults,
+    loadPublicSimulationData: loadPublicSimulationData,
     loadSimulationData: loadSimulationData,
     loadSimulationTeams: loadSimulationTeams,
     loadGroupStandings: loadGroupStandings

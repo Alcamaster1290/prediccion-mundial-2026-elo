@@ -57,6 +57,20 @@
     eng:'Inglaterra', cro:'Croacia', gha:'Ghana', pan:'Panamá',
     usa:'EE.UU.', pry:'Paraguay', aus:'Australia', tur:'Turquía'
   };
+  var TEAM_SECTION_BY_CODE = {
+    mex:'mexico', zaf:'sudafrica', kor:'corea', cze:'chequia',
+    can:'canada', bih:'bosnia', qat:'qatar', sui:'suiza',
+    bra:'brasil', mar:'marruecos', hti:'haiti', sco:'escocia',
+    ger:'alemania', cuw:'curazao', civ:'costa-marfil', ecu:'ecuador',
+    ned:'paises-bajos', jpn:'japon', swe:'suecia', tun:'tunez',
+    bel:'belgica', egy:'egipto', irn:'iran', nzl:'nueva-zelanda',
+    esp:'espana', cpv:'cabo-verde', ksa:'arabia-saudita', ury:'uruguay',
+    fra:'francia', sen:'senegal', irq:'irak', nor:'noruega',
+    arg:'argentina', alg:'argelia', aut:'austria', jor:'jordania',
+    por:'portugal', cod:'rd-congo', uzb:'uzbekistan', col:'colombia',
+    eng:'inglaterra', cro:'croacia', gha:'ghana', pan:'panama',
+    usa:'estados-unidos', pry:'paraguay', aus:'australia', tur:'turquia'
+  };
 
   function flag(code) {
     var name = NAMES[code] || code;
@@ -77,6 +91,19 @@
     return /^[a-z0-9]{3}$/.test(value) ? value : '';
   }
 
+  function teamName(code) {
+    return NAMES[code] || String(code || '').toUpperCase();
+  }
+
+  function teamLink(code, className) {
+    var safeCode = safeTeamCode(code);
+    var sectionId = TEAM_SECTION_BY_CODE[safeCode];
+    var name = teamName(safeCode);
+    var cls = className || 'pred-team-link';
+    if (!sectionId) return '<span class="' + escapeHtml(cls) + '">' + escapeHtml(name) + '</span>';
+    return '<a class="' + escapeHtml(cls) + '" href="#' + escapeHtml(sectionId) + '">' + escapeHtml(name) + '</a>';
+  }
+
   function modelFlag(code, name) {
     var safeCode = safeTeamCode(code);
     if (!safeCode) return '';
@@ -89,7 +116,12 @@
     if (window.SupaData && window.SupaData.loadSimulationData) {
       return await window.SupaData.loadSimulationData();
     }
-    var c = window.SupaAuth && window.SupaAuth.getClient();
+    var c = null;
+    try {
+      c = window.SupaAuth && window.SupaAuth.getClient ? window.SupaAuth.getClient() : null;
+    } catch (e0) {
+      c = null;
+    }
     if (!c) return null;
 
     var runRef = await c
@@ -130,7 +162,12 @@
   // ── Ghost table para blur preview ────────────────────────────
 
   async function loadEloModelExplainer() {
-    var c = window.SupaAuth && window.SupaAuth.getClient();
+    var c = null;
+    try {
+      c = window.SupaData && window.SupaData.getClient ? window.SupaData.getClient() : null;
+    } catch (e0) {
+      c = null;
+    }
     if (!c) return null;
 
     try {
@@ -148,6 +185,16 @@
       return await window.PremiumSection.loadPredictions();
     } catch (e) {
       return [];
+    }
+  }
+
+  async function loadFinalPhasePredictions() {
+    try {
+      var response = await fetch('data/final_phase_predictions.json');
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (e) {
+      return null;
     }
   }
 
@@ -429,7 +476,7 @@
 
         html += '<tr class="' + rowClass + '">'
           + '<td class="st-pos-cell">' + (index + 1) + '</td>'
-          + '<td class="st-team-cell">' + flag(row.team_code) + ' ' + (NAMES[row.team_code] || row.team_code.toUpperCase()) + '</td>'
+          + '<td class="st-team-cell">' + flag(row.team_code) + ' ' + teamLink(row.team_code, 'pred-team-link pred-table-team-link') + '</td>'
           + '<td><span class="pred-q-badge ' + qualifyClass(row.qualified_pct) + '">' + pctText(row.qualified_pct) + '</span></td>'
           + '<td class="pred-points-best">' + bestLabel + '</td>';
 
@@ -654,7 +701,7 @@
     function renderSlot(slot, team) {
       var label = team && team.slotLabel ? team.slotLabel : slotLabel(slot);
       var teamHtml = team
-        ? (flag(team.code) + '<span>' + (NAMES[team.code] || team.code.toUpperCase()) + '</span>')
+        ? (flag(team.code) + teamLink(team.code, 'pred-team-link pred-r32-team-link'))
         : '<span class="pred-slot-tbd">Por definir</span>';
       var pctHtml = team ? '<span class="pred-r32-pct">' + team.pct.toFixed(1) + '%</span>' : '';
       return '<div class="pred-r32-slot">'
@@ -683,6 +730,124 @@
     return html;
   }
 
+  function renderPhaseTabs(defaultPhase) {
+    var finalActive = defaultPhase === 'final';
+    return '<div class="pred-phase-tabs" role="tablist" aria-label="Predicciones por fase">'
+      + '<button type="button" class="pred-phase-tab' + (!finalActive ? ' active' : '') + '" data-phase="groups" onclick="window.PredicionesSection.showPhaseTab(\'groups\')">Fase de Grupos</button>'
+      + '<button type="button" class="pred-phase-tab' + (finalActive ? ' active' : '') + '" data-phase="final" onclick="window.PredicionesSection.showPhaseTab(\'final\')">Fase Final</button>'
+      + '</div>';
+  }
+
+  function renderPctPill(value, label) {
+    return '<span class="pred-final-pct-pill">'
+      + '<strong>' + pctText(value) + '</strong>'
+      + '<small>' + escapeHtml(label) + '</small>'
+      + '</span>';
+  }
+
+  function renderFinalTeam(match, side) {
+    var code = side === 'home' ? match.home_team : match.away_team;
+    var pct = side === 'home' ? match.advance_home_pct : match.advance_away_pct;
+    return '<div class="pred-final-team">'
+      + '<div class="pred-final-team-main">'
+      + modelFlag(code, teamName(code))
+      + teamLink(code, 'pred-team-link pred-final-team-link')
+      + '</div>'
+      + '<span class="pred-final-advance">' + pctText(pct) + '</span>'
+      + '</div>';
+  }
+
+  function renderFinalProbabilityRows(match) {
+    return '<div class="pred-final-probs">'
+      + '<span class="pred-final-label">Probabilidad 90 minutos</span>'
+      + '<div class="pred-final-prob-row"><span>' + teamLink(match.home_team, 'pred-team-link pred-final-prob-link') + '</span><strong>' + pctText(match.team_a_win_probability) + '</strong></div>'
+      + '<div class="pred-final-prob-row"><span>Empate</span><strong>' + pctText(match.draw_probability) + '</strong></div>'
+      + '<div class="pred-final-prob-row"><span>' + teamLink(match.away_team, 'pred-team-link pred-final-prob-link') + '</span><strong>' + pctText(match.team_b_win_probability) + '</strong></div>'
+      + '</div>';
+  }
+
+  function renderFinalScorelines(match) {
+    var scorelines = Array.isArray(match.top_scorelines) ? match.top_scorelines.slice(0, 10) : [];
+    if (!scorelines.length) return '';
+    var html = '<div class="pred-final-scores">'
+      + '<span class="pred-final-label">10 resultados más probables</span>'
+      + '<div class="pred-final-score-grid">';
+    scorelines.forEach(function(item) {
+      html += '<span class="pred-final-score-chip">'
+        + '<strong>' + escapeHtml(item.score) + '</strong>'
+        + '<small>' + pctText(item.pct) + '</small>'
+        + '</span>';
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  function renderFinalMatchCard(match) {
+    var winner = safeTeamCode(match.projected_winner);
+    return '<article class="pred-final-card" id="pred-final-p' + escapeHtml(match.match_number) + '">'
+      + '<div class="pred-final-card-head">'
+      + '<span class="pred-final-match-num">P' + escapeHtml(match.match_number) + '</span>'
+      + '<span class="pred-final-round-name">' + escapeHtml(match.round_name || match.phase) + '</span>'
+      + (match.global_tag ? '<span class="pred-final-tag">' + escapeHtml(match.global_tag) + '</span>' : '')
+      + '</div>'
+      + '<div class="pred-final-matchup">'
+      + renderFinalTeam(match, 'home')
+      + '<span class="pred-final-vs">vs</span>'
+      + renderFinalTeam(match, 'away')
+      + '</div>'
+      + '<div class="pred-final-adv-row">'
+      + '<span>Avanza proyectado</span>'
+      + renderPctPill(winner === match.home_team ? match.advance_home_pct : match.advance_away_pct, teamName(winner))
+      + '</div>'
+      + renderFinalProbabilityRows(match)
+      + renderFinalScorelines(match)
+      + '<div class="pred-final-editorial">'
+      + '<span class="pred-final-label">Lectura editorial</span>'
+      + '<p>' + escapeHtml(match.editorial || '') + '</p>'
+      + (match.player_factor ? '<p>' + escapeHtml(match.player_factor) + '</p>' : '')
+      + (match.tactical_note ? '<p>' + escapeHtml(match.tactical_note) + '</p>' : '')
+      + '</div>'
+      + '</article>';
+  }
+
+  function renderFinalPhasePredictions(payload) {
+    if (!payload || !payload.matches || !payload.matches.length) {
+      return '<section class="pred-final-phase">'
+        + '<h3 class="pred-subsection-title">Fase Final</h3>'
+        + '<div class="pred-empty"><p style="color:var(--muted);margin-top:1rem">Todavía no hay predicciones de eliminatorias publicadas.</p></div>'
+        + '</section>';
+    }
+
+    var html = '<section class="pred-final-phase">'
+      + '<h3 class="pred-subsection-title">Fase Final</h3>'
+      + '<p class="pred-terceros-note">Predicción de eliminatorias generada con la tabla final de grupos, ELO híbrido, cruces de XI y ruta proyectada ronda por ronda.</p>';
+
+    (payload.rounds || []).forEach(function(round) {
+      html += '<div class="pred-final-round">'
+        + '<h4 class="pred-final-round-title">' + escapeHtml(round.title) + '</h4>'
+        + '<div class="pred-final-grid">';
+      (round.matches || []).forEach(function(match) {
+        html += renderFinalMatchCard(match);
+      });
+      html += '</div></div>';
+    });
+
+    html += '</section>';
+    return html;
+  }
+
+  function showPhaseTab(phase) {
+    var selected = phase === 'final' ? 'final' : 'groups';
+    var panels = document.querySelectorAll('[data-pred-phase-panel]');
+    panels.forEach(function(panel) {
+      panel.style.display = panel.getAttribute('data-pred-phase-panel') === selected ? '' : 'none';
+    });
+    var tabs = document.querySelectorAll('.pred-phase-tab');
+    tabs.forEach(function(tab) {
+      tab.classList.toggle('active', tab.getAttribute('data-phase') === selected);
+    });
+  }
+
   async function renderActive() {
     var el = document.getElementById('predicciones-content');
     if (!el) return;
@@ -693,6 +858,7 @@
     var data = await loadSimulationData();
     var eloModel = await loadEloModelExplainer();
     var pronosticos = await loadEmbeddedPronosticos();
+    var finalPredictions = await loadFinalPhasePredictions();
 
     if (!data) {
       renderDataError();
@@ -707,15 +873,21 @@
       return;
     }
 
-    var runsLabel = data.run
+    var runsLabel = data.run && data.run.public_final
+      ? 'Fase de grupos completa'
+      : data.run
       ? (parseInt(data.run.runs, 10).toLocaleString('es-PE') + ' simulaciones')
       : '';
+    var modelNoteSuffix = data.run && data.run.public_final
+      ? ' &nbsp;&middot;&nbsp; Datos oficiales'
+      : ' &nbsp;&middot;&nbsp; Monte Carlo &nbsp;&middot;&nbsp; ELO híbrido';
 
-    var html = '<div class="pred-active-header">'
+    var headerHtml = '<div class="pred-active-header">'
       + '<span class="pred-premium-badge">&#x2705; Todo desbloqueado</span>'
-      + (runsLabel ? '<span class="pred-model-note">' + runsLabel + ' &nbsp;·&nbsp; Monte Carlo &nbsp;·&nbsp; ELO híbrido</span>' : '')
+      + (runsLabel ? '<span class="pred-model-note">' + runsLabel + modelNoteSuffix + '</span>' : '')
       + '</div>';
 
+    var html = '';
     html += renderEloModelExplainer(eloModel);
     if (pronosticos && pronosticos.length) {
       html += renderEmbeddedPronosticos(pronosticos, data);
@@ -767,7 +939,7 @@
         + '</div>'
         + '</div></td></tr>';
       html += '<tr class="pred-row-clickable" data-code="' + t.team_code + '">'
-        + '<td class="pred-team-cell">' + flag(t.team_code) + '<span>' + (NAMES[t.team_code] || t.team_code.toUpperCase()) + '</span>'
+        + '<td class="pred-team-cell">' + flag(t.team_code) + teamLink(t.team_code, 'pred-team-link pred-table-team-link')
         + '<span class="pred-row-caret">▾</span></td>'
         + '<td><span class="pred-group-badge">' + grp + '</span></td>'
         + '<td><span class="pred-q-badge ' + qClass + '">' + t.qualified_pct + '%</span></td>'
@@ -796,7 +968,7 @@
         html += '<tr class="' + rowClass + '">'
           + '<td class="pred-rank-cell">' + row.rank + (row.qualifies ? ' <span class="pred-q-dot"></span>' : '') + '</td>'
           + '<td><span class="pred-group-badge">' + row.group_id + '</span></td>'
-          + '<td class="pred-team-cell">' + flag(row.team_code) + '<span>' + (NAMES[row.team_code] || row.team_code.toUpperCase()) + '</span></td>'
+          + '<td class="pred-team-cell">' + flag(row.team_code) + teamLink(row.team_code, 'pred-team-link pred-table-team-link') + '</td>'
           + '<td>' + row.third_pct + '%</td>'
           + '<td class="pred-mono">' + row.avg_pts + '</td>'
           + '<td class="pred-mono">' + gdSign + row.avg_gd + '</td>'
@@ -807,6 +979,17 @@
       html += '</tbody></table></div>';
       html += renderRutaPosible(data);
     }
+
+    var defaultPhase = finalPredictions && finalPredictions.matches && finalPredictions.matches.length ? 'final' : 'groups';
+    var groupHtml = html;
+    html = headerHtml
+      + renderPhaseTabs(defaultPhase)
+      + '<div class="pred-phase-panel" id="pred-phase-groups" data-pred-phase-panel="groups"' + (defaultPhase === 'groups' ? '' : ' style="display:none"') + '>'
+      + groupHtml
+      + '</div>'
+      + '<div class="pred-phase-panel" id="pred-phase-final" data-pred-phase-panel="final"' + (defaultPhase === 'final' ? '' : ' style="display:none"') + '>'
+      + renderFinalPhasePredictions(finalPredictions)
+      + '</div>';
 
     el.innerHTML = html;
 
@@ -880,13 +1063,7 @@
   // ── Auth change callback ─────────────────────────────────────
 
   async function onAuthChange(user, isPremium, profile) {
-    if (!user) {
-      renderLocked();
-    } else if (!isPremium) {
-      renderPaywall(profile);
-    } else {
-      await renderActive();
-    }
+    await renderActive();
   }
 
   // ── Init ─────────────────────────────────────────────────────
@@ -896,7 +1073,8 @@
       renderConfigError();
       return;
     }
-    renderLocked();
+    setLockVisible(false);
+    renderActive();
   }
 
   window.PredicionesSection = {
@@ -904,6 +1082,7 @@
     onAuthChange: onAuthChange,
     submitCode:   submitCode,
     showQR:       showQR,
+    showPhaseTab: showPhaseTab,
     toggleEloModel: toggleEloModel,
     renderConfigError: renderConfigError,
     renderDataError: renderDataError,

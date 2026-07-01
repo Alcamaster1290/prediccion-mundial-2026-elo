@@ -107,6 +107,38 @@ def test_build_player_rows_includes_club_country():
     assert rows[0]["club_country"] == "Inglaterra"
 
 
+def test_current_best_third_knockout_slots_export_as_resolved_rules():
+    labels = {
+        74: "3.° A/B/C/D/F",
+        77: "3.° C/D/F/G/H",
+        79: "3.° C/E/F/H/I",
+        80: "3.° E/H/I/J/K",
+        81: "3.° B/E/F/I/J",
+        82: "3.° A/E/H/I/J",
+        85: "3.° E/F/G/I/J",
+        87: "3.° D/E/I/J/L",
+    }
+    expected_groups = {
+        74: "F",
+        77: "D",
+        79: "E",
+        80: "K",
+        81: "B",
+        82: "J",
+        85: "I",
+        87: "L",
+    }
+
+    for match_number, label in labels.items():
+        row = export_to_supabase.slot_rule_from_label(match_number, "away", label)
+        expected_group = expected_groups[match_number]
+
+        assert row["source_type"] == "best_third"
+        assert row["source_group"] == expected_group
+        assert row["source_rank"] == 3
+        assert row["label"] == f"Mejor 3. Grupo {expected_group}"
+
+
 def test_complete_squad_only_team_profiles_are_published_without_dt_source():
     public_rows, premium_rows = export_to_supabase.build_team_profile_rows(
         {

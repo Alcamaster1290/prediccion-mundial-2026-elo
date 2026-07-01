@@ -295,9 +295,17 @@
     var includeTitle = options.includeTitle !== false;
     var includeBadge = options.includeBadge === true;
     var isEmbedded = options.embedded === true;
+    var useDisclosure = isEmbedded && includeTitle;
     var html = '<section class="' + (isEmbedded ? 'pred-pronosticos-block' : 'prono-active-block') + '">';
 
-    if (includeTitle) {
+    if (useDisclosure) {
+      html += '<details class="prono-group-disclosure">'
+        + '<summary class="prono-group-summary">'
+        + '<span>Pronósticos Fase de Grupos</span>'
+        + '<small>Lectura editorial, porcentajes y 10 marcadores de los 72 partidos</small>'
+        + '</summary>'
+        + '<div class="prono-group-disclosure-body">';
+    } else if (includeTitle) {
       html += '<h3 class="pred-subsection-title">Pronósticos Fase de Grupos</h3>'
         + '<p class="pred-terceros-note">Lectura editorial, porcentajes de victoria, 10 resultados probables, jugador diferencial y explicación del pronóstico para la fase de grupos.</p>';
     }
@@ -311,7 +319,9 @@
     if (!predictions || predictions.length === 0) {
       html += '<div class="prono-empty">'
         + '<p style="color:var(--muted);margin-top:1rem">Los pronósticos se publicarán a medida que se acerquen los partidos.</p>'
-        + '</div></section>';
+        + '</div>';
+      if (useDisclosure) html += '</div></details>';
+      html += '</section>';
       return html;
     }
 
@@ -334,6 +344,7 @@
       html += '</div>';
     });
 
+    if (useDisclosure) html += '</div></details>';
     html += '</section>';
     return html;
   }

@@ -146,3 +146,13 @@ def test_bracket_does_not_load_premium_data_before_access():
     assert "if (hasPremiumAccess && !hasLoadedPremiumData) loadAndRenderPremiumData();" in bracket_js
     assert "el.innerHTML = renderBracket(null);" in bracket_js
     assert "window.__authState && window.__authState.hasFullAccess" in bracket_js
+
+
+def test_knockout_rpc_resolves_best_third_labels():
+    sql = read("supabase/30_resolve_knockout_best_thirds.sql").lower()
+
+    assert "create or replace function public.resolve_knockout_bracket()" in sql
+    assert "best_third_slots" in sql
+    assert "regexp_match" in sql
+    assert "public.v_best_thirds" in sql
+    assert "grant execute on function public.resolve_knockout_bracket()" in sql
