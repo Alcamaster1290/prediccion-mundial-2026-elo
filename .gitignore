@@ -30,6 +30,7 @@ data/calibration_report.json
 # Outputs derivados/premium: generar localmente y exportar a Supabase
 data/team_strength_snapshots.json
 data/mc_results.json
+data/knockout_mc_results.json
 data/fixed_results.json
 data/predictions_seed.sql
 data/seed_strengths.sql
