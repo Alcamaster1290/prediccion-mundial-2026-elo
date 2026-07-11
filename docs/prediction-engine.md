@@ -2,11 +2,12 @@
 
 ## Overview
 
-Python-based ELO simulation engine for the 2026 World Cup group stage. The
-pipeline builds team strengths from public international ELO plus sourced club
-ELO for expected starters, applies a small starter line-matchup adjustment per
-match, simulates group matches with Poisson goal counts, and exports premium
-outputs to Supabase.
+Python-based ELO simulation engine for the 2026 World Cup, covering both the
+group stage and the knockout bracket. The pipeline builds team strengths from
+public international ELO plus sourced club ELO for expected starters, applies a
+small starter line-matchup adjustment per match, simulates group matches with
+Poisson goal counts, projects the knockout rounds once groups conclude, and
+exports premium outputs to Supabase.
 
 Architecture principle: Python performs model computation, JavaScript displays
 authorized data, and Supabase stores the public/premium boundary through grants
@@ -27,6 +28,9 @@ and RLS.
 | `data/team_strength_snapshots.json` | Generated team strength snapshot. Treat as premium-derived output when simulations are premium. |
 | `data/mc_results.json` | Generated Monte Carlo output. Treat as premium-derived output when simulations are premium. |
 | `data/predictions_seed.sql` | Generated match predictions for Supabase import. Treat as premium-derived output. |
+| `data/knockout_matches.json` | Knockout fixture (16avos → Final, `matchNum` 73-104) with slot labels. |
+| `data/fixed_results.json` | Real scores mirrored from the live `match_results` table (gitignored). |
+| `data/final_phase_predictions.json` | Generated knockout projection (6 rounds: r32/r16/qf/sf/tp/final). |
 
 Generated premium outputs are ignored by Git and should be regenerated locally
 when needed, then exported to Supabase. Do not publish them as public static
@@ -323,6 +327,52 @@ python scripts/run_monte_carlo.py --runs 20000 --seed 42 --fixed-results data/fi
 
 ---
 
+## Knockout / Final Phase
+
+Once the group stage is decided, the 32 qualifiers (top two per group + the eight
+best third-placed teams) fill the bracket and each tie is projected round by round
+by `scripts/generate_final_phase_predictions.py`.
+
+Inputs:
+
+- `data/knockout_matches.json` — the fixture with slot labels (`homeLabel`,
+  `awayLabel`), `matchNum` 73-104, and venue/date per tie.
+- `data/fixed_results.json` — real scores loaded so far (from `match_results`),
+  used to resolve which team actually occupies each slot.
+- `data/team_strength_snapshots.json` + `data/model_weights.json` — the same v1.3
+  strengths and weights used for the group stage.
+
+The script reuses the group-stage model components — `elo_probability`
+(`top_scoreline_percentages`, 1X2 from the reweighted Poisson matrix),
+`xi_matchups` (per-line starter matchup adjustment), and `elo_narrative` (bench
+layer + polished editorial prose) — and produces, per tie:
+
+- `team_a_win_probability`, `draw_probability`, `team_b_win_probability`,
+- `advance_home_pct` / `advance_away_pct` — knockout has no draws, so the draw
+  mass is split between the two sides to yield an advance probability,
+- `projected_winner` / `projected_loser`, `global_tag`, and `editorial` text.
+
+Output `data/final_phase_predictions.json` carries `generated_at`, a `source`
+block (`fixed_count`, `knockout_fixed_count`, `finished_count`, `model_version`,
+`best_third_groups`) and six `rounds`: `r32` (16avos, 16 ties), `r16` (Octavos,
+8), `qf` (Cuartos, 4), `sf` (Semifinales, 2), `tp` (Tercer Puesto, 1) and `final`
+(1). `js/bracket.js` renders it; non-premium/anon users see flags and slot
+positions without percentages via the public `get_bracket_projection()` RPC
+(migration `29`).
+
+```bash
+# Regenerate the knockout projection after loading more real results
+python scripts/generate_final_phase_predictions.py
+```
+
+The best-third → slot mapping and previous-round winners/losers are resolved by
+`supabase/30_resolve_knockout_best_thirds.sql`; `CURRENT_BEST_THIRD_SLOT_GROUPS`
+in the script pins the manual slot assignment for ties whose third-place origin
+is already known. Re-run the script whenever a new knockout result lands so the
+next round is recomputed with the actual qualifiers.
+
+---
+
 ## Validation
 
 Run after any data/model change:
@@ -494,6 +544,9 @@ python scripts/update_results.py 25:2-1 26:0-0 --runs 10000 --seed 42
 
 # Re-sync projection from already-loaded Supabase results
 python scripts/update_results.py --sync-only --runs 10000 --seed 42
+
+# Knockout stage: after loading a bracket result, recompute the next rounds
+python scripts/generate_final_phase_predictions.py
 ```
 
 Under the hood, `update_results.py` runs:
