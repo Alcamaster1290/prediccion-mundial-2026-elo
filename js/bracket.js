@@ -272,13 +272,17 @@
     var isHome = side === 'home';
     var code = isHome ? match.home_team : match.away_team;
     if (!code) return null;
+    var goals = isHome ? match.home_goals : match.away_goals;
+    var pens = isHome ? match.home_penalties : match.away_penalties;
     return {
       code: code,
       pct: pctNumber(isHome ? match.advance_home_pct : match.advance_away_pct),
       label: isHome ? match.home_label : match.away_label,
       publicPct: match.phase !== 'r32',
       matchPct: true,
-      clinched: !!match.actual_winner && match.actual_winner === code
+      clinched: !!match.actual_winner && match.actual_winner === code,
+      goals: (goals === 0 || goals) ? goals : null,
+      penalties: (pens === 0 || pens) ? pens : null
     };
   }
 
@@ -291,7 +295,9 @@
       label: prediction.label || resolved.label,
       publicPct: prediction.publicPct,
       matchPct: true,
-      clinched: prediction.clinched
+      clinched: prediction.clinched,
+      goals: prediction.goals,
+      penalties: prediction.penalties
     };
   }
 
@@ -344,11 +350,19 @@
     var tagHtml = sourceMatch && !isTbd
       ? '<a class="bk-slot-tag bk-slot-source-link" href="#pred-final-p' + sourceMatch + '" aria-label="Ver prediccion del Partido ' + sourceMatch + '" title="Ver prediccion del Partido ' + sourceMatch + '">' + tag + '</a>'
       : '<span class="bk-slot-tag">' + tag + '</span>';
+    var hasScore = resolved && (resolved.goals === 0 || resolved.goals);
+    var scoreHtml = hasScore
+      ? '<span class="bk-score">' + resolved.goals
+        + ((resolved.penalties === 0 || resolved.penalties)
+            ? '<span class="bk-score-pen">(' + resolved.penalties + ')</span>' : '')
+        + '</span>'
+      : '';
     var content = flag
       + '<div class="bk-slot-info">'
       + '<span class="bk-slot-name">' + name + '</span>'
       + tagHtml
       + '</div>'
+      + scoreHtml
       + ((showPct || (resolved && resolved.publicPct)) ? '<span class="bk-pct">' + pct + '</span>' : '');
     if (predictionMatch) {
       return '<a class="' + slotClasses + '" href="#pred-final-p' + predictionMatch + '" data-slot="' + slotCode + '" aria-label="Ver prediccion del Partido ' + predictionMatch + '" title="Ver prediccion del Partido ' + predictionMatch + '">'

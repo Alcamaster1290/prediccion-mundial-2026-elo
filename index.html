@@ -2666,6 +2666,20 @@
     transition: filter .25s;
   }
   .bk-locked .bk-pct { filter: blur(4px); user-select: none; }
+  /* Marcador real: dígitos negros/negrita sobre chip claro, visible en tema
+     oscuro y claro. Se ubica junto al % de clasificación. */
+  .bk-score {
+    font-family: 'JetBrains Mono', monospace; font-weight: 800;
+    font-size: 9px; line-height: 1.3; color: #0a0a0a;
+    background: #f1f1f1; border-radius: 3px;
+    padding: 1px 4px; margin-left: 3px; flex-shrink: 0;
+    display: inline-flex; align-items: baseline;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.18);
+  }
+  .bk-score-pen { font-size: 7px; font-weight: 700; margin-left: 1px; opacity: .72; }
+  .bk-slot.bk-slot--clinched .bk-score {
+    background: #fff; color: #052e16; box-shadow: 0 0 0 1px rgba(5,46,22,.35);
+  }
   .bk-slot--tbd { opacity: .4; }
   [data-theme="light"] .bk-slot--tbd { opacity: .55; }
   .bk-slot--tbd .bk-slot-name { font-style: italic; }
