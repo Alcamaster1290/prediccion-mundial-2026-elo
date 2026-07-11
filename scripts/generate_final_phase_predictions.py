@@ -5,7 +5,8 @@ import json
 import math
 import re
 import sys
-from collections import defaultdict
+import zlib
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -60,6 +61,38 @@ CURRENT_BEST_THIRD_SLOT_GROUPS = {
     (85, "awayLabel"): "J",
     (87, "awayLabel"): "L",
 }
+
+
+class VariantAllocator:
+    """Reparte las variantes léxicas del texto editorial lo más parejo posible
+    para que ninguna cláusula se sobreutilice en la llave. Determinístico: gana
+    la opción menos usada dentro de cada salt; los empates se rompen por crc32
+    del match_id, así que el resultado es reproducible entre corridas."""
+
+    def __init__(self):
+        self._used = defaultdict(Counter)
+
+    def pick_indexed(self, mid, salt, options, avoid=None):
+        """Devuelve (índice, texto). `avoid` excluye un índice (para que el
+        visitante no repita la plantilla que ya usó el local en el mismo cruce)."""
+        if len(options) == 1:
+            return 0, options[0]
+        counts = self._used[salt]
+        candidates = [i for i in range(len(options)) if i != avoid] or list(range(len(options)))
+        order = sorted(
+            candidates,
+            key=lambda i: (counts[i], zlib.crc32(f"{mid}|{salt}|{i}".encode("utf-8"))),
+        )
+        idx = order[0]
+        counts[idx] += 1
+        return idx, options[idx]
+
+    def pick(self, mid, salt, options):
+        return self.pick_indexed(mid, salt, options)[1]
+
+
+# Instancia de módulo; se reinicia al comienzo de cada build_final_predictions.
+_ALLOC = VariantAllocator()
 
 
 def load_json(path):
@@ -245,10 +278,10 @@ def best_thirds(standings):
 
 def group_seed_label(row):
     if row["rank"] == 1:
-        return f"1. Grupo {row['group']}"
+        return f"primero del Grupo {row['group']}"
     if row["rank"] == 2:
-        return f"2. Grupo {row['group']}"
-    return f"Mejor 3. Grupo {row['group']}"
+        return f"segundo del Grupo {row['group']}"
+    return f"mejor tercero del Grupo {row['group']}"
 
 
 def parse_direct_slot(label):
@@ -335,39 +368,106 @@ def advance_split(win_home, draw, win_away, effective_home, effective_away):
     return home, away
 
 
-def match_seed_context(team_code, seed_info, route_info, names):
+# Cláusulas de "camino del menos favorito": ideas tácticas distintas para no
+# repetir siempre la misma frase. El asignador reparte cuál toca por cruce.
+_UNDERDOG_PATHS = [
+    "aunque {und} incomoda si aprovecha las transiciones rápidas y el balón parado.",
+    "pero {und} tiene con qué sorprender si ahoga la salida rival y castiga al contragolpe.",
+    "si bien {und} conserva opciones cuando el partido se abre y aparecen los espacios.",
+    "aunque a {und} le puede bastar una noche fina de su referente para nivelar la serie.",
+    "pero {und} sabe que la paciencia y un penal pueden estirar la eliminatoria.",
+    "si {und} logra frenar el ritmo y llevarlo al desgaste, la moneda se equilibra.",
+    "aunque {und} descuenta terreno si gana los duelos y la segunda pelota.",
+    "pero {und} puede meterse en la serie si aguanta atrás y estira los minutos.",
+    "aunque {und} tiene argumentos si el cruce se resuelve a pelota parada.",
+    "si {und} acierta en las áreas, el favoritismo se diluye rápido.",
+    "aunque una expulsión o un error puntual meterían a {und} de lleno en la pelea.",
+    "pero {und} confía en su pegada para castigar la primera que tenga.",
+    "si {und} sostiene el orden atrás, puede arrastrar el cruce a la prórroga.",
+    "aunque {und} sueña con el golpe si le gana la batalla física en el medio.",
+]
+
+
+def _seed_context_options(team_code, seed_info, route_info, names):
+    name = names[team_code]
     seed = seed_info.get(team_code)
     if seed:
-        return (
-            f"{names[team_code]} llega como {group_seed_label(seed)} con {seed['PTS']} puntos, "
-            f"diferencia {seed['DG']:+d} y {seed['GF']} goles en la fase de grupos."
-        )
+        label = group_seed_label(seed)
+        return "seed", [
+            f"{name} cerró el grupo como {label} ({seed['PTS']} pts, {seed['DG']:+d} de diferencia).",
+            f"{name} llega tras firmar {seed['PTS']} puntos en la fase de grupos, con {seed['GF']} goles a favor.",
+            f"En la primera fase, {name} terminó {label} con diferencia {seed['DG']:+d}.",
+            f"{name} viene de sellar el grupo con {seed['PTS']} unidades y {seed['GF']} goles.",
+            f"{name} avanzó como {label}, sumando {seed['PTS']} puntos en la zona.",
+        ]
     route = route_info.get(team_code)
     if route:
-        return (
-            f"{names[team_code]} viene de superar a {names[route['opponent']]} "
-            f"en el Partido {route['match_number']} de la ruta proyectada."
-        )
-    return f"{names[team_code]} llega por la ruta proyectada de eliminatorias."
+        return "route", [
+            f"{name} se ganó el cruce dejando en el camino a {names[route['opponent']]}.",
+            f"{name} aparece aquí tras superar a {names[route['opponent']]} en la ronda previa.",
+            f"{name} llega con el envión de haber eliminado a {names[route['opponent']]}.",
+            f"{name} dejó fuera a {names[route['opponent']]} para meterse en esta instancia.",
+        ]
+    return "plain", [
+        f"{name} se abre paso por la ruta proyectada de la eliminatoria.",
+        f"{name} sostiene su camino en el cuadro según el modelo.",
+    ]
 
 
-def editorial_text(match, home, away, pa, pb, seed_info, route_info, names):
-    favorite = home if pa >= pb else away
-    underdog = away if favorite == home else home
-    home_ctx = match_seed_context(home, seed_info, route_info, names)
-    away_ctx = match_seed_context(away, seed_info, route_info, names)
+def match_seed_context(team_code, seed_info, route_info, names, mid, avoid=None):
+    """Devuelve (texto, clave) donde clave=(rama, índice). `avoid` es la clave del
+    contexto del otro equipo, para no repetir plantilla dentro del mismo cruce."""
+    branch, options = _seed_context_options(team_code, seed_info, route_info, names)
+    avoid_idx = avoid[1] if (avoid and avoid[0] == branch) else None
+    idx, text = _ALLOC.pick_indexed(mid, branch, options, avoid=avoid_idx)
+    return text, (branch, idx)
+
+
+def editorial_text(match, home, away, pa, pb, adv_home, adv_away, seed_info, route_info, names):
+    mid = f"ko-{match['matchNum']}-{home}-{away}"
     phase_name = ROUND_TITLES.get(match["phase"], match["phase"]).lower()
+    favorite = home if adv_home >= adv_away else away
+    underdog = away if favorite == home else home
+    gap = abs(adv_home - adv_away)
 
-    if abs(pa - pb) < 7:
-        reading = (
-            f"El modelo ELO no separa demasiado a {names[home]} y {names[away]} en {phase_name}. "
-            "La lectura se apoya en el roce del XI, lo ya hecho en grupos y la capacidad para sostener ritmo tras el primer golpe."
-        )
+    if gap < 12:
+        reading = _ALLOC.pick(mid, "even", [
+            f"El modelo ELO apenas separa a {names[home]} y {names[away]} en {phase_name}: un cruce de detalles.",
+            f"El ELO no da ventaja clara a {names[home]} ni a {names[away]} en {phase_name}; se decidirá en los márgenes.",
+            f"{names[home]} y {names[away]} llegan igualados a {phase_name}, un duelo que el ELO lee como moneda al aire.",
+            f"Para el ELO hay paridad casi total entre {names[home]} y {names[away]} en {phase_name}; cualquier detalle rompe el equilibrio.",
+            f"El ELO no encuentra favorito entre {names[home]} y {names[away]} en {phase_name}: se jugará al filo.",
+        ])
     else:
-        reading = (
-            f"El modelo ELO perfila mejor a {names[favorite]} en {phase_name}, pero {names[underdog]} "
-            "mantiene una ruta competitiva si consigue llevar el partido a posesiones largas y duelos cerrados."
-        )
+        if gap < 30:
+            opener = _ALLOC.pick(mid, "slight", [
+                f"El modelo ELO inclina levemente la balanza hacia {names[favorite]} en {phase_name}",
+                f"{names[favorite]} parte con una ventaja corta en {phase_name} según el ELO",
+                f"El ELO da un plus a {names[favorite]} de cara a {phase_name}",
+                f"El ELO ve a {names[favorite]} un paso por delante en {phase_name}",
+                f"Para el ELO, {names[favorite]} llega con un favoritismo matizado a {phase_name}",
+            ])
+        elif gap < 55:
+            opener = _ALLOC.pick(mid, "clear", [
+                f"El modelo ELO perfila mejor a {names[favorite]} en {phase_name}",
+                f"Para el ELO, {names[favorite]} llega como favorito claro a {phase_name}",
+                f"El ELO coloca a {names[favorite]} por delante en {phase_name}",
+                f"El modelo ELO se decanta con nitidez por {names[favorite]} en {phase_name}",
+                f"{names[favorite]} tiene la vitola de favorito en {phase_name} para el ELO",
+            ])
+        else:
+            opener = _ALLOC.pick(mid, "strong", [
+                f"El modelo ELO marca una diferencia amplia a favor de {names[favorite]} en {phase_name}",
+                f"Para el ELO, {names[favorite]} es netamente favorito en {phase_name}",
+                f"El ELO ve a {names[favorite]} muy por encima en {phase_name}",
+                f"El modelo ELO abre una brecha grande a favor de {names[favorite]} en {phase_name}",
+                f"{names[favorite]} parte como amplio favorito en {phase_name} según el ELO",
+            ])
+        path = _ALLOC.pick(mid, "path", _UNDERDOG_PATHS).format(und=names[underdog])
+        reading = f"{opener}, {path}"
+
+    home_ctx, home_key = match_seed_context(home, seed_info, route_info, names, mid)
+    away_ctx, _ = match_seed_context(away, seed_info, route_info, names, mid, avoid=home_key)
     return polish(f"{reading} {home_ctx} {away_ctx}")
 
 
@@ -474,7 +574,7 @@ def build_prediction(match, home, away, strengths, weights, xi_profiles, bench_p
         "projected_winner": projected_winner,
         "projected_loser": projected_loser,
         "global_tag": global_tag(pa, pd, pb, False),
-        "editorial": editorial_text(match, home, away, pa, pb, seed_info, route_info, names),
+        "editorial": editorial_text(match, home, away, pa, pb, adv_home, adv_away, seed_info, route_info, names),
         "player_factor": build_player_factor(home, away, player_profiles, names),
         "tactical_note": narrative.split("\n\n")[0] if narrative else "",
         "team_home_context": home_context,
@@ -484,6 +584,8 @@ def build_prediction(match, home, away, strengths, weights, xi_profiles, bench_p
 
 
 def build_final_predictions(fixed_results_path=None):
+    global _ALLOC
+    _ALLOC = VariantAllocator()  # reparto de variantes limpio y determinístico por corrida
     matches = load_json(DATA_DIR / "matches.json")
     fixed_results_path = Path(fixed_results_path) if fixed_results_path else DATA_DIR / "fixed_results.json"
     fixed_records = load_fixed_result_records(fixed_results_path, matches)

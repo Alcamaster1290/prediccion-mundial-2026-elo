@@ -81,8 +81,15 @@ def test_final_phase_predictions_include_loaded_round_of_32_results():
     data = load_predictions()
     matches = {match["match_number"]: match for match in data["matches"]}
 
-    assert data["source"]["knockout_fixed_count"] == 7
-    assert data["source"]["finished_count"] == 79
+    # Derivar los conteos de los resultados realmente cargados en lugar de
+    # hardcodear un estado del torneo (avanza a medida que se cargan partidos).
+    fixed = json.loads((REPO_ROOT / "data" / "fixed_results.json").read_text(encoding="utf-8"))["results"]
+    knockout_count = sum(
+        1 for key, value in fixed.items()
+        if int(key) > 72 and isinstance(value, dict) and value.get("phase") != "group"
+    )
+    assert data["source"]["knockout_fixed_count"] == knockout_count
+    assert data["source"]["finished_count"] == len(fixed)
 
     expected_results = {
         73: ("can", 0, 1, None, None),
@@ -118,7 +125,9 @@ def test_final_phase_predictions_include_editorial_and_player_context():
     matches = load_predictions()["matches"]
 
     for match in matches:
-        assert "modelo ELO" in match["editorial"]
+        # El editorial referencia el modelo ELO; el fraseo varía por cruce, así
+        # que verificamos la mención "ELO" (no una plantilla literal fija).
+        assert "ELO" in match["editorial"]
         assert match["player_factor"]
         assert "arquero" not in match["player_factor"].lower()
         assert "%" not in match["editorial"]
