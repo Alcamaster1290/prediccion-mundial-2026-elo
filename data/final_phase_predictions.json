@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-12T04:05:41+00:00",
+  "generated_at": "2026-07-12T04:31:45+00:00",
   "source": {
     "fixed_count": 72,
-    "knockout_fixed_count": 27,
-    "finished_count": 99,
+    "knockout_fixed_count": 28,
+    "finished_count": 100,
     "model_version": "1.3",
     "best_third_groups": [
       "K",
@@ -2059,7 +2059,12 @@
               "score": "2-1",
               "pct": 4.5
             }
-          ]
+          ],
+          "status": "finished",
+          "home_goals": 1,
+          "away_goals": 2,
+          "actual_winner": "eng",
+          "actual_loser": "nor"
         },
         {
           "match_number": 100,
@@ -4464,7 +4469,12 @@
           "score": "2-1",
           "pct": 4.5
         }
-      ]
+      ],
+      "status": "finished",
+      "home_goals": 1,
+      "away_goals": 2,
+      "actual_winner": "eng",
+      "actual_loser": "nor"
     },
     {
       "match_number": 100,
